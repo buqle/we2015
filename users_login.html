@@ -1,0 +1,62 @@
+{include file="users_header.html"}
+<div class="login_bg">
+	<div class="conbox">
+		<div class="member_login member_loginmetton">
+			<!--<a href="/gether/index.html" id="caoaa" target="_blank">了解详情 >></a>-->
+			<div class="login_left m_ptc login_shadow">
+				<div class="log_tit">
+					<img src="{$tpldir}/images/login_photo.jpg"  />
+				</div>
+				<div class="login_center">
+					<form method="post" action="" id="log_form">
+						<div class="log_li">
+							<div class="fn_cle">
+								<label for="password" style="display:inline; float:left;" class="basic_label">帐&nbsp;&nbsp;号</label>
+								<label style="float:right;line-height: 30px;">没有帐号，<a href="/?user&q=reg" class="forget_pwd">立即注册&nbsp;</a></label>
+							</div>
+							<input id="csrftoken" name="csrftoken" type="hidden" class="basic_input" value="{$_G.csrftoken}"/>
+							<input id="username" name="keywords" type="text" class="basic_input" value="手机/用户名"/>
+						</div>
+						<div class="log_li">
+							<div class="fn_cle">
+								<label for="password" style="display:inline; float:left;" class="basic_label">密&nbsp;&nbsp;码</label>
+								<a href="/?user&q=getpwd" class="forget_pwd fr">忘记密码？</a>
+							</div>
+							<input id="password" name="password" type="password" class="basic_input" value=""/>
+						</div>
+
+						<div class="log_li verify_code ccto_none" style="display: none;">
+							<label for="vericode" class="basic_label">验证码</label>
+							<input style="width: 145px; padding:10px 8px; background:#faf9f8; border: 1px solid #e0e0e0; height: 24px;" id="vericode" name="valicode" type="text" class="" maxlength="4" value=""/>&nbsp;{valicode}
+						</div>
+						<div class="login_warning" id="login_warning">
+							<span></span>
+						</div>
+						<div class="log_li">
+							<p>
+								<input type="submit" class="user_login_btn" value="登&nbsp;&nbsp;录" id="log_sub"/>
+							</p>
+						</div>
+						<!-- 暂不使用第三方登录
+                        {*include file='users_login_api.html'*}
+                         -->
+					</form>
+				</div>
+				<div class="login_border"></div>
+			</div>
+			<div class="cle"></div>
+		</div>
+	</div>
+</div>
+{literal}
+<script type="text/javascript">
+
+	diyou.use('users_login',function(dy){dy.login('log_form')});
+	diyou.use('index', function (dy) { dy.input_val("log_form") })
+
+</script>
+{/literal}
+
+{include file="users_footer.html"}
+
+

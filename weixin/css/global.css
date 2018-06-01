@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*样式重置*/
+*{margin:0; padding:0;}
+table{border-collapse:collapse; border-spacing:0;}
+img{border:0;}
+em,strong,th{font-style:normal;font-weight:normal;}
+li{list-style:none;}
+th,td{text-align:center;}
+h1,h2,h3,h4,h5,h6{ font-size:100%;font-weight:normal;}
+input,textarea,select{ font-family:inherit; font-size:inherit; font-weight:inherit; *font-size:100%;}
+a{ text-decoration:none; outline:none; color: #231815;}
+
+*:focus{ outline:none; }
+ 
+/*公用样式*/
+.fl{float:left;display:inline;}
+.fr{float:right;display:inline;}
+.zoom{zoom:1}
+.show{display:block;}
+.hide{display:none;}
+.clearfix{ zoom:1; }
+.clearfix:after{ content:"."; display:block; clear:both; visibility:hidden; font-size:0; height:0; line-height:0;}
+
+.table{ width:100%; display: table; }
+.row{ display: table-row; }
+.cell{ display: table-cell; text-align:center;}

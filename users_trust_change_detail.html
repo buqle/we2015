@@ -1,0 +1,37 @@
+{list module='borrow' function='change_get_detail_list'  var="item"  buy_userid=$_G.user_id  tender_id=$smarty.request.tender_id borrow_nid=$smarty.request.borrow_nid var="loop" }  
+     <table class="user_tab2" style="width: 700px;">
+   
+			<tbody>
+			  <tr class="tab2_tit">
+			    <td>标题</td>
+			    <td>应收日期</td>
+			    <td>借款者</td>
+			    <td>第几期/总期数</td>
+			    <td>应收总额</td>
+			    <td>已收本金</td>
+			    <td>已收利息</td>
+			    <td>收款时间</td>
+			    <td>逾期</td>
+			    <td >状态</td>
+			  </tr>
+              
+               {foreach from=$loop.list item="item"}
+			  <tr>
+			    <td><a href="/invest/a{$item.borrow_nid}.html" target="_blank" title="{$item.borrow_name}">{$item.borrow_name|truncate:5}</a></td>
+			    <td>{$item.recover_time|date_format:"Y/m/d"}</td>
+			    <td>{$item.borrow_username}</td>
+			    <td>{$item.recover_period}/{$item.borrow_period}</td>
+			    <td>￥{$item.recover_account}</td>
+			    <td>￥{$item.recover_capital_yes}</td>
+			    <td>￥{$item.recover_interest_yes}</td>
+			    <td>{$item.recover_yestime|date_format:"Y/m/d"|default:"-"}</td>
+			    <td>{$item.late_days|default:"-"}</td>
+			    <td>{if $item.recover_status==1}已收{else}待收{/if} </td>                                    
+			  </tr>
+			  {/foreach}
+             
+			</tbody>
+           
+    </table>
+    {/list}
+   

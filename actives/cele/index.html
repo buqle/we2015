@@ -1,0 +1,137 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/cele/css/style.css?v=2016927" rel="stylesheet" type="text/css" />
+<div class="cele-con ww1">
+    <div class="cele-con-a ww3">
+        <img src="{$tpldir}/actives/cele/images/1.jpg">
+        <img src="{$tpldir}/actives/cele/images/2.jpg">
+        <img src="{$tpldir}/actives/cele/images/3.jpg">
+        <img src="{$tpldir}/actives/cele/images/4.jpg">
+        <img src="{$tpldir}/actives/cele/images/5.jpg">
+        <img src="{$tpldir}/actives/cele/images/6.jpg">
+        <img src="{$tpldir}/actives/cele/images/7.jpg">
+        <img src="{$tpldir}/actives/cele/images/8.jpg">
+        <img src="{$tpldir}/actives/cele/images/9.jpg">
+        <img src="{$tpldir}/actives/cele/images/10.jpg">
+    </div>
+</div>
+
+<div class="cele-a ww1">
+    <img src="{$tpldir}/actives/cele/images/bg2.jpg" width="100%" height="1082">
+    <div class="cele-pos ww1">
+        <div class="cele-b ww3  font24">
+            <p>累计交易总额<strong class="timer bold count-title timer2"  data-to="68616.55" data-speed="8000"></strong>万元</p>
+            <p>累计为投资人赚取收益<strong class="timer bold timer2" data-to="2864.03" data-speed="8000"></strong>万元</p>
+            <p style="margin-top: 6px;">累计注册人数<strong class="timer bold" id="count-number" data-to="964140" data-speed="8000"></strong>人</p>
+        </div>
+        <div class="cele-c text-center font24">
+            <p>2017年1月13日—1月15日，用户投资平台标的</p>
+            <p>（仅限3月标及以上标的）均可享受年化翻倍奖励！</p>
+            <p><strong class="bold">周年庆典，狂欢3日不停歇！</strong></p>
+        </div>
+    </div>
+</div>
+
+<div class="cele-d ww1">
+    <img src="{$tpldir}/actives/cele/images/bg3.jpg" width="100%" height="1080">
+   <div class="cele-e">
+       <h4 class="bold text-center">我们不忘初心，邀您携手与共</h4>
+       <p class="ww3 font24">回望2016年，融和贷通过坚实的互联网技术研发和运营管理团队，凭借完善的风控系统及实现银行存管迅速发展成为一个实力雄厚、值得信赖的投融资信息咨询服务平台。融和贷以优质的服务及多元化的理财产品为投融资者开辟了一个安全、高效、便捷的交易渠道，为促进我国普惠金融的重要发展战略贡献了自己的力量！</p>
+       <p class="ww3 font24" style="margin-top: 6px;">新的一年，融和贷将坚定保障用户资金安全、实现用户财富增值的信仰，通过具有行业前瞻性的战略规划、丰富优质的项目、专业的服务与高效的执行力不断为用户创造价值，并用敢想敢做的超越精神让平台永葆生机，用开拓进取的创新精神助力平台稳健高飞！作为互联网金融的新锐平台，融和贷以昂扬向上的亮眼之姿进入大众视野，未来，融和贷将坚守初心，坚定合规稳健的互金发展道路，以一个互联网金融平台的责任与担当谱写新的华彩篇章！</p>
+   </div>
+</div>
+
+<div class="jiujiu_foot">
+    <p>免责申明</p>
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意刷奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <div class="endjiujiu"></div>
+</div>
+
+
+{literal}
+<script type="text/javascript">
+
+    $.fn.countTo = function (options) {
+        options = options || {};
+        return $(this).each(function () {
+            var settings = $.extend({}, $.fn.countTo.defaults, {
+                from:            $(this).data('from'),
+                to:              $(this).data('to'),
+                speed:           $(this).data('speed'),
+                refreshInterval: $(this).data('refresh-interval'),
+                decimals:        $(this).data('decimals')
+            }, options);
+            var loops = Math.ceil(settings.speed / settings.refreshInterval),
+                    increment = (settings.to - settings.from) / loops;
+            var self = this,
+                    $self = $(this),
+                    loopCount = 0,
+                    value = settings.from,
+                    data = $self.data('countTo') || {};
+            $self.data('countTo', data);
+
+            if (data.interval) {
+                clearInterval(data.interval);
+            }
+            data.interval = setInterval(updateTimer, settings.refreshInterval);
+            render(value);
+            function updateTimer() {
+                value += increment;
+                loopCount++;
+                render(value);
+                if (typeof(settings.onUpdate) == 'function') {
+                    settings.onUpdate.call(self, value);
+                }
+                if (loopCount >= loops) {
+                    $self.removeData('countTo');
+                    clearInterval(data.interval);
+                    value = settings.to;
+                    if (typeof(settings.onComplete) == 'function') {
+                        settings.onComplete.call(self, value);
+                    }
+                }
+            }
+            function render(value) {
+                var formattedValue = settings.formatter.call(self, value, settings);
+                $self.html(formattedValue);
+            }
+        });
+    };
+
+    $.fn.countTo.defaults = {
+        from: 0,
+        to: 0,
+        speed: 1000,
+        refreshInterval: 100,
+        decimals: 0,
+        formatter: formatter,
+        onUpdate: null,
+        onComplete: null
+    };
+
+    function formatter(value, settings) {
+        return value.toFixed(2);
+    }
+
+
+    $('.timer2').data('countToOptions', {
+        formatter: function (value, options) {
+            return value.toFixed(2).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+        }
+    });
+    $('#count-number').data('countToOptions', {
+        formatter: function (value, options) {
+            return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+        }
+    });
+
+
+    $('.timer').each(count);
+
+    function count(options) {
+        var $this = $(this);
+        options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+        $this.countTo(options);
+    }
+</script>
+{/literal}

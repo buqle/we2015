@@ -1,0 +1,106 @@
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clearg{zoom:1;}
+.clearg:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+i{font-style: normal}
+h1, h2, h3, h4, h5, h6, fieldset, p, ol, ul, li, form, map, button, input, dl, dt, dd, q, table, thead, tbody, tfoot, tr, td, img, div{ margin:0; padding:0; }
+body {
+    font-family:"Microsoft YaHei";
+    font-size: 18px;background:#de5953;
+}
+.bodyyy{}
+.ww1{width: 100%;}
+.ww2{width: 1200px;}
+.ww3, .ww2{margin: 0 auto;}
+.lefts{float: left}
+.rights{float: right;}
+.text-center{text-align: center;}
+.text-left{text-align: left;}
+.text-right{text-align: right;}
+.font12{font-size: 12px;}
+.font14{font-size: 14px;}
+.font15{font-size: 15px;}
+.font16{font-size: 16px;}
+.font18{font-size: 18px;}
+.font17{font-size: 17px;}
+.font19{font-size: 19px;}
+.font20{font-size: 20px;}
+.font22{font-size: 22px;}
+.font24{font-size: 24px;}
+.font25{font-size: 25px;}
+.font23{font-size: 23px;}
+.block{display: block;}
+.inline-block{display: inline-block;}
+.cursor{cursor: pointer;}
+.bold{font-weight: bold;}
+h4, h6{font-weight: normal}
+h5{font-weight: bold;}
+.color-ff{color: #fff;}
+.pos-a{position: relative;}
+.pos-b{position: absolute;}
+.ww4{width:1080px;margin:0 auto;}
+.act11-bata1{background: url("../images/1.png") no-repeat center; width:100%; height:855px;}
+.act11-bata2{
+    background: url("../images/2.png") no-repeat center;width:100%;height:928px;padding-top:280px;
+}
+.act11-bata2 .act11-bata2c{width:740px;line-height:32px;text-indent: 38px;margin-bottom:190px;}
+.act11-bata2 .act11-bata3{
+    width:916px;
+}
+.act11-bata2 .act11-bata3 dd{margin-left:50px;width:236px;color:#aa5002;}
+.act11-bata2 .act11-bata3 .act11-bata4{
+    background: url("../images/3.png") no-repeat center;width:236px;height:144px;padding-top:56px;
+}
+.act11-bata2 .act11-bata3 .act11-bata4 h5{font-size:58px;height:52px;line-height:52px;margin-bottom:6px;}
+.act11-bata2 .act11-bata3 .act11-bata4 h5 i{font-weight: normal;}
+.act11-bata2 .act11-bata3 .act11-bata4 p{background:#aa5002;width:100px;height:20px;line-height:20px;margin-top:6px;}
+.act11-bata2 .act11-bata3 .act11-bata5{margin-top:24px;background: url("../images/4.png") no-repeat center;width:182px;height:56px;line-height:50px;}
+.act11-bata2 .act11-bata6{background:#c90f0e;margin-top:166px;width:838px;height:46px;line-height:46px;}
+.act11-bata2 .act11-bata6 i{color:#ffea00;}
+.act11-bata7{
+    background: url("../images/5.png") no-repeat center; width:1118px; height:1215px;padding-top:105px;margin-top:64px;
+
+}
+.act11-bata7 .act11-tit{font-family:"SimSun"; background: url("../images/6.png") no-repeat center;height:32px;line-height:32px;font-size:30px;margin-bottom:44px;}
+.act11-bata7 .act11-bata8{
+    width:1046px;margin-left:28px;
+
+
+}
+.act11-bata7 .act11-bata8 .act11-pubox{width:1032px;border:6px #d23129 solid;background:#e33830;height:12px;border-radius: 20px;}
+.act11-bata7 .act11-bata8 .act11-bata9{top:10px;width:956px;left:50%;margin-left:-478px;border-top: 13px solid #eba5a1;height:490px;background:#BD2720;}
+.act11-bata7 .act11-bata8 .act11-bata9, .act11-bata7 .act11-bata8 .act11-bata10{border-bottom-left-radius: 18px;border-bottom-right-radius: 18px;}
+.act11-bata7 .act11-bata8 .act11-bata10{
+    background:#fff;height:484px;padding:0 28px 0 40px;font-size:19px;
+}
+.act11-bata7 .act11-bata8 .act11-bata10 .list-tit{height:62px;line-height:62px;color:#d23129;}
+.act11-bata7 .act11-bata8 .act11-bata10 p{background: url("../images/7.png") no-repeat bottom center;}
+.act11-bata7 .act11-bata8 .act11-bata10 span{width:20%;float:left;}
+.act11-bata7 .act11-bata8 .act11-bata10 .marqueeboxx p{height:51px;line-height:51px;color:#666;}
+.act11-bata7 .act11-bata8 .act11-bata10 .act11-bata5{background: url("../images/8.png") no-repeat center;height:65px;margin-top:62px;}
+.act11-bata7 #act11-bata8id .act11-bata9{height:362px;}
+.act11-bata7 #act11-bata8id .act11-bata10{
+    height:352px;
+}
+.act11-bata7 #act11-bata8id .act11-bata10 span{width:25%;}
+.act11-bata7 #act11-bata8id .no-login{background: url("../images/9.png") no-repeat center;line-height:290px;height:290px;}
+.act11-bata7 #act11-bata8id .yes-login #marqueeboxx-p{text-align: left;padding-left: 64px;}
+.act11-bata11{
+    background: url("../images/10.png") no-repeat center;padding:108px 152px 0 88px; width:714px; height:260px;margin-top:58px;
+}
+.act11-bata11 p{text-indent: 38px;line-height:40px;}
+.jiujiu_foot{width: 100%;text-align: center;padding:60px 0 70px 0;background: #555555;margin-top:80px;}
+.jiujiu_foot p{color: #fff;font-size: 24px;line-height: 40px;}
+.jiujiu_foot .endjiujiu{background:url("../images/ma.png")  no-repeat center;height: 172px;margin-top:24px;}

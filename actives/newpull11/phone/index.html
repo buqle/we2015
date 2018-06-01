@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<title>商城推荐人</title>
+	<link rel="stylesheet" href="{$tpldir}/actives/newpull11/phone/css/style.css">
+	<script type="text/javascript" src="{$tpldir}/actives/newpull11/phone/js/autofull.js"></script>
+	<script type="text/javascript" src="{$tpldir}/actives/newpull11/phone/js/zepto.min.js"></script>
+	</head>
+<body>
+<div class="goldreco" >
+	<div class="tin" style="position: relative;">
+		<img class="allimg" src="{$tpldir}/actives/newpull11/phone/images/yq_01.png">
+	</div>
+	<section class="section1">
+		<img class="allimg" src="{$tpldir}/actives/newpull11/phone/images/2_02.png">
+	</section>
+	<section class="section1">
+		<img class="allimg" src="{$tpldir}/actives/newpull11/phone/images/3_03.png">
+	</section>
+
+	<section class="section1">
+		<img class="allimg" src="{$tpldir}/actives/newpull10/phone/images/yaoqing_04.png">
+	</section>
+
+	<section class="section4">
+			<div class="b1">
+				<div class="tab_title">我的推荐记录</div>
+				<div class="b2"><span class="b3">被推荐人</span><span class="b3">首投金额(元)</span><span class="b4">我的奖励</span><span class="b4">获得时间</span></div>
+				<div class="b5">
+					<div class="b6">
+
+					</div>
+					<div class="b66" style="display:none;">
+							<p><b class="b66-1">登录</b>即可查看</p>
+					</div>
+				</div>
+
+			</div>
+	</section>
+
+	<section class="section3">
+		<div class="a3">
+			<div class="b8">
+				<p style="text-align: center;font-size:0.65rem;">活动规则</p>
+				<p>1、被推荐用户需在活动期间内注册并投资成功，推荐资格方生效；</p>
+				<p>2、若好友首次投资的金额满足多个奖励条件，系统将以该笔投资的最大奖励现金发放给推荐人；</p>
+				<p>3、本活动奖金将在活动结束后，3个工作日内直充用户汇付账户，可投资、可提现。</p>
+			</div>
+		</div>
+	</section>
+</div>
+{literal}
+<script type="text/javascript">
+	ready = function(){
+		var islogin=0;
+		rhdapi.checklogin(function(s){
+			islogin = s.islogin;
+			if(islogin == 1){
+				rhdapi.getPost(    //newtrust.ronghedai.com/weixi/?user&q=get_share_ajax&alias=newpull10&methodname=get_myrecord
+						{
+							"query_site":"user",
+							"q":"get_share_ajax",
+							"alias":"newpull11",
+							"methodname":"get_myrecord"
+						},
+						function(ret){
+							ret = ret.data;
+							if(ret.code == 0){
+								var len = ret.data.length;
+								var html = '';
+								for(var i = 0; i < len; i ++){
+									html += '<p '+(i%2 == 0? ' style="background-color: #EFEFEF"' : '')+'><span class="b3">'+ret.data[i].username+'</span><span class="b3">'+ret.data[i].tender_money+'</span><span class="b4">'+ret.data[i].reward+'</span><span class="b4">'+ret.data[i].addtime2+'</span></p>';
+								}
+								$('.b6').append(html);
+								var H = 0;
+								var aa = setInterval(function(){
+									if(len >5){
+										if(H*20>=$('.b6').height()){
+											$('.b6').css('marginTop','0rem');
+											$('.b6').css({'transition':'margin-top 0.1s','-o-transition':'margin-top 0.1s','-webkit-transition':'margin-top 0.1s','-moz-transition':'margin-top 0.1s'});
+											H=0;
+										}else{
+											$('.b6').css({'transition':'margin-top 0.5s','-o-transition':'margin-top 0.5s','-webkit-transition':'margin-top 0.5s','-moz-transition':'margin-top 0.5s'});
+											$('.b6').css('marginTop','-'+H+'rem');
+											H+=1.2;
+
+										}
+									}
+
+								},1000);
+//								for(var j =0;j< $('.b6 p').length;j++){
+//
+//									if(j%2 != 0){
+//										$('.b6 p')[j].style.background='#FCF2B9';
+//									}
+//								}
+							}else if(ret.code==-1){
+								alert("登录超时！");
+								rhdapi.login();
+							}else {
+								alert(ret.msg);
+							}
+
+						})
+
+			}else{
+
+				$('.b6').hide();
+				$('.b66').show();
+			}
+		});
+
+		$(".b66-1").on("tap",function(){
+			rhdapi.login(function (r) {
+				if (r.islogin == '1') {
+					$('.b6').show();
+					$('.b66').hide();
+				} else {
+					$('.b6').hide();
+					$('.b66').show();
+				}
+			});
+		});
+
+	};
+
+</script>
+{/literal}
+</body>
+</html>

@@ -1,0 +1,25 @@
+ <div id="content_list">
+
+	   <div class="recent_comm">
+		  <h5>最近留言</h5>
+           {list module="comments" function="get_list" var="loop" code="borrow" article_id=$smarty.request.id|default:$var.id page=$smarty.request.page+1 epage="6"}
+		  <dl>
+		 
+		  {foreach from=$loop.list item=vat}
+		  <dd>
+			   <div class="rec_comm_tit">
+				   {$vat.username}
+				   <span>{$vat.addtime|date_format:"Y-m-d H:i:s"}</span>  
+			   </div>
+			   <p class="rec_comm_cont">{$vat.contents}</p>
+		  </dd>
+		  {/foreach}
+		  </dl>
+           {if $loop.total>0}
+             <div class="pagination" id="pages" data-page='{$smarty.request.page|filterinput}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+        {/if}
+		  {/list}
+	   </div>
+ 
+ </div>
+ 

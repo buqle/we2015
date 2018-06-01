@@ -1,0 +1,1134 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/finance/css/style.css?v=2016519" rel="stylesheet" type="text/css" />
+<link type="text/css" href="//img.ronghedai.com/{$tpldir}/css/blue/vipcenter.css?v=201642001" rel="stylesheet"/>
+<script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/scrollToo.js"></script>
+<script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/jquery.dialog.js"></script>
+<script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/jquery.drag.js"></script>
+<script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/jquery.mask.js"></script>
+<script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/tween.js"></script>
+<div style="position: relative;">
+    <div class="doughcont1"></div>
+
+    <div class="doughcont2">
+        <div class="doughcont2c cleard">
+            <dl>
+                <dt>新手福利</dt>
+                <dd>
+                    <p>庆存管上线</p>
+                    <p>得现金红包</p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>理财转盘</dt>
+                <dd>
+                    <p>幸运大抽奖</p>
+                    <p>天天有机会</p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>精选加息</dt>
+                <dd>
+                    <p>优质精选标</p>
+                    <p>加息才够味</p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>理财达人</dt>
+                <dd>
+                    <p>新增待收奖</p>
+                    <p>争当前五名</p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>口令红包</dt>
+                <dd>
+                    <p>每天四个时间段</p>
+                    <p>现金红包任你抢</p>
+                </dd>
+            </dl>
+            <dl style="width: 118px;margin-right: 0;border: none;">
+                <dt>神秘大礼</dt>
+                <dd>
+                    <p>浪漫520</p>
+                    <p>好礼等你开</p>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="doughcont3t"></div>
+
+    <div class="doughcont3" id="doughcont3id">
+        <h4>新手福利</h4>
+        <div class="doughcont3_t cleard">
+            <span class="left_yu"></span>
+            <p>庆存管上线 得现金红包</p>
+            <span class="left_yu"></span>
+        </div>
+        <div class="doughcont3_c">
+            <h6>活动时间：2016年5月16日—2016年5月31日</h6>
+            <p>现在注册即享<strong>688</strong>现金红包，开通汇付还可获得<strong>5</strong>元现金奖励！</p>
+            <h5>恒丰银行资金存管上线</h5>
+            <h5>融和贷正式成为全国第<strong>15</strong>家实现银行存管P2P平台！</h5>
+            <div class="bart2"></div>
+            <div class="liquidbtn">
+                <div class="liquidbtnc"><a href="/?user&q=reg" target="_blank">688红包+5元现金注册即享</a> </div>
+            </div>
+        </div>
+
+        <div class="doughcont3_c2">
+            <div class="doughcont3_c2c cleard">
+                <div class="showing_list">
+                    <p>688红包奖励记录</p>
+                    <div class="showing_listc">
+                        <h5><img src="//img.ronghedai.com/{$tpldir}/actives/finance/images/bar3.gif"></h5>
+                        <div class="showing_listcs">
+                            <p id="one_ptt"><span style="width: 26%;">用户名</span><span style="width: 40%;">领奖时间</span><span>记录</span></p>
+                            <div id="up_zzjs" style="height:214px;overflow:hidden;">
+                                <div id="marqueebox">
+                                    <div class="sure-t1 new-688">
+                                        <p><span style="width: 26%">[username]</span><span style="width: 40%">[reg_time]</span><span>已领</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scoresofp">目前已有<span id="reg-688-num">[reg_nub]</span>人领取了<span>688</span>红包奖励</div>
+                </div>
+
+                <div class="showing_list">
+                    <p>5元现金领取记录</p>
+                    <div class="showing_listc">
+                        <h5><img src="//img.ronghedai.com/{$tpldir}/actives/finance/images/bar3.gif"></h5>
+                        <div class="showing_listcs">
+                            <p id="one_ptt"><span style="width: 26%">用户名</span><span style="width: 40%">领奖时间</span><span>记录</span></p>
+                            <div id="up_zzjs" style="height:214px;overflow:hidden;">
+                                <div id="marqueebox1">
+                                    <div class="sure-t1 new-5">
+                                        <p><span style="width: 26%">[username]</span><span style="width: 40%;
+                                        ">[addtime]</span><span style="width: 26%">已领</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scoresofp">目前已有<span id="reg-5-num">[reg_nub2]</span>人领取了<span>5</span>元现金</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="liquidbtn" id="liquidbtn2">
+            <div class="liquidbtnc"><a href="JavaScript:void(0)">活动规则</a> </div>
+        </div>
+
+        <div id="room_con1" style="display: none;">
+            <div class="room_cont">
+                <p>  1、活动期间，所有注册并开通汇付账户的用户均可获得688元现金红包和5元现金奖励；</p>
+                <p> 2、5元现金奖励将在三个工作日内直充用户汇付账户，可投资，可提现；</p>
+                <p>3、688现金红包可在会员中心—活动管理—我的红包中查看。</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="doughcont4" id="doughcont4id">
+        <h4>理财转盘</h4>
+        <div class="doughcont3_t cleard" id="doughcont3_t2">
+            <span class="left_yu"></span>
+            <p>幸运大抽奖  天天有机会</p>
+            <span class="left_yu"></span>
+        </div>
+        <div class="doughcont4c">
+            <h5>活动时间：2016年5月16日—2016年5月31日</h5>
+            <p>融和贷所有开通汇付的新老用户，每天均有一次幸运抽奖机会！ </p>
+        </div>
+
+        <div class="doughcont4c2  cleard">
+            <h4>中奖记录</h4>
+            <div class="doughcont4c2_c">
+                <div id="marqueebox2" class="cleard">
+
+                </div>
+            </div>
+        </div>
+        <div class="doughcont4c3">
+            <ul class="cleard alldata">
+                <li  date-index="0">
+                    <div class="doughcont4c3bg doughcont4c3bg1" data-id="0">
+                        <p>小红包</p>
+                        <img src="//img.ronghedai.com//dyweb/dythemes/rhd/actives/finance/images/jp2_05.png">
+                    </div>
+                </li>
+                <li date-index="1">
+                    <div class="doughcont4c3bg doughcont4c3bg2" data-id="1">
+                        <p>小红包</p>
+                        <img src="//img.ronghedai.com//dyweb/dythemes/rhd/actives/finance/images/jp8_25.png">
+                    </div>
+                </li>
+                <li date-index="2">
+                    <div class="doughcont4c3bg" data-id="2">
+                        <p>kindle</p>
+                        <img src="//img.ronghedai.com//dyweb/dythemes/rhd/actives/finance/images/jp11_29.png">
+                    </div>
+                </li>
+                <li date-index="3">
+                    <div class="doughcont4c3bg" data-id="3">
+                        <p>小红包</p>
+                        <img src="//img.ronghedai.com//dyweb/dythemes/rhd/actives/finance/images/jp9_29.png">
+                    </div>
+                </li>
+                <li date-index="4">
+                    <div class="doughcont4c3bg" data-id="4">
+                        <h3><strong>100</strong>元</h3>
+                        <p style="font-size: 35px;">现金</p>
+                    </div>
+                </li>
+                <li style="margin-right: 0;" date-index="5">
+                    <div class="doughcont4c3bg" data-id="5">
+                        <p>流量包</p>
+                        <img src="//img.ronghedai.com//dyweb/dythemes/rhd/actives/finance/images/jp10_34.png">
+                    </div>
+                </li>
+                <li date-index="13">
+                    <div class="doughcont4c3bg" data-id="6">
+                        <p style="padding-top: 6px;">iPhone 6splus</p>
+                        <img src="//img.ronghedai.com/{$tpldir}/actives/finance/images/jp7_23.png">
+                    </div>
+                </li>
+                <li id="on_indexspcon">
+                    <div id="on_indexsp">
+                        <h5 id="win_tro">立即抽奖</h5>
+                        <p>目前已有<span class="peope_num"></span>人次参与抽奖</p>
+                    </div>
+                </li>
+                <li style="margin-right: 0;" date-index="6">
+                    <div class="doughcont4c3bg" data-id="7">
+                        <p>小红包</p>
+                        <img src="//img.ronghedai.com//dyweb/dythemes/rhd/actives/finance/images/jp6_12.png">
+                    </div>
+                </li>
+                <li date-index="12">
+                    <div class="doughcont4c3bg" data-id="8">
+                        <p>小红包</p>
+                        <img src="//img.ronghedai.com//dyweb/dythemes/rhd/actives/finance/images/jp10_31.png">
+                    </div>
+                </li>
+                <li date-index="11">
+                    <div class="doughcont4c3bg" data-id="9">
+                        <p>小红包</p>
+                        <img src="//img.ronghedai.com//dyweb/dythemes/rhd/actives/finance/images/jp1_03.png">
+                    </div>
+                </li>
+                <li date-index="10">
+                    <div class="doughcont4c3bg" data-id="10">
+                        <h3><strong>500</strong>元</h3>
+                        <p style="font-size: 35px;">现金</p>
+                    </div>
+                </li>
+                <li date-index="9">
+                    <div class="doughcont4c3bg" data-id="11">
+                        <p>便捷小风扇</p>
+                        <img src="//img.ronghedai.com//dyweb/dythemes/rhd/actives/finance/images/jp3_03.png">
+                    </div>
+                </li>
+                <li date-index="8">
+                    <div class="doughcont4c3bg" data-id="12">
+                        <p>50元话费</p>
+                        <img src="//img.ronghedai.com//dyweb/dythemes/rhd/actives/finance/images/jp4_09.png">
+                    </div>
+                </li>
+                <li style="margin-right: 0;" date-index="7">
+                    <div class="doughcont4c3bg" data-id="13">
+                        <p>富士拍立得</p>
+                        <img src="//img.ronghedai.com//dyweb/dythemes/rhd/actives/finance/images/jp5_03.png">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="doughcont4c4 cleard">
+            <div class="invnbtn">
+                <div class="invnbtnc" id="my_remark">我的记录</div>
+            </div>
+            <div class="invnbtn" style="float: right;">
+                <div class="invnbtnc" id="my_remarkbtn">活动规则</div>
+            </div>
+        </div>
+        <div id="room_con2" style="display: none;">
+            <div class="room_cont">
+                <p> 1、活动期间，融和贷所有开通汇付的用户，每个账户每天均有一次抽奖机会；</p>
+                <p> 2、所得红包可在会员中心—活动管理—我的红包中查看；</p>
+                <p>3、所得实物可在我的红包页面填写收货地址等信息，活动结束后七个工作日内统一发出。</p>
+            </div>
+        </div>
+
+        <div id="room_concj" style="display: none;">
+            <div id="room_concjcon">
+                <p>开通汇付账户才可以每天抽奖哦！</p>
+                <div id="room_concjben">马上开通</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="doughcont5" id="doughcont5id">
+        <h4>精选加息</h4>
+        <div class="doughcont3_t cleard" id="doughcont3_t3">
+            <span class="left_yu"></span>
+            <p>优质精选标  加息才够味</p>
+            <span class="left_yu"></span>
+        </div>
+        <div class="doughcont4c" id="doughcont5c">
+            <h5>活动时间：2016年5月16日—2016年5月31日</h5>
+            <p>每天三个精选加息标，这个理财节，加息才够味！</p>
+        </div>
+        <div class="doughcont5c2" id="doughcont5c2id1">
+            <ul class="cleard">
+
+                {list module="borrow" function="get_list" var="var1" limit="3"  jiaxi=1 status_nid="invest" status_nid='invest' query_type='invest'  datacache="memcache" datacachename="index_new2" datacachenametimes="0"}
+                {foreach from=$var1.list item=var key=key}
+                {if $var.borrow_status_nid == 'loan' && $var.borrow_status_nid == 'loan'}
+                <li>
+                    <div class="subject_t">{$var.name|truncate_cn:18}</div>
+                    <div style="height: 92px;"></div>
+                    <div class="subject_cont">
+                        <div class="subject_cont1 cleard">
+                            <div class="affected_left">
+                                <h5><span>{$var.borrow_apr}</span>%</h5>
+                                年化利率
+                            </div>
+                            <div class="affected_right">
+                                <h5><span>{$var.borrow_period}</span>个月</h5>
+                                期限
+                            </div>
+                        </div>
+                        <div class="subject_cont2">
+                            <dl class="barbox">
+                                <dd class="barline">
+                                    <div w="{$var.borrow_account_scale}" style="width:10px;" class="charts"></div>
+                                </dd>
+                            </dl>
+                            <p>总额：{$var.account}/剩余：{$var.borrow_account_wait}</p>
+                            <!--时间-->
+                            {if $var.count_down==1 and ($smarty.now < $var.tender_time)}
+                            <script type="text/javascript">
+                                var runTimeNum{$var.id}=0;
+                                var timerhcd{$var.id} = setInterval("getDiff({$var.tender_time - $smarty.now},{$var.id},'{$var.borrow_nid}')",1000);
+                            </script>
+                            <div style=" line-height: 28px;" id="t_down{$var.borrow_nid} fl">
+                                <p style="position: relative; top: 15px; color: red;font-size:16px; font-weight:bold; text-align: center;">
+                                    开标倒计时
+                                <p style="position: relative; top: 12px; color: red;font-size:18px; text-align: center;">
+                                    <b class="day_{$var.id} fen">00</b>：
+                                    <b class="hour_{$var.id} fen">00</b>：
+                                    <b class="min_{$var.id} fen">00</b>：
+                                    <b class="sec_{$var.id} fen">00</b>
+                                </p>
+                                </p>
+                            </div>
+                            {/if}
+                            <div class="motifbtn t_show{$var.borrow_nid}" {if $var.count_down==1 and ($smarty.now < $var.tender_time)}style="display:none;"{/if}>
+                            <a style="" {if $var.borrow_status_nid=='loan'} class="mr_t5"{elseif $var.borrow_status_nid=='full'}{else} class="mr_t5"{/if} target="_blank" href="/invest/a{$var.borrow_nid}.html">
+                            {$var.borrow_status_nid|linkages:"borrow_status_nid"}</a>
+                        </div>
+                    </div>
+        </div>
+        </li>
+        {else}
+        <li id="doughcont5c2id2">
+            <div class="subject_t">{$var.name|truncate_cn:18}</div>
+            <div style="height: 92px;"></div>
+            <div class="subject_cont">
+                <div class="subject_cont1 cleard">
+                    <div class="affected_left">
+                        <h5><span>{$var.borrow_apr}</span>%</h5>
+                        年化利率
+                    </div>
+                    <div class="affected_right">
+                        <h5><span>{$var.borrow_period}</span>个月</h5>
+                        期限
+                    </div>
+                </div>
+                <div class="subject_cont2">
+                    <dl class="barbox">
+                        <dd class="barline">
+                            <div w="{$var.borrow_account_scale}" style="width:10px;" class="charts"></div>
+                        </dd>
+                    </dl>
+                    <p>总额：{$var.account}/剩余：{$var.borrow_account_wait}</p>
+                    <div class="motifbtn t_show{$var.borrow_nid}">
+                        <a style="" {if $var.borrow_status_nid=='loan'} class="mr_t5"{elseif $var.borrow_status_nid=='full'}{else} class="mr_t5"{/if} target="_blank" href="/invest/a{$var.borrow_nid}.html">
+                        {$var.borrow_status_nid|linkages:"borrow_status_nid"}</a>
+                    </div>
+                </div>
+                <div class="subject_cont_null"></div>
+            </div>
+        </li>
+        {/if}
+        {/foreach}
+        {/list}
+        </ul>
+    </div>
+
+
+    <div class="doughcont5c3">
+        <h5>投标记录</h5>
+        <div class="of_titbg"></div>
+        <div class="officially_c1">
+            <p id="officially_c1p"><span>用户名</span><span>所投的标</span><span>所投金额</span><span>投标时间</span></p>
+            <div style="height: 190px;overflow: hidden;">
+                <div id="marqueebox3">
+                    <p><span>[username]</span><span>[name]</span><span>[account]</span><span>[tendertime]</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="doughcont5c3p">目前已有<span id="tender_num">[nub]</span>人次抢投成功</div>
+    </div>
+
+
+</div>
+
+<div class="doughcont6" id="doughcont6id">
+    <h4>理财达人</h4>
+    <div class="doughcont3_t cleard" id="doughcont3_t3">
+        <span class="left_yu"></span>
+        <p style="color: #fff;">新增待收奖  争当前五名</p>
+        <span class="left_yu"></span>
+    </div>
+    <div class="ovb_time">活动时间：2016年5月16日—2016年5月31日</div>
+    <div class="doughcont6c cleard">
+        <div id="remarkable_l" class="cleard">
+            <dl style="margin-top: 20px;margin-bottom: 62px;">
+                <dt>第一名</dt>
+                <dd style="padding-left: 74px;">
+                    <p>iPhone6s</p>
+                    <img src="//img.ronghedai.com/{$tpldir}/actives/finance/images/fit1_06.png">
+                </dd>
+            </dl>
+            <dl style="margin-right: 0;margin-top: 20px;margin-bottom: 62px;">
+                <dt style="left: 112px;">第二名</dt>
+                <dd style="padding-left: 148px;">
+                    <p>ipad mini 4</p>
+                    <img src="//img.ronghedai.com/{$tpldir}/actives/finance/images/fit2_03.png">
+                </dd>
+            </dl>
+            <dl>
+                <dt>第三名</dt>
+                <dd style="padding-left: 68px;">
+                    <p>小米5</p>
+                    <img src="//img.ronghedai.com/{$tpldir}/actives/finance/images/fit3_11.png">
+                </dd>
+            </dl>
+            <dl style="margin-right: 0;">
+                <dt style="left: 112px;">第四名</dt>
+                <dd style="padding-left: 114px;">
+                    <p>科沃斯扫地机器人</p>
+                    <img src="//img.ronghedai.com/{$tpldir}/actives/finance/images/fit4_14.png">
+                </dd>
+            </dl>
+            <div id="remarkable_lc">
+                <dl style="margin-right: 0;">
+                    <dt>第五名</dt>
+                    <dd>
+                        <p>518现金直充账户</p>
+                        <img src="//img.ronghedai.com/{$tpldir}/actives/finance/images/fit5_09.png">
+                    </dd>
+                </dl>
+            </div>
+
+        </div>
+        <div id="remarkable_r">
+            <h5>理财达人排行榜</h5>
+            <h6></h6>
+            <div class="remarkable_rc">
+                <p class="remarkable_rcp"><span style="width: 25%">排名榜</span><span>用户名</span><span style="width: 41%">新增待收总额</span></p>
+                <div class="remarkable_rc2">
+                    <p><span style="width: 25%">[index]</span><span>[username]</span><span style="width: 41%">[all_money]</span></p>
+                </div>
+            </div>
+            <div class="remarkable_rc3">
+                <div class="remark_btn" style="margin-bottom: 22px;"id="remark_btnn">我的记录</div>
+                <div class="re_mytnbg"></div>
+                <div class="re_mytnbcon">
+                    <div class="re_mytnbcon1">
+                        <div class="put_cut"></div>
+                        <div class="re_mytnbcon2">
+                            尊敬的<span id="num"></span>您好，您目前的新增待收是<span id="all_money"></span>元。
+                            <i id="sb1" style="display: none;">恭喜您目前占据新增待收排行榜首位！时刻关注榜单排名，iPhone6s妥妥就是你的了！</i>
+                            <i id="sb2" style="display:none;"><span id="remarksb"></span>，投满<span id="needsm"></span>元即有机会获得<span id="rewardsb"></span>大奖。</i>
+                        </div>
+                        <div class="re_mytnbcon3">
+                            <p><span>投资标的</span><span>投资金额</span><span>代收金额</span><span>投资时间</span></p>
+                            <div class="sure-t3">
+                                <p><span>投资金额</span><span>投资金额</span><span>投资金额</span><span>投资金额</span></p>
+                            </div>
+                        </div>
+                        <div class="re_mytnbcon4">
+                            * 新增待收金额需在对应投资标的满标复审后方可显示，如您投资后，新增待收金额为零，<span>请耐心等待，或致电客服</span>。
+                        </div>
+                    </div>
+                </div>
+                <div class="remark_btn" id="my_remarkbtn2">活动规则</div>
+            </div>
+        </div>
+    </div>
+    <div class="invnbtn" style="width: 398px;">
+        <div class="invnbtnc logo_sb">立即投资</div>
+    </div>
+    <div id="room_con3" style="display: none;">
+        <div class="room_cont">
+            <p>1、用户在活动期间内，投资平台任意理财产品（不包含债权转让项目），新增待收累计总额排名前五即可获得对应奖品；</p>
+            <p>2、新增待收累计总额排行榜按由多到少的顺序进行排序，相同投资总额的用户，按照达到的时间先后顺序进行排名，先达到的人排名在前；</p>
+            <p>3、所得现金奖励将在活动结束后，一个工作日内直充用户汇付账户；</p>
+            <p>4、用户所得实物奖励可在会员中心—活动管理—我的红包中查看并填写收货地址，活动结束七个工作日内统一发货；</p>
+            <p> 5、如同时（即同天同时同分同秒）出现相同待收总额排名前五的用户，则同一排名的两位用户，均可获得该排名对应奖励；</p>
+            <p>6、本活动不包含债权转让项目。</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="doughcont7" id="doughcont7id">
+    <h4>口令红包</h4>
+    <div class="doughcont3_t cleard" id="doughcont3_t3">
+        <span class="left_yu"></span>
+        <p style="color: #b20d25;width: 266px;">每天四个时间段  现金红包任你抢</p>
+        <span class="left_yu"></span>
+    </div>
+    <div class="ovb_time">活动时间：2016年5月17日—2016年5月21日</div>
+    <div class="doughcont7c1">
+        <h4>支付宝口令红包</h4>
+        <p>活动期间，每天四波支付宝口令红包，就等你来抢！</p>
+    </div>
+    <div class="doughcont7c2">
+        <h5>夺取现金攻略</h5>
+        <p>第一步：扫描右方二维码，关注融和贷订阅号；</p>
+        <p>第二步：关注每日图文推送，获得当日红包发放口令及发放时间；</p>
+        <p>第三步：在支付宝红包中，输入口令，即可领取现金红包啦！</p>
+    </div>
+    <div class="doughcont7c3" style="display:none"></div>
+    <div class="doughcont7c4">
+        <p>520活动</p>
+    </div>
+</div>
+
+<div class="doughcont8" id="doughcont8id" style="display: none;">
+    <h4>神秘大礼</h4>
+    <div class="doughcont3_t cleard" id="doughcont3_t3">
+        <span class="left_yu"></span>
+        <p style="color: #fed325;width: 194px;">浪漫520   好礼等你开</p>
+        <span class="left_yu"></span>
+    </div>
+    <div class="doughcont8c1"></div>
+</div>
+
+<div class="doughcont8" id="doughcont520" style="display: none;">
+    <h4>息上加息</h4>
+    <div class="doughcont3_t cleard" id="doughcont3_t3">
+        <span class="left_yu"></span>
+        <p style="color: #fed325;width: 194px;">浪漫520   收益欢乐送</p>
+        <span class="left_yu"></span>
+    </div>
+    <h6>活动时间：2016年5月20日—2016年5月31日</h6>
+    <div class="doughcont520_c1"></div>
+    <div class="doughcont520_c2 cleard">
+        <dl id="dougntdl1">
+            <dt class="cleard"><div>原年化：11.3%</div></dt>
+            <dd>
+                <h2>现加息+2.8%</h2>
+                <a href="javascript:void(0)" class="login_btn">立即投资</a>
+            </dd>
+        </dl>
+        <dl id="dougntdl2">
+            <dt class="cleard"><div>原年化：12.8%</div></dt>
+            <dd>
+                <h2>现加息+2.3%</h2>
+                <a href="javascript:void(0)" class="login_btn">立即投资</a>
+            </dd>
+        </dl>
+        <dl id="dougntdl3">
+            <dt class="cleard"><div>原年化：14.1%</div></dt>
+            <dd>
+                <h2>现加息+2.1%</h2>
+                <a href="javascript:void(0)" class="login_btn">立即投资</a>
+            </dd>
+        </dl>
+    </div>
+    <div class="invnbtn" style="width: 398px;" id="invnbtnidc">
+        <div class="invnbtnc">活动规则</div>
+    </div>
+    <div id="room_con4" style="display: none;">
+        <div class="room_cont">
+            <p>1.活动期间，平台所有新老用户，凡投资3月标、6月标、12月标，均可获得对应加息奖励；</p>
+            <p>2.本活动奖励可与平台其他活动奖励叠加享有；</p>
+            <p>3.加息奖励随利息同时发放；</p>
+            <p>4.本次活动中，不包含债权转让项目。</p>
+        </div>
+    </div>
+
+    <div class="doughcont5c3">
+        <h5>投标记录</h5>
+        <div class="of_titbg"></div>
+        <div class="officially_c1">
+            <p id="officially_c1p"><span>用户名</span><span>所投的标</span><span>所投金额</span><span>投标时间</span></p>
+            <div style="height: 190px;overflow: hidden;">
+                <div id="marqueebox4">
+                    <p><span>[username]</span><span>[name]</span><span>[account]</span><span>[tendertime]</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="doughcont5c3p">目前已有<span id="tender_num1">[nub]</span>人次抢投成功</div>
+    </div>
+
+</div>
+
+<div id="gravitation">
+    <ul>
+        <li><a href="#doughcont3id">新手福利</a></li>
+        <li><a href="#doughcont4id">理财转盘</a></li>
+        <li><a href="#doughcont5id">精选加息</a></li>
+        <li><a href="#doughcont6id">理财达人</a></li>
+        <li><a href="#doughcont7id">口令红包</a></li>
+        <li id="doughcont520s" style="border: none;display: none;"><a href="#doughcont8id">神秘大礼</a></li>
+        <li  id="doughcont520s1"style="border: none;display: none;"><a href="#doughcont520">神秘大礼</a></li>
+    </ul>
+</div>
+
+</div>
+
+<div class="jiujiu_foot">
+    <p>免责申明</p>
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意刷奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <div class="endjiujiu"></div>
+    <p style="font-size: 16px;">*活动页面所有实物奖励图案仅供参考，具体请以到货实物为准。</p>
+</div>
+
+
+<script>
+    var  trust = '{$_G.trust_user.approve_result.reg_trust}';//是否注册托管
+    var date = new Date().getTime()/1000;
+</script>
+{literal}
+<script>
+    //520
+    if(date<1463673599){
+        $('#doughcont8id').show();
+        $('#doughcont520s').show();
+    }else {
+        $('#doughcont520').show();
+        $('#doughcont520s1').show();
+    }
+    //口令紅包
+    if(date<1463846399){
+        $('.doughcont7c2').show();
+    }else {
+        $('.doughcont7c2').hide();
+        $('.doughcont7c3').show();
+    }
+
+    <!--开标倒计时-->
+    function getDiff(diff,keys,borrow_nid)
+    {
+        var df = (diff - this['runTimeNum'+keys]);
+        if (df >= 0) {
+            var getbackSecond = df;
+            day = Math.floor(getbackSecond / (60 * 60 * 24));
+            hour = Math.floor(getbackSecond / (60 * 60)) - (day * 24);
+            minute = Math.floor(getbackSecond / 60) - (day * 24 * 60) - (hour * 60);
+            second = Math.floor(getbackSecond) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            $(".day_"+keys).html(day);
+            $('.hour_'+keys).html(hour);
+            $('.min_'+keys).html(minute);
+            $('.sec_'+keys).html(second);
+            this['runTimeNum'+keys]++;
+        }else if(df <= 0 ){
+            clearInterval(this['timerhcd'+keys]);
+            $('.t_down'+borrow_nid).hide();
+            $('.t_show'+borrow_nid).show();
+        }
+        if(second < 10){
+            $('.sec_'+keys).html('0'+second);
+        }
+        if(minute < 10){
+            $('.min_'+keys).html('0'+minute);
+        }
+        if(hour < 10){
+            $('.hour_'+keys).html('0'+hour);
+        }
+        if(day < 10){
+            $(".day_"+keys).html('0'+day);
+        }
+    }
+
+
+    $(function(){
+        /* 新手福利规则*/
+        $("#liquidbtn2").click(function(){
+            // 通过options参数，控制dialog
+            var dialog = jDialog.dialog({
+                title : '活 动 规 则',
+                content : $("#room_con1").html(),
+                height:260,
+                width:700
+            });
+        });
+
+        /*520规则*/
+        $('#invnbtnidc').click(function(){
+            var dialog = jDialog.dialog({
+                title : '活 动 规 则',
+                content : $("#room_con4").html(),
+                height:260,
+                width:600
+            });
+        });
+
+        /*我的记录抽奖*/
+        $('#my_remark').click(function(){
+            if (user_id>0) {
+                window.location.href="/?user&user_role=1#account/red";
+            } else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        });
+
+        /*我的记录*/
+
+        $("#remark_btnn").click(function(){
+            if (user_id>0) {
+
+                $.http.get('/?user&q=set_red&type=get_managing_win', {}, function(ret){
+                    if (ret.ret == '0'){
+                        $('.re_mytnbg').show();
+                        $('.re_mytnbcon').show();
+                        $('#num').text(ret.info.username);
+                        $('#all_money').text(ret.info.all_money);
+                        $('#remarksb').text(ret.info.remark);
+                        $('#rewardsb').text(ret.info.reward);
+                        $('#needsm').text(ret.info.need);
+
+
+
+                        if(ret.info.need==0){
+                            $('#sb1').show();
+                        }else if(ret.info.all_money>0 ){
+                            $('#sb2').show();
+                        }
+                        var html = '';
+                        var len = ret.list.length;
+                        //var a=0;
+                        for(var i=0; i<len; i++){
+                            html += '<p><span>'+ret.list[i].name+'</span><span>'+ret.list[i].account+'</span><span>'+ret.list[i].recover_account_all+'</span><span>'+ret.list[i].tendertime+'</span></p>';
+                            //a +=Number(ret.data[i].reward)
+                        }
+
+                        $('.sure-t3').html(html);
+
+                    }
+                }, 'json')
+            } else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        });
+
+
+        $('.put_cut').click(function(){
+            $('.re_mytnbg').hide();
+            $('.re_mytnbcon').hide();
+        })
+
+
+        /*转盘规则*/
+        $("#my_remarkbtn").click(function(){
+            // 通过options参数，控制dialog
+            var dialog = jDialog.dialog({
+                title : '活 动 规 则',
+                content : $("#room_con2").html(),
+                height:260,
+                width:700
+            });
+        });
+        /*理财达人规则*/
+        $("#my_remarkbtn2").click(function(){
+            // 通过options参数，控制dialog
+            var dialog = jDialog.dialog({
+                title : '活 动 规 则',
+                content : $("#room_con3").html(),
+                height:390,
+                width:700
+            });
+        });
+
+        //688和5元
+        $.http.post('/?user&q=set_red&type=get_chinaprn_log',{}, function (response) {
+            if (response.ret == '0') {
+                var html = '';
+                var htmlT = $('.new-688').html();
+                var listLenth = response.list.length;
+                for (var i =0 ; i < listLenth; i++) {
+                    html +=  render(htmlT, response.list[i]);
+                }
+                $('.new-688').html(html);
+                var reg688 = {reg_nub:response.reg_nub};
+                var reg5 = {reg_nub2:response.reg_nub2};
+                $('#reg-688-num').html(render( $('#reg-688-num').html(),reg688 ));
+                $('#reg-5-num').html(render( $('#reg-5-num').html(),reg5 ));
+                html = '';
+                htmlT = $('.new-5').html();
+                listLenth = response.chinaprn.length;
+                for (var i =0 ; i < listLenth; i++) {
+                    html +=  render(htmlT, response.chinaprn[i]);
+                }
+                $('.new-5').html(html);
+            } else {
+                jDialog.alert('请求失败');
+            }
+        },'json');
+
+        //投资记录
+        setTimeout(function () {
+            $.http.post('/?user&q=set_red&type=get_chinaprn_tender',{}, function (response) {
+                if (response.ret == '0') {
+                    var html = '',
+                            htmlT = $('#marqueebox3').html(), reg_num = {nub:response.nub};
+
+                    var listLenth = response.list.length;
+                    for (var i =0 ; i < listLenth; i++) {
+                        response.list[i].account = parseInt(response.list[i].account).toFixed(2);
+                        html +=  render(htmlT, response.list[i]);
+                    }
+                    $('#marqueebox3').html(html);
+                } else {
+                    jDialog.alert('请求失败');
+                }
+                html = '',
+                        htmlT = $('#tender_num').html() ;
+                $('#tender_num').html(render( $('#tender_num').html(),reg_num ));
+
+            },'json');
+        }, 200);
+
+        //520抢标
+        setTimeout(function () {
+            $.http.post('/?user&q=set_red&type=get_chinaprn_tender',{moth:1}, function (response) {
+                if (response.ret == '0') {
+                    var html = '',
+                            htmlT = $('#marqueebox4').html(), reg_num = {nub:response.nub};
+
+                    var listLenth = response.list.length;
+                    for (var i =0 ; i < listLenth; i++) {
+                        response.list[i].account = parseInt(response.list[i].account).toFixed(2);
+                        html +=  render(htmlT, response.list[i]);
+                    }
+                    $('#marqueebox4').html(html);
+                } else {
+                    jDialog.alert('请求失败');
+                }
+                html = '',
+                        htmlT = $('#tender_num1').html() ;
+                $('#tender_num1').html(render( $('#tender_num1').html(),reg_num ));
+
+            },'json');
+        }, 200);
+
+
+        //达人排行榜
+        setTimeout(function () {
+            $.http.post('/?user&q=set_red&type=get_managing_top', {}, function (response) {
+                if (response.ret == '0') {
+                    var listLenth = response.list.length;
+                    var html = '';
+                    var htmlT = $('.remarkable_rc2').html();
+                    for (var i =0 ; i < listLenth; i++) {
+                        response.list[i]['index']= "<i>"+(i+1) +"</i>";
+                        if (i > 2) {
+                            response.list[i]['index']= "<i style='background-color: #666'>"+(i+1) +"</i>";
+                        }
+                        html +=  render(htmlT, response.list[i]);
+                    }
+                    $('.remarkable_rc2').html(html);
+                }
+            },'json',function () {
+                jDialog.alert('请求失败');
+            })
+        },3000)
+
+        //我的记录展示没有处理
+
+
+        function render(htmlT, data) {
+            for(var ob in data){
+                if (typeof  (data[ob]) !== 'function ') {
+                    htmlT = htmlT.replace('['+ob+']',data[ob] );
+                }
+            }
+            return htmlT;
+        }
+        //抽奖公共记录
+        $.http.get('/?user&q=get_share_ajax&alias=finance&methodname=get_newly', {}, function(ret){
+            if (ret.code == '1'){
+                var surelen = ret.data.length;
+                var surer = '';
+                for(var i = 0; i < surelen; i++){
+                    surer += '<p><span>'+getday(ret.data[i].addtime)+'</span>'+ret.data[i].username+'抽中了'+ret.data[i].reward+'</p>';
+                }
+                $('#marqueebox2').html(surer);
+            }
+        }, 'json');
+
+        //抽奖人次
+
+        $.http.get('/?user&q=get_share_ajax&alias=finance&methodname=get_reward_count', {}, function(ret){
+            $('.peope_num').text(ret.code);
+        }, 'json');
+
+
+        //立即抽奖
+        $('#on_indexsp').click(function(){
+            if(user_id>0){
+                if(trust!=1){
+                    var dialog = jDialog.dialog({
+                        title : '温馨提示',
+                        content : $("#room_concj").show(),
+                        height:240,
+                        width:360
+
+                    });
+                    $('#room_concjben').click(function(){
+                        window.location.href="/?user&q=reg&type=phone";
+                        return;
+                    });
+                }
+                if(trust==1){
+                    var prs = ['25元红包','30元红包','Kindle','15元红包','100元现金','100M流量','8元红包','拍立得','50元话费','便捷小风扇','500元现金','5元红包','50元红包','iPhone 6splus'];
+
+                    $.http.get('/?user&q=get_share_ajax&alias=finance&methodname=get_reward1',{},function(ret){
+                        if(ret){
+                            var prz = ret.code;
+                            if(prz=='14'){
+                                jDialog.alert('抽奖失败');
+                            }else if(prz=='15'){
+                                jDialog.alert('活动已结束');
+                            }else if(prz=='17'){
+                                $('#win_tro').text('明天还可以再玩哦！')
+                                jDialog.alert('今天已抽过奖');
+                            }else if(prz == '18') {
+                                jDialog.alert('请求参数非法');
+                            }else if(prz == '5'||prz == '8' ){
+                                acc(prz);
+                                var aad = (prz*100)+3000;
+                                var aa = setTimeout(function(){
+                                    var dialog = jDialog.dialog({
+                                        title : '提示：',
+                                        content : '<div style=" font-size: 18px; text-align: center;">恭喜你抽中了<span style="color: red;">'+prs[prz]+'</span><p style="font-size: 14px;text-indent: 2em;padding-top: 12px;color: #b70004;line-height: 26px;text-align: left;">奖励将在活动结束后3个工作日内充入您的注册手机号中，具体到账时间以运营商到账时间为准。</p></div>',
+                                        width:460,
+                                        buttons : [
+                                            {
+                                                type : 'highlight',
+                                                text : '确定',
+                                                handler:function(button,dialog)
+                                                {
+                                                    dialog.close();
+                                                }
+                                            }
+                                        ]
+                                    });
+                                },aad);
+                            }else{
+                                acc(prz);
+                                var aad = (prz*100)+3000;
+                                var aa = setTimeout(function(){
+                                    var dialog = jDialog.dialog({
+                                        title : '提示：',
+                                        content : '<div style=" font-size: 18px; text-align: center;">恭喜你抽中了<span style="color: red;">'+prs[prz]+'</span></div>',
+                                        buttons : [
+                                            {
+                                                type : 'highlight',
+                                                text : '立即领取',
+                                                handler:function(button,dialog)
+                                                {
+                                                    dialog.close();
+                                                    window.location.href='/?user#account/red';
+                                                }
+                                            }
+                                        ]
+                                    });
+                                },aad);
+                                switch (prz){
+                                    case 0:
+                                        break;
+                                    case 1:
+                                        aa
+                                        break;
+                                    case 2:
+                                        aa
+                                        break;
+                                    case 3:
+                                        aa
+                                        break;
+                                    case 4:
+                                        aa
+                                        break;
+                                    case 5:
+                                        aa
+                                        break;
+                                    case 6:
+                                        aa
+                                        break;
+                                    case 7:
+                                        aa
+                                        break;
+                                    case 8:
+                                        aa
+                                        break;
+                                    case 9:
+                                        aa
+                                        break;
+                                    case 10:
+                                        aa
+                                        break;
+                                    case 11:
+                                        aa
+                                        break;
+                                    case 12:
+                                        aa
+                                        break;
+                                    case 13:
+                                        aa
+                                        break;
+                                }
+                            }
+                        }
+                    },'json')
+                }
+            }else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+
+
+        });
+    })
+
+    function acc(pz){
+        var pz = pz;
+        var liIndex = new Array(),
+                liAll = $('.alldata li[date-index]'),
+                currIndex = 1;
+        liAll.each(function () {
+            liIndex[parseInt($(this).attr('date-index'))] = $(this);
+        });
+        var liLen = liIndex.length;
+
+        var aa = 0;
+        var times = setInterval(function () {
+            liAll.each(function () {
+                $(this).children('div').removeClass('active');
+            });
+            liIndex[currIndex].children('div').addClass('active');
+           // console.log(currIndex+'aa');
+            currIndex++;
+            if(aa == 2 && currIndex == pz+1){
+                clearInterval(times);
+            }
+            if (currIndex >=liLen ){
+                currIndex = 0;
+                aa ++;
+
+            }
+        },100)
+    }
+
+    $(".login_btn").each(function(){
+        $(this).click(function(){
+            if (user_id>0) {
+                window.location.href="/invest/index.html";
+            } else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        });
+    });
+
+
+    $('.logo_sb').click(function(){
+        if (user_id>0) {
+            window.location.href="/invest/index.html";
+        } else {
+            diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+            return false;
+        }
+    });
+
+    $(function(){
+
+        var oFixed = $("#gravitation")
+        $(window).on('scroll',function(){
+            var sTop = $(window).scrollTop()
+            if(sTop>908){
+                oFixed.css({
+                    'position':'fixed',
+                    'top':0
+                })
+            }else{
+                oFixed.css({
+                    'position':'absolute',
+                    'top':908
+                })
+            }
+        })
+        $("#gravitation").scrollTo(700)
+    })
+
+
+    $(function(){
+        //$('#marqueebox2 p:odd').css('float','right');
+
+        $('#doughcont5c2id1 ul li:last').css('margin-right','0');
+        $('#doughcont5c2id2 ul li:last').css('margin-right','0');
+    });
+
+
+    function animate(){
+        $(".charts").each(function(i,item){
+            var a=parseInt($(item).attr("w"));
+            $(item).animate({
+                width: a+"%"
+            },1000);
+        });
+    }
+    animate();
+
+    function startmarquee(lh,speed,delay,domID) {
+        var p=false;
+        var t;
+        var o=document.getElementById(domID);
+        // o.innerHTML=o.innerHTML;
+        o.style.marginTop=0;
+        o.onmouseover=function(){p=true;}
+        o.onmouseout=function(){p=false;}
+        function start(){
+            t=setInterval(scrolling,speed);
+            if(!p) o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+        }
+        function scrolling(){
+            if(parseInt(o.style.marginTop)%lh!=0){
+                o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+                if(Math.abs(parseInt(o.style.marginTop))>=o.scrollHeight) o.style.marginTop=0;
+            }else{
+                clearInterval(t);
+                setTimeout(start,delay);
+            }
+        }
+        setTimeout(start,delay);
+    }
+    startmarquee(38,10,800,'marqueebox');
+    startmarquee(38,10,800,'marqueebox1');
+    startmarquee(66,10,800,'marqueebox2');
+    startmarquee(36,10,800,'marqueebox3');
+    startmarquee(36,10,800,'marqueebox4');
+
+</script>
+{/literal}

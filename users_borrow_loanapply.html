@@ -1,0 +1,112 @@
+{include file="users_main_header.html"}
+<div style="background:#fff; overflow:hidden; width:100%;min-width:1150px;">
+<div class="conbox t20 fn_cle user_cont">
+{include file="users_menu.html"}
+<script>
+var user_id = '{$_G.user_id}';
+if(user_id != ''){
+	$.getJSON('/?user&q=reg&type=loan_add&user_id='+user_id,function(result){
+		if(result.code == '98'){
+			alert("邮箱未认证");
+		}
+		if(result.code == '97'){
+			alert("手机未认证");
+		}
+		if(result.code == '96'){
+			alert("实名未认证");
+		}
+		if(result.code !='99'){
+			location.href="/?user&m=approve/safe";
+		}
+	});
+}
+</script>
+
+<div class="fn_rig user_rig">
+	   <div class="user_box">
+	     <div class="fund_manage">
+	       <h2 class="fn_cle bor_bot_none"><span class="fn_left">借款申请</span><a href="/?user&m=borrow/loanapply/loanapply_log" class="a_link fn_rig">借款申请记录</a></h2>
+		   
+		   </div>
+	   </div>
+	  <div class="ui_cont">
+	    <form id="my_loan_form" method="post" action="" >
+			<input type='hidden' name='user_id' value='{$_G.user_id}'/>
+		{if $_G.user_id == ''}
+       	 <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>姓名：</label>
+            <input class="u_input" type="text" name="realname"  id="realname">
+         </div>
+         <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>手机号：</label>
+            <input class="u_input" type="text" name="phone"  id="phone">
+         </div>
+          <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>手机验证码：</label>
+            <input class="u_input" type="text" name="phoneCode"  id="phoneCode">
+            <input class="get_verty_btn" id="get_verty_btn" type="button" value="获取验证码">
+         </div>
+		 <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>电子邮箱：</label>
+            <input class="u_input" type="text" name="email"  id="email">
+         </div>
+		 {/if}
+		 <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>项目名称：</label>
+            <input class="u_input" type="text" name="titles"  id="titles">
+         </div>
+         <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>所在城市：</label>
+			<script src="/?plugins&q=areas&name=work_&type=p,c&class=u_sel&area=&value="></script>
+        </div>
+        <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>借款金额：</label>
+            <input class="u_input" type="text" name="account"  id="account" />&nbsp;<span class="tips">(元)</span>
+        </div>
+        <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>还款方式：</label>
+
+             {articles module="borrow" function="get_type_one" nid="p2c"  var="var"}
+            <select name="borrow_style" id="borrow_style" style="" class="u_sel">
+			<option value="">--请选择--</option>
+            {foreach from=$var.style_result item=item name="foo"}
+            	<option value="{$item.nid}">{$item.name}</option>
+            {/foreach}
+            </select>
+            {/articles}
+         </div>
+         <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>借款期限：</label>
+            <input class="u_input" type="text" name="borrow_period"  id="borrow_period" />&nbsp;<span class="tips" id="tipsData">(月)</span>
+        </div>
+        <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>年化回报率：</label>
+            <input class="u_input" type="text" name="borrow_apr"  id="borrow_apr" />&nbsp;<span class="tips">%</span>
+        </div>
+       
+           <div class="ui_form_item fn_cle">
+            <label>详细描述：</label>
+          	<textarea class="u_area" name="contents"  id="contents"></textarea>
+        </div>
+		<div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>验 证  码：</label>
+            <input class="u_input w80" type="text" name="valicode"  id="valicode" >
+            {valicode}
+        </div>
+        <div class="ui_form_item fn_cle">
+            <label></label>
+          <input class="ui_btn" type="submit" value="立即提交"><em id="error_info"></em>
+        </div>
+
+       </form>  
+       </div>
+	</div>
+    </div>
+    </div>
+{literal}
+<script>
+diyou.use('users_loan', function (d) { d.company_loan('my_loan_form')});
+diyou.use('users_loan',function(d){d.upload('attachment_file', 'attachment_file');d.deload()});
+</script>
+{/literal}
+{include file="users_footer.html"}

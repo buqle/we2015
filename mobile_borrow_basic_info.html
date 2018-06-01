@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link href="{$tpldir}/mobile/style.css" rel="stylesheet" type="text/css">
+<title>我要投资--基本信息</title>
+</head>
+
+<body>
+{articles module="borrow"  function="get_view_one" var="var" borrow_nid=$smarty.request.article_id}
+{if $var.account>0}
+<div class="m-body">
+	<div class="the_info_box">
+    {articles module="dyp2p" function="get_users" var="u_var" user_id=$var.user_id}
+    <div class="info_box clearfix">
+    	<div class="photo">
+        <img src="{$u_var.user_result.avatar_url|avatar}"/>
+        </div>
+        <div class="info">
+        
+        	<div class="re_name"><em>{$u_var.approve_result.realname}</em><i class="rank_box">{articles module="credit" function = "get_user_count" user_id=$var.user_id var="Credit_var"}{$Credit_var.credit_total|credit:"borrow"}{/articles}</i>
+            {if $u_var.user_result.vip_status==1}
+                <i class="vip_box">VIP</i>
+                {/if}
+            </div>
+            <div class="login_name">用户名：{$u_var.user_result.username}</div>
+            <ul class="clearfix identy">
+            <!-- {if $u_var.user_result.paypassword!=""}
+            	<li><img src="{$tpldir}/mobile/images/lock_yes.png"></li>
+             {else}
+                <li><img src="{$tpldir}/mobile/images/lock_no.png"></li>
+             {/if}-->
+             {if $u_var.approve_result.realname_status==1}
+                <li><img src="{$tpldir}/mobile/images/person_yes.png"></li>
+             {else}
+                <li><img src="{$tpldir}/mobile/images/person_no.png"></li>
+             {/if}
+             {if $u_var.approve_result.email_status==1}
+                <li><img src="{$tpldir}/mobile/images/email_yes.png"></li>
+             {else}
+                <li><img src="{$tpldir}/mobile/images/email_no.png"></li>
+             {/if}
+             {if $u_var.approve_result.phone_status==1}
+                <li><img src="{$tpldir}/mobile/images/phone_yes.png"></li>
+             {else}
+                <li><img src="{$tpldir}/mobile/images/phone_no.png"></li>
+             {/if}
+            </ul>
+        </div>
+    </div>
+    {/articles}
+    </div>
+	<div class="the_box">
+    {articles module="borrow" function="get_count_user_repay_count" var="repay_var" user_id=$var.user_id}
+    	<div class="title">借款信息</div>
+        <dl class="cont clearfix">
+        	<dt>发布借款：<span>{$var.borrow_times|default:"0"}笔</span></dt>
+            <dt>成功借款：<span>{$repay_var.borrow_success_num|default:0}笔</span></dt>
+            <dt>还清笔数：<span>{$repay_var.repay_yes_times|default:0}笔</span></dt>
+            <dt>逾期笔数：<span>{$repay_var.repay_late_no_num|default:0}笔</span></dt>
+            <dd>借款总额：<span>￥{$repay_var.borrow_success_account|default:'0.00'|default:"0"}</span></dd>
+            <dd>待还金额：<span>￥{$repay_var.repay_wait_account|default:'0.00'}</span></dd>
+            <dd>逾期金额：<span>￥{$repay_var.repay_late_no_account|default:'0.00'|default:"0"}</span></dd>
+        </dl>
+        {/articles}
+        <div class="title">基本信息</div>
+        <dl class="cont clearfix">
+            <dd><em class="fl">性别：</em><span class="fr">{if $var.user_info.realname_status==1}{if $var.user_info.sex==1}男{else}女{/if}{else}{$var.user_info.rsex|linkages:"rating_sex"|default:"未填"}{/if}</span></dd>
+            <dd><em class="fl">月收入：</em><span class="fr">{$var.user_info.income|linkages:"rating_income"|default:"未填"}</span></dd>
+            <dd><em class="fl">出生日期：</em><span class="fr">{if $var.user_info.realname_status==1}
+							   <script>
+							   var card_id="{$var.user_info.card_id}";
+							   document.write(card_id.substring(6,10)+"年"+card_id.substring(10,12)+"月"+card_id.substring(12,14)+"日");
+							   </script>
+							{else}
+								{$var.user_info.birthday|date_format:"Y-m-d"|default:"未填"}
+							{/if}</span></dd>
+            <dd><em class="fl">是否结婚：</em><span class="fr">{$var.user_info.marry|linkages:"rating_marry"|default:"未填"}</span></dd>
+            <dd><em class="fl">工作城市：</em><span class="fr">{$var.user_info.work_city|areas:'p,c'|default:'未填'}</span></dd>
+            <dd><em class="fl">学历：</em><span class="fr">{if $var.user_info.degree!=''}{$var.user_info.degree|default:"未填"}{else}{$var.user_info.edu|linkages:"rating_education"|default:"未填"}{/if}</span></dd>
+            <dd><em class="fl">工作年限：</em><span class="fr">{$var.user_info.work_year|linkages:"rating_workyear"|default:"未填"}</span></dd>
+            <dd><em class="fl">公司性质：</em><span class="fr">{$var.user_info.company_type|linkages:"rating_company_type"|default:"未填"}</span></dd>
+            <dd><em class="fl">有无购房：</em><span class="fr">{if $var.user_info.is_house==1}有{elseif $var.user_info.is_house==0}无{else}未填写{/if}</span></dd>
+            <dd><em class="fl">公司规模：</em><span class="fr">{$var.user_info.company_size|linkages:"rating_company_size"|default:"未填"}</span></dd>
+            <dd><em class="fl">有无购车：</em><span class="fr">{if $var.user_info.is_car==1}有{elseif $var.user_info.is_car==0}无{else}未填写{/if}</span></dd>
+            <dd><em class="fl">岗位职位：</em><span class="fr">{$var.user_info.company_position|linkages:"rating_position"|default:"未填"}</span></dd>
+            
+        </dl>
+    </div>
+</div>
+{/if}
+{/articles}
+</body>
+</html>

@@ -1,0 +1,76 @@
+{literal}
+<script>
+	$().ready(function(){
+		$('#download_button_con').html('<a href="http://www.ronghedai.com/?user&m=borrow/change&download=1" id="change_download"><img src="/dyweb/dythemes/diyou/images/xydownload.jpg" style="cursor:pointer;" border="0" align="right"></a>');
+	});
+</script>
+{/literal}
+<div class="conbox t20" id="protocol_container">
+	<div style="height:50px;">
+		<span id="download_button_con" style="margin-right:10px;margin-bottom:10px;float:right;width:56px;height:49px"></span>
+	</div>
+	<div>
+		{articles module="borrow"  function="change_get_one" tender_id=$smarty.request.tender_id status='1' var="var"}
+		<div class="con_bor">
+			<div class="pos_bor" style="text-align:center;margin-bottom:10px"><span style="font-weight:bold">债权转让协议书</span></div>
+			<div class="con1">
+				<div class="con">
+					<div style="border:#CCC solid 1px; padding:5px 20px">
+						<table border="0" style="margin: 0px auto; border-collapse: collapse; width: 100%; font-size: 12px;">
+							<tbody>
+							<tr>
+								<td>债权转让协议号：{$var.change_nid}</td>
+								<td>转让人：{$var.username}</td>
+								<td>受让人：{if $var.web_status==1}网站{else}{$var.change_username}{/if}</td>
+								<td>签订日期：{$var.buy_time|date_format:"Y-m-d"}</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+					<div style="margin-top:20px;">
+						{articles module="approve" function="get_realname_one" user_id=$var.user_id var="_var"}
+						<div style="text-align:left;font-size:12px;">债权出让人(甲方)：{$_var.realname}</div>
+						<div style="text-align:left;font-size:12px;">网站注册用户名：{$var.username}</div>
+						<div style="text-align:left;font-size:12px;">身份证号：{$_var.card_id}</div>
+						{/articles}
+					</div>
+
+					<div style="margin-top:30px;">
+						{articles module="approve" function="get_realname_one" user_id=$var.buy_userid var="__var"}
+						<div style="text-align:left;font-size:12px;">债权受让人(乙方) ：{$__var.realname}</div>
+						<div style="text-align:left;font-size:12px;">网站注册用户名：{$__var.username}</div>
+						<div style="text-align:left;font-size:12px;">身份证号：{$__var.card_id}</div>
+						{/articles}
+					</div>
+					<div style="margin-top:20px;margin-bottom:20px">
+						<h2 style="text-align: left; font-size:12px">第一条：</h2>
+						<table border="1" style="margin: 0px auto; border-collapse: collapse; border: 1px solid rgb(0, 0, 0); width: 90%; ">
+							<tr class="head">
+								<td  style="text-align:center;">投标标题</td>
+								<td  style="text-align:center;">利率</td>
+								<td  style="text-align:center;">转让期数/总期数</td>
+								<td  style="text-align:center;">转让本息</td>
+								<td  style="text-align:center;">转让价格</td>
+								<td  style="text-align:center;">转让时间</td>
+								<td  style="text-align:center;">购买者</td>
+							</tr>
+							<tr>
+								<td  style="text-align:center;"><a href="/invest/a{$var.borrow_nid}.html">{$var.borrow_name}</a></td>
+								<td  style="text-align:center;">{$var.borrow_apr}%</td>
+								<td  style="text-align:center;">{$var.change_period}期/{$var.borrow_period}期</td>
+								<td  style="text-align:center;">￥{$var.change_account_all}</td>
+								<td  style="text-align:center;">￥{$var.account}</td>
+								<td  style="text-align:center;">{$var.buy_time|date_format}</td>
+								<td  style="text-align:center;">{if $var.change_username==""}网站{else}{$var.change_username}{/if}</td>
+
+							</tr>
+						</table>
+						{/articles}
+					</div>
+					{articles module="borrow" function="get_protocol" type="change" var="protocol"}{$protocol.contents|html_entity_decode}{/articles}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="cle"></div>
+</div>

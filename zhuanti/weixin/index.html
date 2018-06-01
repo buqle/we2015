@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+</head>
+<body style="margin:0px;">
+<div id="weixin" style="width:100%;height:100%;">
+    <img src="{$tpldir}/zhuanti/weixin/images/weixin.png" style="width:100%;height:100%;">
+</div>
+<!-- sand box end -->
+{literal}
+<script type="text/javascript">
+window.onload = function(){
+    if(!isWeiXin()){
+       window.location.href='http://www.ronghedai.com/phone/index.html';
+    }
+}
+function isWeiXin(){
+    var ua = window.navigator.userAgent.toLowerCase();
+    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        return true;
+    }else{
+        return false;
+    }
+}
+</script>
+{/literal}
+</body>
+</html>

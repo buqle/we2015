@@ -1,0 +1,248 @@
+{articles module="webcount"  function="get_users_account" var="var1" user_id=$_G.user_id}
+<div class="top_up">
+    <p class="p1"><em class="active">提现</em><i>|</i><em class="em1" id="em1">提现记录</em></p>
+    <div class="top_1">
+        <div class="tx_info">
+            {articles module="approve"  function="get_realname_one" var="var1ss" user_id=$_G.user_id}
+                <p>开户姓名：<i id="trust_realname">{$var1ss.realname}</i></p>
+            {/articles}
+            <p class="balance" value="{$var1.balance}">当前可用余额：<i style="padding: 0">{$var1.balance|default:"0.00"}</i>元<em>
+                提现金额：</em>
+                <input type="text" id="money" />元
+
+            </p>
+            <p>
+                提现银行卡：<select name="banklist" id="">
+                {list module="account" function="get_users_bank_list" user_id=$_G.user_id var=loop}
+                    {foreach from=$loop.list item=item}
+                        <option value="{$item.account}">&nbsp;&nbsp;&nbsp;&nbsp;{$item.account|bank_fmt}</option>
+                    {/foreach}
+                {/list}
+
+            </select>
+            </p>
+            <p class="add" style="padding-left: 220px;">
+                <a href="javascript:void(0)" id="add_bank">+添加银行卡</a>
+                <span id="em2"><img src="{$tpldir}/images/vipcenter/gl.jpg" alt="">管理银行卡</span>
+                <a href="javascript:void(0)" id="add_bish"><img src="{$tpldir}/images/vipcenter/bisd.gif" alt="刷新" id="refresh" />刷新银行卡信息</a>
+            </p>
+            <div class="chaea_box">
+                {if $_G.trust_cash_fee.cash_general.status ==1}
+                <div class="fl">
+                    <input type="checkbox" name="cash_channel" value="general" checked>&nbsp;&nbsp;普通提现（T+1 手续费低）
+                </div>
+                {/if}
+                {if $_G.trust_cash_fee.cash_fast.status ==1}
+                <div class="fl" style="padding-left: 60px;">
+                    <input type="checkbox" name="cash_channel" value="fast" {if $_G.trust_cash_fee.cash_general.status ==0}checked{/if}>&nbsp;&nbsp;快速提现（T+0 手续费高）
+                </div>
+                {/if}
+                <div class="fl" style="padding-left: 60px;">
+                    <!--<em>手续费：</em><i>￥<span id="cash_fee">0.00</span></i>元-->
+                </div>
+            </div>
+            <p class="tx">
+                <a href="javascript:void(0)" id="trust_cash">确认提现</a>
+
+            </p>
+        </div>
+        <div class="js">
+            <h2>温馨提示：</h2>
+            1.每笔提现金额至少为100元（含100元）；<br>
+            2.开通银行存管账户、身份验证、取现银行信息均设置成功后，方能进行提现操作；<br>
+            3.请确保您银行账户的户名和您身份验证时填写的真实姓名一致；<br />
+            4.提现时，可选择普通提现（即T+1）到账模式，或快速提现（即T+0）到账模式。“T”指提现登记日，如用户选择T+1模式，则到账时间为登记日后的第二个 工作日；若用户选择T+0模式，工作日14:30之前发起的取现，当日到账；14:30之后发起的取现，则在下一个工作日到账。非工作日（包括但不局限于：周六日 、法定节假日）提现，将自动顺延至非工作日后的第一个工作日24时之前办理，或另见网站公告；<br>
+            5.T+1模式手续费为2元/笔；T+0模式手续费为提现金额的0.5‰+2元/笔；VIP用户0元（手续费由平台支付）。如客户在节假日（包括但不局限于：周六日、 法定节假日）前一个工作日使用T+0模式取现，按照取现费的0.5‰*（节假日天数+1）+2元/笔收取；<br />
+            6.在您提现过程中有任何疑问，请联系平台在线客服或拨打融和贷全国统一客服热线：400-013-5679。
+            <br />
+        </div>
+        <div style="height: 65px;"></div>
+    </div>
+</div>
+
+{literal}
+<style>
+    .shuaxin{-webkit-animation:refrech 1s infinite  linear forwards;}
+    @-webkit-keyframes refrech{to{-webkit-transform:rotate(360deg);}}
+</style>
+<script type="text/javascript">
+    $(function(){
+
+
+        //刷新银行卡
+        $('#add_bish').die('click').live('click',function (event) {
+            $('#refresh').addClass("shuaxin");
+            var $this = $(this);
+            $.http.post('?user&m=trust/update_bankcard',{},function(data){
+                window.location.hash = 'trust/newcash';
+                $('#refresh').addClass("shuaxin");
+                setTimeout(function(){window.location.hash = 'trust/cash';}, 200);
+            });
+        });
+        //添加银行卡
+        $('#add_bank').die('click').live('click',function(event){
+            event.stopPropagation();
+            if(trust!=1){
+                jDialog.alert('您还没有开通托管账户，请先开通托管账户！',{},{
+                    events:{
+                        close:function(evt){
+                            window.location.href="/?user&q=reg&type=phone";
+                        }
+                    }
+                })
+                return false;
+            }
+            var w = window.open();
+            $.http.post('/?user&m=trust/bank/bindbank',{},function(data){
+                if(data.ret!=0){
+                    w.close();
+                    jDialog.alert(data.msg);
+                } else {
+                    jDialog.confirm('是否绑定成功！', {
+                        text:'绑定成功',
+                        type:'highlight',
+                        handler:function(button, dialog){
+                            jDialog.close();
+                            dialog.close();
+                            $('#add_bish').click();
+                        }
+                    },{
+                        text:'绑定失败！'
+                    });
+                    w.document.write(data.data);
+                }
+            },'json',function(){
+                jDialog.alert('数据请求错误，请联系客服！');
+                w.close();
+            })
+        });
+        $('#trust_cash').die('click').live('click', function(){
+            if(trust!=1){
+                jDialog.alert('您还没有开通托管账户，请先开通托管账户！',{},{
+                    events:{
+                        close:function(evt){
+                            window.location.href="/?user&q=reg&type=phone";
+                        }
+                    }
+                });
+                return false;
+            }
+            var bank= $("select[name='banklist']").val();
+            //没有绑定银行提示绑定银行卡
+            if(bank==null){
+                jDialog.confirm('您还没有绑定银行，不能进行提现操作，现在是否立即绑定银行卡？',{
+                    text:'立即绑定',
+                    type:'highlight',
+                    handler:function(button, dialog){
+                        $('#add_bank').click();
+                        dialog.close();
+                    }},{ text:'暂不绑定',handler:function (button, dialog){dialog.close()}}
+                )
+            }else{
+                if($("#money").val()==""){
+                    jDialog.alert("请填写提现金额", {
+                        text:'确认',
+                        type:'highlight',
+                        handler : function(btn,dlg){
+                            jDialog.close();
+                            $("#money").focus();
+                        }
+                    });
+                    return;
+                }
+                var balance=  $(".balance").attr('value');
+                balance=balance*1;
+
+                if (parseInt($("#money").val()) < 100) {
+                    jDialog.alert('提现金额不可小于100元');
+                    return false;
+                }
+                var cashChannel = $("[name = cash_channel]:checked").val();
+                if (cashChannel == null || cashChannel == '') {
+                    jDialog.alert('提现渠道错误！');
+                    return false;
+                }
+                var row={'money':$("#money").val(),'balance':balance,'cash_channel':cashChannel};
+                var w = window.open();
+                $.http.post('/?user&m=trust/cash/new',row,function(data){
+                    if(data.ret!=0){
+                        jDialog.alert(data.msg);
+                        w.close();
+                    }else{
+                        jDialog.confirm('',{
+                            text:'完成提现',
+                            type:'highlight'
+                        }, {
+                            text:'提现失败',
+                            type:'highlight',
+                        },{
+                            title:'提现'
+                        });
+                        w.document.write(data.form);
+                    }
+                },'json',function () {
+                    jDialog.alert('数据请求错误，请联系客服！');
+                    w.close();
+                });
+
+            }
+        });
+        //体现记录
+        $("#em1").click(function () {
+            // 通过options参数，控制dialog
+            var dialog = jDialog.ajax('/?user&m=trust/cash/cash_log', {
+                title: '提现记录',
+                width: 1064,
+                height: '620'
+            });
+        });
+        //管理银行卡
+        $("#em2").click(function () {
+            // 通过options参数，控制dialog
+            var dialog = jDialog.ajax('/?user&m=trust/bank/list', {
+                title: '管理银行卡',
+                width: 800,
+                height:500
+            });
+        });
+        //体现手续费
+        /*$('#money').unbind('blur').bind('blur',function(){
+            var cashChannel = $("[name = cash_channel]:checked").val();
+            if (cashChannel == null || cashChannel == '') {
+                jDialog.alert('提现渠道错误！');
+                return false;
+            }
+            var ac = $('#money').val();
+            if(ac==""){
+                $("#cash_fee").text('0.00');
+            } else {
+                $.http.get('/?user&m=trust/cash/get_fee&type=cash&cash_channel='+cashChannel,{account:ac},function(ret){
+                    $("#cash_fee").text(ret);
+                },'text',function(){
+                    jDialog.alert('获取手续失败，请重试！')
+                })
+            }
+        })*/
+    })
+    $('[name = cash_channel]:checkbox').click(function () {
+        if ($(this).is(":checked")) {
+            $("[name = cash_channel]:checkbox").attr("checked", false);
+            $(this).attr("checked", true);
+        } else {
+            $("[name = cash_channel]:checkbox").attr("checked", true);
+            $(this).attr("checked", false);
+        }
+        var isCheck = false;
+        $("[name = cash_channel]:checkbox").each(function () {
+            if ($(this).is(":checked")) {
+                isCheck = true;
+            }
+        })
+        if (isCheck === false) {
+            $("[name = cash_channel]:checkbox").attr("checked", true);
+        }
+        $('#money').blur();
+    });
+</script>
+{/literal}
+{/articles}

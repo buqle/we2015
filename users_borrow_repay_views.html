@@ -1,0 +1,39 @@
+<table>
+	<tbody>
+	<tr class="tab6_tit">
+		<td width="80px;">期数</td>
+		<td width="120px;">计划还款日</td>
+		<td width="120px;">应还本息</td>
+		<td width="100px">实还日期</td>
+		<td width="100px;">实还本金</td>
+		<td width="100px;">实还利息</td>
+		<td width="60px;">逾期天数</td>
+		<td width="100px;" title="实还本金+实还利息+还款费用">总还款额</td>
+		<td width="80px;">状态</td>
+		<td width="80px">当期还款</td>
+	</tr>
+
+	{loop module="borrow" var="item" function ="get_repay_list" user_id=$_G.user_id borrow_nid=$smarty.request.borrow_nid order="repay_period" limit=all }
+	<tr class="tab7_tit">
+		<td>第{$item.repay_period}期</td>
+		<td>{$item.repay_time|date_format:"Y-m-d"}</td>
+		<td>￥{$item.repay_account}</td>
+		<td>{$item.repay_yestime|date_format:"Y-m-d"|default:"_"}</td>
+		<td>￥{$item.repay_capital_yes}</td>
+		<td>￥{$item.repay_interest_yes}</td>
+		<td>{$item.late_days}天</td>
+		<td title="实还本金[{$item.repay_capital_yes}]+实还利息[{$item.repay_interest_yes}]+还款费用[{$item.repay_fee}]">￥{$item.repay_account_yes+$item.repay_fee}</td>
+		<td>{if $item.repay_web==1}网站垫付{elseif $item.repay_vouch==1}担保者垫付{elseif $item.repay_status==1}已还款{else}未还款{/if}</td>
+		<td>{if $item.repay_status==1}-{else}<a href="javascript:void(0)" class="repay_now" data-id='{$item.id}' data-borrow-nid='{$item.borrow_nid}'>还款</a>{/if}</td>
+	</tr>
+	{/loop}
+	</tbody>
+</table>
+{literal}
+<script type="text/javascript">
+	diyou.use('users_borrow',function(u){u.repay_now();u.repay_advance()});
+	diyou.use('users_invest',function(u){u.tender_detail();u.tender_protocol('view_protocol','down_protocol')});
+</script>
+{/literal}
+
+

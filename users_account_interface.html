@@ -1,0 +1,25 @@
+<div class="fn_rig user_rig">
+   <div class="user_box">
+		<div class="fund_trust">
+				<h2>账户托管</h2>
+				<div class="cont">
+					{articles module="trust" function="get_users_one" payment="ips" user_id=$_G.user_id}
+					
+					<div class="trust_box">
+						<div class="trust_card">
+							<img src="{$tpldir}/images/trust_ips.gif" />
+                            {if $var.pIpsAcctNo==""}
+							<p>您还没有环迅账号？</p>
+                            {else}
+							<p>环迅账户：{$var.pIpsAcctNo}</p>
+                            {/if}
+						</div>
+                        {if $var.pIpsAcctNo==""}
+						<a href="/?user&m=trust/reg/{$_G.system.trust_type}" class="trust_reg">注册我的环迅账号</a>
+                        {/if}						
+					</div>
+					{/articles}
+				</div>
+		</div>	  
+	   </div>
+</div>

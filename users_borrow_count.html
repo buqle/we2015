@@ -1,0 +1,81 @@
+{if $smarty.request.type=='list'}
+{list module="borrow" var="loop" function ="get_list"  user_id=$_G.user_id  dotime1=$smarty.request.dotime1 dotime2=$smarty.request.dotime2 status_type=$smarty.request.status_type borrow_type=$smarty.request.borrow_type
+order=$smarty.request.order epage=10 page=$smarty.request.page+1  order='addtime_desc'}
+{foreach from=$loop.list item="item"}
+<tr>
+	<td class="ck0">{if $item.borrow_success_time>0}{$item.borrow_success_time|date_format:"Y/m/d"}{else}{$item.addtime|date_format:"Y/m/d"}{/if}-{$item.repay_last_time|date_format:"Y/m/d"}</td>
+	<td>{$item.name}</td>
+	<td>{$item.account|default:'0.00'}</td>
+	<td>{$item.repay_account_all|default:'0.00'}</td>
+	<td>{$item.repay_account_yes|default:'0.00'}</td>
+	<td>{$item.repay_account_wait|default:'0.00'}</td>
+	<td>{$item.borrow_status_nid|linkages:'borrow_status_nid'}</td>
+	<td class="ck">{if $item.borrow_status_nid=='first'}<a href="javascript:void(0);" data-url='/?user&m=borrow/cancel&borrow_nid={$item.borrow_nid}' class="borrow_cancel" >撤回</a>{else if $item.status=='3'}<a id="ck_jl" href="/?user&m=borrow/repay/views&borrow_nid={$item.borrow_nid}"  >查看</a>{else}-{/if}</td>
+</tr>
+{/foreach}
+
+
+{if $loop.total>0}
+<tr>
+	<td colspan="8">
+		<div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+	</td>
+</tr>
+{else}
+<tr>
+	<td colspan="10">
+		<span class="total" style="border:  none;">没有相关的借款</span>
+	</td>
+</tr>
+
+{/if}
+
+{/list}
+
+{else}
+<div class="invest_record">
+	<div class="tbjl">
+		<h2>借款记录</h2>
+		<form action="" method="post" id="sou_form">
+			<select name="borrow_type"  id="borrow_type">
+				<option selected="selected" value="">标的类型</option>
+				{foreach from=$_G.linkages.borrow_all_type key="key" item="item"}
+				<option value="{$key}">{$item}</option>
+				{/foreach}
+                <option value="repay_today">今日还款</option>
+			</select>
+			<label><img src="{$tpldir}/images/vipcenter/rl.png" alt="" width="20px" height="20px;">
+				<input style="width: 100px;" type="text" class="u_input w120 date_picker" placeholder="起始日期" value="" id="dotime1"/>
+			</label>
+			<label><img src="{$tpldir}/images/vipcenter/rl.png" alt="" width="20px" height="20px;">
+				<input style="width: 100px;" type="text" class="u_input w120 date_picker" placeholder="截止日期" value="" id="dotime2"/>
+			</label>
+			<input class="input_btn" type="submit" id="search" value="搜索">
+		</form>
+
+	</div>
+	<table style="border: 1px solid #ddd;">
+		<tr>
+			<th>起止时间<br>(起息日-到期日)</th>
+			<th>项目</th>
+			<th>借款金额</th>
+			<th>应还本息</th>
+			<th>已还本息</th>
+			<th>未还本息</th>
+			<th>状态</th>
+			<th>明细</th>
+		</tr>
+		<tbody id="content_box">
+
+		</tbody>
+	</table>
+
+</div>
+<div class="mask"></div>
+<div style="height: 65px;"></div>
+{literal}
+<script type="text/javascript">
+	diyou.use('users_borrow',function(u){u.borrow_count();});
+</script>
+{/literal}
+{/if}

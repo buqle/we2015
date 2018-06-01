@@ -1,0 +1,154 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+  margin: 0;
+  padding: 0; }
+
+body {
+  outline: 0;
+  background-color: #f8f8f8;
+  color: #000;
+  font-size: 16px;
+  font-family: '微软雅黑';
+  font-family: "Helvetica Neue","Microsoft Yahei",sans-serif;
+  line-height: 1.5;
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-size: 100%; }
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse; }
+
+caption, th {
+  text-align: left; }
+
+fieldset,
+img {
+  border: 0; }
+
+li {
+  list-style: none; }
+
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  font-family: inherit; }
+
+button {
+  border: 0;
+  background: none;
+  -webkit-appearance: none; }
+
+a {
+  text-decoration: none;
+  -webkit-touch-callout: none; }
+
+:focus {
+  outline: 0;
+  -webkit-tap-highlight-color: transparent; }
+
+em, i {
+  font-style: normal; }
+.section1{
+  width: 100%;
+}
+.autocenter{
+  margin: 0 auto;
+}
+.section1{
+  background: #EDEDED;
+}
+.imsc{
+  height: 13rem;
+  width: 10rem;
+  margin: 0 auto;
+  background: url("../img/100_03.png") 0 0 no-repeat;
+  background-size: 100%;
+}
+.imsc img{
+  width: 100%;
+}
+.section2{
+  background: #FFF;
+}
+.in_p{
+  font-size: 0.6rem;
+  color: #666;
+  line-height: 1rem;
+  padding-left: 0.5rem;
+}
+.on_ua a{
+  color: white;
+}
+.on_ua{
+  height: 2rem; width: 8rem;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 2rem;
+  font-size: 0.8rem;
+  background: #FF2C4C;
+}
+.ssz{
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #FFF150;
+  line-height: 2rem;
+}
+.llh{
+  font-size: 0.6rem;
+  text-align: center;
+  color: #fff;
+  line-height: 2rem;
+}

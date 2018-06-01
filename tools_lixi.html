@@ -1,0 +1,74 @@
+﻿
+{include file="header.html"}
+<div class="conbox t50">
+    <div class="bread">
+	    <a href="/">首页</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="/borrow/index.html">我要借款</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#">利息计算器</a>
+	</div>
+</div>
+<div class="conbox t20">
+    <div class="counter">
+	  <h2>利息计算器</h2>
+	  <div class="counter_cont">
+		  <ul>
+			<li>1、“按月等额本息”采用银行房贷等通用的“等额本息还款法”,即借款者每月以相等的金额偿还贷款本息。</li>
+			<li>2、“按月付息，到期还本”采用每月支付利息，到期全额还本的计算方式。</li>
+			<li class="notice">注意：本工具计算结果与实际可能会有以分为单位的误差。</li>
+		  </ul>
+			  <form action="" method="get" id="tool_form">
+			    <div class="counter_form t30">
+				<div class="fn_cle">
+			    <div class="item fn_left">
+				<label >借款金额：</label><input type="text" class="basic_input w80" name="account" id="account"/>元 
+				<p class="warning"></p>
+				</div>
+				<div class="item fn_left">
+				<label >年利率：</label><input type="text" class="basic_input w80" name="lilv" id="lilv"/>% 
+				<p class="warning"></p>
+				</div>
+				<div class="item fn_left">
+				<label >借款期限：</label><input type="text" class="basic_input w80" name="times" id="times"/>个月
+				<p class="warning"></p>
+				</div>
+                <div class="item fn_left">				
+				<label >还款方式：</label>
+				<select class="basic_sel w140" id="borrow_style" name="type">
+				   {loop module="borrow" function="get_style_list" var="item" limit="all"}
+                   {if $item.nid!='endday'}
+                   <option value="{$item.nid}">{$item.name}</option>
+                   {/if}
+                   {/loop}
+				</select>
+				<p class="warning"></p>				
+				</div>
+				</div>
+				<div>				
+				  <input type="submit" value="开始计算" class="u_sub"/>
+				</div>
+				</div>
+				
+				
+			 </form>
+	  </div>
+	</div>
+</div>
+<div class="conbox t20">
+     <div class="counter">
+		  <h2>贷款偿还描述</h2>
+		  <div class="counter_cont">
+			<p class="load_detai">            
+                <span>每个月将偿还：<em id="monthAcc">0.00</em>元</span>
+				<span>月利率：<em id="monthAp">0.00</em>%</span> 
+				<span>还款本息总额：<em id="monthIn">0.00</em>元</span>
+				
+			</p>
+			<div id="tableTr"></div>
+		  </div>
+	</div>
+
+</div>
+{literal}
+ <script type="text/javascript">
+ diyou.use('tool',function(dy){dy.tool('tool_form')});
+ </script>
+ {/literal}
+{include file="footer.html"}

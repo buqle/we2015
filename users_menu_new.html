@@ -1,0 +1,19 @@
+<div id="users_menu_new">
+	<ul>
+		<li>
+			<a class="{if $_U.query_sort==''}user_menu_new_hover{else}user_menu_new_a{/if}" href="/?user">账号首页</a>
+		</li>
+		<li>
+			<a href="/?user&m=account/log" class="{if $_U.query_sort=='account' }user_menu_new_hover{else}user_menu_new_a{/if}">我的资产</a>
+		</li>
+		<li>
+			<a href="/?user&m=borrow/invest" class="{if $_U.query_class=='invest' ||  $_U.query_class=='auto' ||  $_U.query_class=='change'}user_menu_new_hover{else}user_menu_new_a{/if}">投资管理</a>
+		</li>
+<!-- 		<li>
+			<a href="/?user&m=borrow/count" class="{if $_U.query_class=='count' ||  $_U.query_class=='repay' ||  $_U.query_class=='myapp' ||  $_U.query_class=='loan'}user_menu_new_hover{else}user_menu_new_a{/if}">我的资产</a>
+		</li> -->
+		<li>
+			<a href="/?user&m=approve/safe" class="{if $_U.query_sort=='rating' ||  $_U.query_class=='safe' ||  $_U.query_sort=='remind' || $_U.query_sort=='message'}user_menu_new_hover{else}user_menu_new_a{/if}">个人资料</a>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,163 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+	margin: 0;
+	padding: 0; }
+
+body {
+	font-family: "Helvetica Neue","Microsoft Yahei",sans-serif;;
+	line-height: 1.5;
+	font-size: 16px;
+	color: #000;
+	-webkit-user-select: none;
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: transparent;
+	outline: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: normal; }
+@media only screen and (min-width: 320px){
+	html {font-size: 18px !important;}
+}
+
+@media only screen and (min-width: 360px){
+	html {font-size: 20px !important;}
+}
+
+@media only screen and (min-width: 414px){
+	html {font-size: 22px !important; }
+}
+
+@media only screen and (min-width: 569px){
+	html {font-size: 35px !important; }
+}
+
+@media only screen and (min-width: 641px){
+	html {font-size: 40px !important; }
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0; }
+
+caption, th {
+	text-align: left; }
+
+fieldset,
+img {
+	border: 0;display: block; }
+
+li {
+	list-style: none; }
+
+ins {
+	text-decoration: none; }
+
+del {
+	text-decoration: line-through; }
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	font-weight: inherit;
+	outline: 0; }
+
+button {
+	-webkit-appearance: none;
+	border: 0;
+	background: none; }
+
+a {
+	-webkit-touch-callout: none;
+	text-decoration: none; }
+
+:focus {
+	outline: 0;
+	-webkit-tap-highlight-color: transparent; }
+
+em, i {
+	font-style: normal;
+}
+.head{width: 100%;
+	overflow: hidden;}
+.head img{width: 100%}
+.main{width: 100%;padding-bottom: 2rem; background: url("../images/pp.jpg") repeat-y;background-size: 100% 100%;}
+.main>h2{color: #fff;text-align: center;font-weight: bold;padding: .6rem 0 1rem 0;}
+.main .suzhou{width: 90%;margin-left: 5%;  overflow: hidden; padding: 1rem 0; }
+.main .suzhou p{width: 50%; float: left;}
+.main .suzhou .p1{width: 40%;}
+.main .suzhou .p1 img{width: 90%;margin-left: 10%;}
+.main .suzhou .p2{width: 60%;text-align: center;color: #fff0d3;font-size: .9rem;}
+.main .suzhou .p2 i{font-size: 1.3rem;}
+.main .syb{width: 86%;margin-left: 7%;background-color: #fceaa3;
+	overflow: hidden; position: relative;padding-bottom: 1.5rem;}
+.main .syb>img{position: absolute;right: 0;  top:0;width: 3rem;}
+.main .syb h2{margin-left: .5rem; color: #f2473d;font-weight: bold;text-align: left;padding-top: 2rem;font-size: 1rem;padding-bottom: .5rem;}
+.main .syb p{color: #371b06;font-size: 0.9rem;padding-bottom: 1.5rem;margin: 0 .5rem;}
+.main .syb p i{font-weight: bold;}
+.main .syb a{display: block;width:50%;margin-left: 25%;color: #fff;font-size: 1rem;font-weight: bold; height: 1.7rem;line-height: 1.7rem;text-align: center; background: #f04436;border-radius: .5rem;margin: 0 auto;}
+
+.main .gg .p1 img{margin-left: 0;}
+.main .hs .p1 img{margin-left: 0;}
+.jx3 {width: 100%;
+	overflow: hidden;}
+.jx3 img{width: 100%;}
+.hdgz{width: 100%;background: url("../images/pp1.jpg") no-repeat;padding-bottom: 2rem;background-size: 100% 100%;position: relative; color: #fff;font-size: .9rem;}
+.hdgz h2{font-size: 1rem;font-weight: bold;}
+.hdgz>div{width: 78%;
+	overflow: hidden;margin-left: 14%;padding-top: 2.8rem;}
+.hdgz>i{position: absolute;top:1.6rem;left:1.2rem;}
+.hdgz>i>img{width: 50%;}
+.shenm{font-size: 0.9rem;color: #444444;width: 86%;margin-left: 7%;text-align: center;padding: 1rem 0;}
+.st_footer{padding-top: 1rem; width: 100%;padding-bottom: 2rem;line-height: 1.4rem; text-align: center;font-size: .75rem;color: #444444;}
+.st_mian2 h2{font-size: .8rem;background-color: #fde062;padding:.3rem 0;width: 94%;margin-left: 3%;position: relative;
+	top:.4rem;}
+.st_footer .ff{width: 94%;
+	overflow: hidden;padding: .5rem 0; margin-left: 3%;}
+.st_footer .ff p{width: 50%;height: 100%; float: left;}
+.st_footer .ff p>span{display: inline-block; width: 50%;  float: left;font-size: 0.6rem;
+	line-height:0.9rem;}
+.st_footer .ff p>span>img{width: 90%;}
+.st_footer .ff p>span i>img{display: inline;}
+.hr{width: 100%;height: 2px;background: #378bda;}
+.hrhr{height: 1rem;margin-top: 3px;}
+.st_footer img{ width: 100%; height: 4rem;}

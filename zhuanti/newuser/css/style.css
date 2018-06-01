@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clear1{zoom:1;}
+
+.clear1:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+h1,h2,h3,h4,h5,h6{
+    font-weight:bold;}
+body {
+    font-family: "Microsoft YaHei","tahoma","arial","sans-serif";
+    font-size: 18px;background: #fff;
+}
+a{text-decoration: none;cursor: pointer;}
+.original_side1{background: url(../images/b1s.png) no-repeat center;width: 100%
+;overflow:hidden;height: 531px;}
+#dowebok{}
+#dowebok,.section,.fp-tableCell{height: 920px!important;width: 1000px;margin: 0 auto;}
+.original_side2{width: 994px;margin: 64px auto 0 auto;background: url(../images/bf1.png) no-repeat right top;}
+    .bz_bg1{background: url(../images/1.png) no-repeat left center;height: 60px;}
+    .bz_bg1 p{padding: 10px 14px;font-size: 30px;color:#fff;background: #299bcd;margin-left: 106px;display: inline-block;text-align: center;}
+    .answers_use{width: 714px;font-size: 18px;color: #444;line-height: 32px;margin-top: 36px;}
+    .answers_use a{color: #299bcd;border-bottom: 1px solid #0ba299;}
+    .answers_use2{width: 690px;margin: 100px  auto 46px auto;background:#e1e3e5;text-align: center;padding-bottom: 30px;}
+    .answers_use2 p{font-size: 24px;color:#444;padding-top: 16px;padding-bottom: 10px;}
+    .answers_use2 .picch{background: url(../images/bg1803.png) no-repeat center;height: 280px;}
+    .picch a{display: block;margin:0 auto;width: 260px;height: 40px;padding-top: 216px;}
+
+.original_side3{width: 990px;margin: 0 auto 50px auto;background: url(../images/bf2.png) no-repeat left;height: 385px}
+    .original_side3c{padding-left: 332px;padding-top: 48px;}
+    #bz_bg2{background: url(../images/2.png) no-repeat left 20px;height: 100px;}
+        #bz_bg2 p{width: 516px;text-align: left;padding:10px 24px}
+
+#answers_use2s{margin-top:0px;}
+#answers_use2s .picch{background: url(../images/bg2803.jpg) no-repeat center;height:390px;}
+
+.original_side4{ background:url(../images/bf3.png) no-repeat left bottom;width: 992px;margin: 0 auto;height: 318px;}
+    .original_side4c{padding-left: 324px;padding-top: 20px;}
+    .original_side4c #bz_bg4{background:url(../images/3.png) no-repeat ;height: 60px;}
+.original_side5{ background:url(../images/bf5.png) no-repeat right bottom;width: 938px;margin:88px auto 120px auto;}
+    .original_side5 #bz_bg5{background:url(../images/4.png) no-repeat ;height: 59px;}
+    .original_side5 #bz_bg6{background:url(../images/5.png) no-repeat ;height: 59px;width: 222px;margin-top: 100px;}
+    #bz_bg6 p{width: 222px;}

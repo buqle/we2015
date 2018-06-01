@@ -1,0 +1,56 @@
+.large_cashbg,.large_cashcont1{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;display: none;
+
+}
+.large_cashbg{background: #000;
+    filter: alpha(opacity:60);
+    opacity: 0.6; z-index: 9999;display: none;}
+.large_cashcont1{z-index: 10000;}
+.large_cashcont1 .large_cashcont2{position: relative;
+    top: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -310px;
+    width: 657px;
+    height: 630px;background: url("../../images/vipcenter/tan_bbox.png") no-repeat;}
+
+
+.large_cashcont2s{position: relative;
+    top: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -150px;
+    width:550px;
+    height: 300px;background:#fff;}
+.large_cashcont2s .close_put{position: absolute;cursor: pointer;
+    top:-34px;right:-36px;background: url("../../images/jpimg/close.png") no-repeat;width: 35px;height: 35px;}
+.large_cashcont2s .lc_holiday{text-align: center;padding-top: 80px;}
+    .large_cashcont2s .lc_holiday p{color: #4a4a4a;font-size: 24px;margin-bottom: 10px;}
+    .large_cashcont2s .lc_holidaybtn{width: 218px;height: 62px;line-height: 62px;text-align: center;font-size: 26px;color: #b8060a;cursor: pointer;border-radius: 10px;background: #ffd324;margin: 0 auto;}
+
+.large_cashcont2 .close_put{
+    position: absolute;
+    right: 6px;
+    top: 14px;
+    cursor: pointer;
+    width: 26px;
+    height: 26px;
+    background: url("../../images/vipcenter/close_lage.png") no-repeat;
+}
+.large_cashcont2 .large_cashcont3{position: relative;width: 462px;margin: 0 auto;height: 310px;background: #e7243c;border-radius: 5px;text-align: center;}
+.large_cashcont2 .large_cashcont3 h4{font-size: 28px;color:#f9e729;height: 40px;line-height: 40px;}
+.large_cashcont2 .large_cashcont3 h2{font-size: 25px;color: #fff;height: 60px;line-height: 60px;    text-shadow: 1px 4px 4px #666;}
+.large_cashcont2 .large_cashcont3 p{font-size: 26px;color: #fff;height: 30px;line-height: 30px;font-weight: bold;}
+.large_cashcont2 .large_cashcont3 .lager_btn{background: url("../../images/vipcenter/btn.png") no-repeat center;margin-top: 26px;cursor: pointer;width: 156px;height: 48px;display: inline-block;font-size: 24px;color: #e7243c;text-align: center;line-height: 44px;}
+
+.clearbt{zoom:1;}
+
+.clearbt:after {
+    content: "";
+    display: block;
+    clear: both;}

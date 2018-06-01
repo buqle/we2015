@@ -1,0 +1,204 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/million/css/style.css?v=20161017" rel="stylesheet" type="text/css" />
+
+<div class="envelope2"></div>
+
+<div class="evelopescont"></div>
+
+<div class="new_pullmi clearg">
+    <div class="logo_btn logo_sb">立即投资</div>
+    <div class="logo_btn being_btn2" style="float: right;">我的记录</div>
+    <div class="lucky_bg"></div>
+    <div class="login_myjlcont">
+        <div class="login_myjlcont1">
+            <div class="close_put"></div>
+            <h4>我的记录</h4>
+            <div class="jl_content">
+                <p id="jl_tittit"><span>标的种类</span><span>当前累计投资金额(元)</span><span style="border-right: none;">当前可得现金奖励(元)</span></p>
+                <p><span>6月标</span><span id="money1"></span><span id="money2" style="border-right: none;"></span></p>
+                <p><span>12月标</span><span id="money3"></span><span id="money4" style="border-right: none;"></span></p>
+                <div class="all_moneycont">累计获得奖金：<i></i>元</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="background: #f7cd3f;width: 100%;padding-top: 40px;padding-bottom: 56px;">
+    <div class="new_pullmi2 clearg">
+        <h4>TOP10奖励排行榜</h4>
+        <h4 id="shishi">实时投资榜</h4>
+    </div>
+
+    <div class="dimensional3">
+        <div class="dimensional3c clearg">
+            <div class="edc_listc">
+                <div class="edc_listcsi">
+                    <p id="poptyt"><span style="width: 22%;">排名</span><span>用户名</span><span>获得奖励(元)</span><span>获得时间</span></p>
+                    <div id="up_zzjs" style="height:268px;overflow:hidden;">
+                        <div id="marqueebox">
+                            <div class="sure-t1">
+                                <!--<p><span>1</span><span>金牌推荐xx</span><span>1000</span><span>获得时间</span></p>-->
+                                <!--<p><span>1</span><span>金牌推荐xx</span><span>1000</span><span>获得时间</span></p>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="edc_listc" id="edc_listc2">
+                <div class="edc_listcsi">
+                    <p id="poptyt1"><span style="width: 22%;">用户名</span><span>投资金额(元)</span><span>投资标长</span><span>获得时间</span></p>
+                    <div id="up_zzjs" style="height:268px;overflow:hidden;">
+                        <div id="marqueebox1" style="width:100%;margin: 0 auto;">
+                            <div class="sure-t2">
+                                <!--<p><span>金牌推荐</span><span>推荐奖励（元）</span><span>获得时间</span></p>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="dimensional4">
+   <div class="dimensional4c">
+       <h4>奖励规则</h4>
+       <p>1、活动期间内，用户累计投资金额达到相应等级将会获得相应奖励；</p>
+       <p>2、本活动奖金借款项目满标复审成功且满标时间在活动期间内，奖金资格有效；</p>
+       <p>3、活动奖金将在活动结束后，3个工作日内直充用户汇付账户账户，可投资、可提现；</p>
+       <p>4、本活动奖励与其他活动奖励可累计。</p>
+   </div>
+</div>
+
+<div class="jiujiu_foot">
+    <p>免责申明</p>
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意刷奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <div class="endjiujiu"></div>
+</div>
+
+{literal}
+<script>
+    $('#user_mainId').text(user_id);
+    $(function(){
+
+
+        $(".stab_btn").each(function(){
+            $(this).click(function(){
+                if (user_id==0) {
+                    diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                    return false;
+                }
+            });
+        });
+
+    })
+</script>
+<script>
+    $('.logo_sb').click(function(){
+        if (user_id>0) {
+            window.location.href="/invest/index.html";
+        } else {
+            diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+            return false;
+        }
+    });
+
+    $(function(){
+
+        $.http.get('/?user&q=get_share_ajax&alias=million&methodname=get_tops', {}, function(ret){
+            if (ret.code == '0'){
+                var surelen = ret.data.length;
+                var surer = '';
+                for(var i = 0; i < surelen; i++){
+                    surer+='<p><span style="width: 19%;">'+(i+1)+'</span><span>'+ret.data[i].username+'</span><span>'+ret.data[i].prizes+'</span><span>'+ret.data[i].addtime+'</span></p>';
+                }
+                $('.sure-t1').html(surer);
+                //$('.sure-t2').html(surer1);
+            }
+        }, 'json')
+
+        $.http.get('/?user&q=get_share_ajax&alias=million&methodname=get_newly', {}, function(ret){
+            if (ret.code == '1'){
+                var surelen = ret.data.length;
+                var surer = '';
+                for(var i = 0; i < surelen; i++){
+                    surer+='<p><span style="width: 22%;">'+ret.data[i].username+'</span><span>'+ret.data[i].tender+'</span><span>'+ret.data[i].month+'月标</span><span>'+ret.data[i].addtime+'</span></p>';
+                }
+                $('.sure-t2').html(surer);
+            }
+        }, 'json');
+
+
+        $(".being_btn2").click(function(){
+            if (user_id>0) {
+
+                $.http.get('/?user&q=get_share_ajax&alias=million&methodname=get_myreward', {}, function(ret){
+                    if (ret.code == '0'){
+                        $(".lucky_bg").show();
+                        $('.login_myjlcont').show();
+                        $('#money1').text(ret.data[6].tender+'元');
+                        $('#money2').text(ret.data[6].reward+'元');
+                        $('#money3').text(ret.data[12].tender+'元');
+                        $('#money4').text(ret.data[12].reward+'元');
+                        $('.all_moneycont i').text(ret.data.total)
+                    }
+                }, 'json')
+            } else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+
+        });
+
+
+    });
+
+    $(".close_put").click(function(){
+        $(".lucky_bg").hide();
+        $('.login_myjlcont').hide();
+    });
+
+    function startmarquee(lh,speed,delay,domID) {
+        var p=false;
+        var t;
+        var o=document.getElementById(domID);
+        //o.innerHTML=o.innerHTML;
+        o.style.marginTop=0;
+        o.onmouseover=function(){p=true;}
+        o.onmouseout=function(){p=false;}
+        function start(){
+            t=setInterval(scrolling,speed);
+            if(!p) o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+        }
+        function scrolling(){
+            if(parseInt(o.style.marginTop)%lh!=0){
+                o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+                if(Math.abs(parseInt(o.style.marginTop))>=o.scrollHeight) o.style.marginTop=0;
+            }else{
+                clearInterval(t);
+                setTimeout(start,delay);
+            }
+        }
+        setTimeout(start,delay);
+    }
+
+    startmarquee(67,10,800,'marqueebox');
+    startmarquee(67,10,800,'marqueebox1');
+
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?114bdc026b9ff4de87a6efb268dbea76";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+{/literal}

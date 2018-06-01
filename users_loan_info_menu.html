@@ -1,0 +1,31 @@
+﻿<!-- 
+	   <div class="bor_pro_bar">
+	      <ul>
+		    <li {if $_U.query_class=='amount'} class="done" {else}{if $smarty.request.p=="credit" ||  $smarty.request.type_nid=='roam' || $smarty.request.type_nid=="credit"}class="now"{elseif $smarty.request.p=="approve"||$smarty.request.p=="info"|| $smarty.request.p=="company" || $smarty.request.p=="finance" || $_U.query_class=='amount'}class="done"{/if}{/if}>
+			  <div class="step_line"></div>
+			  <div {if $smarty.request.p=="info" || $smarty.request.p=="company" || $smarty.request.p=="finance" || $_U.query_class=='amount' || $smarty.request.p=="approve"} class="step finish"{else} class="step step1_now"{/if}></div>
+			  <div class="text">实名认证</div>
+			</li>
+			<li {if $smarty.request.p=="info" || $smarty.request.p=="company" || $smarty.request.p=="finance"}class="now"{elseif  $_U.query_class=='amount' || $smarty.request.p=="approve"} class="done"{/if}>
+			  <div class="step_line"></div>
+			  <div {if  $_U.query_class=='amount' || $smarty.request.p=="approve"} class="step finish"{else} class="step step2_now"{/if}></div>
+			  <div class="text">信息填写</div>
+			</li>
+			<li {if $_U.query_class=="amount"}class="now"{elseif $smarty.request.p=="approve"} class="done"{/if}>
+			  <div class="step_line"></div>
+			  <div {if $smarty.request.p=="approve"} class="step finish"{else} class="step step3_now"{/if}></div>
+			  <div class="text">申请额度</div>
+			</li>
+			<li {if $smarty.request.p=="approve"}class="now"{/if}>
+			  <div class="step_line"></div>
+			  <div class="step step4_now"></div>
+			  <div class="text">上传材料</div>
+			</li>
+			<li {if $smarty.request.p=="new"}class="now"{/if}>
+			  <div class="step_line"></div>
+			  <div class="step step5_now"></div>
+			  <div class="text">发布借款</div>
+			</li>
+		  </ul>
+	   </div>
+	    -->

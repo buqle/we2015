@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/backend/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="../css/backend/style.css" rel='stylesheet' type='text/css' />
+    <link href="../css/backend/font-awesome.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="../js/backend/jquery.min.js"></script>
+    <!----webfonts--->
+    <link href='../css/backend/css.css' rel='stylesheet' type='text/css'>
+    <!---//webfonts--->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/backend/bootstrap.min.js"></script>
+</head>
+<body id="login">
+<div class="login-logo">
+    <a href="index.html"><img src="http://www.ronghedai.com/dyweb/dythemes/rhd/images/dy_img/rhd_logo.gif" alt=""/></a>
+</div>
+<h2 class="form-heading">用户登录</h2>
+<div class="app-cam">
+    <form method="post">
+        <input type="text" name="username" class="text" value=""  placeholder="用户名">
+        <input type="password" name="password" value="" >
+        <input type="hidden" name="<?php echo $this->security->getTokenKey() ?>"
+               value="<?php echo $this->security->getToken() ?>"/>
+
+        <?php
+            if (!empty($errorMessage)) {
+                ?>
+                <div style="color: red"><?=$errorMessage?></div>
+                <?php
+            }
+        ?>
+        <div class="submit"><input type="submit" onclick="myFunction()" value="登录" placeholder="密码"></div>
+
+    </form>
+</div>
+<div class="copy_layout login">
+    <p>Copyright &copy; 2016.<a href="//www.ronghedai.com" target="_blank">融和贷</a> All rights reserved.</p>
+</div>
+</body>
+</html>

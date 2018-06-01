@@ -1,0 +1,63 @@
+<div class="transfer_actcont">
+	<div class="transfertit">
+		债权转让
+	</div>
+	<div class="transfer_turn1 clearbo">
+		<ul class="clearbo">
+			<li class="act_on" id="ur-change" >债权总览</li>
+			<li id="change_records">转让记录</li>
+			<li id="buys_records">购买记录</li>
+		</ul>
+		<div style="height: 50px;"></div>
+	</div>
+
+	<div id="transfer_turn2" class="transfer_turn2 clearbo">
+		<div class="gert_content clearbo">
+			<div class="credit_goodwill1 credit_goodw">
+				<div class="credit_goodc">
+					<p>{$var.can_num|default:0}笔</p>
+					<p>待收本息</p>
+					<p>{$var.can_wait_capital|default:'0.00'}元+{$var.can_wait_interest|default:'0.00'}元</p>
+				</div>
+			</div>
+
+			<div class="credit_goodwill2 credit_goodw">
+				<div class="credit_goodc">
+					<p>{$var.now_num|default:0}笔</p>
+					<p>待收本息</p>
+					<p>{$var.now_wait_capital|default:'0.00'}元+{$var.now_wait_interest|default:'0.00'}元</p>
+				</div>
+			</div>
+
+			<div class="credit_goodwill3 credit_goodw">
+				<div class="credit_goodc">
+					<p>{$var.recover_num|default:0}笔</p>
+					<p>待收本息</p>
+					<p>{$var.recover_wait_capital|default:'0.00'}元+{$var.recover_wait_interest|default:'0.00'}元</p>
+				</div>
+			</div>
+
+			<div class="credit_goodwill4 credit_goodw">
+				<div class="credit_goodc">
+					<p>{$var.recover_yes_num|default:0}笔</p>
+					<p>已收本息：</p>
+					<p>{$var.recover_yes_account|default:'0.00'}元</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="show2">
+
+	</div>
+	<div id="show3">
+
+	</div>
+	<div id="users_change_list"></div>
+</div>
+{literal}
+<script type="text/javascript">
+	diyou.use('users_change', function (dy) {
+		dy.change_all()
+	});
+</script>
+{/literal}

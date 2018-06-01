@@ -1,0 +1,895 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/festival/css/style.css?v=2017888" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{$tpldir}/actives/festival/css/jQueryRotate.js"></script>
+<script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/scrollToo.js"></script>
+<script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/jquery.dialog.js"></script>
+<script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/jquery.drag.js"></script>
+<script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/jquery.mask.js"></script>
+
+
+<div class="festivalact-a ww1">
+    <div class="festivalact-a_festivalact-acont1 ww3">
+        <a href="#festivalact-b" class="actaco1"></a>
+        <a href="#festivalact-c" class="actaco2"></a>
+        <a href="#festivalact-d"  class="actaco3"></a>
+        <a href="#cetone-e"  class="actaco4"></a>
+    </div>
+</div>
+
+<!--抽奖-->
+<div class="festivalact-b ww3 pos-a" id="festivalact-b">
+    <div class="festivalact-b_actbcont1">
+        <h5></h5>
+        <p class="text-center coonp">活动时间：5月1日—5月15日</p>
+        <h4 class="text-center">活动期间，投资金额≥10000元的用户每天均享有一次抽奖机会。</h4>
+        <div class="festivalact-b_cont2 pos-a">
+            <p class="text-center font18">目前已有<i class="bold color-ff">0</i>人次参与抽奖</p>
+            <div id="start_btn" class="cursor" style="display: none"><h6>剩余0次</h6></div>
+            <div id="start_btns" class="cursor"><h6>剩余0次</h6></div>
+        </div>
+    </div>
+    <div class="festivalact-b__cont3 pos-b">
+        <div class="festivalact-b__cont4">
+            <h4 class="bold color-ff font20 ww3 text-center">实时中奖名单</h4>
+            <div style="height: 144px;overflow: hidden;" class="renav">
+                <ul id="marqueebox" class="text-center color-ff font20">
+
+                </ul>
+            </div>
+        </div>
+        <div class="festivalact-b__cont5 ww3">
+            <p>1、本活动仅限于在活动期间内投资≥10000元的用户参与；</p>
+            <p>2、实物奖励规则：用户所得实物奖励，需在“我的账户—活动管理—收货地址”中点击填写收货地址等信息，融和贷工作人员将在活动结束后三个工作日内统一安排发货；</p>
+            <p>3、加息券使用规则：用户所得加息券，可在“我的账户—活动管理—我的加息券”中查看并使用，用户投资时平台系统默认选择相应条件加息力度最大的可用券。</p>
+        </div>
+        <div class="button-login ww3 text-center cursor">立即投资</div>
+    </div>
+</div>
+
+<!--母亲节-->
+<div class="festivalact-c ww1" id="festivalact-c">
+
+    <div class="ww2">
+
+        <div class="festivalact-c_cont6 ww3">
+            <div class="festivalact-c_cont6_cont7">
+                <h4 class="text-center">活动时间：5月1日—5月15日</h4>
+                <p class="font18">千里试问平安否?且把思念遥相寄。绵绵爱意与关怀，浓浓情意与祝福。母亲，是这个世界上最伟大的存在，母爱无价，孝心无期。在这个满怀感恩、普天同庆的日子里，融和贷为爱加持，邀送鲜花。活动期间，用户单笔投资任意标的（1月标除外）每满10000元均可获得一朵爱的鲜花，鲜花越多，用户获得的爱心奖励则越高。</p>
+            </div>
+        </div>
+
+        <div class="festivalact-c_cont8 ww3">
+            <div class="pos-a" style="top: -14px;">
+                <div class="festivalact-c_cont8_cont8t text-center">
+                    单笔投资任意标的（1月标除外）每满10000元可得一朵鲜花
+                </div>
+                <div class="festivalact-c_cont8_cont9 clearg">
+                    <dl class="text-center">
+                        <img src="{$tpldir}/actives/festival/images/ban6.png">
+                        <dt>3月标</dt>
+                        <dd class="button-login ww3 text-center color-ff cursor">立即投资</dd>
+                    </dl>
+                    <dl class="text-center">
+                        <img src="{$tpldir}/actives/festival/images/ban7.png">
+                        <dt>6月标</dt>
+                        <dd class="button-login ww3 text-center color-ff cursor">立即投资</dd>
+                    </dl>
+                    <dl class="text-center" style="margin-right: 0;">
+                        <img src="{$tpldir}/actives/festival/images/ban8.png">
+                        <dt>12月标</dt>
+                        <dd class="button-login ww3 text-center color-ff cursor">立即投资</dd>
+                    </dl>
+                </div>
+            </div>
+            <!--登录-->
+            <div class="festivalact-c_cont10" id="festivalact-c_cont10" style="display: none">
+                <div class="festivalact-c_cont10_left lefts font24 clearg">
+                    <span class="lefts">尊敬的{$_G.username}，</span>
+                    您目前拥有：<p><i class="iflow1">0</i>朵百合花</p>
+                    <p><i class="iflow2">0</i>朵玫瑰花</p>
+                    <p><i class="iflow3">0</i>朵康乃馨</p>
+                </div>
+                <div class="festivalact-c_cont10_right cursor text-center color-ff">我的记录</div>
+            </div>
+            <!--没登录-->
+            <div class="festivalact-c_cont10" id="festivalact-c_cont10-2">
+                <div class="festivalact-c_cont10_left lefts font24 clearg">
+                    <span class="lefts">尊敬的用户</span>
+                    您目前拥有：<p><i>0</i>朵百合花</p>
+                    <p><i>0</i>朵玫瑰花</p>
+                    <p><i>0</i>朵康乃馨</p>
+                </div>
+                <div class="festivalact-c_cont10_right cursor text-center color-ff">我的记录</div>
+            </div>
+
+            <div class="festivalact-c_cont11t color-ff font24">
+                鲜花奖励区
+            </div>
+            <div class="festivalact-c_cont11 clearg text-center font25">
+                <div class="left1 lefts">
+                    <h3>鲜花</h3>
+                    <h5 class="actaco5">&nbsp;百合花</h5>
+                    <h5 class="actaco6">&nbsp;&nbsp;玫瑰花</h5>
+                    <h5 class="actaco7">&nbsp;&nbsp;康乃馨</h5>
+                </div>
+                <div class="left2 lefts">
+                    <h3>奖励</h3>
+                    <h5>25元/朵</h5>
+                    <h5>60元/朵</h5>
+                    <h5>130元/朵</h5>
+                </div>
+                <div class="right1 rights">
+                    <h3>获奖标准</h3>
+                    <h5><p>单笔投资3月标满10000元</p>例：小明投资3月标50000元，获得五朵百合花，奖励金额 125 元。</h5>
+                    <h5><p>单笔投资6月标满10000元</p>例：小明投资6月标100000元，获得十朵玫瑰花，奖励金额 600 元。</h5>
+                    <h5><p>单笔投资12月标满10000元</p>例：小明投资12月标200000元，获得二十朵康乃馨，奖励金额 2600 元。</h5>
+                </div>
+            </div>
+
+            <div class="festivalact-c_cont12 clearg text-center font18">
+                <div class="festivalact-c_cont12_leftc lefts">
+                    <h4>实时投资记录</h4>
+                    <p class="festivalact-c_cont12_leftc_tit">
+                        <span>用户名</span>
+                        <span>投资金额(元)</span>
+                        <span>鲜花种类</span>
+                        <span>鲜花数量</span>
+                        <span>获得奖励(元)</span>
+                    </p>
+                    <div style="height: 210px;overflow: hidden;" class="renav2">
+                        <ul id="marqueebox2">
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="festivalact-c_cont12_rightc rights text-left">
+                    <h4>活动规则</h4>
+                    <p>1.活动期间，用户单笔投资任意标的（1月标除外）满10000元均可获得一朵爱的鲜花，鲜花越多，用户获得的爱心奖励则越高；</p>
+                    <p>2.本活动现金奖励需借款项目满标复审成功且满标时间在活动期间内，奖励资格有效；</p>
+                    <p>3.现金奖励将在活动结束后，3个工作日内直充用户汇付账户，可投资、可提现。</p>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+
+
+<!--赛龙舟-->
+<div class="festivalact-d ww1" id="festivalact-d">
+    <div class="festivalact-d_tit"></div>
+    <dl class="festivalact-d_cont13 ww3 clearg">
+        <dd class="actaco8 cursor"></dd>
+        <dd class="actaco9 cursor" style="margin: 0 104px;"></dd>
+        <dd class="actaco10 block cursor"></dd>
+    </dl>
+
+    <dl class="festivalact-d_cont14">
+        <dd class="actaco13"></dd>
+        <dd  class="actaco12"></dd>
+        <dd  class="actaco11 block"></dd>
+    </dl>
+
+    <div class="festivalact-d_cont15 clearg ww3">
+        <div class="leftcont lefts text-center">
+            <h5 class="font20">实时投资记录</h5>
+            <p class="titcont">
+                <span>用户名</span><span>投资金额(元)</span><span>获得奖励(元)</span><span>投资时间</span>
+            </p>
+            <div style="height:230px;overflow: hidden;" class="renav3">
+                <ul id="marqueebox3">
+
+                </ul>
+            </div>
+        </div>
+        <div class="rightcont rights">
+            <h4>活动规则</h4>
+            <p>1.活动期间，用户累计投资（1月标除外）达到龙舟中规定的投资金额即可获得相应的现金奖励，累计投资越多奖励金额越高；</p>
+            <p>2.本活动奖金借款项目满标复审成功且满标时间在活动期间内，奖金资格有效；</p>
+            <p>3.本活动所得奖励，将在活动结束后，3个工作日内直充用户汇付账户，可投资、可提现。</p>
+        </div>
+    </div>
+
+    <div class="festivalact-d_cont16 color-ff text-center ww3 clearg">
+        <div class="button-login lefts  cursor">立即投资</div>
+        <div class="button-jilu rights  cursor">我的记录</div>
+    </div>
+
+</div>
+
+<!--加息-->
+
+<!--没到518-->
+<div id="cetone-e">
+
+    <div class="festivalact-f ww1" style="display: none;"></div>
+    <div class="festivalact-e ww1" id="festivalact-e" style="display: none">
+        <div class="festivalact-e_cont17 ww3">
+            <div class="biaocont1"></div>
+            <div class="biaocont2 color-ff font20">
+                活动期间，平台每天精选特定加息标的，投资获利，利上加利！
+                <span class="inline-block">活动时间：5月18日—5月20日</span>
+            </div>
+            <div class="biaocont3 clearg">
+
+            </div>
+
+        </div>
+        <div class="festivalact-e_cont18 pos-a ww3">
+            <div class="festivalact-e_cont18_t pos-b"></div>
+            <div class="festivalact-e_cont18_con ww3">
+                <h4 class="text-center color-ff">实时投标记录</h4>
+                <div class="festivalact-e_cont18_con_con2 text-center ww3">
+                    <p class="con2tit clearg font18"><span>用户名</span><span>所投标的</span><span>所投金额(元)</span><span>可获奖励(元)</span><span>投标时间</span></p>
+                    <div style="height:230px;overflow: hidden;" class="renav4 font16">
+                        <ul id="marqueebox4">
+
+
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-center color-ff conpip">目前已有<i>0</i>人次抢投成功</p>
+            </div>
+        </div>
+        <div class="festivalact-e_jilu ww3 text-center color-ff cursor">我的记录</div>
+    </div>
+
+</div>
+
+
+
+
+<!--母亲节-我的记录-->
+<div class="alertbox-A" id="alertbox-1"></div>
+<div class="alertbox-B"id="alertbox-2">
+    <div class="alertbox-C" id="alertbox-3">
+        <div class="close-a cursor"></div>
+        <h4 class="text-center color-ff">我的记录</h4>
+        <div class="alertbox-Ctit ww3"></div>
+        <div class="alertbox-Cont ww3 text-center">
+            <p class="alertbox-Contits clearg">
+                <span>鲜花种类</span><span>鲜花数量</span><span>投资金额(元)</span><span>获得奖励(元)</span><span>获得时间</span>
+            </p>
+            <div class="renav5" style="height: 168px;overflow: hidden;">
+                <ul id="marqueebox5">
+
+                </ul>
+            </div>
+        </div>
+        <div class="alertbox-Content ww3">
+            <p class="alertbox-Contents font18 ww3">
+                <span class="lefts">累计投资总额：<i class="inline-block accic1 text-center">0</i>(元)</span>
+                <span class="rights">累计获得奖励：<i class="inline-block accic2 text-center">0</i>(元)</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!--端午节-我的记录-->
+<div class="alertbox-A" id="alertbox-4"></div>
+<div class="alertbox-B"id="alertbox-5">
+    <div class="alertbox-C" id="alertbox-6">
+        <div class="close-a cursor"></div>
+        <h4 class="text-center color-ff">我的记录</h4>
+        <div class="alertbox-Ctit ww3"></div>
+        <div class="alertbox-Cont ww3 text-center">
+            <p class="alertbox-Contits clearg font18">
+                <span>月标种类</span>
+                <span>投资笔数(笔)</span>
+                <span>投资金额(元)</span>
+                <span>获得奖励(元)</span>
+            </p>
+            <div id="marqueebox6" class="font16">
+                <p>
+                    <span>3月标</span>
+                    <span class="con_sp1">0</span>
+                    <span class="con_sp2">0</span>
+                    <span class="con_sp3">0</span>
+                </p>
+                <p>
+                    <span>6月标</span>
+                    <span class="con_sp4">0</span>
+                    <span class="con_sp5">0</span>
+                    <span class="con_sp6">0</span>
+                </p>
+                <p>
+                    <span>12月标</span>
+                    <span class="con_sp7">0</span>
+                    <span class="con_sp8">0</span>
+                    <span class="con_sp9">0</span>
+                </p>
+            </div>
+        </div>
+        <div class="alertbox-Content ww3">
+            <p class="alertbox-Contents font18 ww3">
+                <span class="lefts">累计投资总额：<i class="inline-block  accic3 text-center">0</i>(元)</span>
+                <span class="rights">累计获得奖励：<i class="inline-block accic4 text-center">0</i>(元)</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<!--抢标-我的记录-->
+<div class="alertbox-A" id="alertbox-7"></div>
+<div class="alertbox-B"id="alertbox-8">
+    <div class="alertbox-C" id="alertbox-9">
+        <div class="close-a cursor"></div>
+        <h4 class="text-center color-ff">我的记录</h4>
+        <div class="alertbox-Ctit ww3"></div>
+        <div class="alertbox-Cont ww3 text-center">
+            <p class="alertbox-Contits clearg font18" style="color:#192346;">
+                <span>投资标的</span>
+                <span>投资笔数(笔)</span>
+                <span>投资金额(元)</span>
+                <span>获得奖励(元)</span>
+            </p>
+            <div class="renav6" style="height: 168px;overflow: hidden">
+                <ul id="marqueebox7" class="font16">
+
+                </ul>
+            </div>
+        </div>
+        <div class="alertbox-Content ww3">
+            <p class="alertbox-Contents font18 ww3">
+                <span class="lefts">累计投资总额：<i class="inline-block accic5 text-center">0</i>(元)</span>
+                <span class="rights">累计获得奖励：<i class="inline-block accic6 text-center">0</i>(元)</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<div id="gravitation" class="pos-b font16" now="{$smarty.now}">
+    <a href="#festivalact-b" class="taion1">乐抽奖 幸运赚不停</a>
+    <a href="#festivalact-c" class="taion2">母亲节 孝心益无价</a>
+    <a href="#festivalact-d" class="taion3">迎端午 赛舟抢龙头</a>
+    <a href="#cetone-e" class="taion4">5•18  TOP发发发</a>
+</div>
+
+<!--没有机会-->
+<div class="qing1 text-centerqing-box" style="display: none">
+    <a class="qing1c block qing-boxc font22 " href="/invest/index.html">获得抽奖机会</a>
+</div>
+
+<!--结束-->
+<div class="qing2" style="display: none">
+    <p class="block qing-boxc font22 ">活动已结束</p>
+</div>
+
+
+<div class="jiujiu_foot">
+    <p>免责申明</p>
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意刷奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <div class="endjiujiu"></div>
+</div>
+
+
+
+{literal}
+<script>
+    window.timer = {
+        _queue : [],
+        _times : [],
+        start:function(time, borrow_nid) {
+            if (this._queue[borrow_nid] != undefined) return false;
+            this._queue[borrow_nid] = 0;
+            var timesID =  setInterval(function(){
+                var getbackSecond = time - timer._queue[borrow_nid];
+                if (getbackSecond >=0) {
+                    var day = Math.floor(getbackSecond / (60 * 60 * 24));
+                    var hour = Math.floor(getbackSecond / (60 * 60)) - (day * 24);
+                    var minute = Math.floor(getbackSecond / 60) - (day * 24 * 60) - (hour * 60);
+                    var second = Math.floor(getbackSecond) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                    timer._queue[borrow_nid]++;
+                    if (day < 10) day = "0" +day;
+                    if (hour < 10) hour = "0" + hour;
+                    if (minute < 10) minute = "0" + minute;
+                    if (second < 10) second = "0" + second;
+                    var cc='';
+                    cc+='<p><b>'+ day +'</b>:<b>'+ hour +'</b>:<b>'+ minute +'</b>:<b>'+second+'</b></p>'
+                    $("div[nid="+borrow_nid+"]").html(cc);
+                } else {
+                    clearInterval(timer._times[borrow_nid]);
+                    //
+                }
+            }, 1000);
+            this._times[borrow_nid] = timesID;
+        }
+
+    };
+    $(function(){
+
+
+
+
+        //buttons
+        $('.festivalact-b .button-login,.festivalact-c_cont8_cont9 .button-login').each(function(){
+            $(this).click(function(){
+                if (user_id>0) {
+                    jDialog.dialog({
+                        title : '温馨提示',
+                        content :$('.qing2').html(),
+                        height:240,
+                        width:468
+                    });
+                } else {
+                    diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                    return false;
+                }
+            })
+        })
+
+        $('.festivalact-d_cont16 .button-login').click(function(){
+            if (user_id>0) {
+                window.location.href="/invest/index.html";
+            } else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        })
+
+
+        //xuanfu
+        var oFixed = $("#gravitation")
+        $(window).on('scroll',function(){
+            var sTop = $(window).scrollTop();
+            if(sTop>160){
+                oFixed.css({
+                    'position':'fixed',
+                    'top':0
+                })
+            }else{
+                oFixed.css({
+                    'position':'absolute',
+                    'top':160
+                })
+            }
+        })
+        $("#gravitation,.festivalact-a_festivalact-acont1").scrollTo(700)
+
+
+        $('.festivalact-d_cont13 dd').click(function(){
+            $(this).addClass('block').siblings().removeClass('block');
+            $('.festivalact-d_cont14 dd').eq($(this).index()).addClass('block').siblings().removeClass('block');
+        });
+
+
+        //chou
+        var rotateFunc = function(awards,angle,text){
+            $('#start_btn').stopRotate();
+            $("#start_btn").rotate({
+                angle:0,
+                duration: 5000,
+                animateTo: angle+1440,
+                callback:function(){
+                    var c2='';
+                    c2+='<div class="qingkuang1 font22 text-center">';
+                    c2+='恭喜您获得';
+                    c2+='<h5>'+text+'</h5>';
+                    c2+='</div>';
+                    var dialogs = jDialog.dialog({
+                        title : '温馨提示',
+                        content : c2,
+                        height:240,
+                        width:468,
+                        events:{
+                            close:function(){
+                                $("#start_btn").removeClass('aa');
+                                $('.festivalact-b_cont2 h6').text('剩余0次').addClass('no-changce')
+                            }
+                        }
+                    });
+
+                }
+            });
+        };
+
+        function noChange(){
+            var dialogs = jDialog.dialog({
+                title : '温馨提示',
+                content :$('.qing1').html(),
+                height:240,
+                width:468
+            });
+        }
+
+        //获取机会
+        if(user_id>0){
+            $.http.get('/?user&q=get_share_ajax&alias=festival&methodname=checkchance', {}, function(ret){
+                $('#start_btns').hide();
+                $('#start_btn').show();
+                if (ret.code ==1){
+                    $('.festivalact-b_cont2 h6').text('剩余0次').addClass('no-changce')
+                }else if(ret.code ==0){
+                    $('.festivalact-b_cont2 h6').text('剩余1次')
+                }
+            }, 'json')
+        }
+
+        $('#start_btns').click(function(){
+            if(user_id==0){
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        })
+
+        $("#start_btn").rotate({
+            bind:
+            {
+                click: function(){
+                    if(user_id>0){
+                        if($('.festivalact-b_cont2 h6').hasClass('no-changce')){
+                            noChange();
+                            return false;
+                        }else {
+                            if($("#start_btn").hasClass('aa')){
+                                return false;
+                            }
+                            $("#start_btn").addClass('aa');
+                            jDialog.alert('正在拉取中!!!')
+                            $.http.get('/?user&q=get_share_ajax&alias=festival&methodname=get_reward', {}, function(ret){
+                                jDialog.close();
+                                if(ret.code==12){
+                                    jDialog.dialog({
+                                        title : '温馨提示',
+                                        content :$('.qing2').html(),
+                                        height:240,
+                                        width:468
+                                    });
+                                    return false
+                                }else if (ret.code ==0){
+                                    if(ret.msg==0){
+                                        rotateFunc(5,160,ret.data);
+                                    }else if(ret.msg==1){
+                                        rotateFunc(7,250,ret.data);
+                                    }else if(ret.msg==2){
+                                        rotateFunc(3,66,ret.data);
+                                    }else if(ret.msg==3){
+                                        rotateFunc(1,-20,ret.data);
+                                    }else if(ret.msg==4){
+                                        rotateFunc(4,120,ret.data);
+                                    }else if(ret.msg==5){
+                                        rotateFunc(8,300,ret.data);
+                                    }else if(ret.msg==6){
+                                        rotateFunc(6,200,ret.data);
+                                    }else if(ret.msg==7){
+                                        rotateFunc(2,30,ret.data);
+                                    }
+                                }else {
+                                    $('.festivalact-b_cont2 h6').text('剩余0次').addClass('no-changce')
+                                }
+                            }, 'json')
+                        }
+                    }else {
+                        diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                        return false;
+                    }
+
+                }
+            }
+        });
+
+        //抽奖列表
+        $.http.get('/?user&q=get_share_ajax&alias=festival&methodname=get_newly', {}, function(ret){
+            if (ret.code ==0){
+                var len = ret.data.length;
+                var html=''
+                for(var i=0; i<len; i++){
+                    html += '<p><span>'+ret.data[i].username+'</span><span>'+ret.data[i].reward+'</span></p>';
+
+                }
+                $('#marqueebox').html(html);
+                $('.festivalact-b_cont2 p').find('i').text(ret.total);
+
+            }else {
+                //alert(ret.msg)
+            }
+        }, 'json')
+
+        //mother's day
+
+        if(user_id>0){
+            $('#festivalact-c_cont10').show();
+            $('#festivalact-c_cont10-2').hide();
+            $.http.get('/?user&q=get_share_ajax&alias=mother&methodname=my_reward', {}, function(ret){
+                if (ret.code == 0){
+                    $('.iflow1').text(ret.data[3])
+                    $('.iflow2').text(ret.data[6])
+                    $('.iflow3').text(ret.data[12])
+                }else {
+                    alert(ret.msg)
+                }
+            }, 'json')
+        }
+
+        //加息列表
+        $.getJSON('/?user&q=get_share_ajax&alias=jiaxi&methodname=Get_borrow_List ',function(ret){
+            if(ret.code == 0){
+                var surelen = ret.data.length;
+                var sure = '';
+                var sure1='';
+                var nowtime=parseInt($('#gravitation').attr('now'));
+                for (var i =0 ; i < surelen; i++) {
+                    if(ret.data[i].borrow_status_nid=='full'||ret.data[i].borrow_status_nid=='repay'||ret.data[i].borrow_status_nid=='repay_yes'){
+                        sure += '<dl class="biaocont3kong pos-a">';
+                    }else {
+                        sure += '<dl>';
+                    }
+                    if(ret.data[i].borrow_status_nid!='loan'){ sure += '<dd class="pos-b ddbgcont"></dd>';}
+                    sure += '<dt class="text-center">'+ret.data[i].name+'</dt>';
+                    sure += '<dd class="clearg">';
+                    sure+='<div class="dd1 lefts font16 text-center">';
+                    if(ret.data[i].borrow_apr>10.9 && ret.data[i].borrow_period==3){
+                    sure += '<strong style="font-weight: normal" class="block"><i>10.9</i><i>%</i><i>+</i><i>'+ret.data[i].borrow_apr-10.9+'</i><i>%</i></strong>';
+                    }else if(ret.data[i].borrow_apr>11.9 && ret.data[i].borrow_period==6){
+                        sure += '<strong style="font-weight: normal" class="block"><i>11.9</i><i>%</i><i>+</i><i>'+(ret.data[i].borrow_apr-11.9).toFixed(2)+'</i><i>%</i></strong>';
+                    }else if(ret.data[i].borrow_apr>12.7 && ret.data[i].borrow_period==12){
+                        sure += '<strong style="font-weight: normal" class="block"><i>12.7</i><i>%</i><i>+</i><i>'+(ret.data[i].borrow_apr-12.7).toFixed(2)+'</i><i>%</i></strong>';
+                    }else {
+                        sure += '<strong style="font-weight: normal" class="block">' + ret.data[i].borrow_apr +'<i>%</i></strong>';
+                    }
+                    sure+='<p>年化利率</p>';
+                    sure+='</div>';
+                    sure+='<div class="dd2 lefts font16 text-center">'
+                    sure+='<strong class="block" style="font-weight: normal">'+ret.data[i].borrow_period+'<i class="font16">个月</i></strong>';
+                    sure+='<p>期限</p>';
+                    sure+='</div>';
+                    sure += '</dd>';
+
+                    sure+='<dd>'
+                    sure+='<div class="dd3 pos-a"><p data-width="' + ret.data[i].borrow_account_scale + '"></p></div>';
+                    var accont=parseInt(ret.data[i].borrow_account_wait )
+                    sure+='<div class="dd4 font16">总额：'+ret.data[i].account+'/剩余：'+accont.toFixed(2) +'</div>';
+                    if(ret.data[i].count_down ==1 && parseInt(ret.data[i].tender_time) >nowtime){
+                        sure+='<div class="button-login font20 text-center color-ff ww3 block" time1="'+ret.data[i].tender_time+'" nid="'+ret.data[i].borrow_nid+'" time2="'+ret.data[i].count_down+'">';
+                        sure+='<b>00</b>:<b>00</b>:<b>00</b>:<b>00</b>'
+                        sure+='</div>';
+                    }else if(ret.data[i].borrow_status_nid == 'loan'){
+                        sure+='<a class="button-login font20 text-center color-ff ww3 block" href="/invest/a' + ret.data[i].borrow_nid + '.html">立即投资</a>';
+                    }else if (ret.data[i].borrow_status_nid == 'full'){
+                        sure+='<div class="button-login font20 text-center color-ff ww3 block">满标待审</div>'
+                    }else if (ret.data[i].borrow_status_nid == 'repay'){
+                        sure+='<div class="button-login font20 text-center color-ff ww3 block">还款中</div>'
+                    }else if (ret.data[i].borrow_status_nid == 'repay_yes'){
+                        sure+='<div class="button-login font20 text-center color-ff ww3 block">已还完</div>'
+                    }
+
+                    sure+='</dd>'
+                    sure+='</dl>';
+
+                }
+                $('.biaocont3').html(sure);
+                sure1+='<p style="font-size: 20px;color: #000;text-align: center;line-height: 100px;">加息标暂未发布，敬请期待！</p>'
+                if(surelen==0){
+                    $('.biaocont3').html(sure1);
+                }
+                $('.biaocont3 dl:last').css('margin-right','0px');
+                $('.dd3  p').each(function(){
+                    $(this).animate({width:''+$(this).attr('data-width')+'%'},{
+                    },1000);
+
+                });
+                $('.biaocont3 .button-login').each(function(){
+                    if($(this).attr('time2')==1&&new Number($(this).attr('time1'))>nowtime){
+                        timer.start(new Number($(this).attr('time1'))-nowtime,$(this).attr('nid'))
+                    }
+
+                })
+
+            }else{
+                alert(ret.msg);
+            }
+        });
+
+        //self2
+        $('.festivalact-c_cont10_right').click(function(){
+            if(user_id>0){
+                $('#alertbox-1,#alertbox-2').show();
+                $('.close-a').click(function(){
+                    $('#alertbox-1,#alertbox-2').hide();
+                })
+                $.http.get('/?user&q=get_share_ajax&alias=mother&methodname=get_self_reward', {}, function(ret){
+                    if (ret.code == 0){
+                        var len = ret.data.length;
+                        var html=''
+                        for(var i=0; i<len; i++){
+                            html += '<p><span>'+ret.data[i].flower+'</span><span>'+ret.data[i].num+'</span><span>'+ret.data[i].money+'</span><span>'+ret.data[i].reward+'</span><span>'+getday(ret.data[i].addtime)+'</span></p>';
+                        }
+                        $('#marqueebox5').html(html);
+                        $('.accic1').text(ret.total);$('.accic2').text(ret.level)
+
+                    }else {
+                        alert(ret.msg)
+                    }
+                }, 'json')
+            }else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+
+        });
+
+        //端午self
+        $('.button-jilu').click(function(){
+            if(user_id>0){
+                $('#alertbox-4,#alertbox-5').show();
+                $('.close-a').click(function(){
+                    $('#alertbox-4,#alertbox-5').hide();
+                })
+                $.http.get('/?user&q=get_share_ajax&alias=boat&methodname=get_self_reward', {}, function(ret){
+                    if (ret.code == 0){
+                        $('.con_sp1').text(ret.data[3].times);
+                        $('.con_sp2').text(ret.data[3].tender);
+                        $('.con_sp3').text(ret.data[3].reward);
+
+                        $('.con_sp4').text(ret.data[6].times);
+                        $('.con_sp5').text(ret.data[6].tender);
+                        $('.con_sp6').text(ret.data[6].reward);
+
+                        $('.con_sp7').text(ret.data[12].times);
+                        $('.con_sp8').text(ret.data[12].tender);
+                        $('.con_sp9').text(ret.data[12].reward);
+                        $('.accic3').text(ret.total);
+                        $('.accic4').text(ret.level)
+
+                    }else {
+                        alert(ret.msg)
+                    }
+                }, 'json')
+            }else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+
+        });
+
+        //mother's day
+
+
+        setTimeout(function(){
+            $.http.get('/?user&q=get_share_ajax&alias=mother&methodname=get_newly', {}, function(ret){
+                if (ret.code == 0){
+                    var len = ret.data.length;
+                    var html=''
+                    for(var i=0; i<len; i++){
+                        html += '<p><span>'+ret.data[i].username+'</span><span>'+ret.data[i].money+'</span><span>'+ret.data[i].flower+'</span><span>'+ret.data[i].num+'</span><span>'+ret.data[i].reward+'</span></p>';
+
+                    }
+                    $('#marqueebox2').html(html);
+
+                }else {
+                    alert(ret.msg)
+                }
+            }, 'json')
+        },100)
+
+
+
+
+        //端午节
+        setTimeout(function(){
+            $.http.get('/?user&q=get_share_ajax&alias=boat&methodname=get_newly_reward', {}, function(ret){
+                if (ret.code == 0){
+                    var len = ret.data.length;
+                    var html=''
+                    for(var i=0; i<len; i++){
+                        html += '<p><span>'+ret.data[i].username+'</span><span>'+ret.data[i].tender_all+'</span><span>'+ret.data[i].reward_all+'</span><span>'+ret.data[i].addtime+'</span></p>';
+
+                    }
+                    $('#marqueebox3').html(html);
+
+                }else {
+                    alert(ret.msg)
+                }
+            }, 'json');
+        },500)
+
+
+        //加息延迟
+
+
+
+        setTimeout(function(){
+            $.http.get('/?user&q=get_share_ajax&alias=jiaxi&methodname=gettoplist', {}, function(ret){
+                if (ret.code == 0){
+                    var len = ret.data.length;
+                    var html=''
+                    for(var i=0; i<len; i++){
+                        html += '<p><span>'+ret.data[i].username+'</span><span>'+ret.data[i].name+'</span><span>'+ret.data[i].account+'</span><span>'+ret.data[i].reward+'</span><span>'+ret.data[i].addtime +'</span></p>';
+
+                    }
+                    $('#marqueebox4').html(html);
+                    $('.conpip i').text(ret.total )
+
+                }else {
+                    alert(ret.msg)
+                }
+            }, 'json');
+        },700)
+
+        //self3
+        $('.festivalact-e_jilu').click(function(){
+            if(user_id>0){
+                $('#alertbox-7,#alertbox-8').show();
+                $('.close-a').click(function(){
+                    $('#alertbox-7,#alertbox-8').hide();
+                })
+                $.http.get('/?user&q=get_share_ajax&alias=jiaxi&methodname=getmylist', {}, function(ret){
+                    if (ret.code == 0){
+                        var len = ret.data.length;
+                        var html=''
+                        for(var i=0; i<len; i++){
+                            html += '<p><span>'+ret.data[i].name+'</span><span>'+ret.data[i].nub +'</span><span>'+ret.data[i].account+'</span><span>'+ret.data[i].reward+'</span></p>';
+                        }
+                        $('#marqueebox7').html(html);
+                        $('.accic5').text(ret.total);$('.accic6').text(ret.level)
+
+                    }else {
+                        alert(ret.msg)
+                    }
+                }, 'json')
+            }else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+
+        });
+
+
+        //518之前的显示
+        var nowTime=parseInt($('#gravitation').attr('now'))
+        if(nowTime>1495036800){
+            $('.festivalact-e').show()
+        }else {
+            $('.festivalact-f').show()
+        }
+
+
+    })
+
+
+    $(function(){
+
+        var $this = $(".renav");
+
+        var scrollTimer;
+
+        $this.hover(function(){
+
+            clearInterval(scrollTimer);
+
+        },function(){
+
+            scrollTimer = setInterval(function(){
+
+                scrollNews($(".renav"));
+                scrollNews($(".renav2"));
+                scrollNews($(".renav3"));
+                scrollNews($(".renav4")); scrollNews($(".renav5"));scrollNews($(".renav6"));
+
+            }, 2000 );
+
+        }).trigger("mouseout");
+
+    });
+
+    function scrollNews(obj){
+
+        var $self = obj.find("ul:first");
+
+        var lineHeight = $self.find("p:first").height();
+
+        $self.animate({ "margin-top" : -lineHeight +"px" },800 , function(){
+
+            $self.css({"margin-top":"0px"}).find("p:first").appendTo($self);
+
+        })
+
+    }
+</script>
+{/literal}

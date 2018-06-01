@@ -1,0 +1,16 @@
+{include file="users_main_header.html"}
+<div class="conbox t20 fn_cle user_cont">
+{include file="users_menu.html"}
+{if $_U.query_class=="recharge"}
+{include file="users_account_recharge.html"}
+{elseif  $_U.query_class=="cash"}
+{include file="users_account_cash_new.html"}
+{elseif $_U.query_type=='new' && $_U.query_class=="bank"}
+{include file="users_account_bank_new.html"}
+{elseif $_U.query_type=='list' && $_U.query_class=="bank"}
+{include file="users_account_bank_list.html"}
+{elseif $_U.query_class=='interface'}
+{include file="users_account_interface.html"}
+{/if}
+</div>
+{include file="users_footer.html"}

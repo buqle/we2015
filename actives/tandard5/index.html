@@ -1,0 +1,273 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/tandard5/css/style.css?v=2016222" rel="stylesheet" type="text/css" />
+<div class="sure-text sure-text1">
+    <p id="hb_pp1">活动时间：2016年12月1日—12月31日</p>
+</div>
+<div class="sure-text2 sure-text">
+
+</div>
+<div class="standardking1">
+    <h4></h4>
+    <div class="standards1">
+        <p>每个标的满标复审后，系统将在所有投资该标的用户中随机抽取一位用户获得【投标小达人】称号，并获得<span>一个月爱奇艺黄金会员</span>奖励！</p>
+
+    </div>
+
+</div>
+
+
+<div class="standardking2 clearg">
+    <div class="stankibox">
+        <h4>实时投标小达人</h4>
+        <p class="onr_tit"><span>投标人</span><span>投标信息</span><span>投资金额(元)</span><span>投标时间</span></p>
+        <div style="height: 205px;overflow: hidden;">
+            <div id="marqueebox1">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="new_bg3"></div>
+
+    <div class="stankibox"  style="float: right;" id="stankiboxid">
+        <h4>我的记录</h4>
+        <p class="onr_tit"><span>标的名称</span><span>投资金额(元)</span><span>获得奖励</span><span>投标时间</span></p>
+
+
+        <div style="height: 205px;overflow: hidden;display: none;" id="new_hous">
+            <div id="marqueebox">
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+<div class="btncontcont clearg">
+    <div class="stankiboxbtn logo_sb" id="stankiboxbtn1" style="float: left;">我要做投标小达人</div>
+    <div id="stankiboxbtn2" style="float: right">登入即可查看</div>
+</div>
+
+<div class="vip_qtcon">
+    <h4></h4>
+    <div class="vip_qtconc clearg">
+        <dl>
+            <dt><img src="{$tpldir}/actives/tandard5/images/c1.png"></dt>
+            <dd>
+                <p>院线新片</p>
+                送你新鲜热乎的院线影片
+            </dd>
+        </dl>
+        <dl>
+            <dt><img src="{$tpldir}/actives/tandard5/images/c2.png"></dt>
+            <dd>
+                <p>VIP会员片库</p>
+                全球海量片库随便看
+            </dd>
+        </dl>
+        <dl>
+            <dt><img src="{$tpldir}/actives/tandard5/images/c3.png"></dt>
+            <dd>
+                <p>跳过广告</p>
+                省时无广告精彩立现
+            </dd>
+        </dl>
+        <dl style="margin-right: 0">
+            <dt><img src="{$tpldir}/actives/tandard5/images/c4.png"></dt>
+            <dd>
+                <p>超清高速</p>
+                专属高速通道超清不卡顿
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="standardking3">
+    <h4></h4>
+    <div class="standardking3c">
+        <p>1、每个标的只抽取一名幸运用户获得爱奇艺黄金会员资格，投资奖励将在满标复审后1个工作日内发放；</p>
+        <p>2、获得爱奇艺会员奖励的用户，因工信部最新规定，平台将会以短信的形式为您发送奖励激活码；</p>
+        <p>3、如果您的手机号尚未注册爱奇艺会员，您注册成为爱奇艺用户后输入激活码即可获得领取日起一个月黄金会员资格；如果您的手机号已经注册为爱奇艺会员，您所输入的激活码将自动为您续期一个月会员资格。</p>
+    </div>
+</div>
+
+<div class="standardking4">
+    <h4><strong>爱</strong>奇艺会员卡激活流程</h4>
+    <div class="standardking4c">
+        <ul class="clearg">
+            <li><p>登录/注册爱奇艺</p></li>
+            <li><p>输入激活码</p></li>
+            <li><p>输入验证码</p></li>
+            <li><p>激活成功</p></li>
+            <li style="width: 179px;"><p>开启VIP会员之旅</p></li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="jiujiu_foot">
+    <p>免责申明</p>
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意刷奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <div class="endjiujiu"></div>
+</div>
+
+
+
+{literal}
+<script language="javascript">
+    $(function(){
+        var date = new Date().getTime()/1000;
+        if(date<1483200000){
+            $('.sure-text1').show()
+
+        }else {
+            $('.sure-text2').show()
+        }
+        var oFixed = $("#gravitation")
+        $(window).on('scroll',function(){
+            var sTop = $(window).scrollTop()
+            if(sTop>642){
+                oFixed.css({
+                    'position':'fixed',
+                    'top':0
+                })
+            }else{
+                oFixed.css({
+                    'position':'absolute',
+                    'top':642
+                })
+            }
+        })
+
+
+        $('.logo_sb').click(function(){
+            if (user_id>0) {
+                window.location.href="/invest/index.html";
+            } else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        });
+
+        $(".close_put").click(function(){
+            $(".lucky_bg").hide();
+            $('.login_myjlcont').hide();
+        });
+
+        if (user_id>0){
+            $('#stankiboxbtn2').text('已登入');
+        }
+
+        if (user_id>0) {
+            $.http.get('/?user&q=set_red&type=get_tandard_user', {}, function(ret){
+                if (ret.code == '0'){
+                    $("#new_hous").show();
+                    var html = '';
+                    var len = ret.list.length;
+                    //var a=0;
+                    for(var i=0; i<len; i++){
+                        html += '<p><span>'+ret.list[i].name+'</span><span>'+ret.list[i].all_money+'</span><span>'+ret.list[i].reward+'</span><span>'+ret.list[i].addtime+'</span></p>';
+                        //a +=Number(ret.data[i].reward)
+                    }
+
+                    $('#marqueebox').html(html);
+
+
+                }
+            }, 'json')
+        }
+
+
+        $("#stankiboxbtn2").click(function(){
+            if(user_id>0){
+                $('#stankiboxbtn2').text('已登入');
+                $("#new_hous").show();
+            }
+            else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+
+        });
+
+
+        $.getJSON('/?user&q=set_red&type=get_tandard_top',{},function(ret){
+            if(ret.code == 0){
+                /*var surelen = ret.top.length;
+                 var sure = '';*/
+                var surelen2 = ret.top.length;
+                var sure2 = '';
+                /* for(var i = 0; i < surelen; i++){
+                 sure += '<p><span>'+ret.top[i].username+'</span><span>'+ret.top[i].name+'</span><span>'+ret.top[i].all_money+'</span><span>'+ret.top[i].addtime+'</span></p>';
+                 }*/
+                for(var i = 0; i < surelen2; i++){
+                    sure2 += '<p><span>'+ret.top[i].username+'</span><span>'+ret.top[i].name+'</span><span>'+ret.top[i].all_money+'</span><span>'+ret.top[i].addtime+'</span></p>';
+                }
+                //$('#marqueebox').html(sure);
+                $('#marqueebox1').html(sure2);
+                $('#dbigcks1').text(ret.topnub );
+                $('#dbigcks2').text(ret.tendernub);
+            }else{
+                alert(ret.msg);
+            }
+        })
+
+
+
+    })
+    function startmarquee(lh,speed,delay,domID) {
+        var p=false;
+        var t;
+        var o=document.getElementById(domID);
+        // o.innerHTML=o.innerHTML;
+        o.style.marginTop=0;
+        o.onmouseover=function(){p=true;}
+        o.onmouseout=function(){p=false;}
+        function start(){
+            t=setInterval(scrolling,speed);
+            if(!p) o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+        }
+        function scrolling(){
+            if(parseInt(o.style.marginTop)%lh!=0){
+                o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+                if(Math.abs(parseInt(o.style.marginTop))>=o.scrollHeight) o.style.marginTop=0;
+            }else{
+                clearInterval(t);
+                setTimeout(start,delay);
+            }
+        }
+        setTimeout(start,delay);
+    }
+    startmarquee(44,10,800,'marqueebox');
+    startmarquee(44,10,800,'marqueebox1');
+
+    function getdays(time) {
+        var date = new Date();
+        date.setTime(time * 1000);
+        Y = date.getFullYear() + '/';
+        M = (date.getMonth() + 1 < 10 ? (date.getMonth() + 1) : date.getMonth() + 1) + '/';
+        D = date.getDate()+'   ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = (date.getSeconds() + 1 < 10 ? '0' + (date.getSeconds() + 1) : date.getSeconds() + 1);
+        time = M + D;
+        return time;
+    }
+
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?114bdc026b9ff4de87a6efb268dbea76";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+{/literal}

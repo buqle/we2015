@@ -1,0 +1,9 @@
+{if $smarty.request.credit_type=='attestation'}
+
+{include file='users_credit_attestation_log.html'}
+
+{else}
+
+{include file='users_credit_borrow_log.html'}
+
+{/if}

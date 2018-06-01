@@ -1,0 +1,45 @@
+
+<div class="form_box w600" id="Payment_ing">
+     <form action="/?user&m=users/paypwd" method="post" id="paypassword_form" autoComplete="off">
+		<div class="item clearbo">
+		  <label class="uf_label"><span class="user_warning_c" >*</span>原支付密码：</label>
+		  <input type="password" class="u_input"  name="oldpassword" id="oldpassword" tabindex="1" />
+		</div>
+		 {articles module="users" function = "get_base_info" user_id=$_G.user_id var="login_var"}
+		<div class="clearbo">
+        <span class="user_warning_c">  
+        {if $login_var.paypassword==0}第一次设置原支付密码为您的登录密码<!--<a href="javascript:void(0);" class="a_link" id="set_password">点击马上设置</a>-->
+        {else}
+    		{if $login_var.paypassword==1}请输入原支付密码。{/if}
+       {/if}
+        </span>
+        </div>
+		 {/articles}
+		<div class="item clearbo" id="tesrty">
+		  <label class="uf_label"><span class="user_warning_c">*</span>新支付密码：</label>
+		  <input type="password" class="u_input" name="newpassword"  id="newpassword" tabindex="2">
+		</div>
+
+		 <div class="u_pw_strength">
+			 <div class="pw_bar"></div>
+			 <div class="pw_letter">
+				 <span class="tsl" data-phase-id="r_1_8">弱</span>
+				 <span class="tsl" data-phase-id="r_1_9">中</span>
+				 <span class="tsl" data-phase-id="r_1_10">强</span>
+			 </div>
+		 </div>
+		<div class="item clearbo">
+		  <label class="uf_label"><span class="user_warning_c">*</span>确认交易密码：</label>
+		  <input type="password" class="u_input" name="newpassword1"  id="newpassword1" tabindex="3">
+		</div>
+		<div class="item">
+		  <input type="submit" class="u_sub" value="确认提交">
+           
+		</div>
+        <div>
+        <label class="uf_label">&nbsp;</label>
+        <span class="user_warning_c" id="error"></span>         
+        </div>
+	 </form>
+     </div>
+{literal}<script>diyou.use('users_safe',function(u){u.update_paypassword('paypassword_form');})</script>{/literal}

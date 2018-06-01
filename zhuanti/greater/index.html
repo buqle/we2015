@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=0.5,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta charset="utf-8">
+    <title>开通第三方联合托管账户</title>
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="{$tpldir}/zhuanti/greater/css/jquery.fullPage.css">
+    <link rel="stylesheet" href="{$tpldir}/zhuanti/greater/css/style.css?v=2017721">
+    <script src="{$tpldir}/zhuanti/greater/js/jquery-1.8.3.min.js"></script>
+    <script src="{$tpldir}/zhuanti/greater/js/jquery.fullPage.min.js"></script>
+    <script>
+        $(function(){
+            if($.browser.msie && $.browser.version < 10){
+                $('body').addClass('ltie10');
+            }
+            $('#dowebok').fullpage({
+                sectionsColor: ['#fff', '#ebebed', '#45b3c2', '#9bce81'],
+                anchors: ['page1', 'page2', 'page3', 'page4'],
+                menu: '#menu',
+                afterSlideLoad:function(anchorLink, index,slideIndex, direction){
+                    //改变导航栏
+                    $('#curr_mu').attr('src', '{$tpldir}/zhuanti/greater/images/v_'+slideIndex+'.gif')
+                }
+
+            });
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+<ul id="menu">
+    <li data-menuanchor="page1" class="active"><a href="#page1"></a></li>
+    <li data-menuanchor="page2"><a href="#page2"></a></li>
+    <li data-menuanchor="page3"><a href="#page3"></a></li>
+    <li data-menuanchor="page4"><a href="#page4"></a></li>
+</ul>
+<div class="back_homet"><a href="/">返回首页</a> </div>
+<div id="dowebok">
+    <div class="section" id="therwise1">
+        <div class="bg"><img src="{$tpldir}/zhuanti/greater/images/b1ss.jpg?v=2017803" alt=""></div>
+        <div class="therwisr1">
+            <img src="{$tpldir}/zhuanti/greater/images/1.gif" alt="">
+        </div>
+        <div class="therwisr2sd">
+            <img src="{$tpldir}/zhuanti/greater/images/v_0.gif" alt="" id="curr_mu">
+        </div>
+        <div class="slide" id="slidec1">
+            <div class="therwisr2">
+                <p>注册或登录融和贷平台，点击页面上的立即开通按钮</p>
+                <div class="therwisr2c">
+                    <img src="//img.ronghedai.com{$tpldir}/images/newimg/shyh-a.png?v=201780333" alt="" class="imgaa">
+                    <div class="fretful2">
+                        <p>开通上海银行存管账户</p>
+                        <p>享受更高级别的安全保障，体验更加流畅的在线投资</p>
+                    </div>
+                    <div class="fretful1"><a href="javascript:void(0)"  class="logo_sb">立即开通存管账户</a> </div>
+                    <div class="fretful3"></div>
+                </div>
+            </div>
+        </div>
+            <div class="slide">
+                <div class="therwisr2">
+                    <p>按照提示正确填写全部信息，点击下一步</p>
+                    <div class="therwisr2c">
+                        <div class="fretful4"><img src="{$tpldir}/zhuanti/greater/images/2cs.jpg?v=2017803" alt="" style="padding-top: 2%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="therwisr2">
+                    <div class="therwisr2c">
+                        <div class="fretful4"><img src="{$tpldir}/zhuanti/greater/images/3c.jpg" alt="" width="100%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="therwisr2">
+                    <p>帐号信息在账户总览中可查，一键充值，放心理财</p>
+                    <div class="therwisr2c">
+                        <div class="fretful4"><img src="{$tpldir}/zhuanti/greater/images/4cs.jpg" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+
+    </div>
+    <div class="section" id="therwise2">
+        <div class="thery2">
+            <img src="{$tpldir}/zhuanti/greater/images/2exs.png?v=2017803" alt="">
+        </div>
+        <a href="javascript:void(0)"  class="logo_sb">立即开通</a>
+    </div>
+    <div class="section">
+        <div class="thery2">
+            <img src="{$tpldir}/zhuanti/greater/images/3exs.png" alt="">
+            <div class="overt"><a href="javascript:void(0)"  class="logo_sb" style="left:44%">立即开通</a></div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="thery2">
+            <img src="{$tpldir}/zhuanti/greater/images/4exs2.png?v=2017724" alt="">
+        </div>
+        <p style="position: absolute;left: 60%;bottom: 10%;font-size: 15px;">更多银行存管问题解答请查看<a href="/helpcenter/index.html" target="_blank" style="color: #c7000b;border-bottom: 1px solid #c7000b;">帮助中心</a></p>
+        <div class="overt"><a href="javascript:void(0)"  class="logo_sb" style="left:44%">立即开通</a></div>
+    </div>
+</div>
+
+<script>
+    var user_id = '{$_G.user_id}';
+    var  trust = '{$_G.trust_user.approve_result.reg_trust}';//是否注册托管
+    {literal}
+
+    $(".logo_sb").each(function(){
+        $(this).click(function(){
+            if(trust!=1){
+                window.location.href="/?user&q=reg&type=phone";
+                return;
+            }else {
+                window.location.href="/?user";
+            }
+        });
+    });
+</script>
+{/literal}
+</body>
+</html>

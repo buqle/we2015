@@ -1,0 +1,52 @@
+﻿<div class="invest_list">
+	<ul class="debt_assign">
+		{list module='borrow' function='change_get_list' status_nid='now_yes' keywords=$smarty.request.keywords account_status=$smarty.request.account_status borrow_type=$smarty.request.borrow_type borrow_interestrate=$smarty.request.borrow_interestrate var="loop" order=$smarty.request.order epage=8 page=$smarty.request.page+1 }
+		{foreach from=$loop.list item="item"}
+			<li>
+				<h3 class="invest_tit">
+                  <img src="{$tpldir}/images/loantype/{$item.borrow_type}.gif" /> 
+                  <a href="/invest/a{$item.borrow_nid}.html" title="{$item.borrow_name}">{$item.borrow_name}</a>
+				</h3>
+				<div class="mt10">
+					<div class="in_left">
+						<table class="invest_tab" border="0">
+							<tr>
+								<td>
+                                  债权人：{$item.change_username}
+								</td>
+								<td class="middle">转让期数/总期数： {$item.change_period|default:0}期/{$item.borrow_period}期</td>
+								<td>借款利率：{$item.borrow_apr}%</td>
+							</tr>
+							<tr>
+								<td>
+                                  债务人：{$item.borrow_username}
+								</td>
+								<td class="middle">待收本金/利息：<span class="yellow">￥{$item.recover_account_capital_wait}/￥{$item.recover_account_interest_wait}</span></td>
+								<td>转让价格：<span class="yellow">￥{$item.change_account}</span></td>
+							</tr>
+						</table>
+					</div>
+					<div class="in_right">
+						{if $item.change_status==1}
+						<a href="javascript:;" class="default btn">转让成功</a>
+						{else}
+						<a href="javascript:;" class="debt_buy default btn yes" data-id="{$item.tender_id}" data-borrow-nid="{$item.borrow_nid}" >购买债权</a>{/if}
+						<p> 最后还款时间：{$item.repay_last_time|date_format:"Y-m-d"}</p>
+					</div>
+				</div>
+			</li>
+		  {/foreach}
+			{if $loop.total>0}
+				 <div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+				 {else}
+				 <div class="no_tender" >很抱歉，没有可转让的债权</div>
+				 {/if}
+		  {/list}
+	</ul>
+</div>
+{literal}
+<script language="text/javascript">
+diyou.use('tender',function(t){t.pages();});
+diyou.use('users_change',function(c){c.change_buy();});
+</script>
+{/literal}

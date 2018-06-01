@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clear1{zoom:1;}
+
+.clear1:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+h1,h2,h3,h4,h5,h6{
+    font-weight:bold;}
+body {
+    font-family: "Microsoft YaHei","tahoma","arial","sans-serif";
+    font-size: 18px;background: #fff;
+}
+a{text-decoration: none;cursor: pointer;}
+.original_side1{background: url(../images/b1s.png) no-repeat center;width: 100%
+;overflow:hidden;height: 531px;}
+#dowebok{}
+#dowebok,.section,.fp-tableCell{height: 920px!important;width: 1000px;margin: 0 auto;}
+.original_side2{width: 994px;margin: 64px auto 0 auto;background: url(../images/bf1.png) no-repeat right;height: 290px;}
+    .bz_bg1{background: url(../images/1.png) no-repeat left top;margin-top: 24px;}
+    .bz_bg1 p{padding: 10px 40px;font-size: 30px;color:#fff;background: #299bcd;margin-left: 106px;display: inline-block;width: 550px;}
+    .answers_use{width: 714px;font-size: 18px;color: #444;line-height: 32px;margin-top: 36px;}
+    .answers_use a{color: #299bcd;border-bottom: 1px solid #0ba299;}
+    .answers_use2{width: 690px;margin: 32px  auto 46px auto;background:#e1e3e5;text-align: center;padding: 10px 0 16px 0;}
+    .answers_use2 .picch{background: url(../images/bg1.png) no-repeat center;height: 342px;}
+    #answers_use0{background: url(../images/p0.png) no-repeat center;}
+    #answers_use3{background: url(../images/p1.png) no-repeat center;}
+    #answers_use4{background: url(../images/p2803.png) no-repeat center;}
+.original_side3{width: 990px;margin: 0 auto 64px auto;background: url(../images/bfs2.png) no-repeat left;height: 382px;}
+    .original_side3c{padding-left: 332px;padding-top: 48px;}
+    #bz_bg2{background: url(../images/2.png) no-repeat left 20px;height: 100px;}
+        #bz_bg2 p{width: 516px;text-align: left;padding:10px 24px}
+
+.slideBox{ width:1000px!important;overflow:hidden; position:relative;  margin: 0 auto; }
+.slideBox img{vertical-align: bottom;}
+.slideBox .hd{ overflow:hidden;margin-bottom: 26px; }
+#slideBox2{margin-top: 46px;}
+#slideBox2 .hd{ width: 492px;margin: 0 auto;}
+.slideBox .hd ul{ overflow:hidden; zoom:1;text-align: center}
+.slideBox .hd ul li{ cursor:pointer;display: none; }
+.slideBox .hd ul li.on{color:#fff;display: block; }
+.slideBox .bd{ position:relative; height:100%; z-index:0;   }
+.slideBox .bd li{ zoom:1; vertical-align:middle; }
+.slideBox .prev,
+.slideBox .next{ position:absolute; left:3%; top:40%; margin-top:-25px; display:block;}
+.slideBox .next{ left:auto; right:3%;  background:url(../images/robol.gif) no-repeat;width: 53px;height: 174px;}
+.slideBox .prev{ background:url(../images/robor.gif) no-repeat;width: 53px;height: 174px;}
+.slideBox .prev:hover,
+.slideBox .next:hover{ filter:alpha(opacity=100);opacity:1;  }
+.slideBox .prevStop{ display:none;  }
+.slideBox .nextStop{ display:none;  }
+.answers_use2 p{font-size: 24px;color:#444;/* padding-top: 16px; */padding-bottom: 10px;}
+.original_side4{ background:url(../images/bf4.png) no-repeat left bottom;width: 992px;margin: 0 auto;height: 356px;}
+    .original_side4c{padding-left: 386px;}
+    .original_side4c #bz_bg4{background:url(../images/3.png) no-repeat left center;}
+    .original_side4c #bz_bg4 p{width: 410px;padding: 12px 40px;margin-top: 0;}
+.original_side5{ background:url(../images/bf5.png) no-repeat right bottom;height:324px;width: 978px;margin:0px auto 30px auto;}
+    .original_side5 #bz_bg5{background:url(../images/4.png) no-repeat ;height: 59px;}
+.original_side5  #bz_bg5 p{width: 724px;padding: 6px 0px 6px 0px;text-align: center;}
+     #bz_bg6{background:url(../images/5.png) no-repeat ;height: 59px;width: 222px;}
+.original_side5  #bz_bg6 p{width: 222px;}
+
+        .original_sides1 .original_si1{padding-left: 396px;}
+
+
+    .original_sides3{background:url(../images/bf7.png) no-repeat left;width: 906px;margin: 0 auto 120px auto;height: 354px;}
+    #bz_bgn7{background:url(../images/5.png) no-repeat left;}

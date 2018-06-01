@@ -1,0 +1,307 @@
+{articles module="borrow"  function="get_roam_one" borrow_nid=$smarty.request.article_id var="roam_var"}
+<input type="hidden" name="account_min" id="account_min" value="{$roam_var.account_min}" />
+<div class="conbox mt20">
+    <div class="tender_detai">
+       <div class="tender_detai_tit"> 
+	     <h2><img src="{$tpldir}/images/loantype/{$var.borrow_type}.gif" /> {$var.name}
+         {if $var.award_status!=0}{if $var.award_status==1}<i class="tender_reword">{$var.award_account|default:'0.00'}元</i>{else}<span class="the_num" style="float:none;display:inline-block"><em class="award">{$var.award_scale}%</em></span>{/if}{/if}
+         {if $var.borrow_password!=""}<img src="{$tpldir}/images/lock.gif" />{/if}</h2>
+	     <span>借款编号：{$var.borrow_nid}</span>
+	  </div>
+
+        	  <div class="tender_detai_cont">
+		  <div class="tender_detai_lf">
+			<ul>
+			  <li>
+			    <span class="basic_label">借款金额</span>
+			    <span class="basic_value"><em class="yellow">{$var.account|default:'0.00'}</em></span>
+			    <span class="basic_label">年利率</span>
+			    <span class="basic_value"><em>{$var.borrow_apr}</em>%</span>
+			  </li>
+			  <li>
+			    <span class="basic_label">回购期限</span>
+			    <span class="basic_value"><em>{$var.borrow_period_name}</em></span>
+			    <span class="basic_label">还款方式</span>
+			    <span class="basic_value">{$var.style_title}</span>
+			  </li>
+			  <li>
+			    <span class="basic_label">最小流转</span>
+			    <span class="basic_value">{$roam_var.account_min}元</span>
+                <span class="basic_label">已流转</span>
+			    <span class="basic_value">{$roam_var.portion_yes}</span>
+                
+			  </li>
+			  			  <li>
+			    <span class="basic_label">担保机构</span>
+			    <span class="basic_value">{$roam_var.voucher}</span>
+			    <span class="basic_label">反担保方式</span>
+			    <span class="basic_value">{$roam_var.vouch_style}</span>
+			  </li>
+			</ul>
+		  </div>
+		  <div class="tender_detai_rig">
+			   <div class="item">可投份<span class="avail_money">{$roam_var.portion_wait}</span>份</div>
+		       <div class="item">
+			   {if $_G.user_id!=""}
+               账户余额<span class="account_balance">{$_G.account_result.balance}<em></em></span>元		
+				   <a href="/?user&m=account/recharge/new" target="_blank" class="recharge f_c2">去充值</a>
+				 {else}账户余额<a href="javascript:void(0);" class="bule" id="tender_login" target="_blank">登录</a> 后可见{/if}</div>
+			   <form action="" name="" method="post" id="tender_form">
+				   <div class="item" id="add_Nums">
+                   	<span class="decrease" id="decrease">-</span><input type="text" data-nid="{$var.borrow_nid}" name="account" id="roam_account" value="1份" class="nums"/><span class="increase" id="increase" data-nid="{$roam_var.portion_wait}" >+</span>
+				   </div>
+				   <div class="item">
+				   	<span class="f_s16">{$var.borrow_period}</span>个月  预计收益(含奖励)：<span class="f_s16" id="tender_all" >0.00</span>元</span>
+				   </div>
+				   <div class="item">
+                   {if $roam_var.recover_yes==$roam_var.portion_total}
+					  <input type="button" disabled='true' class="tender_sub2" value="已&nbsp;回&nbsp;购" />
+				   {elseif $roam_var.portion_yes==$roam_var.portion_total}
+					  <input type="button" disabled='true' class="tender_sub2" value="回&nbsp;购&nbsp;中" />
+				   {else}
+					  <input type="button" id="roam_tender" class="tender_sub2" value="认&nbsp;&nbsp;&nbsp;&nbsp;购" />
+				   {/if}
+                   </div>
+			   </form>
+		  </div>
+		  <div class="cle"></div>
+     </div>	 
+    </div>
+</div>
+
+  <div class="conbox mt40">
+    <div class="tender_main">
+	  <div class="tender_main_tit" id="tender_main_tit">
+	    <dl>
+		 <dd class="hover"><a href="javascript:void(0)">基本信息</a></dd>
+		 <dd><a href="javascript:void(0)">交易记录</a></dd>
+		 <dd><a href="javascript:void(0)">流转历史记录</a></dd>
+        </dl>
+	  </div>
+	   <div class="tender_main_cont">
+	      <div class="basic_infor j_tender_cont">
+	      <div class="personal_infor fn_cle">
+           
+					<div class="tend_left ver_top">  
+			  <div>
+		         <div class="per_infor_detai">
+                  <h3>认证信息</h3>
+			   <ul>
+				 <li>
+				    <span class="basic_label">性别</span>
+					<span class="basic_value">{if $var.user_info.realname_status==1}{if $var.user_info.sex==1}男<img src="{$tpldir}/images/tend_pic1.png" alt="男" />{else}女<img src="{$tpldir}/images/tend_pic2.png" alt="女" />{/if}{else}{$var.user_info.rsex|linkages:"rating_sex"|default:"未填"}{/if}</span>
+					<span class="basic_label">月收入</span>
+					<span class="basic_value">{$var.user_info.income|linkages:"rating_income"|default:"未填"}</span>
+				 </li>
+				 <li>
+				    <span class="basic_label">出生日期</span>
+				    <span class="basic_value">
+					{if $var.user_info.realname_status==1}
+					   <script>
+					   var card_id="{$var.user_info.card_id}";
+					   document.write(card_id.substring(6,10)+"年"+card_id.substring(10,12)+"月"+card_id.substring(12,14)+"日");
+					   </script>
+					{else}
+						{$var.user_info.birthday|date_format:"Y-m-d"|default:"未填"}
+					{/if}
+					</span>
+				    <span class="basic_label">是否结婚</span>
+					<span class="basic_value">{$var.user_info.marry|linkages:"rating_marry"|default:"未填"}</span>
+				 </li>
+				 <li>
+				   <span class="basic_label">工作城市</span>
+					<span class="basic_value">{$var.user_info.work_city|areas:'p,c'|default:'未填'}</span>
+					<span class="basic_label">学历</span>
+					<span class="basic_value">{if $var.user_info.degree!=''}{$var.user_info.degree|default:"未填"}{else}{$var.user_info.edu|linkages:"rating_education"|default:"未填"}{/if}</span>
+				 </li>
+				 <li>
+				  
+					<span class="basic_label">工作年限</span>
+					<span class="basic_value">{$var.user_info.work_year|linkages:"rating_workyear"|default:"未填"}</span>
+                    <span class="basic_label">公司性质</span>
+					<span class="basic_value">{$var.user_info.company_type|linkages:"rating_company_type"|default:"未填"} </span>
+				 </li>
+				 <li>
+				   
+					<span class="basic_label">有无购房</span>
+					<span class="basic_value">{if $var.user_info.is_car==1}有{elseif $var.user_info.is_car==0}无{else}未填写{/if}</span>
+                     <span class="basic_label">公司规模</span>
+					<span class="basic_value">{$var.user_info.company_size|linkages:"rating_company_size"|default:"未填"}</span>
+				 </li>
+				 <li>
+				  
+					<span class="basic_label">有无购车</span>
+					<span class="basic_value">{if $var.user_info.is_car==1}有{elseif $var.user_info.is_car==0}无{else}未填写{/if}</span>
+                    <span class="basic_label">岗位职位</span>
+					<span class="basic_value">{$var.user_info.company_position|linkages:"rating_position"|default:"未填"}</span>
+				 </li>          
+			   </ul> 
+			 </div>
+                  <div class="cle"></div>
+                  <div class="mt30">
+                        <h3>借款方商业概念</h3>
+                       <div class="tend_con">{$roam_var.borrow_contents}</div>
+                  </div>
+                   <div class="mt30">
+                        <h3>借款方资产情况</h3>
+                       <div class="tend_con">{$roam_var.borrow_account}</div>
+                  </div>
+                 <div class="mt30">
+                        <h3>借款方资金用途</h3>
+                       <div class="tend_con">{$roam_var.borrow_account_use}</div>
+                  </div>
+                   <div class="mt30">
+                        <h3>风险控制措施</h3>
+                       <div class="tend_con">{$roam_var.risk}</div>
+                  </div>
+                  <div class="mt30">
+                        <h3>项目材料</h3>
+						<div class="image_text">
+                           {if $roam_var.upfiles_pic!=""} 
+						   <ul>
+                               {foreach from=$roam_var.upfiles_pic item="_item" key=key}
+							   <li><a href="{$_item.fileurl}" class="fancybox" data-fancybox-group="gallery"><img src="{$_item.fileurl}" /></a></li>
+							   {/foreach}
+                           </ul>
+						   {/if}
+                       </div>
+                  </div>
+              </div>
+			  </div>
+			
+			<div class="tend_right ver_top">
+            <div>
+				<h3>认证信息</h3>
+				<div class="borrow_infor">
+					 <div class="borrow_infor_tit_lf">
+						<a href="javascript:void(0);" title="{$var.username}"><img src="{$var.avatar_url|avatar}" alt=""/></a>
+				     </div>
+					 <div class="borrow_infor_tit_rig">
+						<p class="user_name">{$var.username}</p>
+					    <ul class="user_name_ul">
+                            <li class="sm {if $var.user_info.realname_status==1}yes{/if}">实名</li>
+                            {articles module="users" function="get_user_info" var="evar" user_id=$var.user_id}
+                            <li class="tel {if $var.user_info.email_status==1}yes{/if}">手机</li>
+                            <li class="mail {if $var.user_info.phone!=""}yes{/if}">邮箱</li>
+                            {/articles}
+					    </ul>
+					</div>	
+				 <div class="cle"></div>
+                 {articles module="borrow" function="get_count_user_repay_count" var="repay_var" user_id=$var.user_id}
+			    <ul class="mt10">
+				   <li><span>发布借款：{$var.borrow_times|default:"0"}笔</span><span>成功借款：{$repay_var.borrow_success_num|default:0}笔</span></li>
+				  <li><span>还清笔数：{$repay_var.repay_yes_times|default:0}笔</span><span>逾期笔数：{$repay_var.repay_late_no_num|default:0}笔</span></li>
+				  <li><span>严重逾期：{$repay_var.repay_late_no_num|default:0}次</span><span>逾期金额：￥{$repay_var.repay_late_no_account|default:"0"}</span></li>
+				  <li><span>总借入：￥{$repay_var.borrow_success_account|default:'0.00'|default:"0"}</span><span>待还：￥{$repay_var.repay_wait_account|default:'0.00'}</span></li>
+				</ul>
+                {/articles}
+			 </div>
+            <div class="mt10">
+                <h3>审核记录</h3>
+                <table class="sh_tab" border="0">
+                  {loop module="attestations"  function="get_borrow_list" var="bvar" user_id=$var.user_id}
+                    <tr>
+                        <td>{$bvar.type_name}</td>
+                        <td>{$bvar.verify_time|date_format:"Y-m-d"}</td>
+                         <td><span class="rz no"></span></td>
+                    </tr>
+                  {/loop}
+                </table>
+				<p class="mt10">{$_G.system.con_webname}将以客观公正的原则，最大程度的核实用户的真实信息，确保用户的信息真实可靠，让投资人100%安全。</p>
+            </div>
+		</div>
+			</div>
+		 </div>
+
+		 </div>
+        <div class="trad_rec j_tender_cont fn_cle">
+		    <div class="trad_rec_lf">
+		    <dl>
+			  <dt><span class="txt_lf">投标人</span><span>投标金额</span><span>投标时间</span></dt>
+			  {loop module="borrow" function="get_tender_list" limit="all" var="vat" borrow_nid=$smarty.request.article_id order='tender_addtime'}
+			  <dd><span class="txt_lf">{$vat.username|truncate:2}**</span><span>{$vat.account|default:'0.00'}<em>元</em></span><span> {$vat.addtime|date_format:"Y-m-d H:i"}</span></dd>
+			 {/loop}
+			</dl>
+			</div>
+			<div class="trad_rec_rig">
+			   <div class="trad_rig_item">
+			     <h4>投资总额：</h4>
+				 <p>{$var.borrow_account_yes|default:'0.00'}<span>元</span></p>
+			   </div>
+			   <div class="trad_rig_item">
+			     <h4>加入人次：</h4>
+				 <p>{$var.tender_times}<span>人次</span></p>
+			   </div> 
+			</div>
+		 </div> 
+		<div class="trad_rec j_tender_cont">
+			   <div class="roam_rec">
+				   <div class="roam_rec_cont">
+					  <table class="lz_trad_rec" border="0" cellspacing="0" cellpadding="0">
+						  <thead>
+							 <tr>
+								 <th>项目</th>
+								 <th>最近一个月</th>
+								 <th>最近半年</th>
+								 <th>最近一年</th>
+								 <th>历史合计</th>
+							 </tr>
+						  </thead>
+						  {articles module="borrow" function="get_user_roam_count" user_id=$var.user_id var="cvar"}
+						  <tbody>
+							 <tr>
+								 <td>成功流转：</td>
+								 <td>￥{$cvar.month.success_account|default:'0.00'}</td>
+								 <td>￥{$cvar.half.success_account|default:'0.00'}</td>
+								 <td>￥{$cvar.year.success_account|default:'0.00'}</td>
+								 <td>￥{$cvar.all.success_account|default:'0.00'}</td>
+							 </tr>
+							 <tr>
+								 <td>成功回购：</td>
+								 <td>￥{$cvar.month.recover_account|default:'0.00'}</td>
+								 <td>￥{$cvar.half.recover_account|default:'0.00'}</td>
+								 <td>￥{$cvar.year.recover_account|default:'0.00'}</td>
+								 <td>￥{$cvar.all.recover_account|default:'0.00'}</td>
+							 </tr>
+							 <tr>
+								 <td>逾期违约：</td>
+								 <td>￥{$cvar.month.late_account|default:'0.00'}</td>
+								 <td>￥{$cvar.half.late_account|default:'0.00'}</td>
+								 <td>￥{$cvar.year.late_account|default:'0.00'}</td>
+								 <td>￥{$cvar.all.late_account|default:'0.00'}</td>
+							 </tr>
+							 <tr>
+								 <td>累计利息成本：</td>
+								 <td>￥{$cvar.month.success_interest|default:'0.00'}</td>
+								 <td>￥{$cvar.half.success_interest|default:'0.00'}</td>
+								 <td>￥{$cvar.year.success_interest|default:'0.00'}</td>
+								 <td>￥{$cvar.all.success_interest|default:'0.00'}</td>
+							 </tr>
+							 <tr>
+								 <td>逾期还款率：</td>
+								 <td>{$cvar.month.late_apr}%</td>
+								 <td>{$cvar.half.late_apr}%</td>
+								 <td>{$cvar.year.late_apr}%</td>
+								 <td>{$cvar.all.late_apr}%</td>
+							 </tr>
+						  </tbody>
+						  {/articles}
+						</table>
+				   </div>  
+			   </div>
+		</div>
+       
+		 
+	  </div>
+   </div>
+</div>
+{/articles} 
+<script type="text/javascript">
+var article = '{$var.id}';
+var borrow_user = '{$var.user_id}';
+var borrow_nid = '{$var.borrow_nid}';
+{literal}
+diyou.use('tender',function(t){t.comment_form('com_form');t.comment_list(article);t.add_nums('increase','decrease','roam_account','account_min','tender_all');t.roam_tender('roam_tender');t.borrow_content()});
+diyou.use('borrow',function(b){b.borrow_tabchange();b.fancy_box();b.panduan();});
+</script>
+{/literal}

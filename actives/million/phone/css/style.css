@@ -1,0 +1,385 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", sans-serif;;
+    line-height: 1.5;
+    font-size: 16px;
+    color: #000;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+    /*margin-bottom:1rem;*/
+    background:#FAD65B;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+}
+
+button {
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+}
+
+a {
+    -webkit-touch-callout: none;
+    text-decoration: none;
+}
+
+:focus {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+em, i {
+    font-style: normal;
+}
+.all-img{ width: 100%; height: 100%;}
+.section1{
+    height:7rem;
+    text-align:center;
+    position:relative;
+}
+.lidai{
+    position: absolute;
+    width: 8rem;
+    height: 6.5rem;
+    top: 4.6rem;
+    left: 50%;
+    margin-left: -4rem;
+    z-index:1;
+}
+.section2{
+    text-align: center;
+    /*position: relative;*/
+    padding-top:3.9rem;
+}
+.aa{
+    width:14.8rem;
+    margin:0 auto;
+    z-index:0;
+    box-shadow: 0px 2px 2px;
+    background:#F7571F;
+    padding: 0.5rem 0rem;
+}
+.jlbz{width:13.8rem;margin:0rem auto;color:#6F3F00;font-size: 0.5rem;background: #fff;}
+#te table,.te_mys{ width: 100%; text-align: center;position:relative;}
+.tatTr{ height: 2rem; line-height: 2rem;overflow:hidden;}
+.tatTd{margin:0 auto;overflow:hidden;}
+.tatTrs{ height: 2rem; line-height: 2rem;overflow:hidden;}
+#te table tr td{ border: 1px solid #B99F65;overflow:hidden;}
+.tatTd1{
+    border-bottom: 1px solid #B99F65;
+    transform: rotate(17deg);
+    -webkit-transform: rotate(17deg);
+    -moz--transform: rotate(17deg);
+    -ms-transform:rotate(17deg);
+    -o-transform:rotate(17deg);
+    position: absolute;
+    top:-0.55rem;
+    width: 10rem;
+    left:0rem;
+    overflow: hidden;
+}
+
+.tatTd2{
+    position: absolute;
+    border-bottom: 1px solid #B99F65;
+    width:13rem;
+    transform: rotate(36deg);
+    -webkit-transform: rotate(36deg);
+    -moz--transform: rotate(36deg);
+    -ms-transform:rotate(36deg);
+    -o-transform:rotate(36deg);
+    top: 1rem;
+    left: -2.05rem;
+}
+
+
+.tatTd3{
+    position: absolute;
+    top: 2.45rem;
+    left:0.1rem;
+}
+
+.cc{
+    width:13rem;
+    margin:0 auto;
+    color:#fff;
+    font-size:0.65rem;
+    padding:1rem 0;
+}
+
+.cc div{
+    width:5rem;
+    background:#FD0408;
+    float:left;
+    padding:0.3rem 0;
+    border-radius:3px;
+}
+.section3{
+    text-align:center;
+    position:relative;
+    padding-top:1rem;
+}
+.ee{
+    background:#F7CD3F;
+}
+.dd{
+    width: 10rem;
+    height: 0.8rem;
+    margin: 0 auto;
+    padding: 0.5rem 0;
+}
+.dd-1{
+    width:8rem;
+    height:0.8rem;
+}
+.ee-1{
+    width:14.8rem;
+    background:#FAE290;
+    padding:0.5rem 0;
+    margin:0 auto;
+}
+.liip_s{width: 13.8rem;margin: 0 auto;position:relative;border:1px solid #6B410E;}
+.heads{ height: 1.5rem;width:13.8rem;border-bottom: 1px solid #6B410E;margin:0 auto;}
+.heads span{ height: 1.5rem;width:25%;color:#6B410E;display: block; text-align: center; line-height: 1.5rem; font-size: 0.6rem; float: left; overflow: hidden;}
+.lun-slilld p{ height: 1.2rem;border-top:1px solid #6B410E;}
+.lun-slilld p span{height: 1.2rem;width:25%;color:#6B410E;display: block; text-align: center; line-height: 1.2rem; font-size: 0.6rem; float: left; overflow: hidden;}
+.lun-slilld{ width:13.8rem;height: 6rem;margin:0 auto; position: relative;animation: myfirst 6s;-moz-animation: myfirst 6s;-webkit-animation: myfirst 6s;-o-animation: myfirst 6s;animation-iteration-count:1000;}
+@keyframes myfirst
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+@-webkit-keyframes myfirst /* Safari 和 Chrome */
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+.section4{
+
+}
+.rr{
+    background:#555555;
+    padding:1rem 0;
+}
+.mon_on{text-align:left;width:11.5rem; margin: 0 auto;padding:0.5rem;border:1px dashed #fff;}
+.mon_on p{ font-size: 0.6rem; color:#fff; line-height: 1rem;}
+
+/*****tanchuang*******/
+.tanchuang{
+    width:100%;
+    height:100%;
+    position: fixed;
+    top: 0;left: 0;
+    background:#000;
+    opacity:0.6;
+    z-index:1;
+}
+.tc-box{
+    background:#F7571F;
+    width:14.8rem;
+    height:10.5rem;
+    position: fixed;
+    top:50%;left:50%;
+    z-index:2;
+    margin-left:-7.4rem;
+    margin-top:-4.725rem;
+    text-align:center;
+}
+.tc-box-01{
+    background:#fff;
+}
+.wwj{
+    width:13.5rem;
+    margin:0 auto;
+}
+.imjl{
+    width:8rem;
+    margin:0 auto;
+    padding:0.1rem 0;
+}
+.wdjl{
+    background:#fff;
+    width:13.8rem;
+    margin:0 auto;
+    color:#6B410E;
+}
+.wdjl22{
+    width:13.5rem;
+    margin:0 auto;
+}
+.wdjl p{
+    width:100%;
+    height:2rem;
+    line-height:2rem;
+    border-bottom:1px solid #6B410E;
+}
+.wdjl p span{
+    display: block;
+    float: left;
+    overflow:hidden;
+    border-right:1px solid #6B410E;
+}
+.jilku{
+    width:13.5rem;
+}
+.xx{
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    right: 0.5rem;
+    top: 0.2rem;
+    z-index:3;
+}
+
+.tt{
+    width: 100%;
+    height: 1.5rem;
+    background: #F3F3F3;
+}
+.tt-txt{
+    font-size: 0.75rem;
+    width: 12rem;
+    margin: 0 auto;
+    padding-top: 2rem;
+    padding-bottom:2rem;
+    text-align: center;
+}
+
+.yy{
+    width:8rem;
+    margin: 0 auto;
+}
+.yy div{
+    width: 3rem;
+    text-align: center;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 0.65rem;
+}
+.yes,.yess{
+    background: #35A1FB;
+}
+.no{
+    background:#FF8D2D;
+}
+.right{
+    float:right;
+}
+.left{
+    float:left;
+}

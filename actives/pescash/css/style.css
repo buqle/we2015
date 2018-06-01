@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clear {
+    clear: both;
+}
+img {
+    border: 0 none;
+}
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+body {
+    font-family:"Microsoft YaHei";
+    font-size: 18px; 
+}
+
+
+.clear{zoom:1;}
+
+.clear:after {
+    content: "";
+    display: block;
+    clear: both;}
+	
+.pcash_cont1{width: 100%;overflow: hidden;background: url("../images/b1.png") no-repeat center;height: 556px;}
+
+
+
+.pcash_cont2{width: 100%;  overflow: hidden;background: #fff8d8;padding-bottom: 64px;}
+    .pcash_cont2 .chassis_side1{text-align: center;margin-top: 84px;margin-bottom: 150px;}
+    .pcash_cont2 .chassis_side1 h1{background: url("../images/wg_04.gif") no-repeat center;height: 78px;margin-bottom: 24px;}
+    .pcash_cont2 .chassis_side1 p{text-align: center;font-size: 24px;color:#666;}
+    .pcash_cont2 .chassis_side1 h2{background: url("../images/dj_bag.png") no-repeat center;margin-top: 52px;height: 413px;}
+    .pcash_cont2 .chassis_side1 a{background: url("../images/lq_btn.gif") no-repeat center;height:84px;margin-top: 72px;display: block;}
+		
+	.pcash_cont2 .chassis_side2{width: 1020px;margin: 0 auto;color:#666;background: #fff;padding: 70px 0;}
+        .pcash_cont2 .chassis_side2 h4{font-size: 30px;height: 40px;line-height: 40px;}
+        .pcash_cont2 .chassis_side2 h4 span,.pcash_cont2 .chassis_side2 p{font-size: 24px;font-weight: normal;}
+        .pcash_cont2 .chassis_side2 p{height: 44px;line-height: 44px;padding-left: 152px;}
+        .chassis_side2 .chassis_side2_c{margin-left: 66px;}
+
+.jiujiu_foot{width: 100%;text-align: center;padding:80px 0 120px 0;;background: #d5331c;}
+.jiujiu_foot p{color: #f7dc7b;font-size: 20px;line-height: 40px;}
+.jiujiu_foot .endjiujiu{background:url("../images/ma_16.gif")  no-repeat center;height: 155px;}

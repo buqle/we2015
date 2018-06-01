@@ -1,0 +1,382 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/lantern/css/style.css?v=2016927" rel="stylesheet" type="text/css" />
+
+<div class="lantern-a ww1">
+    <div class="lantern-a1 ww3 text-center">
+        <img src="{$tpldir}/actives/lantern/images/ma.png" width="200" height="100">
+    </div>
+</div>
+<div class="lantern-b ww1">
+    <div class="lantern-b1 ww3">
+        <p class="lantern-b2 font20">活动期间内，每位用户单笔投资每满一万元（仅限3月标及以上）即可获得猜灯谜机会！机会就在下方，要您元宵财（才）气过人！</p>
+        <dl class="lantern-b3 clearg font16 text-center">
+            <dd>
+                <h4>
+                    单笔投资每满一万元<br>可得<i class="bold font18">4</i>次机会
+                </h4>
+                <p>12个月项目</p>
+            </dd>
+            <dd>
+                <h4>
+                    单笔投资每满一万元<br>可得<i class="bold font18">2</i>次机会
+                </h4>
+                <p>6个月项目</p>
+            </dd>
+            <dd>
+                <h4>
+                    单笔投资每满一万元<br>可得<i class="bold font18">1</i>次机会
+                </h4>
+                <p>3个月项目</p>
+            </dd>
+        </dl>
+        <p class="lantern-b3s">举个例子：小明单笔投资6月标125000元，将获得12×2=24次机会。</p>
+        <div class="lantern-b4 clearg font18 color-ff text-center">
+            <span class="login-btn cursor">投资即享</span>
+            <span class="login-btn cursor">投资即享</span>
+            <span class="login-btn cursor">投资即享</span>
+        </div>
+    </div>
+    <div class="lantern-c"></div>
+</div>
+
+<div class="ww1 bodyyy">
+    <div class="class-d">
+        <div class="lantern-d text-center font24 show-me">您目前还有<i class="color-ff">0</i>次机会！</div>
+    </div>
+
+    <div class="lantern-e ww3 text-center font16">
+        <ul class="clearg  alldata">
+            <li  date-index="1">
+                <p>隔别半载到南蛮<br>（打一字)</p>
+                <img src="{$tpldir}/actives/lantern/images/i1.png">
+                <h4>元宵&middot;团圆卡</h4>
+            </li>
+            <li  date-index="2">
+                <p>爱上一日终为友<br>（打一字)</p>
+                <img src="{$tpldir}/actives/lantern/images/i2.png">
+                <h4>元宵&middot;团圆卡</h4>
+            </li>
+            <li  date-index="3">
+                <p>商鞅取信具匠心<br>（打一字)</p>
+                <img src="{$tpldir}/actives/lantern/images/i3.png">
+                <h4>元宵&middot;团圆卡</h4>
+            </li>
+            <li  date-index="8">
+                <p>三分天下晋终承<br>（打一字)</p>
+                <img src="{$tpldir}/actives/lantern/images/i4.png">
+                <h4>元宵&middot;团圆卡</h4>
+            </li>
+            <li id="on_indexspcon" class="cursor"></li>
+            <li  date-index="4">
+                <p>枝头眉月小轩窗 <br>（打一字)</p>
+                <img src="{$tpldir}/actives/lantern/images/i5.png">
+                <h4>元宵&middot;团圆卡</h4>
+            </li>
+            <li  date-index="7">
+                <p>东风一起斜雁腾 <br>（打一字)</p>
+                <img src="{$tpldir}/actives/lantern/images/i6.png">
+                <h4>元宵&middot;团圆卡</h4>
+            </li>
+            <li  date-index="6">
+                <p>村树清秀盛花前 <br>（打一字)</p>
+                <img src="{$tpldir}/actives/lantern/images/i7.png">
+                <h4>元宵&middot;团圆卡</h4>
+            </li>
+            <li  date-index="5">
+                <p>涧内日出水清清<br>（打一字)</p>
+                <img src="{$tpldir}/actives/lantern/images/i8.png">
+                <h4>元宵&middot;团圆卡</h4>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="lantern-f ww1">
+        <div class="lantern-f1 ww3">
+            <div class="lantern-f2 clearg">
+                <div class="lefts text-center">
+                    <h4 class="bold">实时榜单</h4>
+                    <div class="leftsc1 color-ff">
+                        <p class="tit-lan clearg"><span style="width: 30%;">用户名</span><span style="width: 33%;">获得奖品</span><span style="width: 33%">获得时间</span></p>
+                        <div style="height: 215px;overflow: hidden;">
+                            <div id="marqueebox">
+                                <p class="clearg"><span style="width: 30%;">用户名</span><span style="width: 33%;">获得奖品</span><span style="width: 33%">获得时间</span></p>
+                                <p class="clearg"><span style="width: 30%;">用户名</span><span style="width: 33%;">获得奖品</span><span style="width: 33%">获得时间</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lefts text-center" id="lefts">
+                    <h4 class="bold">我的记录</h4>
+                    <div class="leftsc1 color-ff">
+                        <p class="tit-lan clearg"><span>获得奖品</span><span>获得时间</span></p>
+
+                        <div class="login-btn2 font18 color-ff text-center cursor show-me" id="my-at1">我的记录</div>
+                        <div style="height: 215px;overflow: hidden;" class="show-me"  id="my-at2">
+                            <div id="marqueebox1">
+                                <p class="clearg"><span>用户名</span><span>68元现金</span></p>
+                                <p class="clearg"><span>用户名</span><span>68元现金</span></p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="login-btn2 font24 text-center login-btn color-ff cursor" style="margin-top: 30px;" >立即投资</div>
+        </div>
+    </div>
+
+</div>
+<div class="lantern-g ww1 font24 color-ff">
+    <h4></h4>
+    <p>1、活动期间内，每位用户单笔投资每满一万元（仅限3月标及以上）即可获得猜灯谜机会！3月标单笔投资每满一万元可获得一次机会，6月标单笔投资每满一万可获得两次机会，12月标单笔投资每满一万可获得四次机会；</p>
+    <p>2、本活动奖金借款项目满标复审成功且满标时间在活动期间内，奖金资格有效；</p>
+    <p>3、本活动所得奖励，将在活动结束后，3个工作日内直充用户汇付账户，可投资、可提现。</p>
+</div>
+
+
+<div class="jiujiu_foot">
+    <p>免责申明</p>
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意刷奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <div class="endjiujiu"></div>
+</div>
+
+<!--我的记录-->
+<div class="alertbox-A" id="alertbox-a"></div>
+<div class="alertbox-B"id="alertbox-b">
+    <div class="alertbox-C text-center" id="alertbox-D">
+        <div class="alertcont-a font22">
+            谜  底
+            <div class="alertcont-a1 text-center bold">融</div>
+            <p class="alertcont-a2 font22">家融、心和、业兴、人美！<br>—为祝福加财气—</p>
+            <p class="alertcont-a3 font24 ww3">恭喜您获得25元现金奖励！</p>
+        </div>
+        <p class="cursor text-center ww3 pos-b alertcont-a4 bold">确定</p>
+
+    </div>
+</div>
+
+
+
+
+{literal}
+<script language="javascript">
+    $(function(){
+        setTimeout(function(){
+            $('.lantern-a1 img').animate({
+                width:'300px',
+                height:'200px'
+            },900,function(){
+                $(this).animate({
+                    width:'400px',
+                    height:'400px'
+                },900)
+            })
+        },500)
+
+
+        $('.login-btn').each(function(){
+            $(this).click(function(){
+                if (user_id>0) {
+                    window.location.href="/invest/index.html";
+                } else {
+                    diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                    return false;
+                }
+            });
+        })
+        if(user_id>0){
+            $('#my-at2').show()
+        }else {
+            $('#my-at1').show();
+        }
+        $('#my-at1').click(function(){
+            if (user_id>0) {
+                $(this).hide();
+                $('#my-at2').show();
+            } else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        });
+
+        //chou
+        if(user_id>0){
+            $('.lantern-d').show();
+            $('.lantern-d').html('您目前还有<i class="color-ff">0</i>次机会！');
+            //meiyou
+            /*$('.lantern-d').html('您目前无抽奖机会哦！<a class="color-ff font14" href="/invest/index.html">投资赚取抽奖机会>></a>');*/
+        }
+        function acc(pz){
+            var pz = pz;
+            var liIndex = new Array(),
+                    liAll = $('.alldata li[date-index]'),
+                    currIndex = 1;
+            liAll.each(function () {
+                liIndex[parseInt($(this).attr('date-index'))] = $(this);
+            });
+            var liLen = liIndex.length;
+
+            var aa = 0;
+            var times = setInterval(function () {
+                liAll.each(function () {
+                    $(this).removeClass('active');
+                });
+                liIndex[currIndex].addClass('active');
+                // console.log(currIndex+'aa');
+                currIndex++;
+                if(aa == 2 && currIndex == pz+1){
+                    clearInterval(times);
+                }
+                if (currIndex >=liLen ){
+                    currIndex = 1;
+                    aa ++;
+
+                }
+            },100)
+        }
+
+
+
+        //gonggong
+        /*$.http.get('/?user&q=get_share_ajax&alias=estival10&methodname=get_tops', {}, function(ret){
+            if (ret.code == 0){
+                var surelen = ret.data.length;
+                var surer = '';
+                for(var i = 0; i < surelen; i++){
+                    surer+='<p class="clearg"><span>'+ret.data[i].username+'</span><span>'+ret.data[i].account+'</span><span>'+ret.data[i].borrow_period+'</span><span>'+ret.data[i].addtime2+'</span></p>';
+                }
+                $('#marqueebox').html(surer);
+
+
+            }
+        }, 'json');*/
+
+        //我的记录
+        $('.newy-d .rights').click(function(){
+            if (user_id>0) {
+                $('#alertbox-b,#alertbox-a').show();
+                $('.close-a').click(function(){
+                   $('#alertbox-b,#alertbox-a').hide()
+                })
+                $.http.get('/?user&q=get_share_ajax&alias=estival10&methodname=get_myreward', {}, function(ret){
+                    if (ret.code == 0){
+                       $('.numx1').text(ret.data[3].check);
+                        $('.numx2').text(ret.data[3].tender);
+                        $('.numx3').text(ret.data[3].reward);
+                        $('.numx4').text(ret.data[6].check);
+                        $('.numx5').text(ret.data[6].tender);
+                        $('.numx6').text(ret.data[6].reward);
+                        $('.numx7').text(ret.data[12].check);
+                        $('.numx8').text(ret.data[12].tender);
+                        $('.numx9').text(ret.data[12].reward);
+                        $('.numx10').text(ret.data.total);
+                    }
+                }, 'json');
+            } else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        })
+
+        $('.chtibox-btn .chtibox-b').click(function(){
+            var _this=$(this);
+            if(user_id>0){
+               if($('.lefts-c').hasClass('text-center22')||$('.lefts-c.text-centers').find('i').text()==0){
+                   $('#alertbox-AS,#alertbox-c').show();
+                   $('.close-a').click(function(){
+                       $('#alertbox-AS,#alertbox-c').hide()
+                   })
+               }else {
+                   if(_this.hasClass("curr")){
+                       return false;
+                   }
+                   _this.addClass("curr")
+                   $.http.get('/?user&q=get_share_ajax&alias=actchristmas&methodname=open_chest', {}, function(ret){
+                       if (ret.code == 0){
+                           var $panel =$('.chtibox-b');
+                           box_left = ($('.chtibox-b').width() -  $('.chtibox-b').width()) /1;
+                           $panel.css({'left': box_left,'position':'absolute'});
+                           for(var i=1; 4>=i; i++){
+                               $panel.animate({left:box_left-(i)},60);
+                               $panel.animate({left:box_left+(i)},60,function(){
+                                   $panel.animate({'left':$(this).position().left-130,top:"220px"},150);
+
+                               });
+                           }
+                           var num =28;
+                           for (var i = 0; i < num; i++) {
+                               $('<i class="hha"><img src="/dyweb/dythemes/rhd/actives/estival/images/c'+(i+1)+'.png"></i>').insertBefore('.chtibox-c');
+                               $('<i class="hha"><img src="/dyweb/dythemes/rhd/actives/estival/images/c'+(i+1)+'.png"></i>').insertBefore('.chtibox-c');
+                               $('<i class="hha"><img src="/dyweb/dythemes/rhd/actives/estival/images/c'+(i+1)+'.png"></i>').insertBefore('.chtibox-c');
+
+                           };
+                           $('.hha').fadeIn(10);
+                           $('.hha').each(function(){
+                               $(this).animate({left:Math.random()*226,top:Math.random()*-100+'px'},1500+(Math.random()*500), function(){
+                                   if($(this).position().left>110){
+                                       $(this).css({'z-index':'10'}).animate({'left':$(this).position().left+110,top:"170px"},1200)
+                                   }else {
+                                       $(this).css({'z-index':'10'}).animate({'left':$(this).position().left-110,top:"170px"},1200)
+                                   }
+                               });
+                           });
+                          setTimeout(function(){
+                              $('#alertbox-ASs,#alertbox-cs').show();
+                              $('.close-a,#alertbox-cs span').click(function(){
+                                  $('#alertbox-ASs,#alertbox-cs').hide();
+                                  _this.removeClass("curr");
+                                  $('.chtibox-b').removeClass('chtibox-bs').css({'top':'0','left':'43px'});
+                              });
+                              getCheas();
+                              $('#alertbox-cs h4').find('strong').text(ret.data);
+                              $('.hha').remove()
+                          },2550)
+                       }else {
+                          // jDialog.alert(ret.msg);
+                       }
+                   }, 'json');
+               }
+
+            }else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        })
+
+
+    })
+
+    function startmarquee(lh,speed,delay,domID) {
+        var p=false;
+        var t;
+        var o=document.getElementById(domID);
+        // o.innerHTML=o.innerHTML;
+        o.style.marginTop=0;
+        o.onmouseover=function(){p=true;}
+        o.onmouseout=function(){p=false;}
+        function start(){
+            t=setInterval(scrolling,speed);
+            if(!p) o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+        }
+        function scrolling(){
+            if(parseInt(o.style.marginTop)%lh!=0){
+                o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+                if(Math.abs(parseInt(o.style.marginTop))>=o.scrollHeight) o.style.marginTop=0;
+            }else{
+                clearInterval(t);
+                setTimeout(start,delay);
+            }
+        }
+        setTimeout(start,delay);
+    }
+    startmarquee(50,10,800,'marqueebox');
+
+
+</script>
+{/literal}

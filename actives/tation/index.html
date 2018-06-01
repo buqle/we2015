@@ -1,0 +1,137 @@
+{include file="header.html"}
+<link rel="stylesheet" type="text/css" href="{$tpldir}/actives/tation/css/style.css?v=2017803" />
+<link rel="stylesheet" type="text/css" href="{$tpldir}/actives/tation/css/jquery.fullPage.css" />
+<script src="{$tpldir}/zhuanti/differing/js/jquery-1.8.3.min.js"></script>
+<script src="{$tpldir}/zhuanti/differing/js/jquery.fullPage.min.js"></script>
+<script src="{$tpldir}/zhuanti/newuser/js/jquery.SuperSlide.2.1.1.js"></script>
+
+
+<ul id="menu">
+	<li data-menuanchor="page1" class="active"><a href="#page1"></a></li>
+	<li data-menuanchor="page2"><a href="#page2"></a></li>
+	<li data-menuanchor="page3"><a href="#page3"></a></li>
+	<li data-menuanchor="page4"><a href="#page4"></a></li>
+	<li data-menuanchor="page5"><a href="#page5"></a></li>
+</ul>
+
+<div id="dowebok">
+	<div class="section" id="ssc1">
+		<div class="synchrony1">
+			<img src="//img.ronghedai.com{$tpldir}/actives/tation/images/c1.jpg" alt="">
+		</div>
+
+		<div class="second_co1">
+			<div class="cc_tit1"></div>
+			<h4>www.ronghedai.com</h4>
+		</div>
+
+	</div>
+
+	<div class="section  section2" id="ssc2">
+		<div class="synchrony1">
+			<img src="//img.ronghedai.com{$tpldir}/actives/tation/images/b2.jpg" alt="">
+		</div>
+		<div class="second_co2">
+			<div class="second_co2s">
+				<p style="padding-top: 42px;margin-bottom: 6px;">单个小额优质标的，通过预约的形式，实现单个用户完成</p>
+				<p>的1对1（P2P）投资模式的互联网金融产品。</p>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="section" id="ssc3">
+		<div class="synchrony1">
+			<img src="//img.ronghedai.com{$tpldir}/actives/tation/images/b3.jpg" alt="">
+		</div>
+		<div  class="second_co3">
+			<div class="second_co3s">
+				<p style="padding-top: 76px;">1、积极顺应国家监管政策要求以及行业发展趋势；</p>
+				<p>2、提升用户资产升值过程，无需繁琐拆分投资金额；</p>
+				<p>3、个人专属预约，资金不站岗，投资有方向；</p>
+				<p>4、定向安全可控，全程1对1服务。</p>
+			</div>
+		</div>
+
+
+	</div>
+
+	<div  class="section">
+		<div class="synchrony1">
+			<img src="//img.ronghedai.com{$tpldir}/actives/tation/images/b4.jpg" alt="">
+		</div>
+		<div class="second_co4">
+			<div class="second_co4s">
+				<div class="second_tit clearg"><i></i><span></span><i></i></div>
+				<div id="slideBox" class="slideBox">
+					<div class="hd">
+						<ul>
+							<li> <img src="//img.ronghedai.com{$tpldir}/actives/tation/images/bg7.png" alt=""></li>
+							<li> <img src="//img.ronghedai.com{$tpldir}/actives/tation/images/bg8.png" alt=""></li>
+							<li> <img src="//img.ronghedai.com{$tpldir}/actives/tation/images/bg9.png" alt=""></li>
+							<li> <img src="//img.ronghedai.com{$tpldir}/actives/tation/images/bg10.png" alt=""></li>
+							<li> <img src="//img.ronghedai.com{$tpldir}/actives/tation/images/bg11.png" alt=""></li>
+						</ul>
+					</div>
+					<div class="bd">
+						<ul>
+							<li class="answers_use1"></li>
+							<li  class="answers_use2"></li>
+							<li  class="answers_use3"></li>
+							<li  class="answers_use4">
+								<p style="padding-top: 90px;">恭喜您预约成功！</p>
+								<p>您预约的定向标为：定向标001；预约金额为：200000元；标的时长为：6个月</p>
+								<p>开标时间为：2016年9月20日9时</p>
+								<p>我们将在开标前30分钟提醒您即将开标。</p>
+							</li>
+							<li  class="answers_use5">
+								<div class="anuer5_bg"></div>
+							</li>
+						</ul>
+					</div>
+
+					<a class="prev" href="javascript:void(0)"></a>
+					<a class="next" href="javascript:void(0)"></a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="synchrony1">
+			<img src="//img.ronghedai.com{$tpldir}/actives/tation/images/b5.jpg" alt="">
+		</div>
+		<div  class="second_co5">
+			<p style="padding-top: 80px;margin-bottom: 6px;">根据借款人的意愿及需求而推出的一款互联网金融产品，</p>
+			<p>旨在为理财客户提供投资收益增值服务。</p>
+		</div>
+		<div  class="second_co5s">
+
+		</div>
+
+	</div>
+
+</div>
+
+{literal}
+
+<script>
+	$(function(){
+		if($.browser.msie && $.browser.version < 10){
+			$('body').addClass('ltie10');
+		}
+		$('#dowebok').fullpage({
+			anchors: ['page1', 'page2', 'page3', 'page4', 'page5'],
+			menu: '#menu'
+
+
+		});
+	});
+
+</script>
+<script type="text/javascript">
+	jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:false});
+</script>
+{/literal}
+

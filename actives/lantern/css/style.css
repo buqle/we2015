@@ -1,0 +1,105 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clearg{zoom:1;}
+.clearg:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+body {
+    font-family:"微软雅黑";
+    font-size: 18px;
+}
+.bodyyy{background:url("../images/b.png") repeat-x top #9c0802;}
+.ww1{width: 100%;}
+.ww2{width: 1200px;}
+.ww3,.ww2{margin: 0 auto;}
+.lefts{float: left}
+.rights{float: right;}
+.text-center{text-align: center;}
+.text-left{text-align: left;}
+.text-right{text-align: right;}
+.font12{font-size: 12px;}
+.font14{font-size: 14px;}
+.font15{font-size: 15px;}
+.font16{font-size: 16px;}
+.font18{font-size: 18px;}
+.font19{font-size: 19px;}
+.font20{font-size: 20px;}
+.font22{font-size: 22px;}
+.font24{font-size: 24px;}
+.block{display: block;}
+.inline-block{display: inline-block;}
+.cursor{cursor: pointer;}
+.bold{font-weight: bold;}
+h5{font-weight: bold;}
+.color-ff{color: #fff;}
+.pos-a{position: relative;}
+.pos-b{position: absolute;}
+
+
+.lantern-a{background: url("../images/ban.png") no-repeat center;height:831px;position: relative;}
+    .lantern-a1{position: absolute;top: 0px;width: 1098px;left: 50%;margin-left: -549px;}
+.lantern-b{background: url("../images/ban2.png") no-repeat top center #B20A06;height:74px;padding-top: 278px;}
+    .lantern-b1{height: 526px;width: 872px;background: url("../images/ban3.png") no-repeat;top:547px;left: 50%;margin-left: -436px; }
+    .lantern-b2{color: #ef2c16;width: 492px;padding: 144px 190px 10px 186px;line-height: 34px;}
+    .lantern-b3{padding-left: 106px;}
+    .lantern-b3 dd{float: left;margin-left: 18px;background: url("../images/ban4.png") no-repeat;width: 198px;height: 139px;padding-top: 15px;}
+    .lantern-b3 dd h4{color: #ce0000;border: 1px solid #ce0000;line-height: 30px;width: 154px;height: 66px;padding-top: 10px;margin: 0 auto;}
+    .lantern-b3 dd p{border: 1px solid #4a4647;width: 138px;height: 32px;line-height: 32px;margin: 10px auto 0 auto;}
+    .lantern-b3s,.lantern-b3 dd p{color: #4a4647;}
+    .lantern-b3s{font-size: 13px;padding-left: 124px;height: 34px;line-height: 34px;}
+    .lantern-b4{margin-left: 138px;}
+    .lantern-b4 span{float: left;background: url("../images/ban5.png") no-repeat;width: 171px;height: 35px;margin-right: 42px;line-height: 35px;}
+    .lantern-c{background: url("../images/ban6.png") no-repeat center;height: 69px;}
+    .class-d{color: #feb801;margin: 16px 0 20px 0;}
+ .lantern-e{background: url("../images/ban7.png") no-repeat;height: 643px;width: 784px}
+ .lantern-e ul{padding:36px 0 0 48px;}
+ .lantern-e ul li{float: left;background: url("../images/ban8.png") no-repeat;width: 219px;height: 178px;margin: 8px  8px 0 0 ;color: #ca0000;}
+ .lantern-e ul li p{margin:16px 0 6px 0;line-height: 22px;}
+ .lantern-e ul li h4{margin-top: 6px;}
+ .lantern-e ul li.active{background: url("../images/ban9.png");}
+ .lantern-e ul #on_indexspcon{background: url("../images/ban17.png") no-repeat;}
+
+ .lantern-f {background: url("../images/ban10.jpg") no-repeat center ;height: 787px;padding-top: 219px;}
+ .lantern-f1{background: url("../images/ban11.png") no-repeat;width: 1196px;height: 710px;}
+ .lantern-f2{margin-left: 106px;}
+ .lantern-f2 .lefts{margin:96px 62px 0 0;width: 458px;}
+ .lantern-f2 .lefts h4{color: #cc0000;font-size: 36px;background: url("../images/ban12.png") no-repeat center;height: 69px;line-height: 69px;margin-bottom: 32px;}
+.lantern-f2 .lefts p span{float: left;width: 30%;font-size: 25px;}
+.tit-lan{margin-bottom: 8px;}
+.lantern-f2 .leftsc1{background: url("../images/ban13.png") no-repeat;height: 287px;width: 458px;padding-top: 64px;}
+#marqueebox p,#marqueebox1 p{line-height: 53px;height: 53px;}
+#lefts p span{width: 50%;}
+.login-btn2{margin-top: 60px;background: url("../images/ban16.png") no-repeat center;height: 44px;line-height: 44px;}
+.show-me{display: none;}
+.lantern-g{background: url("../images/ban14.png") no-repeat center;height:348px;padding-top: 84px;}
+.lantern-g h4{background: url("../images/ban15.png") no-repeat center;height: 69px;margin-bottom: 40px;}
+.lantern-g p{width: 1078px;line-height: 32px;margin: 0 auto;}
+
+/*弹窗通用*/
+.alertbox-A,.alertbox-B{position: fixed;top:0;right: 0;left: 0;width: 100%;height: 100%;display: none;}
+.alertbox-A{z-index: 9999;background: #000;filter:alpha(opacity:50); opacity:0.5;}
+.alertbox-B{z-index: 10000;}
+.alertbox-C{position: relative;top: 50%;margin-left: auto;margin-right: auto;background: url("../images/ban18.png") no-repeat top;height:334px;margin-top: -184px;width: 432px;padding-top: 34px;}
+.alertcont-a{color: #4a4647;}
+.alertcont-a1{background: url("../images/ban19.png") no-repeat center;height: 76px;font-family:"simsun";font-size: 60px;line-height: 76px;margin: 6px 0 10px 0;}
+.alertcont-a1,.alertcont-a2,.alertcont-a4,.alertcont-a5{color: #580801;}
+.alertcont-a2{margin-bottom: 12px;}
+.alertcont-a3{border: 1px solid #ca0000;border-radius: 3px;width: 334px;height: 50px;line-height: 50px;background: #fff;}
+.alertcont-a4{font-size: 32px;left: 50%;background: url("../images/ban20.png") no-repeat;width: 204px;height: 56px;line-height: 46px;margin-left: -102px;bottom: 0;}
+.alertcont-a5{padding-top: 90px;}
+.alertcont-a5 a{color: #ce0000;margin-top: 40px;display: block;}
+.jiujiu_foot{width: 100%;text-align: center;background: #3c3e40;padding-top: 40px;}
+.jiujiu_foot p{color: #fff;font-size: 24px;line-height: 40px;}
+.jiujiu_foot .endjiujiu{background:url("../images/ma.png")  no-repeat center;height: 172px;margin-top:24px;}

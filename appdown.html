@@ -1,0 +1,66 @@
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style"  />
+	<meta content="telephone=no" name="format-detection" />
+	<link rel="stylesheet" href="{$tpldir}/weixin/css/global.css"/>
+	<link rel="stylesheet" href="{$tpldir}/weixin/css/style.css"/>
+	<meta name="author" content="leigege" />
+	<title>主页</title>
+</head>
+<body>
+<div class="wrap">
+    <div class="title">
+        <h2>中国互联网金融行业领航者</h2>
+        <h1>帝友系统</h1>
+    </div>
+    <dl class="down">  
+		{articles module='app' function='get_newest_one' var='var' type_id=1}	
+        <dd><img class="btn" src="{$tpldir}/weixin/images/btn-ios.png" data="{$var.update_url}" /></dd>
+		{/articles}
+		{articles module='app' function='get_newest_one' var='var' type_id=2}
+        <dd><img class="btn" src="{$tpldir}/weixin/images/btn-and.png" data="{$var.fileurl}" /></dd>
+		{/articles}
+    </dl>
+    <div class="msg"><img src="{$tpldir}/weixin/images/msg.png"></div>
+</div>
+
+<script type="text/javascript" src="{$tpldir}/weixin/js/zepto.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.btn').click(function(){
+            if(isWeiXin()){
+                $('.msg').show();
+                return false;
+            }else{				
+				window.location.href=$(this).attr('data');
+			}
+        })
+        $('.msg').click(function(){
+            $(this).hide();
+            return false;
+        });
+
+        //判断是否是微信浏览器
+        function isWeiXin(){
+            var ua = window.navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+

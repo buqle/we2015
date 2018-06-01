@@ -1,0 +1,411 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", sans-serif;;
+    line-height: 1.5;
+    font-size: 0.6rem;
+    color: #000;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+    /*background:url('../images/10_03.png');*/
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+}
+
+button {
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+}
+
+a {
+    -webkit-touch-callout: none;
+    text-decoration: none;
+}
+
+:focus {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+em, i {
+    font-style: normal;
+}
+.all-img{ width: 100%; height: 100%;}
+.clear{clear:both;}
+
+/********section1********/
+
+.section1{ width:100%;height:auto;position:relative;}
+.tree1{width:100%;height:8.5rem;}
+.tree2{width:100%;height:20rem;position:relative;text-align:center;}
+.tree3{position:absolute;width:100%;left:0;top:0;height:20rem;}
+.tree4{width:100%;height:100%;position:relative;}
+.tree5{width:9rem;height:1.5rem;line-height:1.5rem;background:#437339;color:white;font-size:0.75rem;/*font-weight:bold;*/
+    letter-spacing:0.1rem;margin:0 auto;}
+.tree6{width:9rem;height:1.5rem;line-height:1.5rem;margin:0 auto;font-size:0.6rem;}
+.tree7{width:14rem;height:auto;margin:0 auto;text-align:left;text-indent:1rem;font-size:0.6rem;line-height:1rem;}
+.tree8,.tree9{width:14rem;height:auto;margin:0 auto;color:#BE001C;font-size:0.6rem;}
+.tree8{text-align:left;padding-top:0.3rem;}
+.tree9{text-align:right;padding-right:1rem;padding-bottom:0.3rem;}
+
+/**************section2*****************/
+.section2{width:100%;height:36.05rem;position:relative;text-align:center;}
+.tree10{width:100%;height:38.6rem;position:absolute;left:0;top:-2.55rem;z-index:2;}
+.tree101{  position:absolute;width:16rem;left: 0;top:-1.9rem;z-index: 3;}
+.tree11{width:15rem;height:auto;margin:0 auto;position:relative;top:3rem;z-index:3;}
+
+/************树苗1*************/
+.Tree1{width:1.8rem;height:2.3rem;position:absolute;left:0.2rem;top:-4.2rem;z-index:4;}
+.tree12{width:1.8rem;height:auto;position:absolute;left:0.2rem;top:-4.2rem;z-index:1}
+
+.Tree2{width:2.5rem;height:3.4rem;position:absolute;left:2.5rem;top:-4.45rem;z-index:4;}
+.tree12-1{width:2.5rem;height:auto;position:absolute;left:2.5rem;top:-4.45rem;z-index:1}
+
+.Tree3{width:3.5rem;height:4.5rem;position:absolute;left:6rem;top:-4.25rem;z-index:4;}
+.tree12-2{width:3.5rem;height:auto;position:absolute;left:6rem;top:-4.25rem;z-index:2;}
+
+.Tree4{width:1.8rem;height:2.3rem;position:absolute;right:0.2rem;top:-4.6rem;z-index:4;}
+.trees12{width:1.8rem;height:auto;position:absolute;right:0.2rem;top:-4.6rem;z-index:1}
+
+.Tree5{width:2.5rem;height:3.4rem;position:absolute;right:3rem;top:-4.8rem;z-index:4;}
+.trees12-1{width:2.5rem;height:auto;position:absolute;right:3rem;top:-4.8rem;z-index:1;}
+
+/************树苗2*************/
+.Tree11{width:2.5rem;height:1.8rem;position:absolute;left:0.1rem;top:-3.5rem;z-index:4;}
+.tree120{width:2.5rem;height:auto;position:absolute;left:0.1rem;top:-3.5rem;z-index:1}
+
+.Tree21{width:3.5rem;height:2.7rem;position:absolute;left:2.4rem;top:-3.5rem;z-index:4;}
+.tree120-1{width:3.5rem;height:auto;position:absolute;left:2.4rem;top:-3.5rem;z-index:1}
+
+.Tree31{width:6rem;height:4.7rem;position:absolute;left:5.4rem;top:-3.9rem;z-index:4;}
+.tree120-2{width:6rem;height:auto;position:absolute;left:5.4rem;top:-3.9rem;z-index:2;}
+
+.Tree41{width:3.5rem;height:2.7rem;position:absolute;right:2.4rem;top:-4.3rem;z-index:4;}
+.trees120{width:3.5rem;height:auto;position:absolute;right:2.4rem;top:-4.3rem;z-index:1}
+
+.Tree51{width:2.5rem;height:1.8rem;position:absolute;right:0.1rem;top:-4.1rem;z-index:4;}
+.trees120-1{width:2.5rem;height:auto;position:absolute;right:0.1rem;top:-4.1rem;z-index:1}
+
+/************树苗3*************/
+.Tree12{width:2.5rem;height:2.3rem;position:absolute;left:0.1rem;top:-4rem;z-index:4;}
+.tree121{width:2.5rem;height:auto;position:absolute;left:0.1rem;top:-4rem;z-index:1}
+
+.Tree22{width:3.5rem;height:3.2rem;position:absolute;left:2.5rem;top:-3.9rem;z-index:4;}
+.tree121-1{width:3.5rem;height:auto;position:absolute;left:2.5rem;top:-3.9rem;z-index:1}
+
+.Tree32{width:5rem;height:4.5rem;position:absolute;left:5.5rem;top:-3.9rem;z-index:4;}
+.tree121-2{width:5rem;height:auto;position:absolute;left:5.5rem;top:-3.9rem;z-index:2}
+
+.Tree42{width:3.5rem;height:3.2rem;position:absolute;right:2.5rem;top:-4.7rem;z-index:4;}
+.trees121{width:3.5rem;height:auto;position:absolute;right:2.5rem;top:-4.7rem;z-index:1}
+
+.Tree52{width:2.5rem;height:2.2rem;position:absolute;right:0.1rem;top:-4.4rem;z-index:4;}
+.trees121-1{width:2.5rem;height:auto;position:absolute;right:0.1rem;top:-4.4rem;z-index:1}
+
+/************树苗4*************/
+.Tree13{width:2rem;height:2.3rem;position:absolute;left:0.1rem;top:-4rem;z-index:4;}
+.tree122{width:2rem;height:auto;position:absolute;left:0.1rem;top:-4rem;z-index:1}
+
+.Tree23{width:3rem;height:3.4rem;position:absolute;left:2.5rem;top:-4.15rem;z-index:4;}
+.tree122-1{width:3rem;height:auto;position:absolute;left:2.5rem;top:-4.15rem;z-index:1}
+
+.Tree33{width:4rem;height:4.4rem;position:absolute;left:5.5rem;top:-3.9rem;z-index:4;}
+.tree122-2{width:4rem;height:auto;position:absolute;left:5.5rem;top:-3.9rem;z-index:2}
+
+.Tree43{width:3rem;height:3.3rem;position:absolute;right:2.5rem;top:-4.8rem;z-index:4;}
+.trees122{width:3rem;height:auto;position:absolute;right:2.5rem;top:-4.8rem;z-index:1}
+
+.Tree53{width:2rem;height:2.2rem;position:absolute;right:0.1rem;top:-4.5rem;z-index:4;}
+.trees122-1{width:2rem;height:auto;position:absolute;right:0.1rem;top:-4.5rem;z-index:1}
+
+/************树苗5*************/
+.Tree14{width:2.5rem;height:2.2rem;position:absolute;left:0.1rem;top:-3.8rem;z-index:4;}
+.tree123{width:2.5rem;height:auto;position:absolute;left:0.1rem;top:-3.8rem;z-index:1}
+
+.Tree24{width:3.5rem;height:3rem;position:absolute;left:2.5rem;top:-3.65rem;z-index:4;}
+.tree123-1{width:3.5rem;height:auto;position:absolute;left:2.5rem;top:-3.65rem;z-index:1}
+
+.Tree34{width:5rem;height:4.4rem;position:absolute;left:5.5rem;top:-3.9rem;z-index:4;}
+.tree123-2{width:5rem;height:auto;position:absolute;left:5.5rem;top:-3.9rem;z-index:2}
+
+.Tree44{width:3.5rem;height:2.9rem;position:absolute;right:2.5rem;top:-4.4rem;z-index:4;}
+.trees123{width:3.5rem;height:auto;position:absolute;right:2.5rem;top:-4.4rem;z-index:1}
+
+.Tree54{width:2.5rem;height:2.2rem;position:absolute;right:0.1rem;top:-4.4rem;z-index:4;}
+.trees123-1{width:2.5rem;height:auto;position:absolute;right:0.1rem;top:-4.4rem;z-index:1}
+
+/************树苗6*************/
+.Tree15{width:2.5rem;height:2.2rem;position:absolute;left:0.1rem;top:-3.9rem;z-index:4;}
+.tree124{width:2.5rem;height:auto;position:absolute;left:0.1rem;top:-3.9rem;z-index:1}
+
+.Tree25{width:3.5rem;height:3rem;position:absolute;left:2.5rem;top:-3.65rem;z-index:4;}
+.tree124-1{width:3.5rem;height:auto;position:absolute;left:2.5rem;top:-3.65rem;z-index:1}
+
+.Tree35{width:5rem;height:4.4rem;position:absolute;left:5.5rem;top:-3.9rem;z-index:4;}
+.tree124-2{width:5rem;height:auto;position:absolute;left:5.5rem;top:-3.9rem;z-index:2}
+
+.Tree45{width:3.5rem;height:2.9rem;position:absolute;right:2.5rem;top:-4.4rem;z-index:4;}
+.trees124{width:3.5rem;height:auto;position:absolute;right:2.5rem;top:-4.4rem;z-index:1}
+
+.Tree55{width:2.5rem;height:2.2rem;position:absolute;right:0.1rem;top:-4.4rem;z-index:4;}
+.trees124-1{width:2.5rem;height:auto;position:absolute;right:0.1rem;top:-4.4rem;z-index:1}
+
+/************树苗7*************/
+.tree125{width:2.5rem;height:auto;position:absolute;left:0.1rem;top:-3.9rem;z-index:1}
+.tree125-1{width:3.5rem;height:auto;position:absolute;left:2.5rem;top:-3.65rem;z-index:1}
+.tree125-2{width:5rem;height:auto;position:absolute;left:5.5rem;top:-3.9rem;z-index:2}
+.trees125{width:3.5rem;height:auto;position:absolute;right:2.5rem;top:-4.4rem;z-index:1}
+.trees125-1{width:2.5rem;height:auto;position:absolute;right:0.1rem;top:-4.4rem;z-index:1}
+
+/************树苗8*************/
+.tree126{width:2.5rem;height:auto;position:absolute;left:0.1rem;top:-3.9rem;z-index:1}
+.tree126-1{width:3.5rem;height:auto;position:absolute;left:2.5rem;top:-3.65rem;z-index:1}
+
+.Tree36{width:5rem;height:4.5rem;position:absolute;left:5.5rem;top:-4rem;z-index:4;}
+.tree126-2{width:5rem;height:auto;position:absolute;left:5.5rem;top:-4rem;z-index:2}
+.trees126{width:3.5rem;height:auto;position:absolute;right:2.5rem;top:-4.4rem;z-index:1}
+.trees126-1{width:2.5rem;height:auto;position:absolute;right:0.1rem;top:-4.4rem;z-index:1}
+
+.tree13{width:7rem;height:5.5rem;position:absolute;top:-8.5rem;right:2.5rem;text-align:center;z-index:0;}
+.tree13-2{width:7rem;height:5rem;position:relative;top:0.5rem;display:inline-block;}
+.tree13-1{width:7rem;height:3rem;font-size:0.6rem;position:relative;display:table-cell;text-align:center;vertical-align: middle;}
+.tree13-bot{position:absolute;width:7rem;height:auto;left:0;top:-0.5rem;}
+.treeTalk{width:5rem;display:inline-block;max-height:3rem;position:relative;}
+.treeUp{color:#BE001C;font-size:0.65rem;font-weight:bold;position:relative;}
+.fudong{animation:ghostUpdown 1s infinite alternate; -webkit-animation:ghostUpdown 1s infinite alternate;}
+@keyframes ghostUpdown{
+    from{top:0.5rem;}
+    to{top:0.1rem;}
+}
+@-webkit-keyframes ghostUpdown{
+    from{top:0.5rem;}
+    to{top:0.1rem;}
+}
+
+.tree14{width:15rem;height:auto;margin:0 auto;}
+.tree15{width:14.9rem;height:auto;margin:0.5rem auto;border:0.05rem solid #47892C;text-align:center;background:#fff;}
+.tree15-1{width:14.5rem;height:auto;margin:0.5rem auto;text-align:center;}
+
+.tree15-1 img{width:8rem;height:auto;margin:0 auto;}
+.tree15-1 span{display:block;float:left;overflow:hidden;height:1.2rem;line-height:1.2rem;font-size:0.6rem;}
+.tree15-2{width:14.5rem;height:1.2rem;line-height:1.2rem;overflow:hidden;color:#fff;font-size:0.6rem;}
+
+.tree15-3{width:20%;}
+.tree15-4{width:30%;}
+.tree15-33{width:20%;}
+
+.tree15-3 span,.tree15-4 span{width:99%;}
+.tree-b{background:#F49B9C;}
+.tree-bb{background:#FCDADA;}
+.tree16{width:14.5rem;height:7.8rem;overflow:hidden;position:relative;}
+.tree16-1{width:14.5rem;height:auto;}
+.tree16-2{width:14.5rem;height:1.3rem;line-height:1.3rem;font-size:0.6rem;}
+/*.tree16-2>span{margin-top:0.1rem;}*/
+.jianju{margin-top:0.1rem;}
+
+.tree17{width:10.9rem;height:auto;margin:0 auto;font-size:0.6rem;text-align:left;line-height:1rem;
+    padding-top:0.5rem;padding-bottom:0.5rem;}
+.tree17-1{width:7rem;height:auto;margin:0.5rem auto;}
+.treeL{position:absolute;width:14.9rem;left:0;top:-0.5rem;}
+
+.tree20{width:16rem;height:auto;position:absolute;z-index:3;text-align:center;top:1rem;font-size:0.6rem;}
+.tree20-1{background:#73B559;color:#fff;font-size:0.6rem;border-radius:0.2rem;padding:0 0.2rem ;}
+.tree20-2{padding:0.2rem;width:14.5rem;}
+#text4{color:#BE001C;font-size:0.65rem;font-weight:bold;}
+/*************section3*****************/
+.section3{width:100%;height:auto;text-align:center;background:#4D8337;padding:1.5rem 0;}
+.tree18{width:15rem;height:auto;margin:0 auto;color:#fff;font-size:0.5rem;}
+.tree18-1{width:12.5rem;height:auto;margin:0.5rem auto 0 auto;}
+
+
+/*!********弹窗*********!*/
+.tanchuang{  width:100%;height:100%;position:fixed;top:0;left:0;  background:#000;  opacity:0.6;  z-index:9;}
+
+.box{  width: 14rem;  height: 14rem;  margin-left: -7rem;  margin-top: -7rem;  position:fixed;
+    top:50%;  left:50%;  z-index:10;}
+.tcText{width:13rem;height:auto;position:absolute;right:0;}
+.tcImg{width:11rem;height:auto;position:absolute;left:1rem;top:3rem;}
+.tcK{width:1.2rem;height:1.3rem;position:absolute;right:0;z-index:11;}
+
+.box1{width:15rem;height:11rem;margin-left:-7.5rem;margin-top: -5.5rem;position:fixed;
+    left:50%;top:50%;z-index:10;text-align:center;}
+.tree16-3{width:100%;}
+.close{position:absolute;width:1rem;height:1rem;right:0.5rem;color:#F49B9C;top:0.5rem;font-size:0.8rem;}
+
+
+.baidong{
+    -webkit-animation-duration: 2.5s;
+    animation-duration: 2.5s;
+    -webkit-animation-iteration-count:1000;
+    animation-iteration-count: 1000;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+    -webkit-transform-origin:bottom;
+    -ms-transform-origin:bottom;
+    transform-origin:bottom;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-name: baidong;
+    animation-name: baidong;
+}
+@-webkit-keyframes baidong {
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    25% {
+        -webkit-transform: rotate(-3deg);
+        transform: rotate(-3deg);
+    }
+    50%{
+        -webkit-transform: rotate(3deg);
+        transform: rotate(3deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+@keyframes baidong {
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    25% {
+        -webkit-transform: rotate(-3deg);
+        transform: rotate(-3deg);
+    }
+    50%{
+        -webkit-transform: rotate(3deg);
+        transform: rotate(3deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+
+/***************树缓慢进入的动画*******************/
+#tree1{
+    position:relative;
+    animation: fadeIn 1s;
+    -moz-animation: fadeIn 1s;
+    -webkit-animation: fadeIn 1s;
+    -o-animation: fadeIn 1s;
+    animation-iteration-count:1;
+}
+@-webkit-keyframes fadeIn {
+    0%{
+        opacity: 0;
+        -webkit-opacity:0;
+    }
+
+    50%{
+        opacity: 0.5;
+        -webkit-opacity:0.5;
+    }
+    100% {
+        opacity: 1;
+        -webkit-opacity:1;
+    }
+}
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+        -webkit-opacity:0;
+    }
+
+    50%{
+        opacity: 0.5;
+        -webkit-opacity:0.5;
+    }
+    100% {
+        opacity: 1;
+        -webkit-opacity:1;
+    }
+}

@@ -1,0 +1,350 @@
+<script type="text/javascript" src="{$tpldir}/js/jquery.cityselect.js"></script>
+<div class="april_cash">
+    <div class="april_tit clearbt">
+        <ul class="clearbt top_up">
+            <li class="onredzt"><p class="p1"><em>未使用</em><i>|</i></p></li>
+            <li><p class="p1"><em>已使用</em><i>|</i></p></li>
+            <li><p class="p1"><em>已失效</em><i>|</i></p></li>
+            <li><p class="p1"><em>收货地址</em></p></li>
+        </ul>
+    </div>
+
+    <div class="april_con clearbt">
+        <ul class="clearbt">
+            <li class="onend inin_uus">
+                <div class="april_side2 clearbt">
+                </div>
+                <div class="april_side1">
+                    <h5 style="font-weight: bold;font-size: 18px;color: #ff0000;">代金券红包使用说明：</h5>
+                    <p>1、用户所有融和贷平台投资代金券均在本页面记录及查看；</p>
+                    <p>2、未使用、已使用、已过期的代金券，都可在页面对应分栏中查看；</p>
+                    <p>3、对应代金券来源、有效期（从领取日开始计算）、使用额度、状态均可在代金券上查看；</p>
+                    <p>4、用户单笔投资限用一张代金券，系统默认使用该笔投资可以获得的最大奖励代金券；</p>
+                    <p>5、符合条件的投资，满标复审后，三个工作日内代金券金额将直充用户汇付账户，可投资，可提现；</p>
+                    <p>6、本活动最终解释权归融和贷所有，如有疑问，请致电在线客服：400-182-8687。</p>
+                </div>
+            </li>
+            <div class="april_side3 bing_li">
+                <div class="april_side3c1  clearbt hmtm1_a1">
+
+                </div>
+                <div class="april_side3c1  clearbt hmtm1_a2" id="april_side3c1id"></div>
+                <div class="april_side3c1  clearbt hmtm1_a3" id="april_side3c1id2"></div>
+                <div class="april_side3c1  hmtm1_a4 clearbt" id="april_side3c1id3"></div>
+                <div id="sureyesbtn">点击填写收货地址</div>
+                <div class="april_side3c2">
+                    <h5>非代金券奖励使用说明：</h5>
+                    <p>1、用户所有融和贷平台非投资代金券奖励均在本页面记录及查看；</p>
+                    <p>2、流量、话费使用规则：流量、话费券具体获取规则见券面，奖励将在满标复审后三个工作日内充入您的注册手机号中，具体到账时间以运营商到账时间为准；</p>
+                    <p>3、实物使用规则：用户所得实物奖励，需在本页面点击填写收货地址按钮填写信息，融和贷工作人员将 在活动结束后七个工作日内安排发货；</p>
+                    <p>4、现金券发放规则：奖励将在满标复审后三个工作日内发放到您的汇付账户中，可投资，可提现；</p>
+                    <p>5、本活动最终解释权归融和贷所有，如有疑问，<i style="color: #f4362a">请致电在线客服：400-182-8687或咨询您的专属客服</i>。</p>
+                </div>
+            </div>
+                <div class="large_cashbgs"></div>
+                <div class="large_cashcont1s">
+                    <div class="large_cashcont1sc">
+                        <div class="close_put"></div>
+                        <div class="put_your">
+                            <div style="width: 460px;margin: 0 auto;">
+                                <p>恭喜您抽中<span style="color: #ff7417;">实物</span>大奖</p>
+                                <p>请填写收货信息</p>
+                            </div>
+                            <div class="put_yourcon1">
+                                <p>收货人:</p>
+                                <input type="text" value="" name="" id="shouhuo">
+
+
+
+                                <p>所在地区:</p>
+                                <div id="city">
+                                    <select class="prov"></select>
+                                    <select class="city" disabled="disabled"></select>
+                                    <select class="dist" disabled="disabled"></select>
+                                </div>
+
+
+
+                                <p>详细地址:</p>
+                                <input type="text" value="" name="" id="dizhi">
+                                <p>手机号码:</p>
+                                <input type="text" value="" name="" id="shouji">
+                            </div>
+                            <div class="put_yourcon2 clearbt">
+                                <div id="sureyes" class="btn_jpo">确定</div>
+                                <div id="sureyno" class="btn_jpo" style="float: right">修改</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </ul>
+    </div>
+</div>
+{literal}
+<script>
+    function changeDz(){
+        $.http.get('/?user&q=get_share_ajax&alias=finance&methodname=get_address',{},function(ret){
+            if(ret.code == 1){
+                $('#shouhuo').val(ret.data.name);
+                $('#dizhi').val(ret.data.address);
+                $('#shouji').val(ret.data.phone);
+            }else {
+
+            }
+        },'json');
+    }
+    $("#city").citySelect({
+        nodata:"none",
+        required:false
+    });
+    $(function(){
+        $('.april_tit ul li').each(function(index){
+                    $(this).click(function(){
+                        var ind=index;;
+                        var data;
+                        $(this).addClass('onredzt').siblings().removeClass('onredzt');
+                        $('.april_con ul li').eq(ind).addClass('onend').siblings().removeClass('onend');
+                        switch (ind) {
+                            case 0:
+                                data = 1;
+                                break;
+                            case 1 :
+                                data = 2;
+                                break;
+                            default:
+                                data = 0;
+                        }
+
+                        if(ind == 3){
+                            $('.bing_li').show();
+                            $('.inin_uus').hide();
+                            $.http.get('/?user&q=get_share_ajax&alias=drawreg&methodname=get_myreward',{},function(ret){
+                                if(ret.code=='1'){
+                                    var html1 = '';
+                                    var html2 = '';
+                                    var html3 = '';
+                                    var arry = [];
+                                    for (var i in ret.data){
+                                        arry.push(ret.data[i]);
+
+                                    }
+                                    if(ret.data.status==0){
+                                       if(ret.data.reward=='30M流量'){
+                                           html1 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥100元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                       }else if(ret.data.reward=='5元话费'){
+                                           html1 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥100元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                       }else if(ret.data.reward=='50元话费'){
+                                           html1 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥10000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                       }else if(ret.data.reward=='200元话费'){
+                                           html1 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥50000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                       }
+                                       else if(ret.data.reward=='京东E卡500元'){
+                                           html1 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥100000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                       }else if(ret.data.reward=='小米智能体重秤'){
+                                           html1 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥100000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                       }else if(ret.data.reward=='Kindle阅读器'){
+                                           html1 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥100000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                       }else if(ret.data.reward=='富士拍立得'){
+                                           html1 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥100000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                       }
+
+
+                                    }else if(ret.data.status==1){
+                                        if(ret.data.reward=='30M流量'){
+                                            html2 += '<dl class="drw1_bg"><dt>'+arry[1]+'</dt><dd><p>投资≥100元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                        }else if(ret.data.reward=='5元话费'){
+                                            html2 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥100元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                        }else if(ret.data.reward=='50元话费'){
+                                            html2 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥10000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                        }else if(ret.data.reward=='200元话费'){
+                                            html2 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥50000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                        }else if(ret.data.reward=='京东E卡500元'){
+                                            html2 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥100000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                        }else if(ret.data.reward=='小米智能体重秤'){
+                                            html2 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥100000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                        }else if(ret.data.reward=='Kindle阅读器'){
+                                            html2 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥100000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                        }else if(ret.data.reward=='富士拍立得'){
+                                            html2 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥100000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                        }
+                                    }else if(ret.data.status==2){
+                                        if(ret.data.reward=='30M流量'){
+                                            html3 += '<dl class="drw1_bg"><dt>'+arry[1]+'</dt><dd><p>投资≥100元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                        }else if(ret.data.reward=='5元话费'){
+                                            html3 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥100元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                        }else if(ret.data.reward=='50元话费'){
+                                            html3 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥10000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                        }else if(ret.data.reward=='200元话费'){
+                                            html3 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥50000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                        }else if(ret.data.reward=='京东E卡500元'){
+                                            html3 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥100000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                        }else if(ret.data.reward=='小米智能体重秤'){
+                                            html3 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥100000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                        }else if(ret.data.reward=='Kindle阅读器'){
+                                            html3 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥100000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                        }else if(ret.data.reward=='富士拍立得'){
+                                            html3 += '<dl><dt>'+arry[1]+'</dt><dd><p>投资≥100000元</p><p>投资过期时间为'+arry[0]+'</p></dd></dl>';
+                                        }
+                                    }
+
+
+                                    $('.hmtm1_a1').html(html1);
+                                    if(ret.data.status==0){
+                                        $('.april_side3c1 dl').css("cursor"," pointer");
+                                        $(".april_side3c1 dl").each(function(){
+                                            $(this).click(function(){
+                                                window.location.href="/invest/index.html";
+                                            });
+                                        });
+                                    }
+                                    if($('.hmtm1_a1').html()=='')
+                                    {
+                                        $('.hmtm1_a1').remove();
+                                    }
+                                    $('.hmtm1_a2').html(html2);
+                                    $('.hmtm1_a3').html(html3);
+                                    if($('.hmtm1_a2').html()=='')
+                                    {
+                                        $('.hmtm1_a2').remove();
+                                    }
+                                    if($('.hmtm1_a3').html()=='')
+                                    {
+                                        $('.hmtm1_a3').remove();
+                                    }
+                                }
+                            },'json');
+                            $.http.get('/?user&q=get_share_ajax&alias=estival&methodname=get_myreward',{},function(ret){
+                               if(ret.code==1){
+                                   var html = '';
+                                   var len = ret.data.length;
+                                   for(var i=0; i<len; i++){
+                                       html +='<dl><dt>'+ret.data[i].reward+'</dt><dd><p>获得时间为'+getday(ret.data[i].addtime)+'</p></dd></dl>';
+
+                                   }
+                                   $('.hmtm1_a4').html(html);
+                                   $('.hmtm1_a4 dl:odd').css({'float':'right'});
+                                   $('.hmtm1_a4 dl:even').css({'background-image':'url(/dyweb/dythemes/rhd/images/jpimg/drw6.gif)'});
+                                   $('.hmtm1_a4 dl').each(function(){
+
+                                   })
+                               }
+                            },'json');
+
+                        }else {
+                            $('.bing_li').hide();
+                            $('.inin_uus').show();
+                            $.http.get('/?user&q=get_share_ajax&alias=voucher&methodname=getMyVoucher', {data:data}, function (ret) {
+                                if (ret.code == '1') {
+                                    var len = ret.data.length;
+                                    var ht='';
+                                    for (var i = 0; i < len; i++) {
+                                        var s = i%2;
+                                        ht+='<div class="hemisphere_in hemisphere_m'+(s==1 ? '2' : 1)+' '+(data== 2 ? 'hemisphere_m7' : '')+''+(data== 0 ? 'hemisphere_m8' : '')+'" '+(data ==1 ? 'id= hemisphere_m'+getImg(i,ret.data[i].money) : '')+' >';
+                                        ht+='<div class="usuallycont">';
+                                        ht+='<h4>'+ret.data[i].money+'<span>元</span></h4>';
+                                        ht+='<p>投资≥'+ret.data[i].amount+'元，'+(ret.data[i].limit_month ==0 ? '0门槛使用' : '仅限'+ret.data[i].limit_month+'月标')+'</p>';
+                                        ht+='<p>过期时间为'+ret.data[i].timeout+'</p>';
+                                        ht+='</div>';
+                                        ht+='</div>';
+                                    }
+                                    $('.april_side2').html(ht);
+                                    if(data==1){
+                                        $(".hemisphere_in").each(function(){
+                                            $(this).click(function(){
+                                                window.location.href="/invest/index.html";
+                                            });
+                                            $(".hemisphere_in").css("cursor"," pointer");
+                                        });
+
+                                    }
+                                }
+                            }, 'json')
+                        }
+                    });
+                    if (index == 0) {
+                        $(this).click();
+                    }
+                }
+        )
+        function getImg(i, amount){
+            var ret = 0;
+            switch (amount){
+                case '500':
+                    ret = 1;
+                    break;
+                case '100':
+                    ret =2;
+                    break;
+                case '50':
+                    ret = 3;
+                    break;
+                case '18':
+                    ret = 4;
+                    break;
+                case  '10' :
+                    ret = (i % 2 ==0 ? 5 : 6);
+                    break;
+            }
+            return ret;
+        }
+
+        $('.april_side3c1 dl:odd').css('margin-right','0');
+
+
+    });
+
+    $(function(){
+
+        $('#sureyesbtn').live('click',function(){
+            changeDz();
+            $('.large_cashbgs').show();
+            $('.large_cashcont1s').show();
+        }) ;
+
+        $('.close_put').click(function(){
+            $('.large_cashbgs').hide();
+            $('.large_cashcont1s').hide();
+        })
+
+        //地址
+        $(function(){
+            $('#sureyes').live('click',function(){
+                var prov = $('.prov').val();
+                var city = $('.city').val();
+                var dist = $('.dist').val();
+                var shouhuo = $('#shouhuo').val();
+                var dizhi = $('#dizhi').val();
+                var shouji = $('#shouji').val();
+                if(dist == null){
+                    var dist = '';
+                }
+                var alldizhi = prov + city + dist + dizhi;
+                if(prov == null || city == null || shouhuo == null || dizhi == null || shouji == null){
+                    alert('您填写的收货地址不正确，请重新填写！');
+                }else {
+                    $.http.get('/?user&q=get_share_ajax&alias=finance&methodname=get_address_info',{
+                        phone:shouji,
+                        address:alldizhi,
+                        name:shouhuo
+                    },function(ret){
+                        if(ret.code == 1){
+                            $('.large_cashbgs').hide();
+                            $('.large_cashcont1s').hide();
+                            jDialog.alert('提交成功！');
+                        }else {
+                            $('.large_cashbgs').hide();
+                            $('.large_cashcont1s').hide();
+                            jDialog.alert('提交失败！');
+                        }
+                    },'json')
+                }
+            })
+        })
+    });
+
+
+
+
+</script>
+{/literal}

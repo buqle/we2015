@@ -1,0 +1,235 @@
+﻿.izl-rmenu{position:fixed;right:0; bottom: 50px;z-index:999; *position: absolute;width: 60px;border: 2px solid #dcdcdc;background: #dcdcdc;}
+.izl-rmenu .btn{margin-bottom:1px;cursor:pointer;position:relative;height: 58px;width: 58px;margin: 0 auto 1px auto;}
+.izl-rmenu .btn .iiont{text-align: center;color:#727171;font-size: 12px;display: block;line-height: 90px;}
+.izl-rmenu .btn:hover .iiont{color: #ff8e2d;}
+.izl-rmenu .btn-qnaire{background:url(../../images/newimg/qnaire.png)  no-repeat center 9px #fff;}
+.izl-rmenu .btn-qnaire:hover { background: url(../../images/newimg/newbook.png) no-repeat center 9px #fff;}
+.izl-rmenu .btn-qq{background:url(../../images/newimg/rqq.png)  no-repeat center 9px #fff ;}
+.izl-rmenu .btn-qq:hover{background:url(../../images/newimg/rqq2.png)  no-repeat center 9px #fff ;}
+.izl-rmenu a.btn-qq,.izl-rmenu a.btn-qq:visited{background:url(../../images/newimg/rqq.png) no-repeat center 9px #fff;text-decoration:none;display:block;}
+.izl-rmenu .btn-wx{background:url(../../images/newimg/rwx.png) no-repeat center 9px #fff;}
+.izl-rmenu .btn-wx:hover{background:url(../../images/newimg/rwx2.png) no-repeat center 9px #fff;;}
+.izl-rmenu .btn-wx .pic{position:absolute;left:-102px;top:0px;display:none;width:100px;height:100px;}
+.izl-rmenu .btn-phone{background:url(../../images/newimg/jsr.png) no-repeat center 9px #fff;}
+.izl-rmenu .btn-phone:hover{background:url(../../images/newimg/jsr2.png) no-repeat center 9px #fff;}
+.izl-rmenu .btn-phone .phone{background-color:#ff811b;position:absolute;width:160px;left:-160px;top:0px;line-height:73px;color:#FFF;font-size:18px;text-align:center;display:none;}
+.izl-rmenu .btn-top{background:url(../../images/newimg/topi.png) no-repeat center 20px #52acf7;display:none;width: 60px;height: 60px;border-radius: 2px;}
+.izl-rmenu .btn-top:hover{background:url(../../images/newimg/topi.png) no-repeat center 20px #ff8c2c;}
+.btn-serqq{background:url(../../images/newimg/bj2.png) no-repeat center 9px #fff;display: block;}
+.btn-serqq:hover{background:url(../../images/newimg/bj2h.png) no-repeat center 9px #fff;}
+#seqq_rmenu{background:#fc6868;width: 180px;height: 132px;position:absolute;right:76px;top: -44px;padding-top: 12px;display: none;}
+#seqq_rmenu span{background:url(../../images/gaiban/bj1.png) no-repeat;position: absolute;right: -12px;top: 64px;display: block;height: 15px;width: 12px;}
+#seqq_rmenu .ser_qq1{background:url(../../images/gaiban/bj3.gif) no-repeat left;width:150px;height: 43px;margin-left: 8px;}
+#seqq_rmenu .ser_qq1 p{font-size: 13px;color: #fff;padding-left: 40px;line-height: 22px;}
+#seqq_rmenu .ser_qq2{font-weight: bold;font-size: 12px;color: #fff;margin: 6px 0 6px 16px;}
+#seqq_rmenu .ser_qq2 p{line-height: 22px;}
+#seqq_rmenu .ser_qq3{width: 108px;height: 24px;line-height: 24px;background: #fff;text-align: center;margin: 0 auto;border-radius: 5px;}
+#seqq_rmenu .ser_qq3 a{font-size: 14px;color: #fc6868;font-weight: bold;}
+.show_ser2 h4,.show_ser3 h4{background:url(../../images/gaiban/bj3.gif) no-repeat center;height: 43px;margin-bottom: 6px;}
+.show_ser2 p,.show_ser3 p{text-align: center;font-size: 13px;line-height: 22px;color: #fff;}
+/***联系我们***/
+
+/***计算器***/
+/*计算器*/
+.ont_clokck{ height: 23px;}
+.ont_clokck span{ display: block; height: 23px; color: white; width: 23px; float: right; cursor: pointer; background: url("../../images/gaiban/rhd_clock_03_03.png") 0 0 no-repeat;}
+.ont_dinetc{ height: 250px; z-index: 9999; position: fixed; top: 52%;right: 72px; display: none;}
+.ppot_myccs{ height: 251px; width: 235px; background: #9AA1A9; border-radius: 0 8px 8px 0;}
+.helpccint{ height: 77px; width: 160px; margin: 0 auto; background: #70747A;}
+.helpccint{ color: white; font-size: 12px; line-height: 22px; padding: 0 0 0 25px;}
+.ont_ccintpje{ height: 150px;}
+.ccint_mu{ height: 25px; width: 110px; padding: 0 0 0 1px; margin-left: 25px; padding: 0 0 0 15px; border: 1px solid #DDDDDD; border-radius: 4px; margin-bottom: 5px;}
+.ccint_mu1{ height: 25px; width: 100px; background: #70747A; text-align: center; font-size: 14px; color: white; border: none; margin-left: 25px; cursor: pointer; margin-top: 6px; border-radius: 3px;}
+.ont_ont_suie{ height: 250px; width: 435px; background: white; border: 1px solid #DDDDDD !important; display: none;}
+.pptmyBisnze{ height: 251px; width:30px; background: #8D949D;  border-radius: 8px 0 0 8px; cursor: pointer; position: relative; left: 2px;}
+.lint_mysclick{ font-size: 16px; padding: 0 0 0 20px;}
+.ont_iuent-ce{ margin-left: 20px;}
+.ont_iuent-ce tr,.ont_iuent-ce td{ text-align: center; color: #666; font-size:14px; height: 30px; width: 130px;}
+.ont_ont_suie table, .ont_ont_suie table tr, .ont_ont_suie table tr th, .ont_ont_suie table td { border-collapse: collapse;border: 1px solid #a6a6a6;color: #515151;}
+.lin_oeikje{ height: 25px; width: 100px; margin: 0 auto; display: block; background: #EEEEEE; border-radius: 5px; border: 1px solid #DDDDDD; color: #e07f00; font-size: 16px; font-weight: bold; text-align: center;}
+/***计算器end***/
+
+
+.tender_reword{background:#f00 url(images/award_ico.png) no-repeat scroll 2px 2px; padding:0 10px 0 0;height:22px;text-indent:23px;color:#fff;font:14px/22px "microsoft Yahei";display:inline-block; vertical-align:middle; margin-left:5px; border-radius:15px; -webkit-border-radius:15px;}
+
+.baoling{ padding: 5px 18px; }
+.baoling .tit{ font-size: 16px; font-weight: 100; color: #000; height: 50px; line-height: 50px; }
+.baoling p{ color: #666; line-height: 2; }
+.baoling p img{ margin-left: 10px; display: block; }
+.baoling .down{ height: 100px; padding-top: 20px; }
+.baoling .down .btn{ width: 226px; height: 61px; display: inline-block; background: url(images/bl-down.png) no-repeat 0px 0px; margin: 0 35px; }
+.baoling .down .btn-android{ background-position: -298px 0px; }
+
+
+
+
+
+/*问卷调查页面样式*/
+
+.mb-55{
+    margin-bottom: 55px;
+}
+.mb-18{
+    margin-bottom: 10px;
+}
+.mb-20{
+    margin-bottom: 20px;
+}
+.mb-24{
+    margin-top:24px;
+}
+
+.mt-45{
+    margin-top: 45px;
+}
+.mb-28{
+    margin-bottom: 40px;
+}
+
+.pb-24{
+    padding-bottom: 10px;
+}
+
+.pl-10{
+    padding-left: 10px;
+}
+.w25{
+    width:25%;
+}
+.w33{
+    width:33%;
+}
+.w50{
+    width:50%;
+}
+.fl{
+    float: left;
+}
+.qnaire-pop{
+      display:block;
+      width: 100%;
+      height: 100%;
+      position:absolute;
+      top:0;
+      left:0;
+    background-color:rgba(125,125,125,.7);
+
+     z-inde:9999;
+   }
+.qnaire{
+    display:none;
+    width:1000px;
+    height: 1757px;
+    position:absolute;
+    top:0;
+    left:50%;
+    z-inde:99999;
+    margin-left:-500px;
+    background: url('../../images/qnaire/bigbg.png');
+
+}
+.qnaire .qnaire-hd{
+    padding-top:73px;
+    padding-left:80px;
+    margin-bottom:40px;
+
+}
+.qnaire-bd {
+    width: 100%;
+
+}
+
+.qnaire-bd .qnaire-out{
+    margin:0 auto;
+    width: 875px;
+    height: 1456px;
+    background: url('../../images/qnaire/bg3.png') no-repeat;
+    position:relative;
+    padding-top:74px;
+}
+.qnaire-bd .qnaire-out .qnaire-head{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.qnaire-bd .qnaire-out .qnaire-head  .pencil{
+    position: absolute;
+    top:-79px;
+    left:-2px;
+}
+
+.qnaire-bd .qnaire-out .qnaire-body {
+    padding-left:60px;
+    font-size: 16px;
+
+
+}
+.qnaire .qnaire-bd .qnaire-body .options input[type='radio']{
+    width:15px;
+    height: 15px;
+    background-color: #fff;
+    opacity: 0;
+
+
+}
+.radio-checked{
+    background: url('../../images/qnaire/radio.png') no-repeat 32px 4px;
+}
+
+.radio-checkeded{
+    background: url('../../images/qnaire/radio-checked.png') no-repeat 32px 4px;
+}
+.options2-checked {
+    background: url('../../images/qnaire/radio.png') no-repeat 0 4px;
+}
+.options2-checkeded{
+    background: url('../../images/qnaire/radio-checked.png') no-repeat 0 4px;
+}
+.qnaire-bd .qnaire-out .qnaire-body .wide{
+    font-weight: bold;
+
+}
+
+.qnaire-bd .qnaire-out .qnaire-body .btn{
+    width: 235px;
+    height: 63px;
+    margin-left: 253px;
+    position: relative;
+
+
+
+}
+.qnaire-bd .qnaire-out .qnaire-body .btn .button{
+    width: 100%;
+    height: 100%;
+    background: url('../../images/qnaire/btn.png') 0 0 no-repeat;
+    border:none;
+    outline: none;
+    font-size:36px;
+    color: #fff;
+    text-indent:2em;
+    display:block;
+
+}
+.qnaire-bd .qnaire-out .qnaire-body .btn .sure{
+    position: absolute;
+    top:10px;
+    left:51px;
+}
+.btn-qnaire #qnaire-show{
+    background: #fc6868;
+    width: 180px;
+    height: 132px;
+    position: absolute;
+    right: 76px;
+    top: -44px;
+    padding-top: 12px;
+}
+
+.qnaire .btn-pop{
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    top:0;
+    left:0;
+
+}

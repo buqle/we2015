@@ -1,0 +1,103 @@
+﻿{include file="header.html"}
+	
+
+<div class="g_doc">
+  <div class="g_bd">
+    <div class="m_page m_sen1">
+      <div class="bg">
+        <div class="r1" style="display: block;"></div>
+        <div class="r2" style="display: block;"></div>
+        <div class="r3" style="display: block;"></div>
+      </div>
+      <div class="sen">
+        <h2 class="tt" style="display: block;">这里从不缺 真实 自由 热忱与梦想</h2>
+        <p class="ct" style="display: block; opacity: 1; margin-top: 0px;">也最懂冷漠、孤单背后，最初的追寻！</p>
+        <div class="phone" style="bottom: 110px;">
+        <dl>
+        {articles module='app' function='get_newest_one' var='var' type_id=1}
+                {if $var.update_url neq null}
+          	<dd><a class="iphone_btn"  name="iphone" href="{$var.update_url}" target="_blank"></a><p>iphone客户端下载地址<img src="{$var.dimensional_code_url}"/></p></dd>
+             {/if}
+            {/articles}
+            
+            {articles module='app' function='get_newest_one' var='var' type_id=2}
+                {if $var.fileurl neq null}
+          	<dd><a class="android_btn"  name="android" href="{$var.fileurl}" target="_blank"></a><p>Android客户端下载地址<img src="{$var.dimensional_code_url}"/></p></dd>
+             {/if}
+            {/articles}
+          </dl>         
+        </div>
+      </div>
+    </div>
+			
+	
+	
+	
+	
+    <div class="m_page m_sen2">
+      <div class="sen">
+        <h2 class="tt"></h2>
+        <p class="ct">随处的娱乐小心思 日夜的全力以赴 只为最懂你的心跳</p>
+        
+        <div class="phone" style="right: 0px;">
+          <div class="pbg" style="right: 232px;"></div>
+          <div class="p1"></div>
+        </div>
+      </div>
+    </div>
+    <div class="m_page m_sen8">
+      <div class="sen">
+       <div class="phone1" style="left: 0px;">
+          <div class="pbg1" style="left: 232px;"></div>
+          <div class="p11"></div>
+        </div>
+        <h2 class="tt1"></h2>
+        <p class="ct1">随处的娱乐小心思 日夜的全力以赴 只为最懂你的心跳</p>
+      </div>
+    </div>
+    <div class="m_page m_sen9">
+      <div class="sen">
+        <h2 class="tt"></h2>
+        <p class="ct">随处的娱乐小心思 日夜的全力以赴 只为最懂你的心跳</p>
+        
+        <div class="phone" style="right: 0px;">
+          <div class="pbg" style="right: 232px;"></div>
+          <div class="p1"></div>
+        </div>
+      </div>
+    </div>
+    <div class="m_page m_sen10">
+      <div class="sen">
+       <div class="phone1" style="left: 0px;">
+          <div class="pbg3" style="left: 253px;"></div>
+          <div class="p11"></div>
+        </div>
+        <h2 class="tt1"></h2>
+        <p class="ct1">随处的娱乐小心思 日夜的全力以赴 只为最懂你的心跳</p>
+      </div>
+    </div>
+
+    
+    <div class="m_page m_sen5">
+      <div class="sen">
+        <h2 class="tt" style="opacity: 1; margin-top: 0px;">开启一场身心的修养</h2>
+        <div class="ct" style="opacity: 1; margin-top: 0px;">
+          {if $_G.system.con_public_account_weixin_code!=''}
+          <p><img src="{$_G.system.con_public_account_weixin_code}"></p>
+          {/if}
+        </div>
+        <div class="iphone_wx">关注帝友：微信扫一扫</div>
+      </div>
+      <a class="u_btn totop on" href="javascript:;" style="opacity: 1; margin-bottom: -29px;">回到顶部</a>
+    </div>
+  </div>
+  
+    <div class="m_ft">
+    </div>
+
+</div>
+<script src="{$tpldir}/js/jquery-1.11.0.min.js"></script>
+<script src="{$tpldir}/js/jquery.easing.min.js"></script>
+<script src="{$tpldir}/js/jquery.mousewheel.js"></script>
+<script src="{$tpldir}/js/common.js"></script>
+{include file="footer.html"}

@@ -1,0 +1,84 @@
+{if $smarty.request.type=='list'}
+{list module="borrow" var="loop" function ="get_tender_list"  user_id=$_G.user_id  dotime1=$smarty.request.dotime1 dotime2=$smarty.request.dotime2  status_type=$smarty.request.status_type borrow_type=$smarty.request.borrow_type page=$smarty.request.page+1 epage=10}
+{foreach from=$loop.list item="item"}
+<tr>
+    <td class="ck0">{$item.addtime|date_format:'Y/m/d'}{if $item.status == 1}<em>({$item.borrow_start_time|date_format:"y/m/d"}-{$item.repay_last_time|date_format:"y/m/d"})</em>{/if}</td>
+    <td>{$item.borrow_name}</td>
+    <td>￥{$item.account|default:'0.00'}</td>
+    <td>￥{$item.tender_award_fee+$item.recover_account_interest}</td>
+    <td>￥{$item.tender_award_fee+$item.recover_account_interest_yes}</td>
+    <td>￥{$item.recover_account_capital_wait|default:'0.00'}</td>
+    <td>{$item.status_type_name}</td>
+    <td class="ck">{if $item.borrow_status_nid=='repay'||$item.borrow_status_nid=='repay_yes' ||$item.borrow_status_nid=='lates' || ($item.status eq '1' && $item.borrow_type eq 'roam')}<a class="ckmx" href="/?user&m=borrow/tender/detail&borrow_nid={$item.borrow_nid}&id={$item.id}"  title="查看投资明细">查看</a>{else}-{/if}</td>
+</tr>
+{/foreach}
+<tr class="total">
+    <td>总计：<i></i></td>
+    <td></td>
+    <td>￥{$loop.account_sum|default:'0.00'}</td>
+    <td>￥{$loop.recover_account_all_sum|default:'0.00'}</td>
+    <td>￥{$loop.recover_account_yes_sum|default:'0.00'}</td>
+    <td>￥{$loop.recover_account_capital_wait_sum|default:'0.00'}</td>
+    <td colspan="2"></td>
+</tr>
+{if $loop.total>0}
+<tr>
+    <td colspan="8">
+        <div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+    </td>
+</tr>
+{/if}
+{/list}
+{else}
+<div class="invest_record">
+    <div class="tbjl">
+        <h2> 投资记录</h2>
+        <form action="" method="post" id="sou_form">
+            <select name="borrow_type" id="borrow_type">
+                <option selected="selected" value="">标的类型</option>
+                {foreach from=$_G.linkages.borrow_all_type key="key" item="item"}
+                <option value="{$key}">{$item}</option>
+                {/foreach}
+            </select>
+            <label><img src="{$tpldir}/images/vipcenter/rl.png" alt="" width="20px" height="20px">
+                <input style="width: 100px;" type="text" class="u_input w120 date_picker" placeholder="起始日期" value="" id="dotime1"/></label>
+            <label><img src="{$tpldir}/images/vipcenter/rl.png" alt="" width="20px" height="20px">
+                <input style="width: 100px;" type="text" class="u_input w120 date_picker" placeholder="截止日期" value="" id="dotime2"/></label>
+            <input class="input_btn" id="search" type="submit" value="搜索">
+        </form>
+    </div>
+
+
+
+    <table>
+        <thead>
+        <tr>
+            <th>起止时间<br>(起息日-到期日)</th>
+            <th>项目</th>
+            <th>投资金额</th>
+            <th>总收益</th>
+            <th>已收收益</th>
+            <th>待收本金</th>
+            <th>状态</th>
+            <th>明细</th>
+        </tr>
+        </thead>
+        <tbody id="content_list">
+
+        </tbody>
+    </table>
+
+    <div style="height: 65px;"></div>
+    <div class="tcdPageCode" style="text-align: center;position: relative;top: 30px;;"></div>
+    <div style="height: 20px;"></div>
+</div>
+<div class="mask"></div>
+<div style="height: 65px;"></div>
+{literal}
+<script type="text/javascript">
+
+    diyou.use('users_invest',function(dy){dy.invest_info({/literal}'{$smarty.request.data_type}'{literal})})
+
+</script>
+{/literal}
+{/if}

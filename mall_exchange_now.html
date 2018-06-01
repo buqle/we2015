@@ -1,0 +1,45 @@
+<div class="w500">
+		<form method="post" action="" id="exchange_action">
+	
+			<div class="item">
+				<label for="username" class="basic_label w120"><span class="f_c3">*</span>用户名：</label>
+				<input id="username" name="username" type="text" class="basic_input" {if $_G.user_result.username!=''} value="{$_G.user_result.username}" readonly=true {/if} />
+			</div>
+			<div class="item">
+				<label for="realname" class="basic_label w120"><span class="f_c3">*</span>真实姓名：</label>
+				<input id="realname" name="realname" type="text" class="basic_input" {if $_G.user_result.realname!=''} value="{$_G.user_result.realname}" readonly=true {/if} />
+			</div>
+			<div class="item">
+				<label for="phone" class="basic_label w120"><span class="f_c3">*</span>手机号：</label>
+				<input id="phone" name="phone" type="text" class="basic_input" {if $_G.approve_result.phone!=''} value="{$_G.approve_result.phone}" readonly=true {/if} />
+			</div>
+			<div class="item">
+				<label for="num" class="basic_label w120"><span class="f_c3">*</span>兑换数量：</label>
+				<input id="num" name="num" type="text" value="{$smarty.request.num}" class="basic_input w80" /><span class="basic_span">个（请填写整数）</span>
+			</div>
+			<div class="item">
+				<label for="post_code" class="basic_label w120"><span class="f_c3">*</span>邮编：</label>
+				<input id="post_code" name="post_code" type="text" class="basic_input w80" maxlength="6"/>
+			</div>
+			<div class="item">
+				<label for="address" class="basic_label w120"><span class="f_c3">*</span>收货地址：</label>
+				<input id="address" name="address" type="text" class="basic_input" />
+			</div>
+			<div class="item">
+				<label for="remark" class="basic_label w120">备注：</label>
+				<input id="remark" name="remark" type="text" class="basic_input" />
+			</div>
+			<div class="item t30">
+				<input type="hidden" name="goods_id" id="goods_id" value="{$smarty.request.goods_id}" />
+				<label class="basic_label w120">&nbsp;</label>
+				<input type="submit" class="basic_btn" value="立即兑换"/>
+				<span id="exchange_warn" class="warn_error"></span>
+			</div>
+		
+		</form>
+</div>
+    {literal}
+<script type="text/javascript">
+diyou.use('mall',function(m){m.exchange_form('exchange_action')})
+</script>
+{/literal}

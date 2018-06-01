@@ -1,0 +1,183 @@
+﻿{include file="header.html"}
+<div class="conbox t50">
+   <div class="borrow_pro">
+	   <div class="bread"><a href="/borrow/index.html">我要借款</a>&nbsp;>&nbsp;发布借款</div>
+	   <div class="bor_pro_bar">
+	      <ul>
+		    <li class="done">
+			  <div class="step_line"></div>
+			  <div class="step finish"></div>
+              <div class="text">实名认证</div>
+			</li>
+			<li class="done">
+			  <div class="step_line"></div>
+			  <div class="step finish"></div>
+              <div class="text">信息填写</div>
+			</li>
+			<li class="done">
+			  <div class="step_line"></div>
+			  <div class="step finish"></div>
+              <div class="text">申请额度</div>
+			</li>
+			<li class="done">
+			  <div class="step_line"></div>
+			  <div class="step finish"></div>
+              <div class="text">上传材料</div>
+			</li>
+			<li class="now">
+			  <div class="step_line"></div>
+			  <div class="step step5_now"></div>
+              <div class="text">发布借款</div>
+			</li>
+		  </ul>
+	   </div>
+	   {articles module="borrow" function="get_type_one" var=type_var nid='roam'}
+           {articles module="borrow" function="get_amount_user" var=amount_var user_id=$_G.user_id type=$type_var.amount_type}
+  
+     <div class="bor_notice">
+	     我的{$amount_var.type_name}：<b class="num">{$amount_var.account_all|default:"0.00"}</b>元，可用{$amount_var.type_name}：<b class="num">{$amount_var.account_use|default:"0.00"}</b>
+		 <a href="/?user&m=borrow/amount&type_nid={$smarty.request.type_nid}" class="">【申请额度】</a>
+	   </div>
+        {/articles}
+       {/articles} 
+	   <div class="bor_pro_apply">
+	   <form name="" action="" method="post" id="loan_new">
+	       <div class="item">
+				 <label class="basic_label w120">借款类型：</label>
+				 <span class="user_infor">{$type_var.name}</span>
+                 <input type="hidden" value="{$type_var.nid}" name="borrow_type" />
+		   </div>
+                    
+		   <div class="item">
+				 <label class="basic_label w120"><span class="warning_c">*</span>借款标题：</label>
+				 <input type="text" class="basic_input" name="name" id="name">
+		   </div>
+		   <div class="item">
+				 <label class="basic_label w120"><span class="warning_c">*</span>借款用途：</label>
+				 {linkages nid="borrow_use" id="borrow_use" name="borrow_use" type="value" class="borrow_sel" default="请选择"  value=$var.borrow_use}
+		   </div>
+		   <div class="item">
+				 <label class="basic_label w120"><span class="warning_c">*</span>借款金额：</label>
+				 <input type="text" class="basic_input w80" name="account" id="account" value="" onkeyup="value=value.replace(/[^0-9Xx|.]/g,'')">
+				 <span class="money_style">元（借款金额{$_U.borrow_type_result.amount_first}元-{$_U.borrow_type_result.amount_end}元{if $_U.borrow_type_result.account_multiple>0}，需为{$_U.borrow_type_result.account_multiple}的倍数{/if}）</span>
+                 <input type="hidden" id="amin" value="{$_U.borrow_type_result.amount_first}" />
+                 <input type="hidden" id="amax" value="{$_U.borrow_type_result.amount_end}" />
+		   </div>
+		   <div class="item">
+				 <label class="basic_label w120"><span class="warning_c">*</span>年利率：</label>
+				 <input type="text" class="basic_input w80" name="borrow_apr" id="borrow_apr" >
+				 <span class="remark">%（范围在{$_U.borrow_type_result.apr_first}%-{$_U.borrow_type_result.apr_end}%之间）</span>				
+                 <input type="hidden" id="aprmin" value="{$_U.borrow_type_result.apr_first}" />
+                 <input type="hidden" id="aprmax" value="{$_U.borrow_type_result.apr_end}" />
+		   </div>
+		   <div class="item">
+				 <label class="basic_label w120"><span class="warning_c">*</span>还款方式：</label>
+				 <select name='borrow_style' id='borrow_style'  class="borrow_sel">
+						{foreach from=$_U.borrow_type_result.style_result key=key item=item}
+						<option value='{$item.nid}'>{$item.title}</option>
+						{/foreach}
+				</select>
+		   </div>
+		   <div class="item">
+				 <label class="basic_label w120"><span class="warning_c">*</span>回购期限：</label>
+                 <div id="period">
+				 <select name="borrow_period" id="borrow_period" class="borrow_sel">
+							{foreach from=$_U.borrow_type_result.period_result key=key item=item}<option value='{$item.value}'>{$item.name}</option>{/foreach}
+				 </select>
+                 </div>
+                
+		   </div>
+		    
+		
+           {if $_U.borrow_type_result.award_status==1}
+           <div class="item">
+			   <label class="basic_label w120" >借款奖励：</label>
+			   <input type="radio" class="label_radio" name="award_status" checked="true" value="0"/>
+			   <label class="label_radio">不奖励</label>
+			   <input type="radio" class="label_radio" name="award_status" value="1"/>
+			   <label class="label_radio">按金额奖励</label>
+               <input type="radio" class="label_radio" name="award_status" value="2"/>
+			   <label class="label_radio">按比例奖励</label>
+			 </div>
+             <div class="item" id="award_scale_id" style="display:none">
+				 <label class="basic_label w120"><span class="warning_c">*</span>按借款金额比例：</label>
+				 <input type="text" name="award_scale" class="basic_input w120" id="award_scale" />
+                 <span class="remark"> %(本金的{$_U.borrow_type_result.award_scale_first}~{$_U.borrow_type_result.award_scale_end}%之间】)</span>
+				  <input type="hidden" id='award_scale_min' value="{$_U.borrow_type_result.award_scale_first}"/>
+				 <input type="hidden" id='award_scale_max' value="{$_U.borrow_type_result.award_scale_end}"/>
+              </div>
+              <div class="item" id="award_account_id"  style="display:none">
+				 <label class="basic_label w120"><span class="warning_c">*</span>按借款金额：</label>
+				 <input type="text" name="award_account" class="basic_input w120" id="award_account" />
+                 <span class="remark">元(奖励金额在{$_U.borrow_type_result.award_account_first}~{$_U.borrow_type_result.award_account_end}元区间)</span>
+				 <input type="hidden" id='award_account_min' value='{$_U.borrow_type_result.award_account_first}'>
+				 <input type="hidden" id='award_account_max' value='{$_U.borrow_type_result.award_account_end}'>
+              </div>
+             {if $_U.borrow_type_result.award_false_status==1}
+                   
+                  <div class="item">
+    				 <label class="basic_label w120">借款失败是否也奖励：</label>
+    				 <input type="radio" class="label_radio" value="1" name="award_false"  /><label class="label_radio">是</label>
+                     <input type="radio" class="label_radio" value="0" name="award_false"  checked="" /><label class="label_radio">否</label>
+    		      </div>
+              {/if}
+                  
+             {/if}
+             
+            <div class="item">
+				 <label class="basic_label w120"><span class="warning_c">*</span>最小流转单位：</label>
+				 <input type="text" class="basic_input" name="account_min" id="account_min">
+		   </div>
+            <div class="item">
+				 <label class="basic_label w120"><span class="warning_c">*</span>担保机构：</label>
+				 <input type="text" class="basic_input" name="voucher" id="voucher">
+		   </div>
+            <div class="item">
+				 <label class="basic_label w120"><span class="warning_c">*</span>反担保方式：</label>
+				 <input type="text" class="basic_input" name="vouch_style" id="vouch_style">
+		   </div>
+           
+           <div class="item">
+				 <label class="basic_label w120"><span class="warning_c">*</span>借款方商业概述：</label>
+				 <textarea  class="basic_txt" name="_borrow_contents" id="_borrow_contents"></textarea>
+		   </div>
+            <div class="item">
+				 <label class="basic_label w120"><span class="warning_c">*</span>借款方资产情况：</label>
+				 <textarea  class="basic_txt" name="borrow_account" id="borrow_account"></textarea>
+		   </div>
+            <div class="item">
+				 <label class="basic_label w120"><span class="warning_c">*</span>借款方资金用途：</label>
+				 <textarea  class="basic_txt" name="borrow_account_use" id="borrow_account_use"></textarea>
+		   </div>
+            <div class="item">
+				 <label class="basic_label w120"><span class="warning_c">*</span>风险控制措施：</label>
+				 <textarea  class="basic_txt" name="risk" id="risk"></textarea>
+		   </div>
+           
+           
+             
+    		   
+    		   <div class="item verify_code">
+    				<label class="basic_label w120" for="vericode"><span class="warning_c">*</span>验证码：</label>
+    				<input id="vericode" name="valicode" type="text" class="basic_input" maxlength="10" value="">
+    				{valicode }
+    		   </div>
+    		   <div class="item txt_cent">
+    				 <input type="submit" value="提交" class="bor_pro_sub"/>
+                     <span class="error" id="error_warn"></span>
+    		   </div>
+	   </form>
+	   </div>
+   </div>
+</div>
+   
+   
+{include file="footer.html"}
+
+{literal}
+<script type="text/javascript">
+diyou.use('borrow',function(dy){dy.loan_change_new("loan_new")})
+</script>
+{/literal}
+
+

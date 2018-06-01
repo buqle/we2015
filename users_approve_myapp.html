@@ -1,0 +1,673 @@
+{include file="users_main_header.html"}
+<div class="conbox t20 fn_cle user_cont">
+
+{include file="users_menu.html"}
+
+<div class="fn_rig user_rig">
+       <div class="user_box">
+		   <div class="vip_apply">
+			<h2>我的认证</h2>		   
+		   <div class="u_attest">
+		    <div>
+			  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td colspan="8">信用等级及对应信用分数</td>
+		</tr>
+	<tr>
+		<td width="15%">信用等级</td>
+		<td width="12%"><img src="{$tpldir}/css/blue/images/AA.gif" /></td>
+		<td width="12%"><img src="{$tpldir}/css/blue/images/A.gif" /></td>
+		<td width="12%"><img src="{$tpldir}/css/blue/images/B.gif" /></td>
+		<td width="12%"><img src="{$tpldir}/css/blue/images/C.gif" /></td>
+		<td width="12%"><img src="{$tpldir}/css/blue/images/D.gif" /></td>
+		<td width="12%"><img src="{$tpldir}/css/blue/images/E.gif" /></td>
+		<td width="13%"><img src="{$tpldir}/css/blue/images/HR.gif" /></td>
+	</tr>
+	<tr>
+		<td>信用分数 </td>
+		 {loop module="credit" function="get_rank_list" limit="all" var="item" class_id=$smarty.request.class_id order=1 }
+		{if $item.point1>=0}
+		<td>{$item.point1}-{$item.point2}</td>
+		{/if}
+		{/loop}
+	</tr>
+</table>
+
+			</div>
+		   <div class="t40">
+		     <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tabyel">
+                  <tbody>
+				  <tr> 	
+		             <td colspan="6">信用总分（等级）：
+                     {articles module="credit" function = "get_user_count" user_id=$_G.user_id var="Credit_var"}
+                            {$Credit_var.credit_total}分（{$Credit_var.credit_total|credit:"borrow"}）
+                     {/articles}&nbsp;&nbsp; </td>
+                  </tr>
+                  <tr>
+                    <td width="19%">&nbsp;</td>
+                    <td width="33%">项目</td>
+                    <td width="15%">信用分数</td>
+                    <td width="17%">状态</td>
+                    <td width="16%">操作</td>
+                  </tr>
+                  
+				  <tr>									  
+                    <td rowspan="4">基本信息</td>
+                    <td>手机绑定</td>
+                    {if $_G.approve_result.phone_status!=1}
+                    <td>
+					0分
+					</td>
+                    <td><i class="icon no" title="待完成"></i> </td>
+                    <td><a href="/?user&m=approve/safe">修改</a></td>
+                    {else}
+                    {articles module="credit" function="get_type_one" var="Tvar" nid="phone"}
+                    <td>{$Tvar.value}分</td>{/articles}
+                    <td><i class="icon yes" title="已完成"></i> </td>
+                    <td><a href="/?user&m=approve/safe">绑定</a></td>
+                    {/if}
+			     </tr>
+                 
+				 <tr>
+                
+                    <td>VIP申请</td>
+                    {if $_G.user_result.vip_status==1}
+                        <td>{articles module="credit" function="get_type_one" var="Tvar" nid="vip_success"}
+    					{$Tvar.value}分
+    					{/articles}
+                        </td>
+               			<td> <i class="icon yes" title="已完成"></i> </td>
+                        <td><a href="/?user&m=trust/vip">查看</a></td>	
+                    {elseif $_G.user_result.vip_status==2}
+                        <td>0分</td>
+               			<td> <i class="icon no" title="审核不通过"></i> </td>
+                        <td><a href="/?user&m=trust/vip">申请</a></td>
+                    {elseif $_G.user_result.vip_status=='-1'}
+                        <td>0分</td>
+               			<td> <i class="icon ing" title="审核中"></i> </td>
+                        <td><a href="/?user&m=trust/vip">审核中</a></td>
+                    {else}
+    					<td>0分</td>
+               			<td> <i class="icon no" title="待完成"></i>  </td>
+                        <td><a href="/?user&m=trust/vip">申请</a></td>	    
+                    {/if}                
+                  		
+				  </tr>
+                  
+                  
+                  <tr>
+                    <td>身份认证</td>
+                    {if $_G.approve_result.realname_status==1}
+                        <td>
+                        {articles module="credit" function="get_type_one" var="Tvar" nid="realname"}
+    					{$Tvar.value}分
+    					{/articles}
+                        </td>
+    					<td><i class="icon yes" title="已完成"></i></td>
+    					<td><a href="/?user&m=approve/safe">查看</a></td>
+                    {elseif $_G.approve_result.realname_status==2}
+                        <td>0分</td>
+    					<td><i class="icon no" title="审核不通过"></i></td>
+    					<td><a href="/?user&m=approve/safe">申请</a></td>
+                    {else}
+                        <td>0分</td>
+    					<td><i class="icon no" title="待审核"></i></td>
+    					<td><a href="/?user&m=approve/safe">申请</a></td>
+                    {/if}
+                  </tr>
+				  <tr>
+				    <td>完善个人信息</td>
+                    {articles module="rating" function="get_info_credit" user_id=$_G.user_id}
+                    {if $var.result=='success'}
+                    <td>
+                    {articles module="credit" function="get_type_one" var="Tvar" nid="info_credit"}
+					{$Tvar.value}分
+					{/articles}
+                    </td>
+                    <td><i class="icon yes" title="已完成"></i></td>
+					<td><a href="/?user&m=rating/basic">修改</a></td>
+                    {else}
+                    <td>0分
+                    </td>
+                    <td><i class="icon no" title="待完成"></i></td>
+					<td><a href="/?user&m=rating/basic">填写资料</a></td>
+                    {/if}
+                    {/articles}
+	              </tr>
+				  {articles module="attestations" function="get_user_credit" var="Avar" user_id=$_G.user_id}
+				   <tr> 
+				   <td rowspan="4">必要信用认证</td>
+                    <td>工作认证</td>
+                    {if $Avar.work.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="work" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.work.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="work" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.work.num>0&&$Avar.work.status==1}
+                    <td>{$Avar.work.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="work" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.work.status==2||$Avar.work.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="work" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}
+				  </tr>
+				  <tr>
+                    <td>收入认证</td>
+                    {if $Avar.income.num>0&&$Avar.income.status=="1"}
+                    <td>{$Avar.income.num}分</td>
+                    {else}<td>0分</td>{/if}
+                    {if $Avar.income.status==""}
+                    <td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="income" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif  $Avar.income.status==0}
+                    <td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="income" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.income.status==2||$Avar.income.num==0}
+                    <td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="income" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.income.num>0&&$Avar.income.status==1}
+                    <td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="income" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}
+                  </tr>
+				   <tr>
+                    <td>工资卡流水</td>
+                    
+                    {if $Avar.gongzi.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="gongzi" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.gongzi.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="gongzi" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.gongzi.num>0&&$Avar.gongzi.status==1}
+                    <td>{$Avar.gongzi.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="gongzi" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.gongzi.status==2||$Avar.gongzi.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="gongzi" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}
+                    
+                  </tr>
+				  <tr>
+                    <td>信用报告</td>
+                    {if $Avar.xinyong.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="xinyong" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.xinyong.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="xinyong" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.xinyong.num>0&&$Avar.xinyong.status==1}
+                    <td>{$Avar.xinyong.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="xinyong" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.xinyong.status==2||$Avar.xinyong.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="xinyong" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}
+     	          </tr>
+                  <tr>
+				  	<td rowspan="22">可选信用审核</td>
+					<td>学历认证</td>
+					{if $Avar.edu.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="edu" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.edu.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="edu" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.edu.num>0&&$Avar.edu.status==1}
+                    <td>{$Avar.edu.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="edu" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.edu.status==2||$Avar.edu.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="edu" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}
+				</tr>				
+				
+				  
+				 <tr>
+                    <td>毕业证</td>
+					{if $Avar.biye.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="biye" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.biye.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="biye" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.biye.num>0&&$Avar.biye.status==1}
+                    <td>{$Avar.biye.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="biye" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.biye.status==2||$Avar.biye.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="biye" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}	
+                  </tr>
+				<tr>
+                    <td>社保卡</td>
+                    {if $Avar.shebao.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="shebao" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.shebao.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="shebao" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.shebao.num>0&&$Avar.shebao.status==1}
+                    <td>{$Avar.shebao.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="shebao" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.shebao.status==2||$Avar.shebao.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="shebao" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}	
+                  </tr>
+				<tr>
+                    <td>房产证</td>
+                   	{if $Avar.fangchan.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="fangchan" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.fangchan.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="fangchan" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.fangchan.num>0&&$Avar.fangchan.status==1}
+                    <td>{$Avar.fangchan.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="fangchan" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.fangchan.status==2||$Avar.fangchan.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="fangchan" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}	
+                  </tr>
+				<tr>
+                    <td>行车证</td>
+                   	{if $Avar.xingche.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="xingche" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.xingche.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="xingche" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.xingche.num>0&&$Avar.xingche.status==1}
+                    <td>{$Avar.xingche.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="xingche" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.xingche.status==2||$Avar.xingche.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="xingche" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}		
+                  </tr>
+				<tr>
+                    <td>驾驶证</td>
+                   	{if $Avar.jiashi.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="jiashi" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.jiashi.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="jiashi" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.jiashi.num>0&&$Avar.jiashi.status==1}
+                    <td>{$Avar.jiashi.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="jiashi" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.jiashi.status==2||$Avar.jiashi.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="jiashi" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}
+                  </tr>
+				<tr>
+                    <td>信用卡</td>
+                   	{if $Avar.xinyongka.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="xinyongka" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.xinyongka.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="xinyongka" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.xinyongka.num>0&&$Avar.xinyongka.status==1}
+                    <td>{$Avar.xinyongka.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="xinyongka" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.xinyongka.status==2||$Avar.xinyongka.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="xinyongka" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}
+                  </tr>
+				  <tr>
+                    <td>其它借款(每个5分)</td>
+                   	{if $Avar.otherloan.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="otherloan" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.otherloan.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="otherloan" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.otherloan.num>0&&$Avar.otherloan.status==1}
+                    <td>{$Avar.otherloan.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="otherloan" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.otherloan.status==2||$Avar.otherloan.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="otherloan" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}
+                  </tr>
+				<tr>
+                    <td>其它资产证明</td>
+                   	{if $Avar.otherzc.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="otherzc" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.otherzc.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="otherzc" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.otherzc.num>0&&$Avar.otherzc.status==1}
+                    <td>{$Avar.otherzc.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="otherzc" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.otherzc.status==2||$Avar.otherzc.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="otherzc" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}	
+                  </tr>
+				<tr>
+                    <td>现场认证</td>
+                    {if $Avar.xianchang.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="xianchang" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.xianchang.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="xianchang" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.xianchang.num>0&&$Avar.xianchang.status==1}
+                    <td>{$Avar.xianchang.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="xianchang" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.xianchang.status==2||$Avar.xianchang.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="xianchang" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}		
+                  </tr>
+				  <tr>
+                    <td>家属身份证</td>
+                    {if $Avar.jiashu.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="jiashu" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.jiashu.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="jiashu" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.jiashu.num>0&&$Avar.jiashu.status==1}
+                    <td>{$Avar.jiashu.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="jiashu" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.jiashu.status==2||$Avar.jiashu.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="jiashu" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}	
+                  </tr>
+				  <tr>                   
+                    <td>户口本</td>
+                    {if $Avar.hukou.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="hukou" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.hukou.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="hukou" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.hukou.num>0&&$Avar.hukou.status==1}
+                    <td>{$Avar.hukou.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="hukou" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.hukou.status==2||$Avar.hukou.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="hukou" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}		
+                  </tr>
+				<tr>
+                    <td>住址证明</td>
+                    {if $Avar.zhuzhi.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="zhuzhi" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.zhuzhi.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="zhuzhi" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.zhuzhi.num>0&&$Avar.zhuzhi.status==1}
+                    <td>{$Avar.zhuzhi.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="zhuzhi" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.zhuzhi.status==2||$Avar.zhuzhi.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="zhuzhi" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}
+                  </tr>
+				  <tr>
+                    <td>手机话单</td>
+                    {if $Avar.huadian.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="huadian" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.huadian.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="huadian" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.huadian.num>0&&$Avar.huadian.status==1}
+                    <td>{$Avar.huadian.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="huadian" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.huadian.status==2||$Avar.huadian.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="huadian" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}
+                  </tr>
+                  <tr>
+                    <td>结婚证明</td>
+                    {if $Avar.marry.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="marry" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.marry.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="marry" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.marry.num>0&&$Avar.marry.status==1}
+                    <td>{$Avar.marry.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="marry" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.marry.status==2||$Avar.marry.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="marry" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}
+                  </tr>
+				  <tr>
+                    <td>股权证</td>
+                    {if $Avar.guquan.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="guquan" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.guquan.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="guquan" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.guquan.num>0&&$Avar.guquan.status==1}
+                    <td>{$Avar.guquan.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="guquan" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.guquan.status==2||$Avar.guquan.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="guquan" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}	
+                  </tr>
+				  <tr>
+                    <td>商铺照片</td>
+                    {if $Avar.photo.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="photo" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.photo.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="photo" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.photo.num>0&&$Avar.photo.status==1}
+                    <td>{$Avar.photo.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="photo" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.photo.status==2||$Avar.photo.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="photo" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}
+                  </tr>
+				  <tr>
+                    <td>地税副本</td>
+                    {if $Avar.fuben.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="fuben" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.fuben.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="fuben" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.fuben.num>0&&$Avar.fuben.status==1}
+                    <td>{$Avar.fuben.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="fuben" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.fuben.status==2||$Avar.fuben.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="fuben" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}
+                  </tr>
+				  <tr>
+                    <td>营业执照</td>
+                    {if $Avar.zhizhao.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="zhizhao" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.zhizhao.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="zhizhao" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.zhizhao.num>0&&$Avar.zhizhao.status==1}
+                    <td>{$Avar.zhizhao.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="zhizhao" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.zhizhao.status==2||$Avar.zhizhao.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="zhizhao" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}
+                  </tr>
+				  <tr>
+                    <td>国税副本</td>
+                    {if $Avar.guosui.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="guosui" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.guosui.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="guosui" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.guosui.num>0&&$Avar.guosui.status==1}
+                    <td>{$Avar.guosui.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="guosui" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.guosui.status==2||$Avar.guosui.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="guosui" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}	
+                  </tr>
+                   <tr>
+                    <td>其他有价值的认证</td>
+                    
+                    {if $Avar.other.status==""}
+                    <td>0分</td>
+					<td><i class="icon no" title="未认证"></i></td>
+					<td><a data-nid="other" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.other.status==0}
+                    <td>0分</td>
+					<td><i class="icon ing" title="待认证"></i></td>
+					<td><a data-nid="other" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.other.num>0&&$Avar.other.status==1}
+                    <td>{$Avar.other.num}分</td>
+					<td><i class="icon yes" title="已认证"></i></td>
+					<td><a data-nid="other" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {elseif $Avar.other.status==2||$Avar.other.num==0}
+                    <td>0分</td>
+					<td><i class="icon no" title="认证不通过"></i></td>
+					<td><a data-nid="other" data-type="upload" href="javascript:void(0);">上传资料</a></td>	
+                    {/if}
+                  </tr>
+				   {/articles}
+                  <tr>
+                    <td style="padding-left:15px; text-align:left" colspan="5">辅助积分代表在本网站的投标，还款情况：</td>
+                  </tr>
+  {articles module="borrow" function="get_user_credit_count" var="credit_var" user_id=$_G.user_id}  
+                  <tr>
+                    <td height="27">投标记录</td>
+                    <td>成功投标，每1000元积1分</td>
+					<td>{$credit_var.tender_credit*1000|default:"0"}</td>
+                    <td colspan="2">{$credit_var.tender_credit|default:"0"}</td>
+                    </tr>
+				  <tr>
+                    <td>还款记录</td>
+                    <td>成功还款，每1000元积1分</td>
+					<td>{$credit_var.borrow_credit*1000|default:"0"}</td>
+                    <td>{$credit_var.borrow_credit|default:"0"}</td>
+                    </tr>
+  {/articles}
+                </tbody></table></div>
+</div>
+</div>
+	   </div>      
+	</div>
+</div>
+{literal}
+<script type="text/javascript">
+diyou.use('borrow',function(dy){dy.loan_approve('loan_approve')})
+</script>
+{/literal}
+{include file="users_footer.html"}

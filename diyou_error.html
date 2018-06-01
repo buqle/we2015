@@ -1,0 +1,22 @@
+{include file="header.html"}
+   <div class="fn_rig user_rig">
+    <div class="user_box">
+        
+            <h2>错误提示</h2>
+            <div class="cont"><br /><br />
+               <p>{$smarty.request.error_remark}</p>
+                      <br /><br />
+            </div>
+        </div>
+       
+    </div>
+</div>
+    <script type="text/javascript">
+    var rem = "{$smarty.request.error_remark}";
+    var _url = "{$smarty.request.error_url}";
+{literal}
+      diyou.use('dialogs',function(dia){dia.error(rem,_url)});       
+    </script>
+    {/literal}
+    
+{include file="footer.html"}

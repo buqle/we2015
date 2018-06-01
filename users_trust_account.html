@@ -1,0 +1,43 @@
+<div class="fn_rig user_rig">
+    <div class="user_box">
+        {articles module="trust" function="get_users_one" user_id=$_G.user_id  }
+
+        {if $var.trust_userid!=""}
+        <div class="fund_trust">
+            <h2>账户托管</h2>
+            <div class="cont">
+                <div class="trust_box">
+                    <div class="hf_trust_card">
+                        <img src="{$tpldir}/images/trust/{$var.trust_type}_logo.jpg" />
+                        <p>  <span>{$var.trust_name}号：</span><span class="right">{$var.trust_userid}</span></p>
+                        <p>  <span>总 金 额：</span><span class="right">{$_U.trust_users_account.total}</span></p>
+                        <p>  <span>可用金额：</span><span class="right">{$_U.trust_users_account.balance}</span></p>
+                        <p>  <span>冻结金额：</span><span class="right">{$_U.trust_users_account.frost}</span></p>
+						<p class="txt_cent"> <a href="/?user&m=trust/login" class="trust_reg" target="_blank">登录我的{$var.trust_name}账号</a>
+						{if $var.tender_status!="1" || $var.repay_status!="1" || $var.verify_status!="1"}
+						<a href="/?user&m=trust/approve" class="trust_empower" target="_blank">进行授权</a>
+						{/if}
+						</p>
+                    </div>   
+                </div>   
+            </div>
+        </div>
+        {else}
+        <div class="fund_trust">
+            <h2>账户托管</h2>
+            <div class="cont">
+                <div class="trust_box">
+                    <div class="hf_trust_card">
+                        <img src="{$tpldir}/images/trust/{$var.trust_type}_logo.jpg" />
+                        <p>您还没有资金托管账号？<a href="/?user&m=trust/approve"  class="trust_reg" >注册我的资金托管账号</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {/if}
+
+        {/articles}
+
+
+    </div>
+</div>

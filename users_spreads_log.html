@@ -1,0 +1,34 @@
+	
+        <div class="fn_rig user_rig">
+    	   <div class="user_box">
+    		   <div class="extend">
+    				  <h2 class="fn_cle">
+    					  <span class="fn_left">推广记录</span>
+    					  <a href="/?user&m=spreads/list" class="u_tit_btn fn_rig">推广管理</a>
+    				  </h2>
+                      <div class="cont">
+    						<div class="extend_src">
+    						   <div class="search">
+    							 <form action="" method="post" id="logsou_form">
+    								 <input type="text" class="u_input w120 date_picker" placeholder="起始日期" value="" id="dotime1" name="dotime1"/>
+                                     <input type="text" class="u_input w120 date_picker" placeholder="截止日期" value=""  id="dotime2" name="dotime2"/>
+    								 <input type="text" class="u_input" placeholder="输入用户名" name="username" id="username"/>
+    								 <input type="submit" value="搜索" class="u_src"/>
+    							 </form>
+    						  </div> 
+    					   </div>	
+                           <div id="content_loglist">
+                           </div>	   
+    					   
+    		 </div>				  
+    		   </div>
+    	   </div>
+    	</div>
+        <script>
+        var suid = '{$smarty.request.user_id}';
+        {literal}
+        
+        diyou.use('users_spread',function(dy){dy.spreads_log(suid)})
+        </script>
+        {/literal}
+  

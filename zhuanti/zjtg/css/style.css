@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+   margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clear {
+    clear: both;
+}
+img {
+    border: 0 none;
+}
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+body {
+    font-family:"微软雅黑", "Arial Narrow";
+    font-size: 18px;
+}
+.fr{ float: right;}
+.fl{ float:left;}
+.zjtg-head{ height: 590px; background: url("../images/tuoguan01_01.jpg") center no-repeat;}
+.zjtg-head-twe{ height: 541px; background: url("../images/tuoguan02_02.jpg") center no-repeat;}
+.zjtg-main{ background: #001D4B;}
+.zjtg-meaaing{ text-align: center;  color: white; font-weight: bold; font-size: 50px; height: 70px; line-height: 70px;}
+.zjtg-mors{ width: 1000px; margin: 0 auto;}
+.zjtg-mors-ts{ height: 36px; width: 942px; margin: 0 auto; background: url("../images/tuoguan03_03.jpg") 0 0 no-repeat;}
+.zjtg-rs{ color: white; font-size: 20px; line-height: 30px; text-indent: 2em;}
+.zjtg-mins{ height: 496px; width: 767px; margin: 0 auto; background: url("../images/tuoguan04_03.jpg") 0 0 no-repeat;}
+.zjtg-1200{ width: 1200px; margin: 0 auto; background: #001D4B;}
+.zjtg-98{ height: 98px; width: 433px; margin: 0 auto; background: url("../images/tuoguan05_03.jpg") 0 0 no-repeat;}
+.zjtg-102s{ height: 108px; width: 472px; margin: 0 auto; background: url("../images/tuoguan06_03.jpg") 0 0 no-repeat;}
+.zjtg-ims1020{ height: 99px; width: 472px; margin: 0 auto; background: url("../images/tuoguan07_03.jpg") 0 0 no-repeat;}
+.zjtg-rsuns{ height: 285px; width: 1000px; border-radius: 10px; border: 1px dashed white; margin: 0 auto;}
+.ims-zjtgs{ height: 686px; background: url("../images/tuoguan09_02.jpg") center no-repeat;}
+
+
+
+
+

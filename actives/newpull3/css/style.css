@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clear {
+    clear: both;
+}
+img {
+    border: 0 none;
+}
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+body {
+    font-family:"Microsoft YaHei";
+    font-size: 18px; 
+}
+
+
+.clear{zoom:1;}
+
+.clear:after {
+    content: "";
+    display: block;
+    clear: both;}
+	
+.pcash_cont1{width: 100%;overflow: hidden;background: url("../images/b1.jpg") no-repeat center;height: 666px;}
+
+.frame_side1{background: #4cb4db;width: 100%;}
+    .frame_side1 .frame_con1{width: 998px;margin: 0 auto;padding-top: 30px;}
+    .frame_side1 .frame_con1 h4{background: url("../images/tj1_04.gif") no-repeat;height: 333px;}
+        .frame_side1 .frame_con1 .frame_con1c{width: 848px;margin: 0 50px 30px 98px;}
+        .frame_side1 .frame_con1 h2{background: url("../images/botto_03.png") no-repeat bottom right;height: 227px;}
+        .frame_side1 .frame_con1 .frame_con1c p{font-size: 20px;color:#fff;font-weight: bold;height: 50px;line-height: 50px;}
+        .frame_side1 .frame_con1 .frame_con1c .lastyu{width:740px;background: url("../images/bagg_08.png") no-repeat right; height: 59px;display: inline-block;}
+        .frame_side1 .frame_con1 .frame_con1c .lastyu span,.frame_side2 .frame_con2c .boot_sb1 span{font-size: 30px;color: #fff100;}
+
+        .frame_side2{background: url("../images/bg1_12.png") repeat-x #e95a6f;padding-bottom: 100px;}
+        .frame_side2 h4{background: url("../images/bgh_12.png") no-repeat center;height:83px; }
+        .frame_side2 .frame_boot{background: url("../images/1.png") no-repeat center;height: 325px;}
+        .frame_side2 .frame_con2c{}
+        .frame_side2 .frame_con2c p{text-align: center;font-size: 22px;color:#fff;font-weight: bold;height: 70px;line-height: 70px;}
+        .frame_side2 .frame_con2c .boot_sb1{background: url("../images/boot2_12.png") no-repeat right;height: 115px;width: 920px;margin: 0 auto;}
+        .frame_side2 .frame_con2c p span{color: #fff100;}
+        .frame_con2c .lastyu1{background: url("../images/2_16.png") no-repeat right;height: 69px;width: 940px;margin: 0 auto;}
+        .frame_con3c{background: url("../images/los.png") no-repeat center;height: 242px;margin-top: 30px;}
+
+
+.jiujiu_foot{width: 100%;text-align: center;padding:80px 0 120px 0;;background: #d5331c;}
+.jiujiu_foot p{color: #f7dc7b;font-size: 20px;line-height: 40px;}
+.jiujiu_foot .endjiujiu{background:url("../images/ma_16.gif")  no-repeat center;height: 155px;}

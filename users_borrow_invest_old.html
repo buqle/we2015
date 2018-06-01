@@ -1,0 +1,92 @@
+{if $smarty.request.type=='list'}
+       <table class="user_tab2" id="content_list">
+            <tbody>
+			  <tr class="tab2_tit">
+			    <td width="24%">投资时间（起息日-到期日）</td>
+			    <td width="10%">项目</td>
+			    <td width="15%">投资金额</td>
+			    <td width="12%">总收益</td>
+			    <td width="12%">已收收益</td>
+			    <td width="13%">待收本金</td>
+			    <td width="7%">状态</td>
+
+			  </tr>
+              {list module="borrow" var="loop" function ="get_tender_list_old"  user_id=$_G.user_id  dotime1=$smarty.request.dotime1 dotime2=$smarty.request.dotime2  status_type=$smarty.request.status_type borrow_type=$smarty.request.borrow_type page=$smarty.request.page+1 epage=10  old=3}
+			 {foreach from=$loop.list item="item"}
+			  <tr>
+			    <td>{$item.addtime|date_format:'Y/m/d'}{if $item.status == 1}<em>({$item.borrow_start_time|date_format:"y/m/d"}-{$item.repay_last_time|date_format:"y/m/d"})</em>{/if}</td>
+			    <td><a href="http://old.ronghedai.com/invest/a{$item.borrow_nid}.html" target="_blank" title="{$item.borrow_name}">{$item.borrow_name|truncate:4}</a><i title="{$item.borrow_type_name},期限{$item.borrow_period_name},利率{$item.borrow_apr}%{if $var.award_status!=0},{if $var.award_status==1}奖{$var.award_account|default:'0.00'}元{else}奖{$var.award_scale}%{/if}{/if}" class="icon"></i></td>
+			    <td>￥{$item.account|default:'0.00'}</td>
+			    <td title="净赚收益=奖励：{$item.tender_award_fee}+利息：{$item.recover_account_interest}" >￥{$item.tender_award_fee+$item.recover_account_interest}</td>
+			    <td title="已收收益=奖励{$item.tender_award_fee}+已收利息{$item.recover_account_interest_yes}" >￥{$item.tender_award_fee+$item.recover_account_interest_yes}</td>
+			    <td>￥{$item.recover_account_capital_wait|default:'0.00'}</td>
+			    <td>{$item.status_type_name}</td>
+			  </tr>
+			  {/foreach}
+			</tbody>
+			<tfoot>
+
+              <tr>
+			 <td colspan="8">
+             {if $loop.total>0}
+             <div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+             {/if}
+             </td>
+			</tr>
+			</tfoot>
+            </table>
+            {/list}
+{else}
+
+{include file="users_main_header.html"}
+<div style="background:#fff; overflow:hidden; width:100%;">
+<div class="conbox t20 fn_cle user_cont">
+{include file="users_menu.html"}
+	<div class="fn_rig user_rig">
+
+      <div class="user_box t20">
+	  <div class="fund_list">
+      <div class="src_box">
+     <div class="search fn_cle">
+
+			    <div class="fn_left">
+                                <form action="" method="post" id="sou_form">
+								     投资记录
+									  <select class="u_sel" name="borrow_type" id="borrow_type">
+                					    <option selected="selected" value="">标种类型</option>
+                						{foreach from=$_G.linkages.borrow_all_type key="key" item="item"}
+                					    <option value="{$key}">{$item}</option>
+                						{/foreach}
+                					 </select>
+                					 <input type="text" class="u_input w120 date_picker" placeholder="起始日期" value="" id="dotime1" />
+                                      <input type="text" class="u_input w120 date_picker" placeholder="截止日期" value=""  id="dotime2" />
+                					 <span>状态</span>
+                					 <select class="u_sel" name="status_type" id="status_type">
+                                       <option value="" {if  $smarty.request.status_type==''}selected="true"{/if}>全部</option>
+                                        <option value="tender" {if  $smarty.request.status_type=='tender'}selected="true"{/if}>投标中</option>
+                                         <option value="recover" {if $smarty.request.status_nid=='recover'}selected="true"{/if} >回收中</option>
+                					    <option value="end" {if $smarty.request.status_type=='end'}selected="true"{/if} >回收完</option>
+                						
+
+                					 </select>
+                                     <input type="submit" id="search" value="搜索" class="u_src"/>
+								 </form>
+
+				   </div>
+				 </div>
+		</div>
+			</div>
+	     <div  id="content_list">
+
+
+		 </div>
+
+	  </div>
+      </div>
+	</div>
+</div>
+</div>
+{literal}<script>diyou.use('users_invest',function(dy){dy.invest_info_old()})</script>{/literal}
+{include file="users_footer.html"}
+
+{/if}

@@ -1,0 +1,23 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{$tpldir}/css/blue/article.css">
+<div class="conbox article">
+{include file="articles_menu.html"}
+	<div class="art_detail">
+	{articles module="articles" function="get_one_page" var="var" nid=$_G.site_result.nid }
+	   <div class="about_us">
+	      <h3>{$var.name}</h3>
+		  <div class="au_item">
+			{$var.contents}
+		   </div>
+	   </div>  
+	</div>
+	{/articles}
+</div>
+{include file="footer.html"}
+{literal}
+<script type="text/javascript">
+diyou.use('index',function(dy){dy.banner_slide('banner_slide','banner_btn');dy.login()})
+</script>
+{/literal}
+
+

@@ -1,0 +1,138 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", sans-serif;;
+    line-height: 1.5;
+    font-size: 0.6rem;
+    color: #000;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+    /*background:#8CBB2C;*/
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+}
+
+button {
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+}
+
+a {
+    -webkit-touch-callout: none;
+    text-decoration: none;
+}
+
+:focus {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+em, i {
+    font-style: normal;
+}
+
+.section1{ height:9.5rem;}
+.all-img{ width: 100%; height: 100%;}
+
+.section2{position:relative;text-align:center;width:16rem;}
+.y22{position:relative;height:16rem;}
+.y1{position:absolute;width:100%;height:100%;left:0;top:0;}
+.y2{position:relative;width:14rem;margin:0 auto;font-size:0.6rem;padding-top:2rem;}
+.y3{color:#BE001C;font-size:0.7rem;font-weight:bold;}
+.y4{position:absolute;width:15rem;height:5rem;left:50%;margin-left:-7.3rem;top:0;}
+.y41{height:5.5rem;margin-left:-7.8rem;}
+.Y5{position:relative;height:20rem;}
+.y55{position:absolute;width:16rem;height:6rem;left:0;top:0;}
+.y56{position:absolute;width:16rem;height:12rem;left:0;top:6rem;}
+.y57{position:absolute;width:16rem;height:3rem;left:0;top:17rem;}
+.y5{position:relative;width:14rem;margin:0 auto;text-align:left;font-size:0.6rem;}
+.y51{color:#000000;font-size:0.8rem;text-align:center;padding:1rem 0rem;}
+.y52{text-indent: 1rem;}
+
+.section3{position:relative;text-align:center;background:#8A0010;color:#fff;font-size:0.6rem;}
+.y6{width:14rem;margin:0 auto;text-align:left;padding-top:1.2rem;padding-bottom:1rem;}
+.y61{width:14rem;padding-bottom:1rem;}

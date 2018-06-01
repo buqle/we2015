@@ -1,0 +1,76 @@
+{if $smarty.request.type=="list"}
+{list module="borrow" var="loop" function ="get_recover_list" user_id=$_G.user_id borrow_name=$smarty.request.keywords recover_status=0 dotime1=$smarty.request.dotime1 dotime2=$smarty.request.dotime2 borrow_status=3 order="recover_time" epage="10" page=$smarty.request.page+1 inchange=2}
+{foreach from=$loop.list item="item"}
+<tr>
+	<td class="ck0">{$item.borrow_name}</td>
+	<td>{$item.recover_time|date_format:"Y-m-d"}</td>
+	<td>{$item.borrow_username|truncate:2}***</td>
+	<td>{if $item.borrow_type=="day" || $item.borrow_type=="roam" || $item.borrow_style=="end"}1/1{else}{$item.recover_period}/{$item.borrow_period}{/if}</td>
+	<td>￥{$item.recover_account|default:'0.00'}</td>
+	<td>￥{$item.recover_capital|default:'0.00'}</td>
+	<td>￥{$item.recover_interest|default:'0.00'}</td>
+	<td>{$item.late_days|default:0}天</td>
+	<td class="ck">{if $item.recover_web==1}网站垫付{elseif $item.recover_status==1}已收{else}未收{/if}</td>
+</tr>
+{/foreach}
+<tr>
+	<td colspan="9">
+		{if $loop.total>0}
+		<div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+		{else}
+		<span class="total" style="border:  none;">没有相关记录</span>
+		{/if}
+	</td>
+</tr>
+{/list}
+{else}
+
+
+<div class="invest_record">
+	<div class="tbjl">
+		<h2>回款计划</h2>
+		<form action="" method="post" id="vdsou_form">
+			<label><img src="{$tpldir}/images/vipcenter/rl.png" alt="" width="20px" height="20px">
+				<input style="width: 100px;" type="text" class="u_input w120 date_picker" placeholder="起始日期" value="" id="dotime1"/>
+			</label>
+			<label><img src="{$tpldir}/images/vipcenter/rl.png" alt="" width="20px" height="20px">
+				<input style="width: 100px;" type="text" class="u_input w120 date_picker" placeholder="截止日期" value="" id="dotime2"/>
+			</label>
+			<input style="width: 100px;" type="text" class="u_input" name="keywords" placeholder="输入关键字" />
+			<input class="input_btn" type="submit" value="搜索">
+		</form>
+
+	</div>
+	<table style="border: 1px solid #ddd;">
+		<thead>
+		<tr>
+			<th>项目</th>
+			<th>到期日</th>
+			<th>借款人</th>
+			<th>第几期/共几期</th>
+			<th>应收总额</th>
+			<th>应收本金</th>
+			<th>应收利息</th>
+			<th>逾期天数</th>
+			<th>状态</th>
+		</tr>
+		</thead>
+
+		<tbody id="vdcontent_list">
+
+		</tbody>
+	</table>
+
+</div>
+
+
+<div class="mask"></div>
+<div style="height: 65px;"></div>
+
+<script type="text/javascript">
+	var _recover_list = '{$smarty.request.data_type}';
+	{literal}
+	diyou.use('users_invest',function(dy){dy.invest_repay_wait(_recover_list)})
+</script>
+{/literal}
+{/if}

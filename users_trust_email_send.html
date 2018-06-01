@@ -1,0 +1,30 @@
+
+        <div class="dialog_con">
+            <div class="sq_step sq_step1 fn_cle">
+                <li><span class="now">1.邮箱认证</span></li>
+               <!-- <li><span class="done">2.实名认证</span></li>-->
+                <li><span class="done">2.手机认证</span></li>
+                <li><span class="done">3.{$_U.trust_users.trust_name}</span></li>
+                <li><span class="done">4.完成</span></li>
+            </div>
+            <div class="sq_cont_box">
+                <div class="email_active_notice">
+                    <p class="success"><img src="{$tpldir}/images/success.png"><span><input type="hidden" name="email_active" id="email_active" value="{$smarty.request.mail}" />邮件发送成功，请立即激活</span></p>
+                    <div class="item">
+                        <p class="word">验证邮件已发送到您的邮箱：<em>{$_U.email|truncate_email}</em>请点击邮件中的确认链接完成验证。</p>
+                    </div>
+                    <div class="item">
+                        <a href="{if $_U.email eq null}{$smarty.request.mailurl}{else}{$_U.emailurl}{/if}" target="_blank" class="sq_btn" id="login_email">登录邮箱激活</a>
+                        <span class="send_suc" id="email_send_warning"><i></i><em></em></span>
+                    </div>
+                </div>
+                <div class="notice">
+                    <h4>请注意以下事项</h4>
+                    <p>1、如果30分钟内没有收到激活邮件，查看您的垃圾邮箱，依然不能收到请<a id="send_email_active" href="javascript:void(0);" >重新发送</a>。</p>
+                    <p>2、如果您在验证过程中，出现任何问题，请致电 请致电{$_G.system.con_kefu_phone}，或咨询客服QQ {$_G.system.con_kefu_qq}</p>
+                </div>
+            </div>
+            
+        </div>
+        {literal}<script>diyou.use('trust',function(dy){dy.email_send()});</script>{/literal}
+

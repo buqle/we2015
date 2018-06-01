@@ -1,0 +1,96 @@
+{include file="headers.html"}
+{if $_G.user_id==""}
+<script>
+    jDialog.alert('请先进行登入');
+    location.href='/?user&q=login';
+</script>
+{elseif {$_G.trust_user.approve_result.reg_trust}=="0"}
+<script>
+    jDialog.alert('请开通汇付');
+    location.href='/?user&q=reg&type=phone';
+</script>
+{/if}
+<div class="widthas">
+    <div class="widthb clearff redeem_proc">
+        <div class="lefton">
+            <div class="redeem_procont1 clearff">
+                <div class="lefton lefton1" id="img-contim">
+                    <img src="" alt="">
+                </div>
+                <div class="lefton lefton2">
+                    <div class="righton_side1">
+                        <h4 id="udui_name"></h4>
+                        <p id="udui_account"></p>
+                        <p>积分兑换：<i id="old_integral">0</i></p>
+                        <p>会员兑换：<span id="udui_integral" v2="">0</span>（L<em id="udui_level">0</em>专享价）</p>
+                        <dl class="goum_redeem clearff">
+                            <dt>
+                                <input type="text" value="1" id="dui_inputy"/>
+                            <h6>
+                                <a href="javascript:void(0);" id="jia_btn">+</a>
+                                <a href="javascript:void(0);" id="jian_btn">-</a>
+                            </h6>
+                            </dt>
+                            <dd>剩余：<i id="udui_number">0</i>件</dd>
+                        </dl>
+                        <div class="btn_redeem" nid="" int-address="">立即兑换</div>
+                    </div>
+                    <div class="righton_side2">
+                        服务承诺：<i>正品保障</i><i>兑换后7个工作日发货</i><i>免运费</i><i>仅限大陆地区</i>
+                    </div>
+                </div>
+            </div>
+            <div class="redeem_procont2">
+                <p class="redeem_tit"><i>产品介绍</i></p>
+                <div class="metric_redeem">
+                    <div class='loading_now' style=' text-indent: 4em; height: 388px; line-height: 300px; width: 100%;'>正在加载中,请耐心等待...</div>
+                </div>
+                <div class="room_redeem">
+                    <p class="redeem_tit"><i>温馨提示</i></p>
+                    <p>1、卡券规则：用户兑换卡券后，平台将在您兑换成功或满标复审后三个工作日内发送兑换短信到您的注册手机号中，您可根据兑换短信兑换卡券并使用（兑换码有效期为三天）。如因个人原因导致兑换失败，平台概不负责；</p>
+                    <p>2、用户所得流量奖励将在兑换成功或满标复审后三个工作日内充入您的注册手机号中，具体到账时间以运营商到账时间为准；</p>
+                    <p>3、实物规则：用户所得实物奖励，在兑换成功或满标复审后，融和贷工作人员将在七个工作日内安排发货（需提交完整收货信息）；</p>
+                    <p>4、现金券规则：奖励将在兑换成功或满标复审后三个工作日内发放到您的银行存管账户中，可投资，可提现；</p>
+                    <p>5、兑换商品进度及详情您可前往个人中心查看。奖品一经兑换成功，非质量问题，不予退换；</p>
+                    <p>6、部分商品兑换后由京东负责配送及售后；如遇缺货，融和贷工作人员会第一时间与您联系；收货后，如遇产品质量问题，请与网站客服联系；</p>
+                    <p>7、融和贷周边商品，兑换后由融和贷负责；</p>
+                    <p>8、如您有任何疑问，请致电在线客服：400-013-5679或咨询您的专属客服。</p>
+                </div>
+            </div>
+        </div>
+        {include file="mall-right.html"}
+    </div>
+</div>
+
+<div id="qingkuang1" style="display: none;">
+    <div class="qingkcon">
+        <p>你是否确认兑换此商品？</p>
+        <div class="qingcon2 clearg"><span id="shibtn">是</span><span style="float: right;">否</span></div>
+    </div>
+</div>
+
+<div id="qingkuang2" style="display: none;">
+    <div class="qingkcon shouhuod1">
+        <p>请先前往个人中心填写收货地址。</p>
+        <a href="/?user&user_role=1#account/red2">立即填写</a>
+    </div>
+</div>
+
+<div id="qingkuang3" style="display: none;">
+    <div class="qingkcon">
+        <p>请选择收货地址</p>
+        <div class="dizhi2cont">
+            <p><input type="radio">合肥绿地瀛海国际大厦D座14楼</p>
+        </div>
+        <div class="qingcon2 clearg" id="dizhique"><span  style="background: #35a1fb">确定</span><a style="float: right;" href="/?user&user_role=1#account/red2">修改</a></div>
+    </div>
+</div>
+
+
+
+{literal}
+<script>
+    diyou.use('mallist',function(t){t.mallistcont()})
+</script>
+{/literal}
+{include file="footer.html"}

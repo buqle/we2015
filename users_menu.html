@@ -1,0 +1,92 @@
+<div class="" id="users_menu">
+	<ul id="sddm">
+		<li style="width: 298px;"><a class="cn_hover ein_ci1 tuns" href="javascript:void(0);" onmouseover="mopen('m1')" onmouseout="mclosetime()">账户中心</a>
+			<div class="tie" style="border-left: none;" id="m1" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+				<a href="#users/home">资金总览</a>
+				<a href="javascript:void(0);" class="cust_menus">存管账户</a>
+				<a href="#users/cust" class="cust_menus2" style="display: none;">存管账户</a>
+				<a href="#rating/basic">个人中心</a>
+				<a href="#message/list">站内信</a>
+			</div>
+		</li>
+		<li style="width: 299px;"><a class="cn_hover ein_ci2"  href="javascript:void(0);" onmouseover="mopen('m2')" onmouseout="mclosetime()">资金管理</a>
+			<div class="tie" style="margin-left: -1px;" id="m2" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+				<a href="#trust/recharge">充值</a>
+				<a href="#trust/cash">提现</a>
+				<a href="#users/cust_bank">换绑卡</a>
+				<a href="#account/log">交易记录</a>
+			</div>
+		</li>
+		<li style="width: 299px;"><a class="cn_hover ein_ci3" href="javascript:void(0);" onmouseover="mopen('m3')" onmouseout="mclosetime()">理财管理</a>
+			<div class="tie" style="margin-left: -1px;" id="m3" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+				<a href="#borrow/invest">投资记录</a>
+				<!--<a href="#borrow/auto">自动投标</a>-->
+				<a href="#borrow/invest/now">回款计划</a>
+				<!--<a href="#trust/change">债权转让</a>-->
+				<a href="#borrow/count">借款记录</a>
+			</div>
+		</li>
+		<li style="border-right: none; width: 298px;"><a class="cn_hover ein_ci4"href="javascript:void(0);" onmouseover="mopen('m4')" onmouseout="mclosetime()">活动管理</a>
+			<div class="tie" style="border-right: none; margin-left: -1px;" id="m4" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+				<a href="/mallcenter/index.html">我的积分</a>
+				<a href="#account/red">我的红包</a>
+				<a  href="#account/red3">我的加息券</a>
+				<a href="#account/red2">收货地址</a>
+				<a href="#users/myfriend">邀请管理</a>
+			</div>
+		</li>
+	</ul>
+	<!--<div class="pos_img" style="position: absolute;right: 0;top: 270px;"><a href="/?user&user_role=1#account/red"><img src="{$tpldir}/images/vipcenter/hot_bag.gif" width="146" height="106"></a></div>-->
+</div>
+{literal}
+<script type="text/javascript">
+	$(function(){
+		//是否激活
+		$.getJSON('/?user&m=trust/active/get_active_status',function(ret){
+			if(ret.code==0){
+				if(ret.data==0||trust==0){
+					$('.cust_menus').show().click(function(){
+						if(ret.data==0){
+							jDialog.alert('请激活您的存管账户')
+						}
+
+					});
+				}else {
+					$('.cust_menus').hide()
+					$('.cust_menus2').show()
+				}
+			}
+		});
+
+	})
+	var timeout= 500;
+	var closetimer= 0;
+	var ddmenuitem= 0;
+	function mopen(id){
+		mcancelclosetime();
+		if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+		ddmenuitem = document.getElementById(id);
+		ddmenuitem.style.visibility = 'visible';
+	}
+	function mclose(){
+		if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+	}
+	function mclosetime(){
+		closetimer = window.setTimeout(mclose, timeout);
+	}
+	function mcancelclosetime(){
+		if(closetimer){
+			window.clearTimeout(closetimer);
+			closetimer = null;
+		}
+	}
+	document.onclick = mclose;
+	$('.tie').click(function(){
+		$('.cn_hover').removeClass('tuns');
+		$(this).prev().addClass('tuns');
+	})
+	diyou.use('users_hash', function (dy) {
+		dy.hash();
+	})
+</script>
+{/literal}

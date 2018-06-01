@@ -1,0 +1,49 @@
+<div class="fn_rig user_rig">
+	   <div class="user_box">
+		   <div class="add_bank">
+				  <h2 class="fn_cle">银行卡信息1</h2>
+				  <div class="cont">
+					<div class="bank_list">
+					   <dl class="fn_cle">
+                       {list module="account" function="get_users_bank_list" user_id=$_G.user_id var=loop}
+                       {if $loop.total==0}
+					   <dd>
+					   <div class="bank_card_infor txt_cent">
+					         <img src="{$tpldir}/css/blue/images/add.jpg" alt="添加银行卡"/>
+							 <p>您的提现银行卡尚未添加</p>
+							 <p>请先设置银行卡号。</p>
+					   </div>
+					   <div class="edit_card txt_cent">
+							<a href="javascript:void(0);" class="a_link" id="add_bank">添加银行卡</a>
+						 </div>
+					   </dd>
+                       {else}
+                       {foreach from=$loop.list item=item}
+
+						   sdsdfsdfsd
+					    <dd>
+						 <div class="bank_card_infor">
+							 <img src="{$tpldir}/images/bank_img/bank_{$item.bank}.gif">
+							 <p>{$item.account|bank_fmt}</p>
+							 <p>{$_G.user_result.realname}</p>
+						 </div>
+						 <div class="edit_card fn_cle">
+						    <span class="fn_left"><i class="icon yes"></i><em>已认证</em></span>
+							<a href="/?user&m=account/bank/new&id={$item.id}" class="a_link fn_rig">修改银行卡</a>
+						 </div>
+						</dd>
+                        {/foreach}
+                        {/if}
+						{/list}
+					   </dl>
+					</div>
+				  </div>	  
+		   </div>
+	   </div>
+	</div>
+    
+{literal}
+<script type="text/javascript">
+diyou.use('users_account',function(dy){dy.bank()})
+</script>
+{/literal}

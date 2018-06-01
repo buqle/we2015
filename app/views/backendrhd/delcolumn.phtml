@@ -1,0 +1,42 @@
+<div class="graphs">
+    <div class="xs">
+        <h3>删除栏目</h3>
+        <div class="tab_content">
+            <?php
+            if (!empty($errorMessage)) {
+                ?>
+                <div class="alert alert-danger" role="alert">
+                    <?=$errorMessage?>
+                </div>
+                <?php
+            }
+            ?>
+            <div class="tab_pane action">
+                <form class="form-horizontal" method="post">
+                    <div class="form-group">
+                        <label for="focusedinput" class="col-sm-2 control-label">文章分配到</label>
+                        <div class="col-sm-8">
+                            <select name="parent_id">
+                                <?php
+                                    foreach ($parents as $parent) {
+                                        echo '<option value="'.$parent->id.'">'.$parent->name.'</option>';
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <input type="hidden" name="<?php echo $this->security->getTokenKey() ?>"
+                                   value="<?php echo $this->security->getToken() ?>"/>
+                            <div class="col-sm-8 col-sm-offset-2">
+                                <button class="btn-success btn">提交</button>
+                                <button class="btn-default btn" type="reset">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

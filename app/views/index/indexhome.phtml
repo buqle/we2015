@@ -1,0 +1,154 @@
+<div class="monument2 clearbb">
+    <div class="monumentit">当前位置:<a href="http://www.ronghedai.com" target="_bank">融和贷</a>><?=$category['category']->name?></div>
+    <div class="monument2_s1">
+        <div class="cenotaph_side1 borderside">
+            <h4 class="jc_ticon"><?=$category['category']->name?></h4>
+            <?=htmlspecialchars_decode($category['category']->content)?>
+        </div>
+        <div  class="cenotaph_side2 borderside">
+            <h4 class="jc_ticon"><?=$category['category']->name?>专题</h4>
+            <ul class="cenotaph_side2c clearbb">
+                <?php
+                    foreach ($seconds as $second) {
+                ?>
+                <li><a href="../<?=$second->url?>/" ><?=$second->name?></a> </li>
+                <?php
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="cenotaph_side3 borderside">
+            <h4 class="jc_ticon"><?=$category['category']->name?> 最新文章</h4>
+            <div class="cenotaph_side3c clearbb">
+                <div class="cenotaph_side3c clearbb">
+                    <?php
+                    foreach (Articles::find(array('first_category_id='.$category['category']->id, 'columns'=>'id,name,content', 'order'=> 'id desc', 'limit'=>10)) as $item) {
+                        ?>
+                        <dl>
+                            <dt><a href="../show_<?=$item->id?>" ><?=htmlspecialchars($item->name)?></a></dt>
+                            <dd><a href="../show_<?=$item->id?>" ><?=mb_substr( strip_tags(htmlspecialchars_decode($item->content)), 0, 40,'utf-8')?>...</a></dd>
+                        </dl>
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+        <?php if(count(Articles::find(array('first_category_id='.$category['category']->id))) > 10 ) {
+                  $total_pages = ceil((count(Articles::find(array('first_category_id='.$category['category']->id)))) / 10);
+                  if($total_pages <= 10) {
+            ?>
+        <div class="cenotaph_side4">
+            <div class="pagination" id="pages" data-page="0" data-total="106" data-epage="5">
+                <div class="pagination">
+                    <span class="current prev">&lt;</span>
+                    <span class="current">1</span>
+                    <?php for( $i=2; $i<= $total_pages; $i++) {?>
+                    <a href="./list_<?php echo $i;?>"><?php echo $i;?></a><?php }?>
+                    <a href="./list_2">&gt;</a>
+                </div>
+            </div>
+        </div>
+        <?php }else { ?>
+        <div class="cenotaph_side4">
+            <div class="pagination" id="pages" data-page="0" data-total="106" data-epage="5">
+                <div class="pagination">
+                    <span class="current prev">&lt;</span>
+                    <span class="current">1</span>
+                    <?php for( $i=2; $i<= 5; $i++) {?>
+                    <a href="./list_<?php echo $i;?>"><?php echo $i;?></a><?php }?>
+                    <span>...</span>
+                     <?php for( $i= ($total_pages -4) ; $i<= $total_pages; $i++) {?>
+                    <a href="./list_<?php echo $i;?>"><?php echo $i;?></a><?php }?>
+                    <a href="./list_2">&gt;</a>
+                </div>
+            </div>
+        </div>  
+        
+        <?php }?>
+        <?php }?>
+    </div>
+
+    <div class="monument2_s2">
+        <div class="monument2_s2c1 borderside">
+            <h4 class="jc_ticon"><?=$category['category']->name?> 热文推荐</h4>
+            <ul>
+                <?php
+                    foreach (Articles::find(array('first_category_id='.$category['category']->id, 'columns'=>'id,name', 'order'=> 'click_total desc', 'limit'=>8)) as $item) {
+                        ?>
+                        <li>
+                            <a href="../show_<?=$item->id?>" target="_blank" ><?=$item->name?></a>
+                        </li>
+                        <?php
+                    }
+                ?>
+            </ul>
+        </div>
+        <a href="http://www.ronghedai.com/?user&q=get_share_ajax&alias=drawreg&active_reg=seo_reg" target="_blank"><div class="monument2_s2c2"></div></a>
+        <div class="monument2_s2c3 clearbb">
+            <dl>
+                <dt></dt>
+                <dd>
+                    <h5>立扫二维码</h5>
+                    <p>注册即享</p>
+                    <p>688现金好礼</p>
+                </dd>
+            </dl>
+        </div>
+        <div class="monument2_s2c3 clearbb" id="monument2_s2c3id">
+            <dl>
+                <dt></dt>
+                <dd>
+                    <h5>下载APP</h5>
+                    <p>融和贷理财app</p>
+                    <p>随身财富 触手可及</p>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+</div>
+
+<div class="monument1" id="monument1id">
+
+</div>
+
+<div class="monument3 borderside">
+    <h4 class="jc_ticon">相关主题</h4>
+    <ul class="clearbb" id="monument3c">
+        <?php
+            foreach (Category::find(array('parent_id=0','columns'=>'name,url')) as $item) {
+                ?>
+                <li>
+                    <a href="../<?=$item->url?>/" ><?=$item->name?></a>
+                </li>
+                <?php
+            }
+        ?>
+    </ul>
+</div>
+
+<div class="monument4 borderside">
+    <div class="monument4c clearbb">
+        <p>友情链接</p>
+        <ul class="clearbb">
+
+            <?php
+            foreach (Links::find(array('category_id='.$category['category']->id,'columns'=>'name,url','limit'=>10)) as $item) {
+                ?>
+                <li>
+                    <a href="<?=$item->url?>" target="_bank"><?=$item->name?></a>
+                </li>
+                <?php
+            }
+            ?>
+        </ul>
+    </div>
+</div>
+<script>
+    $(function(){
+        $('#monument3c li:last').css('margin-right','0px');
+        $('.cenotaph_side3c dl:even').css({'width':'342px','border-right':'1px dashed #cecece'})
+        $('.cenotaph_side3c dl:odd').css({'float':'right'})
+    })
+</script>

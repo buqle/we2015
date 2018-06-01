@@ -1,0 +1,191 @@
+﻿{include file="header.html"}
+
+
+<div class="conbox t50">
+   <div class="borrow_pro">
+	   <div class="bread"><a href="#">我要借款</a>&nbsp;>&nbsp;上传资料</div>
+       {include file="users_loan_info_menu.html"}
+	  
+	   <div class="bor_notice">
+	   &nbsp;&nbsp;我的信用积分：
+       {articles module="credit" function = "get_user_count" user_id=$_G.user_id var="Credit_var"}
+       {$Credit_var.credit_total|credit:"borrow"}       
+       <span class="f_c3">（{$Credit_var.credit_total}）</span>通过上传真实信用认证资料，可提高您的信用等级和额度。
+       {/articles}
+	   </div>
+       {articles module="attestations" function="get_user_credit" user_id=$_G.user_id var="user_att"}
+	   <form name="loan_approve" action="" method="post" id="loan_approve">
+	   <div class="approve_list">
+	      <dl>
+		    <dd class="necess">
+			   <h3>必要信用认证</h3>
+			   <ul>
+				   <li>
+                    {if $user_att.work.num>0}
+					   <div class="necess_lf"><img src="{$tpldir}/images/work_appr_yes.png" /></div>
+                       {else}
+                       <div class="necess_lf"><img src="{$tpldir}/images/work_appr_no.png" /></div>
+                       {/if}
+					   <div class="necess_rig">
+						   {if $user_att.work.status==""}
+                           <p><span>工作认证</span><img src="{$tpldir}/images/approve_wait.jpg" /></p>
+						   <p>
+                           <a href="javascript:void(0);" data-nid="work" data-type="upload" class="appr_now">待认证</a>
+                           {elseif $user_att.work.status==0}
+                           <p><span>工作认证</span><img src="{$tpldir}/images/approving.jpg" /></p>
+						   <p>
+                           <a href="javascript:void(0);" data-nid="work" data-type="upload" class="appr_now">待审核</a>                           
+                           {elseif $user_att.work.status==1}
+                           <p><span>工作认证</span><img src="{$tpldir}/images/approve_right.jpg" /></p>
+						   <p>
+                           <a href="javascript:void(0);" class="appr_ed">审核通过</a>                           
+                           {elseif $user_att.work.status==2}
+                           <p><span>工作认证</span><img src="{$tpldir}/images/approve_wrong.jpg" /></p>
+						   <p>
+                           <a href="javascript:void(0);" data-nid="work" data-type="upload" class="appr_now">未通过，请重新上传</a>                           
+                           {/if}
+                           </p>					   
+					   </div>
+				   </li>
+				   <li>
+                    {if $user_att.gongzi.num>0}
+					   <div class="necess_lf"><img src="{$tpldir}/images/wage_appr_yes.png" /></div>
+                       {else}
+                       <div class="necess_lf"><img src="{$tpldir}/images/wage_appr_no.png" /></div>
+                       {/if}
+					   <div class="necess_rig">
+						   {if $user_att.gongzi.status==""}
+                           <p><span>工资卡流水</span><img src="{$tpldir}/images/approve_wait.jpg" /></p>
+						   <p>
+                           <a href="javascript:void(0);" data-nid="gongzi" data-type="upload" class="appr_now">待认证</a>
+                           {elseif $user_att.gongzi.status==0}
+                           <p><span>工资卡流水</span><img src="{$tpldir}/images/approving.jpg" /></p>
+						   <p>
+                           <a href="javascript:void(0);" data-nid="gongzi" data-type="upload" class="appr_now">待审核</a>                           
+                           {elseif $user_att.gongzi.status==1}
+                           <p><span>工资卡流水</span><img src="{$tpldir}/images/approve_right.jpg" /></p>
+						   <p>
+                           <a href="javascript:void(0);" class="appr_ed">审核通过</a>                           
+                           {elseif $user_att.gongzi.status==2}
+                           <p><span>工资卡流水</span><img src="{$tpldir}/images/approve_wrong.jpg" /></p>
+						   <p>
+                           <a href="javascript:void(0);" data-nid="gongzi" data-type="upload" class="appr_now">未通过，请重新上传</a>                           
+                           {/if}
+                           </p>					   
+					   </div>
+				   </li>
+				   <li class="mg_r0">
+                    {if $user_att.xinyong.num>0}
+					   <div class="necess_lf"><img src="{$tpldir}/images/credit_appr_yes.png" /></div>
+                       {else}
+                       <div class="necess_lf"><img src="{$tpldir}/images/credit_appr_no.png" /></div>
+                       {/if}                   
+					   <div class="necess_rig">
+						   {if $user_att.xinyong.status==""}
+                           <p><span>信用认证</span><img src="{$tpldir}/images/approve_wait.jpg" /></p>
+						   <p>
+                           <a href="javascript:void(0);" data-nid="xinyong" data-type="upload" class="appr_now">待认证</a>
+                           {elseif $user_att.xinyong.status==0}
+                           <p><span>信用认证</span><img src="{$tpldir}/images/approving.jpg" /></p>
+						   <p>
+                           <a href="javascript:void(0);" data-nid="xinyong" data-type="upload" class="appr_now">待审核</a>                           
+                           {elseif $user_att.xinyong.status==1}
+                           <p><span>信用认证</span><img src="{$tpldir}/images/approve_right.jpg" /></p>
+						   <p>
+                           <a href="javascript:void(0);"  class="appr_ed">审核通过</a>                           
+                           {elseif $user_att.xinyong.status==2}
+                           <p><span>信用认证</span><img src="{$tpldir}/images/approve_wrong.jpg" /></p>
+						   <p>
+                           <a href="javascript:void(0);" data-nid="xinyong" data-type="upload" class="appr_now">未通过，请重新上传</a>                           
+                           {/if}
+                           </p>					   
+					   </div>
+				   </li>
+				   <li>
+                   {if $user_att.income.num>0}
+					   <div class="necess_lf"><img src="{$tpldir}/images/income_appr_yes.png" /></div>
+                       {else}
+                       <div class="necess_lf"><img src="{$tpldir}/images/income_appr_no.png" /></div>
+                       {/if}  
+					   <div class="necess_rig">
+						   {if $user_att.income.status==""}
+                           <p><span>收入认证</span><img src="{$tpldir}/images/approve_wait.jpg" /></p>
+						   <p>
+                           <a href="javascript:void(0);" data-nid="income" data-type="upload" class="appr_now">待认证</a>
+                           {elseif $user_att.income.status==0}
+                           <p><span>收入认证</span><img src="{$tpldir}/images/approving.jpg" /></p>
+						   <p>
+                           <a href="javascript:void(0);" data-nid="income" data-type="upload" class="appr_now">待审核</a>                           
+                           {elseif $user_att.income.status==1}
+                           <p><span>收入认证</span><img src="{$tpldir}/images/approve_right.jpg" /></p>
+						   <p>
+                           <a href="javascript:void(0);"  class="appr_ed">审核通过</a>                           
+                           {elseif $user_att.income.status==2}
+                           <p><span>收入认证</span><img src="{$tpldir}/images/approve_wrong.jpg" /></p>
+						   <p>
+                           <a href="javascript:void(0);" data-nid="income" data-type="upload" class="appr_now">未通过，请重新上传</a>                           
+                           {/if}
+                           </p>					   
+					   </div>
+				   </li>
+			   </ul>
+			</dd>
+			<dd class="choosable">
+			  <h3>可选信用认证</h3>
+			  <ul>
+                  <li>{if $user_att.hukou.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.hukou.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.hukou.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.hukou.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="hukou" data-type="upload">户口认证</a></li>			  
+                  <li>{if $user_att.biye.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.biye.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.biye.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.biye.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="biye" data-type="upload">毕业证</a></li>				  
+                  <li>{if $user_att.shebao.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.shebao.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.shebao.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.shebao.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="shebao" data-type="upload">社保卡</a></li>				  
+                  <li>{if $user_att.fangchan.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.fangchan.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.fangchan.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.fangchan.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="fangchan" data-type="upload">房产证</a></li>				  
+                  <li>{if $user_att.xingche.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.xingche.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.xingche.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.xingche.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="xingche" data-type="upload">行车证</a></li>				  
+                  <li>{if $user_att.jiashi.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.jiashi.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.jiashi.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.jiashi.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="jiashi" data-type="upload">驾驶证</a></li>				  
+                  <li>{if $user_att.xinyongka.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.xinyongka.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.xinyongka.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.xinyongka.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="xinyongka" data-type="upload">信用卡</a></li>				  
+                  <li>{if $user_att.otherzc.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.otherzc.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.otherzc.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.otherzc.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="otherzc" data-type="upload">其他资产证明</a></li>				  
+                  <li>{if $user_att.otherloan.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.otherloan.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.otherloan.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.otherloan.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="otherloan" data-type="upload">其他借款</a></li>				  
+                  <li>{if $user_att.xianchang.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.xianchang.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.xianchang.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.xianchang.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="xianchang" data-type="upload">现场认证</a></li>				  
+                  <li>{if $user_att.jiashu.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.jiashu.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.jiashu.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.jiashu.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="jiashu" data-type="upload">家属身份证</a></li>				  
+                  <li>{if $user_att.zhuzhi.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.zhuzhi.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.zhuzhi.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.zhuzhi.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="zhuzhi" data-type="upload">住址证明</a></li>				  
+                  <li>{if $user_att.huadian.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.huadian.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.huadian.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.huadian.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="huadian" data-type="upload">手机话单</a></li>				  
+                  <li>{if $user_att.marry.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.marry.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.marry.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.marry.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="marry" data-type="upload">结婚证</a></li>				  
+                  <li>{if $user_att.guquan.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.guquan.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.guquan.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.guquan.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="guquan" data-type="upload">股权证</a></li>				  
+                  <li>{if $user_att.photo.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.photo.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.photo.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.photo.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="photo" data-type="upload">商铺照片</a></li>				  
+                  <li>{if $user_att.fuben.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.fuben.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.fuben.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.fuben.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="fuben" data-type="upload">本税副本</a></li>				  
+                  <li>{if $user_att.zhizhao.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.zhizhao.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.zhizhao.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.zhizhao.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="zhizhao" data-type="upload">营业执照</a></li>				  
+                  <li>{if $user_att.guosui.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.guosui.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.guosui.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.guosui.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="guosui" data-type="upload">国税副本</a></li>				  
+                  <li>{if $user_att.other.status==""}<img src="{$tpldir}/images/approve.jpg" title="待完成" />{elseif $user_att.other.status==0}<img src="{$tpldir}/images/approving.jpg" title="待审核" />{elseif $user_att.other.status==2}<img src="{$tpldir}/images/approve_wrong.jpg" title="未通过" />{elseif $user_att.other.num>0}<img src="{$tpldir}/images/approve_right.jpg" title="已通过" />{/if}<a href="javascript:void(0);" data-nid="other" data-type="upload">其他有价值的认证</a></li>	
+                  <div class="cle"></div>				  
+			  </ul>
+			</dd>
+		  </dl>
+		  <div class="notice">
+			       <p>
+				   <em class="warning_c">注意：</em>
+				   <span><img src="{$tpldir}/images/approve_right.jpg" />表示已经认证</span>
+				   <span><img src="{$tpldir}/images/approve_wrong.jpg" />表示认证未通过</span>
+				   <span><img src="{$tpldir}/images/approving.jpg" />等待审核</span>
+				   <span><img src="{$tpldir}/images/approve.jpg" />可选认证</span>
+                   <span><img src="{$tpldir}/images/approve_wait.jpg" />等待认证</span>
+				   </p>
+				   <p>如果文件较多或数量太大，您可以通过邮件发送到{$_G.system.con_webname}客服</p>
+		  </div>
+	   </div>
+      <!-- {if $user_att.xinyong.num>0}
+	   <div class="item txt_cent">
+			 <input type="button" onclick="javascript:location.href='/borrow/index.html'" value="进行借款" class="bor_pro_sub"/>			 
+	   </div>
+       {else}
+	   <div class="item txt_cent">
+			 <input type="button" id="loan_approve_btn" value="提交&nbsp;下一步" class="bor_pro_sub"/>			 
+	   </div>
+       {/if}-->
+	   </form>
+       {/articles} 
+   </div>
+</div>
+   
+{literal}
+<script type="text/javascript">
+diyou.use('borrow',function(dy){dy.loan_approve('loan_approve')})
+</script>
+{/literal}
+{include file="footer.html"}

@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clearg{zoom:1;}
+.clearg:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+i{font-style: normal}
+h1, h2, h3, h4, h5, h6, fieldset, p, ol, ul, li, form, map, button, input, dl, dt, dd, q, table, thead, tbody, tfoot, tr, td, img, div{ margin:0; padding:0; }
+body {
+    font-family:"Microsoft YaHei";
+    font-size: 18px;
+}
+.bodyyy{}
+.ww1{width: 100%;}
+.ww2{width: 1200px;}
+.ww3, .ww2{margin: 0 auto;}
+.lefts{float: left}
+.rights{float: right;}
+.text-center{text-align: center;}
+.text-left{text-align: left;}
+.text-right{text-align: right;}
+.font12{font-size: 12px;}
+.font14{font-size: 14px;}
+.font15{font-size: 15px;}
+.font16{font-size: 16px;}
+.font18{font-size: 18px;}
+.font17{font-size: 17px;}
+.font19{font-size: 19px;}
+.font20{font-size: 20px;}
+.font22{font-size: 22px;}
+.font24{font-size: 24px;}
+.font25{font-size: 25px;}
+.font23{font-size: 23px;}
+.block{display: block;}
+.inline-block{display: inline-block;}
+.cursor{cursor: pointer;}
+.bold{font-weight: bold;}
+h4, h6{font-weight: normal}
+h5{font-weight: bold;}
+.color-ff{color: #fff;}
+.pos-a{position: relative;}
+.pos-b{position: absolute;}
+.ww4{width:1080px;margin:0 auto;}
+.over{overflow: hidden;}
+.dec-bata1{
+    background: url("../images/1.jpg") no-repeat top center;width:100%;height:397px;padding-top:686px;
+    overflow: hidden;
+
+}
+.dec-bata1 .dec-bata1-c{width:876px;
+}
+.dec-bata1 .dec-bata1-c h5{color:#f4e027;font-size:30px;}
+.dec-bata1 .dec-bata1-c p{text-indent: 40px;line-height:38px;}
+.img4{animation:start 160s  linear infinite;-webkit-animation:start 160s  linear infinite;-o-animation:start 160s  linear infinite;-moz-animation:start 160s  linear infinite;background: url("../images/ss.png") no-repeat center;width:100%;height:906px;top:0px;left:0px;}
+@keyframes start{0{ transform:rotate(0)}50%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}
+@-webkit-keyframes start{0{ -webkit-transform:rotate(0)}50%{-webkit-transform:rotate(180deg)}100%{-webkit-transform:rotate(360deg)}}
+@-moz-keyframes start{0{ -moz-transform:rotate(0)}50%{-moz-transform:rotate(180deg)}100%{-moz-transform:rotate(360deg)}}
+@-o-keyframes start{0{ -o-transform:rotate(0)}50%{-o-transform:rotate(180deg)}100%{-o-transform:rotate(360deg)}}
+.dec-bata2{background: url("../images/2.png") no-repeat center;width:100%;height:2500px;}
+.dec-bata3{
+    width:1046px;
+
+
+}
+.dec-bata3 .dec-bata4{
+    background: url("../images/5.png") no-repeat bottom center #fff; width:948px;border:3px solid #e71e22;border-radius: 8px;padding:62px 0 8px 0;height:532px;
+
+
+}
+.dec-bata3 .dec-bata4 .dec-bata4t{
+    border:3px solid #eb5c1b;width:592px;height:58px;padding-left:66px;left:136px;top:-32px;background:#f8ddc9;border-radius: 6px;
+}
+.dec-bata3 .dec-bata4 .dec-bata4t dd{width:182px;background: url("../images/3.png") no-repeat right 18px;height:58px;line-height:58px;font-size:36px;color:#4e4e4e;float:left;text-align: center; cursor: pointer;}
+.dec-bata3 .dec-bata4 .dec-bata4t dd.on{color:#ca151a;}
+.dec-bata3 .dec-bata4 .act11-bata3{margin-left:54px;}
+.dec-bata3 .dec-bata4 .act11-bata3 dd{margin:10px 58px 0 0;width:236px;color:#aa5002;}
+.dec-bata3 .dec-bata4 .act11-bata3 .act11-bata4{
+    background: url("../images/4.png") no-repeat center;width:236px;height:128px;padding-top:72px;
+}
+.dec-bata3 .dec-bata4 .act11-bata3 .act11-bata4 h5{font-size:58px;height:52px;line-height:52px;margin-bottom:6px;}
+.dec-bata3 .dec-bata4 .act11-bata3 .act11-bata4 h5 i{font-weight: normal;}
+.dec-bata3 .dec-bata4 .tender-btn{bottom:-34px;width:258px;height:58px;line-height:58px;border-radius: 6px;border:3px solid #ca151a;background:#f8ddc9;font-size:36px;color:#ca151a;left:340px;}
+.dec-bata3 .act11-bata7{margin-top:126px;}
+.dec-bata3 .act11-bata7 .act11-tit{font-family:"SimSun"; background: url("../images/6.png") no-repeat center;height:32px;line-height:32px;font-size:30px;margin-bottom:44px;color:#d23129;}
+.dec-bata3 .act11-bata7 .act11-bata8{
+    width:1046px;margin-left:28px;
+
+
+}
+.dec-bata3 .act11-bata7 .act11-bata8 .act11-pubox{width:1032px;border:6px #d23129 solid;background:#e33830;height:12px;border-radius: 20px;}
+.dec-bata3 .act11-bata7 .act11-bata8 .act11-bata9{top:10px;width:956px;left:50%;margin-left:-478px;border-top: 13px solid #eba5a1;height:490px;background:#BD2720;}
+.dec-bata3 .act11-bata7 .act11-bata8 .act11-bata9, .dec-bata3 .act11-bata7 .act11-bata8 .act11-bata10{border-bottom-left-radius: 18px;border-bottom-right-radius: 18px;}
+.dec-bata3 .act11-bata7 .act11-bata8 .act11-bata10{
+    background:#fff;height:484px;padding:0 28px 0 40px;font-size:19px;
+}
+.dec-bata3 .act11-bata7 .act11-bata8 .act11-bata10 .list-tit{height:62px;line-height:62px;color:#d23129;}
+.dec-bata3 .act11-bata7 .act11-bata8 .act11-bata10 p{background: url("../images/7.png") no-repeat bottom center;}
+.dec-bata3 .act11-bata7 .act11-bata8 .act11-bata10 span{width:25%;float:left;}
+.dec-bata3 .act11-bata7 .act11-bata8 .act11-bata10 .marqueeboxx p{height:51px;line-height:51px;color:#666;}
+.dec-bata3 .act11-bata7 .act11-bata8 .act11-bata10 .act11-bata5{background: url("../images/8.png") no-repeat center;height:65px;margin-top:62px;}
+.dec-bata3 .act11-bata7 #act11-bata8id .act11-bata9{height:362px;}
+.dec-bata3 .act11-bata7 #act11-bata8id .act11-bata10{
+    height:352px;
+}
+.dec-bata3 .act11-bata7 #act11-bata8id .act11-bata10 span{width:25%;}
+.dec-bata3 .act11-bata7 #act11-bata8id .no-login{background: url("../images/9.png") no-repeat center;line-height:290px;height:290px;}
+.dec-bata3 .act11-bata7 #act11-bata8id .yes-login #marqueeboxx-p{text-align: left;padding-left: 64px;}
+.dec-bata3 .act11-bata11{
+    background: url("../images/10.png") no-repeat center;padding:108px 152px 0 88px; width:714px; height:260px;margin-top:488px;
+}
+.dec-bata3 .act11-bata11 p{text-indent: 38px;line-height:40px;}
+.leafContainer{width:100%; top:0px;left:0;}
+.leafContainer div {
+    position: absolute;
+    background-color: transparent;
+    -webkit-animation-iteration-count: infinite, infinite;
+    -webkit-animation-direction: normal, normal;
+    -webkit-animation-timing-function: linear, ease-in;width:80px;height: 80px;
+}
+.leafContainer img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-transform-origin: 50% -100%;
+}
+/* Hides a leaf towards the very end of the animation */
+@-webkit-keyframes fade {
+    /* Show a leaf while into or below 95 percent of the animation and hide it, otherwise */
+    0% {
+        opacity: 1;
+    }
+    95% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+/* Makes a leaf fall from -300 to 600 pixels in the y-axis */
+@-webkit-keyframes drop {
+    /* Move a leaf to -300 pixels in the y-axis at the start of the animation */
+    0% {
+        -webkit-transform: translate(0px, -50px);
+    }
+    /* Move a leaf to 600 pixels in the y-axis at the end of the animation */
+    100% {
+        -webkit-transform: translate(0px, 650px);
+    }
+}
+/* Rotates a leaf from -50 to 50 degrees in 2D space */
+@-webkit-keyframes clockwiseSpin {
+    /* Rotate a leaf by -50 degrees in 2D space at the start of the animation */
+    0% {
+        -webkit-transform: rotate(-50deg);
+    }
+    /*  Rotate a leaf by 50 degrees in 2D space at the end of the animation */
+    100% {
+        -webkit-transform: rotate(50deg);
+    }
+}
+/* Flips a leaf and rotates it from 50 to -50 degrees in 2D space */
+@-webkit-keyframes counterclockwiseSpinAndFlip {
+    /* Flip a leaf and rotate it by 50 degrees in 2D space at the start of the animation */
+    0% {
+        -webkit-transform: scale(-1, 1) rotate(50deg);
+    }
+    /* Flip a leaf and rotate it by -50 degrees in 2D space at the end of the animation */
+    100% {
+        -webkit-transform: scale(-1, 1) rotate(-50deg);
+    }
+}
+.jiujiu_foot{width: 100%;text-align: center;padding:60px 0 70px 0;background: #555555;}
+.jiujiu_foot p{color: #fff;font-size: 24px;line-height: 40px;}
+.jiujiu_foot .endjiujiu{background:url("../images/ma.png")  no-repeat center;height: 172px;margin-top:24px;}
+

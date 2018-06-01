@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clearg{zoom:1;}
+.clearg:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+i{font-style: normal}
+h1, h2, h3, h4, h5, h6, fieldset, p, ol, ul, li, form, map, button, input, dl, dt, dd, q, table, thead, tbody, tfoot, tr, td, img, div{ margin:0; padding:0; }
+body {
+    font-family:"微软雅黑";
+    font-size: 18px;background: #fff;
+}
+.bodyyy{}
+.ww1{width: 100%;}
+.ww2{width: 1200px;}
+.ww3, .ww2{margin: 0 auto;}
+.lefts{float: left}
+.rights{float: right;}
+.text-center{text-align: center;}
+.text-left{text-align: left;}
+.text-right{text-align: right;}
+.font12{font-size: 12px;}
+.font14{font-size: 14px;}
+.font15{font-size: 15px;}
+.font16{font-size: 16px;}
+.font18{font-size: 18px;}
+.font19{font-size: 19px;}
+.font20{font-size: 20px;}
+.font22{font-size: 22px;}
+.font24{font-size: 24px;}
+.font25{font-size: 25px;}
+.block{display: block;}
+.inline-block{display: inline-block;}
+.cursor{cursor: pointer;}
+.bold{font-weight: bold;}
+h4{font-weight: normal}
+h5{font-weight: bold;}
+.color-ff{color: #fff;}
+.pos-a{position: relative;}
+.pos-b{position: absolute;}
+
+
+.policy-a{background:url("../images/ban.jpg") no-repeat center;height: 500px;}
+.policy-b{padding: 48px 0 42px 0;background: url("../images/b2.jpg") no-repeat center;height:38px;}
+.policy-b1{width: 1196px;}
+    .policy-b1 span{width: 196px;text-align: center;height: 42px;line-height: 42px;border-right: 2px solid #000;font-size: 36px;color: #000;cursor: pointer;}
+    .policy-b1 span.span_on{color: #ff6325;}
+.policy-c{width: 1136px;padding: 52px 0 90px 0;}
+    .policy-c li{display: none;}
+    .policy-c li.li_on{display: block;}
+    .policy-c li h5,.policy-c li p{color: #666;font-size: 18px;}
+    .policy-c li p{line-height: 36px;}

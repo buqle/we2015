@@ -1,0 +1,29 @@
+﻿{include file="header.html"}
+
+
+<div class="conbox t50">
+   <div class="newer_guide">
+		<h2 class="">资金安全</h2>
+		<ul class="t10 fn_cle">
+		  {loop module="admin" function="get_site_list" var="var" limit="all" pid=117 }
+		  <li {if $_G.site_result.nid==$var.nid}class="active" {/if}>
+			<a class="" href="/{$var.nid}/index.html">{$var.name}</a>
+		  </li>
+		  {/loop}
+		</ul>
+    </div>
+</div>
+
+<div class="conbox t20">
+{articles module="articles" function="get_one_page" var="var" nid=$_G.site_result.nid }
+   <div class="guide_cont">
+      <h3><span>{$var.name}&nbsp;</span></h3>
+	  <div class="guide_cont_datai">
+	    {$var.contents}&nbsp;
+	  </div>
+   </div>
+ {/articles}  
+</div>
+{include file="footer.html"}
+
+

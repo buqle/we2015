@@ -1,0 +1,79 @@
+@charset "utf-8";
+/* CSS Document */
+body{background: #f7f7f7!important;}
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.cleart{zoom:1;}
+
+.cleart:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+h4,h5{font-weight: bold;}
+body {
+    font-family:"微软雅黑";
+    font-size: 18px;
+}
+.standardcn1{ background: url("../images/ban1.png") center no-repeat;width: 100%;overflow:hidden;height: 572px;}
+    .standardcn1 h4{padding-left:38px;text-align: center;line-height: 48px;color: #f73c0d;font-size: 20px;width: 330px;margin: 281px auto 0 auto;}
+.trusteeship1{background: url("../images/b2.png") center no-repeat;width: 100%;overflow: hidden;height: 520px;}
+
+.trusteeship2{width: 100%;overflow:hidden;background: #fc6313;padding-top: 104px;}
+    .trusteeship2 .trustee_c2{width: 1096px;margin: 0 auto;}
+    .trusteeship2 .trustee_c2 .support_l{width: 548px;float: left;background: url("../images/b4.gif") bottom no-repeat;height: 533px;}
+    .trusteeship2 .trustee_c2 .support_l h4{font-size: 54px;color:#fff;font-weight: bold;height: 156px;padding-left: 10px;}
+    .trusteeship2 .trustee_c2 .support_r{width: 546px;float: right;height: 602px;background: url("../images/b3.gif") bottom no-repeat;}
+    .trusteeship2 .trustee_c2 .support_r p{text-align: center;font-size: 24px;color:#fff;height: 44px;
+        line-height: 44px;}
+    .trusteeship2 .trustee_c2 .support_r p strong{font-size: 30px;font-weight: bold;}
+    .logo_tbn,.opened_t2{cursor: pointer;}
+    .trusteeship2 .trustee_c2 .support_r #logo_tbn1{background: url("../images/t1.gif") no-repeat center;height: 93px;margin-top: 54px;}
+
+    .trusteeship3{width: 100%;overflow:hidden;padding:84px 0;background: #f7f7f7;}
+        .trusteeship3 .trustee_c3{width: 1085px;background: url("../images/b5.png") no-repeat left;height: 558px;margin: 0 auto;}
+        .trusteeship3 .trustee_c3 .trustee_c3s{width: 420px;float: right;text-align: center;margin-top: 44px;}
+        .trustee_c3 h4{font-size: 54px;font-weight: bold;color: #ff316e;margin-bottom: 30px;}
+        .trusteeship3 .trustee_c3 .trustee_c3s p{font-size: 24px;color: #464545;height: 46px;line-height: 46px;}
+        .trusteeship3 .trustee_c3 .trustee_c3s p strong{font-size: 35px;font-weight: bold;}
+        .trustee_c3 .trustee_c3s #opened_t1{background: url("../images/t2.gif") no-repeat center;height: 95px;margin-top: 90px;}
+
+    .trusteeship4{width: 100%;overflow:hidden;margin-bottom: 20px; }
+        .trusteeship4 .trustee_c4{width: 1176px;margin: 0 auto;}
+        .trusteeship4 .trustee_c4 .chassis_bay{background: url("../images/b6.gif") no-repeat;width: 583px;}
+        .trusteeship4 .trustee_c4 .chassis_bay h4{font-size: 25px;color: #f3fbe4;text-align: center;height: 84px;line-height: 70px;background: url("../images/t3.gif") no-repeat center 71px;}
+        .trusteeship4 .trustee_c4 .chassis_bay .tit_pp{height: 30px;line-height: 30px;}
+        .trusteeship4 .trustee_c4 .chassis_bay .tit_pp p span,#up_zzjs p span,#marqueebox1 p span{font-weight:bold;color: #4c2206;display:inline-block;width: 24%;text-align: center;}
+         #up_zzjs p{height: 40px;line-height: 40px;}
+         #up_zzjs p span,#marqueebox1 p span{font-size: 16px;
+             font-weight:normal;}
+        .trusteeship4 .trustee_c4 .chassis_bay .tit_pp,#up_zzjs{background: #f3fbe4;width: 542px;margin: 0 auto;}
+        .trusteeship4 .trustee_c4 #bay_left{float: left;}
+        #marqueebox1 p{height: 40px;line-height: 40px;}
+        #marqueebox1 p span{font-size: 14px;}
+        #bay_left #logo_tbn2,#logo_tbn3{background: url("../images/t4.gif") no-repeat center;height: 71px;color:#fff;font-size: 25px;margin-top: 86px;text-align: center;padding-left: 28px;line-height: 70px;}
+        .trusteeship4 .trustee_c4 #bay_right{float: right;}
+        .trusteeship4 .trustee_c4 #bay_right .tit_pp p span,#marqueebox1 p span{width: 20%;}
+        .trusteeship4 .trustee_c4 #bay_right .import{display: none;}
+        #bay_right .entertainment1{text-align: center;font-size: 28px;color: #4c2206;margin-top: 80px;}
+        #bay_right .entertainment1 span{color: #f01c54;font-weight: bold;cursor: pointer;}
+        .trusteeship4 .trustee_c4 #bay_right .allmydayxx{width: 510px;margin: 0 auto;}
+        .trusteeship4 .trustee_c4 #bay_right .allmydayxx span{float: right;color: #4c2206;font-size: 16px;}
+
+    .trusteeship5{background: url("../images/b8.gif") no-repeat bottom center;height: 825px;width: 100%;overflow: hidden;}
+        .trusteeship5 .trustee_c5{background: url("../images/b7.gif") no-repeat center;width: 1154px;height: 544px;margin: 0 auto;}
+    .trusteeship5 .trustee_c5 .trustee_c5s{padding: 182px 92px 0 60px;}
+    .trusteeship5 .trustee_c5 .trustee_c5s p{font-size: 24px;color: #fff;    line-height: 40px;
+        margin-bottom: 6px;}
+
+.jiujiu_foot{width: 100%;text-align: center;padding:60px 0 70px 0;background: #fc6313;}
+.jiujiu_foot p{color: #fff;font-size: 24px;line-height: 40px;}
+.jiujiu_foot .endjiujiu{background:url("../images/ma.gif")  no-repeat center;height: 172px;margin-top:24px;}

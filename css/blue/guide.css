@@ -1,0 +1,88 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clearg{zoom:1;}
+#waitIma img{ width: 115px; height: 115px;}
+.clearg:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+body {
+    font-family:"微软雅黑";
+    font-size: 18px;
+    background: #FFF;
+}
+
+
+/*
+
+转图片*/
+/* gla */
+#gla{margin:0 auto;position:relative;height:780px;overflow:hidden;}
+#gla_box{width:800px;margin:50px auto 0 auto;position:relative;}
+
+.gla_inbox{overflow:hidden;position:relative;}
+.gla_inbox p{text-indent:1em;font-size:14px;width:100%;line-height:30px;color:#888}
+.gla_inbox a{padding:5px;display:block;position:absolute;top:220px;left:90px;background:#0066CC;color:#FFF;}
+.gla_inbox img{width:100%;height:100%;}
+.roundabout-holder{height:500px;width:800px;}
+.roundabout-moveable-item{display:block;height:370px;width:247px;pxcursor:pointer;}
+.roundabout-in-focus{cursor:auto;}
+.bs{
+    display: block;
+    position: absolute;
+    top: 32%;
+    left: 0;
+ font-size: 14px;
+    color: #e07f00;text-align: center; font-size: 14px; color: #666;
+}
+.ontyh_chhengh{ position: absolute; top: 39%; left:0;text-align: center; font-size: 14px; color: #666;
+}
+.mong_ccito{ position: absolute; top: 48%; left: 0;text-align: center; font-size: 14px; color: #666; }
+.mong_ccito1{ position: absolute; top: 55%;text-align: center; font-size: 14px; color: #666;
+    left: 0;}
+.te_a{ height: 460px; background: url("../../images/guide/ns1_01.png") center no-repeat;}
+.te1{ height: 400px; background:#F0F0F0 url("../../images/guide/aat.gif") center center no-repeat;}
+.te2{ background: #F9F9F9 url("../../images/guide/3ss728.png") center no-repeat;height: 375px;padding: 66px 0 88px 0;}
+.au1{ height: 114px; background:url("../../images/guide/ns3_03.png") center center no-repeat;}
+.on_c{ height: 650px; background: #F9F9F9 url("../../images/guide/new4ss728.png") center center no-repeat;}
+.in_c_ps{ height: 160px; background: #F9F9F9;}
+.cin_us{ width: 840px; margin: 0 auto;}
+.cin_us a{ height: 70px; width: 300px; background: #2B9CF0; text-align: center; line-height: 70px; color: white; font-size: 28px; border-radius: 5px; display: block;}
+.aa_uuu_cc{ height: 375px; background: #FFFFFF url("../../images/guide/ns6_03.png") center center no-repeat;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

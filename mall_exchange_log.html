@@ -1,0 +1,71 @@
+{if $smarty.request.type=='list'}
+<table class="user_tab3 bor_none">
+						<thead>
+						   <tr>
+							  <th width="25%">兑换时间</th>
+							  <th width="10%">商品名称</th>
+							  <th width="10%">商品类别</th>
+							  <th width="10%">兑换积分</th>
+							  <th width="10%">兑换数量</th>
+							  <th width="10%">处理状态</th>
+							  <th width="25%">备注</th>
+						   </tr>
+						</thead>
+						<tbody>
+						{list module="mall" function="get_exchange_log" var="loop" user_id=$_G.user_id  epage=10 }
+						  {foreach from=$loop.list item=item} 
+						   <tr>
+						     <td>{$item.addtime|date_format:"Y-m-d H:i"} </td>
+						     <td>{$item.goods_name}</td>
+						     <td>{$item.type_name}</td>
+						     <td>{$item.credits}</td>
+							 <td>{$item.num}</td>
+						     <td>{if $item.status==1}已审核{elseif $item.status==2}审核失败{else}待审核{/if}</td>
+						     <td>{if $item.status==1}{$item.verify_remark|truncate:10}{else}-{/if}</td>
+						   </tr>
+						   {/foreach}
+						  
+						</tbody>
+						<tfoot>
+						  <tr>
+							  <td colspan="7">
+								{if $loop.total>0}
+								<div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+								{/if}
+							  </td>
+						  </tr>
+						</tfoot>
+						{/list}
+					 </table> 
+{else}
+{include file="users_main_header.html"}
+
+<div class="conbox t20 fn_cle user_cont">
+	{include file="users_menu.html"}
+	<div class="fn_rig user_rig">
+	   <div class="user_box">
+		   <div class="exchange_manage">
+				    <h2 class="fn_cle">
+					    <span class="fn_left">兑换记录</span>
+						
+				    </h2>
+				  <div class="cont">
+				    <div class="gold_nums">
+						<span><em>您当前可用积分：</em><font>{$_G.credit_result.credit_available|default:0}</font></span>
+						<i class="icon"></i>
+						<a href="/mall/index.html" class="a_link" target="_blank">兑换礼品</a>
+					</div>
+				    <div id="exchange_box"></div>
+				  </div>	  
+		   </div>
+	   </div>
+	</div>
+</div>
+
+{include file="users_footer.html"}
+{literal}
+<script type="text/javascript">
+diyou.use('mall',function(dy){dy.exchange_log()})
+</script>
+{/literal}
+{/if}

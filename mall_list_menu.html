@@ -1,0 +1,37 @@
+  <div class="mall_fl fl" >
+  <div  id="mall_menu">
+	<ul>
+	{loop module="mall" function="get_menu_html" var="item" name=$smarty.request.name epage=20 order=order_desc limit=all}
+          
+	  <li class="{$item.nid}"><a href="javascript:;"  class="mall_menu_link"><i></i><input type="radio" name="type_nid" value="" />{$item.name}</a>
+	   <dl>
+	   {foreach from=$item._menu item=_item}
+		<dd class="mall_menu_dd" ><a href="javascript:;" {if $smarty.request.nid==$_item.nid}class="act"{/if} >{$_item.name}<input type="radio" name="type_nid" value="{$_item.nid}" {if $smarty.request.nid==$_item.nid}checked='checked'{/if}/></a></dd>
+		{/foreach}
+	   </dl>
+	  </li>
+	  {/loop}
+	 
+	</ul>
+  </div>
+  
+  <div class="exchange">
+    	<div class="ex_tit"><em class="ex_ico"></em>兑换记录</div>
+        <div class="ex_cont">
+		{loop module="mall" function="get_exchange_log" var="var" status=1 order='new' limit=10 }
+        	<div class="ex_info">
+            	<span>{$var.username|truncate:3}**  　成功兑换</span>
+                <em>{$var.goods_name|truncate:16}...</em>
+            </div>
+            
+         {/loop}
+
+        </div>
+    </div>
+   </div>
+{literal}
+<script type="text/javascript">
+diyou.use('mall',function(m){m.cont_ajax()})
+diyou.use('mall',function(m){m.menu_switch()})
+</script>
+{/literal} 

@@ -1,0 +1,147 @@
+
+{if $smarty.request.type=="list"}
+
+<tbody>
+ <tr class="tab1_tit">
+	<td>序号</td>
+    <td>结算金额</td>
+    <td>提交结算时间</td>
+    <td>结算状态</td>
+ </tr>
+ {list module="spreads" function="get_settle_list" var="loop"   user_id=$_G.user_id  epage=20}
+ {foreach from=$loop.list item="item" key=key}
+ <tr>
+	<td>{$key+1}</td>
+	<td>￥{$item.money}</td>
+	<td>{$item.addtime|date_format}</td>
+	<td>{if $item.status==0}结算中{elseif $item.status==1}结算成功{else}结算失败{/if}</td>
+ </tr>
+ {/foreach}
+</tbody>
+<tfoot>
+<tr>
+<td colspan="5">
+{if $loop.total>0}
+<div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+{/if}
+</td>
+</tr>
+</tfoot>
+ {/list}
+         {literal}
+        <script>
+        diyou.use('users_spread',function(dy){dy._spreads_list()})
+        </script>
+        {/literal}
+ {elseif $smarty.request.type=='_list'}
+ <thead>
+ <tr>
+	<td colspan="5" class="fn_cle">
+		<span class="fn_left">我的推广</span>
+		<form action="" method="post" id="sou_form">
+		<div class="fn_rig">
+		<label class="u_label"></label>
+		<input type="text" class="u_input" placeholder="用户名" name="username" id="username" value="{$smarty.request.username}"/>
+		<input type="submit" class="u_src" value="搜索"/>
+		</div>
+		</form>
+	</td>
+ </tr>
+</thead>
+<tbody>
+ <tr class="tab1_tit">
+	<td>序号</td>
+	<td>用户名</td>
+	<td>投资总额</td>
+	<td>还款总额</td>
+	<td>操作</td>
+ </tr>
+ {list module="spreads" function="get_new_list" var="loop" month="request" type="yes" username=$smarty.request.username spreads_userid=$_G.user_id epage=20}
+ {foreach from=$loop.list item="item" key=key}
+ <tr>
+	<td>{$key+1}</td>
+	<td>{$item.username}</td>
+	<td>￥{$item.tender.account_all}</td>
+	<td>￥{$item.borrow.account_all}</td>
+	<td><a href="{$_U.query_url}/log&user_id={$item.user_id}">详情</a></td>
+ </tr>
+ {/foreach}
+</tbody>
+<tfoot>
+<tr>
+<td colspan="5">
+{if $loop.total>0}
+<div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+{/if}
+</td>
+</tr>
+</tfoot>
+ {/list}
+         {literal}
+        <script>
+        diyou.use('users_spread',function(dy){dy._spreads_list()})
+        </script>
+        {/literal}
+{elseif $smarty.request.type=="loglist"}
+            <table class="user_tab3 bor_none">
+						<tbody>
+						  <tr class="tab3_tit">
+							<td width="5%">ID</td>
+							<td width="10%">用户名</td>
+							<td width="7%">资金类型</td>
+							<td width="9%">提成比例</td>
+							<td width="9%">推广比例</td>
+							<td width="8%">推广总额</td>
+							<td width="12%">提交时间</td>
+							<td width="40%">备注</td>
+						  </tr>
+                          {list module="spreads" function="get_log_list" var="loop" user_id=$smarty.request.user_id username=$smarty.request.username dotime1=$smarty.request.dotime1 dotime2=$smarty.request.dotime2 page=$smarty.request.page+1 spreads_userid=$_G.user_id }
+
+
+	                       {foreach from=$loop.list item="item"}
+						  <tr>
+							<td>{$item.id}</td>
+							<td>{$item.username}</td>
+							<td>{$item.spreads_typename}</td>
+							<td>{if $item.account_type=="account"}本息{elseif $item.account_type=="capital"}本金{else}利息{/if}</td>
+							<td>{$item.scales}%</td>
+							<td>￥{$item.account}</td>
+							<td>{$item.addtime|date_format}</td>
+							<td>{$item.remark}
+							</td>
+						  </tr>
+						  {/foreach}
+						</tbody>
+						<tfoot> 
+						<tr>
+						 <td colspan="8">
+                         {if $loop.total>0}
+                         <div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+                         {/if}
+                         {/list}
+                         </td>
+						</tr>
+						</tfoot>
+		 </table>
+{else}
+
+{include file="users_main_header.html"}
+
+<div class="conbox t20 fn_cle user_cont">
+{include file="users_menu.html"}
+
+ {if $_U.query_class=="list"}
+ 
+ {include file="users_spreads_list.html"}
+
+ 
+ {elseif $_U.query_class=="log"}
+ 
+ {include file="users_spreads_log.html"}
+ 
+ {/if}
+ 
+ </div>
+{include file="users_footer.html"}
+
+{/if}

@@ -1,0 +1,140 @@
+{include file="header.html"}
+<link rel="stylesheet" type="text/css" href="{$tpldir}/zhuanti/mobile/css/style.css?v=2016912" />
+<link rel="stylesheet" type="text/css" href="{$tpldir}/zhuanti/mobile/css/jquery.fullPage.css" />
+<script src="{$tpldir}/zhuanti/differing/js/jquery-1.8.3.min.js"></script>
+<script src="{$tpldir}/zhuanti/differing/js/jquery.fullPage.min.js"></script>
+
+
+
+<ul id="menu">
+	<li data-menuanchor="page1" class="active"><a href="#page1"></a></li>
+	<li data-menuanchor="page2"><a href="#page2"></a></li>
+	<li data-menuanchor="page3"><a href="#page3"></a></li>
+	<li data-menuanchor="page4"><a href="#page4"></a></li>
+</ul>
+
+<div id="dowebok">
+	<div class="section" id="ssc1">
+		<div class="synchrony1">
+			<img src="{$tpldir}/zhuanti/mobile/images/c1.jpg" alt="">
+		</div>
+
+		<div class="second_co1">
+			<h4>厚德融和 诚信财富</h4>
+			<p>打开融和财富，即刻纵享安心理财</p>
+			<div class="second_co1s clearg">
+				<div class="cc_tit1"></div>
+				<a href="https://itunes.apple.com/cn/app/%E8%9E%8D%E5%92%8C%E8%B4%A2%E5%AF%8Cv1/id1236709357?mt=8" class="download-iphone-link">iphone版下载</a>
+				<a href="http://www.ronghedai.com/dyupfiles/ronghecaifu.apk" class="download-android-link ">Android版下载</a>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="section  section2" id="ssc2">
+		<div class="synchrony1">
+			<img src="{$tpldir}/zhuanti/mobile/images/b2.jpg" alt="">
+		</div>
+		<div class="second_co2">
+			<h4>
+				<p>融和财富在手，投资便捷无忧</p>
+				Android & IOS升级上线
+			</h4>
+			<div class="second_co2s">
+				<div class="pconco pconco1">
+					<h5>掌控投资全功能</h5>
+					<p>投资需求一步到位，操作安全全程保卫</p>
+					<p>实时跟踪收益变化+在线管理个人资金+随心直购在线产品</p>
+				</div>
+				<div class="pconco pconco2">
+					<h5>畅玩特色新活动</h5>
+					<p>投资需求一步到位，操作安全全程保卫</p>
+					<p>实时跟踪收益变化+在线管理个人资金+随心直购在线产品</p>
+				</div>
+				<div class="senf_bg4"></div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="section" id="ssc3">
+		<div class="synchrony1">
+			<img src="{$tpldir}/zhuanti/mobile/images/b3.jpg" alt="">
+		</div>
+		<div  class="second_co3">
+			<h4>一直用心为您，财富升级无限</h4>
+			升级新产品，体验新感觉
+		</div>
+		<div class="secondtitc2"></div>
+		<div class="comcc1">
+			<div id="comcc"></div>
+		</div>
+
+	</div>
+
+	<div  class="section">
+		<div class="synchrony1">
+			<img src="{$tpldir}/zhuanti/mobile/images/b4.jpg" alt="">
+		</div>
+		<div class="second_co4">
+			<h4>下载融和财富客户端</h4>
+			手心掌控安全，指尖增值财富！
+		</div>
+		<div class="second_co4c2"></div>
+		<div class="second_co4c3 clearg">
+			<a href="https://itunes.apple.com/cn/app/%E8%9E%8D%E5%92%8C%E8%B4%A2%E5%AF%8Cv1/id1236709357?mt=8" class="download-iphone-link"></a>
+			<a href="http://www.ronghedai.com/dyupfiles/ronghecaifu.apk" class="download-android-link "></a>
+		</div>
+	</div>
+
+</div>
+
+{literal}
+<style type="text/css">
+	.zhou-banner{display: none!important;}
+</style>
+<script>
+	var i = 0
+	var showString= "定向、增值双标上线， 给您贴心新选择"
+			+	"为您定制的固收卡片，项目进度清晰了然"
+			+	"理财操作不是过程定义，更要有一路畅通的痛快"
+
+		var timeID=null;
+		function marquee(){
+		var stringLength= showString.length;
+		var carID=document.getElementById('comcc')
+			carID.innerHTML= carID.innerHTML + showString.charAt(i)
+		i++;
+		clearTimeout(timeID);
+		if (i >= stringLength){
+			clearTimeout(timeID);
+		}else {
+			timeID= setTimeout("marquee()",50)
+		}
+
+	}
+</script>
+<script>
+	$(function(){
+		if($.browser.msie && $.browser.version < 10){
+			$('body').addClass('ltie10');
+		}
+		$('#dowebok').fullpage({
+			anchors: ['page1', 'page2', 'page3', 'page4'],
+			menu: '#menu',
+//            autoScrolling:false,
+//            scrollOverflow:true,
+			afterLoad: function(anchorLink, index){
+
+				if(index == 3){
+
+					marquee();
+				}
+
+			}
+
+		});
+	});
+
+</script>
+{/literal}

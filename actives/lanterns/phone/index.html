@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+<head>
+	 <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+	<title>元宵活动</title>
+	<link rel="stylesheet" href="{$tpldir}/actives/lanterns/phone/css/style.css">
+</head>
+<body>
+	<div class="en_a"><img src="{$tpldir}/actives/lanterns/phone/images/yx_01_01.png"></div>
+	<div class="en_t"><img src="{$tpldir}/actives/lanterns/phone/images/yx_02_03.png"></div>
+	<div class="en_c">
+		<div class="en_b"><img src="{$tpldir}/actives/lanterns/phone/images/yx_03_03.png"></div>
+		<div class="yx_a">
+			<div class="yx_b">
+				<div style="height: 0.7rem"></div>
+				<p>一口元宵</p>
+				<p>“尝鲜”礼</p>
+			</div>
+			<div class="yx_c">
+				<div style="height: 0.85rem"></div>
+				<b class="yx_Ac">投资三月标奖励金额=</b>
+				<b class="yx_Bc">投标金额x1.25%</b>
+			</div>
+		</div>
+
+		<div class="yx_a" style="border-top: none;">
+			<div class="yx_c">
+				<div style="height: 0.85rem"></div>
+				<b class="yx_Ac">投资6月标奖励金额=</b>
+				<b class="yx_Bc">投标金额x3%</b>
+			</div>
+			<div class="yx_b">
+				<div style="height: 0.7rem"></div>
+				<p>两口元宵</p>
+				<p>“品味”礼</p>
+			</div>
+		</div>
+
+		<div class="yx_a" style="border-top: none;">
+			<div class="yx_b">
+				<div style="height: 0.7rem"></div>
+				<p>三口元宵</p>
+				<p>“流香”礼</p>
+			</div>
+			<div class="yx_c">
+				<div style="height: 0.85rem"></div>
+				<b class="yx_Ac">投资12月标奖励金额=</b>
+				<b class="yx_Bc">投标金额x5%</b>
+			</div>
+		</div>
+		<div class="yx_e">
+			<div class="yx_s">投资奖励排行榜</div>
+		</div>
+		<div class="yx_v">
+			<div style="height: 1rem;"></div>
+			<p class="ph_sj"><span style="width: 10%">排行</span><span style="width: 25%">用户名</span><span style="width: 32.5%">获得奖励</span><span style="width: 32.5%">领取时间</span></p>
+			<div style="overflow: hidden; height: 4rem;">
+				<div class="bcon">
+					<ul id="cin_c">
+						<!--<li><p class="in_c"><span style="width: 10%">1</span><span style="width: 25%">swg***</span><span style="width: 32.5%">￥500.00</span><span style="width: 32.5%">2015-02-02</span></p></li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="yx_join" id="li_join">立即参与</div>
+		<div class="yx_e">
+			<div class="yx_s">奖励领取记录</div>
+		</div>
+		<div class="yx_v">
+			<div style="height: 1rem;"></div>
+			<p class="ph_sj"><span style="width: 25%">用户名</span><span style="width: 37.5%">获得奖励</span><span style="width: 37.5%">领取时间</span></p>
+			<div style="overflow: hidden; height: 4rem">
+				<div class="bcon">
+					<ul id="in_cu">
+						<!--<li><p class="in_c"><span style="width: 25%">swg***</span><span style="width: 37.5%">￥500.00</span><span style="width: 37.5%">2015-02-02</span></p></li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="yx_join my_jl">我的记录</div>
+		<div class="yx_jl">
+			<p>活动规则：</p>
+			<p>1.本活动奖金借款项目满标复审成功且满标时间在活动期间内，奖金资格有效。</p>
+			<p>2.本活动不包含债权转让项目。</p>
+			<p>3.活动兑奖时间为活动结束后，三个工作日内充入其融和贷账户。</p>
+		</div>
+	</div>
+	<div style="height: 1rem"></div>
+	<div style="height: 2rem; background: #7D0000;"></div>
+	<!--c-->
+	<div class="yx_p" style="display: none;">
+		<div class="open_div">
+			<div class="close_div">X</div>
+			<p class="yx_nl">欢乐闹元宵&nbsp;&nbsp;非我莫属</p>
+			<div class="yx_all">
+				<p class="in_ce" style="height: 1.5rem"><span>投资时间</span><span>投资标的</span><span>投资金额</span><span>奖励金额</span></p>
+				<div class="in_yxs" id="in_yxs">
+					<!--<p class="in_use"><span>2015.01.01</span><span>融和财富专享035</span><span>10000</span><span>200</span></p>-->
+				</div>
+				<div class="heji">合计:￥<span id="allmoney">0.00</span></div>
+			</div>
+		</div>
+	</div>
+	<script src="{$tpldir}/actives/lanterns/phone/js/zepto.min.js" type="text/javascript"></script>
+	<script src="{$tpldir}/actives/lanterns/phone/js/autofull.js" type="text/javascript"></script>
+	<script src="{$tpldir}/actives/lanterns/phone/js/api.js" type="text/javascript"></script>
+	<script src="{$tpldir}/actives/lanterns/phone/js/common.js" type="text/javascript"></script>
+	{literal}
+	<script type="text/javascript">
+		var isApp = false;
+		function getToken(){
+			if (isApp) {
+				api.getPrefs({
+					key: 'token'
+				}, function(ret, err){
+					v = ret.value;
+				})
+			} else {
+				v = localStorage.getItem('token');
+			}
+		}
+
+
+		function getLp(){
+			$.ajax({
+				url:'/weixin/?user&m=active/get_share_ajax&alias=lanterns&methodname=get_my_reward',
+				type:'get',
+				data:{token:v},
+				dataType:'json',
+				success:function(res){
+					if(res.code==0){
+						$('.yx_p').show();
+						var html2 = '';
+						var len = res.data.length;
+						var a = 0;
+						for(var i= 0; i < len;i ++){
+							html2 += '<p class="in_use"><span>'+res.data[i].addtime+'</span><span>'+res.data[i].tender+'</span><span>'+res.data[i].account+'</span><span>'+res.data[i].reward+'</span></p>';
+							a += Number(res.data[i].reward);
+						}
+						if($('#in_yxs > p').length < len){
+							$('#in_yxs').append(html2);
+						}
+						$('#allmoney').text(a);
+					}
+				}
+			});
+		}
+		apiready = function(){ //app
+			isApp = true;
+		}
+		$(function(){
+			//窗口控制
+			$('.close_div').click(function(){
+				$('.yx_p').hide();
+			});
+			$('.my_jl').click(function(){
+				getToken();
+				if(v == null || v == ''){
+						if (isApp == false) {
+							location.href = '/weixin/home.html#login';
+						} else {
+							openlogin(1);
+						}
+					}else {
+						getLp();
+					}
+				})
+				$('#li_join').click(function(){
+					if (isApp == false) {
+						location.href = '/weixin/home.html#tender';
+					} else {
+						api.closeWin();
+					}
+				})
+
+
+			//接口
+			$.ajax({
+				url:'/weixin/?user&q=get_share_ajax&alias=lanterns&methodname=get_newly',
+				type:'get',
+				dataType:'json',
+				success:function(res){
+					if(res.code==0){
+						var html = '';
+						for(var i= 0,len = res.data.length; i < len;i ++){
+							html += '<li><p class="in_c"><span style="width: 10%">'+(i+1)+'</span><span style="width: 25%">'+res.data[i].username+'</span><span style="width: 32.5%">'+res.data[i].reward+'</span><span style="width: 32.5%">'+res.data[i].addtime+'</span></p></li>';
+						}
+						$('#cin_c').append(html);
+					}
+				}
+			});
+			$.ajax({
+				url:'/weixin/?user&q=get_share_ajax&alias=lanterns&methodname=get_tops',
+				type:'get',
+				dataType:'json',
+				success:function(res){
+					if(res.code==0){
+						var html1 = '';
+						for(var i= 0,len = res.data.length; i < len;i ++){
+							html1 += '<li><p class="in_c"><span style="width: 25%">'+res.data[i].username+'</span><span style="width: 37.5%">'+res.data[i].reward+'</span><span style="width: 37.5%">'+res.data[i].addtime+'</span></p></li>';
+						}
+						$('#in_cu').append(html1);
+					}
+				}
+			});
+		})
+	</script>
+	{/literal}
+</body>
+</html>

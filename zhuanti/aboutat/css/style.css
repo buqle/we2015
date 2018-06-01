@@ -1,0 +1,153 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+hgroup,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0; }
+
+body {
+    font-family: "Helvetica Neue","Microsoft Yahei",sans-serif;;
+    line-height: 1.5;
+    font-size: 16px;
+    color: #000;
+    background-color: #f8f8f8;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;background: #fff; }
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 62.5%;  }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0; }
+
+caption, th {
+    text-align: left; }
+
+fieldset,
+img {
+    border: 0; }
+
+li {
+    list-style: none; }
+
+ins {
+    text-decoration: none; }
+
+del {
+    text-decoration: line-through; }
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0; }
+
+button {
+    -webkit-appearance: none;
+    border: 0;
+    background: none; }
+
+a {
+    -webkit-touch-callout: none;
+    text-decoration: none; }
+
+:focus {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent; }
+
+em, i {
+    font-style: normal; }
+
+/*# sourceMappingURL=reset.css.map */
+
+
+
+html{font-size: 62.5%;}
+
+.clearc{zoom:1;}
+
+.clearc:after {
+    content: "";
+    display: block;
+    clear: both;}
+#wrap img{width: 100%;vertical-align: bottom;}
+
+.respectcon1,.respectcon3{width: 80%;color: #5a5a5a;margin-left: 10%;margin-right: auto;}
+    .respectcon1 p,.respectcon2 .respectcon2l p{text-indent: 2em;font-size:1.5rem;margin-bottom: 1rem;}
+    .respectcon1 h4,.respectcon2 h4{font-size:1.7rem; margin: 1.2rem 0;}
+
+.respectcon2{width: 85%;margin-left: 10%;color: #5a5a5a;margin-right: auto;}
+    .respectcon2 h4{}
+    .respectcon2 .respectcon2l{}
+        .respectcon2 .respectcon2l h4{margin: 0;font-size: 1.2rem;}
+        .respectcon2 .respectcon2l p{margin: 0;font-size: 1rem;}
+
+    .respectcon2 .respectcon2r{float: right;width: 50%;}
+    .respectcon2 .respectcon2r img{height: 110px;}
+
+
+.respectcon3{}
+    .respectcon3 h4{font-size: 1.7rem; margin: 1.5rem  0;}
+    .respetit{background: url(../images/t1.png) center no-repeat;background-size:80%;width:60%;margin: 0 auto 1.4rem auto;border: 1px dashed #ff7200;padding:0 4rem;height: 86px;}
+    #respetitid2{background: url(../images/t2.png) center no-repeat;background-size:90%;padding: 0rem 4rem;height: 41px;}
+    #respetitid3{background: url(../images/t3.png) center no-repeat;background-size:80%;height: 49px;}
+    #respetitid4{background: url(../images/t4.png) center no-repeat;background-size:50%;height: 57px;}
+    #respetitid22{background: url(../images/abs.png) center no-repeat;background-size:75%;height:50px;}
+    #respetitid33{background: url(../images/ab2_03.png) center no-repeat;background-size:90%;height: 49px;}
+    #respetitid44{background:url(../images/ab3_03.png) center no-repeat;background-size:80%;height: 49px;}
+    .respectcon3c{margin-bottom: 2.2rem;}
+        .respectcon3c p{color:#5a5a5a;font-size: 1.5rem;}
+@media screen and (min-width: 416px) {
+    .respetit{background: url(../images/t1.png) center no-repeat;width:60%;margin: 0 auto 1.4rem auto;border: 1px dashed #ff7200;padding:1rem 4rem 1rem 4rem;height: 86px;}
+    #respetitid2{background: url(../images/t2.png) center no-repeat;padding: 1rem 4rem;height: 41px;}
+    #respetitid3{background: url(../images/t3.png) center no-repeat;height: 49px;padding: 1rem 4rem;}
+    #respetitid4{background: url(../images/t4.png) center no-repeat;height: 57px;padding: 1rem 4rem;}
+    #respetitid22{background: url(../images/ab1_03.png) center no-repeat;height: 49px;padding: 1rem 4rem;}
+    #respetitid33{background: url(../images/ab2_03.png) center no-repeat;height: 49px;padding: 1rem 4rem;}
+    #respetitid44{background:url(../images/ab3_03.png) center no-repeat;padding: 1rem 4rem;}
+}
+.ab3{width:90%;margin: 0 auto 1.4rem auto;border: 1px dashed #ff7200;padding:1rem 0rem;height:41px;font-size:1.5rem;color:#000;}
+p.ab1{font-size:1.5rem;color:#5a5a5a;padding-top:1rem;text-align:center;width:100%;}
+p.ab2{text-indent:2em;}

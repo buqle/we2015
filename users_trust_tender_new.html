@@ -1,0 +1,114 @@
+
+<div class="roam_tender" style="*+width:480px;">
+
+         <form action="/?user&m=trust/tender/new" method="post" id="tender_new_form">
+     <input type="hidden" name="borrow_nid" id="borrow_nid" value="{$smarty.request.borrow_nid}" />
+	    {articles module="borrow"  function="get_view_one" var="var" borrow_nid=$smarty.request.borrow_nid hits="auto"}
+        <div class="dy_item notice fn_cle">
+         <input type='hidden' name='borrow_account_wait' id='borrow_account_wait' value="{$var.borrow_account_wait}" />
+         <input type='hidden' name='tender_account_min' id='tender_account_min' value="{$var.tender_account_min}" />
+         <input type='hidden' name='tender_account_max' id='tender_account_max' value="{$var.tender_account_max}" />
+         <input type='hidden' name='user_balance' id='user_balance' value="{$_G.account_result.balance}" />
+			<span class="fn_left">当前可投金额：{$var.borrow_account_wait}</span>
+            {articles module="webcount"  function="get_users_account" var="var_account" user_id=$_G.user_id}
+			    <span class="fn_rig">账户余额：<em class="f_c1">{$var_account.balance}元</em><a href="javascript:void(0)" class="a_link" id="tender_all">全部投入</a>
+                {/articles}
+            </span>
+		</div>
+
+		<div class="dy_item_cont t20">
+			<div class="dy_item tender_nums fn_cle" id="add_Nums">
+				<span class="fn_left tender_nums_tit" style="font-size: 18px; line-height: 36px; color: #666;">投资金额：</span>
+				<div class="money_txt fn_left">
+					{if $var.tender_account_min>0&&($var.borrow_account_wait<$var.tender_account_min)}
+                    <input type="text" name="tender_account_wait" value="{$var.borrow_account_wait}" class="basic_input" disabled="true"/>
+                    <input type="hidden" name="account" id='tender_money' value="{$var.borrow_account_wait}"/>
+                    {else}
+					{if  $var.final==6}
+					<input type="text" name="account" id='tender_money' value="{$var.borrow_account_wait|string_format:'%d'}" class="basic_input" readonly="readonly"/>
+					{else}
+					<input type="text" name="account" id='tender_money' value="{$smarty.request.account}" class="basic_input"/>
+					{/if}
+                    {/if}
+				<span class="money_type" style="top: 0;">元</span><br />
+				<span class="warning_c" id="pssword_error"></span>
+				</div>
+			</div>
+			<div class="dy_item exp_return">
+				<div class="exp_income"><span>预期收益：</span><span><em id="income_all">￥0.00</em></span></div>
+				<p class="income-bao" style="font-size: 13px;color: #666;display: none;" time-now="{$smarty.now}"></p>
+				<div class="exp_account">
+						<span>借款期限：{$var.borrow_period_name}</span>
+
+					<span>含利息：￥<em id="interest">0.00</em>/含奖励： ￥<em id="award">0.00</em></span>
+					<div class="tender_detail t10" >
+					   <p><a href="javascript:void(0)" class="a_link" id="tender_income">展开收款明细</a></p>
+					   <div class="window_by_income_show t10" id="tender_detail">
+					   <ul>
+					     <!--li><span>收款日</span><span>类型</span><span>收款金额</span></li>
+                         <li><span>2014-04</span><span>利息</span><span>￥7411.18</span></li>
+						 <li><span>2014-04</span><span>利息</span><span>￥7411.18</span></li>
+						 <li><span>2014-04</span><span>利息</span><span>￥7411.18</span></li>
+						 <li><span>2014-04</span><span>利息</span><span>￥7411.18</span></li>
+						 <li><span>2014-04</span><span>利息</span><span>￥7411.18</span></li>
+						 <li><span>2014-04</span><span>利息</span><span>￥7411.18</span></li>
+						 <li><span>2014-04</span><span>利息</span><span>￥7411.18</span></li>
+						 <li><span>2014-04</span><span>利息</span><span>￥7411.18</span></li-->
+					   </ul>
+					   </div>
+					</div>
+				</div>
+			</div>
+             {if $var.borrow_password!=""}
+			     <div class="dy_item trade_pwd">
+    				<label class="basic_label" style=" width: 95px; font-weight: bold; margin-right: 0; color: #666; text-align: center; margin-left: 10px;">投资密码：</label>
+                    <input type="hidden" value="yes" id="password_status_id" />
+                    <input type="password" class="basic_input" name="borrow_password" id="borrow_password" style="width: 152px;" />
+
+    			</div>
+                <div class="dy_item trade_pwd">
+                <label class="basic_label w80"></label>
+                <span class="warning_c" id="pssword_error">此密码请跟借款人索要。</span>
+                </div>
+    		 {else}
+    			<input type="hidden" value="no" id="password_status_id" />
+    		 {/if}
+             {if $_G.approve_result.phone_safe eq "1" && $_G.system.con_app_module eq "1"}
+            <div class="dy_item trade_pwd fn_cle">
+				<label class="basic_label w80">手机宝令：</label>
+                <div class="dy_set_pwd fn_left">
+                 <input type="text"  class="basic_input" name="safe_code" id="safe_code">
+
+                </div>
+				<span class="warning_c" id="safe_code_error">*</span>
+			</div>
+            {/if}
+			<!--<div style="text-align: center;margin-top: 12px;">
+				<input type="text" class="basic_input" id="vericodes" name="valicode" maxlength="6" value="" placeholder="请点击此处显示验证码"  style="width: 150px;position: relative;top: 4px;margin-right: 12px;"/>
+				<img style="cursor:pointer;vertical-align:top;display: none;" src="/?imgcode&amp;counts=6&amp;height=36&amp;width=130&amp;t=0.7068382136058062" alt="点击刷新" onclick="this.src='/?imgcode&amp;counts=6&height=36&amp;width=130&amp;t=' + Math.random();" id="valicode">
+			</div>-->
+			<div class="dy_item sub_btn_cont" style="margin-top: 18px;">
+				<input type="submit" value="马上投标" id="tender_new_submit" class="nor_tender_sub notyour"/>
+			</div>
+		</div>
+	 </form>
+  </div>
+  {/articles}
+
+{literal}
+<script type="text/javascript">
+diyou.use('tender',function(t){t.tender_new();t.get_income()});
+/*$(function(){
+	$('#vericodes').focus(function(){
+		$(this).attr('placeholder','请输入验证码').css({'width':'110px'});
+		$('#valicode').show();
+	});
+	$('#vericodes').blur(function(){
+		$(this).attr('placeholder','请点击此处显示验证码').css({'width':'150px'});
+		$('#valicode').hide();
+	})
+})*/
+</script>
+
+{/literal}
+

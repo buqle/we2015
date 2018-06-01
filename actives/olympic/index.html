@@ -1,0 +1,283 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/olympic/css/style.css" rel="stylesheet" type="text/css" />
+<div class="cationcon1"></div>
+
+<div class="olympiccont1">
+    <div class="olympiccont1s">
+        <div class="bbq_left"></div>
+        <div class="bbq_right"></div>
+        <div style="height: 16px;"></div>
+        <div class="sounding1">
+            <div class="sounding1p">
+                <h4>“一个新世界”，运动在即，跨“五环”赚收益！</h4>
+                <p> 活动期间用户每笔投资达到相应金额，即可获得相应“奥运”现金奖励，投资越多，
+                    奖励越高，一起来拼搏吧！</p>
+            </div>
+        </div>
+
+        <ul class="sounding2 clearg">
+            <li class="heada"></li>
+            <li class="headb onc"></li>
+            <li class="headc" style="margin-right: 0;"></li>
+        </ul>
+
+        <ul class="sounding3">
+
+            <li class="onc1">
+                <dl class="sodo1">
+                    <div class="sodocont">
+                        <h4>奖励7600元</h4>
+                        <div class="breathe-btn">单笔金额达到20万</div>
+                    </div>
+                </dl>
+
+                <dl class="sodo2">
+                    <div class="sodocont">
+                        <h4>奖励360元</h4>
+                        <div class="breathe-btn">单笔金额达到1万</div>
+                    </div>
+                </dl>
+
+                <dl class="sodo3" style="display: block">
+                    <div class="sodocont">
+                        <h4>奖励3700元</h4>
+                        <div class="breathe-btn">单笔金额达到10万</div>
+                    </div>
+                </dl>
+                <dl class="sodo4">
+                    <div class="sodocont">
+                        <h4>奖励177.5元</h4>
+                        <div class="breathe-btn">单笔金额达到5千</div>
+                    </div>
+                </dl>
+                <dl class="sodo5">
+                    <div class="sodocont">
+                        <h4>奖励1825元</h4>
+                        <div class="breathe-btn">单笔金额达到5万</div>
+                    </div>
+                </dl>
+
+            </li>
+
+        </ul>
+        <div class="stankiboxbtn logo_sb" id="stankiboxbtn3">立即投资</div>
+    </div>
+</div>
+
+
+<div class="appreciation3">
+    <div class="standardking2 clearg">
+        <h4 class="stankibox2">实时投资记录榜</h4>
+        <h4 class="stankibox2" style="float: right;">我的记录</h4>
+        <div class="stankibox">
+            <p class="onr_tit"><span>用户名</span><span style="width: 15%">投资时长</span><span>投资金额</span><span>可得奖励</span><span style="width: 25%">投资时间</span></p>
+            <div style="height:250px;overflow: hidden;">
+                <div id="marqueebox1">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="stankibox"  style="float: right;" id="stankiboxid">
+            <p class="onr_tit"><span style="width: 25%;">投资标的</span><span style="width: 15%;">投资时长</span><span>投资时间</span><span>投资金额</span><span>可得奖励</span></p>
+
+            <div id="stankiboxbtn2">登入即可查看</div>
+
+            <div style="overflow: hidden;display: none;height: 255px;position: relative;" id="new_hous">
+                <div style="height: 210px;overflow: hidden;">
+                    <div id="marqueebox">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="marqucont">
+                    <p>合计：<i id="dbigcks1">200</i>元<i id="dbigcks2">200</i>元</p>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+    <div class="stankiboxbtn logo_sb" id="stankiboxbtn1">立即投资</div>
+
+</div>
+
+
+<div class="olympiccont2">
+    <h4>活动规则</h4>
+        <p>1、活动期间，凡用户单笔投资金额达到相应要求,其每笔投资均可获得除年化收益外的相应现金奖励，用户投资次数越多，奖励次数越多，奖金越丰厚；</p>
+    <p>2、本活动奖金借款项目满标复审成功且满标时间在活动期间内，奖金资格有效；</p>
+    <p>3、活动奖金将在活动结束后，3个工作日内直充用户汇付账户，可投资、可提现；</p>
+    <p>4、本次活动中，不包含债权转让项目。</p>
+</div>
+
+
+<div class="jiujiu_foot">
+    <p>免责申明</p>
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意刷奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <div class="endjiujiu"></div>
+</div>
+
+
+
+{literal}
+<script language="javascript">
+    $(function(){
+
+        var dataArr = [0,1,2];
+        dataArr[0]=[3700,175,1800,86.25,887.5];
+        dataArr[1]=["7600","360","3700","177.5","1825"];
+        dataArr[2]=["1800","85","875","41.88","431.25"];
+
+
+
+       $('.sounding2 li').mouseover(function(){
+           $(this).addClass('onc').siblings().removeClass('onc');
+           var index = $(this).index();
+          $(".sodocont h4").each(function(key){
+              $(this).text('奖励'+ dataArr[parseInt(index)][parseInt(key)]+'元')
+          })
+
+       });
+
+       setTimeout(function(){
+           $('.onc1 .sodo2').animate({top:"164px",left:'162px'},1500);
+           $('.onc1 .sodo4').animate({top:"164px",left:'464px'},1500);
+           $('.onc1 .sodo5').animate({top:"164px",left:'464px'},1500,function(){
+               $(this).animate({top:'0px',left:'615px'},1500,function(){
+                   $('.sodocont').fadeIn(1500);
+               });
+           });
+           $('.onc1 .sodo1').animate({top:"164px",left:'162px'},1500,function(){
+               $(this).animate({top:'0px',left:'0px'},1500);
+           });
+       },2000)
+
+
+
+        $('.logo_sb').click(function(){
+            if (user_id>0) {
+                window.location.href="/invest/index.html";
+            } else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        });
+
+
+        if (user_id>0){
+            $('#stankiboxbtn2').hide();
+        }
+
+        if (user_id>0) {
+            $.http.get('/?user&q=get_share_ajax&alias=olympic&methodname=get_self', {}, function(ret){
+                if (ret.code == '0'){
+                    $("#new_hous").show();
+                    var html = '';
+                    var len = ret.data.length;
+                    var a=0;
+                    var b=0;
+                    for(var i=0; i<len; i++){
+                        html += '<p><span style="width: 25%;">'+ret.data[i].name+'</span><span style="width: 15%;">'+ret.data[i].check+'</span><span>'+ret.data[i].addtime+'</span><span>'+ret.data[i].money+'</span><span>'+ret.data[i].reward+'</span></p>';
+                       a +=Number(ret.data[i].money);
+                        b +=Number(ret.data[i].reward)
+                    }
+
+                    $('#marqueebox').html(html);
+                    $('#dbigcks1').text(a);
+                    $('#dbigcks2').text(b);
+
+                }
+            }, 'json')
+        }
+
+
+        $("#stankiboxbtn2").click(function(){
+            if(user_id>0){
+                $('#stankiboxbtn2').hide();
+                $("#new_hous").show();
+            }
+            else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+
+        });
+
+
+        $.getJSON('/?user&q=get_share_ajax&alias=olympic&methodname=get_newly',{},function(ret){
+            if(ret.code == 0){
+                /*var surelen = ret.top.length;
+                var sure = '';*/
+                var surelen2 = ret.data.length;
+                var sure2 = '';
+               /* for(var i = 0; i < surelen; i++){
+                  sure += '<p><span>'+ret.top[i].username+'</span><span>'+ret.top[i].name+'</span><span>'+ret.top[i].all_money+'</span><span>'+ret.top[i].addtime+'</span></p>';
+                }*/
+                for(var i = 0; i < surelen2; i++){
+                    sure2 += '<p><span>'+ret.data[i].username+'</span><span style="width: 15%">'+ret.data[i].check+'</span><span>'+ret.data[i].money+'</span><span>'+ret.data[i].reward+'</span><span style="width: 25%">'+ret.data[i].addtime+'</span></p>';
+                }
+                //$('#marqueebox').html(sure);
+                $('#marqueebox1').html(sure2);
+            }else{
+                alert(ret.msg);
+            }
+        })
+
+
+
+    })
+    function startmarquee(lh,speed,delay,domID) {
+        var p=false;
+        var t;
+        var o=document.getElementById(domID);
+        // o.innerHTML=o.innerHTML;
+        o.style.marginTop=0;
+        o.onmouseover=function(){p=true;}
+        o.onmouseout=function(){p=false;}
+        function start(){
+            t=setInterval(scrolling,speed);
+            if(!p) o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+        }
+        function scrolling(){
+            if(parseInt(o.style.marginTop)%lh!=0){
+                o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+                if(Math.abs(parseInt(o.style.marginTop))>=o.scrollHeight) o.style.marginTop=0;
+            }else{
+                clearInterval(t);
+                setTimeout(start,delay);
+            }
+        }
+        setTimeout(start,delay);
+    }
+    startmarquee(50,10,800,'marqueebox');
+    startmarquee(50,10,800,'marqueebox1');
+
+    function getdays(time) {
+        var date = new Date();
+        date.setTime(time * 1000);
+        Y = date.getFullYear() + '/';
+        M = (date.getMonth() + 1 < 10 ? (date.getMonth() + 1) : date.getMonth() + 1) + '/';
+        D = date.getDate()+'   ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = (date.getSeconds() + 1 < 10 ? '0' + (date.getSeconds() + 1) : date.getSeconds() + 1);
+        time = M + D;
+        return time;
+    }
+
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?114bdc026b9ff4de87a6efb268dbea76";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+{/literal}

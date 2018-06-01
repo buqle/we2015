@@ -1,0 +1,95 @@
+<script type="text/javascript" src="{$tpldir}/js/jquery.cityselects.js"></script>
+<h4 class="tit-cust_bank">上海银行资金存管账户-换绑卡</h4>
+<div class="cust_bankcon1 ww3">
+    <div class="cust_bankcon font18" id="cust_bankcon1" >
+        <form method="get" id="cust-form2">
+            <p>
+                <label>新绑定银行卡号</label>
+                <input type="text" placeholder="请输入银行卡号" name="name1">
+            </p>
+            <p>
+                <label>开户银行</label>
+                <select name='BankId' id="bankIds">
+                    <option value="">请选择银行</option>
+                    <option value="ABC">中国农业银行</option>
+                    <option value="CCB">中国建设银行</option>
+                    <option value="BOC">中国银行</option>
+                    <option value="CEB">中国光大银行</option>
+                    <option value="CIB">兴业银行</option>
+                    <option value="PINGAN">平安银行</option>
+                    <option value="PSBC">中国邮政</option>
+                    <option value="SPDB">浦发银行</option>
+                    <option value="ICBC">中国工商银行</option>
+                    <option value="CMBC">中国民生银行</option>
+                    <option value="BOCOM">交通银行</option>
+                    <option value="GDB">广发银行</option>
+                    <option value="HFB">恒丰银行</option>
+                    <option value="HXB">华夏银行</option>
+                    <option value="CMB">招商银行</option>
+                </select>
+            </p>
+            <p>
+                <label>开户地区</label>
+            <span id="city" class="inline-block">
+                <select class="prov" name="ProvId"></select>
+                <select class="city" disabled="disabled"></select>
+            </span>
+            </p>
+            <p>
+                <label>原卡预留手机</label>
+                <input type="text" class="text-w" placeholder="请输入验证码" name="phone">
+                <input class="button_bank1 text-center dis-inlie button_bank cursor font18" type="button" value="获取验证码">
+            </p>
+            <p>
+                <label>新卡预留手机卡号</label>
+                <input type="text"  placeholder="请输入手机号" name="phone2">
+            </p>
+            <p>
+                <label>短信验证码</label>
+                <input type="text"  placeholder="请输入验证码" name="phone3">
+                <input class="button_bank1 text-center dis-inlie button_bank cursor font18" type="button" value="获取验证码">
+            </p>
+            <p><input type="submit" value="下一步" class="button_bank2 text-center block button_bank cursor font18"></p>
+        </form>
+    </div>
+</div>
+<div class="cust_bankcon2 font18 color-444 ww3">
+    <h4 class="bold font24">温馨提示：</h4>
+    <p>1.为了保障您的资金安全，申请换绑卡时请如实填写您的个人信息；</p>
+    <p>2.请确保您输入的手机号为银行卡的预留手机号；</p>
+    <p>3.如需帮助，欢迎联系客服 400-013-5679。</p>
+</div>
+<div style="height: 60px;"></div>
+
+<div id="qingkuang1" style="display: none;">
+    <div class="cust_bankalert text-center font18 color-444">
+        <p>是否换绑卡成功</p>
+        <a href="/?user&user_role=1#trust/recharge" class="button_bank block ww3">充值</a>
+    </div>
+</div>
+
+{literal}
+<script>
+   $(function(){
+       $("#city").citySelect({
+           nodata:"none",
+           required:false
+       });
+
+       //开通成功
+       /*jDialog.dialog({
+           title : '温馨提示',
+           content : $("#qingkuang1").html(),
+           height:300,
+           width:550
+
+       });*/
+
+
+
+
+   })
+
+
+</script>
+{/literal}

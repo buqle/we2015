@@ -1,0 +1,280 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", sans-serif;;
+    line-height: 1.5;
+    font-size: 16px;
+    color: #000;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+}
+
+button {
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+}
+
+a {
+    -webkit-touch-callout: none;
+    text-decoration: none;
+}
+
+:focus {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+em, i {
+    font-style: normal;
+}
+#en{
+    height: 8.75rem;
+    width: 16rem;
+    margin: 0 auto;
+}
+#en img{
+    width: 100%;
+}
+#et{
+    width: 14rem;
+    height:10rem;
+    border: 0.05rem solid #DFAE6F;
+    margin: 0 auto;
+    background: #FFF6EA url("../images/jq_img06_03.jpg") 1rem 0.89rem no-repeat;
+    background-size:1.2rem 1.2rem;
+    border-radius: 0.4rem;
+}
+#tn{
+    font-size: 0.7rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    color: #290000;
+    font-weight: bold;
+    background: url("../images/jq_img07_03.jpg") 11.8rem 0.3rem no-repeat;
+    background-size: 1.2rem 1.2rem;
+}
+#ton{
+    width: 12rem;
+    margin: 0 auto;
+    color: #4c2206;
+    line-height: 1rem;
+    height: 3rem;
+    overflow: hidden;
+    font-size: 0.6rem;
+}
+#tts{
+    background: url("../images/jq_img1_03.png") 3rem 0.9rem no-repeat;
+    background-size: 2.5rem 2.5rem;
+    height: 4rem;
+}
+#tts div{
+    font-size: 0.6rem;
+    width: 6.5rem;
+    margin-left: 6.5rem;
+}
+#tc{
+    height: 1.8rem;
+}
+#tc a{
+    height: 1.2rem;
+    width: 4rem;
+    display: block;
+    float: left;
+    border-radius: 0.5rem;
+    background: #FF771C;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2rem;
+}
+#in_u img{
+    width: 100%;
+}
+#in_u{
+    height: 1.7rem;
+    width: 16rem;
+    margin: 0 auto;
+}
+#in_m img{
+    width: 100%;
+}
+#in_m{
+    margin: 0 auto;
+    width: 12rem;
+}
+#i_q,#i_qm{
+    width: 12rem;
+    margin: 0 auto;
+}
+#i_q p{
+    font-size: 0.6rem;
+    line-height: 1rem;
+}
+#i_qm p{
+    font-size: 0.6rem;
+}
+#in_tuons{
+    height: 10rem;
+    width: 14rem;
+    position: fixed;
+    margin: -5rem 0 0 -7rem;
+    top: 50%;
+    left: 50%;
+    background: #81240E;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+#ton_mess{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background: rgba(41, 0, 0, 0.54);
+    top: 0;
+    left: 0;
+    z-index: 88;
+    display: none;
+}
+.mein_n li span{
+    width: 4.66rem;
+    height: 1.25rem;
+    display: block;
+    float: left;
+    line-height: 1.25rem;
+    text-align: center;
+    color: white;
+}
+.mein_n span{
+    width: 100%;
+}
+#close_myJl{
+    height: 0.7rem;
+    width: 0.7rem;
+    text-align: center;
+    line-height: 0.7rem;
+    border-radius: 0.5rem;
+    background: #CCC;
+    color: #000;
+    position: absolute;
+    top: 0.15rem;
+    right: 0.15rem;
+}
+#zhixiang{
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.54) url("../images/iconfont-fenxiangjiantou.png") 6rem 2rem no-repeat;
+    background-size: 10rem 10rem;
+    opacity: 0.4;
+    position: fixed;
+    top:0;
+    left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

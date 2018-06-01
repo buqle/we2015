@@ -1,0 +1,338 @@
+{include file="headers.html"}
+<link href="{$tpldir}/actives/lottery/css/style.css" type="text/css" rel="stylesheet"/>
+<div class="lotter_ban widtha"></div>
+<div class="lotter_cont1 widthc">
+    <div class="jinbi jinbi1"></div>
+    <div class="jinbi"></div>
+    <h6></h6>
+    <div class="lotter_cont1s widthc">
+        <p class="lotit">当前积分：登录后查看</p>
+        <div class="ululbg widthc">
+            <ul class="clearff widthc alldata">
+                <li  date-index="1">
+                    <dl class="clearg">
+                        <dt class="lefton" style="margin-top: 12px;"><img class="img1" src="{$tpldir}/actives/lottery/images/jp1.png"></dt>
+                        <dd class="righton" style="margin-top: 54px;">
+                            <h4>华为4G手机</h4>
+                            （以实物为准）
+                        </dd>
+                    </dl>
+                </li>
+                <li date-index="2">
+                    <dl>
+                        <h4 class="line-heigh">40<i>积分</i></h4>
+                    </dl>
+                </li>
+                <li date-index="3" style="margin-right: 0;">
+                    <dl>
+                        <h4 class="line-heigh">100<i>元投资红包</i></h4>
+                    </dl>
+                </li>
+                <li date-index="8">
+                    <dl>
+                        <h4 class="line-heigh">160<i>积分</i></h4>
+                    </dl>
+                </li>
+                <li id="on_indexspcon">
+                    <p>已有0人次中奖</p>
+                    <div class="choujiang" check="">免费抽奖</div>
+                </li>
+                <li date-index="4" style="margin-right: 0">
+                    <dl>
+                        <h4 class="line-heigh">80<i>积分</i></h4>
+                    </dl>
+                </li>
+
+                <li date-index="7">
+                    <dl>
+                        <h4 class="line-heigh"><i>谢谢参与</i></h4>
+                    </dl>
+                </li>
+                <li date-index="6">
+                    <dl>
+                        <h4 class="line-heigh">50<i>元投资红包</i></h4>
+                    </dl>
+                </li>
+                <li date-index="5" style="margin-right: 0;">
+                    <dl class="clearg">
+                        <dt class="lefton" style="margin-left: 18px;"><img class="img1" src="{$tpldir}/actives/lottery/images/jp2.png"></dt>
+                        <dd class="righton" style="margin-top: 54px;">
+                            <h4>雷柏无线鼠标</h4>
+                            （以实物为准）
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="lotter_cont2 widthc clearff">
+    <div class="lefton">
+        <h5>中奖记录</h5>
+        <div class="leftoncont">
+            <div class="leftonconts widthc">
+                <p class="titleft">
+                    <span style="width: 20%;">姓名</span>
+                    <span style="width: 44%;">奖励</span>
+                    <span>中奖时间</span>
+                </p>
+                <div style="height: 216px;overflow: hidden;" class="renav">
+                    <ul id="marqueebox">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="righton">
+        <h5>抽奖规则</h5>
+        <div class="rightoncont widthc">
+            <p>1、每位用户，每天均可免费抽奖一次，每20积分可再抽奖一次；</p>
+            <p>2、积分、投资红包奖励实时到账，实物奖励将在七个工作日内安排发</p>
+            <h4> 货（需提交完整收货信息，颜色随机）；</h4>
+            <p>3、兑换商品进度及详情您可前往个人中心查看。奖品一经兑换成功，非</p>
+            <h4>质量问题，不予退换；</h4>
+            <p>4、部分商品兑换后由京东负责配送及售后；如遇缺货，融和贷工作人员</p>
+            <h4>会第一时间与您联系；收货后，如遇产品质量问题，请与网站客服联系；</h4>
+            <p>5、如有任何疑问，请致电在线客服：400-013-5679或咨询您的专属客服。</p>
+        </div>
+    </div>
+</div>
+
+<div id="qingkuang2" style="display: none;">
+    <div class="qingkcon">
+        <h4>恭喜获得<i id="jiangli"></i>奖励，</h4>
+        <p style="font-size: 18px;"> 积分奖励实时到账，投资红包奖励请至“个人中心—我的红包”查看,</p>
+        <p style="font-size: 18px;">实物奖励请前往"个人中心—我的红包"<a href="/?user#account/red">非投资券奖励填写地址</a></p>
+    </div>
+</div>
+
+<div id="qingkuang3" style="display: none;">
+    <div class="qingkcon qingkcon3">
+        <p>您当前的积分不足，<a href="/mecum/index.html">如何赚取积分？</a> </p>
+    </div>
+</div>
+
+{literal}
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?114bdc026b9ff4de87a6efb268dbea76";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script>
+    $(function(){
+        if (user_id>0){
+            function cc(){
+                $.getJSON('/?user&q=public&type=get_one_reward',function(ret){
+                    if(ret.code == 0){
+                        $('.lotit').text('当前积分：'+ret.data.integral );
+                        $('.choujiang').attr('check',ret.data.check)
+                        if(ret.data.check==0){
+                            $('.choujiang').text('免费抽奖')
+                        }else {
+                            $('.choujiang').text('抽奖每20积分一次').css('font-size','32px')
+                        }
+                    }else{
+                        jDialog.alert(ret.msg);
+                    }
+                });
+            }
+            cc()
+        }else {
+            $('.lotit').text('当前积分：登录后查看')
+        }
+        $('.lotit').click(function(){
+            if (user_id==0) {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        });
+
+        $.http.get('/?user&q=public&type=get_reward_list', {}, function(ret){
+            if (ret.code == 0){
+                var len = ret.data.data.length;
+                var html=''
+                for(var i=0; i<len; i++){
+                    html += '<p><span style="width: 20%;">'+ret.data.data[i].username+'</span><span style="width: 44%;">'+ret.data.data[i].name+'</span><span>'+getdays(ret.data.data[i].addtime)+'</span></p>';
+
+                }
+                $('#marqueebox').html(html);
+                $('#on_indexspcon').find('p').text('已有'+ret.data.total+'人次中奖')
+
+            }else {
+
+            }
+        }, 'json')
+
+
+        //抽奖
+        var prs = ['','华为4G手机','40积分','100元投资红包','80积分','雷柏无线鼠标','50元投资红包','谢谢参与','160积分'];
+        $('.choujiang').click(function(){
+            if($(this).attr('check')==1){
+                $(this).text('抽奖每20积分一次').css('fontsize','32px')
+            }
+            if($(this).hasClass('tton')){
+                if($(this).hasClass('tton11')){
+                    var dialogs = jDialog.dialog({
+                        title : '温馨提示',
+                        content : $("#qingkuang3").html(),
+                        height:300,
+                        width:568
+                    });
+                }
+                return false;
+            }
+            $(this).addClass('tton')
+            if(user_id>0){
+                if(trust!=1){
+                    jDialog.alert('请开通汇付');
+                    return false;
+                }else {
+                    $.http.get('/?user&q=public&type=get_reward',{},function(ret){
+                        if(ret){
+                            var prz = ret.data.lucky;
+                            if(prz=='10'){
+                                var dialogs = jDialog.dialog({
+                                    title : '温馨提示',
+                                    content : $("#qingkuang3").html(),
+                                    height:300,
+                                    width:568
+                                });
+                                $('.choujiang').addClass('tton11')
+                            }else if(prz=='11'){
+                                jDialog.alert('抽奖失败');
+                            }else{
+                                acc(prz);
+                                var aad = (prz*100)+2600;
+                                var aa = setTimeout(function(){
+                                    if(ret.data.lucky==7){
+                                        jDialog.alert('谢谢参与');
+                                    }
+                                    else {
+                                        var dialogs = jDialog.dialog({
+                                            title : '温馨提示',
+                                            content : $("#qingkuang2").html(),
+                                            height:300,
+                                            width:600
+                                        });
+                                    }
+                                    $('.qingkcon').find('#jiangli').text(prs[ret.data.lucky]);
+                                    $('.choujiang').removeClass('tton');
+                                    cc();
+                                    $('.alldata').find('li').removeClass('active');
+
+                                },aad);
+                                switch (prz){
+                                    case 1:
+                                        aa
+                                        break;
+                                    case 2:
+                                        aa
+                                        break;
+                                    case 3:
+                                        aa
+                                        break;
+                                    case 4:
+                                        aa
+                                        break;
+                                    case 5:
+                                        aa
+                                        break;
+                                    case 6:
+                                        aa
+                                        break;
+                                    case 7:
+                                        aa
+                                        break;
+                                    case 8:
+                                        aa
+                                        break;
+
+                                }
+                            }
+                        }
+                    },'json')
+                }
+            }else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+
+        });
+
+        function acc(pz){
+            var pz = pz;
+            var liIndex = new Array(),
+                    liAll = $('.alldata li[date-index]'),
+                    currIndex = 1;
+            liAll.each(function () {
+                liIndex[parseInt($(this).attr('date-index'))] = $(this);
+            });
+            var liLen = liIndex.length;
+
+            var aa = 0;
+            var times = setInterval(function () {
+                liAll.each(function () {
+                    $(this).removeClass('active');
+                });
+                liIndex[currIndex].addClass('active');
+                // console.log(currIndex+'aa');
+                currIndex++;
+                if(aa == 2 && currIndex == pz+1){
+                    clearInterval(times);
+                }
+                if (currIndex >=liLen ){
+                    currIndex = 1;
+                    aa ++;
+
+                }
+            },100)
+        }
+        function getdays(time) {
+            var date = new Date(parseInt(time) * 1000);
+            day = [date.getFullYear(), date.getMonth()+1, date.getDate()].join('/');
+            return day ;
+        }
+    });
+    $(function(){
+
+        var $this = $(".renav");
+
+        var scrollTimer;
+
+        $this.hover(function(){
+
+            clearInterval(scrollTimer);
+
+        },function(){
+
+            scrollTimer = setInterval(function(){
+
+                scrollNews( $this );
+
+            }, 2000 );
+
+        }).trigger("mouseout");
+
+    });
+
+    function scrollNews(obj){
+
+        var $self = obj.find("ul:first");
+
+        var lineHeight = $self.find("p:first").height();
+
+        $self.animate({ "margin-top" : -36 +"px" },800 , function(){
+
+            $self.css({"margin-top":"0px"}).find("p:first").appendTo($self);
+
+        })
+
+    }
+</script>
+{/literal}
+{include file="footer.html"}

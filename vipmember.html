@@ -1,0 +1,269 @@
+{include file="header.html"}
+<link rel="stylesheet" type="text/css" href="{$tpldir}/css/blue/vipmember.css">
+<script src="{$tpldir}/js/articles/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{$tpldir}/js/jquery.fancybox.js"></script>
+
+{literal}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $tab_li = $('#tab ul li');
+        $tab_li.click(function () {
+            $(this).addClass('selected').siblings().removeClass('selected');
+            var index = $tab_li.index(this);
+            $('div.tab_box > div').eq(index).show().siblings().hide();
+        });
+    });
+
+    
+</script>
+
+
+{/literal}
+
+<!--/-->
+{articles module="highend" function="get_one_page" var="var" id=$smarty.request.article_id}
+<div class="vipmember">
+    <div class="vipmember_info">
+        <div class="info_titile"><h1>{$var.borrow_name}</h1></div>
+        <div class="info_cont">
+
+            <div id="info_cont_fl" class="fl">		
+                <p>年化收益率： {$var.borrow_apr}%</p>
+                <p>投资期限： 约{$var.borrow_period}月</p>
+                <p>收益分配： {$var.borrow_style}</p>
+                <p>资金用途：{$var.borrow_use}</p>
+                <p>募集金额： <span style="color:#ff6629;">{$var.account|truncate_zero}万</span>元</p>
+                <div id="xiantiao"></div>
+                <div id="info_cont_fl01">
+                    <span>立即分享，获取推荐奖励</span>
+                    <!-- Baidu Button BEGIN -->
+                    <div class="bdsharebuttonbox" style="width: 35%; float: right;padding-top: 8px;
+                         ">
+
+                        <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                        <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                        <a href="#" class="bds_more" data-cmd="more"></a>
+                    </div>
+                    {literal}
+                    <script>
+                        window._bd_share_config = {"common": {"bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "1", "bdSize": "16"}, "share": {}, "selectShare": {"bdContainerClass": null, "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"]}};
+                        with (document)
+                            0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+                    </script>
+                    {/literal}
+                    <!-- Baidu Button END -->
+                </div>
+            </div>
+
+            <div id="info_cont_fr" class="fl">
+
+                <form action="/?user&m=highend/add" method="post" id="tender_form" novalidate="novalidate">
+
+                    <label>
+                        <span>预约金额 :</span>
+                        <input id="money" class="money_toseeem" type="text" name="money" placeholder="预约金额" />元
+                        <input t name="borrow_nid" type="hidden" value="{$smarty.request.article_id}" />
+                        <p>最低预约金额{$var.tender_account_min|truncate_zero}万元，后以{$var.tender_account_ascending|truncate_zero}万元整数倍递增</p>
+                        <span id="MaxMin" data-min="{$var.tender_account_min|truncate_zero}" data-max="{$var.tender_account_ascending|truncate_zero}" style="display: none"></span>
+                        <span class="avail_money" data-money="{$var.account-$var.finish_account|truncate_zero}" id="availMoney" style="display: none"></span>
+                    </label>
+                    <label>
+                        <span>预约时间 :</span>
+                        <!--日历-->
+                        <input type="text" name="dotime1" class="u_input date_picker" style="width: 150px" placeholder="预约日期" value="" id="dotime1" readonly />
+    <script>
+        var borrow_nid = '{$var.borrow_nid}'
+        {literal}
+            diyou.use('users_invest',function(dy){dy.invest_info()});
+            diyou.use('viptender',function(t){t.borrow_content(borrow_nid)});
+    </script>
+    {/literal}
+        
+
+
+                        <!--/ end-->
+                        <p>预定时间{$var.begin_time|date_format:"Y年m月d日"}-{$var.end_time|date_format:"Y年m月d日"}</p>
+                    </label>
+
+
+                    <label>
+
+                        <!--<input type="button" class="info_cont_fr_button" value="立即预约" />-->
+                        <div class="info_cont_fr_button"><a href="javascript:void(0)"  id="tender_login" >立即预约</a></div>
+
+                        <p>已有<span style="color:#f5b547;">{$var.user_count}</span>人预定，成功预定金额<span style="color:#f5b547;">{$var.finish_account|truncate_zero}</span>万元</p>
+                    </label>
+                </form>
+            </div><!--/info_cont_fr end-->
+        </div><!--/info_cont end-->
+
+    </div><!--/vipmember_info end-->
+
+
+    <div id="tab">
+        <ul class="tab_menu">
+            <li class="selected">基金描述</li>
+            <li>产品亮点</li>
+            <li>风险控制</li>
+            <li>预定记录</li>
+        </ul>
+        <div class="tab_box">
+            <div class="blok">
+                <p class="ton_vip_messige">1.项目信息</p>
+                <div class="ton_tommontine">
+                    <p><span style="width: 105px; background:#2F6FA3; text-align: center; color: white; font-size: 16px;">融资主体</span><span>：&nbsp;&nbsp;{$var.borrow_theme}</span></p><p style="height: 10px;"></p>
+                    <p><span style="width: 105px; background:#2F6FA3; text-align: center;  color: white; font-size: 16px;">资金用途</span><span>：&nbsp;&nbsp;{$var.borrow_use}</span></p><p style="height: 10px;"></p>
+                    <p><span style="width: 105px; background:#2F6FA3; text-align: center; color: white; font-size: 16px; ">还款来源</span><span>：&nbsp;&nbsp;{$var.repayment_source}</span></p>
+                </div>
+                <div style="height: 100px;"></div>
+                <p class="ton_vip_messige">2.项目流程</p>
+                <div class="ton_boyse">
+                    <img src="{$tpldir}/images/vipmember/xinghuojihua_03.png">
+                </div>
+                <div style="height: 100px;"></div>
+                <p class="ton_vip_messige">3.项目详情</p>
+                <div class="tushi_ton">
+                    {$var.description}
+                </div>
+                <script src="{$tpldir}/js/lightbox.min.js"></script>
+                <div class="mon_more_bingdiv">
+                    <ul style="position: relative; overflow: hidden;">
+                        {if $var.upfiles_pic!=""}
+                        {foreach from=$var.upfiles_pic item="_item" key=key}
+                        <li><a class="example-image-link" href="{$_item.fileurl}" data-lightbox="example-set" data-title="" title="{$_item.contents}"><img class="example-image" src="{$_item.fileurl}" alt="{$_item.contents}" width="217px" height="154px"/></a></li>
+                        {/foreach}
+                        {/if}
+
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <!--2-->
+            <div class="hide">
+                <!--产品亮点-->
+                <p style="height: 44px;"></p>
+                <p class="ton_vip_messige">一、产品优势</p>
+                <p style="height: 30px;"></p>
+                <div class="vip_mover">
+                    <p><b>保安全：</b>专业的运营团队，独创DPS风控系统，集团多家子公司实体机构变现，100%本息保障。</p>
+                    <p><b>收益高：</b>高出银行等理财许多倍，最大化你的收益。</p>
+                    <p><b>流动性强：</b>按季付息，流动性强，最短时间实现你的收益，足额抵押并由融资性担保公司提供担保。</p>
+                    <p><b>法务支持：</b>"AA级诚信律师事务所"为融和贷所有项目全程跟踪服务，切实保障理财客户资金安全。</p>
+                </div>
+                <div style="height: 90px;"></div>
+                <p class="ton_vip_messige">二、收益对比</p>
+                <p style="height: 44px;"></p>
+                <div class="ton_vip_mains1">
+                    <p class="ton_vip_miss_koll">
+                        <span>理财产品</span>
+                        <span>银行</span>
+                        <span>X赢宝</span>
+                        <span>星火计划</span>
+                    </p>
+                    <p class="ton_vip_miss_kill">
+                        <span>投资金额</span>
+                        <span>100000.00</span>
+                        <span>100000.00</span>
+                        <span>100000.00</span>
+                    </p>
+
+                    <p class="ton_vip_miss_kill">
+                        <span>投资期限</span>
+                        <span>12个月</span>
+                        <span>12个月</span>
+                        <span>12个月</span>
+                    </p>
+
+                    <p class="ton_vip_miss_kill">
+                        <span>年收益率</span>
+                        <span>3.5%</span>
+                        <span>10%</span>
+                        <span style="color: red;">12%</span>
+                    </p>
+
+                    <p style="border-bottom: none; height: 167px;" class="ton_vip_miss_kill">
+                        <span style="height: 167px; line-height: 167px;">净收益</span>
+                        <span style="height: 167px; line-height: 167px;">3500.00</span>
+                        <span style="height: 167px; line-height: 167px;">10000.00</span>
+                        <span style="color: red; height: 167px; line-height: 167px;">12000.00</span>
+                    </p>
+                </div>
+                <div style="height: 90px;"></div>
+                <p class="ton_vip_messige">三、产品特点</p>
+                <div class="cptd_vip">
+                    <div style="height: 35px;"></div>
+                    <p><span style="color: #59a9e8">◆ 收益稳健：</span>对比银行、信托等产品，收益高。</p>
+                    <p><span style="color: #59a9e8">◆ 安全性高：</span>足额抵押+	股东担保+第三方担保+顶级风控+高安全高保障。</p>
+                    <p><span style="color: #59a9e8">◆ 适用人群：</span>一段时间有大额资金闲置，希望较高稳健收益者。</p>
+                </div>
+                <p style="height: 44px;"></p>
+
+            </div>
+
+            <!--3-->
+            <div class="hide">
+                <!--风险控制-->
+                <p style="height: 44px;"></p>
+                <p class="ton_vip_messige">一、风险防范</p>
+                <div style="height: 20px;"></div>
+                <div class="ton_vip_messige1">
+                    <p><span style="color: #486579; font-weight: bold;">管理风险：</span>管理人认真规范操作流程，制定严格的管理制度，降低资本运作风险。</p>
+                    <p><span style="color: #486579; font-weight: bold;">逾期风险：</span>要求借贷人足额资产抵押，担保人承担连带责任，并全程监督保障投资人本息安全。</p>
+                    <p><span style="color: #486579; font-weight: bold;">信用风险：</span>全程监督借贷主体的运行情况，落实各种增信措施，确保其履行相关协议义务。</p>
+                    <p><span style="color: #486579; font-weight: bold;">政策及法律风险：</span>及时关注政策及法律变化，尽力采取必要措施降低投资人可能面临的投资风险。</p>
+                    <p><span style="color: #486579; font-weight: bold;">不可抗力等风险：</span>当不可抗力出现时，及时采取各种措施降低借贷主体资产损失，维护投资人利益。</p>
+                </div>
+                <p style="height: 44px;"></p>
+                <p class="ton_vip_messige">二、风险措施</p>
+                <div class="fxcs_img">
+                    <div style="height: 170px;"></div>
+                    <p><span style="color: #486579; font-weight: bold; font-size: 19px;">①</span> DPS独家风控体系，顶级风控团队，连续5年从无不良兑付。</p>
+                    <p><span style="color: #486579; font-weight: bold; font-size: 19px;">②</span> 平安保险承保账户资金安全，并提供全程法务支持。</p>
+                    <p><span style="color: #486579; font-weight: bold; font-size: 19px;">③</span> 精选优质项目，100%本息保障安全无忧。</p>
+                </div>
+
+
+
+
+
+
+            </div>
+
+            <!--4-->
+            <div class="hide">
+                <!--预定记录-->
+                <div class="vipmember_ydjh">
+                    <ul class="vipmember_ydjh01">
+                        <li>序号</li>
+                        <li>预约人</li>
+                        <li>预约金额</li>
+                        <li>预约时间</li>
+                    </ul>
+                    <ul class="vipmember_ydjh02">
+                        {list module="highend" function="get_reserve" var="loop"  id=$smarty.request.article_id   order="order_asc" epage=10000 }
+                        {foreach from=$loop.list key=key item=item}
+                        <li>
+                            <div id="ydjh02_xh">{$key+1}</div>
+                            <div id="ydjh02_user">{$item.username|truncate:2}**</div>
+                            <div id="ydjh02_mony">{$item.account}</div>
+                            <div id="ydjh02_time">{$item.reserve_time|date_format:"Y-m-d"}</div>
+                        </li>
+                        {/foreach}
+                        {/list}
+                    </ul>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div><!--/tab end-->
+    {/articles}
+</div>
+<!--/vipmember end-->
+
+{include file="footer.html"}

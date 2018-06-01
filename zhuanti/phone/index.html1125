@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="{$tpldir}/zhuanti/phone/css/style.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+<!-- sand box start -->
+<div id='outsideBox' class='outside-box-1' >
+    <div class='container page-download'>
+
+        <div class='download-block down-iphone'>
+            <a class='download-btn iphone-btn' href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1028192744&mt=8" id="i-downloadUrl" target=_blank></a>
+            <div class='download-version iphone-version'>
+                <p>版本：<em id="i-version">1.0.0</em></p>
+                <p>更新日期：<em id="i-publishDate">2015-09-19</em></p>
+                <p>大小：<em id="i-size">9.20M</em></p>
+                <p>语言：<em id="i-language">简体中文</em></p>
+                <p class="version-block">兼容性：</p>
+                <p id="i-compatible">iOS 6.0或更高版本。与iPhone、iPad、iPod touch兼容。完美适配iphone 6plus、iphone 6、iphone 6s。</p>
+            </div>
+        </div>
+
+        <div class='download-block down-android'>
+            <a class='download-btn android-btn' href="http://downloadpkg.apicloud.com/app/download?path=http://7xmfp9.com1.z0.glb.clouddn.com/a29f0f3363bf22de8fffe878c57dac06.apk" id="a-downloadUrl" target=_blank></a>
+            <div class='download-version android-version'>
+                <p>版本：<em id="a-version">3.0.5</em></p>
+                <p>更新日期：<em id="a-updateDate">2015-11-07</em></p>
+                <p>大小：<em id="a-size">5.86M</em></p>
+                <p>语言：<em id="a-language">简体中文</em></p>
+                <p class="version-block">兼容性：</p>
+                <p id="a-compatible">Android 4.0或更高版本。完美适配小米4、三星Note1、2、3、4、5、Galaxy5、Galaxy6。</p>
+            </div>
+        </div>
+
+        <div class='download-tip'>
+            <div class='tip-ico'></div>
+            <div class='tip-msg'>• 我们正在为您做更多机型及系统的适配，敬请关注融和贷客户端最新版本。<br>
+                • 通过手机下载及使用融和贷手机版时会产生一定的手机流量费用，由当地运营商收取，融和贷不收取任何费用。
+            </div>
+        </div>
+        <div class='download-bottom' animate-class='text-show pt-page-delay1200' need-kill="true">
+            <div class='logo-bottom-ico'>
+
+            </div>
+            <div class='copyright-text'>合肥安易贷投资管理有限公司 </div>
+        </div>
+    </div>
+</div>
+<!-- sand box end -->
+<script src="{$tpldir}/zhuanti/phone/js/js.js"></script>
+{literal}
+<script type="text/javascript">
+window.onload = function(){
+    if(isWeiXin()){
+       window.location.href='http://www.ronghedai.com/weixin/index.html';
+    }
+}
+function isWeiXin(){
+    var ua = window.navigator.userAgent.toLowerCase();
+    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        return true;
+    }else{
+        return false;
+    }
+}
+</script>
+{/literal}
+</body>
+</html>

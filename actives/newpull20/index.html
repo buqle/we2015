@@ -1,0 +1,209 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/newpull20/css/style.css?v=201671" rel="stylesheet" type="text/css" />
+<script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/scrollToo.js"></script>
+<div class="envelope2"></div>
+<div class="bo-bg ww1">
+
+    <h6 class="newtitcon1"></h6>
+    <div class="yao-a ww3 color-ff text-center" id="yao-a">
+        <p class="yao-b font24"> 活动期间内，您可根据好友首投金额及标的时长获得额外现金奖励，奖励标准如下：</p>
+        <div class="yao-c"></div>
+    </div>
+
+    <div class="newtitcon2box">
+        <h6 class="newtitcon2"></h6>
+        <div class="dimensiona2c ww3" id="dimensional2id">
+            <div id="testability" class="clearg">
+                <div class="stability">
+                    <div class="stabilityt">通过邀请码邀请</div>
+                    <div class="stabilitycon1">
+                        <div class="stab_btn">登录即可查看</div>
+                        <div class="stabilitycon1s" id="user_mainId">
+
+                        </div>
+                    </div>
+                    <div class="stabilitycon2">将您的邀请码发送给好友，好友注册时填写邀请码注册成功并投资，即可得现金啦!</div>
+                </div>
+                <div class="stability" id="stability2">
+                    <div class="stabilityt">通过邀请链接邀请</div>
+                    <div class="stabilitycon1">
+                        <div class="stab_btn">登录即可查看</div>
+                        <div class="stabilitycon1s">
+                            <div class="inv_num2">
+                                <span>http://{$smarty.server.SERVER_NAME}/index.php?user&q=reginvite&u={$_U.user_inviteid}</span>
+                                <input  value="http://{$smarty.server.SERVER_NAME}/index.php?user&q=reginvite&u={$_U.user_inviteid}" id="fe_text" type="hidden" class="inv_num2">
+                            </div>
+                            <div id="d_clip_container" style="position:relative">
+                                <div class="invite_befr my_clip_button" id="d_clip_button">复制链接</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stabilitycon2">复制上面的邀请链接，将邀请链接发送给好友，带着好友一起迈进财富的康庄大道吧！</div>
+                </div>
+                <div class="stability" id="stability3">
+                    <div class="stabilityt">通过微信二维码邀请</div>
+                    <div class="stabilitycon1">
+                        <div class="stab_btn">登录即可查看</div>
+                        <div class="stabilitycon1s" id="waitIma">
+                            <!--<img src="{$tpldir}/actives/goldreco/images/maa.gif">-->
+                        </div>
+                    </div>
+                    <div class="stabilitycon2" style="line-height: 16px;">打开微信，扫一扫上方二维码，发送给微信好友或转发至微信朋友圈，即可实现“共同富   裕”啦！</div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="yao-d clearg text-center color-ff ww3">
+            <a class="lefts logo_sb" href="javascript:void(0)">立即推荐</a>
+            <a class="rights being_btn2" href="javascript:void(0)">我的记录</a>
+        </div>
+    </div>
+
+
+
+
+    <div class="yao-dcontent">
+        <h4 class="ww3">活动规则</h4>
+        <p class="ww3">1、被推荐用户需在活动期间内注册并投资成功，推荐资格方生效；</p>
+        <p class="ww3">2、若好友首次投资的金额满足多个奖励条件，系统将以该笔投资的最大奖励现金发放给推荐人；</p>
+        <p class="ww3">3、本活动奖金将在活动结束后，3个工作日内直充用户存管账户，可投资、可提现。</p>
+    </div>
+
+    <div class="lucky_bg"></div>
+    <div class="login_myjlcont">
+        <div class="login_myjlcont1">
+            <div class="close_put"></div>
+            <div class="myjl_gb">
+                <h4 class="color-ff text-center">我的推荐记录</h4>
+                <div class="myjl_gb1">
+                    <div id="last_pop">
+                        <p><span>被推荐人</span><span>首投金额(元)</span><span>我的奖励</span><span>获得时间</span></p>
+                    </div>
+                    <div class="sure-t3" style="padding-top: 0;height: 208px;overflow: auto;">
+                        <p><span>被推荐人</span><span>首投金额</span><span>我的奖励</span><span>获得时间</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<div class="jiujiu_foot">
+    <p>免责申明</p>
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意刷奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <div class="endjiujiu"></div>
+</div>
+
+{literal}
+<script>
+    var date = new Date().getTime()/1000;
+    if(date>1480521600){
+        $('.edc_listcsi').hide()
+
+    }
+    $('#user_mainId').text(user_id);
+    $(function(){
+
+        if (user_id>0){
+            $('.stab_btn').hide();
+            $('.stabilitycon1s').show();
+
+            $.ajax({
+                url:'/?qrcode&user_id='+user_id,
+                type:'post',
+                dataType:'text',
+                data:{
+                 //   user_id: user_id
+                },
+                success: function(r){
+                    $('#waitIma').append("<img src=" + r + ">")
+                }
+            })
+        }
+
+        $(".stab_btn").each(function(){
+            $(this).click(function(){
+                if (user_id==0) {
+                    diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                    return false;
+                }
+            });
+        });
+
+    })
+</script>
+<script>
+    $('.logo_sb').click(function(){
+        if (user_id>0) {
+            $(this).attr('href','#dimensional2id')
+        } else {
+            diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+            return false;
+        }
+    });
+
+    $(function(){
+
+
+
+        $(".being_btn2").click(function(){
+            if (user_id>0) {
+
+                $.http.get('/?user&q=get_share_ajax&alias=newpull20&methodname=get_myrecord', {}, function(ret){
+                    if (ret.code == '0'){
+                        $(".lucky_bg").show();
+                        $('.login_myjlcont').show();
+                        var html = '';
+                        var len = ret.data.length;
+                        //var a=0;
+                        for(var i=0; i<len; i++){
+                            html += '<p><span>'+ret.data[i].username+'</span><span>'+ret.data[i].tender_money +'</span><span>'+ret.data[i].reward+'元</span><span>'+ret.data[i].addtime+'</span></p>';
+                            //a +=Number(ret.data[i].reward)
+                        }
+
+                        $('.sure-t3').html(html);
+                        $('.sure-t3 p:even').css('background','#f0f0f0')
+                        $('#allter1').text(ret.allmoney );
+
+                    }
+                }, 'json')
+            } else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+
+        });
+
+
+    });
+
+
+    $(".close_put").click(function(){
+        $(".lucky_bg").hide();
+        $('.login_myjlcont').hide();
+    });
+
+    diyou.use('users_spread', function (dy) {
+        dy.spreads_friend()
+    })
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?114bdc026b9ff4de87a6efb268dbea76";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+{/literal}

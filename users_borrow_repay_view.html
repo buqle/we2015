@@ -1,0 +1,80 @@
+<div class="form_box">
+  {articles module="borrow" function="get_repay_view"  id=$smarty.request.id  borrow_nid=$smarty.request.borrow_nid user_id=$_G.user_id var="view_var" }
+<form action="" method="post" id="repay_form" onSubmit="return false;">
+<input type="hidden" name="borrow_nid" value="{$smarty.request.borrow_nid}"/>
+<input type="hidden" name="period" value="{$smarty.request.period}"/>
+	    <div class="item fn_cle">
+		  <label class="uf_label w200">借款标题：</label>
+		  <span class="uf_span"><input id="repay_id" value="{$smarty.request.id}" name="repay_id" type="hidden">{$view_var.borrow_name}</span>
+		</div>
+		<div class="item fn_cle">
+		  <label class="uf_label w200">还款期数：</label>
+		  <span class="uf_span w200"><input id="repay_period" value="{$view_var.repay_period}" name="repay_period" type="hidden">第{if $view_var.borrow_type=='endmonths'}{$view_var.repay_period+1}{$view_var.repay_period}{else}{$view_var.repay_period}{/if}期  {if $view_var.days>0}【逾期天数：{$view_var.days}天 】{/if}</span>
+		</div>
+		<div class="item fn_cle">
+		  <label class="uf_label w200">还款本息：</label>
+		  <span class="uf_span">￥{$view_var.repay_account|string_format:"%.2f"}</span>
+		</div>
+        {if $view_var.repay_status==1}
+		<div class="item fn_cle">
+		  <label class="uf_label w200">还款状态：</label>
+		  <span class="uf_span">{if $view_var.repay_days==0}正常还款{$view_var.repay_days>0}逾期还款{else}提前还款{/if}</span>
+		</div>
+		<div class="item fn_cle">
+		  <label class="uf_label w200">还款总额：</label>
+		  <span class="uf_span">￥{$view_var.repay_account_all|string_format:"%.2f"}</span>
+		</div>
+		<div class="item fn_cle">
+		  <label class="uf_label w200">还款时间：</label>
+		  <span class="uf_span">{$view_var.repay_yestime|date_format}</span>
+		</div>
+         {else}
+	 {if $view_var.fee neq ""}
+	 {foreach from=$view_var.fee item="item"}
+	  <div class="item fn_cle">
+			<label class="uf_label w200">&nbsp;&nbsp;{$item.title}：</label>
+			<span class="uf_span">￥{$item.account}</span>
+	 </div>
+	 {/foreach}
+	 {/if}
+	  <div class="item fn_cle">
+			<label class="uf_label w200">&nbsp;&nbsp;<strong>还款总额：</strong></label>
+			<span class="uf_span">￥{$view_var.repay_all|string_format:"%.2f"}</span>
+	 </div>
+ {/if}
+  		<div class="item fn_cle">
+		  <label class="uf_label w200">可用余额：</label>
+		  <span class="uf_span">￥{$_G.account_result._balance}</span>
+		</div>
+		{if $view_var.account.balance<$view_var.repay_all}
+		 <div class="item fn_cle">
+				<label class="uf_label w200">提醒：</label>
+				<span class="uf_span">您的可用余额不足还款，请先 <a href="/?user&m=account/recharge/new" target="_blank" style="color: red;">充值</a> </span>
+		 </div>
+	{else}
+		    <div class="item fn_cle">
+            <label class="uf_label w200">支付密码：</label>
+            <span class="uf_span">
+            {if $_G.user_result.paypassword==""}<a style="color:#0000FF" id="pays_password" href="javascript:void(0)">请先设置支付密码</a>
+            {else}<input type="password" class="u_input w120"  name="paypassword" id="paypassword">  {/if} </span><span style="color: red;" id="paypassword_error">支付密码不能为空</span></div>
+            {if $_G.approve_result.phone_safe eq "1" && $_G.system.con_app_module eq "1"}
+			<div class="item fn_cle">
+            <label class="uf_label w200">手机宝令：</label>
+            <span class="uf_span">
+            <input type="text" class="u_input w120"  name="safe_code" id="safe_code">  </span><span style="color: red;font-size: 15px;float:left;line-height:26px;" id="safe_code_warn">*</span></div>
+            {/if}
+	 {/if}
+
+		<div class="item">
+		  <label class="uf_label">&nbsp;</label>
+		  <input type="submit" class="u_sub" value="立即还款">
+		</div>
+	 </form>
+     {/articles}
+     </div>
+
+{literal}
+ <script type="text/javascript">
+diyou.use("users_borrow",function(dy){dy.borrow_repay("repay_form")});
+</script>
+{/literal}

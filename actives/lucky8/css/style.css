@@ -1,0 +1,159 @@
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clearg{zoom:1;}
+.clearg:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+i{font-style: normal}
+h1, h2, h3, h4, h5, h6, fieldset, p, ol, ul, li, form, map, button, input, dl, dt, dd, q, table, thead, tbody, tfoot, tr, td, img, div{ margin:0; padding:0; }
+body {
+    font-family:"Microsoft YaHei";
+    font-size: 18px;background: #f5e4d4;
+}
+.bodyyy{}
+.ww1{width: 100%;}
+.ww2{width: 1200px;}
+.ww3, .ww2{margin: 0 auto;}
+.lefts{float: left}
+.rights{float: right;}
+.text-center{text-align: center;}
+.text-left{text-align: left;}
+.text-right{text-align: right;}
+.font12{font-size: 12px;}
+.font14{font-size: 14px;}
+.font15{font-size: 15px;}
+.font16{font-size: 16px;}
+.font18{font-size: 18px;}
+.font19{font-size: 19px;}
+.font20{font-size: 20px;}
+.font22{font-size: 22px;}
+.font24{font-size: 24px;}
+.font25{font-size: 25px;}
+.font23{font-size: 23px;}
+.block{display: block;}
+.inline-block{display: inline-block;}
+.cursor{cursor: pointer;}
+.bold{font-weight: bold;}
+h4, h6{font-weight: normal}
+h5{font-weight: bold;}
+.color-ff{color: #fff;}
+.pos-a{position: relative;}
+.pos-b{position: absolute;}
+.ww4{width:1080px;margin:0 auto;}
+.act9-bata1 {
+    background: url("../images/1.png") no-repeat center;
+    width: 100%;
+    height: 641px;
+}
+.act9-bata1 .act9-bata1_bata1c {
+    background: url("../images/2.png") no-repeat center;
+    width: 865px;
+    height: 410px;
+    left: 50%;
+    margin-left: -432px;
+}
+.act9-bata3, .act9-bata2, .act9-bata4{width:1170px;}
+.act9-bata2{
+    padding-top:70px;background: url("../images/3.png") no-repeat top;height:210px;margin-top:80px;
+}
+.act9-bata2 p{width:1008px;color:#fff;text-indent: 48px;line-height:42px;}
+.act9-bata3{
+    margin-top:54px;
+
+}
+.act9-bata3 .ptit1{width:1136px;color:#000;text-indent: 48px;line-height:32px;}
+.act9-bata3 .ptit2{color:#e43e30;margin-top:40px;}
+.act9-bata3 .act9-bata3_bata3c{
+    background: url("../images/4.png") no-repeat;width:1009px;height:737px;margin-top:192px;
+}
+.act9-bata3 .act9-bata3_bata3c .act9-bata3_bata4c{
+    background: url("../images/5.png") no-repeat;width:700px;height:700px;left:50%;margin-left:-353px;top:-146px;
+}
+.act9-bata3 .act9-bata3_bata3c .act9-bata3_bata4c #start{left: 222px;top: 220px;}
+.act9-bata3 .act9-bata3_bata3c .act9-bata3_bata5c{font-size:32px;color:#000;margin-bottom:20px;padding-top:592px;}
+.act9-bata3 .act9-bata3_bata3c .act9-bata3_bata5c i{color:#dc3127;}
+.act9-bata3 .act9-bata3_bata3c .act9-bata3_bata6c{background: url("../images/7.png") no-repeat center;height:121px;line-height:106px;color:#fff;font-size:52px;}
+.act9-bata4{
+    background:#a60001;margin-top:62px;padding:54px 0 50px 0;
+}
+.act9-bata4 .bata4-tit{background: url("../images/8.png") no-repeat center;height:40px;margin-bottom:16px;}
+.act9-bata4_bata1c{
+    background:#c91e12;width:986px;-moz-box-shadow:0px 0px 16px #970001; -webkit-box-shadow:0px 0px 16px #970001; box-shadow:0px 0px 16px #970001;padding:48px 0;
+}
+.act9-bata4_bata1c .act9-bata4_bata2c{
+    width:784px;background:#f5e4d4;
+}
+.act9-bata4_bata1c .act9-bata4_bata2c h4{height:64px;line-height:64px;}
+.act9-bata4_bata1c .act9-bata4_bata2c h4 span{font-size:30px;color:#c91e12;}
+.act9-bata4_bata1c .act9-bata4_bata2c span{float:left;display:block;width:33%;text-align: center;}
+.act9-bata4_bata1c .act9-bata4_bata2c .marqueeboxx p{height:58px;line-height:58px;}
+.act9-bata5{background: url("../images/9.png") no-repeat left top;padding-top:98px;margin-top:60px;
+}
+.act9-bata5 .ml-p{text-indent: 32px;margin-bottom:16px;}
+.act9-bata5 p{width:1122px;margin: 0 auto;line-height:36px;}
+.rulecont{white-space: nowrap;white-space: nowrap;
+    text-overflow: ellipsis;}
+/*弹窗通用*/
+.alertbox-A, .alertbox-B {
+    position:fixed;
+    top:0;
+    right:0;
+    left:0;
+    width:100%;
+    height:100%;display: none;
+
+}
+.alertbox-A {
+    z-index:2;
+    background:#000;
+    filter:alpha(opacity:50);
+    opacity:.5
+}
+.alertbox-B {
+    z-index:3
+}
+.alertbox-C {
+    position:relative;
+    top:50%;
+    margin-left:auto;
+    margin-right:auto;
+
+}
+.close-a {
+    position:absolute;
+    right: -9px;
+    top: 33px;
+    cursor:pointer;
+    width:41px;
+    height:41px;
+    background:url(../images/close.png)
+}
+#tanabata-a_ata-abox{ margin-top:-254px;height: 508px;width: 986px;}
+#tanabata-a_ata-abox .close-a{right: -16px; top: -17px;}
+#tanabata-a_ata-abox h6{background:url(../images/10.png) no-repeat center;height: 38px;margin-bottom: 38px;}
+#tanabata-a_ata-abox .act9-bata4_bata1c{padding-bottom: 30px;}
+#tanabata-a_ata-abox .act9-bata4_bata1c span{width: 25%;}
+
+#tanabata-a_ata-abox2{height: 511px;width: 669px; margin-top: -255px;}
+#tanabata-a_ata-abox2 a{background:url("../images/13.png") no-repeat center;height: 66px;line-height: 60px;font-size: 36px;color: #e70012;display: block;}
+.bata-no,.bata-yes{display: none;}
+#tanabata-a_ata-abox2 .bata-yes{background:url("../images/11.png") no-repeat;height: 511px;width: 669px;}
+#tanabata-a_ata-abox2 .bata-no{background:url("../images/12.png") no-repeat;height: 311px;width: 669px;padding-top: 200px;font-size: 34px;}
+.bata-zhong2{color: #ffea77;font-size: 40px;margin: 22px 0;}
+.bata-zhong3{margin-bottom: 22px;font-size: 28px;}
+.bata-yes .bata-zhong1{padding-top: 116px;}
+.one-cont{padding-top: 216px;padding-bottom: 100px;font-size: 34px;}
+.one-cont i{font-size: 41px;}
+.jiujiu_foot{width: 100%;text-align: center;padding:60px 0 70px 0;background: #191919;margin-top: 50px;}
+.jiujiu_foot p{color: #fff;font-size: 24px;line-height: 40px;}
+.jiujiu_foot .endjiujiu{background:url("../images/ma.png")  no-repeat center;height: 172px;margin-top:24px;}

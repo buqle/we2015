@@ -1,0 +1,348 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+  margin: 0;
+  padding: 0; }
+
+body {
+  outline: 0;
+  background-color: #f8f8f8;
+  color: #000;
+  font-size: 16px;
+  font-family: '微软雅黑';
+  font-family: "Helvetica Neue","Microsoft Yahei",sans-serif;
+  line-height: 1.5;
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-size: 100%; }
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse; }
+
+caption, th {
+  text-align: left; }
+
+fieldset,
+img {
+  border: 0; }
+
+li {
+  list-style: none; }
+
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  font-family: inherit; }
+
+button {
+  border: 0;
+  background: none;
+  -webkit-appearance: none; }
+
+a {
+  text-decoration: none;
+  -webkit-touch-callout: none; }
+
+:focus {
+  outline: 0;
+  -webkit-tap-highlight-color: transparent; }
+
+em, i {
+  font-style: normal; }
+.boxs{
+  width: 14rem;
+  margin: 0 auto;
+  background: -ms-linear-gradient(top, #ffa401,  #fdab0b);
+  background:-moz-linear-gradient(top,#ffa401,#fdab0b);
+  background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#ffa401), to(#fdab0b));
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffa401), to(#fdab0b));
+  background: -webkit-linear-gradient(top, #ffa401, #fdab0b);
+  background: -o-linear-gradient(top, #ffa401, #fdab0b);
+  padding: 1rem 1rem 1rem 1rem;
+  position: relative;
+}
+.t-dibc{
+  height: 3rem;
+  width: 3rem;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+.t-dibc img{
+  width: 100%;
+  height: 100%;
+}
+.to-div{
+  height: 4rem;
+  width: 14rem;
+}
+.boxss{
+  padding-top: 0.01rem;
+}
+.boxss p{
+  text-align: center;
+  color: white;
+}
+.p1{
+  font-size: 0.7rem;
+  position: relative;
+  margin-top: 0.5rem;
+}
+.p2{
+  font-size: 1rem;
+  font-weight: bold;
+}
+.tu1-img{
+  width: 12rem;
+  height: 16rem;
+  margin: 0 auto;
+
+}
+.tu1-img img{
+  height: 100%;
+  width: 100%;
+}
+.in-al{
+  width: 14rem;
+  position: relative;
+}
+.huodongtiao{
+  height: 14rem;
+  width: 1rem;
+  border: 0.1rem solid white;
+  position: absolute;
+  right: -0.5rem;
+  bottom: -1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.tdm{
+  height: 14rem;
+  width: 1rem;
+  position: absolute;
+  right: 0rem;
+  border-radius: 0.5rem;
+  background: red;
+}
+.tests{
+  font-size: 0.8rem;
+  color: white;
+  position: absolute;
+  right: -0.5rem;
+  bottom: -2.3rem;
+}
+.yumaos{
+  width: 5rem;
+  height: 11rem;
+  position: absolute;
+  bottom: -2rem;
+  left: 2rem;
+
+}
+.yumaos img{
+  width: 100%;
+  height: 100%;
+}
+.a-annius{
+  height: 4rem;
+  width: 7rem;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.a-annius img{
+  height: 100%;
+  width: 100%;
+}
+.bis-t{
+  width: 14rem;
+}
+.shuomin{
+  color: #000000;
+  font-size: 0.7rem;
+  margin-top: 0.5rem;
+}
+.tin-boxs{
+}
+.in-ton{
+  height: 6rem;
+  background: url("../image/linnn_03.png") 0 0 no-repeat;
+  width: 100%;
+  background-size: 100% 100%;
+}
+.in-ton{
+
+}
+.in-chenggong{
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  line-height: 3rem;
+}
+.in-chengjis{
+  font-size: 0.9rem;
+  color: white;
+  text-align: center;
+  position: relative;
+  top: 2rem;
+}
+.huafeism{
+  height: 5rem;
+  width: 7rem;
+  margin: 0 auto;
+  background: white;
+  background-size: 100% 100%;
+  padding: 0.5rem 1.5rem 0 1rem;
+  margin-top: 1.0rem;
+}
+.img-zhongj{
+  height: 4rem;
+  width: 7rem;
+  /*background: url("../image/huafei_03.png") 0 0 no-repeat;*/
+  background-size: 100% 100%;
+}
+.goxn{
+  text-align: center;
+  color: #444444;
+  font-size: 0.6rem;
+}
+.in-fenx{
+  height: 2rem;
+  width: 10rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height: 2rem;
+  text-align: center;
+  background: #fe8208;
+  border-radius: 0.4rem;
+  color: white;
+  margin: 1rem auto;
+}
+.in-aam{
+  width: 10rem;
+  height: 2rem;
+  margin: 1rem auto;
+}
+.in-aam a{
+  height: 2rem;
+  display: block;
+  float: left;
+  width: 4.5rem;
+  background: #41bd43;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  line-height: 2rem;
+  float: left;
+  border-radius: 0.4rem;
+}
+.imgs-close{
+  width: 1.25rem;
+  height: 1.25rem;
+  position: absolute;
+  background: #4b1786 url("../image/closnem_03.png") 0 0 no-repeat;
+  background-size: 1.25rem 1.25rem;
+  border: none;
+  right: -0.5rem;
+  top: -0.5rem;
+  border-radius: 1.25rem;
+  cursor: pointer;
+}
+.big-boxs{
+  height: 10rem;
+  width: 100%;
+  background: white url("../image/h1_03.png") 0 0 no-repeat;
+  background-size: 100% 100%;
+}
+
+.fen-imgs{
+  background: url("../image/fenxiang_03.png") 0 0 no-repeat;
+  background-size: 100%;
+  width: 14rem;
+  height: 18rem;
+}
+.te-msb{
+  height: 15rem;
+  width: 100%;
+  background: url("../image/beizi_03.png") 0 0 no-repeat;
+  background-size: 100%;
+  position: relative;
+}
+.closn{
+  height: 1.25rem;
+  width: 1.25rem;
+  background: url("../image/closnem_03.png") 0 0 no-repeat;
+  background-size: 100%;
+  position: absolute;
+  right: -0.5rem;
+  top: 2.8rem;
+}
+.touxImg{
+  height: 4rem;
+  width: 4rem;
+  position: relative;
+  top: 0.6rem;
+  left: 50%;
+  margin-left: -15%;
+  display:none;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+<div class="cust_bankalert text-center font18 color-444">
+	<p>实名认证成功，验证码已发送至手机<i></i></p>
+	<input type="text" class="cust-phone2 font16" placeholder="请输入验证码"  style="text-indent: 8px;" vau="">
+	<input type="button" value="获取验证码" id="text_butns" class="button_bank inline-block font16 cursor">
+	<input type="button" value="确认开户" id="text_butns2" class="button_bank block font16 cursor ww3">
+	<h5 class="ww3 text-left font16"> 请在新打开的上海银行页面完成开户操作，正常开户1分钟内可返回结果，非正常开户（中途刷新或退出），系统也会自动进行开户审核，30分钟内返回失败结果。</h5>
+</div>
+
+
+
+{literal}
+<script>
+	$(function(){
+		var tel = $('#cust_bankcon2 .cust-phone1').val();
+		var reg = /^(\d{3})\d{4}(\d{4})$/;
+		tel = tel.replace(reg, "$1****$2");
+		$('.cust_bankalert p i').text(tel)
+		var wait=60;
+		function time() {
+			if (wait == 0) {
+				$('.cust_bankalert #text_butns').attr("disabled",false);
+				$('.cust_bankalert #text_butns').val('获取验证码')
+				wait = 60;
+			} else {
+				$('.cust_bankalert #text_butns').attr("disabled",true);
+				$('.cust_bankalert #text_butns').val('重新发送'+wait)
+				wait--;
+				setTimeout(function() {time($('.cust_bankalert #text_butns'))},1000)
+			}
+		}
+		//发送验证码2
+		$('.cust_bankalert #text_butns').click(function(){
+			var alert1=jDialog.alert('正在加载中');
+			$(this).addClass('on_text_butns');
+			$('#cust_bankcon2 .next-butt').removeClass('on_text_butns');
+			$.http.post('/?user&m=trust/send_code',
+					{
+						BusiType:'user_register',
+						phone:$('.cust-phone1').val(),
+						OpenAcctId:$('.cardid').val()
+
+					}
+					,function (ret) {
+						alert1.close();
+						if (ret.code=='0') {
+							$('.cust_bankalert #text_butns.on_text_butns').attr('coden',ret.data)
+							time();
+						}else {
+							jDialog.alert(ret.msg);
+						}
+					}, 'json');
+		});
+		//开户
+
+		$('.cust_bankalert #text_butns2').click(function(){
+			if($('.cust-phone2').val()==''){
+				jDialog.alert('请填写验证码');
+				return false;
+			}else {
+                var w = window.open();
+				$.http.post('/?user&m=trust/reg/bind&type=json',
+						{
+							realname:$('#cust_bankcon2 .cust_realname').val(),
+							card_id :$('#cust_bankcon2 .cust_card_id').val(),
+							BankCard:$('#cust_bankcon2 .cardid').val(),
+							BankId:$('#cust_bankcon2 #bankIds').val(),
+							ProvId:$('#cust_bankcon2 .prov').val(),
+							AreaId:$('#cust_bankcon2 .city').val(),
+							SmsCode:$('.cust-phone2').val(),
+							phone:$('#cust_bankcon2 .cust-phone1').val(),
+							SmsSeq:$('.on_text_butns').attr('coden')
+						}
+						,function (ret) {
+							if (ret.code!=0) {
+                                jDialog.alert(ret.msg);
+									w.close();
+							}else {
+								jDialog.confirm('',{
+											text:'开户成功',
+											type:'highlight',
+											handler : function(button, dialog) {
+												window.location.href = '/?user#users/home';
+												dialog.close();
+											}
+										}
+										,{
+											text:'开户失败',
+											type:'highlight',
+											handler : function(button, dialog) {
+												dialog.close();
+											}
+										},{
+											title:'开通账户'
+										}
+								);
+								w.document.write(ret.data);
+							}
+						}, 'json',function(){
+							w.close();
+							jDialog.alert('请求错误，请重试或联系在线客服！');
+						});
+			}
+		})
+	})
+</script>
+{/literal}

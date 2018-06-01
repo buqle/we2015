@@ -1,0 +1,58 @@
+{include file="header.html"}
+<div class="te_a"></div>
+<div class="te1"></div>
+<div class="te2"></div>
+<!--me pluse-->
+<link rel="stylesheet" type="text/css" href="{$tpldir}/css/blue/guide.css?v=2017728">
+<script type="text/javascript" src="{$tpldir}/js/guide/jquery.corner.js"></script>
+<script type="text/javascript" src="{$tpldir}/js/guide/jquery.roundabout.js"></script>
+<script type="text/javascript" src="{$tpldir}/js/guide/jquery.roundabout-shapes.js"></script>
+{literal}
+<script type="text/javascript">
+    $(function(){
+
+        // $('.gla_inbox').corner('8px');
+
+        $('#gla_box>ul').roundabout({
+            minOpacity:1,
+            //btnNext: ".next",
+            duration: 1000,
+            //reflect: true,
+            //btnPrev: '.prev',
+            //autoplay:true,
+            autoplayDuration:5000,
+            tilt:0,
+            shape: 'figure8'
+        });
+
+    });
+
+</script>
+{/literal}
+		<div id="gla">
+            <div id="gla_box">
+                <div class="au1"></div>
+                <ul>
+                    <li><div class="gla_inbox"><img src="{$tpldir}/images/guide/033_01.jpg" /></div>   </li>
+                    <li><div class="gla_inbox"><img src="{$tpldir}/images/guide/newj2.jpg?v=2017"/></div></li>
+                    <li><div class="gla_inbox"> <img src="{$tpldir}/images/guide/n3.jpg" /> </div> </li>
+                    <li><div class="gla_inbox"><img src="{$tpldir}/images/guide/newj1.jpg" /> </div> </li>
+                    <li><div class="gla_inbox"><img src="{$tpldir}/images/guide/n1.jpg" /> </div></li>
+                </ul>
+            </div>
+        </div>
+
+    <div class="on_c"></div>
+<div class="in_c_ps">
+    <div class="cin_us">
+        <a style="float: left;" href="/?user&q=reg&type=phone">开通上海银行存管</a>
+        <a style="float: right;" href="/invest/index.html">立即投资</a>
+    </div>
+</div>
+<div class="aa_uuu_cc"></div>
+
+
+
+
+{include file="footer.html"}
+

@@ -1,0 +1,295 @@
+{articles module="webcount"  function="get_users_recover" var="var" user_id=$_G.user_id}
+{articles module="webcount"  function="get_users_account" var="var1" user_id=$_G.user_id}
+<div style="height: 860px;">
+
+	<div class="block_left" style="height: 382px;">
+		<div class="left" style="position: relative;">
+			<h3>资金总览</h3>
+			<div id="yuan" style="z-index: 9999;"></div>
+	 		 	<span style="display: block;padding-left: 7px;width: 190px;"><i style="font-size: 22px;">{$var1.total|default:"0.00"}</i><br>
+					<em>总资产(元)</em>
+	 		 	</span>
+			<div class="le_n1">
+				<p>
+					<i class="i1"><img src="{$tpldir}/images/vipmember/ic1.png" alt=""></i>
+					<i class="i2">可用余额</i>
+					<i class="i3">￥{$var1.balance|default:"0.00"}</i>
+				</p>
+				<p>
+					<i class="i1"><img src="{$tpldir}/images/vipmember/ic2.png" alt=""></i>
+					<i class="i2">待收本金</i>
+					<i class="i3">￥{$var.tender_capital_wait|string_format:'%.2f'|default:"0.00"}</i>
+				</p>
+				<p>
+					<i class="i1"><img src="{$tpldir}/images/vipmember/ic3.png" alt=""></i>
+					<i class="i2">待收利息</i>
+					<i class="i3">￥{$var.tender_interest_wait|string_format:'%.2f'|default:"0.00"}</i>
+				</p>
+				<p>
+					<i class="i1"><img src="{$tpldir}/images/vipmember/ic4.png" alt=""></i>
+					<i class="i2">冻结资金</i>
+					<i class="i3">￥{$var1.frost|default:'0.00'}</i>
+				</p>
+				<a href="/invest/index.html" class="toub">立即投标</a>
+			</div>
+		</div>
+
+
+	</div>
+	<div class="block_right">
+		<h3>回款计划</h3>
+		<a href="#borrow/invest/now" class="more">更多&gt;&gt;</a>
+		<div class="ri_p">
+			<div class="ri_n">
+				<p style="padding-top: 30px;">
+					<i><img src="{$tpldir}/images/vipmember/ic2.png" alt=""></i>
+					<i class="i1">应收款项</i>
+					<i class="i2">{($var.tender_recover_times)|default:"0"}笔</i>
+					<i class="i2 i3">￥
+						{if $var.tender_recover_account >= 1000000}
+						{($var.tender_recover_account/10000)|string_format:'%.2f'|default:"0.00"}万
+						{else}
+						{$var.tender_recover_account|string_format:'%.2f'|default:"0.00"}元
+						{/if}
+					</i>
+				</p>
+				<p>
+					<i><img src="{$tpldir}/images/vipmember/ic3.png" alt=""></i>
+					<i class="i1">已收款项</i>
+					<i class="i2">{$var.tender_recover_times_yes|default:"0"}笔</i>
+					<i class="i2 i3">￥
+						{if $var.tender_recover_yes >= 1000000}
+						{($var.tender_recover_yes/10000)|string_format:'%.2f'|default:"0.00"}万
+						{else}
+						{$var.tender_recover_yes|string_format:'%.2f'|default:"0.00"}元
+						{/if}
+
+					</i>
+				</p>
+				<p>
+					<i><img src="{$tpldir}/images/vipmember/ic4.png" alt=""></i>
+					<i class="i1">待收款项</i>
+					<i class="i2">{$var.tender_recover_times_wait|default:"0"}笔</i>
+					<i class="i2 i3">￥
+						{if $var.tender_recover_wait >= 1000000}
+						{($var.tender_recover_wait/10000)|string_format:'%.2f'|default:"0.00"}万
+						{else}
+						{$var.tender_recover_wait|string_format:'%.2f'|default:"0.00"}元
+						{/if}
+					</i>
+				</p>
+			</div>
+			<p class="ri_a">
+				<span><a href="#trust/recharge" class="cz">充值</a></span>
+				<span><a href="#trust/cash" class="tx">提现</a></span>
+			</p>
+
+		</div>
+
+	</div>
+	<div class="xuxian"></div>
+	<div class="block_left remit_info">
+		<div class="left" style="background-image:none;">
+			<h3 class="h3_1">存管账户信息</h3>
+			<div class="info" style="position: relative;">
+				<div class="public_tit"><p>恒丰银行存管账户</p></div>
+				{if $_G.trust_user.approve_result.reg_trust=="1"}
+				<p id="refrech" style="position: absolute;width: 100%; text-align: right;top: 0;">
+					<img style="display: inline;padding: 20px;cursor: pointer;" class="img2" src="{$tpldir}/images/vipcenter/sx.png" alt="刷新托管账户" title="刷新托管账户">
+				</p>
+				{/if}
+				<table>
+					{if $_G.trust_user.approve_result.reg_trust=="1"}
+					<tr>
+						<td class="td1">汇付天下号：</td>
+						<td class="td2"><p id="trust_userid">待同步</p></td>
+					</tr>
+					<tr>
+						<td class="td1">总金额：</td>
+						<td class="td2"><p id="trust_total">待同步</p></td>
+					</tr>
+					<tr>
+						<td class="td1">可用金额：</td>
+						<td class="td2"><p id="trust_balance">待同步</p></td>
+					</tr>
+					<tr>
+						<td class="td1">冻结金额：</td>
+						<td class="td2"><p id="trust_frost">待同步</p></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a href="#trust/recharge" class="ttdd" style="position: relative;top: 14px;" >立即充值</a>
+						</td>
+					</tr>
+					<tr colspan="2">
+						<td>
+
+							<p id="shurewe_blo"><img style="display: inline;" class="img2" src="{$tpldir}/images/vipcenter/gologo.png">资金由汇付天下+恒丰银行联合存管</p>
+						</td>
+					</tr>
+
+					<tr>
+
+
+
+						<td colspan="2" style="font-size: 14px;text-align: center;padding-top: 26px; display: none" id="adjust_account">
+							您的账户中尚有<div style="display: inline"></div>元未同步余额，请点击<a href="/?user&m=trust/adjust_account/adjust" id="syn_account" target="_blank" style="color: #33b3ee;">立即同步</a>，同步手续费由平台支付。
+						</td>
+
+					</tr>
+					{else}
+					<tr>
+						<td class="td1" style="text-align: center;padding-top: 20px;font-size: 15px;">开通银行存管账户，资金联合存管；</td>
+
+					</tr>
+					<tr>
+						<td class="td1" style="text-align: center;font-size: 15px;">享受更高级别的安全保障，体验更加流畅的在线投资。</td>
+
+					</tr>
+					<tr>
+						<td  colspan="2" >
+							<a href="/?user&q=reg&type=phone" target="_blank" class="ttdd" >立即开通银行存管账户</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="td1" style="font-size: 13px;color:#777;text-align: left;padding-left: 90px;line-height: 20px;">1、平台资金由汇付天下+恒丰联合存管；</td>
+
+					</tr>
+					<tr>
+						<td class="td1" style="font-size: 13px;color:#777;text-align: left;padding-left: 90px;line-height: 20px;">2、请先开通汇付天下账户，开通后系统自动为您开通恒丰银行存管账户。</td>
+
+					</tr>
+					{/if}
+
+				</table>
+
+			</div>
+		</div>
+	</div>
+	<div class="block_right trad">
+		<h3 class="h3_2">交易信息</h3>
+		<a href="#account/log" class="more">更多&gt;&gt;</a>
+		<div class="trad_list">
+			<table>
+				<tr>
+					<th class="th1">时间</th>
+					<th class="th2">类型</th>
+					<th>金额</th>
+				</tr>
+				{list module="account" function="get_log_list" var="loop" user_id=$_G.user_id limit=5}
+				{foreach from=$loop.list item="item"}
+				<tr>
+					<td>20{$item.addtime|date_format:"y/m/d H:i"}</td>
+					<td>{$item.type|linkages:"account_type"}</td>
+					<td>￥{$item.money}</td>
+				</tr>
+				{/foreach}
+				{/list}
+			</table>
+		</div>
+	</div>
+</div>
+<div style="height: 120px;"></div>
+
+
+<div class="mask"></div>
+<script type="text/javascript" src="{$tpldir}/js/septem.js?v=20160307"></script>
+<script type="text/javascript" src="{$tpldir}/js/cookie.js"></script>
+<!--弹窗-->
+<div id="large_cashbg"></div>
+<div id="large_cashcont1">
+	<div id="large_cashcont2">
+		<div class="close_put"></div>
+		<div class="large_cashcont2s">
+			<div style="height: 272px;"></div>
+			<h4>亲爱的&nbsp;{$_G.username}</h4>
+			<p>恭喜您入选<span>融和贷铂金客户，</span>值此端午佳节来临之际，我们特为您奉上<strong>50元</strong>现金红包！</p>
+			<a href="/?user&user_role=1#account/red">立即查收</a>
+		</div>
+	</div>
+</div>
+
+{literal}
+<style>
+	.shuaxin{-webkit-animation:refrech 1s infinite  linear forwards;}
+	@-webkit-keyframes refrech{to{-webkit-transform:rotate(360deg);}}
+</style>
+
+
+
+
+<!--<script type="text/javascript">
+	$(function(){
+		if($.cookie("isClose") != 'yes'){
+			$("#large_cashcont1 .close_put").click(function(){
+				$('#large_cashbg').hide();
+				$('#large_cashcont1').hide();
+				$.cookie("isClose",'yes',{ expires:1});		一天
+			});
+		}else {
+			$('#large_cashbg').hide();
+			$('#large_cashcont1').hide();
+		}
+	});
+</script>-->
+
+
+<script type="text/javascript">
+	$(function(){
+		$('#yuan').createAnnular({
+			width:240,
+			height:240,
+			border : 30,
+		{/literal}
+		data:[{ name:'', value:{$var1.balance/$var1.total*100}, color : '#33B3EE'},
+		{ name:'', value:{$var.tender_capital_wait/$var1.total*100}, color : '#FF8D2D'},
+		{ name:'', value:{$var.tender_interest_wait/$var1.total*100}, color : '#FB7300'},
+		{ name:'', value:{$var1.frost/$var1.total*100}, color : '#3485C7'}]
+		{literal}
+	});
+		setTimeout( function(){
+			$('#refrech img').die('click').live('click', function(){
+				var $this = $(this);
+				if (trust == 1) {
+					$(this).addClass("shuaxin");
+					$.http.post('/?user&m=trust/refrech',{},function(ret){
+						$this.removeClass("shuaxin");
+						if (ret.ret == 1) {
+							$('#trust_userid').text(ret.data.trust_userid)
+							$('#trust_balance').text(ret.data.balance)
+							$('#trust_frost').text(ret.data.frost)
+							$('#trust_total').text(ret.data.total)
+							if(ret.data.balance_old*1>0){
+								$("#adjust_account div").html(ret.data.balance_old);
+								$("#adjust_account").show();
+							}else{
+								$("#adjust_account").hide();
+							}
+						}
+					},'json',function(){
+						jDialog.alert('托管账户同步失败，请稍后重试！');
+						$this.removeClass("shuaxin");
+					});
+				}
+			}).click();
+		}, 5000)
+
+		//弹
+
+		$.http.get('/?user&m=trust/refrech&type=aaaa', {}, function(ret){
+			if(ret.ret==1){
+				$('#large_cashbg').show();
+				$('#large_cashcont1').show();
+
+			}
+		}, 'json');
+		$('.close_put').click(function(){
+			$('#large_cashbg').hide();
+			$('#large_cashcont1').hide();
+		});
+
+	});
+</script>
+{/literal}
+{/articles}
+{/articles}

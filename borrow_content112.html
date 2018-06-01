@@ -1,0 +1,1302 @@
+﻿{include file="header.html"}
+<script type="text/javascript" src="{$tpldir}/js/jquery.fancybox.js"></script>
+<script src="{$tpldir}/js/lightbox.min.js"></script>
+{articles module="borrow"  function="get_view_one" var="var" borrow_nid=$smarty.request.article_id hits="auto" datacache="memcache" datacachename='broww_article_new' datacachenametimes="60*30" bindkey=$smarty.request.article_id}
+<script>
+    var borrow_nid = '{$smarty.request.article_id}';
+    var borrow_self = {if $_G.user_id==$var.user_id}1{else}0{/if};
+    var paypwd_status = {if $_G.user_result.paypassword!=''}1{else}0{/if};
+    var borrow_type = '{$var.borrow_type}';
+    var tpldir = '{$tpldir}';
+</script>
+{if $var.count_down==1 && ($smarty.now < $var.tender_time)}
+<script>alert("借款还没有到开始投标时间，不能查看详情信息" );
+location.href='/invest/index.html';
+</script>
+{/if}
+{if $var.invest_type == 6}
+{include file="borrow_lease.html"}
+{else if $var.borrow_type=="roam"}
+{include file="borrow_roam_content.html"}
+{else}
+
+{if $var.tender_time<1465228800}
+<div class="conbox" id="tender_detai_lf1">
+    <div class="tender_detai">
+
+        <div class="tender_detai_cont">
+            <div class="tender_detai_lf">
+                <div class="tender_detai_tit">
+                    <h2>
+                        <i class="iconfont">{if $var.final==1}&#xe607;{elseif $var.final == 2}&#xe604;{elseif $var.final==3}&#xe605; {elseif $var.final==4}&#xe605;{elseif  $var.final==5}&#xe606;{elseif  $var.final==6}&#xe617;{/if}</i>
+                        {$var.name}
+                        {if $var.award_status!=0}{if $var.award_status==1}<i class="tender_reword">{$var.award_account|default:'0.00'}元</i>{else}<span class="the_num" style="float:none;display:inline-block"><em class="award">{$var.award_scale}%</em></span>{/if}{/if}
+                        {if $var.borrow_password!=""}<img src="{$tpldir}/images/lock.gif" />{/if}</h2>
+                    <span>借款编号：{$var.borrow_nid}</span>
+                </div>
+
+
+
+                <ul>
+                    <li style="height: 135px;">
+                        <span class="basic_label" style="width: 195px;">借款金额：<br><em style="color: #d03d43; font-size: 24px;">{$var.account|default:'0.00'}</em></span>
+                        <span class="basic_label" style="width: 195px;">年利率：<br><em style="color: #d03d43; font-size: 24px;">{if $var.tender_time > 1452614399 && $var.tender_time < 1452873599}{$var.borrow_apr/2}%+{$var.borrow_apr/2}%<a style="font-size: 12px; color: red;">奖</a>{else}{$var.borrow_apr}%{/if}</em></span>
+                        <span class="basic_label" style="width: 195px;">借款期限：<br><em style="color: #d03d43; font-size: 24px;">{$var.borrow_period_name}</em></span>
+                        <span class="basic_label" style="width: 195px;">还款方式：<br><em style="color: #666; font-size: 16px;">{$var.style_title}</em></span>
+                    </li>
+                    <li>
+                        {if $var.borrow_status_nid=="loan"}
+                        <span class="basic_label">剩余时间</span>
+                        <span class="basic_value"><i class="time"></i><span class="borrow_end_time" id="borrow_end_time_{$var.borrow_nid}" data='{$var._borrow_end_time}'></span></span>
+                        {else}
+                        <span class="basic_label">借款标状态：</span>
+                        <span class="basic_value">{if $var.borrow_status_nid=='loan'}{else}{$var.borrow_status_nid|linkages:'borrow_status_nid'}{/if}</span>
+                        {/if}
+                        <span class="basic_label">投标进度</span>
+			    <span class="basic_value">
+                    <em class="bar">
+                        <i class="bar_width" style="width:{$var.borrow_account_scale}%"></i>
+                    </em>
+                      <em class="arrow">
+                          {$var.borrow_account_scale}%
+                          <b class="pop1-a"><u class="c1"></u><u class="c2"></u></b>
+                      </em>
+			    </span>
+                    </li>
+                    <li style="border-bottom: none;">
+                        <span class="basic_label">{if $var.borrow_type=="second" || $var.borrow_type=="day"}到期还本息{elseif $var.borrow_style=="season"}季还款本金{else}月还款利息{/if}</span>
+                        <span class="basic_value"><em style="font-size: 16px; color: #d03d43;">{if $var.borrow_type=="second" || $var.borrow_type=="day"}{$var.repay_month_account|default:'0.00'}{elseif $var.borrow_style=="season"}{$var.repay_season_account|default:'0.00'}{else}{$var.repay_month_account|default:'0.00'}{/if}</em>元</span>
+                        <span class="basic_label">投资标的保障：</span>
+                        <span class="basic_value"><img style="position: relative; top: 7px;" src="{$tpldir}/images/dy_img/benxi.png"></span>
+
+                    </li>
+                </ul>
+            </div>
+            {articles module="webcount"  function="get_users_account" var="var_account" user_id=$_G.user_id}
+            <div class="tender_detai_rig">
+                <div class="item">可投资额：<span class="avail_money" data-money="{$var.borrow_account_wait}" id="availMoney">{$var.borrow_account_wait}</span>元</div>
+                <div class="item">
+                    {if $var_account.balance<=0}
+                    <input type="text" disabled="true" value="亲，您余额不足。请先充值" name="money" class="money" id="money"/>
+                    {else}
+                    <input style="width: 130px;" type="text"  {if $var.borrow_status_nid=='loan'} placeholder="请输入投资金额" {else}value="{$var.borrow_status_nid|linkages:'borrow_status_nid'}" disabled="true"{/if} name="money" class="money" id="money"/> <span class="money_type">元</span>
+                    {/if}
+                </div>
+                <form action="" name="" method="post" id="tender_form">
+                    <div class="item" style="border: 1px solid #DDDDDD; text-align: center; height: 40px; line-height: 40px;">
+                        {if $_G.user_id!=""}
+
+                        账户余额：<span class="account_balance">{$var_account.balance}<em></em></span>元
+
+                        <a href="/?user#account/recharge" target="_blank" class="recharge f_c2">去充值</a>
+                        {else}账户余额：<a href="javascript:void(0);" class="bule" id="tender_login" target="_blank">登录</a> 后可见{/if}
+                    </div>
+                    <div class="item">
+                        <span class="basic_label" id="MaxMin" data-min="{$var.tender_account_min}" data-max="{$var.tender_account_max}">最低投标金额：{$var.tender_account_min}元  最高投标金额：{if $var.tender_account_max==0}不限{else}{$var.tender_account_max}元{/if}</span>
+                    </div>
+                    <div class="item">{if $var.borrow_status_nid=='loan'}<input type="submit" class="tender_sub" value="投&nbsp;&nbsp;&nbsp;&nbsp;标" id="tender_submit" />{else}<input type="button" disabled='true' class="tender_sub_dis" value="{$var.borrow_status_nid|linkages:'borrow_status_nid'}" />{/if}</div>
+                </form>
+            </div>
+            {/articles}
+
+            <div class="cle"></div>
+        </div>
+    </div>
+</div>
+
+<div id="tender_detai_lf3">
+
+    <!--风控节点-->
+    <div style="height: 40px;"></div>
+
+    {articles module='borrow' function='get_cominfo_one' borrow_nid=$smarty.request.article_id var=cominfo datacache="memcache" datacachename='broww_get_count_cominfo_one' datacachenametimes="60*30" bindkey=$smarty.request.article_id}
+    <div class="content_b1">
+        <div class="content_a2">
+            <span class="content_a3 fl" style="padding-left: 20px;">风控节点</span>
+            <span class="content_b2 fl">本借款项目由<em style="color:#46A3F0;">众城高昕律师事务所</em>进行全程跟踪</span>
+        <span class="fl content_b3">
+            <a class="example-image-links" href="{$tpldir}/images/gaiban/lvshi_imag.jpg" data-lightbox="example-tu-myhengers">
+                <input class="button_messignp lushi_weisn content_b4" type="button" value="律师委托函">
+            </a>
+        </span>
+        </div>
+        <div class="content_b5">
+            <ul class="content_b6">
+                <li class="content_c1 " id="fkjd1"></li>
+                <li class="content_c1 " id="fkjd2"></li>
+                <li class="content_c1 " id="fkjd3"></li>
+                <li class="content_c1 " id="fkjd4"></li>
+                <li class="content_c1 " id="fkjd5"></li>
+                <li class="content_c1 " id="fkjd6"></li>
+                <li class="content_c1 so02" id="fkjd7"></li>
+                <li class="content_c1 " id="fkjd8"></li>
+                <li class="content_ccc " id="fkjd9"></li>
+            </ul>
+            <ul class="content_c4">
+                <li class="content_c2 " id="fkjdtext1">
+                    <p class="content_c3" >借款申请</p>
+                    <p id="fkjdtime1">{$cominfo.info_time}</p>
+                </li>
+                <li class="content_c2" id="fkjdtext2">
+                    <p class="content_c3" >项目初审</p>
+                    <p id="fkjdtime2">{$cominfo.project1_time}</p>
+                </li>
+                <li class="content_c2" id="fkjdtext3">
+                    <p class="content_c3" >实地考察</p>
+                    <p id="fkjdtime3">{$cominfo.real_time}</p>
+                </li>
+                <li class="content_c2" id="fkjdtext4">
+                    <p class="content_c3" >DPS风控</p>
+                    <p id="fkjdtime4">{$cominfo.dsp_time}</p>
+                </li>
+                <li class="content_c2" id="fkjdtext5">
+                    <p class="content_c3" >担保人</p>
+                    <p id="fkjdtime5">{$cominfo.security_time}</p>
+                </li>
+                <li class="content_c2" id="fkjdtext6">
+                    <p class="content_c3" >手续办理</p>
+                    <p id="fkjdtime6"> {$cominfo.mortgage_time}</p>
+                </li>
+                <li class="content_c2" id="fkjdtext7">
+                    <p class="content_c3">招标中</p>
+                    {if $var.count_down == 1 && $var.tender_time > 10}
+                    <p id="fkjdtime7"> {$var.tender_time|date_format:'Y-m-d'}</p>
+                    {else}
+                    {loop module="borrow" var=_var1  function="get_verify_list" limit="all" borrow_nid=$smarty.request.article_id datacache="memcache" datacachename='get_verify_list_new' datacachenametimes="60*30" bindkey=$smarty.request.article_id}
+                    {if $_var1.status == 1}
+                    <p id="fkjdtime7"> {$_var1.addtime|date_format:'Y-m-d'}</p>
+                    {/if}
+                    {/loop}
+                    {/if}
+                </li>
+                <li class="content_c2" id="fkjdtext8">
+                    <p class="content_c3">标满复审</p>
+                    <p id="fkjdtime8">
+                        {if $var.borrow_success_time > 0}
+                        {$var.borrow_success_time|date_format:'Y-m-d'}
+                        {/if}
+                    </p>
+
+                </li>
+                <li class="content_ddd" id="fkjdtext9">
+                    <p class="content_c3">还款计时</p>
+                    <p id="fkjdtime9">
+                        {loop module="borrow" var=_var1  function="get_verify_list" limit="all" borrow_nid=$smarty.request.article_id datacache="memcache" datacachename='get_verify_list_new' datacachenametimes="60*30" bindkey=$smarty.request.article_id}
+                        {if $_var1.status == 3}
+                        {$_var1.addtime|date_format:'Y-m-d'}
+                        {/if}
+                        {/loop}
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {/articles}
+
+
+
+    <!--标王-->
+    <div class="standkingdir" style="display: none;">
+        <div class="standkingside" id="standkingside1" style="display: none;">
+            <p id="big_cast" class=" clearg"><a href="/actives/tandard/index.html">了解详情＞＞</a> <strong>标的最大咖</strong>恭喜用户<span id="kisde1">XXX</span>投资<span id="kisde2">XXXXXX</span>元，暂居首名，有机会获得【标的最大咖】专属称号，尊享<span>50元</span>话费奖励！快来和他PK吧！</p>
+            <p  id="sig_cast"><strong>投资小能手</strong>投资达人们赶紧投资啦，满标之后即有可能【投资小能手】，赢取<span>100M流量奖励</span>哦！</p>
+        </div>
+
+        <div class="standkingside" id="standkingside2" style="display: none;">
+            <p id="big_cast" class=" clearg big_castcc1"><a href="/actives/tandard/index.html">了解详情＞＞</a> <strong>标的最大咖</strong>恭喜用户<span id="kisde3">XXX</span>投资<span id="kisde4">XXX</span>元，获得<span>【标的最大咖】</span>专属称号，尊享<span>50元话费奖励！</span></p>
+
+            <p id="big_cast" class=" clearg big_castcc" style="display: none;"><a href="/actives/tandard/index.html">了解详情＞＞</a> <strong>标的最大咖</strong>恭喜用户<span id="kisde7">XXX</span>各投资<span id="kisde8">XXX</span>元，同时获得<span>【标的最大咖】</span>称号，<span>50元话费</span>奖励将平分发放给以上获奖用户！</p>
+
+            <p  id="sig_cast"><strong>投资小能手</strong>恭喜用户<span id="kisde5"></span>人品爆发，获得<span>【投资小能手】</span>幸运称号，赢取<span>100M流量奖励！</span></p>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <div class="conbox mt40">
+        <div class="tender_main">
+            <div class="tender_main_tit" id="tender_main_tit">
+                <dl>
+                    <dd class="hover"><a href="javascript:void(0)">项目信息</a></dd>
+                    <dd><a href="javascript:void(0)">风控信息</a></dd>
+                    {if $var.change_num>0}
+                    <dd><a href="javascript:void(0)">转让记录</a></dd>
+                    {/if}
+                    <dd><a class="dien_jilvs" href="javascript:void(0)">投资记录</a></dd>
+
+                    <dd><a href="javascript:void(0)">还款计划</a></dd>
+
+                </dl>
+            </div>
+            {articles module='borrow' function='get_cominfo_one' borrow_nid=$smarty.request.article_id var=cominfo datacache="memcache" datacachename='broww_article_get_tender_cominfo' datacachenametimes="60*30" bindkey=$smarty.request.article_id}
+            <!--项目信息-->
+            <div class="tender_main_cont">
+                <div class="basic_infor j_tender_cont">
+                    <div class="disn_baz">
+                        {if $var.view_type==1}
+                        <p style="font-size: 18px; line-height: 50px;">第三方合作机构</p>
+                        <p>{$cominfo.ronghe_third}
+                        </p>
+                        {/if}
+                    </div>
+                    <p class="content_v3" style="font-size: 16px;">认证信息：以下基本信息资料由用户自己填写，经用户同意披露，已通过融和贷验证！</p>
+                    <div class="personal_infor fn_cle">
+                        <div class="tend_left ver_top">
+                            <div>
+                                <div class="per_infor_detai">
+                                    <ul class="content_v2" style="width: 1110px;  overflow: hidden;">
+                                        <li>
+                                            <span class="basic_label">真实姓名</span>
+                                            <span class="basic_value">{$cominfo.realname|truncate:1}**</span>
+                                            <span class="basic_label">性别</span>
+                                            <span class="basic_value">{if $cominfo.realname_status==1}{if $cominfo.sex==1}男{else}女{/if}{else}{$cominfo.rsex|linkages:"rating_sex"|default:"未填"}{/if}</span>
+                                        </li>
+                                        <li>
+                                            <span class="basic_label">出生日期</span>
+                               <span class="basic_value">
+
+								{$cominfo.birthday|date_format:"Y-m-d"|default:"未填"}
+
+                                </span>
+                                            <span class="basic_label">是否结婚</span>
+                                            <span class="basic_value">{if $cominfo.marry==1}已婚{elseif $cominfo.marry==0}未婚{else}未填写{/if}</span>
+                                            <span class="basic_label">学历</span>
+                                            <span class="basic_value">{if $cominfo.degree!=''}{$cominfo.degree|default:"未填"}{else}{$cominfo.edu|linkages:"rating_education"|default:"未填"}{/if}</span>
+                                        </li>
+                                        <li>
+                                            <span class="basic_label">工作城市</span>
+                                            <span class="basic_value">{$cominfo.work_city|default:'未填'}</span>
+                                            <span class="basic_label">有无购房</span>
+                                            <span class="basic_value">{if $cominfo.is_house==1}有{elseif $cominfo.is_house==0}无{else}未填写{/if}</span>
+                                            <span class="basic_label">有无购车</span>
+                                            <span class="basic_value">{if $cominfo.is_car==1}有{elseif $cominfo.is_car==0}无{else}未填写{/if}</span>
+                                        </li>
+                                        <li>
+                                            <span class="basic_label">岗位职位</span>
+                                            <span class="basic_value">{$cominfo.company_position|linkages:"rating_position"|default:"未填"}</span>
+                                            <span class="basic_label">工作年限</span>
+                                            <span class="basic_value">{$cominfo.work_year|linkages:"rating_workyear"|default:"未填"}</span>
+                                            <span class="basic_label">公司性质</span>
+                                            <span class="basic_value">{$cominfo.company_type|linkages:"rating_company_type"|default:"未填"}</span>
+                                        </li>
+                                        <div style="border-bottom: 1px solid #DDDDDD; height: 20px;">
+                                        </div>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {if  $var.borrow_status_nid != 'repay_yes'}
+                    <!--标详情-->
+                    <div class="content_a1">
+                        <div class="content_a5">
+                            <div class="content_a2" style="border-left: none; border-right: none; border-top: none;">
+                                <span class="content_a3 fl" style="font-size: 16px;">抵押标详情：</span>
+                            </div>
+                            <div>
+                                <ul class="content_a6">
+                                    <li><span class="content_a7">抵押物类型</span><em class="content_a9">&nbsp;:&nbsp;</em><span class="content_a8">{$var.borrow_pawn_type}</span></li>
+                                    <li><span class="content_a7">评估价值</span><em class="content_a9">&nbsp;:&nbsp;</em><span class="content_a8">{$var.borrow_pawn_value}</span></li>
+                                    <li><span class="content_a7">取得时间</span><em class="content_a9">&nbsp;:&nbsp;</em><span class="content_a8">{$var.borrow_pawn_time}</span></li>
+                                    <li><span class="content_a7">授权额度</span><em class="content_a9">&nbsp;:&nbsp;</em><span class="content_a8">{$var.borrow_pawn_xin}</span></li>
+                                    <li class="content_a10">
+                                        <span class="content_a7">情况描述</span><em class="content_a9">&nbsp;:&nbsp;</em><span class="content_a11">{$var.borrow_pawn_description}</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div><span class="renzh-mysin-s">认证资料</span></div>
+                            <div class="mon_more_bingdiv" style="position: relative;">
+                                <div id="left_biao"></div>
+                                <ul id="a_lefins" style="position: relative; width: 15000px; left: 0;">
+
+                                    <div style="height: 20px;"></div>
+                                    <!--上传图片新样式-->
+                                    {if $var.upfiles_pic!=""}
+                                    {foreach from=$var.upfiles_pic item="_item" key=key}
+                                    <li><a class="example-image-link" href="//img.ronghedai.com{$_item.fileurl}" data-lightbox="example-set" data-title="" title="{$_item.contents}"><img class="example-image" src="//img.ronghedai.com{$_item.fileurl}" alt="{$_item.contents}" width="217px" height="154px"/></a></li>
+                                    {/foreach}
+                                    {/if}
+                                </ul>
+                                <div id="right_biao"></div>
+                            </div>
+                            <div style="height: 50px;"></div>
+                        </div>
+                    </div>
+                    {/if}
+                </div>
+
+
+                <!--风控信息-->
+                <div class="trad_rec j_tender_cont">
+                    <div class="trad_rec_lf">
+                        <div class="personal_infor fn_cle">
+                            <div class="tend_left ver_top">
+                                <div style="height: 50px;">
+                                    <h3 style="font-size: 18px;">融和贷审查结果：</h3>
+                                </div>
+                                <div style="height: 240px; border-right: 1px solid #EAAA15;">
+                                    <div class="ronghe_jl">
+                                        {$cominfo.ronghe_check}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tend_right ver_top" style="overflow: hidden;">
+                                <h3 style="padding:  0 0 0 17px;">DPS风控评级</h3>
+                                <div style="overflow: hidden;">
+                                    <div class="fl content_s1" style="overflow: hidden;">
+                                        <p style="padding: 0 0 0 30px; font-size: 16px; color: #666;"><span>信用等级</span><span class="content_fs"></span></p><p style="height: 30px;"></p>
+                                        <div class="content_s4">
+                                            <div style="height: 50px;"></div>
+                                            <p class="content_s74">信用分</p>
+                                            <p class="content_s74 content_s75">{$cominfo.zongxinyong}</p>
+                                        </div>
+                                        <p class="content_m1"><span>{$var.user_info.realname|truncate:1}**</span>的信用：<span class="content_s8"></span></p>
+
+                                    </div>
+                                    <div class="fl content_s2" style="overflow: hidden;">
+                                        <ul class="content_m2">
+                                            <li>基本信息：{$cominfo.base_infomation|default:"0"}</li>
+                                            <li>经济能力：{$cominfo.ecnomic_ablity|default:"0"}</li>
+                                            <li>信用状况：{$cominfo.credit_status|default:"0"}</li>
+                                            <li>外围调研：{$cominfo.out_research|default:"0"}</li>
+                                            <li>抵押物评估：{$cominfo.object_evaluate|default:"0"}</li>
+                                            <li>职业情况：{$cominfo.professional_status|default:"0"}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/articles}
+                        </div>
+                    </div>
+                    <div class="cle"></div>
+
+                    {if $var.view_type==1}
+                    <div class="five_invers">
+                        <div style="height: 140px;"></div>
+                        <div class="media_tods" style="margin-left: 56px;">
+                            <p>联合存管模式</p>
+                            <p>多方保证资产安全</p>
+                        </div>
+                        <div class="media_tods">
+                            <p>第三方资产</p>
+                            <p>管理机构回购</p>
+                        </div>
+                        <div class="media_tods">
+                            <p>资产抵押/质</p>
+                            <p>押物变现保障</p>
+                        </div>
+                        <div class="media_tods">
+                            <p>债权资产所有人及其</p>
+                            <p>财产共有人连带担保</p>
+                        </div>
+                        <div class="media_tods">
+                            <p>安徽众城高昕律师</p>
+                            <p>事务所全程法务支持</p>
+                        </div>
+                    </div>
+                    {/if}
+
+
+                </div>
+
+                {include file="borrow_content_change.html"}
+                <!--还款计划-->
+                <div class="trad_rec j_tender_cont">
+                    <dl class="repay">
+                        <dt>
+                            <span style="width: 215px;">还款日期</span><span style="width: 215px;">状态</span><span style="width: 215px;">已还本息</span><span style="width: 215px;">待还本息</span><span style="width: 215px;">逾期天数</span>
+                        </dt>
+                        {loop module="borrow" function="get_repay_list" borrow_nid=$var.borrow_nid var=_var order="repay_time_asc" limit='all' datacache="memcache" datacachename='get_repay_list_new' datacachenametimes="60*30" bindkey=$var.borrow_nid}
+                        <dt>
+                            <span style="width: 215px;">{$_var.repay_time|date_format:"Y/m/d"}</span><span style="width: 215px;">{$_var.repay_type_name}</span><span style="width: 215px;">￥{$_var.repay_account_yes}</span><span style="width: 215px;">￥{if $_var.repay_type!="wait"}0.00{else}{$_var.repay_account}{/if}</span><span style="width: 215px;">{if $_var.late_days>0}{$_var.late_days}天{else}-{/if}</span>
+                        </dt>
+                        {/loop}
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div style="height: 40px;"></div>
+
+
+</div>
+
+{else}
+<div class="conbox" id="tender_detai_lf2">
+    <div class="tender_detai">
+
+        <div class="tender_detai_cont">
+            <div class="tender_detai_lf">
+                <div class="tender_detai_tit">
+                    <h2>
+                        <i class="iconfont">{if $var.final==1}&#xe607;{elseif $var.final == 2}&#xe604;{elseif $var.final==3}&#xe605; {elseif $var.final==4}&#xe605;{elseif  $var.final==5}&#xe606;{elseif  $var.final==6}&#xe617;{/if}</i>
+                        {$var.name}
+                        {if $var.award_status!=0}{if $var.award_status==1}<i class="tender_reword">{$var.award_account|default:'0.00'}元</i>{else}<span class="the_num" style="float:none;display:inline-block"><em class="award">{$var.award_scale}%</em></span>{/if}{/if}
+                        {if $var.borrow_password!=""}<img src="{$tpldir}/images/lock.gif" />{/if}</h2>
+                    <span>借款编号：{$var.borrow_nid}</span>
+                </div>
+                <ul class="new_borrow">
+                    <li style="height: 135px;" id="new_borrowli">
+                        <span class="basic_label" style="padding-left: 4%;width: 28%;text-align: left;">借款金额：<br><em>{$var.account|default:'0.00'}</em></span>
+                        <span class="basic_label">年利率：<br><em>{if $var.tender_time > 1452614399 && $var.tender_time < 1452873599}{$var.borrow_apr/2}%+{$var.borrow_apr/2}%<a style="font-size: 12px; color: red;">奖</a>{else}{$var.borrow_apr}%{/if}</em></span>
+                        <span class="basic_label">借款期限：<br><em>{$var.borrow_period_name}</em></span>
+                    </li>
+                    <li class="clearg captionlecon">
+                        <p class="captionleft"><span>还款方式：</span>{$var.style_title}</p>
+                        <p class="captionright"><span>需还本息：</span>{$var.repay_all}元</p>
+                    </li>
+                    {if $var.view_type==1 || $var.view_type==3 }
+                    <li class="clearg captionlecon">
+                        <p class="captionleft">
+                            <span>投标进度：</span>
+							<span class="basic_value" style="width: 220px;">
+								<em class="bar">
+                                    <i class="bar_width" style="width:{$var.borrow_account_scale}%"></i>
+                                </em>
+								  <em class="arrow">
+                                      {$var.borrow_account_scale}%
+                                      <b class="pop1-a"><u class="c1"></u><u class="c2"></u></b>
+                                  </em>
+							</span>
+                        </p>
+                        <p class="captionright"><span>投资范围：</span>{$var.tender_account_min}元起投</p>
+                    </li>
+                    {else}
+                    <li class="clearg captionlecon" style="border-bottom: none;">
+                        <p class="captionleft">
+                            <span>投标进度：</span>
+							<span class="basic_value" style="width: 220px;">
+								<em class="bar">
+                                    <i class="bar_width" style="width:{$var.borrow_account_scale}%"></i>
+                                </em>
+								  <em class="arrow">
+                                      {$var.borrow_account_scale}%
+                                      <b class="pop1-a"><u class="c1"></u><u class="c2"></u></b>
+                                  </em>
+							</span>
+                        </p>
+                        <p class="captionright"><span>投资范围：</span>{$var.tender_account_min}元起投<!--，最高{if $var.tender_account_max!=0}
+                            {$var.tender_account_max}元
+                            {else}不限{/if}--></p>
+                    </li>
+                    {/if}
+                    {if $var.view_type==1}
+                    <li style="border-bottom: none;" class="captionlecon">
+                        <p class="captionleft"><span>推荐机构：</span>
+                            <a href="/aboutus/index.html#box-11/{$var.open_tender.id}" target="_blank">{$var.open_tender.name}</a>
+
+                        </p>
+                        <p class="captionright">
+                            <a id="subtitleid1" href="//img.ronghedai.com/{$var.open_tender.cooperation}" class="example-image-link" data-lightbox="example-sy" data-title="">合作协议</a>
+                            <a id="subtitleid2"  href="//img.ronghedai.com/{$var.open_tender.repo}"  class="example-image-link" data-lightbox="example-syt" data-title="">回购协议</a>
+                        </p>
+                    </li>
+                    {elseif $var.view_type==2}
+                    <li style="display: none;" class="captionlecon">
+                        <p class="captionleft"><span>推荐机构：</span>{$var.open_tender.name}</p>
+                        <p class="captionright">
+                            <a id="subtitleid1" href="//img.ronghedai.com/{$var.open_tender.cooperation}" class="example-image-link" data-lightbox="example-sy" data-title="">合作协议</a>
+                            <a id="subtitleid2"  href="//img.ronghedai.com/{$var.open_tender.repo}"  class="example-image-link" data-lightbox="example-syt" data-title="">回购协议</a>
+                        </p>
+                    </li>
+                    {else}
+                    <li style="border-bottom: none;" class="captionlecon">
+                        <p class="captionleft" style="color: #58a2de;"><span>借款机构：</span>{$var.open_tender.name}</p>
+                    </li>
+
+                    {/if}
+                </ul>
+            </div>
+            {articles module="webcount"  function="get_users_account" var="var_account" user_id=$_G.user_id}
+            <div class="tender_detai_rig">
+                <div class="item">可投资额：<span class="avail_money" data-money="{$var.borrow_account_wait}" id="availMoney">{$var.borrow_account_wait}</span>元</div>
+                <div class="item">
+                    {if $var_account.balance<=0}
+                    <input type="text" disabled="true" value="亲，您余额不足。请先充值" name="money" class="money moneynew" id="money"/>
+                    {else}
+                    <input style="width: 130px;" type="text"  {if $var.borrow_status_nid=='loan'} placeholder="请输入投资金额" {else}value="{$var.borrow_status_nid|linkages:'borrow_status_nid'}" disabled="true"{/if} name="money" class="money" id="money"/> <span class="money_type">元</span>
+                    {/if}
+                </div>
+                <form action="" name="" method="post" id="tender_form">
+                    <div class="item" style="border: 1px solid #DDDDDD; text-align: center; height: 40px; line-height: 40px;">
+                        {if $_G.user_id!=""}
+
+                        账户余额：<span class="account_balance">{$var_account.balance}<em></em></span>元
+
+                        <a href="/?user#account/recharge" target="_blank" class="recharge f_c2">去充值</a>
+                        {else}账户余额：<a href="javascript:void(0);" class="bule" id="tender_login" target="_blank">登录</a> 后可见{/if}
+                    </div>
+                    <!--<div class="item">
+                        <span class="basic_label" id="MaxMin" data-min="{$var.tender_account_min}" data-max="{$var.tender_account_max}">最低投标金额：{$var.tender_account_min}元  最高投标金额：{if $var.tender_account_max==0}不限{else}{$var.tender_account_max}元{/if}</span>
+                    </div>-->
+                    <div class="itemd" style="height: 20px;"></div>
+                    <div class="item">{if $var.borrow_status_nid=='loan'}<input type="submit" class="tender_sub tender_sub2b" value="投&nbsp;&nbsp;&nbsp;&nbsp;标" id="tender_submit" borrow=""  />{else}<input type="button" disabled='true' class="tender_sub_dis" value="{$var.borrow_status_nid|linkages:'borrow_status_nid'}" />{/if}</div>
+                </form>
+            </div>
+            {/articles}
+            <div class="cle"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="tender_detai_lf4">
+
+
+    <!--标王-->
+    <div class="standkingdir" style="display: none;">
+        <div class="standkingside" id="standkingside1" style="display: none;">
+            <div class="clearg"><a href="/actives/tandard4/index.html" style="float: right;font-size: 14px;color: #4ab9e7;">了解详情＞＞</a></div>
+            <p  id="sig_cast"><strong>投标小达人</strong>投资达人们赶紧投资啦，满标之后即有可能【投标小达人】，赢取<span>一个月的爱奇艺黄金会员</span>哦！</p>
+        </div>
+
+        <div class="standkingside" id="standkingside2" style="display: none;">
+            <div class="clearg"><a href="/actives/tandard4/index.html" style="float: right;font-size: 14px;color: #4ab9e7;">了解详情＞＞</a></div>
+            <p  id="sig_cast"><strong>投标小达人</strong>恭喜用户<span id="kisde5"></span>人品爆发，获得<span>【投标小达人】</span>幸运称号，赢取<span>一个月爱奇艺黄金会员资格！</span></p>
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="conbox mt40">
+        <div class="tender_main">
+            <div class="tender_main_tit" id="tender_main_tit">
+                <dl class="clearg">
+                    <dd class="hover"><a href="javascript:void(0)">项目信息</a></dd>
+                    {if $var.view_type == 1}
+                    <dd><a href="javascript:void(0)">产品介绍</a></dd>
+                    {/if}
+                    {if $var.change_num>0}
+                    <dd><a href="javascript:void(0)">转让记录</a></dd>
+                    {/if}
+                    <dd><a class="dien_jilvs" href="javascript:void(0)">投资记录</a></dd>
+
+                    <dd><a href="javascript:void(0)">还款计划</a></dd>
+
+                </dl>
+            </div>
+
+            <!--项目信息-->
+            <div class="tender_main_cont">
+                <div class="basic_infor j_tender_cont">
+
+                    <!--风控节点-->
+                    <div style="height: 40px;"></div>
+
+                    {articles module='borrow' function='get_cominfo_one' borrow_nid=$smarty.request.article_id var=cominfo datacache="memcache" datacachename='broww_get_count_cominfo_one' datacachenametimes="60*30" bindkey=$smarty.request.article_id}
+                    <div class="content_b1 porlttit content_bside1">
+                        <div class="content_a2 clearg">
+                            <h4 class="clearg" style="float: left;"><i></i>风控节点</h4>
+                            <div style="float: right;">
+                                <span class="content_b2">本借款项目由<em style="color:#fb7300;">众城高昕律师事务所</em>进行全程跟踪</span>
+						<span class="content_b3">
+							<a class="example-image-links" href="{$tpldir}/images/gaiban/lvshi_imag.jpg" data-lightbox="example-tu-myhengers">
+                                <input class="button_messignp lushi_weisn content_b4" type="button" value="律师委托函">
+                            </a>
+						</span>
+                            </div>
+                        </div>
+                        <div class="content_b5">
+                            <ul class="content_b6">
+                                <li class="content_c1 " id="fkjd1"></li>
+                                <li class="content_c1 " id="fkjd2"></li>
+                                <li class="content_c1 " id="fkjd3"></li>
+                                <li class="content_c1 " id="fkjd4"></li>
+                                <li class="content_c1 " id="fkjd6"></li>
+                                <li class="content_c1 so02" id="fkjd7"></li>
+                                <li class="content_c1 " id="fkjd8"></li>
+                                <li class="content_ccc " id="fkjd9"></li>
+                            </ul>
+                            <ul class="content_c4">
+                                <li class="content_c2 " id="fkjdtext1">
+                                    {if $var.view_type ==1}
+                                    <p class="content_c3" >机构审核</p>
+                                    {else}
+                                    <p class="content_c3" >借款申请</p>
+                                    {/if}
+                                    <p id="fkjdtime1">{$cominfo.info_time}</p>
+                                </li>
+                                <li class="content_c2" id="fkjdtext2">
+                                    {if  $var.view_type ==1}
+                                    <p class="content_c3" >平台审核</p>
+                                    {else}
+                                    <p class="content_c3" >项目初审</p>
+                                    {/if}
+                                    <p id="fkjdtime2">{$cominfo.project1_time}</p>
+                                </li>
+                                <li class="content_c2" id="fkjdtext3">
+                                    <p class="content_c3" >实地考察</p>
+                                    <p id="fkjdtime3">{$cominfo.real_time}</p>
+                                </li>
+                                <li class="content_c2" id="fkjdtext4">
+                                    <p class="content_c3" >DPS风控</p>
+                                    <p id="fkjdtime4">{$cominfo.dsp_time}</p>
+                                </li>
+
+                                <li class="content_c2" id="fkjdtext6">
+                                    <p class="content_c3" >手续办理</p>
+                                    <p id="fkjdtime6"> {$cominfo.security_time }</p>
+                                </li>
+                                <li class="content_c2" id="fkjdtext7">
+                                    <p class="content_c3">招标中</p>
+                                    {if $var.count_down == 1 && $var.tender_time > 10}
+                                    <p id="fkjdtime7"> {$var.tender_time|date_format:'Y-m-d'}</p>
+                                    {else}
+                                    {loop module="borrow" var=_var1  function="get_verify_list" limit="all" borrow_nid=$smarty.request.article_id datacache="memcache" datacachename='get_verify_list_new' datacachenametimes="60*30" bindkey=$smarty.request.article_id}
+                                    {if $_var1.status == 1}
+                                    <p id="fkjdtime7"> {$_var1.addtime|date_format:'Y-m-d'}</p>
+                                    {/if}
+                                    {/loop}
+                                    {/if}
+                                </li>
+                                <li class="content_c2" id="fkjdtext8">
+                                    <p class="content_c3">标满复审</p>
+                                    <p id="fkjdtime8">
+                                        {if $var.borrow_success_time > 0}
+                                        {$var.borrow_success_time|date_format:'Y-m-d'}
+                                        {/if}
+                                    </p>
+
+                                </li>
+                                <li class="content_ddd" id="fkjdtext9">
+                                    <p class="content_c3">还款计时</p>
+                                    <p id="fkjdtime9">
+                                        {loop module="borrow" var=_var1  function="get_verify_list" limit="all" borrow_nid=$smarty.request.article_id datacache="memcache" datacachename='get_verify_list_new' datacachenametimes="60*30" bindkey=$smarty.request.article_id}
+                                        {if $_var1.status == 3}
+                                        {$_var1.addtime|date_format:'Y-m-d'}
+                                        {/if}
+                                        {/loop}
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {/articles}
+
+
+                    {articles module='borrow' function='get_cominfo_one' borrow_nid=$smarty.request.article_id var=cominfo datacache="memcache" datacachename='broww_article_get_tender_cominfo' datacachenametimes="60*30" bindkey=$smarty.request.article_id}
+                    <div class="content_bside1 clearg  porlttit">
+                        {if $var.view_type ==1 || $var.view_type ==2}
+                        <h4 class="clearg" style="margin-bottom: 12px;"><i></i>借款人介绍</h4>
+                        {else}
+                        <h4 class="clearg" style="margin-bottom: 12px;"><i></i>借款企业介绍</h4>
+                        {/if}
+                        <div class="content_bsidele">
+                            {if $var.view_type ==1 || $var.view_type ==2}
+                            <div class="content_bsidelec">
+                                <h5>信息介绍：</h5>
+                                <p>{$cominfo.company_position }</p>
+                                <h5>工作情况：</h5>
+                                <p>{$cominfo.work_city  }</p>
+                                <h5>资产介绍：</h5>
+                                <p>{$cominfo.is_house  }</p>
+                                <h5>详细资金用途：</h5>
+                                <p style="margin-bottom: 0;">{$cominfo.is_car}</p>
+                            </div>
+                            {else}
+                            <div class="content_bsidelec">
+                                <h5>企业信息：</h5>
+                                <p>{$cominfo.company_position }</p>
+                                <h5>企业法人信息：</h5>
+                                <p>{$cominfo.work_city  }</p>
+                                <h5>借款用途：</h5>
+                                <p>{$cominfo.is_car}</p>
+                                <h5>还款来源：</h5>
+                                <p style="margin-bottom: 0;">{$cominfo.is_house}</p>
+                            </div>
+                            {/if}
+                        </div>
+
+
+                        <div class="tend_right ver_top" style="overflow: hidden;">
+                            <h3 style="padding:  0 0 0 17px;">DPS风控评级</h3>
+                            <div style="overflow: hidden;">
+                                <div class="fl content_s1" style="overflow: hidden;">
+                                    <p style="padding: 0 0 0 30px; font-size: 16px; color: #666;"><span>信用等级</span><span class="content_fs"></span></p><p style="height: 30px;"></p>
+                                    <div class="content_s4">
+                                        <div style="height: 50px;"></div>
+                                        <p class="content_s74">信用分</p>
+                                        <p class="content_s74 content_s75">{$cominfo.zongxinyong}</p>
+                                    </div>
+                                    <p class="content_m1"><span>{$cominfo.realname|truncate:1}**</span>的信用：<span class="content_s8"></span></p>
+
+                                </div>
+                                <div class="fl content_s2" style="overflow: hidden;">
+                                    <ul class="content_m2">
+                                        {if $var.view_type ==1 || $var.view_type ==2}
+                                        <li>基本信息：{$cominfo.base_infomation|default:"0"}</li>
+                                        <li>经济能力：{$cominfo.ecnomic_ablity|default:"0"}</li>
+                                        <li>信用状况：{$cominfo.credit_status|default:"0"}</li>
+                                        <li>外围调研：{$cominfo.out_research|default:"0"}</li>
+                                        <li>抵押物评估：{$cominfo.object_evaluate|default:"0"}</li>
+                                        <li>职业情况：{$cominfo.professional_status|default:"0"}</li>
+                                        {else}
+                                        <li>基本信息：{$cominfo.base_infomation|default:"0"}</li>
+                                        <li>财务实力：{$cominfo.ecnomic_ablity|default:"0"}</li>
+                                        <li>经营状况：{$cominfo.credit_status|default:"0"}</li>
+                                        <li>信用状况：{$cominfo.out_research|default:"0"}</li>
+                                        <li>偿贷能力：{$cominfo.object_evaluate|default:"0"}</li>
+                                        <li>团队能力：{$cominfo.professional_status|default:"0"}</li>
+                                        {/if}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/articles}
+
+                    </div>
+                    <div class="content_bside2  porlttit">
+                        <h4 class="clearg"><i></i>审核信息</h4>
+                        <ul class="clearg">
+
+                            {foreach from=$cominfo.company_type  key="key" item="item"}
+                            <li>
+                                <img src="{$tpldir}/images/gaiban/{$key}.gif"><br>
+                                {$item}
+                            </li>
+                            {/foreach}
+
+                        </ul>
+                    </div>
+                    <div class="content_bside3 content_bside1 porlttit">
+                        <h4 class="clearg"><i></i>风控步骤</h4>
+                        {if $var.view_type ==1}
+                        <div class="content_bside3c1">
+                            <p>合作机构审核：第三方合作机构对该项目进行全方位审查、严格筛选并优先进行放款。</p>
+                            <p>融和贷审核：融和贷风控部门对此债权融资项目进行二次审查、综合授信。</p>
+                            <p>抵押物：{$var.borrow_pawn_description}</p>
+                        </div>
+                        <div class="content_bside3c2">
+                            <p>结论：经风控部综合评估<span>同意放款{$cominfo.work_year}元</span></p>
+                        </div>
+                        <div class="porlttit cont_pip" style="font-size: 15px;color: #444;line-height: 26px;">
+                            <h4 class="clearg" style="margin-bottom: 0"><i></i>风控保障措施</h4>
+                            <p>1、所有项目全部实行实物抵（质）押。</p>
+                            <p>2、项目到期推荐机构无条件回购。</p>
+                            <p>3、项目发生逾期后由变现机构实时变现。</p>
+                            <p>4、风险保证金机制。</p>
+                        </div>
+                        {else}
+                        <div class="content_bside3c1">
+                            <p>调查：业务部对借款人居住地等进行了实地征信，风控部对借款人各项信息进行了全面的电话征信，一切资料真实可靠。</p>
+                            <p>抵押物：{$var.borrow_pawn_description}</p>
+                        </div>
+                        <div class="content_bside3c2" style="width: 850px;">
+                            <p style="font-size: 18px;">结论：借款人居住稳定，收入来源可靠，经风控综合评估<span>同意放款{$cominfo.work_year}元</span></p>
+                        </div>
+                        <div class="porlttit cont_pip" style="font-size: 15px;color: #444;line-height: 26px;">
+                            <h4 class="clearg" style="margin-bottom: 0;"><i></i>风控保障措施</h4>
+                            <p>1、所有项目全部实行实物抵（质）押。</p>
+                            <p>2、项目到期推荐机构无条件回购。</p>
+                            <p>3、项目发生逾期后由变现机构实时变现。</p>
+                            <p>4、风险保证金机制。</p>
+                        </div>
+                        {/if}
+                    </div>
+                    <div class="content_bside4  porlttit" style="width: 1152px;">
+                        <h4 class="clearg"><i></i>权证信息</h4>
+                        <p>（注：为保护借款人的个人隐私信息，实物材料对部分信息进行了隐藏处理）</p>
+                        <div class="mon_more_bingdiv" style="position: relative;">
+                            <div id="left_biao"></div>
+                            <ul id="a_lefins" style="position: relative; width: 15000px; left: 0;">
+
+                                <div style="height: 20px;"></div>
+                                <!--上传图片新样式-->
+                                {if $var.upfiles_pic!=""}
+                                {foreach from=$var.upfiles_pic item="_item" key=key}
+                                <li><a class="example-image-link" href="//img.ronghedai.com{$_item.fileurl}" data-lightbox="example-set" data-title="" title="{$_item.contents}"><img class="example-image" src="//img.ronghedai.com{$_item.fileurl}" alt="{$_item.contents}" width="217px" height="154px"/></a></li>
+                                {/foreach}
+                                {/if}
+                            </ul>
+                            <div id="right_biao"></div>
+                        </div>
+                    </div>
+                    {if $var.view_type ==2 || $var.view_type ==3}
+                    <div class="content_bside5 content_bside1 porlttit">
+                        <h4 class="clearg"><i></i>安全保障</h4>
+                        <ul class="clearg">
+                            <li>
+                                <img src="//img.ronghedai.com{$tpldir}/images/gaiban/gaiban1.gif"alt="" />
+                                <p>专业</p>
+                                <p>运营团队</p>
+                            </li>
+                            <li>
+                                <img src="//img.ronghedai.com{$tpldir}/images/gaiban/gaiban2.gif"alt="" />
+                                <p>独创</p>
+                                <p>DPS风控</p>
+                            </li>
+                            <li>
+                                <img src="//img.ronghedai.com{$tpldir}/images/gaiban/gaiban3.gif"alt="" />
+                                <p>集团</p>
+                                <p>雄厚实力</p>
+                            </li>
+                            <li>
+                                <img src="//img.ronghedai.com{$tpldir}/images/gaiban/gaiban4.gif"alt="" />
+                                <p>深入</p>
+                                <p>实地考察</p>
+                            </li>
+                            <li>
+                                <img src="//img.ronghedai.com{$tpldir}/images/gaiban/gaiban5.gif"alt="" />
+                                <p>多层</p>
+                                <p>信息审核</p>
+                            </li>
+                            <li>
+                                <img src="//img.ronghedai.com{$tpldir}/images/gaiban/gaiban6.gif"alt="" />
+                                <p>风险</p>
+                                <p>准备金</p>
+                            </li>
+                            
+                            <li>
+                                <img src="//img.ronghedai.com{$tpldir}/images/gaiban/gaiban8.gif"alt="" />
+                                <p>全程</p>
+                                <p>法务支持</p>
+                            </li>
+                            <li style="margin-right: 0;">
+                                <img src="//img.ronghedai.com{$tpldir}/images/gaiban/gaiban9.gif"alt="" />
+                                <p>抵押</p>
+                                <p>变现保障</p>
+                            </li>
+                        </ul>
+                    </div>
+                    {/if}
+
+                </div>
+
+
+                <!--产品介绍-->
+                {if $var.view_type == 1}
+                <div class="trad_rec j_tender_cont">
+
+                    {if $var.invest_type == 1 ||   mb_strstr($var.name, '车融宝')}
+                    <div class="subheadingcon1">
+                        <div class="subheading1 subheadjs">
+                            <h4 class="clearg"><i></i>车融宝是什么？</h4>
+                            <p>“车融宝”是融和贷上线的一款车辆抵押贷款类的优质产品。借款人向融和贷优选的合作机构提出车辆抵押申请借款，由合作机构专业风控部门及车辆评估师调查取证其车辆信息及个人信用资料，然后提交终审部门进行银行级别的严格审核。审核通过后，由第三方合作机构与借款人签订合同及相关法律文件并先行放款。出借人取得合法债权后，在融和贷进行债权转让融资。融和贷风控部门经过二次严格审查之后，在保证项目安全的情况下，通过“车融宝”借款标向投资者转让优质债权。借款项目一经成立，由债权转让机构承诺为平台出借人到期无条件回购,并承担连带担保责任。</p>
+                            <p> 该金融产品是围绕汽车抵押融资借款及汽车后市场而推荐的金融产品，具有低门槛、高收益、灵活稳定的特点。</p>
+                        </div>
+                        <div class="subheading2 subheadjs">
+                            <h4 class="clearg"><i></i>车融宝机构产品模式</h4>
+                        </div>
+                        <div class="subheading3 subheadjs">
+                            <h4 class="clearg"><i></i>第三方合作机构</h4>
+                            <p>机构名称：{$var.open_tender.name}</p>
+                            <p>机构介绍：{$var.open_tender.content}</p>
+                        </div>
+                        <div class="subheading4 subheadjs">
+                            <h4 class="clearg"><i></i>保障措施：</h4>
+                            <ul class="subheading4s1 clearg">
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty1.gif"alt="" />
+                                    <p>专业运营团队</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty2.gif"alt="" />
+                                    <p>独创DPS风控</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty3.gif"alt="" />
+                                    <p>集团雄厚实力</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty4.gif"alt="" />
+                                    <p>两次实地考察</p>
+                                </li>
+                                <li style="margin-right: 0;">
+                                    <img src="{$tpldir}/images/gaiban/bonty5.gif"alt="" />
+                                    <p>多层信息审核 </p>
+                                </li>
+                            </ul>
+                            <ul class="subheading4s2 clearg">
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty6.gif"alt="" />
+                                    <p>风险准备金</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty7.gif"alt="" />
+                                    <p>汇付存管</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty8.gif"alt="" />
+                                    <p>全程法务支持</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty9.gif"alt="" />
+                                    <p>机构回购制度 </p>
+                                </li>
+                                <li style="margin-right: 46px;">
+                                    <img src="{$tpldir}/images/gaiban/bonty10.gif"alt="" />
+                                    <p>资产抵押/质</p>
+                                    <p style="margin-top: 0;">押物变现保障</p>
+                                </li>
+                                <li style="margin-right: 0;width: 166px;">
+                                    <img src="{$tpldir}/images/gaiban/bonty11.gif"alt="" />
+                                    <p>债权资产所有人及其</p>
+                                    <p style="margin-top: 0;">财产共有人连带担保</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    {elseif $var.invest_type == 2 || mb_strstr($var.name, '房融宝')}
+                    <div class="subheadingcon2">
+                        <div class="subheading1 subheadjs">
+                            <h4 class="clearg"><i></i>房融宝是什么？</h4>
+                            <p>“房融宝”是融和贷上线的一款房产抵押贷款类的优质产品。借款人向融和贷优选合作机构申请房产抵押，由合作机构风控部门严格审核借款人信息及房产信息，然后提交征信部门。审核通过后，合作机构先行放款给借款人，并签订房产抵押借款的相关合同、协议等法律文件。出借人取得合法债权后，在融和贷进行债权转让融资。融和贷风控部门经过二次严格审查之后，在保证项目安全的情况下，通过“房融宝”借款标向投资者转让优质债权。借款项目一经成立，由融和贷合作机构承诺为平台出借人到期无条件回购，并承担连带担保责任。</p>
+                            <p>  “房融宝”是融和贷为广大用户提供的一款低门槛、高收益、安全稳定和借贷快捷的互联网金融理财产品。</p>
+                        </div>
+                        <div class="subheading2 subheadjs">
+                            <h4 class="clearg"><i></i>房融宝机构产品模式</h4>
+                        </div>
+                        <div class="subheading3 subheadjs">
+                            <h4 class="clearg"><i></i>第三方合作机构</h4>
+                            <p>机构名称：{$var.open_tender.name}</p>
+                            <p>机构介绍：{$var.open_tender.content}</p>
+                        </div>
+                        <div class="subheading4 subheadjs">
+                            <h4 class="clearg"><i></i>保障措施：</h4>
+                            <ul class="subheading4s1 clearg">
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty1.gif"alt="" />
+                                    <p>专业运营团队</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty2.gif"alt="" />
+                                    <p>独创DPS风控</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty3.gif"alt="" />
+                                    <p>集团雄厚实力</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty4.gif"alt="" />
+                                    <p>两次实地考察</p>
+                                </li>
+                                <li style="margin-right: 0;">
+                                    <img src="{$tpldir}/images/gaiban/bonty5.gif"alt="" />
+                                    <p>多层信息审核 </p>
+                                </li>
+                            </ul>
+                            <ul class="subheading4s2 clearg">
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty6.gif"alt="" />
+                                    <p>风险准备金</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty7.gif"alt="" />
+                                    <p>汇付存管</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty8.gif"alt="" />
+                                    <p>全程法务支持</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty9.gif"alt="" />
+                                    <p>机构回购制度 </p>
+                                </li>
+                                <li style="margin-right: 46px;">
+                                    <img src="{$tpldir}/images/gaiban/bonty10.gif"alt="" />
+                                    <p>资产抵押/质</p>
+                                    <p style="margin-top: 0;">押物变现保障</p>
+                                </li>
+                                <li style="margin-right: 0;width: 166px;">
+                                    <img src="{$tpldir}/images/gaiban/bonty11.gif"alt="" />
+                                    <p>债权资产所有人及其</p>
+                                    <p style="margin-top: 0;">财产共有人连带担保</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    {else}
+                    <div class="subheadingcon3">
+                        <div class="subheading1 subheadjs">
+                            <h4 class="clearg"><i></i>企融宝是什么？</h4>
+                            <p>“企融宝”是为解决中小微企业融资需求而开发的一款互联网金融产品。有资金需求的借款企业向融和贷优选合作机构提出借款申请并签订企业借款相关合同及法律文件，由合作机构风控部门对借款企业资料进行严格审核，并提交终审部门。审核通过后，合作机构先行放款给借款人，并签订企业相关抵押物借款的相关合同、协议等法律文件。出借人取得合法债权后，在融和贷进行债权转让融资。融和贷风控部门经过二次严格审查之后，在保证项目安全的情况下，通过“企融宝”借款标向投资者转让优质债权。借款项目一经成立，由债权转让机构承诺为平台出借人到期无条件回购，并承担连带担保责任。</p>
+                            <p> “企融宝”是融和贷为广大理财用户提供的一款安全性高、收益稳定的互联网金融产品。</p>
+                        </div>
+                        <div class="subheading2 subheadjs">
+                            <h4 class="clearg"><i></i>企融宝机构产品模式</h4>
+                        </div>
+                        <div class="subheading3 subheadjs">
+                            <h4 class="clearg"><i></i>第三方合作机构</h4>
+                            <p>机构名称：{$var.open_tender.name}</p>
+                            <p>机构介绍：{$var.open_tender.content}</p>
+                        </div>
+                        <div class="subheading4 subheadjs">
+                            <h4 class="clearg"><i></i>保障措施：</h4>
+                            <ul class="subheading4s1 clearg">
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty1.gif"alt="" />
+                                    <p>专业运营团队</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty2.gif"alt="" />
+                                    <p>独创DPS风控</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty3.gif"alt="" />
+                                    <p>集团雄厚实力</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty4.gif"alt="" />
+                                    <p>两次实地考察</p>
+                                </li>
+                                <li style="margin-right: 0;">
+                                    <img src="{$tpldir}/images/gaiban/bonty5.gif"alt="" />
+                                    <p>多层信息审核 </p>
+                                </li>
+                            </ul>
+                            <ul class="subheading4s2 clearg">
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty6.gif"alt="" />
+                                    <p>风险准备金</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty7.gif"alt="" />
+                                    <p>汇付存管</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty8.gif"alt="" />
+                                    <p>全程法务支持</p>
+                                </li>
+                                <li>
+                                    <img src="{$tpldir}/images/gaiban/bonty9.gif"alt="" />
+                                    <p>机构回购制度 </p>
+                                </li>
+                                <li style="margin-right: 46px;">
+                                    <img src="{$tpldir}/images/gaiban/bonty10.gif"alt="" />
+                                    <p>资产抵押/质</p>
+                                    <p style="margin-top: 0;">押物变现保障</p>
+                                </li>
+                                <li style="margin-right: 0;width: 166px;">
+                                    <img src="{$tpldir}/images/gaiban/bonty11.gif"alt="" />
+                                    <p>债权资产所有人及其</p>
+                                    <p style="margin-top: 0;">财产共有人连带担保</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    {/if}
+                </div>
+                {/if}
+
+                {include file="borrow_content_change.html"}
+                <!--还款计划-->
+                <div class="trad_rec j_tender_cont">
+                    <dl class="repay">
+                        <dt>
+                            <span style="width: 215px;">还款日期</span><span style="width: 215px;">状态</span><span style="width: 215px;">已还本息</span><span style="width: 215px;">待还本息</span><span style="width: 215px;">逾期天数</span>
+                        </dt>
+                        {loop module="borrow" function="get_repay_list" borrow_nid=$var.borrow_nid var=_var order="repay_time_asc" limit='all' datacache="memcache" datacachename='get_repay_list_new' datacachenametimes="60*30" bindkey=$var.borrow_nid}
+                        <dt>
+                            <span style="width: 215px;">{$_var.repay_time|date_format:"Y/m/d"}</span><span style="width: 215px;">{$_var.repay_type_name}</span><span style="width: 215px;">￥{$_var.repay_account_yes}</span><span style="width: 215px;">￥{if $_var.repay_type!="wait"}0.00{else}{$_var.repay_account}{/if}</span><span style="width: 215px;">{if $_var.late_days>0}{$_var.late_days}天{else}-{/if}</span>
+                        </dt>
+                        {/loop}
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div style="height: 40px;"></div>
+
+
+</div>
+
+{/if}
+
+<script type="text/javascript">
+    var a_borrows = {$var.tender_time};
+    var a_bor = {$var.borrow_nid};
+    {literal}
+
+
+
+
+
+    function t_bor2(bor_id){
+        $.getJSON('/?user&q=set_red&type=get_tandard&borrow_nid='+bor_id,{},function(ret){
+            if(ret.code == 0){
+                var tx = ret.list.length;
+                var sure3 = '';
+                if(tx>0){
+                    $('#standkingside1').hide();
+                    $('#standkingside2').show();
+                    for(var i = 0; i < tx; i++){
+                        sure3 += '<i>'+ret.list[i].username+'</i>';
+                    }
+                    $('#kisde5').html(sure3);
+
+                }else {
+                    $('#standkingside1').show();
+
+                }
+            }
+        })
+    }
+
+
+
+
+
+    if(a_borrows >1472659200 && a_borrows < 1475251200){
+        t_bor2(a_bor);
+        $('.standkingdir').show();
+    }else if(a_borrows >1480521600 && a_borrows <1488297600 ){
+        t_bor2(a_bor);
+        $('.standkingdir').show();
+        $('.standkingside').find('a').attr('href','/actives/tandard5/index.html')
+        $('.standkingdir').css({'background-image':'url(/dyweb/dythemes/rhd/images/dy_img/kingbg1.png)'})
+    };
+
+</script>
+{/literal}
+
+
+{literal}
+<script type="text/javascript">
+    $(function(){
+        for(var i=1;i<8;i++){
+            //var fkjdtime = document.getElementById("fkjdtime"+i).innerText;
+            var fkjdtime = $('#fkjdtime' + i).text();
+            if (fkjdtime !=''){
+                document.getElementById("fkjd"+i).style.background = "url("+tpldir+"/images/gaiban/jiantou0202_03.jpg) 10px 28px no-repeat";
+                document.getElementById("fkjdtext"+i).style.color = "#46A3F0";
+            }
+        }
+        //招标中
+        var zhaobiao = document.getElementById('fkjdtime8').innerText;
+
+        if (zhaobiao == '') {
+            document.getElementById("fkjd7").style.background = "url("+tpldir+"/images/gaiban/jiantou03_06.jpg) 10px 28px no-repeat";
+            document.getElementById("fkjdtext7").style.color = "red";
+            document.getElementById('fkjdtime8').innerText = '时间待定';
+            document.getElementById('fkjdtime9').innerText = '时间待定';
+        } else {
+            var zhaobiao1 = document.getElementById('fkjdtime9').innerText;
+            if (zhaobiao1 == ''){
+                document.getElementById("fkjd8").style.background = "url("+tpldir+"/images/gaiban/jiantou03_06.jpg) 10px 28px no-repeat";
+                document.getElementById("fkjdtext8").style.color = "red";
+                document.getElementById('fkjdtime8').innerText = '招标结束';
+            } else {
+                document.getElementById("fkjd8").style.background = "url("+tpldir+"/images/gaiban/jiantou0202_03.jpg) 10px 28px no-repeat";
+                document.getElementById("fkjdtext8").style.color = "#46A3F0";
+                document.getElementById("fkjd9").style.background = "url("+tpldir+"/images/gaiban/mx_02_tos_03.jpg) 10px 28px no-repeat";
+                document.getElementById("fkjdtext9").style.color = "red";
+                //document.getElementById('fkjdtime8').innerText = '招标结束';
+            }
+
+        }
+
+
+
+
+    });
+
+</script>
+{/literal}
+
+
+{literal}
+<script type="text/javascript" charset="UTF-8">
+    $(function(){
+        var myFen = $('.content_s75').text();
+        if(myFen >= 800 && myFen <=1000){
+            $('.content_s4').css({'background':'url(//img.ronghedai.com/dyweb/dythemes/rhd/images/dy_img/dpspingfeng_03.png) -1546px 2px no-repeat'});
+        }else if(myFen >= 700 && myFen <= 799){
+            $('.content_s4').css({'background':'url(//img.ronghedai.com/dyweb/dythemes/rhd/images/dy_img/dpspingfeng_03.png) -1293px 2px no-repeat'});
+        }else if(myFen >= 650 && myFen <= 699){
+            $('.content_s4').css({'background':'url(//img.ronghedai.com/dyweb/dythemes/rhd/images/dy_img/dpspingfeng_03.png) -1039px 2px no-repeat'});
+        }else if(myFen >= 549 && myFen <= 649 ){
+            $('.content_s4').css({'background':'url(//img.ronghedai.com/dyweb/dythemes/rhd/images/dy_img/dpspingfeng_03.png) -760px 2px no-repeat'});
+        }else if(myFen >= 459 && myFen <= 548){
+            $('.content_s4').css({'background':'url(//img.ronghedai.com/dyweb/dythemes/rhd/images/dy_img/dpspingfeng_03.png) -470px 2px no-repeat'});
+        }else if(myFen >= 389 && myFen <= 458){
+            $('.content_s4').css({'background':'url(//img.ronghedai.com/dyweb/dythemes/rhd/images/dy_img/dpspingfeng_03.png) -218px 2px no-repeat'});
+        }else if(myFen >=  0 && myFen <= 388){
+            $('.content_s4').css({'background':'url(//img.ronghedai.com/dyweb/dythemes/rhd/images/dy_img/dpspingfeng_03.png) 18px 2px no-repeat'});
+        }
+        if(myFen >= 0 && myFen<=458){
+            $('.content_s8').text('一般');
+        }else if(myFen > 458 && myFen <= 699){
+            $('.content_s8').text('良好');
+        }else{
+            $('.content_s8').text('优秀');
+        }
+    });
+</script>
+{/literal}
+
+{literal}
+<script type="text/javascript">
+    $(function(){
+        var len = $('.mon_more_bingdiv > ul > li').length;
+        var rightPx = -(len * 275) - 1100;
+        var tolen = -($('#a_lefins > li').length - 4)*275;
+        $('#right_biao').live('click',function(){
+            var left = parseInt($('#a_lefins').css('left'));
+            if(left > tolen){
+                $('.mon_more_bingdiv > ul').animate({left:'-=275px'},130);
+            }
+        })
+        $('#left_biao').click(function(){
+            var leftPx = parseInt($('#a_lefins').css('left'));
+            if(leftPx < 0){
+                $('.mon_more_bingdiv > ul').animate({left:'+=275px'},130);
+            }
+
+        })
+    })
+</script>
+{/literal}
+
+<script type="text/javascript">
+    var article = '{$var.id}';
+    var borrow_user = '{$var.user_id}';
+    var borrow_nid = '{$var.borrow_nid}';
+    {literal}
+    diyou.use('tender',function(t){t.borrow_content(borrow_nid)});
+    diyou.use('borrow',function(b){b.borrow_tabchange();});
+</script>
+{/literal}
+{literal}
+<script>
+    $.getJSON('/?return&module=borrow&q=get_borrow_info&gettype=borrowinfo&borrow_nid='+borrow_nid,{},function(response){
+        if(response.code == 1){
+            var test_mens = response.data.all_money-response.data.avail_money;
+            var test_mesn1 = test_mens/response.data.all_money*100;
+            var mesbf = test_mesn1 + '%';
+            //alert(mesbf);
+            $('#availMoney').text(response.data.avail_money);
+            $('.bar_width').css('width','mesbf');
+            $('.arrow').text((test_mesn1).toFixed(2)+'%');
+            $('.ieng_mens').text(test_mens);
+            $('.tender_sub2b').attr('borrow',response.data.final)
+
+        }
+    })
+</script>
+{/literal}
+{/if}
+{/articles}
+{include file="footer.html"}

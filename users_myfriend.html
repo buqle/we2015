@@ -1,0 +1,152 @@
+<!--记录-->
+{if $smarty.request.type=="list"}
+
+<table class="user_tab3 bor_none" style="width: 870px; margin: 0 auto;" id="firestta">
+    <tbody>
+    <tr>
+        <td style="width:18%">成功邀请好友</td>
+        <td style="width: 20%">好友状态</td>
+        <td style="width: 15%">奖励现金</td>
+        <td style="width: 20%">获得积分</td>
+        <td style="width: 30%">获得时间</td>
+    </tr>
+    {list module="users" function="get_invite_log" var="loop" user_id=$_G.user_id epage=5 page=$smarty.request.page+1}
+    {foreach from=$loop.list item="item"}
+    <tr>
+        <td style="width:18%">{$item.username}</td>
+        <td style="width: 20%">{$item.remark}</td>
+        <td style="width: 15%">{$item.money}</td>
+        <td style="width: 20%">{$item.integral}</td>
+        <td style="width: 30%">{$item.addtime|date_format:"Y-m-d H:i:s"}</td>
+    </tr>
+    {/foreach}
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="8">
+            {if $loop.total>0}
+            <div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+            {else}
+            没有相关记录
+            {/if}
+            {/list}
+        </td>
+    </tr>
+    </tfoot>
+</table>
+{else}
+
+<div class="invite_friends">
+    <h5>邀请方式</h5>
+    <div class="invite_befriend1 clearg">
+        <div class="invite_list">
+            <div class="invite_listit">移动端邀请码</div>
+            <div class="invite_listcon">
+                <div class="inv_num" id="user_mainId"></div>
+                <p>将邀请码发送给好友，好友在APP或微信端注册时填写此邀请码，注册成功并投资后，您即可享受融和贷推荐好礼</p>
+            </div>
+        </div>
+
+        <div class="invite_list" id="invite_list2">
+            <div class="invite_listit">PC端邀请链接</div>
+            <div class="invite_listcon">
+                <div class="inv_num2">
+                    <span>http://{$smarty.server.SERVER_NAME}/index.php?user&q=reginvite&u={$_U.user_inviteid}</span>
+                    <input  value="http://{$smarty.server.SERVER_NAME}/index.php?user&q=reginvite&u={$_U.user_inviteid}" id="fe_text" type="hidden" class="inv_num2">
+                </div>
+                <div id="d_clip_container" style="position:relative">
+                    <div class="invite_befr my_clip_button" id="d_clip_button">复制链接</div>
+                </div>
+                <p style="margin-top: 10px;">点击复制按钮，将PC端邀请链接发送给好友，好友通过链接注册成功并投资，您即可享受融和贷推荐好礼！</p>
+            </div>
+        </div>
+
+        <div class="invite_list" id="invite_list3">
+            <div class="invite_listit">微信二维码邀请</div>
+            <div class="invite_listcon">
+                <div id="inv_num3"></div>
+                <p>打开微信扫一扫，将您的专属邀请二维码发送给微信好友或转发至微信朋友圈，轻松让您的好友帮您赚钱！</p>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="invite_befriend3 clearbo">
+        <p>向更多好友推荐和分享融和贷：</p>
+        <div class="bdsharebuttonbox">
+            <a class="bds_sqq" data-cmd="sqq" title="分享到ＱＱ"></a>
+            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+
+        </div>
+        <div class="invite_befriendbt invite_befriendbt2 yaoqing_Jl">邀请记录</div>
+    </div>
+</div>
+<div class="texnt_b"></div>
+<div class="big_ctin">
+    <div class="yq_Name">邀请好友记录</div>
+    <div class="on_close">X</div>
+    <div id="content_list">
+
+
+
+
+
+
+
+
+    </div>
+    <p style="text-align: right;font-size: 19px;color: #000;margin-top: 244px;">注：上述奖励以推荐期间内的平台活动内容为准。</p>
+</div>
+<div style="height: 65px;"></div>
+
+<script>
+    $('#user_mainId').text(user_id);
+    $.ajax({
+        url:'/?qrcode&user_id='+user_id,
+        type:'post',
+        dataType:'text',
+        data:{
+            //   user_id: user_id
+        },
+        success: function(r){
+            $('#inv_num3').append("<img src=" + r + ">")
+        }
+    })
+
+
+    window._bd_share_config = {
+        "common": {
+            "bdUrl":"http://{$smarty.server.SERVER_NAME}/index.php?user&q=reginvite&u={$_U.user_inviteid}",
+    {literal}
+    "bdSnsKey": {},
+    "bdText": "融和贷推荐好友",
+            "bdMini": "2",
+            "bdPic": "",
+            "bdStyle": "0",
+            "bdSize": "32"
+    },
+    "share": {},
+    "image": {"viewList": ["qzone", "tsina", "tqq", "renren", "weixin"], "viewText": "分享到：", "viewSize": "32"}
+    };
+    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+    diyou.use('users_spread', function (dy) {
+        dy.spreads_list()
+    })
+    diyou.use('users_spread', function (dy) {
+        dy.spreads_friend()
+    })
+    $('.yaoqing_Jl').click(function(){
+        $('.texnt_b').show();
+        $('.big_ctin').show();
+        $('.on_close').click(function(){
+            $('.texnt_b').hide();
+            $('.big_ctin').hide();
+        });
+    })
+</script>
+{/literal}
+{/if}

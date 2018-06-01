@@ -1,0 +1,129 @@
+
+<div class="fn_rig user_rig">
+    <div class="user_box">
+		{if $smarty.request.id==''}
+        <div class="add_bank">
+            <h2 class="fn_cle">添加银行卡</h2>
+            <div class="cont">
+                <div class="add_bank_cont">
+                    <form method="post" action="" id="bank_new_form">
+                        <div class="item">
+                            <label class="u_label">开户名:</label>
+                            <span class="u_span">
+                			 {$_G.user_result.realname|truncate:1}**
+                            </span>
+                            <span class="remark user_warning_c">*请添加相同开户名的银行卡</span>
+                        </div>
+                        <div class="item">
+                            <label class="u_label">选择银行:</label>
+                             {bank name="" class="u_sel" status=1 }
+                           
+                        </div>
+                        <div class="item">
+                            <label class="u_label">开户所在地:</label>
+                            {areas name="" class="u_sel" }
+                            
+                        </div>
+                        <div class="item">
+                            <label class="u_label">开户行:</label>
+                            <input type="text" class="u_input" name="branch" id="branch" />
+                        </div>
+                        <div class="item">
+                            <label class="u_label">银行卡卡号:</label>
+                            <input type="text" class="u_input" name="account"  id="account"/>
+                        </div>
+                        <div class="item">
+                            <label class="u_label">确认卡号:</label>
+                            <input type="text" class="u_input" name="confirm_account" id="confirm_account"/>
+                        </div>
+                        <div class="item">
+                            <label class="u_label">&nbsp;</label>
+                            <input type="submit" class="u_sub" value="保&nbsp;&nbsp;存" />
+
+                        </div>
+                        <div class="item">
+                            <div class="notice">
+                                <h4><i class="icon"></i><span>温馨提示</span></h4>
+                                <p>1、如果您填写的开户行支行不正确，可能将无法成功提现，由此产生的提现费用将不予返还。</p>
+                                <p>2、如果您不确定开户行支行名称，可打电话到所在地银行的营业网点询问或上网查询。</p>
+                                <p>3、不支持提现至信用卡账户。</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+		   {else}
+		      <div class="add_bank">
+            <h2 class="fn_cle">修改银行卡</h2>
+            <div class="cont">
+                <div class="add_bank_cont">
+                    <form method="post" action="" id="bank_edit_form">
+                        <div class="item">
+                            <label class="u_label">开户名:</label>
+                            <span class="u_span">{$_G.user_result.realname|truncate:1}**</span>
+                        </div>
+                        <div class="item">
+                            <label class="u_label">当前银行账号:</label>
+                            <span class="u_span">{$_U.account_bank_result.account}</span>
+                        </div>
+                        <div class="item">
+                            <label class="u_label">当前银行卡卡号:</label>
+                            <input type="text" class="u_input" name="now_account" id="now_account" />
+                            <span class="error" for="now_account"></span>
+                        </div>
+                        <div class="item">
+                            <label class="u_label">选择新银行:</label>
+                            {bank name="" class="u_sel"  status=1 bank_id=$_U.account_bank_result.bank  }
+						  </div>
+                        <div class="item">
+                            <label class="u_label">开户所在地:</label>
+                             {areas name="" class="u_sel" province_id=$_U.account_bank_result.province city_id=$_U.account_bank_result.city }
+                            </div>
+                        <div class="item">
+                            <label class="u_label">开户行:</label>
+                            <input type="text" class="u_input" name="branch" id="branch" value="{$_U.account_bank_result.branch}" />
+                        </div>
+                        <div class="item">
+                            <label class="u_label">新银行卡卡号:</label>
+                            <input type="text" class="u_input" name="account"  id="account"  />
+							<span class="error" id="now_account_w"></span>
+                        </div>
+                        <div class="item">
+                            <label class="u_label">确认新银行卡卡号:</label>
+                            <input type="text" class="u_input" name="confirm_account" id="confirm_account" />
+                        </div>
+                        <div class="item">
+                            <label class="u_label">手机验证码: </label>
+                            <input type="text" class="u_input w80" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" maxlength="6" value="" name="ajax_phone_code" id="ajax_phone_code">
+                            <input type="button" class="get_verty_btn" id="send_phonevalid" value="获取验证码"/>
+                            <span class="error" id="phoneverify" for="ajax_phone_code"></span>
+                        </div>
+                        <div class="item">
+                            <input type="hidden" name="id" value="{$_U.account_bank_result.id}"/>
+                            <label class="u_label">&nbsp;</label>
+                            <input type="submit" class="u_sub" value="确认修改" />
+                        </div>
+                        <div class="item">
+                            <div class="notice">
+                                <h4><i class="icon"></i><span>温馨提示</span></h4>
+                                <p>1、禁止信用卡套现</p>
+                                <p>2、禁止信用卡套现、虚假交易等行为,一经发现将予以处罚,包括但不限于：限制收款、
+				         冻结账户、永久停止服务,并有可能影响相关信用记录。</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+		   {/if}
+
+    </div>
+</div>
+
+{literal}
+<script type="text/javascript">
+    diyou.use('trust',function(dy){dy.bank_new("bank_new_form");dy.bank_edit("bank_edit_form")})
+    
+</script>
+{/literal}

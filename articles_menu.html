@@ -1,0 +1,49 @@
+{literal}
+<script type="text/javascript">
+	//登入注册的判断
+	$(document).ready(function(){
+		if(user_id != ''){
+			$('#useregister_01').click(function(){
+				window.location.href="/invest/index.html";
+			});
+		}else{
+			$('#useregister_01').click(function(){
+				window.location.href="/?user&q=login";
+			});
+		}
+
+			$('.art_menu ul li a:eq(0)').prepend('<i class="iconfont">&#xe613;</i>');
+			$('.art_menu ul li a:eq(1)').prepend('<i class="iconfont">&#xe612;</i>');
+			$('.art_menu ul li a:eq(2)').prepend('<i class="iconfont">&#xe616;</i>');
+			$('.art_menu ul li a:eq(3)').prepend('<i class="iconfont">&#xe615;</i>');
+			$('.art_menu ul li a:eq(4)').prepend('<i class="iconfont">&#xe614;</i>');
+			$('.art_menu ul li a:eq(5)').prepend('<i class="iconfont">&#xe610;</i>');
+
+		/*$('.art_menu ul li a:eq(0)').css({'background-image':'url(/dyweb/dythemes/rhd/images/about/posh.png)','background-position':'45px 10px'});
+		$('.art_menu ul li a:eq(1)').css({'background-image':'url(/dyweb/dythemes/rhd/images/about/posh.png)','background-position':'45px -34px'});
+		$('.art_menu ul li a:eq(2)').css({'background-image':'url(/dyweb/dythemes/rhd/images/about/posh.png)','background-position':'45px -81px'});
+		$('.art_menu ul li a:eq(3)').css({'background-image':'url(/dyweb/dythemes/rhd/images/about/posh.png)','background-position':'45px -135px'});*/
+	});
+
+
+</script>
+<style>
+	body{background:#fff;}
+</style>
+{/literal}
+
+
+<div class="art_menu" style="border-bottom: none;">
+	<!--<div id="useregister_01" style="cursor: pointer;"><a>立即注册</a></div>-->
+	<ul class="clear" style="border-bottom: 1px solid #d2d2d2;">
+		{loop module="admin" function="get_site_list" var="var" limit="all" pid=1 }
+		{if $var.nid!='welcome' && $var.nid!='privacy'}
+
+		<li {if $_G.site_result.nid==$var.nid}class="now"{/if}>
+			<a href="/{$var.nid}/index.html">{$var.name}</a>
+		</li>
+		{/if}
+		{/loop}
+	</ul>
+
+</div>

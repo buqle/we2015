@@ -1,0 +1,63 @@
+﻿{include file="header.html"}
+
+<div class="conbox t50">
+   <div class="borrow_pro">
+	   <div class="bread"><a href="#">我要借款</a>&nbsp;>&nbsp;申请额度</div>
+       {include file="users_loan_info_menu.html"}
+	   {articles module="borrow" function="get_type_one" var=type_var nid=$smarty.request.type_nid}
+           {articles module="borrow" function="get_amount_user" var=amount_var  user_id=$_G.user_id type=$type_var.amount_type}
+    	   <div class="bor_notice">
+    	     您目前的总{$amount_var.type_name}：<b class="num">{$amount_var.account_all|default:"0.00"}</b>元，可用{$amount_var.type_name}：<b class="num">{$amount_var.account_use|default:"0.00"}</b>元，冻结{$amount_var.type_name}：<b class="num">{$amount_var.account_frost|default:"0.00"}</b>元
+    	   </div>
+           
+	   <div class="bor_pro_apply">
+        
+		   <form name="loan_amount_form" action="" method="post" id="loan_amount_form">
+		         <div class="item">
+					 <label class="basic_label"><span class="warning_c">*</span>申请类型：</label>
+                     {loop function="get_amount_type_list" module="borrow" var="amount_type" status=1}
+                     <input type="radio" class="label_radio" name="amount_type" value="{$amount_type.nid}" {if $amount_type.nid==$type_var.amount_type&&$type_var.amount_type!="second"&&$type_var.amount_type!="worth"} checked="checked" {elseif ($type_var.amount_type=="second"||$type_var.amount_type=="worth")&&$amount_type.nid=="credit"} checked="true" {/if} />
+                     <label class="label_radio">{$amount_type.name}</label>
+                     {/loop}
+                     
+				 </div>
+                 {/articles}
+                 <div class="item">
+					 <label class="basic_label"><span class="warning_c">*</span>申请额度：</label>
+					 <input type="text" placeholder="请输入金额" class="basic_input" name="amount_account" id="amount_account" value="{$var.amount_account}">
+					 <span class="money_type">元</span>
+                     
+				 </div>
+		         <div class="item">
+					 <label class="basic_label">借款用途：</label>
+					 {linkages nid="borrow_use" name="borrow_use" type="value" class="borrow_sel" default="请选择"  value=$var.borrow_use}
+                     
+				 </div>
+		         <div class="item">
+					 <label class="basic_label">详细说明：</label>
+					 <textarea class="basic_txt" name="remark" >{$var.remark}</textarea>
+                     
+				 </div>
+		         <div class="item">
+					 <label class="basic_label">其他地方借款详细说明1111：</label>
+					 <textarea class="basic_txt" name="content">{$var.content}</textarea>
+                    
+				 </div>
+				 <div class="item txt_cent">
+					 <input type="submit" value="提交&nbsp;下一步" class="bor_pro_sub"/>
+					 <input type="button" id="return" value="返回" class="bor_pro_sub"/>
+				 </div>
+		   </form>	
+           {/articles}
+       </div>
+  </div>
+</div>
+
+
+{literal}
+<script type="text/javascript">
+diyou.use('borrow',function(dy){dy.amount_apply('loan_amount_form')})
+</script>
+{/literal}
+
+{include file="footer.html"}

@@ -1,0 +1,44 @@
+{include file="headers.html"}
+
+<div class="widthas">
+	<div class="widthb clearff redeem_procsc">
+		<div class="demm-cltit"><a href="/mall/index.html" target="_blank">融和积分</a>>>积分兑换</div>
+		<div class="cargo-listc1">
+			<h4>商品分类：</h4>
+			<p>
+				<span class="spantit"  att-id="">全部</span>
+				<span att-id="1">智能数码</span>
+				<span att-id="2">图书音像</span>
+				<span att-id="3">家居生活</span>
+				<span att-id="4">儿童母婴</span>
+				<span att-id="5">现金卡券</span>
+				<span att-id="6">精英座驾</span>
+			</p>
+		</div>
+		<dl class="cargo-listc2 clearff">
+			<dt class="lefton">
+				商品排序：
+				<span>人气 ↓ </span>
+				<span>最新 ↓ </span>
+				<span>积分 ↓ </span>
+			</dt>
+			<dd class="righton search clearff">
+				<input type="text" placeholder="请输入搜索关键词" class="lefton" value="" id="seache"/>
+				<button class="lefton" id="seache-btn"></button>
+			</dd>
+		</dl>
+		<div class="cargo-listc3 clearff">
+
+		</div>
+
+		<p style="font-size: 20px;color: #52acf7;text-align: center;line-height: 200px;display: none;" id="pouty">此类型暂无产品，敬请期待！</p>
+		<div id="Pagination" class="pagination"><!-- 这里显示分页 --></div>
+
+	</div>
+</div>
+{literal}
+<script>
+	diyou.use('mallist',function(t){t.mallist()})
+</script>
+{/literal}
+{include file="footer.html"}

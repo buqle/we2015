@@ -1,0 +1,13 @@
+<div class="dy_serv_agreement">
+  <div class="agreement_cont">
+  {articles module="articles" function="get_one_page" var="var" id=8 }
+		 {$var.contents}
+  {/articles}
+  </div>
+  <div class="t20 txt_cent"><input type="submit" class="user_sub_btn user_bg_c1" value="已阅读并同意此协议" id="agreement" /></div>
+</div>	
+{literal}
+<script type="text/javascript">
+diyou.use('index',function(dy){dy._read_agreement('agreement','dy_server')});
+</script>
+{/literal}

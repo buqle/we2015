@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/dyplugins/dyplupload/jquery.plupload.queue/css/jquery.plupload.queue.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{$tpldir}/css/blue/index.css" type="text/css" media="screen" />
+
+<!-- production -->
+<script type="text/javascript" src="/dyplugins/dyplupload/plupload.full.min.js?v=1"></script>
+<script type="text/javascript" src="/dyplugins/dyplupload/jquery.plupload.queue/jquery.plupload.queue.min.js"></script>
+<div class="w600">
+<div class="approve_warning">
+	     <h3>材料说明</h3>
+{articles module="attestations" nid={$smarty.request.nid} function="get_type_one" var="item"}
+		 <p>
+         {$item.remark|html_entity_decode}
+         </p>
+         
+</div>
+<form method="post" action="" id="upload_load">	
+    <input name="type_id" type="hidden" value="{$item.id}"/>
+    <input name="remark" type="hidden" value="{$item.name}"/>
+	<div id="uploader">
+		<p>Your browser doesn't have Flash, Silverlight or HTML5 support.</p>
+	</div>
+    
+    <div class="item txt_cent">
+			 <input type="submit" id="submit" value="提交审核" class="u_sub"/>
+              <span style="color:#f00;" id="uploadError"></span>
+    </div>
+</form>
+{/articles}
+</div>
+{literal}
+<script type="text/javascript">
+diyou.use('borrow',function(dy){dy.upload_load('uploader','upload_load')})
+</script>
+{/literal}

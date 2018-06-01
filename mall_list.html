@@ -1,0 +1,48 @@
+{include file="header.html"}
+	<div class="mall_cont t10">
+<div class="banner">
+    <div class="banner_slide" id="banner_slide">
+         {list module="scrollpic" function="get_list" type_nid='mall' limit="all" status="1" var=loop datacache="memcache" datacachename="index_banner" datacachenametimes="60*30"}
+	     <ul>
+		{foreach from=$loop.list item=item}
+		   <li><a href="{$item.url}" title="{$item.name}"><img src="{$item.scroll_pic_url}" /></a></li>
+		   <div style="display:none">{$item.url}</div>
+		{/foreach}  
+         </ul>
+		 <div class="banner_btn" id="banner_btn"> 	     
+		 </div>
+     {/list}
+	</div>	
+</div>
+  <div class="conbox">
+
+	  {include file="mall_list_menu.html"}
+	  <div class="mall_fr fr">
+	    <div class="integral_sta">
+		  <div class="inte_fl fl">您当前剩余积分 <span>{$_G.credit_result.credit_available|default:0}</span></div>
+		  <div class="search fr"><input type="text" value="" id="goodsname" name="name" class="basic_input" placeholder="搜索产品"><input type="button" class="mall_pro_sub" value="搜索" id="return"></div>
+		</div>
+		<div class="money_excerpt">按分值浏览 
+		<a href="javascript:;" class="active">不限<input type="radio" name="golds_rank" value=""/></a>
+		<a href="javascript:;">0-2000<input type="radio" name="golds_rank" value="1"/></a>
+		<a href="javascript:;">2000-3000<input type="radio" name="golds_rank" value="2"/></a>
+		<a href="javascript:;">3000-5000<input type="radio" name="golds_rank" value="3"/></a>
+		<a href="javascript:;">5000-10000<input type="radio" name="golds_rank" value="4"/></a>
+		<a href="javascript:;">10000-20000<input type="radio" name="golds_rank" value="5"/></a>
+		<a href="javascript:;">20000以上<input type="radio" name="golds_rank" value="6"/></a>
+		</div>
+		<div id="main_box_cont">
+			数据加载中.....
+		</div>
+	  </div><div class="cle"></div>
+	</div>
+  </div>
+  
+{literal}
+<script type="text/javascript">
+diyou.use('index', function (dy) {dy.banner_slide('banner_slide', 'banner_btn')});
+diyou.use('mall',function(m){m.goods_list()});
+
+</script>
+{/literal} 
+{include file="footer.html"}

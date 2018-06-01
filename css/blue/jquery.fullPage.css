@@ -1,0 +1,217 @@
+/**
+ * fullPage 1.4.5
+ * https://github.com/alvarotrigo/fullPage.js
+ * MIT licensed
+ *
+ * Copyright (C) 2013 alvarotrigo.com - A project by Alvaro Trigo
+ */
+html, body { margin: 0; padding: 0; }
+#superContainer { height: 100%; position: relative; }
+.section { position: relative; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.slide { float: left; }
+.slide, .slidesContainer { height: 100%; display: block; }
+.slides { height: 100%; overflow: hidden; position: relative; -webkit-transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -o-transition: all 0.3s ease-out; transition: all 0.3s ease-out; }
+.section.table, .slide.table { display: table; width: 100%; }
+.tableCell { display: table-cell; vertical-align: middle; width: 100%; height: 100%; }
+.slidesContainer { float: left; position: relative; }
+.controlArrow { position: absolute; top: 50%; cursor: pointer; width: 0; height: 0; border-style: solid; margin-top: -38px; }
+.controlArrow.prev { left: 15px; width: 0; border-width: 38.5px 34px 38.5px 0; border-color: transparent #fff transparent transparent; }
+.controlArrow.next { right: 15px; border-width: 38.5px 0 38.5px 34px; border-color: transparent transparent transparent #fff; }
+.scrollable { overflow: scroll; }
+.easing { -webkit-transition: all 0.7s ease-out; -moz-transition: all 0.7s ease-out; -o-transition: all 0.7s ease-out; transition: all 0.7s ease-out; }
+#fullPage-nav { position: fixed; z-index: 100; margin-top: -32px; top: 50%; opacity: 1; }
+#fullPage-nav.right { right: 17px; }
+#fullPage-nav.left { left: 17px; }
+.fullPage-slidesNav { position: absolute; z-index: 4; left: 50%; opacity: 1; }
+.fullPage-slidesNav.bottom { bottom: 17px; }
+.fullPage-slidesNav.top { top: 17px; }
+#fullPage-nav ul, .fullPage-slidesNav ul { margin: 0; padding: 0; }
+#fullPage-nav li, .fullPage-slidesNav li { display: block; width: 14px; height: 13px; margin: 7px; position: relative; }
+.fullPage-slidesNav li { display: inline-block; }
+#fullPage-nav li a, .fullPage-slidesNav li a { display: block; position: relative; z-index: 1; width: 100%; height: 100%; cursor: pointer; text-decoration: none; }
+#fullPage-nav li .active span, .fullPage-slidesNav .active span { background: #333; }
+#fullPage-nav span, .fullPage-slidesNav span { top: 2px; left: 2px; width: 8px; height: 8px; border: 1px solid #000; background: rgba(0, 0, 0, 0); -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; position: absolute; z-index: 1; }
+.fullPage-tooltip { position: absolute; color: #fff; font-size: 14px; font-family: arial, helvetica, sans-serif; top: -2px; }
+.fullPage-tooltip.right { right: 20px; }
+.fullPage-tooltip.left { left: 20px; }
+
+#menu { margin: 0; padding: 0; position: fixed; left: 10px; list-style-type: none; z-index: 70;top: 250px;width: 125px;}
+#menu li { float: left;  font-size: 14px;width: 125px; text-align: center; overflow: hidden;;background-color: #fff; line-height: 35px }
+#menudj_01{background:url(../../images/articles/sss001_03.png) no-repeat 10px center; }
+#menudj_02{background:url(../../images/articles/sss001_07.png) no-repeat 13px center;;}
+#menudj_03{background:url(../../images/articles/sss001_10.png) no-repeat 13px center;;}
+#menudj_04{background:url(../../images/articles/sss001_12.png) no-repeat 13px center;;}
+#menudj_05{background:url(../../images/articles/sss001_14.png) no-repeat 10px center;;}
+#menu a { float: leftcolor: #333; text-decoration: none; line-height: 30px;}
+#menu .active{ width: 125px;background-color: #46a3f0;}
+#menu .active a { color: #fff; }
+
+.section { position: relative; overflow: hidden;}
+.section .bg { position: absolute; left: 0; top: 0; width: 100%; height: 100%;}
+.middle { position: relative; width: 1000px; height: 100%;margin: 0 auto;overflow: hidden;}
+
+.section1 {  }
+/*
+.logo1 { position: absolute; left: 50%; top: 30px; z-index: 20; width: 169px; height: 65px; margin-left: -85px; text-indent: -9999px; background-image: url(logo.png); overflow: hidden;}
+.bg1-1 { background: url(http://www.dowebok.com/demo/2014/77/images/bg1-1.png) 50% 50% no-repeat;}
+.bg1-2 { background: url(http://www.dowebok.com/demo/2014/77/images/bg1-2.png) 50% 50% no-repeat;}*/.
+.bg1-3 { opacity: 0;}
+
+.left1 { position: absolute; left: -200%; top: 50%; width: 444px; height: 222px; margin: -160px 0 0 0; background:url(../../images/articles/helpcente01_03.jpg) no-repeat;}
+.right1 { position: absolute; left: 200%; top: 50%; width: 427px; height:235px; margin: -160px 0 0 70px;background:url(../../images/articles/helpcente01_06.png) no-repeat;}
+
+.section2 { }
+.left2 { position: absolute; left: -200%; top: 50%; width: 387px; height: 265px; margin: -160px 0 0 0; background:url(../../images/articles/helpcente01_14.jpg) no-repeat;}
+.right2 { position: absolute; left: 200%; top: 50%; width: 371px; height:183px; margin-top: -10px;background:url(../../images/articles/helpcente01_17.jpg) no-repeat;}
+
+
+.section3 {}
+.left3 { position: absolute; left: -200%; top: 50%; width: 287px; height: 403px; margin: -92px 0 0 0px;background:url(../../images/articles/helpcente02_06.gif) no-repeat;}
+.right3 { position: absolute; left: 200%; top: 50%; width: 595px; height: 404px;   margin: -230px 0 0 -100px;background:url(../../images/articles/helpcente02_03.gif) no-repeat;}
+.godown2 {
+    bottom:-100px;
+    height: 58px;
+    left: 50%;
+    margin-left: -299px;
+    position: absolute;
+    width: 204px;
+    z-index: 100;;
+}
+
+.godown2 span {
+    background: url(../../images/articles/helpcente01_11.png) no-repeat ;
+    display: block;
+    height: 58px;
+    width: 204px;
+}
+.godown2 span {
+    -webkit-animation: fade 3s infinite linear; animation: fade 3s infinite linear;;
+}
+/**/
+.section4 {}
+
+.left4 { position: absolute; left: -200%; top: 50%; width: 402px; height: 457px; margin: -230px 0 0 100px; background:url(../../images/articles/helpcente01_29.jpg) no-repeat;}
+.right4 { position: absolute; left: 200%; top: 50%; width: 320px; height: 328px; margin: -130px 0 0 10px; background:url(../../images/articles/helpcente01_32.jpg) no-repeat;}
+.godown3 {
+    bottom:-100px;
+    height: 58px;
+    left: 50%;
+    margin-left: -299px;
+    position: absolute;
+    width: 204px;
+    z-index: 100;;
+}
+
+.godown3 span {
+    background: url(../../images/articles/helpcente01_11.png) no-repeat ;
+    display: block;
+    height: 58px;
+    width: 204px;
+}
+.godown3 span {
+    -webkit-animation: fade 3s infinite linear; animation: fade 3s infinite linear;
+}
+/* donghua */
+.left { transition: all 1.5s;}
+.right { transition: all 1.5s;}
+.active .left, .ltie10 .left { left: 0;}
+.active .right, .ltie10 .right { left: 50%;}
+.godown span { -webkit-animation: fade 3s infinite linear; animation: fade 3s infinite linear;}
+@-webkit-keyframes fade {
+    0% { opacity: 1;}
+    50% { opacity: 0.3;}
+    100% { opacity: 1;}
+}
+@keyframes fade {
+    0% { opacity: 1;}
+    50% { opacity: 0.3;}
+    100% { opacity: 1;}
+}
+
+/* one */
+.active .bg1-3, .ltie10 .bg1-3 { opacity: 1; -webkit-animation: bg1-3 3s; animation: bg1-3 3s;}
+@-webkit-keyframes bg1-3 {
+    0% { opacity: 0;}
+    50% { opacity: 0;}
+    100% { opacity: 1;}
+}
+@keyframes bg1-3 {
+    0% { opacity: 0;}
+    50% { opacity: 0;}
+    100% { opacity: 1;}
+}
+
+/* two */
+.active .bg2-3, .ltie10 .bg2-3 { background-position: 50% 0; transition-delay: 0.5s;}
+.active .left2-1, .ltie10 .left2-1 { opacity: 1; transition-delay: 1.5s;}
+.active .left2-2,  .ltie10 .left2-2 { left: 38px; top: 0; opacity: 1; transition: all 1s ease 2.5s;}
+.active .tip, .ltie10 .tip { left: 62px; opacity: 1; transition: all 1s ease 3s;}
+.active .hand { -webkit-animation: hand 2s ease 3s; animation: hand 2s ease 3s;}
+@-webkit-keyframes hand {
+    0% { left: 300%;}
+    50% { left: 62px;}
+    70% { left: 62px;}
+    100% { left: 300%;}
+}
+@keyframes hand {
+    0% { left: 300%;}
+    50% { left: 62px;}
+    70% { left: 62px;}
+    100% { left: 300%;}
+}
+
+/* 3 */
+.active .bg3-3, .ltie10 .bg3-3 { background-position: 50% 50%; opacity: 1; transition-delay: 0.7s;}
+.active .bg3-4 .bg, .ltie10 .bg3-4 .bg { background-position: 50% 50%; opacity: 1; transition-duration: 1.5s; transition-delay: 1s;}
+.active .bg3-4 { -webkit-animation: bg3-4 3s ease infinite 2.5s; animation: bg3-4 3s ease infinite 2.5s;}
+@-webkit-keyframes bg3-4 {
+0 { opacity: 1;}
+50% { opacity: 0.3;}
+100 { opacity: 1;}
+}
+@keyframes bg3-4 {
+0 { opacity: 1;}
+50% { opacity: 0.3;}
+100 { opacity: 1;}
+}
+
+/* 4 */
+.active .left4-1, .ltie10 .left4-1 { left: 0; opacity: 1; transition: all 1s ease 1.5s;}
+.active .left4-2, .ltie10 .left4-2 { left: 0; opacity: 1; transition: all 1s ease 2.3s;}
+.active .left4-5, .ltie10 .left4-5 { opacity: 1; transition: all 1s ease 3s;}
+.active .left4-4, .active .left4-3, .ltie10 .left4-4, .ltie10 .left4-3 { opacity: 1; transition: all 1s ease 4s;}
+.active .dian, .ltie10 .dian { opacity: 1; transition: all 1s ease 4.5s; }
+.active .dian span { -webkit-animation: dian 2s infinite linear 4.5s; animation: dian 2s infinite linear 4.5s;}
+@-webkit-keyframes dian {
+    0% { -webkit-transform: scale(1, 1);}
+    100% { -webkit-transform: scale(2, 2);}
+}
+@keyframes dian {
+    0% { transform: scale(1, 1);}
+    100% { transform: scale(2, 2);}
+}
+
+
+
+
+.godown { 
+ bottom: 108px;
+    height: 58px;
+    left: 50%;
+    margin-left: -150px;
+    position: absolute;
+    width: 204px;
+    z-index: 100;
+	}
+.godown span { display: block; width: 204px; height: 58px;background:url(../../images/articles/helpcente01_11.png) no-repeat;}
+
+.link { position: absolute; height: 52px; text-indent: -9999px; overflow: hidden;}
+.a1-1 { width: 202px; left: 45px; bottom: 63px;}
+.a2-1 { width: 268px; left: 20px; bottom: 237px;}
+.a2-2 { width: 270px; left: 78px; bottom: 158px;}
+.a3-1 { width: 268px; left: 20px; bottom: 10px;}
+.a3-2 { width: 270px; right: 22px; bottom: 10px;}
+.a4-1 { width: 268px; left: 20px; bottom: 10px;}
+.a4-2 { width: 270px; right: 18px; bottom: 10px;}
+.a5-1 { width: 268px; left: 20px; bottom: 10px;}
+.a5-2 { width: 270px; right: 20px; bottom: 10px;}

@@ -1,0 +1,144 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", sans-serif;;
+    line-height: 1.5;
+    font-size: 16px;
+    color: #000;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+}
+
+button {
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+}
+
+a {
+    -webkit-touch-callout: none;
+    text-decoration: none;
+}
+
+:focus {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+em, i {
+    font-style: normal;
+}
+.section1{ height: 8.25rem;}
+.section2{ width: 14rem; margin: 0 auto;}
+.section3{ height: 4.6rem;}
+.section1 img,.section3 img,.on_ccing img,.section5 img{ width: 100%; height: 100%;}
+.p1{ height: 2.2rem;}
+.p1 .span1{ font-size: 1rem; font-weight: bold; line-height: 3rem;}
+.p1 .span2{ font-size: 0.8rem; line-height: 3rem; padding-left: 0.5rem;}
+.p2{ font-size: 0.8rem; height: 2.5rem; line-height: 1.5rem;}
+.sec2-div{ padding: 0.5rem; border: 0.05rem solid #FD565D; font-size: 0.7rem; line-height: 1rem; text-indent: 2em;}
+.teu_you{ background: #FD565D; padding: 1rem;}
+.inis,.unt{ color: white;}
+.in_insg{ color: white; font-size: 0.7rem; line-height: 1rem;}
+.un_kun{ font-size: 1rem;}
+.onluy{ height: 2rem; background: #424550; text-align: center; line-height: 2rem; font-size: 0.8rem; color: white;}
+.on_ccing{ height: 8.55rem;}
+.section5{ height: 14.5rem;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

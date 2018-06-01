@@ -1,0 +1,165 @@
+{include file="users_header.html"}
+
+<div class="reg_bg">
+	<div class="conbox">
+		<div class="member_reg">
+			<div class="reg_left fl" style="margin-left: 155px;">
+				<h2 class="new_regs">新用户注册</h2><div style="height: 20px;"></div>
+				<form name="reg_form" method="post" action="" id="reg_form">
+					<input type="hidden" id="reg_type" value="phone">
+					<input id="invest" type="hidden" class="basic_radio" name="user_role" value="1" checked="checked">
+					<div class="reg_item">
+						<label for="username" class="basic_label" style="width: 92px;">用户名</label>
+						<input id="username" name="username" type="text" class="basic_input" value=""/>
+					</div>
+					<div class="reg_item">
+						<label for="password" class="basic_label" style="width: 92px;">登录密码</label>
+						<input id="password" name="password" type="password" class="basic_input" value=""/>
+					</div>
+					<div class="pw_strength">
+						<div class="pw_bar"></div>
+						<div class="pw_letter">
+							<span class="tsl" data-phase-id="r_1_8">弱</span>
+							<span class="tsl" data-phase-id="r_1_9">中</span>
+							<span class="tsl" data-phase-id="r_1_10">强</span>
+						</div>
+					</div>
+					<div class="reg_item">
+						<label for="confirm_password" class="basic_label" style="width: 92px;">确认密码</label>
+						<input id="confirm_password" name="confirm_password" type="password" class="basic_input" value=""/>
+					</div>
+					<div class="reg_item" id="ph_style">
+						<label for="phone" class="basic_label" style="width: 92px;">手机号码</label>
+						<input type="text" class="basic_input" value="{$smarty.session.reg_data.phone}" name="phone" id="phone" maxlength="11">
+					</div>
+					<div class="reg_item verify_code" id="verify_code">
+						<label for="vericode" class="basic_label" style="width: 92px;">验证码</label>
+						<input id="vericode" name="valicode" type="text" class="basic_input" maxlength="4" value=""/>&nbsp;{valicode}
+					</div>
+					<div class="reg_item" >
+						<label for="" class="basic_label" style="width: 92px;">手机验证码</label>
+						<input style="width: 146px;"  name="vali_phone_code" type="text" class="basic_input" id="vali_phone_code"   maxlength="6" value=""/>
+						<input class="getPhones_Yzm getPhones_Cat" id="get_phone_code" type="button" value="获取手机验证码">
+					</div>
+					{if $smarty.session.reginvite_userid==""}
+					<div class="reg_item tuijian_img_t5one">
+						<label for="invite_username" class="basic_label" style="width: 92px;">推荐人</label>
+						<input id="invite_username" name="invite_username" type="text" class="basic_input" value=""/><label style="color: red; margin-left: 10px;">*可选填</label>
+					</div>
+					{else}
+					{if $smarty.session.invite_username!=""}
+					<div class="reg_item" style="width: 100%;">
+						<label for="" class="basic_label" style="font-size: 16px; width: 92px;">推荐人</label>
+						<input  name="" type="text" class="basic_input" style="font-size: 18px;color: red" value="{$smarty.session.invite_username}" disabled/>
+					</div>
+					{/if}
+					<input name="invite_userid" type="hidden" value="{$smarty.session.reginvite_userid}"/>
+					{/if}
+					{if $smarty.cookies.send_id!=""}
+					<input name="send_id" type="hidden" value="{$smarty.cookies.send_id}"/>
+					{/if}
+					<div class="reg_item cn_Iagain">
+						<label class="basic_label" style="width: 92px;">&nbsp;</label>
+						<input name="service" type="radio" checked="checked" id="dy_server"/>&nbsp;&nbsp;我同意&nbsp;&nbsp;<a href="javascript:;" class="user_f_c2" id="privacy">{articles module="articles"
+						function="get_one_page" var="var" id=8 }{$var.name}{/articles}</a>
+					</div>
+
+					<div class="reg_item">
+						<p><input type="submit" class="user_reg_sub" value="完成注册" id="reg_sub"/></p>
+					</div>
+					<div class="reg_item">
+						<p>已有账号？<a href="/?user&q=login" class="user_f_c2">立即登录</a></p>
+					</div>
+				</form>
+			</div>
+			<div class="fl">
+				<div style="height: 130px;"></div>
+				<img src="{$tpldir}/images/newimg/regBanner.jpg?v=2017803">
+			</div>
+			<div class="cle"></div>
+		</div>
+	</div>
+</div>
+
+
+<!--四月688红包-->
+<div class="large_cashbg" id="large_cashbgid1"></div>
+<div class="large_cashcont1" id="large_cashcont1id1">
+	<div class="large_cashcont2">
+		<div style="height: 319px"></div>
+		<div class="large_cashcont3">
+			<div class="close_put"></div>
+			<div style="height: 60px"></div>
+			<h2>恭喜您成为融和贷<span id="user_pm"></span>位注册用户，</h2>
+			<h2>688元现金红包已发放到您的账户。</h2>
+			<a href="/invest/index.html" class="lager_btn" style="margin-right: 18px;">立即投资</a>
+			<a href="/?user&user_role=1#account/red" class="lager_btn">查看红包</a>
+		</div>
+	</div>
+
+</div>
+<link rel="stylesheet" type="text/css" href="{$tpldir}/css/blue/maks.css?v=2016429">
+<script src="{$tpldir}/actives/finance/js/jquery.dialog.js"></script>
+<script src="{$tpldir}/actives/finance/js/jquery.drag.js"></script>
+<script src="{$tpldir}/actives/finance/js/jquery.mask.js"></script>
+{literal}
+<script type="text/javascript">
+	$(function(){
+		$('.close_put').click(function(){
+			$('.large_cashbg').hide();
+			$('.large_cashcont1').hide();
+			window.location.href="/?user&q=reg&type=phone";
+		});
+		$('.lc_holidaybtn').click(function(){
+			window.location.href="/?user&q=reg&type=phone";
+		})
+	});
+	/*var hayden = getCookie('name');
+	 if(hayden == 'hayden'){
+	 $('.large_cashbg').remove();
+	 $('.large_cashcont1').remove();
+	 }
+	 var username=document.cookie.split(";")[0].split("=")[1];
+	 function setCookie(name,value){
+	 document.cookie = name + "="+ escape (value)
+	 }
+	 function getCookie(name){
+	 var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+	 if(arr=document.cookie.match(reg))
+	 return unescape(arr[2]);
+	 else
+	 return null;
+	 }
+	 var date = new Date().getTime()/1000;
+	 if(date > 1459439999 && date < 1462031999){
+	 setCookie("name","hayden");
+	 }else {
+	 $('.large_cashbg').remove();
+	 $('.large_cashcont1').remove();
+	 }*/
+</script>
+{/literal}
+<!--四月688红包-->
+
+
+
+{literal}
+<script type="text/javascript">
+	diyou.use('users_reg', function (dy) {
+		dy.register('reg_form');
+	});
+	diyou.use('users_reg', function (dy) { dy.reg_phone_form('reg_phone_form');dy.get_phone_code('get_phone_code')});
+</script>
+{/literal}
+
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+		var hm = document.createElement("script");
+		hm.src = "//hm.baidu.com/hm.js?114bdc026b9ff4de87a6efb268dbea76";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+
+{include file="users_footer.html"}

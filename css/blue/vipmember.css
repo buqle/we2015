@@ -1,0 +1,131 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+ul, li {
+
+    list-style: none outside none;
+
+}
+
+.clear {
+
+    clear: both;
+
+}
+
+img {
+
+    border: 0 none;
+
+}
+
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+
+body {
+
+     font-family:"微软雅黑", "Arial Narrow";
+
+    font-size: 18px;
+    color: #666666;
+
+}
+
+.fl{ float:left;}
+
+.fr{ float:right;}
+
+/*pulsh*/
+.vipmember{ width: 100%; overflow: hidden; background: #f0f4f7; padding: 28px 0; height: auto;}
+#xiantiao{border-bottom:solid 1px #dddddd;width: 100%; padding: 10px 0;}
+
+.money_toseeem{ border:1px solid #dddddd; height: 36px; width: 162px; padding: 0 0 0 5px;}
+
+
+
+
+/*vipmember_info*/
+.vipmember_info{ width: 1148px; border:solid 1px #dddddd;  overflow: hidden; background: #ffffff; margin: 0 auto;}
+.info_titile{ border-bottom:solid 1px #dddddd; padding: 14px 28px;height: 20px; background: url(../../images/vipmember/beij.jpg) no-repeat 18px 5px;}
+.info_titile h1{ color: #666666; font-size: 18px; line-height: 20px; font-weight: normal; padding-left: 34px;}
+
+.info_cont{ padding: 18px 28px; width: 1092px; overflow: hidden; }
+#info_cont_fl{ height: 268px; border-right: solid 1px #dddddd; width:372px;  padding-right: 96px;}
+#info_cont_fl p{ line-height: 30px; font-size: 14px; color: #666666;}
+#info_cont_fl01{  height: 38px; width: 100%; margin-top: 46px; background: url(../../images/vipmember/beij.jpg) no-repeat -10px -150px; }
+#info_cont_fl01 span{ padding-left: 38px;color: #fff; font-size: 14px; line-height: 38px; width: 40%; float: left;}
+/*表单样式*/
+#info_cont_fr{ float: right; width: 550px; overflow: hidden;}
+#info_cont_fr label{ width: 100%;height: 70px; overflow: hidden; margin-bottom: 10px; display: block;color: #666666;line-height: 40px; font-size: 14px; }
+#info_cont_fr label span{ width: 30%; color: #666666; height: 70px; line-height: 40px; font-size: 14px;}
+#resemony{ width: 150px; height: 35px; line-height: 35px; border: solid 1px #ccc; padding-left: 5px; }
+#info_cont_fr label p{ font-size: 14px; color: #cccccc; padding-left: 70px; line-height: 25px;}
+.info_cont_fr_button{ text-align: center; line-height: 40px; background: url(../../images/vipmember/beij.jpg) no-repeat -10px -208px; cursor: pointer; width: 213px; height: 42px; overflow: hidden; border: 0; color: #fff; font-size: 14px; margin-left: 70px; font-family: "Microsoft YaHei","tahoma","arial","sans-serif";}
+.info_cont_fr_button a{ color: white; font-size: 18px;}
+/*vipmember_cont*/
+
+
+#tab{width: 1150px; position:relative;margin:71px auto;}
+#tab .tab_menu{width:100%;float:left;position:absolute;z-index:1;}
+#tab .tab_menu li{float:left;border-bottom:0px;cursor:pointer;text-align:center;
+background: url(../../images/vipmember/beij.png) no-repeat -8px -265px;width: 178px; height: 41px;
+ height: 41px;line-height: 41px; font-size: 16px;margin-right: 38px;}
+
+#tab .tab_box{width: 1148px;clear:both;top:41px;position:relative;border:1px solid #dddddd;background-color:#fff;}
+#tab .tab_menu .selected{background: url(../../images/vipmember/beij.png) no-repeat -9px -338px;}
+.hide{display:none;}
+.tab_box .blok{padding-bottom: 22px;padding-top: 44px;overflow: hidden;}
+
+.vipmember_cont01{ border-bottom: solid 1px #dddddd; width: 1090px; height: 179px; padding-left: 29px; padding-right: 29px;}
+#vipmember_cont01_fl{ width: 30%; float: left; overflow: hidden;}
+#vipmember_cont01_fr{ width: 65%; float: right; overflow: hidden; padding-top: 30px;}
+#vipmember_cont01_fr p{  color: #666; font-size: 16px; line-height: 30px;}
+#vipmember_cont01_fr span{ color: #59a9e8;}
+
+.vipmember_cont03{ padding-bottom: 20px;  width: 100%;overflow: hidden;}
+.vipmember_cont03_fl{  padding:0 0 0 20px; float: left;}
+#vipmember_cont03_fr{width: 60%; float: right; overflow: hidden; padding-top: 130px;}
+#vipmember_cont03_fr h1{color: #666666; font-size: 36px; line-height: 60px; font-weight: normal;}
+#vipmember_cont03_fr p{ color: #666; font-size: 14px; line-height: 35px;}
+#vipmember_cont03_fr span{color: #666; font-size: 14px;   padding: 8px 0; display: block;}
+#vipmember_cont03_fr b{}
+/*预定计划*/
+.vipmember_ydjh{/*padding-bottom: 44px;padding-top: 44px;*/overflow: hidden;}
+.vipmember_ydjh01{ padding-left: 70px; padding-right: 70px; width: 1008px; height: 83px;}
+.vipmember_ydjh01 li{ height: 83px; text-align: center; width: 252px; float: left; line-height:83px; font-size: 16px; }
+
+
+.vipmember_ydjh02{ background: url(../../images/vipmember/xxx_03.png); }
+
+.vipmember_ydjh02 li{width: 1008px; height: 70px;padding-left: 70px; padding-right: 70px;}
+.vipmember_ydjh02 div{ height: 70px; text-align: center; width: 252px; float: left; line-height:70px; color: #666; font-size: 16px; overflow: hidden;}
+
+.ton_vip_messige{ font-size: 20px; color: #000000; height: 50px; line-height: 50px; padding: 0 0 0 25px;}
+.ton_vip_menber{ font-size: 16px; color: #666; height: 35px; line-height: 35px; padding: 0 0 0 25px;}
+.ton_vip_misne{ padding: 10px 25px 10px 25px; font-size: 16px; color: #666; line-height: 28px;}
+.vip_mover{ height: 210px; width: 1040px; border-radius: 8px; background: #DEEBF4; margin: 0 auto;}
+.vip_mover p{ font-size: 16px; color: #666; line-height: 52px; padding: 0 0 0 25px;}
+.ton_vip_mains1{ height: 400px; width: 1040px; border:3px solid #595959; margin: 0 auto; border-radius: 8px;}
+.ton_vip_miss_koll{ height: 80px; background: #445F72;}
+.ton_vip_miss_koll span{ font-size: 18px; color: white; height: 80px; width: 25%; display: block; float: left; line-height: 80px; text-align: center;}
+.ton_vip_miss_kill{ height: 50px; border-bottom: 1px solid #C1C1C1;}
+.ton_vip_miss_kill span{font-size: 16px; color: #3b3b3b; height: 50px; width: 24.9%; display: block; float: left; line-height: 50px; text-align: center; border-left: 1px solid #C1C1C1;}
+.cptd_vip{ height: 141px; background: url("../../images/vipmember/chpt_img_03.png") 25px 0px no-repeat;}
+.cptd_vip p{font-size: 16px; line-height: 35px; color: #666; padding: 0 0 0 500px;}
+.ton_vip_messige1{ height: 165px; width: 720px; border-radius: 8px; background: #DEEAF4; margin: 0 auto; padding: 20px 50px;}
+.ton_vip_messige1 p{ font-size: 16px; line-height: 32px; color: #666;}
+.fxcs_img{ background: url("../../images/vipmember/utu_08.jpg") 25px 0 no-repeat; height: 402px;}
+.fxcs_img p{ font-size: 16px; line-height: 35px; color: #666; padding: 0 0 0 500px;  font-weight:bold;}
+.ton_tommontine{ height: 105px; width: 790px; border-radius: 8px; background: #DEEAF4; margin: 0 auto; padding: 15px;}
+.ton_tommontine p{ height: 27px; }
+.ton_tommontine p span{ height: 27px; float: left; display: block; font-size: 16px; color: #666; line-height: 27px;}
+.ton_boyse{ width: 608px; height: 519px; margin: 0 auto;}
+.tushi_ton{ width: 970px; margin: 0 auto; background: #DEEAF4; text-indent: 2em; font-size: 16px; line-height: 25px; padding: 25px;}

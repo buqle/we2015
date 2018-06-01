@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+ul, li {
+
+    list-style: none outside none;
+
+}
+.clearc{zoom:1;}
+
+.clearc:after {
+    content: "";
+    display: block;
+    clear: both;}
+
+img {
+
+    border: 0 none;
+
+}
+
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+
+body {
+
+    font-family:"微软雅黑";
+
+    font-size: 16px;background: #edeeea;
+
+}
+
+.guarantee_con1{ background: url(../images/b1.jpg) center no-repeat;width: 100%;overflow:hidden; height: 1080px;position: relative;}
+.guarantee_con1 h4{position: absolute;text-align: center;width: 100%;color: #fff;font-size: 71px;font-weight: bold;top: 120px;}
+.guarantee_bg1{background: #a39ea3;width: 1198px;margin: 0 auto;filter:alpha(opacity:60); opacity:0.6;border: 1px dashed #5f5959;position: absolute;left: 50%;top: 399px;margin-left: -600px;}
+.guarantee_bg2{width: 1142px;margin: 32px auto;border: 1px solid #e1dcdf;padding: 36px 0 36px 0;}
+.guarantee_bg2 p{font-size: 24px;color: #00001c;width: 1016px;margin: 0 auto;line-height: 36px;text-indent: 2em;}
+
+

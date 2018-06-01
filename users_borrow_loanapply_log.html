@@ -1,0 +1,69 @@
+{if $smarty.request.type=='list'}
+		      <table class="user_tab3 bor_none">
+						<tbody>
+						  <tr class="tab3_tit">
+							<td width="18%">名称</td>
+							<td width="10%">金额</td>
+							<td width="10%">期限</td>
+							<td width="10%">年化回报率</td>
+							<td width="20%">还款方式</td>
+							<td width="10%">时间</td>
+							<td width="10%">状态</td>
+						  </tr>	
+                          {list module="borrow" function="get_apply_list" var=loop  user_id=$_G.user_id status=$smarty.request.status page=$smarty.request.page+1 epage=10}
+                          {foreach from=$loop.list item=item}
+						  <tr>
+							<td>{$item.titles}</td>
+							<td>{$item.account|string_format:"%0.2f"}元</td>
+							<td>{$item.borrow_period}个月</td>
+							<td>{$item.borrow_apr}%</td>	
+							<td>{if $item.borrow_style == 'month'}等额本息{elseif $item.borrow_style == 'season'} 按季还款{elseif $item.borrow_style == 'end'}到期还本还息 {elseif $item.borrow_style == 'endmonth'}按月付息 {elseif $item.borrow_style == 'endday'}按天计息，到期还本息{elseif $item.borrow_style == 'endmonths'}按月付息到期还本{/if} </td>	
+							<td>{$item.addtime|date_format}</td>
+							<td>{if $item.status == 1}已通过{else if $item.status == 2}未通过{else}待审核{/if}</td>	
+						  </tr>	
+                          {/foreach}
+                          				 	
+						</tbody>
+						<tfoot> 
+						<tr>
+						 <td colspan="8">
+                         {if $loop.total>0}
+                         <div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+                         {/if}
+                         </td>
+						</tr>
+						</tfoot>
+                        {/list}
+					 </table>
+{else}
+{include file="users_main_header.html"}
+<div style="background:#fff; overflow:hidden; width:100%;min-width:1150px;">
+<div class="conbox t20 fn_cle user_cont">
+{include file="users_menu.html"}
+<div class="fn_rig user_rig">
+	   <div class="user_box">
+		   <div class="extend">
+					<h2 class="fn_cle bor_bot_none">
+						 <span class="fn_left">借款申请记录</span>
+						 <select class="u_sel fn_rig" id="status">
+							<option selected="selected" value="">全部</option>
+						  <option value="3">待审核</option>
+                          <option value="1">已通过</option>
+                          <option value="2">未通过</option>
+						 </select>
+					</h2>
+                  <div class="cont" id="content_box">	   
+					  
+		           </div>				  
+		   </div>
+	   </div>
+	</div>
+</div>
+</div>
+{include file="users_footer.html"}
+<script type="text/javascript">
+{literal}
+diyou.use('users_loan',function(dy){dy.borrow_loanapply_log()})
+</script>
+{/literal}
+{/if}

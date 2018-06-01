@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+ul, li {
+
+    list-style: none outside none;
+
+}
+.clearc{zoom:1;}
+
+.clearc:after {
+    content: "";
+    display: block;
+    clear: both;}
+
+img {
+
+    border: 0 none;
+
+}
+
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+
+body {
+
+    font-family:"微软雅黑";
+
+    font-size: 16px;background: #edeeea;
+
+}
+
+// 页面体
+.qnaire{
+	width: 1000px;
+	height: 1757px;
+	margin:0 auto;
+	background-color: red;
+}

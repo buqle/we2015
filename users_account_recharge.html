@@ -1,0 +1,309 @@
+{if $smarty.request.type=='ok'}
+  <div class="recharge_box">
+	    <p>请您在新打开的网上银行页面进行支付，支付完成前请不要关闭该窗口！</p>
+	    <p>如果浏览器未打开新窗口请点击<a href="/?user&m=account/recharge/diyou_recharge" target="_blank"><u><b><font color="#FF0000">这里打开新窗口</font></b></u></a>进行支付.</p>
+	    <div class="recharge_edit">
+			<a href="/?user&m=account/recharge/recharge_log">已完成支付</a>
+			<a href="/help/index.html">支付遇到问题</a>
+		</div>
+	    <a href="/?user&m=account/recharge" class="a_link">返回重新选择银行</a>
+	 </div>
+{else}
+{include file="users_main_header.html"}
+<div style="background:#fff; overflow:hidden; width:100%; min-width:1150px;">
+<div class="conbox t20 fn_cle user_cont">
+
+{include file="users_menu.html"}
+<div class="fn_rig user_rig">
+	   <div class="user_box">
+		   <div class="fund_manage">
+				  <h2 class="fn_cle">
+				     <span class="fn_left">充值</span>
+				     <span class="fn_rig">
+					   <a href="/?user&m=account/recharge/recharge_log">充值记录</a>
+					 </span>
+				  </h2>
+				  <div class="cont">
+				     <div class="user_withdraw">
+					 <div class="notice">
+					    <p><i class="icon"></i><span>所有投标保证金将由第三方平台托管。<span></p>
+					    <p><i class="icon"></i><span>平台禁止信用卡套现、虚假交易等行为，一经发现将予以处罚，包括但不限于:限制收款、冻结账户，永久停止服务等。<span></p>
+					 </div>
+						 <form action="/?user&m=account/recharge/new" method="post" id="recharge" >
+                               <input type="hidden" name="query_type"  class="input_border"  value="new" />
+                               <input type="hidden" name="type"  class="input_border"  value="1" alt="网上充值"  />
+							<div class="item fn_cle">
+							   <label  class="u_label fn_left">充值类型:</label>
+							   <div class="recharge_bank fn_cle">
+							       <div class="fn_left">
+                                   <div class="tab_op">
+                                         <!--支付方式-->
+                                       {list function='get_payment_list' module='account' var=loop status=1}
+                                        {foreach from=$loop.list item=var key=key}
+                    					{if $var.nid!="offline"}
+                                        <label class="recharge_label"><input  type="radio" name="payment" value="{$var.nid}" {if $key==0}checked="checked"{/if}><img width="125px" height="32px" src="{if $var.fileurl neq null}{$var.fileurl}{else}{$tpldir}/images/payment/{$var.logo_name}.gif{/if}"></label>
+                    					{/if}
+                                        {/foreach}
+                                        {/list}
+                                   </div>
+                                <div id="tab_content" class="tab_cont"></div>
+                                   
+								   </div>
+							   </div>
+							</div>
+						    <div class="item fn_cle">
+							   <label class="u_label">充值金额:</label>
+							   <div class="fn_left money_txt">
+								 <input type="text" class="u_input" onkeyup="value=value.replace(/[^0-9Xx|.]/g,'')" name="money" id="money">
+								 <span class="money_type">元</span>
+                                 <span class="user_warning_c" id="money_error"></span>
+							   </div>
+							</div>
+							<div class="item">
+							   <label class="u_label">充值手续费:</label>
+							   <span class="u_span user_f_c1" id="fee">￥0.00</span>
+							</div>
+							<div class="item">
+							   <label class="u_label">实际到账金额:</label>
+							   <span class="u_span user_f_c1" id="account">￥0.00</span>
+							</div>
+							<div class="item verify_code">
+								<label class="u_label">验证码: </label>
+								<input type="text" class="u_input w80" maxlength="4" name="valicode" id="valicode">                                
+								<span id="valicode_container">{valicode}</span>
+                                <span class="user_warning_c" id="valicode_error"></span>
+							</div>
+							<div class="item">
+								<label class="u_label">&nbsp; </label>
+								<input type="submit" class="recharge" value="充&nbsp;&nbsp;值">
+							</div>
+						 </form>
+					 </div>
+				  </div>	  
+		   </div>
+	   </div>
+	</div>
+    <div class="tab_cont" style="display:none;">
+                                   {list function='get_payment_list' module='account' var=loop status=1}
+                                        {foreach from=$loop.list item=var key=key}
+                    					{if $var.nid=="hfpay"}
+                                        <!--汇付宝支付支持的银行-->
+                                       <div id="{$var.nid}" class="tab_card">
+                                           <label class="recharge_label"><input checked="checked"  type="radio" name="rechar_bank" value="001"><img src="{$tpldir}/images/bank/ICBC.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="005"><img src="{$tpldir}/images/bank/ABC.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="004"><img src="{$tpldir}/images/bank/BOC.jpg"></label>
+										   
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="003"><img src="{$tpldir}/images/bank/CCB.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="002"><img src="{$tpldir}/images/bank/CMB.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="006"><img src="{$tpldir}/images/bank/COMM.jpg"></label>
+										   
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="008"><img src="{$tpldir}/images/bank/CGB.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="013"><img src="{$tpldir}/images/bank/CMBC.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="014"><img src="{$tpldir}/images/bank/HXB.jpg"></label>
+                                         
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="011"><img src="{$tpldir}/images/bank/CIB.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="007"><img src="{$tpldir}/images/bank/SPDB.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="009"><img src="{$tpldir}/images/bank/ECITIC.jpg"></label>
+                                           
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="020"><img src="{$tpldir}/images/bank/PSBC.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="010"><img src="{$tpldir}/images/bank/CEB.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank " value="024"><img src="{$tpldir}/images/bank/NB.jpg" width="125px" height="32px"></label>
+										   
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="012"><img src="{$tpldir}/images/bank/PINGAN.jpg" width="125px" height="32px"></label>
+                                    </div>
+                                        {/if}
+                                        {if $var.nid=="baopay"}
+                                        <!--宝付支付支持的银行-->
+                                        <div id="{$var.nid}" class="tab_card">
+                                       <label class="recharge_label"><input checked="checked" type="radio" name="rechar_bank" value="3002"><img src="{$tpldir}/images/bank/ICBC.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="3005"><img src="{$tpldir}/images/bank/ABC.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="3026"><img src="{$tpldir}/images/bank/BOC.jpg"></label>
+									   
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="3003"><img src="{$tpldir}/images/bank/CCB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="3001"><img src="{$tpldir}/images/bank/CMB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="3020"><img src="{$tpldir}/images/bank/COMM.jpg"></label>
+									   
+                                       <label class="recharge_label"><input type="radio" name="rechar_bank" value="3036"><img src="{$tpldir}/images/bank/CGB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="3006"><img src="{$tpldir}/images/bank/CMBC.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="3050"><img src="{$tpldir}/images/bank/HXB.jpg"></label>
+									   
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="3009"><img src="{$tpldir}/images/bank/CIB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="3004"><img src="{$tpldir}/images/bank/SPDB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="3039"><img src="{$tpldir}/images/bank/ECITIC.jpg"></label>
+                                       
+                                       <label class="recharge_label"><input type="radio" name="rechar_bank" value="3038"><img src="{$tpldir}/images/bank/PSBC.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="3022"><img src="{$tpldir}/images/bank/CEB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="3032"><img src="{$tpldir}/images/bank/BEIJING.jpg"></label>
+									   
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="3034"><img src="{$tpldir}/images/bank/CBHB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="3033"><img src="{$tpldir}/images/bank/HKBEA.jpg"></label>
+                                       <label class="recharge_label"><input type="radio" name="rechar_bank" value="3046"><img src="{$tpldir}/images/bank/NB.jpg" width="125" height="32"></label>
+									   
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="3059"><img src="{$tpldir}/images/bank/SHANGHAI.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="3035"><img src="{$tpldir}/images/bank/PINGAN.jpg"></label>
+                                    </div>
+                                    {/if}
+                                    {if $var.nid=="tongpay"}
+                                    <!--通联支付支持的银行-->
+                                    <div id="{$var.nid}" class="tab_card">
+                                           <label class="recharge_label"><input checked="checked"  type="radio" name="rechar_bank" value="icbc"><img src="{$tpldir}/images/bank/ICBC.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="abc"><img src="{$tpldir}/images/bank/ABC.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="boc"><img src="{$tpldir}/images/bank/BOC.jpg"></label>
+										   
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="ccb"><img src="{$tpldir}/images/bank/CCB.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="cmb"><img src="{$tpldir}/images/bank/CMB.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="comm"><img src="{$tpldir}/images/bank/COMM.jpg"></label>
+										   
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="cgb"><img src="{$tpldir}/images/bank/CGB.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="cmbc"><img src="{$tpldir}/images/bank/CMBC.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="cib"><img src="{$tpldir}/images/bank/CIB.jpg"></label>                                       
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="spdb"><img src="{$tpldir}/images/bank/SPDB.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="citic"><img src="{$tpldir}/images/bank/ECITIC.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="psbc"><img src="{$tpldir}/images/bank/PSBC.jpg"></label>
+										   
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="ceb"><img src="{$tpldir}/images/bank/CEB.jpg"></label>
+                                          <label class="recharge_label"><input type="radio" name="rechar_bank" value="bos"><img src="{$tpldir}/images/bank/SHANGHAI.jpg"></label>
+                                          <label class="recharge_label"><input type="radio" name="rechar_bank" value="pingan"><img src="{$tpldir}/images/bank/PINGAN.jpg"></label>
+										  
+                                          <label class="recharge_label"><input type="radio" name="rechar_bank" value="vbank">虚拟银行<img src="{$tpldir}/images/bank/PINGAN.jpg"></label>
+                                    </div>
+                                    {/if}
+                                    {if $var.nid=="yisheng"}
+                                    <!--易生支付支持的银行-->
+                                    <div id="{$var.nid}" class="tab_card">
+                                       <label class="recharge_label"><input checked="checked" type="radio" name="rechar_bank" value="ICBC"><img src="{$tpldir}/images/bank/ICBC.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="ABC"><img src="{$tpldir}/images/bank/ABC.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="BOCSH"><img src="{$tpldir}/images/bank/BOC.jpg"></label>
+									   
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="CCB"><img src="{$tpldir}/images/bank/CCB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="CMB"><img src="{$tpldir}/images/bank/CMB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="HSBC"><img src="{$tpldir}/images/bank/COMM.jpg"></label>
+									   
+                                      
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="CMBC"><img src="{$tpldir}/images/bank/CMBC.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="HXB"><img src="{$tpldir}/images/bank/HXB.jpg"></label>
+									   
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="CIB"><img src="{$tpldir}/images/bank/CIB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="SPDB"><img src="{$tpldir}/images/bank/SPDB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="CITIC"><img src="{$tpldir}/images/bank/ECITIC.jpg"></label>
+                                       
+                                       <label class="recharge_label"><input type="radio" name="rechar_bank" value="PSBC"><img src="{$tpldir}/images/bank/PSBC.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="CEB"><img src="{$tpldir}/images/bank/CEB.jpg"></label>									   
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="SDB"><img src="{$tpldir}/images/bank/PINGAN.jpg" width="125px" height="32px"></label>
+                                           
+                                    </div>
+                                    {/if}
+                                    
+                                    {if $var.nid=="hcpay"}
+                                    <!--汇潮支付支持的银行-->
+                                    <div id="{$var.nid}" class="tab_card">
+                                           <label class="recharge_label"><input checked="checked" type="radio" name="rechar_bank" value="ICBC"><img src="{$tpldir}/images/bank/ICBC.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="ABC"><img src="{$tpldir}/images/bank/ABC.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="BOCSH"><img src="{$tpldir}/images/bank/BOC.jpg"></label>
+									   
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="CCB"><img src="{$tpldir}/images/bank/CCB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="CMB"><img src="{$tpldir}/images/bank/CMB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="BOCOM"><img src="{$tpldir}/images/bank/COMM.jpg"></label>
+									   
+                                       <label class="recharge_label"><input type="radio" name="rechar_bank" value="GDB"><img src="{$tpldir}/images/bank/CGB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="CMBC"><img src="{$tpldir}/images/bank/CMBC.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="HXB"><img src="{$tpldir}/images/bank/HXB.jpg"></label>
+									   
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="CIB"><img src="{$tpldir}/images/bank/CIB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="SPDB"><img src="{$tpldir}/images/bank/SPDB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="CNCB"><img src="{$tpldir}/images/bank/ECITIC.jpg"></label>
+                                       
+                                       <label class="recharge_label"><input type="radio" name="rechar_bank" value="PSBC"><img src="{$tpldir}/images/bank/PSBC.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="CEB"><img src="{$tpldir}/images/bank/CEB.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="BCCB"><img src="{$tpldir}/images/bank/BEIJING.jpg"></label>
+									   
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="BOS"><img src="{$tpldir}/images/bank/SHANGHAI.jpg"></label>
+									   <label class="recharge_label"><input type="radio" name="rechar_bank" value="PAB"><img src="{$tpldir}/images/bank/PINGAN.jpg"></label>
+                                    </div>
+                                    {/if}
+									
+									{if $var.nid=="fengfu"}
+                                    <!--通联支付支持的银行-->
+                                    <div id="{$var.nid}" class="tab_card">
+                                           <label class="recharge_label"><input checked="checked"  type="radio" name="rechar_bank" checked value="icbc"><img src="{$tpldir}/images/bank/ICBC.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="abc"><img src="{$tpldir}/images/bank/ABC.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="boc"><img src="{$tpldir}/images/bank/BOC.jpg"></label>
+										   
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="ccb"><img src="{$tpldir}/images/bank/CCB.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="cmb"><img src="{$tpldir}/images/bank/CMB.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="comm"><img src="{$tpldir}/images/bank/COMM.jpg"></label>
+										   
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="cgb"><img src="{$tpldir}/images/bank/CGB.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="cmsb"><img src="{$tpldir}/images/bank/CMBC.jpg"></label>
+                                                                                  
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="spdb"><img src="{$tpldir}/images/bank/SPDB.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="cncb"><img src="{$tpldir}/images/bank/ECITIC.jpg"></label>
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="psbc"><img src="{$tpldir}/images/bank/PSBC.jpg"></label>
+										   
+                                           <label class="recharge_label"><input type="radio" name="rechar_bank" value="ceb"><img src="{$tpldir}/images/bank/CEB.jpg"></label>
+                                          <label class="recharge_label"><input type="radio" name="rechar_bank" value="shb"><img src="{$tpldir}/images/bank/SHANGHAI.jpg"></label>
+                                          <label class="recharge_label"><input type="radio" name="rechar_bank" value="pab"><img src="{$tpldir}/images/bank/PINGAN.jpg"></label>
+										  <label class="recharge_label"><input type="radio" name="rechar_bank" value="bjb"><img src="{$tpldir}/images/bank/BEIJING.jpg"></label>
+                                    </div>
+                                    {/if}
+        {if $var.nid=='chinapnr'}
+        <!--汇付天下-->
+        <div id="{$var.nid}" class="tab_card">
+            个人账户:<br />
+            <label class="recharge_label"><input checked="checked"  type="radio" name="rechar_bank" checked value="J0"><img src="{$tpldir}/images/bank/ICBC.jpg"></label>
+
+            <!--<label class="recharge_label"><input type="radio" name="rechar_bank" value="71"><img src="{$tpldir}/images/bank/ABC.jpg"></label>-->
+            <label class="recharge_label"><input type="radio" name="rechar_bank" value="J5"><img src="{$tpldir}/images/bank/BOC.jpg"></label>
+
+            <label class="recharge_label"><input type="radio" name="rechar_bank" value="JF"><img src="{$tpldir}/images/bank/CCB.jpg"></label>
+            <label class="recharge_label"><input type="radio" name="rechar_bank" value="JH"><img src="{$tpldir}/images/bank/CMB.jpg"></label>
+            <label class="recharge_label"><input type="radio" name="rechar_bank" value="J4"><img src="{$tpldir}/images/bank/COMM.jpg"></label>
+
+            <!--<label class="recharge_label"><input type="radio" name="rechar_bank" value="cgb"><img src="{$tpldir}/images/bank/CGB.jpg"></label>-->
+            <!--<label class="recharge_label"><input type="radio" name="rechar_bank" value="cmsb"><img src="{$tpldir}/images/bank/CMBC.jpg"></label>-->
+
+            <!--<label class="recharge_label"><input type="radio" name="rechar_bank" value="J8"><img src="{$tpldir}/images/bank/SPDB.jpg"></label>-->
+
+            <label class="recharge_label"><input type="radio" name="rechar_bank" value="JL"><img src="{$tpldir}/images/bank/ECITIC.jpg"></label>
+            <label class="recharge_label"><input type="radio" name="rechar_bank" value="JE"><img src="{$tpldir}/images/bank/SHANGHAI.jpg"></label>
+            <!--<label class="recharge_label"><input type="radio" name="rechar_bank" value="psbc"><img src="{$tpldir}/images/bank/PSBC.jpg"></label>-->
+
+            <label class="recharge_label"><input type="radio" name="rechar_bank" value="JC"><img src="{$tpldir}/images/bank/CEB.jpg"></label>
+            <label class="recharge_label"><input type="radio" name="rechar_bank" value="J7"><img src="{$tpldir}/images/bank/CMBC.jpg"></label>
+            <!--<label class="recharge_label"><input type="radio" name="rechar_bank" value="JK"><img src="{$tpldir}/images/bank/PINGAN.jpg"></label>-->
+            <!--<label class="recharge_label"><input type="radio" name="rechar_bank" value="JK"><img src="{$tpldir}/images/bank/BEIJING.jpg"></label>-->
+            <br />企业帐号:<br />
+            <label class="recharge_label"><input type="radio" name="rechar_bank"  value="70"><img src="{$tpldir}/images/bank/ICBC.jpg"></label>
+            <label class="recharge_label"><input type="radio" name="rechar_bank" value="71"><img src="{$tpldir}/images/bank/ABC.jpg"></label>
+            <label class="recharge_label"><input type="radio" name="rechar_bank" value="79"><img src="{$tpldir}/images/bank/BOC.jpg"></label>
+
+            <label class="recharge_label"><input type="radio" name="rechar_bank" value="82"><img src="{$tpldir}/images/bank/CCB.jpg"></label>
+            <label class="recharge_label"><input type="radio" name="rechar_bank" value="78"><img src="{$tpldir}/images/bank/CMB.jpg"></label>
+            <label class="recharge_label"><input type="radio" name="rechar_bank" value="80"><img src="{$tpldir}/images/bank/COMM.jpg"></label>
+
+            <!--<label class="recharge_label"><input type="radio" name="rechar_bank" value="cgb"><img src="{$tpldir}/images/bank/CGB.jpg"></label>-->
+            <!--<label class="recharge_label"><input type="radio" name="rechar_bank" value="cmsb"><img src="{$tpldir}/images/bank/CMBC.jpg"></label>-->
+
+            <label class="recharge_label"><input type="radio" name="rechar_bank" value="76"><img src="{$tpldir}/images/bank/SPDB.jpg"></label>
+            <!--<label class="recharge_label"><input type="radio" name="rechar_bank" value="JL"><img src="{$tpldir}/images/bank/ECITIC.jpg"></label>-->
+            <!--<label class="recharge_label"><input type="radio" name="rechar_bank" value="psbc"><img src="{$tpldir}/images/bank/PSBC.jpg"></label>-->
+
+            <label class="recharge_label"><input type="radio" name="rechar_bank" value="74"><img src="{$tpldir}/images/bank/CEB.jpg"></label>
+            <!--<label class="recharge_label"><input type="radio" name="rechar_bank" value="shb"><img src="{$tpldir}/images/bank/SHANGHAI.jpg"></label>-->
+            <!--<label class="recharge_label"><input type="radio" name="rechar_bank" value="JK"><img src="{$tpldir}/images/bank/PINGAN.jpg"></label>-->
+            <!--<label class="recharge_label"><input type="radio" name="rechar_bank" value="JK"><img src="{$tpldir}/images/bank/BEIJING.jpg"></label>-->
+        </div>
+        {/if}
+                                        {/foreach}
+                                        {/list}
+                                    </div>
+    {literal}
+    <script type="text/javascript">
+    diyou.use('users_account',function(dy){dy.recharge('recharge');dy.charge_tab()})
+    </script>
+    {/literal}
+    </div>
+    
+ </div>
+{include file="users_footer.html"}
+{/if}

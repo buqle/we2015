@@ -1,0 +1,46 @@
+
+		<div class="dialog_con">
+			<div class="sq_step sq_step2 fn_cle">
+				<li><span class="done">1.邮箱认证</span></li>
+				<li><span class="now">2.实名认证</span></li>
+				<li><span>3.手机认证</span></li>
+				<li><span>4.{$_U.trust_users.trust_name}</span></li>
+				<li><span>5.完成</span></li>
+			</div>
+			<div class="sq_cont_box">
+				<div class="fn_cle">
+					<div class="fn_left email_bg">
+						
+					</div>
+					<div class="fn_left">
+						<form action="" method="post" id="realname_form">
+							<div class="item">
+								<label class="sq_label w80">真实姓名：</label>
+								<input type="text" name="realname" class="sq_input" />
+							</div>
+							<div class="item">
+								<label class="sq_label w80">身份证号：</label>
+								<input type="text" name="card_id" class="sq_input" />
+							</div>
+							<div class="item">
+								<label class="sq_label w80">&nbsp;</label>
+								<span class="sq_span w280" >您必须填写您的真实姓名和身份证号码虚假的身份信息是不能通过验证的。</span>
+							</div>
+							<div class="item">
+								<label class="sq_label w80">&nbsp;</label>
+								<input type="submit" class="sq_sub" value="下一步" id="realname_sub"/><span id="realname_warn" style="color: red;"></span>
+							</div>
+						</form>
+					</div>
+					
+				</div>
+				<div class="notice">
+					<h4>请注意以下事项</h4>
+					<p>1、我们将通过全国公民身份信息中心（NCIIC）系统对您提交的身份进行审核。</p>
+					<p>2、实名认证是您绑定银行卡和使用核心功能的必要条件。</p>
+					<p>3、如果您在验证过程中，出现任何问题，请致电 {$_G.system.con_kefu_phone}，或咨询客服QQ {$_G.system.con_kefu_qq}</p>
+				</div>
+			</div>
+			
+		</div>
+{literal}<script>diyou.use('trust', function(dy) {dy.realname('realname_form', 'realname_warn')});</script>{/literal}

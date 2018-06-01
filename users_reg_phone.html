@@ -1,0 +1,618 @@
+{include file="users_header.html"}
+<style>
+    /*弹窗*/
+    /**
+     * 基于jQuery的dialog样式
+     */
+
+    .j-dialog {
+        background-color: white;
+        /*border: 1px solid #ccc;*/
+        border-radius: 6px;
+        font-size: 14px ;
+        font-family: tahoma, helvetica, "microsoft yahei", "宋体",arial;
+        position: absolute;
+        clear: left;
+        overflow: hidden;
+    }
+    /* 阴影 */
+    .j-dialog-shadow {
+        -moz-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2) ;
+        -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        -o-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        -ms-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=3,OffY=3,Color=#16000000,Positive=true);
+    }
+    /* 半透明边框 */
+    .j-translucent-border {
+        -moz-background-clip: padding;
+        -webkit-background-clip: padding;
+        background-clip: padding-box;
+        border: 8px solid rgba(0,0,0,0.2);
+        border-radius: 5px;
+    }
+    .j-dialog-fix{
+        position:fixed;
+    }
+    .j-dialog.j-user-select {
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -o-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+    }
+    .j-dialog .j-dialog-title {
+        line-height: 15px;
+        font-size: 14px;
+        text-indent: 10px;
+        background: #33b3ee;
+        padding: 14px 0;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -o-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+    }
+    .j-dialog .j-draggable {
+        cursor: move;
+    }
+    .j-dialog .j-dialog-txt {
+        font-size: 15px;
+        color: #fff;padding-left:10px;font-family:"Microsoft YaHei";
+    }
+    .j-dialog .j-dialog-close {
+        background: url(/dyweb/dythemes/rhd/js/jDialog/img/dialog-btns.png) no-repeat;
+        float: right;
+        line-height: normal;
+        margin: 0px 16px 0 0;
+        text-decoration: none;
+        width: 25px;
+        position: absolute;
+        right: -5px;
+        top: 6px;height: 28px;
+    }
+    /*.j-dialog .j-dialog-close:hover {
+        background-position: -141px -36px;
+    }*/
+    .j-dialog .j-dialog-close.btn-without-title {
+        right: -14px;
+        top: 6px;
+    }
+    .j-dialog .j-dialog-content {
+        color: #454545;
+        /*text-align: center;*/
+    }
+    .j-dialog .j-dialog-buttons {
+        font-size: 12px;
+        padding:17px 20px 20px 18px;
+        margin: 0;
+        text-align:center!important;
+    }
+    .j-dialog .j-dialog-buttons .first-child{
+        background-position: 0 0;
+        color:#fff;
+    }
+    .j-dialog .j-dialog-buttons .first-child:hover{
+        background-position: 0 -37px;
+    }
+    .j-dialog .j-dialog-btn{
+        margin-left:10px;
+        cursor: pointer;
+        border: 0;
+        padding: 0 10px;
+        height: 34px;
+        font-size: 16px;
+        display: inline-block;
+        color: #666;
+        background:#33b3ee;;
+        _line-height: 34px;border-radius: 5px;
+    }
+    .j-dialog .j-dialog-btn:hover,
+    .j-dialog .j-dialog-btn.x-hover{
+        background: #3391bc;
+    }
+    .j-dialog .j-dialog-btn.x-highlight {
+        color:#fff;
+        background-position:-0 2px;
+    }
+    .j-dialog .j-dialog-btn.x-highlight:hover,
+    .j-dialog .j-dialog-btn.x-highlight.x-hlhover {
+        background-position:0 -28px;
+    }
+
+
+    /*小三角部分*/
+    .j-dialog .j-triangle {
+        display:block;
+        position:relative;
+    }
+    .j-dialog .j-triangle .t-border,
+    .j-dialog .j-triangle .t-inset{
+        left:0px;
+        top:0px;
+        width:0;
+        height:0;
+        font-size:0;
+        overflow:hidden;
+        position:absolute;
+        border-width:12px;
+        /*可在此处更改小三角方向：上-右-下-左（solid的位置）*/
+        border-style:dashed solid dashed dashed;
+    }
+    /*小三角的边框，如果不需要，可将颜色值改变*/
+    .j-dialog .j-triangle .t-border{
+        border-color:transparent #aaa transparent transparent;
+        left:-1px;
+    }
+    .j-dialog .j-triangle .t-inset{
+        border-color: transparent #fff transparent transparent;
+    }
+
+    /*控制方向*/
+    /*下箭头*/
+    .j-dialog .j-triangle.anchor-bottom .t-border,
+    .j-dialog .j-triangle.anchor-bottom .t-inset {
+        border-style:solid dashed dashed dashed;
+    }
+    .j-dialog .j-triangle.anchor-bottom .t-border{
+        border-color:#aaa transparent transparent transparent;
+        left:0px;
+        top:1px;
+    }
+    .j-dialog .j-triangle.anchor-bottom .t-inset{
+        border-color: #fff transparent transparent transparent;
+    }
+
+    /*上箭头*/
+    .j-dialog .j-triangle.anchor-top .t-border,
+    .j-dialog .j-triangle.anchor-top .t-inset {
+        border-style:dashed dashed solid dashed;
+    }
+    .j-dialog .j-triangle.anchor-top .t-border{
+        border-color:transparent transparent #aaa transparent;
+        left:0px;
+        top:-1px;
+    }
+    .j-dialog .j-triangle.anchor-top .t-inset{
+        border-color: transparent transparent #fff transparent;
+    }
+
+    /*右箭头*/
+    .j-dialog .j-triangle.anchor-right .t-border,
+    .j-dialog .j-triangle.anchor-right .t-inset {
+        border-style:dashed dashed dashed solid;
+    }
+    .j-dialog .j-triangle.anchor-right .t-border{
+        border-color:transparent transparent transparent #aaa;
+        left:1px;
+        top:0;
+    }
+    .j-dialog .j-triangle.anchor-right .t-inset{
+        border-color: transparent transparent transparent #fff;
+    }
+
+
+    /* 遮罩层样式 */
+    .j-dialog-mask {
+        background-color: #000;
+        filter: alpha(opacity = 40);
+        opacity: .4;
+        zoom: 1;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width:100%;
+    }
+
+    /* resize */
+    .j-dialog .resizable-es {
+        bottom: 0;
+        cursor: se-resize;
+        height: 10px;
+        position: absolute;
+        right: 0;
+        width: 10px;
+    }
+    .j-dialog .resizable-es div {
+        border-bottom: 3px double #bbb;
+        border-right: 3px double #bbb;
+        height: 6px;
+        width: 6px;
+        line-height:0;
+        position:absolute;
+        left:0;
+        top:0;
+    }
+
+</style>
+<script type="text/javascript" src="{$tpldir}/js/jDialog.js"></script>
+<script type="text/javascript" src="{$tpldir}/js/jquery.cityselects.js"></script>
+<script type="text/javascript" src="{$tpldir}/js/jquery.validate.js"></script>
+<div style="height: 20px;"></div>
+<div class="i_contenter">
+    <div style="height: 46px"></div>
+   <div class="custodianc1"></div>
+    <div class="custodianc2">
+        <p>个人账户升级为银行存管账户</p>
+        <p>请开通银行存管账户以便您正常理财</p>
+    </div>
+
+    <div class="cust_bankcon font18" id="cust_bankcon2">
+        <form method="post" id="cust-form1" class="formmin">
+            <p>
+                <label>持卡人姓名</label>
+                <input type="text" placeholder="请输入持卡人姓名" name="realname" class="cust_realname">
+            </p>
+            <p>
+                <label>身份证号</label>
+                <input type="text" placeholder="请输入身份证号" name="card_id" class="cust_card_id">
+            </p>
+            <p>
+                <label>银行卡号</label>
+                <input type="text" placeholder="请输入银行卡号" name="BankCard" class="cardid">
+            </p>
+            <p>
+                <label>开户银行</label>
+                <select name='BankId' id="bankIds">
+                    <option value="">请选择银行</option>
+                    <option value="ICBC">中国工商银行</option>
+                    <option value="ABC">中国农业银行</option>
+                    <option value="CMB">招商银行</option>
+                    <option value="CCB">建设银行</option>
+                    <option value="BCCB">北京银行</option>
+                    <option value="BJRCB">北京农村商业银行</option>
+                    <option value="BOC">中国银行</option>
+                    <option value="BOCOM">交通银行</option>
+                    <option value="CMBC">中国民生银行</option>
+                    <option value="BOS">上海银行</option>
+                    <option value="CBHB">渤海银行</option>
+                    <option value="CEB">中国光大银行</option>
+                    <option value="CIB">兴业银行</option>
+                    <option value="CITIC">中信银行</option>
+                    <option value="CZB">浙商银行</option>
+                    <option value="GDB">广发银行</option>
+                    <option value="HKBEA">东亚银行</option>
+                    <option value="HXB">华夏银行</option>
+                    <option value="HZCB">杭州银行</option>
+                    <option value="NJCB">南京银行</option>
+                    <option value="PINGAN">平安银行</option>
+                    <option value="PSBC">中国邮政</option>
+                    <option value="SDB">深发银行</option>
+                    <option value="SPDB">浦发银行</option>
+                    <option value="SRCB">上海农村农业银行</option>
+
+                </select>
+            </p>
+            <p>
+                <label>开户地区</label>
+            <span id="city" class="inline-block">
+                <select class="prov" name="ProvId"></select>
+                <select class="city" disabled="disabled" name="AreaId"></select>
+            </span>
+            </p>
+            <p>
+                <label>银行卡预留手机号</label>
+                <input type="text"  placeholder="请输入手机号"  class="cust-phone1" name="phone" maxlength="11">
+            </p>
+            <p><input type="submit" value="下一步" class="button_bank2 text-center dis-inlie button_bank cursor font18 next-butt" coden=""></p>
+        </form>
+    </div>
+
+
+</div>
+
+
+<div class="cust_bankcon2 font18 color-444 ww3">
+    <h4 class="bold font24">温馨提示：</h4>
+    <p>1.为了保障您的资金安全，请如实填写您的个人信息；</p>
+    <p>2.请确保您输入的手机号为银行卡的预留手机号；</p>
+    <p>3.如需帮助，欢迎联系客服 400-013-5679。</p>
+</div>
+
+
+
+
+
+{literal}
+<script>
+    $(function(){
+        $("#city").citySelect({
+            nodata:"none",
+            required:false
+        });
+
+        // 姓名验证
+        jQuery.validator.addMethod("stringCheck", function(value, element) {
+            return this.optional(element) ||/^[\u4E00-\u9FA5]+$/.test(value);
+        }, "只能包括中文字");
+
+        //手机号
+
+        jQuery.validator.addMethod("phones", function(value, element) {
+            return this.optional(element) ||/^(0|86|17951)?(13[0-9]|15[0-9]|17[0-9]|18[0-9]|14[57])[0-9]{8}$/.test(value);
+        }, "请输入正确的手机号码");
+        //身份证
+
+        var Wi = [ 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1 ];    // 加权因子
+        var ValideCode = [ 1, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2 ];            // 身份证验证位值.10代表X
+        function IdCardValidate(idCard) {
+            idCard = trim(idCard.replace(/ /g, ""));               //去掉字符串头尾空格
+            if (idCard.length == 15) {
+                return isValidityBrithBy15IdCard(idCard);       //进行15位身份证的验证
+            } else if (idCard.length == 18) {
+                var a_idCard = idCard.split("");                // 得到身份证数组
+                if(isValidityBrithBy18IdCard(idCard)&&isTrueValidateCodeBy18IdCard(a_idCard)){   //进行18位身份证的基本验证和第18位的验证
+                    return true;
+                }else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+        /**
+         * 判断身份证号码为18位时最后的验证位是否正确
+         * @param a_idCard 身份证号码数组
+         * @return
+         */
+        function isTrueValidateCodeBy18IdCard(a_idCard) {
+            var sum = 0;                             // 声明加权求和变量
+            if (a_idCard[17].toLowerCase() == 'x') {
+                a_idCard[17] = 10;                    // 将最后位为x的验证码替换为10方便后续操作
+            }
+            for ( var i = 0; i < 17; i++) {
+                sum += Wi[i] * a_idCard[i];            // 加权求和
+            }
+            valCodePosition = sum % 11;                // 得到验证码所位置
+            if (a_idCard[17] == ValideCode[valCodePosition]) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        /**
+         * 验证18位数身份证号码中的生日是否是有效生日
+         * @param idCard 18位书身份证字符串
+         * @return
+         */
+        function isValidityBrithBy18IdCard(idCard18){
+            var year =  idCard18.substring(6,10);
+            var month = idCard18.substring(10,12);
+            var day = idCard18.substring(12,14);
+            var temp_date = new Date(year,parseFloat(month)-1,parseFloat(day));
+            // 这里用getFullYear()获取年份，避免千年虫问题
+            if(temp_date.getFullYear()!=parseFloat(year)
+                    ||temp_date.getMonth()!=parseFloat(month)-1
+                    ||temp_date.getDate()!=parseFloat(day)){
+                return false;
+            }else{
+                return true;
+            }
+        }
+        /**
+         * 验证15位数身份证号码中的生日是否是有效生日
+         * @param idCard15 15位书身份证字符串
+         * @return
+         */
+        function isValidityBrithBy15IdCard(idCard15){
+            var year =  idCard15.substring(6,8);
+            var month = idCard15.substring(8,10);
+            var day = idCard15.substring(10,12);
+            var temp_date = new Date(year,parseFloat(month)-1,parseFloat(day));
+            // 对于老身份证中的你年龄则不需考虑千年虫问题而使用getYear()方法
+            if(temp_date.getYear()!=parseFloat(year)
+                    ||temp_date.getMonth()!=parseFloat(month)-1
+                    ||temp_date.getDate()!=parseFloat(day)){
+                return false;
+            }else{
+                return true;
+            }
+        }
+//去掉字符串头尾空格
+        function trim(str) {
+            return str.replace(/(^\s*)|(\s*$)/g, "");
+        }
+
+        jQuery.validator.addMethod("isIdCardNo", function(value, element) {
+            return this.optional(element) || IdCardValidate(value);
+        }, "请正确输入您的身份证号码");
+
+
+        //银行卡号
+        function luhnCheck(bankno) {
+            bankno = trim(bankno.replace(/ /g, ""));               //去掉字符串头尾空格
+            var lastNum = bankno.substr(bankno.length - 1, 1); //取出最后一位（与luhn进行比较）
+            var first15Num = bankno.substr(0, bankno.length - 1); //前15或18位
+            var newArr = new Array();
+            for (var i = first15Num.length - 1; i > -1; i--) { //前15或18位倒序存进数组
+                newArr.push(first15Num.substr(i, 1));
+            }
+            var arrJiShu = new Array(); //奇数位*2的积 <9
+            var arrJiShu2 = new Array(); //奇数位*2的积 >9
+            var arrOuShu = new Array(); //偶数位数组
+            for (var j = 0; j < newArr.length; j++) {
+                if ((j + 1) % 2 == 1) { //奇数位
+                    if (parseInt(newArr[j]) * 2 < 9) arrJiShu.push(parseInt(newArr[j]) * 2);
+                    else arrJiShu2.push(parseInt(newArr[j]) * 2);
+                } else //偶数位
+                    arrOuShu.push(newArr[j]);
+            }
+
+            var jishu_child1 = new Array(); //奇数位*2 >9 的分割之后的数组个位数
+            var jishu_child2 = new Array(); //奇数位*2 >9 的分割之后的数组十位数
+            for (var h = 0; h < arrJiShu2.length; h++) {
+                jishu_child1.push(parseInt(arrJiShu2[h]) % 10);
+                jishu_child2.push(parseInt(arrJiShu2[h]) / 10);
+            }
+
+            var sumJiShu = 0; //奇数位*2 < 9 的数组之和
+            var sumOuShu = 0; //偶数位数组之和
+            var sumJiShuChild1 = 0; //奇数位*2 >9 的分割之后的数组个位数之和
+            var sumJiShuChild2 = 0; //奇数位*2 >9 的分割之后的数组十位数之和
+            var sumTotal = 0;
+            for (var m = 0; m < arrJiShu.length; m++) {
+                sumJiShu = sumJiShu + parseInt(arrJiShu[m]);
+            }
+
+            for (var n = 0; n < arrOuShu.length; n++) {
+                sumOuShu = sumOuShu + parseInt(arrOuShu[n]);
+            }
+
+            for (var p = 0; p < jishu_child1.length; p++) {
+                sumJiShuChild1 = sumJiShuChild1 + parseInt(jishu_child1[p]);
+                sumJiShuChild2 = sumJiShuChild2 + parseInt(jishu_child2[p]);
+            }
+            //计算总和
+            sumTotal = parseInt(sumJiShu) + parseInt(sumOuShu) + parseInt(sumJiShuChild1) + parseInt(sumJiShuChild2);
+
+            //计算luhn值
+            var k = parseInt(sumTotal) % 10 == 0 ? 10 : parseInt(sumTotal) % 10;
+            var luhn = 10 - k;
+
+            if (lastNum == luhn) {
+                $("#banknoInfo").html("luhn验证通过");
+                return true;
+            } else {
+                $("#banknoInfo").html("银行卡号必须符合luhn校验");
+                return false;
+            }
+        }
+        jQuery.validator.addMethod("bankc", function(value, element) {
+            return this.optional(element) ||luhnCheck(value);
+        }, "请正确输入您的卡号");
+        //
+
+
+        $('#cust-form1').validate({
+            errorPlacement: function (error, element) {
+                error.appendTo(element.parent());
+            },
+            errorElement: "em",
+            rules : {
+                realname : {
+                    required : true,
+                    stringCheck:true
+                },
+                card_id:{
+                    required : true,
+                    isIdCardNo:true
+                },
+                BankCard:{
+                    required : true,
+
+                    bankc:true
+                },
+                BankId:{
+                    required : true
+                },
+                ProvId:{
+                    required : true
+                },
+                AreaID:{
+                    required : true
+                },
+                phone:{ required : true,phones:true}
+            },
+            messages : {
+                realname : {
+                    required: '请输入真实姓名',
+                    stringCheck: "真实姓名格式错误"
+                },
+                card_id:{
+                    required:"请输入身份证号",
+                    isIdCardNo:"请输入正确的身份证号"
+                },
+                BankCard:{
+                    required :'请输入银行卡号',
+                   bankc:'请输入正确的银行卡号'
+                },
+                BankId:{
+                    required :'请选择开户银行'
+                },
+                ProvId:{
+                    required : '请选择开户所在地'
+                },
+                AreaId:{
+                    required : '请选择开户所在地'
+                },
+                phone:{required : '请填写手机号码',phones:"手机格式错误"}
+            },
+
+            submitHandler: function (form) {
+                var alert1=jDialog.alert('正在加载中');
+                $.http.post('/?user&m=trust/send_code',
+                        {
+                            BusiType:'user_register',
+                            phone:$('.cust-phone1').val(),
+                            OpenAcctId:$('.cardid').val()
+
+                        }
+                        ,function (ret) {
+                            alert1.close();
+                            if (ret.code=='0') {
+                                time();
+                                $('#cust_bankcon2 .next-butt').attr('coden',ret.data).addClass('on_text_butns');
+                                var dialog = jDialog.ajax('/?user&m=account/recharge/cust_user',{
+                                    title: '开通存管账户',
+                                    width:550,
+                                    height:374
+                                });
+
+
+
+                            }else {
+                                jDialog.alert(ret.msg);
+                            }
+                        }, 'json');
+            }
+
+        });
+
+
+        var wait=60;
+        function time() {
+            if (wait == 0) {
+                $('.cust_bankalert #text_butns').attr("disabled",false);
+                $('.cust_bankalert #text_butns').val('获取验证码')
+                wait = 60;
+            } else {
+                $('.cust_bankalert #text_butns').attr("disabled",true);
+                $('.cust_bankalert #text_butns').val('重新发送'+wait)
+                wait--;
+                setTimeout(function() {time($('.cust_bankalert #text_butns'))},1000)
+            }
+        }
+
+
+
+
+
+
+
+        //开通成功
+        /*jDialog.dialog({
+            title : '温馨提示',
+            content : $("#qingkuang1").html(),
+            height:300,
+            width:550
+
+        });*/
+    })
+
+
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?114bdc026b9ff4de87a6efb268dbea76";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+{/literal}
+{include file="users_footer.html"}
+
+
+

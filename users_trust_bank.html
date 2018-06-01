@@ -1,0 +1,98 @@
+{if $smarty.request.type=='ok'}
+<div class="recharge_box">
+    <p>请您在新打开的新页面（汇付天下），未完成绑定前请不要关闭该窗口！</p>
+    <div class="recharge_edit">
+        <a href="/?user&m=trust/bank/list">已完成绑定</a>
+        <a href="/help/index.html">绑定遇到问题</a>
+    </div>
+</div>
+{else}
+{if $_U.query_type=="new"}
+{include file="users_trust_bank_new.html"}
+{else}
+<div class="cont">
+	<div class="bank_list">
+		<dl>
+			{list module="trust" function="get_users_bank_list" user_id=$_G.user_id var=loop}
+			{if $loop.total==0}
+			<dd class="fn_cle">
+				<div class="bank_card_infor txt_cent">
+					<p>您的提现银行卡尚未添加</p>
+					<p>请先设置银行卡号。</p>
+				</div>
+				<div class="edit_card txt_cent">
+					<a href="javascript:void(0);" class="a_link" id="add_bank">添加银行卡</a>
+				</div>
+			</dd>
+			{else}
+			<div style="height: 310px;">
+				<table class="mainntable mainntable1" id="cash_list">
+					<tr>
+						<th style="width: 10%;">账户名</th>
+						<th style="width: 20%;">银行</th>
+						<th style="width: 20%;">卡号</th>
+						<th style="width: 10%;">默认</th>
+						<th style="width: 25%;">添加时间</th>
+						{if $item.cash_card==1}
+						<th></th>
+						{else}<th style="width: 15%;">操作</th>
+						{/if}
+					</tr>
+					{foreach from=$loop.list item=item}
+					<tr class="ttrr" id="bank_list_{$item.id}">
+						<td><span class="bank_realname"></span></td>
+						<td><img src="{$tpldir}/images/bank/bank_{$item.bank_nid}.gif" title="{$item.bank_name}"></td>
+						<td>{$item.account|bank_fmt}</td>
+						<td>{if $item.is_default==1}是{else}否{/if}</td>
+						<td class="time">{$item.addtime|date_format:"Y-m-d H:i"}</td>
+						{if $item.is_default==1}
+						<td></td>
+						{else}
+						<td>
+							<a href="javascript:void(0)" onclick='removw_bank({$item.id})'  >删除</a>
+						</td>
+						{/if}
+					</tr>
+					{/foreach}
+				</table>
+			</div>
+			<div class="footer1" style="margin-top: 20px;">
+				<div class="main">
+					<h2>温馨提示：</h2>
+					<p>1.未绑定银行卡不可取现，取现时账户姓名须与银行卡开户名一致。<!--<a href="javascript:void(0)" id="add_bank">添加银行卡</a>--></p>
+					<p>2.默认取现卡不可删除。</p>
+					<p>3.如果使用快捷支付，有且只能绑定一张银行卡，改变银行卡信息必须先删除快捷支付卡，再进行更换操作。</p>
+				</div>
+			</div>
+			{/if}
+			{/list}
+		</dl>
+	</div>
+</div>
+    
+{literal}
+<script type="text/javascript">
+	function  removw_bank(id){
+		$.http.post('/?user&m=trust/bank/remove',{'id':id},function(data){
+			if(data.ret!=0){
+				jDialog.alert(data.msg);
+			}else{
+				jDialog.alert(data.msg,{},{
+                    events : {
+                    close:function () {
+                        $("#bank_list_"+id).remove();
+                    }
+                }});
+			}
+		},'json');
+	}
+	$(function(){
+		var realName = $('#trust_realname').text();
+		$(".bank_realname").each(function(){
+			$(this).text(realName);
+		})
+	})
+</script>
+{/literal}
+{/if}
+{/if}

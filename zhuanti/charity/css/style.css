@@ -1,0 +1,101 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+ul, li {
+
+    list-style: none outside none;
+
+}
+
+.clearbb{zoom:1;}
+
+.clearbb:after {
+    content: "";
+    display: block;
+    clear: both;}
+
+img {
+
+    border: 0 none;
+
+}
+
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+
+body {
+
+    font-family:"微软雅黑";
+background:#ffffff;
+    font-size: 16px;
+}
+.jiexi01{background:url(../images/j01.jpg) center no-repeat;height: 642px;}
+	.jiexi01 div{ line-height:0 !important;}
+.ww1{width: 1200px;margin: 0 auto;}
+.ww2{margin: 0 auto;}
+
+ .charit-cont1{padding: 120px 0 60px 0;}
+ .chartit{text-align: center;font-size: 16px;color: #666;}
+    .chartit h4{font-weight: bold;font-size: 32px;color: #d21a28;}
+    .chartit p{width: 82px;height: 6px;margin: 20px auto;background: #b0b0b0;border-radius: 8px;}
+    .charit-cont1p{width: 1008px;font-size: 17px;color: #444;text-indent: 32px;line-height:30px;}
+
+.charit-cont1s{border: 1px solid #f48706;position: relative;padding: 56px 0 50px 0;margin-top: 100px;}
+    .charit-cont1s h2{position: absolute;left: 50%;background: url("../images/h2news.png") no-repeat;width: 398px;height: 59px;margin-left: -199px;top: -30px;}
+
+    .dldlcont{width: 1076px;margin: 0 70px 0 54px;}
+    .dldlcont dl{float: left;margin-left: 12px;width: 256px;text-align:center;background: #ef2b05;padding: 4px 0 16px 0;height: 268px;overflow: hidden;margin-top: 22px;}
+    .dldlcont dl dd{font-size: 24px;color: #f2f2f2;}
+    .dldlcont dl dd h5{line-height: 50px;}
+    .dldlcont dl dd p{font-size: 18px;}
+    .dldlcont dl dd a{background: #f2f2f2;font-size: 16px;color: #e40112;border-radius:50px;padding: 2px 18px;margin-top: 8px;display: inline-block;}
+
+    .charit-cont1s h6{font-size: 36px;color: #666;float: left;line-height: 280px;margin-left: 244px;}
+.charit-cont2{background: #ebebeb;width: 100%;padding: 54px 0}
+    .charit-cont2 .charit-cont1s h2{background: url("../images/titodl.png") no-repeat;height: 58px;}
+
+.gyjjcont .gyjjcontside{ width:1000px; margin:0 auto;}
+.gyjjcont dl{ width:250px; float:left;}
+.gyjjcont dl dt img{ vertical-align:bottom;}
+.gyjjcont dl dd{ text-align:center; padding:16px 0 6px 0; color:#f2f2f2; height:124px;}
+.gyjjcont dl dd h4{ font-size:24px; font-weight:normal; margin-bottom:6px;}
+.gyjjcont dl dd p{ font-size:16px; margin-bottom:6px;}
+
+.charit-cont2s{margin: 0px auto 98px auto;}
+    .picontside{background: #fff;padding: 24px 0;}
+    .picontent{background: url("../images/picc.png") no-repeat center;height: 431px;width: 1148px;}
+    .picontent p{width: 998px;}
+    .pp-sidec p,.picontent p,.charit-cont3 p{text-indent: 40px;font-size: 17px;color: #000;line-height: 30px;}
+   .charit-sidecond{background:#fff;margin:96px 0 0 0;padding: 46px 0 34px 0;}
+    .pp-sidec{width: 880px;}
+.charityside3_c2{ position:relative; background:url(../images/lf.jpg) no-repeat center; height:470px; width:704px; margin:72px auto 0 auto;}
+.charityside3_c2 .charitysidele,.charitysideri{ position:absolute; top:244px;}
+.charityside3_c2 .charitysidele{ left:0;}
+.charityside3_c2 .charitysideri{ right:0;}
+.charityside3_c2 a{background:url(../images/xq1.gif) no-repeat center; height:26px; width:86px; display:block;}
+.charityside3go{background:url(../images/go.gif) no-repeat center; height:24px; margin-top:24px;}
+
+.charit-cont3{background:#fff;width: 100%;padding: 74px 0 100px 0;}
+    .charit-cont3 h4,.charit-cont3 h5{text-align: center;color: #7b1401;font-size: 32px;}
+    .charit-cont3 h5{font-size: 16px;margin-bottom: 60px;}
+    .charit-cont3{width: 876px;margin: 0 auto;}
+
+.charit-cont4{background:url(../images/end.png) no-repeat center;width: 100%;height: 193px;}
+    .charit-cont4s{width: 860px;font-size: 23px;color: #d21a28;}
+    .charit-cont4s p{margin: 62px 0 20px 0;}
+    .charit-cont4s a{width: 190px;height: 36px;line-height: 36px;margin:0 auto;font-size: 20px;color: #fff;background: #d21a28;display: block;text-align: center;}
+
+
+.erycharit{background: #ebebeb;width: 100%;}
+    .erycharit .charit-cont1s h2{background:url(../images/h2new.png) no-repeat center;height: 58px;}
+    .erycharit .charit-cont1{padding-bottom: 100px;}
+
+.charit-down{background:url(../images/down.png) no-repeat center;height: 46px;cursor: pointer;}

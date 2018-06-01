@@ -1,0 +1,86 @@
+{include file="header.html"}
+
+<div class="conbox t50">
+    <div class="ui_filter">
+	  <dl>
+	      <dd>
+		      	<ul>
+				   <li><b>类型：</b></li>
+				   <li class="ui_filter_tag active" id="borrow_type_li">
+                       <input type="radio" name="borrow_type" value="" checked=""/>
+					   <span>不限</span>
+				   </li>
+				   {foreach from=$_G.linkages.borrow_all_type key="key" item="item"}
+				   <li class="ui_filter_tag ">
+                       <input type="radio" name="borrow_type" value="{$key}" />
+					   <span>{$item}</span>
+				   </li>
+				   {/foreach}
+				   <li class="ui_filter_tag" id="borrow_type_change">
+                       <input type="radio" name="borrow_type" value="change" />
+					   <span class="f_c1">债权转让</span>
+				   </li>
+				</ul>                
+		  </dd>
+		  <dd>
+			     <ul>
+				   <li><b>金额：</b></li>
+				   <li class="ui_filter_tag active"  id="account_status_li">
+                     <input type="radio" name="account_status" value="" checked=""/>
+					   <span>不限</span>
+				   </li>
+				   {foreach from=$_G.linkages.account_status key="key" item="item"}
+				   <li class="ui_filter_tag ">
+                     <input type="radio" name="account_status" value="{$key}" />
+					   <span>{$item}</span>
+				   </li>
+				   {/foreach}
+				</ul>               
+		  </dd>
+          <dd>
+		      	<ul>
+				   <li><b>利率：</b></li>
+				   <li class="ui_filter_tag active"  id="borrow_interestrate_li">
+                     <input type="radio" name="borrow_interestrate" value="" checked="" />
+					   <span>不限</span>
+				   </li>
+				   {foreach from=$_G.linkages.borrow_interestrate item="item" key="key"}
+				  <li class="ui_filter_tag ">
+                     <input type="radio" name="borrow_interestrate" value="{$key}" />
+					   <span>{$item}</span>
+				   </li>
+				   {/foreach}
+				</ul>               
+		  </dd>		  
+	  </dl>
+	</div>
+</div>
+
+<div class="conbox t40">
+	   <div class="main_box">
+		     <div class="main_box_tit">
+			    <dl class="fl">
+				   <dd>
+				     <a href="#" class="now bg_c2">债权转让列表</a>
+				     <span class="arrow f_c2">◆</span>
+			         <span class="arrow arrow_border f_c2">◆</span>
+				   </dd>
+				   <dd><em>安全保障 投资理财</em></dd>
+				</dl>
+				<ul class="sort_filter_list">
+				   <li class="select"><a href="#">默认排序</a></li>
+				   <li {if $smarty.request.order=='account_down'} class="select"{/if}><a href="/{$_G.site_result.nid}/index.html?order=account_down">金额<i></i></a></li>
+				   <li {if $smarty.request.order=='apr_down'} class="select"{/if}><a href="/{$_G.site_result.nid}/index.html?order=apr_down">利率<i></i></a></li>
+				</ul>
+				<div class="cle"></div>
+			 </div>
+			 <div class="main_box_cont">
+			   正在加载中......
+			 </div>
+	   </div>
+	   <div class="pages"></div>
+</div>
+
+{include file="footer.html"}
+
+

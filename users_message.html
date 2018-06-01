@@ -1,0 +1,132 @@
+{if $smarty.request.type=="list"}
+<form action="" method="post" id="message_form">
+	<input type="hidden" name="user_id" value="{$_G.user_id}"/>
+	<table class="shin_tab" id="shin_tabb">
+		<thead>
+		<tr>
+			<th width="15%" style="border-right: none;">标题</th>
+			<th width="85%" style="border-left: none;"><p style="width: 50%;float: left;text-align:center;">内容</p><p style="width:35%;float:right;">时间</p></th>
+		</tr>
+		</thead>
+		<tbody>
+
+		{list module="message" function="get_message_receive_list" user_id=$_G.user_id var=loop page=$smarty.request.page+1}
+		{foreach from=$loop.list item=item key=key}
+		<tr>
+			<td><input type="checkbox" class="u_chebox" name="id[{$key}]" value="{$item.id}" data-type="aid" id="id"/></td>
+			<td>
+				<div class="shin_tabtit" style="font-size: 14px;" ><a style="color: #666;" href="javascript:void(0)"   id="hide_show"  data-id="{$item.id}" data-status="{$item.status}" user-id="{$_G.user_id}" {if $item.status==0}class="msg_read f_bold" {else}class="msg_read f_normal" {/if}>{$item.name} <i style="display: none;">	{$item.contents}</i></a></div>
+				<div class="shin_tabtime"> 发件时间：{$item.addtime|date_format:"Y-m-d H:i:s"} </div>
+				<div class="shin_tabtitc"><p>{$item.contents}</p></div>
+			</td>
+		</tr>
+		{/foreach}
+		</tbody>
+		<tfoot>
+		{if $loop.total>0}
+		<tr>
+			<td colspan="8">
+				<div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+			</td>
+		</tr>
+		{/if}
+		<tr>
+			<td><input type="checkbox" class="u_chebox" id="allcheck"/><input type="hidden" name="type" id="type" value="0"/>全选</td>
+			<td><div class="choose_as"><a class="read_oldncon" href="javascript:void(0)" id="delete_msg">删除选中</a> </div></td>
+		</tr>
+		{/list}
+
+
+		</tfoot>
+	</table>
+</form>
+
+
+{else}
+<div class="person_box sys_msg_detai">
+	<div class="shin-below1 clearbo">
+		<ul class="clearbo">
+			<li class="onside">信息详情</li>
+			<li style="background: none;">信息设置</li>
+		</ul>
+	</div>
+
+	<div class="shin-below2">
+		<ul class="clearbo">
+			<li class="onside" id="msg_list">
+			</li>
+			<li>
+				<form action="" method="" id="remind_form" name="remind_form">
+					<div class="priority_first">
+						<div class="priority_firsc1">
+							{articles module="remind" function="get_user_one" user_id=$_G.user_id var="item"}
+							<p><input name="phone_new_notice" value="1" type="checkbox" {if $item.phone==1} checked="true" {/if}><span>关闭新标短信提醒</span>（如果不想被手机短信打扰请勾选） </p>
+							{/articles}
+							<p style="margin-left: 22px;">请勾选设置来收取您所需要的消息提醒。 为了您的交易安全，部分重要信息不能取消接收。 </p>
+						</div>
+						<div class="priority_firsc2">
+							<table style="width:100%" class="notice_tabyel" border="0" cellspacing="0">
+								<tbody>
+
+								{articles module="remind" function="get_remind_list" user_id=$_G.user_id var="rvar"}
+								{foreach from= $rvar._list item="item"}
+								<tr class="tab_head">
+									<td colspan="3">{$item.title}</td>
+								</tr>
+								{foreach from=$item.list item="var"}
+								<tr>
+									<td>{$var.title}</td>
+									<td>
+										<input type="checkbox" {if $var.message==1 || $var.message==3}checked="checked"{/if} name="message_{$var.nid}" id="message_{$var.nid}" value="{$var.message}" {if $var.message==1 || $var.message==2} disabled="disabled"{/if} {if $var.message!=1 && $var.message!=2}data-check="yes"{/if} />
+										<label for=message_{$var.nid}>站内信提醒</label>
+									</td>
+									<td>
+										<input type="checkbox" {if $var.email==1 || $var.email==3}checked="checked"{/if} name="email_{$var.nid}" id="email_{$var.nid}" value="{$var.email}" {if $var.email==1 || $var.email==2} disabled="disabled"{/if} {if $var.message!=1 && $var.message!=2}data-check="yes"{/if} />
+										<label for=email_{$var.nid}>邮件提醒 </label>
+									</td>
+								</tr>
+								{/foreach}
+								{/foreach }
+								{/articles}
+
+								</tbody>
+							</table>
+						</div>
+						<input type="hidden" name="action_type" value="set_remind" />
+						<div class="priority_firsc3">
+							<input style="border: none; cursor: pointer;" type="submit" value="确认提交" class="u_sub read_oldncon">
+						</div>
+					</div>
+				</form>
+				<div class="shin-below3">
+					<h4>温馨提示：</h4>
+					<p>1、关闭部分消息提醒可能会妨碍您全方位了解平台最新动态；</p>
+					<p>2、您随时都可以登录账户重新修改此页面勾选内容；</p>
+					<p>3、为了您的交易安全，部分重要信息不能取消接收。</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div style="height: 65px;"></div>
+</div>
+{literal}
+<script>
+	$(function(){
+		$(".shin-below1 ul li").click(function(){
+			var ind=$(this).index();
+			$(this).addClass("onside").siblings().removeClass("onside");
+			$(".shin-below2 ul li").eq(ind).addClass("onside").siblings().removeClass("onside");
+		});
+
+	});
+	diyou.use('users',function(dy){dy.remind_set('remind_form');});
+	diyou.use('users',function(u){u.message('message_form');});
+
+	$("#message_form #hide_show").live("click",function(){
+		var ii=$(this).find("i").html();
+		$(this).html(ii);
+	});
+
+</script>
+{/literal}
+{/if}

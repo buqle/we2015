@@ -1,0 +1,58 @@
+{include file="header.html"}
+<link rel="stylesheet" type="text/css" href="{$tpldir}/css/blue/about.css">
+<div class="wrap">
+    <div class="warp_right fl">
+        <h2>帮助中心</h2>
+        <ul class="map clearfix fonuser_ovsnhe" id="map">
+            <li>
+                <a href="javascript:;" data-id="82">
+                    注册登录<span>>>></span>
+                </a>
+            </li>
+
+            <li>
+                <a href="javascript:;" data-id="83">
+                    投资理财<span>>>></span>
+                </a>
+            </li>
+
+            <li>
+                <a href="javascript:;" data-id="84">
+                    我要借款<span>>>></span>
+                </a>
+            </li>
+
+            <li>
+                <a href="javascript:;" data-id="85">
+                    充值提现<span>>>></span>
+                </a>
+            </li>
+
+            <li>
+                <a href="javascript:;" data-id="86">
+                    安全保障<span>>>></span>
+                </a>
+            </li>
+
+            <li>
+                <a href="javascript:;" data-id="87">
+                    名词解释<span>>>></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+<div class="box fr">
+    <div class="loading_now">正在努力加载中，请耐心等待......</div>
+</div>
+    {literal}
+    <script type="text/javascript">
+        diyou.use('center',function(t){t.init()})
+    </script>
+    {/literal}
+</div>
+{include file="footer.html"}
+{literal}
+<script type="text/javascript">
+diyou.use('index',function(dy){dy.banner_slide('banner_slide','banner_btn');dy.login()})
+</script>
+{/literal}

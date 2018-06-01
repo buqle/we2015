@@ -1,0 +1,119 @@
+
+<div class="borr_runJl">
+	<div class="jyjl_zj">最近交易记录</div>
+	{if $smarty.request.type=='list'}
+	<table class="user_tabifo">
+		<thead>
+		<tr>
+			<th width="15%">时间</th>
+			<th width="20%">类型</th>
+			<th width="11%">存入</th>
+			<th width="11%">支出</th>
+			<th width="11%">冻结</th>
+			<th title="可用余额=账户总额-冻结金额-待收总额" width="12%">余额</th>
+			<th width="20%">备注</th>
+		</tr>
+		</thead>
+		<tbody>
+		{list module="account" function="get_log_list" var=loop user_id=$_G.user_id epage=5 page=$smarty.request.page+1 account_type=$smarty.request.account_type  dotime1=$smarty.request.dotime1  dotime2=$smarty.request.dotime2 }
+		{foreach from=$loop.list item=item}
+		<tr>
+			<td>{$item.addtime|date_format:"Y/m/d H:i:s"}</td>
+			<td>{if $item.type!=""}{$item.type|linkages:"account_type"}{else}-{$item.type}{/if}</td>
+			<td>{if $item.balance_new>0 }￥{$item.balance_new|default:'0.00'}{elseif $item.await_new>0}￥{$item.await_new|default:'0.00'}{/if}</td>
+			<td>{if $item.expend_new>0}￥{$item.expend_new}{/if}
+				{if $item.balance_new==0 && $item.expend_new==0 && $item.frost_new==0 && $item.await_new==0}￥0{/if}
+			</td>
+			<td>{if $item.frost_new>0}￥{$item.frost_new}{/if}</td>
+			<td>￥{$item.balance|string_format:'%0.2f'}</td>
+			<td>{$item.remark}</td>
+		</tr>
+		{/foreach}
+		</tbody>
+	</table>
+	{/list}
+	{else}
+	<div id="cm_tuHome">
+		{articles module='account' function='get_one'  var=var  user_id=$_G.user_id}
+		<div class="cm_tuHome1 te_Homes">账户余额</div>
+		<div class="cm_tuHome2 te_Homes"><span>{$var._balance|default:"0.00"}</span>元</div>
+		<div class="cm_tuHome3 te_Homes" style="width: 290px;">冻结金额<span>{$var._frost|default:'0.00'}</span>元</div>
+		<div class="cm_tuHome4" id="cm_tuHome4id"><a href="javascript:void(0)">同步银行存管账户</a></div>
+		<div class="cm_tuHome5"><a href="http://old.ronghedai.com/?user" target="_blank">提现</a></div>
+		{/articles}
+	</div>
+	<div style="height: 50px;"></div>
+	<div class="business_cont" style="margin: 0 auto;">
+		<div class="business_content2">
+			<div id="content_box" style="height: 100%;" class="user_tabifo1"></div>
+		</div>
+	</div>
+
+	<div style="height: 65px;"></div>
+
+	<!--<div style="font-size: 14px;"><label>旧版账户交易密码</label><input style="height: 26px; width: 150px;" type="password" value="" name="psd"><br>-->
+		<!--<input style="height: 26px; width: 65px; margin: 0 auto" type="button" value="确认"></div>-->
+
+	<script type="text/javascript">
+		var _account_type = '{$smarty.request.data_type}';
+		{literal}
+		diyou.use('users_account',function(dy){dy.account_log(_account_type)})
+		$(function(){
+			/*$('.cm_tuHome5').click(function(){
+				$('.getTxs').show();
+			})
+			$('.getTx_close').click(function(){
+				$('.getTxs').hide();
+			})*/
+			$('.cm_tuHome4').click(function(){
+				if(trust == '1'){
+					var te_xt = '<div style="font-size: 14px;"><div style="height: 30px; line-height: 33px; text-align: left; margin-left: 35px; font-size: 14px; font-weight: bold;">旧版账户交易密码:</div><input id="psd_Home" style="height: 26px; width: 150px; padding-left: 15px;" type="password" value="" name="psd"><br><div style="height: 10px;"></div><input id="que_oldHome" style="height: 26px; width: 65px; margin: 0 auto" type="button" value="确认"></div>';
+					jDialog.message(te_xt,{
+						padding:'30px',
+						modal: true
+					})
+				} else {
+					jDialog.confirm('对不起，您未开通银行存管账户，不能进行资金同步！',{
+						handler : function(button,dialog) {
+							window.location.href = '/?user&q=reg&type=phone';
+							dialog.close();
+						}
+					},{
+						handler : function(button,dialog) {
+							dialog.close();
+						}
+					});
+
+
+				}
+			})
+			$('#que_oldHome').live('click',function(){
+				var psd = $('#psd_Home').val();
+				if(psd != ''){
+					$.http.post('?user&m=account/adjust',{paypassword:psd},function(ret){
+						if(ret.code == 0){
+							jDialog.close();
+							jDialog.alert(ret.msg);
+						} else {
+							jDialog.close();
+							jDialog.alert(ret.msg);
+						}
+					},'json')
+				}else{
+					jDialog.close();
+					jDialog.alert('支付密码不能为空');
+				}
+			})
+
+
+		})
+	</script>
+	{/literal}
+	{/if}
+	<div class="getTxs">
+		<div class="get_itus">
+			<div class="getTx_close"></div>
+			<a href="#trust/cash" class="goTixian"></a>
+		</div>
+	</div>
+</div>

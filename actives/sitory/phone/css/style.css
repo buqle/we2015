@@ -1,0 +1,160 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", sans-serif;;
+    line-height: 1.5;
+    font-size: 16px;
+    background-color: #F2F2F2;
+    color: #000;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+}
+
+button {
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+}
+
+a {
+    -webkit-touch-callout: none;
+    text-decoration: none;
+}
+
+:focus {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+em, i {
+    font-style: normal;
+}
+#main{ width: 16rem; margin: 0 auto;}
+#box img,#box1 img,.ps3 img,.ps_t img{ width: 100%;}
+.ps1{ font-size: 1rem; font-weight: bold; color: white; text-align: center; height: 3rem;line-height: 3rem;}
+.ps2{ font-size: 0.6rem; color: white; text-align: center; line-height: 1rem;}
+.ps2 span{ font-size: 0.7rem; font-weight: bold;}
+.ps3{ width: 10rem; margin: 0 auto;}
+.open_t{ height: 1.7rem; width: 6.5rem; display: block; text-align: center; line-height: 1.7rem; background: white;box-shadow: 0px 0.25rem 0.25rem #565656;; margin: 0 auto;
+font-size: 0.8rem; color: #fc6313; font-weight: bold; border-radius: 0.25rem;}
+.ps_t{ width: 8.5rem; margin: 0 auto;}
+.to_s{ width: 14rem; border-radius: 0.25rem; background: #FF7900; height: 10rem; margin: 0 auto;}
+.ps_pt{ height: 2rem; font-size: 0.7rem; font-weight: bold; line-height: 2rem; color: white; text-align: center;}
+.t_ups{ width: 13rem; margin: 0 auto; height: 7.5rem; background: white;}
+.upers{ height: 1.5rem;}
+.upers span{ height: 1.5rem; width: 20%; float: left; font-weight: bold; font-size: 0.55rem; text-align: center; line-height: 1.8rem; color: #4c2206;}
+.text_ups span{ height: 1rem; width: 20%; float: left; font-size: 0.55rem; text-align: center; line-height: 1rem; color: #4c2206;}
+.cin_a{ height: 1.7rem; width: 6.5rem; margin: 0 auto; display: block;}
+.cin_a img{ width: 100%;}
+.gu_un{ font-weight: bold; color: white; font-size: 0.8rem; line-height: 2rem;}
+.ptos1{ font-size: 0.6rem; color: white; line-height: 1rem;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

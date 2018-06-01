@@ -1,0 +1,61 @@
+{if $smarty.request.type=='list'}
+<table class="user_tab3 bor_none">
+	<thead>
+	   <tr>
+		  <td>名称</td>
+		  <td>积分</td>
+		  <td>时间</td>
+	   </tr>
+	</thead>
+	<tbody>
+	{list module="attestations" function="get_list" var=loop user_id=$_G.user_id status=1 epage=10 page=$smarty.request.page+1}
+	{foreach from=$loop.list item=item}
+	   <tr>
+		 <td>{$item.remark}</td>
+		 <td>{$item.credit}</td>
+		 <td>{$item.addtime|date_format}</td>
+	   </tr>
+	  {/foreach}
+	</tbody>
+	<tfoot>
+	  <tr>
+		  <td colspan="9">
+		  {if $loop.total>0}
+		<div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+		{/if}
+	 </td>
+	  </tr>
+	</tfoot>
+	{/list}
+ </table>
+{else}
+{include file="users_main_header.html"}
+
+<div class="conbox t20 fn_cle user_cont">
+{include file="users_menu.html"}
+	<div class="fn_rig user_rig">
+	   <div class="user_box">
+		   <div class="total_point">
+				  <h2 class="fn_cle">
+				    <span class="fn_left">材料积分记录</span>
+				    <span class="fn_rig"><a href="/?user&m=credit/log" class="a_link f_s14">积分记录</a></span>
+				  </h2>
+				  <div class="cont">
+				   
+				    <div class="notice">
+					这里是您的材料积分记录， 材料积分总计：{$_G.credit_result.credit_attestations|default:0}分</div>
+					
+					 <div id="content_box"></div>
+				  </div>	  
+		   </div>
+	   </div>
+	</div>
+</div>
+{include file="footer.html"}
+
+{literal}
+<script type="text/javascript">
+diyou.use('users_credit',function(dy){dy.attestations_log()})
+</script>
+{/literal}
+{/if}

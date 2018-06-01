@@ -1,0 +1,389 @@
+{include file="header.html"}
+<script type="text/javascript" src="{$tpldir}/js/chart.js"></script>
+<!--<script type="text/javascript" src="{$tpldir}/js/jquery.fancybox.js"></script>-->
+{articles module="borrow"  function="get_view_one" var="var" borrow_nid=$smarty.request.article_id hits="auto" datacache="none" datacachename='broww_article' datacachenametimes="60*30" bindkey=$smarty.request.article_id}
+<script>
+    var borrow_nid = '{$smarty.request.article_id}';
+    var borrow_self = {if $_G.user_id==$var.user_id}1{else}0{/if};
+    var paypwd_status = {if $_G.user_result.paypassword!=''}1{else}0{/if};
+    var borrow_type = '{$var.borrow_type}';
+    var tpldir = '{$tpldir}';
+</script>
+{if $var.count_down==1 && ($smarty.now < $var.tender_time)}
+<script>alert("借款还没有到开始投标时间，不能查看详情信息" );
+location.href='/invest/index.html';
+</script>
+{/if}
+<div class="main_w">
+	<div id="main_product">
+		<div class="pro_duct clear">
+			<div class="pro_left fl">
+				<div class="pro_main">
+					<div class="pro_h clear">
+						<h2 class="fl">
+							{$var.name}
+							{if $var.award_status!=0}{if $var.award_status==1}<i class="tender_reword">{$var.award_account|default:'0.00'}元</i>{else}<span class="the_num" style="float:none;display:inline-block"><em class="award">{$var.award_scale}%</em></span>{/if}{/if}
+							{if $var.borrow_password!=""}<img src="{$tpldir}/images/lock.gif" />{/if}
+						</h2>
+						<span class="fr">借款编号：{$var.borrow_nid}</span>
+					</div>
+					<div class="pro_m clear">
+						<div class="pro_m_li">
+							<div class="sum">
+								<p class="t"><em>{$var.account|default:'0.00'}</em></p>
+								<p class="m">借款金额</p>
+							</div>
+						</div>
+						<div class="pro_m_li">
+							<div class="earn">
+								<p class="t"><em>{if $var.borrow_apr > 100}{$var.borrow_apr/100}0%+奖励{else}{$var.borrow_apr}%{/if}</em></p>
+								<p class="m">年利率</p>
+							</div>
+						</div>
+						<div class="pro_m_li">
+							<div class="dateline">
+								<p class="t"><em>{$var.borrow_period_name}</em></p>
+								<p class="m">{if $var.borrow_type != 'roam'}借款期限{else}还款期限{/if}</p>
+							</div>
+						</div>
+					</div>
+					<div class="pro_m2 clear">
+						<div class="pro_m_li">
+							<div class="earn">
+								<p>奖励：
+									{if $var.award_status!=0}{if $var.award_status==1}<em>{$var.award_account|default:'0.00'}</em>元{else}<em>{$var.award_scale}</em>%{/if}{else}无{/if}
+									{if $var.borrow_type=="second" || $var.borrow_type=="day"}到期还本息{elseif $var.borrow_style=="season"}季还款本金{else}月还款本息{/if}
+									{if $var.borrow_type=="second" || $var.borrow_type=="day"}{$var.repay_month_account|default:'0.00'}{elseif $var.borrow_style=="season"}{$var.repay_season_account|default:'0.00'}{else}{$var.repay_month_account|default:'0.00'}{/if}</em>元
+								</p>
+							</div>
+						</div>
+						<div class="pro_m_li">
+							<div class="sum">
+							{if $var.borrow_status_nid=="loan"}
+							<p>剩余时间：<span class="borrow_end_time" id="borrow_end_time_{$var.borrow_nid}" data='{$var._borrow_end_time}'></span</p>							
+							{else}
+								<p>借款标状态：
+								{if $var.borrow_status_nid=='loan'}{else}{$var.borrow_status_nid|linkages:'borrow_status_nid'}{/if}
+								</p>
+							{/if}
+							</div>
+						</div>
+						<div class="pro_m_li">
+							<div class="dateline">
+								<p>还款方式：{$var.style_title}</p>
+							</div>
+						</div>
+					</div>
+					<div class="pro_b">
+						<div class="pro_progress clear">
+							<div class="title fl">投资进度：</div>
+							<div class="progress fl">
+								<div rates="{$var.borrow_account_scale}" class="p_bar" style="width:0px"></div>
+							</div>
+							<div class="rats fl">{$var.borrow_account_scale}%</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pro_right fr">
+				<div class="subscribe">
+					<div class="item">
+						可投金额：<span class="avail_money" data-money="{$var.borrow_account_wait}" id="availMoney">{$var.borrow_account_wait}</span>元
+					</div>
+					<div class="item">
+                    {if $_G.user_id!=""}
+						账户余额<span class="account_balance">{$_G.account_result.balance}</span>元
+                    <a href="/?user&m=account/recharge/new" target="_blank" class="recharge f_c2">去充值</a>
+                    {else}账户余额<a href="javascript:void(0);" class="bule" id="tender_login" target="_blank">登录</a> 后可见{/if}
+					</div>
+					<form action="" name="" method="post" id="tender_form" novalidate="novalidate">
+						<div class="item item_s">
+							{if $_G.account_result.balance<=0}
+							<input type="text" disabled="true" value="亲，您余额不足。请先充值" name="money" class="money" id="money"/>
+							{else}
+							<input type="text"  {if $var.borrow_status_nid=='loan'} placeholder="请输入投资金额" {else}value="{$var.borrow_status_nid|linkages:'borrow_status_nid'}" disabled="true"{/if} name="money" class="money" id="money"/> <span class="money_type">元</span>
+                        {/if}
+						</div>
+						<div class="item">
+							<span class="basic_label" id="MaxMin" data-min="{$var.tender_account_min}" data-max="{$var.tender_account_max}">最低投标金额：{$var.tender_account_min}元  最高投标金额：{if $var.tender_account_max==0}不限{else}{$var.tender_account_max}元{/if}</span>
+						</div>
+						<div class="item" style="padding-top: 16px;">
+							{if $var.borrow_status_nid=='loan'}<input type="submit" class="tender_sub" value="投&nbsp;&nbsp;&nbsp;&nbsp;标" id="tender_submit" />{else}<input type="button" disabled='true' class="tender_sub_dis" value="{$var.borrow_status_nid|linkages:'borrow_status_nid'}" />{/if}
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="details">
+			<div class="options">
+				<ul class="tabNav2 clear">
+					<li class="on">项目详情</li>
+					<li>风险控制</li>
+					<li>投资记录</li>
+					<li>还款计划</li>
+				</ul>
+			</div>
+			<div class="op_box tabCon2">
+				<div class="box">
+					<div class="title clear">
+						<div class="fl"><img src="{$tpldir}/images/op_01.jpg" alt="" /></div>
+						<div class="tit fl">
+							<h3>认证信息</h3><span>以下基本信息资料由用户{$var.username|truncate:3}***自己填写，经用户同意披露，已通过万国资本验证！</span>
+						</div>
+					</div>
+					<div class="info">
+						<table style="width: 100%;">
+							<tr>
+								<td width="25%"><span class="name">借款人：</span><span class="cato">{$var.username|truncate:3}***</span></td>
+								<td width="25%"><span class="name">真实姓名：</span><span class="cato">{$var.user_info.realname|truncate:1}**</span></td>
+								<td width="25%"><span class="name">性别：</span><span class="cato">{if $var.user_info.realname_status==1}{if $var.user_info.sex==1}男{else}女{/if}{else}{$var.user_info.rsex|linkages:"rating_sex"|default:"未填"}{/if}</span></td>
+								<td width="25%"><span class="name">月收入：</span><span class="cato">{$var.user_info.income|linkages:"rating_income"|default:"未填"}</span></td>
+							</tr>
+							<tr>
+								<td><span class="name">出生日期：</span><span class="cato">
+									{if $var.user_info.realname_status==1}
+									<script>
+										var card_id="{$var.user_info.card_id}";
+                                   document.write(card_id.substring(6,10)+"年"+card_id.substring(10,12)+"月"+card_id.substring(12,14)+"日");
+									</script>
+									{else}
+									{$var.user_info.birthday|date_format:"Y-m-d"|default:"未填"}
+									{/if}
+								</span></td>
+								<td><span class="name">是否结婚：</span><span class="cato">{$var.user_info.marry|linkages:"rating_marry"|default:"未填"}</span></td>
+								<td><span class="name">工作城市：</span><span class="cato">{$var.user_info.work_city|areas:'p,c'|default:'未填'}</span></td>
+								<td><span class="name">学历：</span><span class="cato">{if $var.user_info.degree!=''}{$var.user_info.degree|default:"未填"}{else}{$var.user_info.edu|linkages:"rating_education"|default:"未填"}{/if}</span></td>
+							</tr>
+							<tr>
+								<td><span class="name">岗位职位：</span><span class="cato">{$var.user_info.company_position|linkages:"rating_position"|default:"未填"}</span></td>
+								<td><span class="name">工作年限：</span><span class="cato">{$var.user_info.work_year|linkages:"rating_workyear"|default:"未填"}</span></td>
+								<td><span class="name">公司规模：</span><span class="cato">{$var.user_info.company_size|linkages:"rating_company_size"|default:"未填"}</span></td>
+								<td><span class="name">公司性质：</span><span class="cato">{$var.user_info.company_type|linkages:"rating_company_type"|default:"未填"}</span></td>
+							</tr>
+							<tr>
+								<td><span class="name">有无购房：</span><span class="cato">{if $var.user_info.is_house==1}有{elseif $var.user_info.is_house==0}无{else}未填写{/if}</span></td>
+								<td><span class="name">有无购车：</span><span class="cato">{if $var.user_info.is_car==1}有{elseif $var.user_info.is_car==0}无{else}未填写{/i</span></td>
+							</tr>
+						</table>
+					</div>
+					{if $var.invest_type!=3}
+					<div class="title clear">
+						<div class="fl"><img src="{$tpldir}/images/op_02.jpg" alt="" /></div>
+						<div class="tit fl">
+							<h3>借款详情</h3>
+						</div>
+					</div>
+					<div class="condition">
+						<table style="width: 100%;">
+							<tr>
+								<td width="25%"><span class="name">抵押物类型：</span><span class="cato">{$var.borrow_pawn_type}</span></td>
+								<td width="25%"><span class="name">评估价值：</span><span class="cato">{$var.borrow_pawn_value}</span></td>
+								<td width="25%"><span class="name">取得时间：</span><span class="cato">{$var.borrow_pawn_time}</span></td>
+								<td width="25%"><span class="name">授权额度：</span><span class="cato">
+								{$var.borrow_pawn_xin}</span></td>
+							</tr>
+							<tr>
+								<td colspan="4" style="text-align: center;">情况描述</td>
+							</tr>
+							<tr>
+								<td colspan="4" style="background: #DEEAF4; line-height: 28px;">
+									<p>{$var.borrow_pawn_description}</p>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="title clear">
+						<div class="fl"><img src="{$tpldir}/images/op_03.jpg" alt="" /></div>
+						<div class="tit fl">
+							<h3>小贷公司详情</h3>
+						</div>
+					</div>
+					<div class="container">
+						<div class="load_company">
+							<p>2015年10月22日借款人申请借款，当天风控部门就此项借款进行项目初审，并于10月23日去实地考察。经过DPS专业风控审核，风控部考察结果为：借款人在本市经营一家公司，有较强的经济实力，目前公司一直稳步发展，市场前景非常可观。借款人有着良好的信誉，在银行的征信状况良好，家庭关系和睦，并确定了担保人。综合评分690分，为A级。风控部对借款人借款一事表示风险可控。10月27日进行了项目终审，当日抵押办理完成。</p>
+						</div>
+					</div>
+				{/if}
+				</div>
+			</div>
+			<div class="op_box tabCon2">
+				<div class="box">
+					<div class="title clear">
+						<div class="fl"><img src="{$tpldir}/images/op_01.jpg" alt="" /></div>
+						<div class="tit fl">
+							<h3>万国资本借款记录</h3>
+						</div>
+					</div>
+					<div class="record">
+					{articles module="borrow" function="get_count_user_repay_count" var="repay_var" user_id=$var.user_id datacache="memcache" datacachename='broww_article_get_count_user_repay_count' datacachenametimes="60*30" bindkey=$var.user_id}
+						<table style="width: 100%;">
+							<tr>
+								<td width="33.3%"><span class="name">发布借款笔数：</span><span class="cato">{$var.borrow_times|default:"0"}笔</span></td>
+								<td width="33.3%"><span class="name">成功借款笔数：</span><span class="cato">{$repay_var.borrow_success_num|default:0}笔</span></td>
+								<td width="33.3%"><span class="name">还清笔数：</span><span class="cato">{$repay_var.repay_yes_times|default:0}笔</span></td>
+							</tr>
+							<tr>
+								<td><span class="name">逾期次数：</span><span class="cato">{$repay_var.repay_late_no_num|default:0}次</span></td>
+								<td><span class="name">严重逾期次数：</span><span class="cato">{$repay_var.repay_late_no_num|default:0}次</span></td>
+								<td><span class="name">共计借出：</span><span class="cato">￥{$repay_var.borrow_success_account|default:'0.00'|default:"0"}</span></td>
+							</tr>
+							<tr>
+								<td><span class="name">待还金额：</span><span class="cato">￥{$repay_var.repay_wait_account|default:'0.00'}</span></td>
+								<td><span class="name">逾期金额：</span><span class="cato">￥{$repay_var.repay_late_no_account|default:'0.00'|default:"0"}</span></td>
+								<td><span class="name">待收本息：</span><span class="cato"></span></td>
+							</tr>
+						</table>
+						{/articles}
+					</div>
+					{articles module='borrow' function='get_cominfo_one' borrow_nid=$smarty.request.article_id var=cominfo datacache="memcache" datacachename='broww_article_get_tender_cominfo' datacachenametimes="60*30" bindkey=$smarty.request.article_id}
+					<div class="title clear">
+						<div class="fl"><img src="{$tpldir}/images/op_02.jpg" alt="" /></div>
+						<div class="tit fl">
+							<h3>DPS风控评级</h3>
+						</div>
+					</div>
+					<div class="grade clear">
+						<div class="left fl">
+							<div class="class">
+								<span>信用等级</span>
+								<strong>{$cominfo.zongxinyong}</strong>
+							</div>
+							<canvas id="canvas" width="450" height="420"></canvas>
+						</div>
+						<div class="right fl">
+							<ul>
+								<li>基本信息：{$cominfo.base_infomation|default:"0"}</li>
+								<li>经济能力：{$cominfo.ecnomic_ablity|default:"0"}</li>
+								<li>信用状况：{$cominfo.credit_status|default:"0"}</li>
+								<li>外围调研：{$cominfo.out_research|default:"0"}</li>
+								<li>抵押物评估：{$cominfo.object_evaluate|default:"0"}</li>
+								<li>职业情况：{$cominfo.professional_status|default:"0"}</li>
+								<li class="">{$var.username|truncate:3}***的信用：<span class="credit_all"></span></li>
+							</ul>
+						</div>
+						{literal}
+						<script>
+							var radarChartData = {
+								labels : ["基本信息","经济能力","信用状况","外围调研","抵押物评估","职业情况"],
+								datasets : [
+									{
+										fillColor : "#aacf9a",
+										strokeColor : "#fff",
+										pointColor : "#aacf9a",
+										pointStrokeColor : "#fff",
+										data : [150,150,160,150,150,150]
+									},
+									{
+										fillColor : "#fff",
+										strokeColor : "#fff",
+										pointColor : "#d4d9dc",
+										pointStrokeColor : "#fff",
+										data : [
+										{$cominfo.base_infomation|default:"0"},
+										{$cominfo.ecnomic_ablity|default:"0"},
+										{$cominfo.credit_status|default:"0"},
+										{$cominfo.out_research|default:"0"},
+										{$cominfo.object_evaluate|default:"0"},
+										{$cominfo.professional_status|default:"0"}
+										]
+									}
+								]
+								
+							}
+							var myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar(radarChartData,{scaleShowLabels : false, pointLabelFontSize : 14});
+						</script>
+						{/literal}
+						{/articles}
+					</div>
+					<div class="title clear">
+						<div class="fl"><img src="{$tpldir}/images/op_03.jpg" alt="" /></div>
+						<div class="tit fl">
+							<h3>万国资本审查结果</h3>
+						</div>
+					</div>
+					<div class="check">
+						<p>{$var.borrow_contents}</p>
+					</div>
+				</div>
+			</div>
+			<div class="op_box tabCon2">
+				<div class="box">
+					<div class="op_list">
+						<ul class="op_ul fr clear">
+							<li>投资总额：<span style="color: #E07F00;">{$var.borrow_account_yes|default:'0.00'}</span>元</li>
+							<li>加入人次：<span style="color: #E07F00;">{$var.tender_times}<span>人次</li>
+						</ul>
+						<table style="width: 100%;">
+							<tr>
+								<th width="33.33%">投标人</th>
+								<th width="33.33%">投标金额</th>
+								<th width="33.33%">投标时间</th>
+							</tr>
+							{loop module="borrow" function="get_tender_list" limit="all" var="vat" borrow_nid=$smarty.request.article_id order='tender_addtime' datacache="none" datacachename='broww_article_get_tender_list' datacachenametimes="60*30" bindkey=$smarty.request.article_id}
+							<tr>
+								<td>{$vat.username|truncate:2}**</td>
+								<td>{$vat.account|default:'0.00'}元</td>
+								<td>{$vat.addtime|date_format:"Y-m-d H:i"}</td>
+							</tr>
+							{/loop}
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="op_box tabCon2">
+				<div class="box">
+					<div class="op_list">
+						<table style="width: 100%;">
+							<tr>
+								<th width="20%">还款日期</th>
+								<th width="20%">状态</th>
+								<th width="20%">已还本息</th>
+								<th width="20%">待还本息</th>
+								<th width="20%">逾期天数</th>
+							</tr>
+							{loop module="borrow" function="get_repay_list" borrow_nid=$var.borrow_nid var=_var order="repay_time_asc" limit='all'}
+							<tr>
+								<td>{$_var.repay_time|date_format:"Y/m/d"}</td>
+								<td>{$_var.repay_type_name}</td>
+								<td>￥{$_var.repay_account_yes}</td>
+								<td>￥{if $_var.repay_type!="wait"}0.00{else}{$_var.repay_account}{/if}</td>
+								<td>{if $_var.late_days>0}{$_var.late_days}天{else}-{/if}</td>
+							</tr>
+							{/loop}
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+    var article = '{$var.id}';
+    var borrow_user = '{$var.user_id}';
+    var borrow_nid = '{$var.borrow_nid}';
+    {literal}
+    diyou.use('tender',function(t){t.comment_form('com_form');t.comment_list(article);t.borrow_content(borrow_nid)});
+    diyou.use('borrow',function(b){b.borrow_tabchange();b.fancy_box()});
+</script>
+{/literal}
+{literal}
+<script type="text/javascript">
+(function (){
+		fnTab( $('.tabNav2'), $('.tabCon2'), 'on' );	
+		function fnTab( oNav, aCon, name ) {
+			var aElem = oNav.children();
+			aCon.hide().eq(0).show();
+			aElem.each(function (index){
+				$(this).click(function (){
+					aElem.removeClass(name);
+					$(this).addClass(name);					
+					aCon.hide().eq( index ).show();
+				});
+			});
+		}
+	});
+</script>
+{/literal}
+{/if}
+{/articles}
+{include file="footer.html"}

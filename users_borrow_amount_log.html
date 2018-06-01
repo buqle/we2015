@@ -1,0 +1,126 @@
+{if $smarty.request.type=="list"}
+    <table class="user_tab3 bor_none">
+			     <thead>
+					 <tr>
+					    <th width="10%">额度类型</th>
+					    <th width="8%">增加</th>
+					    <th width="8%">减少</th>
+					    <th width="10%">冻结</th>
+					    <th width="8%">返回</th>
+					    <th width="12%">可用额度</th>
+					    <th width="12%">冻结额度</th>
+					    <th width="12%">总额度</th>
+					    <th width="20%">备注</th>
+					 </tr>
+				 </thead>
+                {list  module="borrow" function="get_amount_log_list" var="loop" page=$smarty.request.page+1 user_id=$_G.user_id amount_type=$smarty.request.amount_type epage=10}
+				 <tbody>
+                    {foreach from=$loop.list item=item}
+				     <tr>
+					    <td>{if $item.amount_type=="credit"}信用借款额度{elseif $item.amount_type=="vouch"}担保借款额度{elseif $item.amount_type=="pawn"}抵押额度{elseif $item.amount_type=="vest"}流转额度{/if}</td>
+					    <td>{if $item.oprate=="add"}￥{$item.account}{/if}</td>
+					    <td>{if $item.oprate=="reduce"}￥{$item.account}{/if}</td>
+					    <td>{if $item.oprate=="frost"}￥{$item.account}{/if}</td>
+					    <td>{if $item.oprate=="return"}￥{$item.account}{/if}</td>
+					    <td>￥{$item.account_use}</td>
+					    <td>￥{$item.account_frost}</td>
+					    <td>￥{$item.account_all}</td>
+					    <td>{$item.remark}</td>
+					 </tr>
+					{/foreach}
+				 </tbody>
+				 <tfoot>
+				    <tr>
+					  <td colspan="9">
+					  {if $loop.total>0}
+                         <div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+                     {else}无相关记录
+                     {/if}
+					  </td>
+					</tr>
+				 </tfoot>
+                 {/list}
+	</table>
+{else}
+
+{include file="users_main_header.html"}
+
+<div class="conbox t20 fn_cle user_cont">
+{include file="users_menu.html"}
+
+<div class="fn_rig user_rig">
+	   <div class="user_box">
+	    <div class="fund_manage">
+	       <h2 class="fn_cle">
+				     <span class="fn_left">额度记录</span>
+				     <span class="fn_rig">
+					   <a href="/?user&m=borrow/loan/myamount&user_role={$smarty.request.user_role}">返回查看申请额度</a>
+					 </span>
+			</h2>
+		   <div class="apply_limit">
+		     <div class="apply_limit_note">
+              {articles module="borrow" function="get_amount_user" var="amount_var"  user_id=$_G.user_id}
+               
+                 
+                 <dl>
+				   {if $amount_var.credit_status==1}				   
+				   <dd>
+				     <span class="all">信用额度：<em>{$amount_var.credit}</em>元</span>
+					 <div class="useful"><span>◇</span>可用信用额度：<em>{$amount_var.credit_use}</em>元</div>
+				   </dd>
+				   {/if}
+				   {if $amount_var.vouch_status==1}
+				   <dd>
+				     <span class="all">担保额度：<em>{$amount_var.vouch}</em>元</span>
+					 <div class="useful"><span>◇</span>可用担保额度：<em>{$amount_var.vouch_use}</em>元</div>
+				   </dd>
+				   {/if}
+				   {if $amount_var.pawn_status==1}
+				   <dd>
+				     <span class="all">抵押额度：<em>{$amount_var.pawn}</em>元</span>
+					 <div class="useful"><span>◇</span>可用抵押额度：<em>{$amount_var.pawn_use}</em>元</div>
+				   </dd>
+				   {/if}
+				   {if $amount_var.vest_status==1}
+				   <dd>
+				     <span class="all">流转额度：<em>{$amount_var.vest}</em>元</span>
+					 <div class="useful"><span>◇</span>可用流转额度：<em>{$amount_var.vest_use}</em>元</div>
+				   </dd>
+				   {/if}
+				   <dd>
+				     <span class="all">净值额度：<em>{$amount_var.worth}</em>元</span>
+					 <div class="useful"><span>◇</span>可用净值额度：<em>{$amount_var.worth}</em>元</div>
+				   </dd>
+                 </dl>
+				  
+				  
+			 <!-- <p>
+				<span>信用额度：<em>4000000</em>元<font>（可用信用额度：<em>40000</em>元）</font></span>
+				<span>担保额度：<em>0.00</em>元<font>（可用担保额度：<em>40000</em>元）</font></span> 
+			</p>
+			<p>
+				<span>抵押额度：<em>0.00</em>元<font>（可用抵押额度：<em>40000</em>元）</font></span>
+				<span>流转额度：<em>0.00</em>元<font>（可用流转额度：<em>40000</em>元）</font></span>
+            </p>
+            <p>			
+				<span>净值额度：<em>0.00</em>元<font>（可用净值额度：<em>40000</em>元）</font></span> 
+			</p> -->
+			 </div>
+             {/articles}   
+			 <div class="apply_limit_list" id="content_list">
+			   
+			 </div>
+			 
+		   </div>
+	   </div>
+	   </div>
+	</div>
+    </div>
+{literal}
+<script type="text/javascript">
+diyou.use('users_amount',function(dy){dy.user_borrow_amount_log('content_list')})
+</script>
+{/literal}
+{include file="users_footer.html"}
+
+{/if}

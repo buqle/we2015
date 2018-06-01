@@ -1,0 +1,222 @@
+{include file="header.html"}
+
+<script>
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="contents"]', {
+			resizeType : 1,
+			allowPreviewEmoticons : true,
+			allowImageUpload : false,
+			width : "80%",
+			height : "400px",
+			items : ['lineheight','fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'link']
+		});
+	});
+</script>
+{if $_G.system.con_borrow_apply==1}
+<script>
+var user_id = '{$_G.user_id}';
+if(user_id != ''){
+	$.getJSON('/?user&q=reg&type=loan_add&user_id='+user_id,function(result){
+		if(result.code == '98'){
+			alert("邮箱未认证");
+		}
+		if(result.code == '97'){
+			alert("手机未认证");
+		}
+		if(result.code == '96'){
+			alert("实名未认证");
+		}
+		if(result.code !='99'){
+			location.href="/?user&m=approve/safe";
+		}
+	});
+}
+</script>
+<!--liurui 借款申请 start-->
+<div class="borrow_bg">
+<div class="conbox">
+	<div class="borrow_title">
+    	<div class="title"><span>在线申请</span>填写后我们将尽快电话联系您</div>
+    </div>
+    <div class="borrow_box">
+    	<div class="form_box">
+    		<form id="my_loan_form" method="post" action="" >
+			<input type='hidden' name='user_id' value='{$_G.user_id}'/>
+		{if $_G.user_id == ''}
+       	 <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
+            <input class="u_input" type="text" name="realname"  id="realname">
+         </div>
+         <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>手&nbsp;&nbsp;&nbsp;机&nbsp;&nbsp;&nbsp;&nbsp;号：</label>
+            <input class="u_input" type="text" name="phone"  id="phone">
+            <span id="phoneError"></span>
+         </div>
+          <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>手机验证码：</label>
+            <input class="u_input" type="text" name="ajax_phone_code"  id="ajax_phone_code">
+            <input class="get_verty_btn" id="send_phonevalid" type="button" value="获取验证码">
+			<span class="user_warning_c" id="cash_warn"></span>
+         </div>
+		 <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>电&nbsp;子&nbsp;邮&nbsp;箱：</label>
+            <input class="u_input" type="text" name="email"  id="email">
+         </div>
+		 {/if}
+		 <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>项&nbsp;目&nbsp;名&nbsp;称：</label>
+            <input class="u_input" type="text" name="titles"  id="titles">
+         </div>
+         <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>所&nbsp;在&nbsp;城&nbsp;市：</label>
+			<script src="/?plugins&q=areas&name=work_&type=p,c&class=u_sel&area=&value="></script>
+        </div>
+        <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>借&nbsp;款&nbsp;金&nbsp;额：</label>
+            <input class="u_input" type="text" name="account"  id="account" />&nbsp;<span class="tips">(元)</span>
+        </div>
+        <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>还&nbsp;款&nbsp;方&nbsp;式：</label>
+
+             {articles module="borrow" function="get_type_one" nid="p2c"  var="var"}
+            <select name="borrow_style" id="borrow_style" style="" class="u_sel">
+			<option value="">--请选择--</option>
+            {foreach from=$var.style_result item=item name="foo"}
+            	<option value="{$item.nid}">{$item.name}</option>
+            {/foreach}
+            </select>
+            {/articles}
+         </div>
+         <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>借&nbsp;款&nbsp;期&nbsp;限：</label>
+            <input class="u_input" type="text" name="borrow_period"  id="borrow_period" />&nbsp;<span class="tips" id="tipsData">(月)</span>
+        </div>
+        <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>年化回报率：</label>
+            <input class="u_input" type="text" name="borrow_apr"  id="borrow_apr" />&nbsp;<span class="tips">%</span>
+			<input type="hidden" id="aprmin" value="{$_U.borrow_type_result.apr_first}" />
+            <input type="hidden" id="aprmax" value="{$_U.borrow_type_result.apr_end}" />
+        </div>
+       
+           <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>详&nbsp;细&nbsp;描&nbsp;述：</label>
+          	<textarea class="u_area" name="contents"  id="contents"></textarea>
+        </div>
+		<div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>验&nbsp;&nbsp;&nbsp;证&nbsp;&nbsp;&nbsp;码：</label>
+            <input class="u_input w80" type="text" name="valicode"  id="valicode" >
+            {valicode}
+        </div>
+        <div class="ui_form_item fn_cle">
+            <label></label>
+          <input class="ui_btn" type="submit" value="立即提交"><em id="error_info"></em>
+        </div>
+
+       </form>
+       </div>
+       <div class="borrow_list">
+       		<div class="list_box">
+            	<h2>申请条件</h2>
+                <p>1、年龄在20-60周岁之间；<br/>2、具有中国国籍(香港、澳门、台湾暂时除外)；<br/>3、借款人须拥有对该车辆的所有权。</p>
+            </div>
+            <div class="list_box">
+            	<h2>准备材料</h2>
+                <p>1、身份证(非本地户籍需同时提供居住证或暂住证)；<br/>2、机动车登记证、行驶证；</p>
+            </div>
+            
+           <div class="list_box" style="border-bottom:none;">
+            	<h2>办理流程</h2>
+                <div class="process fn_cle">
+                	<dl>
+                    	<dt><img src="{$tpldir}/images/porces_1.jpg" /></dt>
+                        <dd>申请</dd>
+                    </dl>
+                    <dl>
+                    	<dt><img src="{$tpldir}/images/porces_2.jpg" /></dt>
+                        <dd> 物质评估</dd>
+                    </dl>
+                    <dl>
+                    	<dt><img src="{$tpldir}/images/porces_3.jpg" /></dt>
+                        <dd>信用评估</dd>
+                    </dl>
+                    <dl>
+                    	<dt><img src="{$tpldir}/images/porces_4.jpg" /></dt>
+                        <dd>签署合同</dd>
+                        
+                    </dl>
+                    <dl>
+                    	<dt><img src="{$tpldir}/images/porces_5.jpg" /></dt>
+                        <dd>履行合同</dd>
+                     
+                    </dl>
+                    <dl>
+                    	<dt><img src="{$tpldir}/images/porces_6.jpg" /></dt>
+                        <dd>付款</dd>
+                    </dl>
+                </div>
+            </div>
+       </div>
+    </div>
+ </div>
+</div>
+
+<!--liurui 借款申请 end-->
+{else}
+<div class="conbox">
+    <div class="borrow">
+        <div class='borrow_apq1'>
+            <p style='height:70px;'></p>
+            <p class='borrow_apq2'>
+                <span class='borrow_apq3'>实名认证</span>
+                <span class='borrow_apq3'>填写资料</span>
+                <span>申请额度</span>
+                <span class='borrow_apq4'>上传资料</span>
+                <span class='borrow_apq4'>发布借款</span>
+            </p>
+        </div>
+        <div style='height:25px;'></div>
+       <ul>
+             {loop module="borrow"  function="get_type_list" limit="all" var="type_var" status=1 user_id=$_G.user_i}
+            <li class="moouse" style="height: auto">
+                <h3 class="{$type_var.nid}">{$type_var.title}</h3>
+                <p>{$type_var.description}</p>
+                <dl>
+                    <dd><span><font>·</font>贷款额度：</span><em>{$type_var.amount_first|default:'0.00'}-{$type_var.amount_end|default:'0.00'}</em></dd>
+                    <dd><span><font>·</font>贷款利率：</span><em>{$type_var.apr_first}%-{if $type_var.apr_end > 100}{$type_var.apr_end / 100 + 9.8 }.00 {else} {$type_var.apr_end}{/if}%</em></dd>
+                    <dd><span><font>·</font>借款期限：</span><em>{$type_var.period_first}-{$type_var.period_end}{if $type_var.nid=="day"}天{else}个月{/if}</em></dd>
+                    <dd><span><font>·</font>还款方式：</span><em class="repay_type">{$type_var.styles_name}</em></dd>
+                    <dd>
+                        {if $type_var.worth != '' && $type_var.id == 2}
+                        {else}
+                        <span></span>
+                        <a href="/?user&m=borrow/loan/new&type_nid={$type_var.nid}" data-type="{$type_var.nid}"  data-amount='100'  class="borrow_now">
+                        立即借款
+                        </a>
+                        {/if}
+                    </dd>
+                </dl>
+            </li>
+            {/loop}
+
+            <div class="cle"></div>
+        </ul>
+
+    </div>
+</div>
+<div style='height:20px;'></div>
+{/if}
+
+{literal}
+<style>
+    body{background: #fff;}
+</style>
+<script type="text/javascript">
+    diyou.use('borrow', function(b) {
+        b.check_borrow()
+    });
+   diyou.use('users',function(u){u.check_block()});
+	diyou.use('borrow', function (d) { d.company_loan('my_loan_form')});
+</script>
+{/literal}
+{include file="footer.html"}

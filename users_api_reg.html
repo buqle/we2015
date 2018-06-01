@@ -1,0 +1,61 @@
+{include file="header.html"}
+
+<div class="conbox t70" id="change_psass">
+	<div class="other_log fn_cle">
+		<div class="model">
+			<div class="model_img"><img src="{if $smarty.request.type=='qq'}{$_G.api_result.figureurl_qq_2}{else}{$_G.api_result.avatar_large}{/if}" /></div>
+			<div class="model_text">
+				<p>来自{if $smarty.request.type=='qq'}QQ{else}新浪微博{/if}的<b>{if $smarty.request.type=='qq'}{$_G.api_result.nickname}{else}{$_G.api_result.screen_name}{/if}</b>，你好。</p>
+				<p>立即设置一个密码，以后就可以直接登录了！</p>
+			</div>
+		</div>
+		<div class="reg_left t50">
+		<form name="reg_form" method="post" action="/?user&q=api&type={$smarty.request.type}&action=reg" id="reg_form">
+		    <div class="reg_item">
+				<p class="tit">绑定邮箱可以增加帐户安全性，并享受更全面的服务</p>				
+			</div>
+			<div class="reg_item">
+				<label for="email" class="basic_label">邮&nbsp;&nbsp;箱</label>
+                {if $_G.approve_result.email!=""}
+                <span class="u_span">{$_G.approve_result.email|truncate_email}</span>
+                <input id="email" name="_email" type="hidden" class="basic_input" value="a_email">
+                {else}
+				<input id="email" name="email" type="text" class="basic_input" value="">
+				<span class="msg_box warning" id="warning"><em></em><i></i><font>请输入您常用的邮箱地址！</font></span>
+                {/if}
+			</div>
+			<div class="reg_item">
+				<label for="username" class="basic_label">用户名</label>
+				<input id="username" name="username" type="text" class="basic_input" value="{if $smarty.request.type=='qq'}{$_G.api_result.nickname}{else}{$_G.api_result.screen_name}{/if}">
+			    <span class="msg_box warning"><em></em><i></i><font>4-16位字符,可包含中文,英文,数字</font></span> 
+			</div>
+			<div class="reg_item">
+				<label for="password" class="basic_label">登录密码</label>
+				<input id="password" name="password" type="password" class="basic_input" value="">
+				<span class="msg_box warning"><em></em><i></i><font>请输入6-15位英文数字或字符组合</font></span>
+				<div class="pw_strength">
+                                <div class="pw_bar"></div>
+                                <div class="pw_letter">
+									<span class="tsl" data-phase-id="r_1_8">弱</span>
+									<span class="tsl" data-phase-id="r_1_9">中</span>
+									<span class="tsl" data-phase-id="r_1_10">强</span>
+								</div>
+                </div>
+			</div>
+			<div class="reg_item">
+				<label for="confirm_password" class="basic_label">确认密码</label>
+				<input id="confirm_password" name="confirm_password" type="password" class="basic_input" value="">
+				<span class="msg_box warning"><em></em><i></i><font>请重复输入上面的密码</font></span>
+			</div>
+			<div class="reg_item">
+				<p>
+				    <input type="submit" class="user_reg_sub" value="保存" id="reg_sub">
+				    <a href="#" class="user_f_c2">以后再说，先去看看</a>
+				</p>
+			</div>
+		</form>
+		</div>
+	</div>
+</div>
+<script>{literal}diyou.use("users_api",function(users){users.api_reg("reg_form");});</script>{/literal}
+{include file="footer.html"}

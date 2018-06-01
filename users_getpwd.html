@@ -1,0 +1,116 @@
+{include file="header.html"}
+{if $smarty.request.gettype=='phone'}
+<div class="conbox">
+  <div class="g_pwd_steps" id="g_pwd_steps2">
+      <p>
+	      <span class="step1">填写信息</span>
+		  <span class="step2">手机验证</span>
+		  <span class="step3">设置密码</span>
+	  </p>
+	  <div class="g_pwd_steping g_pwd_steping2"></div>
+  </div>
+  <div class="get_back_pwd">
+     <div class="gb_pwd_left">
+	    <div class="get_pwd_byphone">
+			<p id="phone_warning" class="phone_warning" style="font-size: 15px;"></p>
+		</div>
+			<form action="" method="post" id="get_pwd21">
+				<div class="reg_item verify_code" id="verify_codeid">
+				<input type="hidden" name="ajax_phone" id="ajax_phone" value="{$_U.getpwd_phone}" />
+						<label for="phone_vericode" id="get_newcode">验证码</label>
+						<input id="phonevalid" name="phonevalid" type="text" class="basic_input" value="" maxlength="6"/>
+						<input type="button" style="*+width:100px;" class="get_verty_btn" id="get_verty_btn" value="获取验证码" />
+				</div>
+				<div class="get_pwd_byphone">
+					<p>
+					 <input type="submit" value="提交" class="get_pwd_sub user_bg_c1" />
+					</p>
+					<span class="user_warning_c" id="warning"></span>
+			    </div>
+			</form>
+	 </div>
+	 <div class="gb_pwd_right"><img src="{$tpldir}/images/gb_pwd_right.png" /></div>
+	 <div class="cle"></div>
+  </div>
+</div>
+{elseif $smarty.request.gettype=='reset'&&$smarty.request.dotype!=''}
+<div class="conbox">
+  <div class="g_pwd_steps" id="g_pwd_steps3">
+      <p>
+		<span class="step1">填写信息</span>
+		<span class="step2">手机验证</span>
+		<span class="step3">设置密码</span>
+	  </p>
+	  <div class="g_pwd_steping g_pwd_steping3"></div>
+  </div>
+  <div class="get_back_pwd">
+     <div class="gb_pwd_left" style="padding-top: 20px;" id="gb_pwd_left3">
+	   <h3>请牢记您所设置的新密码</h3>
+	   <form method="post" action="" id="get_pwd3">
+	      <div class="gb_pwd_item">
+			  <label for="password"  class="basic_label">重设密码</label>
+			  <input id="password" type="password" class="basic_input" />
+		  </div>
+		  <div class="gb_pwd_item">
+			  <label for="comfirm_password"  class="basic_label">请重复输入重设的新密码</label>
+			  <input id="comfirm_password" type="password" class="basic_input" />
+		  </div>
+		  <div class="gb_pwd_item t15">
+				<input type="hidden" name="dotype" id="dotype" value="{$smarty.request.dotype}" />
+				{if $smarty.request.dotype=='phone'}
+				<input type="hidden" name="phone" id="phone" value="{$smarty.session.phone}" />
+				<input type="hidden" name="phonevalid" id="phonevalid" value="{$smarty.session.phonevalid}" />
+				{/if}
+				{if $smarty.request.dotype=='email'}
+				<input type="hidden" name="user_id" id="user_id" value="{$smarty.session.user_id}" />
+				{/if}
+			  <input type="submit" class="get_pwd_sub user_bg_c1" value="确认"/>
+		  </div>
+		   <span class="user_warning_c" id="warning"></span>
+	   </form>
+	 </div>
+	 <div class="gb_pwd_right"><img src="{$tpldir}/images/gb_pwd_right.png" /></div>
+	 <div class="cle"></div>
+  </div>
+</div>
+{else}
+<div class="conbox">
+  <div class="g_pwd_steps" id="g_pwd_steps1">
+      <p>
+	      <span class="step1">填写信息</span>
+		  <span class="step2">手机验证</span>
+		  <span class="step3">设置密码</span>
+	  </p>
+  </div>
+  <div class="get_back_pwd">
+     <div class="gb_pwd_left">
+	   <form method="post" action="" id="get_pwd1">
+		  <div class="gb_pwd_item o_by_phone j_pwd" id="o_by_phone">
+			  <label for="phone"  class="basic_label">手机号码</label>
+			  <input id="phone" name="phone" type="text" class="basic_input" />
+		  </div>
+		  <div class="gb_pwd_item verify_code">
+			  <label for="valicode"  class="basic_label">验证码</label>
+			  <input id="vericode" name="valicode" type="text" class="basic_input w80" />
+			  {valicode height='35' width='70' style='cursor:pointer;'}
+		  </div>
+		  <input type="hidden" name="action" id="action"  value="getpwd" />
+		  <div class="gb_pwd_item t15">
+			  <input type="submit" class="get_pwd_sub user_bg_c1" value="找回"/>
+		  </div>
+		   <span class="user_warning_c" id="warning"></span>
+	   </form>
+	 </div>
+	 <div class="gb_pwd_right"><img src="{$tpldir}/images/gb_pwd_right.png" /></div>
+	 <div class="cle"></div>
+  </div>
+</div>
+{/if}
+{literal}
+<script type="text/javascript">
+      diyou.use('index',function(dy){dy.get_pwd()});
+</script>
+{/literal}
+{include file="footer.html"}
+
+

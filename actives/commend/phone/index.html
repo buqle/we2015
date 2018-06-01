@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+<head>
+	 <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+	<title>推荐好友</title>
+	<link rel="stylesheet" href="{$tpldir}/actives/commend/phone/css/style.css">
+</head>
+<body>
+	<div class="commend">
+		<div id="com">
+			<div class="com1 creen">邀请好友</div>
+			<div class="com1 comList" data-id="100">邀请列表</div>
+		</div>
+		<!--邀请好友-->
+		<div class="tender">
+			<p class="ge_p">1、发送邀请链接，邀请好友得奖励！</p>
+			<div class="getDiv">
+				http://www.ronghedai.com/dywap/?user&q=reg&type=app&reg_invite=<span id="getSPAN">?</span>
+			</div>
+			<div class="yqhy yqhy_link">邀请好友</div>
+			<p class="ge_p">2、发送二维码、邀请好友一起理财！</p>
+			<div class="erma"></div>
+			<div style="height: 0.8rem;"></div>
+			<p style="line-height: 1rem; text-align: center;  font-size: 0.6rem;">保存二维码发送给好友</p>
+			<!--<div class="yqhy"><a href="/active/commend/index.html" style="color: white;">邀请好友</a></div>-->
+		</div>
+
+		<!--邀请列表-->
+		<div class="tender" style="display: none;">
+			<div class="in_us">
+				<span>成功邀请好友</span>
+				<span>注册时间</span>
+				<span>是否投资</span>
+			</div>
+			<div class="in_border"></div>
+			<div id="in_lhz" class="yqlb">
+			</div>
+            <div id="aaaaaa">
+
+            </div>
+		</div>
+		<div style="height: 2rem;"></div>
+	</div>
+	<!--divc-->
+	<div class="in_backgr" style="display: none;">
+		<div class="bagr_oud">
+			<img src="{$tpldir}/actives/commend/phone/images/wx_tj.png">
+		</div>
+	</div>
+	<script src="{$tpldir}/actives/commend/phone/js/zepto.min.js" type="text/javascript"></script>
+	<script src="{$tpldir}/actives/commend/phone/js/autofull.js" type="text/javascript"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	{literal}
+    <script type="text/javascript">
+		$(function(){
+			$('.yqhy_link').click(function(){
+				$('.in_backgr').show();
+			})
+			$('.in_backgr').tap(function(){
+				$(this).hide();
+			})
+			$('#com > .com1').tap(function(){
+				var index = $(this).index();
+				$(this).addClass('creen').siblings().removeClass('creen');
+				$('.tender').eq(index).show().siblings('.tender').hide();
+			})
+
+//二维码
+			$.ajax({
+				url:'/weixin/?qrcode',
+				type:'get',
+				dataType:'text',
+				data:{
+					token:localStorage.getItem('token')
+				},
+				success: function(ret){
+					$('.erma').append("<img src=" + ret + ">")
+				}
+			})
+
+			var wxUser = localStorage.getItem('invite');
+			$('#getSPAN').text(wxUser);
+			var rhdTitle = '融和贷寻找金牌推荐人';
+			var rhdLink = 'http://www.ronghedai.com/dywap/?user&q=reg&type=app&reg_invite='+wxUser;
+			var rhdDesc = '国资风投+银行联合存管，人脉变钱脉，100%钱生钱，安全理财必备神器！';
+			$.getJSON('/?getweixintoken',{},function(ret){
+				wx.config({
+					debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+					appId: ret.appId, // 必填，公众号的唯一标识
+					timestamp: ret.timestamp, // 必填，生成签名的时间戳
+					nonceStr: ret.nonceStr, // 必填，生成签名的随机串
+					signature: ret.signature,// 必填，签名，见附录1
+					jsApiList: [
+						'onMenuShareTimeline',
+						'onMenuShareAppMessage',
+						'onMenuShareQQ',
+						'onMenuShareWeibo',
+						'onMenuShareQZone'
+					] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+				});
+			})
+
+
+
+			wx.ready(function(){
+				wx.onMenuShareTimeline({
+					title: rhdTitle, // 分享标题
+					link: rhdLink, // 分享链接
+					imgUrl:'http://www.ronghedai.com/dyweb/dythemes/diyou/actives/newpull3/phone/images/wximgUrl.png',
+					success: function () {
+
+					},
+					cancel: function () {
+
+					}
+				});
+				wx.onMenuShareAppMessage({
+					title: rhdTitle,
+					desc: rhdDesc,
+					link: rhdLink,
+					imgUrl:'http://www.ronghedai.com/dyweb/dythemes/diyou/actives/newpull3/phone/images/wximgUrl.png',
+					success: function () {
+
+					},
+					cancel: function () {
+
+					}
+				});
+				wx.onMenuShareQQ({
+					title: rhdTitle, // 分享标题
+					desc: rhdDesc, // 分享描述
+					link: rhdLink, // 分享链接
+					imgUrl:'http://www.ronghedai.com/dyweb/dythemes/diyou/actives/newpull3/phone/images/wximgUrl.png',
+					success: function () {
+
+					},
+					cancel: function () {
+
+					}
+				});
+				wx.onMenuShareWeibo({
+					title: rhdTitle, // 分享标题
+					desc: rhdDesc, // 分享描述
+					link: rhdLink, // 分享链接
+					imgUrl:'http://www.ronghedai.com/dyweb/dythemes/diyou/actives/newpull3/phone/images/wximgUrl.png',
+					success: function () {
+
+					},
+					cancel: function () {
+
+					}
+				});
+				wx.onMenuShareQZone({
+					title: rhdTitle, // 分享标题
+					desc: rhdDesc, // 分享描述
+					link: rhdLink, // 分享链接
+					imgUrl:'http://www.ronghedai.com/dyweb/dythemes/diyou/actives/newpull3/phone/images/wximgUrl.png',
+					success: function () {
+
+					},
+					cancel: function () {
+
+					}
+				});
+			})
+
+			//列表
+            var page = 1;
+            var aa = 1;
+            var url = '';
+			$('.comList').click(function(){
+                page = 1;
+                url = '/weixin/?user&q=userinfo&type=invite_list&page='+aa;
+                var dataId = $('.comList').attr('data-id');
+                getData(dataId);
+			});
+            $(document).die().on('click','#morelast',function(){
+                page ++;
+                url = '/weixin/?user&q=userinfo&type=invite_list&page='+page;
+                getData();
+            })
+            function getData(dataId){
+                $.ajax({
+                    url:url,
+                    type:'post',
+                    dataType:'json',
+                    data:{
+                        token:localStorage.getItem('token'),
+                        epage:10
+                    },
+                    success: function (ret) {
+                        if(ret.code == '0'){
+                            var html = '';
+                            for(var i = 0, len = ret.data.list.length; i < len; i ++){
+                                html += '<div class="in_us">';
+                                html += '<span>'+ret.data.list[i].username+'</span><span>'+getday(ret.data.list[i].addtime)+'</span>';
+                                if(ret.data.list[i].is_tend == 1){
+                                    html += '<span>是</span>';
+                                }else {
+                                    html += '<span>否</span>';
+                                }
+                                html += '</div>';
+                                html += '<div class="in_border"></div>';
+                            }
+                            var html2 = '<p id="morelast" data-id="101">加载更多...</p>';
+
+
+                            if(dataId == 100){
+                                $('#in_lhz').html(html);
+                                if(ret.data.total_page > page){
+                                    $('#aaaaaa').html(html2);
+                                }
+                            }else {
+                                $('#in_lhz').append(html);
+                                if(ret.data.total_page > page){
+                                    $('#aaaaaa').html(html2);
+                                }else {
+                                    $('#aaaaaa').html('');
+                                }
+                            }
+                        }else {
+                            alert(r.msg);
+                        }
+                    }
+                })
+            }
+		})
+		function getday(time) {
+			var date = new Date();
+			date.setTime(time * 1000);
+			Y = date.getFullYear() + '/';
+			M = (date.getMonth() + 1 < 10 ? (date.getMonth() + 1) : date.getMonth() + 1) + '/';
+			D = date.getDate()+'   ';
+			time = Y + M + D;
+			return time;
+		}
+
+
+	</script>
+    {/literal}
+</body>
+</html>

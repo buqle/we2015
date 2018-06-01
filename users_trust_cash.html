@@ -1,0 +1,203 @@
+{articles module="webcount"  function="get_users_account" var="var1" user_id=$_G.user_id}
+<div class="top_up">
+    <p class="p1"><em class="active">提现</em><i>|</i><em class="em1" id="em1">提现记录</em></p>
+    <div class="top_1">
+        <div class="tx_info" id="tx_infos">
+            {articles module="approve"  function="get_realname_one" var="var1ss" user_id=$_G.user_id}
+                <p><label>账户姓名</label><span id="trust_realname">{$var1ss.realname}</span></p>
+            {/articles}
+            <p><label>到账银行卡</label><span class="cust_banklis inline-block">{list module="account" function="get_users_bank_list" user_id=$_G.user_id var=loop}
+                    {foreach from=$loop.list item=item}
+                        <i>&nbsp;&nbsp;&nbsp;&nbsp;{$item.account|bank_fmt}</i>
+                    {/foreach}
+                {/list}</span></p>
+            <p><label>提现金额</label><input type="text" id="money" placeholder="≥100元" /></p>
+            <p value="{$var1.balance}" class="balance"><label>可用金额</label>{$var1.balance|default:"0.00"}元</p>
+            <div class="chaea_box clearg">
+                {if $_G.trust_cash_fee.cash_general.status ==1}
+
+                    <input type="checkbox" name="cash_channel" value="general" checked>&nbsp;&nbsp;普通提现（T+1 手续费低）
+
+                {/if}
+                {if $_G.trust_cash_fee.cash_fast.status ==1}
+
+                    <input type="checkbox" name="cash_channel" value="fast" {if $_G.trust_cash_fee.cash_general.status ==0}checked{/if}>&nbsp;&nbsp;快速提现（T+0 手续费高）
+
+                {/if}
+
+                {if $_G.trust_cash_fee.cash_immediate.status ==1}
+
+                    <input type="checkbox" name="cash_channel" value="immediate" {if $_G.trust_cash_fee.cash_general.status ==0}checked{/if}>&nbsp;&nbsp;即时提现（T+S）
+
+                {/if}
+                <div class="fl" style="padding-left: 60px;">
+                    <!--<em>手续费：</em><i>￥<span id="cash_fee">0.00</span></i>元-->
+                </div>
+            </div>
+            <p class="tixian_cont">您当前的手续费为:<span class="tixian_con">0</span>元</p>
+            <p class="tixian_cont2" now="{$smarty.now}">为庆祝上海银行存管上线，2017年7月31日24时之前，所有用户提现手续费由平台支付。</p>
+            <p class="tx">
+                <a href="javascript:void(0)" id="trust_cash" class="button_bank2  text-center block button_bank cursor font18">下一步</a>
+            </p>
+        </div>
+        <div class="js">
+            <h2>温馨提示：</h2>
+            1.每笔提现金额至少为100元（含100元）；<br>
+            2.开通银行存管账户、身份验证、取现银行信息均设置成功后，方能进行提现操作；<br>
+            3.请确保您银行账户的户名和您身份验证时填写的真实姓名一致；<br />
+            4.提现时，可选择实时到账（即T+S）到账模式、快速提现（即T+0）到账模式或普通提现（即T+1）到账模式。“T”指提现登记日，如用户选择T+1模式，则到账时间为登记日后的第二个 工作日；若用户选择T+0模式，工作日14:30之前发起的取现，当日到账；14:30之后发起的取现，则在下一个工作日到账。非工作日（包括但不局限于：周六日 、法定节假日）提现，将自动顺延至非工作日后的第一个工作日24时之前办理，或另见网站公告；若用户选择实时到账，即不论工作日与非工作日，均当天到账，限额5万元以内；个人用户支持工商、农业、招商、北京、中行、民生、渤海、光大、兴业、浙商、广发、华夏、平安、上海农商行即时取现，企业用户支持工商、招商银行即时取现。关于即时提现的更多问题请致电上海银行客服电话95594；<br>
+            5.T+1模式手续费为1元/笔；T+0模式手续费为提现金额的0.5‰；即时到账模式手续费为提现金额的0.5‰；VIP用户0元（手续费由平台支付）。如用户在节假日（包括但不局限：周六日、法定节假日）前一个工作日提现，建议使用实时到账（T+S）提现模式；<br />
+            6.充值成功24小时后方可取现；<br />
+            7.在您提现过程中有任何疑问，请联系平台在线客服或拨打融和贷全国统一客服热线：400-013-5679。
+            <br />
+        </div>
+        <div style="height: 65px;"></div>
+    </div>
+</div>
+
+{literal}
+<style>
+    .shuaxin{-webkit-animation:refrech 1s infinite  linear forwards;}
+    @-webkit-keyframes refrech{to{-webkit-transform:rotate(360deg);}}
+</style>
+<script type="text/javascript">
+    $(function(){
+        function getAcc(){
+            var accounts=parseInt($("#money").val());
+            if($('.tixian_cont2').attr('now')>1501516800){
+                if(accounts>=100){
+                    $('.tixian_cont').show();
+                    var addries=$('input[name="cash_channel"]:checked ').val();
+                    $.http.post('/?user&m=trust/cash/get_fee',
+                            {
+                                cash_channel:addries,
+                                account:accounts
+
+
+                            }
+                            ,function (ret) {
+                                $('.tixian_con').html(ret)
+                            }, 'json');
+                }else if(accounts==0||accounts==''){
+                    $('.tixian_con').html('0')
+                }
+            }else if(accounts>=100){
+                $('.tixian_cont2').show()
+            }
+
+        }
+        $('[name = cash_channel]:checkbox').click(function () {
+            if($(this).prop("checked",'true')){
+                $(this).siblings().prop("checked",false);
+                getAcc();
+            }
+            $('#money').blur();
+        });
+        //shouxufei
+        $('#money').keyup(function(){
+            getAcc()
+        });
+
+        if($('.cust_banklis').find('i').length<1){
+            $('.cust_banklis').html('暂无绑定银行卡')
+        };
+        var attr_cust=$('#main').attr('att-trust')
+        $('#trust_cash').die('click').live('click', function(){
+           if(parseInt($('.balance').attr('value'))<100){
+                jDialog.alert('请您进行充值,账户余额不足');
+                return false;
+            }else{
+                if($("#money").val()==""){
+                    jDialog.alert("请填写提现金额", {
+                        text:'确认',
+                        type:'highlight',
+                        handler : function(btn,dlg){
+                            jDialog.close();
+                            $("#money").focus();
+                        }
+                    });
+                    return;
+                }
+                var balance=  $(".balance").attr('value');
+                balance=balance*1;
+
+                if (parseInt($("#money").val()) < 100) {
+                    jDialog.alert('提现金额不可小于100元');
+                    return false;
+                }
+                var cashChannel = $("[name = cash_channel]:checked").val();
+                if (cashChannel == null || cashChannel == '') {
+                    jDialog.alert('提现渠道错误！');
+                    return false;
+                }
+                var row={'money':$("#money").val(),'balance':balance,'cash_channel':cashChannel};
+                var w = window.open();
+                $.http.post('/?user&m=trust/cash/new',row,function(data){
+                    if(data.ret!=0){
+                        jDialog.alert(data.msg);
+                        w.close();
+                    }else{
+                        jDialog.confirm('',{
+                            text:'完成提现',
+                            type:'highlight'
+                        }, {
+                            text:'提现失败',
+                            type:'highlight',
+                        },{
+                            title:'提现'
+                        });
+                        w.document.write(data.form);
+                    }
+                },'json',function () {
+                    jDialog.alert('数据请求错误，请联系客服！');
+                    w.close();
+                });
+
+            }
+        });
+        //体现记录
+        $("#em1").click(function () {
+            // 通过options参数，控制dialog
+            var dialog = jDialog.ajax('/?user&m=trust/cash/cash_log', {
+                title: '提现记录',
+                width: 1064,
+                height: '620'
+            });
+        });
+        //管理银行卡
+        $("#em2").click(function () {
+            // 通过options参数，控制dialog
+            var dialog = jDialog.ajax('/?user&m=trust/bank/list', {
+                title: '管理银行卡',
+                width: 800,
+                height:500
+            });
+        });
+        //体现手续费
+        /*$('#money').unbind('blur').bind('blur',function(){
+            var cashChannel = $("[name = cash_channel]:checked").val();
+            if (cashChannel == null || cashChannel == '') {
+                jDialog.alert('提现渠道错误！');
+                return false;
+            }
+            var ac = $('#money').val();
+            if(ac==""){
+                $("#cash_fee").text('0.00');
+            } else {
+                $.http.get('/?user&m=trust/cash/get_fee&type=cash&cash_channel='+cashChannel,{account:ac},function(ret){
+                    $("#cash_fee").text(ret);
+                },'text',function(){
+                    jDialog.alert('获取手续失败，请重试！')
+                })
+            }
+        })*/
+
+
+
+
+    });
+
+
+</script>
+{/literal}
+{/articles}

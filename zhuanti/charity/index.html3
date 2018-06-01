@@ -1,0 +1,128 @@
+{include file="header.html"}
+ <link rel="stylesheet" href="{$tpldir}/zhuanti/charity/css/style.css">
+<div class="jiexi01">
+	<div class="jiexcon" style="width:980px; margin:0 auto;">
+    	<div><img src="{$tpldir}/zhuanti/charity/images/bg1.jpg" alt=""></div>
+        <div><img src="{$tpldir}/zhuanti/charity/images/bg2.jpg" alt=""></div>
+        <div><img src="{$tpldir}/zhuanti/charity/images/bg3.jpg" alt=""></div>
+        <div><img src="{$tpldir}/zhuanti/charity/images/bg4.jpg" alt=""></div>
+        <div><img src="{$tpldir}/zhuanti/charity/images/bg5.jpg" alt=""></div>
+        <div><img src="{$tpldir}/zhuanti/charity/images/bg6.jpg" alt=""></div>
+    </div>
+</div>
+<div class="charitymain">
+	<div class="charityside1">
+    	<div class="charityside1_c">
+        	<h4 id="charityside1_ch4"></h4>
+        	<p id="charityside1_chp">“融和公益幸福计划”是由互联网金融平台融和贷发起，联合安徽博爱公益基金会以及投资人的一项长期社会公益事业。融和贷负责募集爱心钱款，爱心钱款将直接进入博爱基金会账户，由基金会负责落地实施，融和贷全程监督。融和贷愿与广大理财爱好者共筑爱心长城，同时我们呼吁各界爱心人士奉献爱、传递爱，集万民力量，让生活充满温暖和希望！
+            </p>
+            <div class="gytit"><img src="{$tpldir}/zhuanti/charity/images/gytit.gif" alt=""></div>
+            <div class="gyjjcont clear">
+            	<div class="gyjjcontside">
+                	<dl class="clear">
+                	<dt><img src="{$tpldir}/zhuanti/charity/images/gy1.gif" alt=""></dt>
+                    <dd style="background:#fe8368;">
+                    	<h4>2015年1月30日</h4>
+                        <p>融和贷为金色家园养老中心</p>
+                        <p>送生活必需品</p>
+                        <div class="ajjxq">
+                        <a href="http://ronghedai.com/diyizhan/index.html" target="_blank"><img src="{$tpldir}/zhuanti/charity/images/xq.png" alt=""></a>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="clear">
+                	<dd style="background:#34b075;">
+                    	<h4 style="padding-top:22px;">2015年6月1日</h4>
+                        <p>融和贷免费搭建欢乐儿童平台</p>
+                        <div class="ajjxq">
+                        <a href="http://ronghedai.com/dierzhan/index.html" target="_blank"><img src="{$tpldir}/zhuanti/charity/images/xq.png" alt=""></a>
+                        </div>
+                    </dd>
+                    <dt><img src="{$tpldir}/zhuanti/charity/images/gy2.jpg" alt=""></dt>
+                </dl>
+                <dl class="clear">
+                	<dt><img src="{$tpldir}/zhuanti/charity/images/gy3.jpg" alt=""></dt>
+                    <dd style="background:#d85a9a;">
+                    	<h4 style="padding-top:22px;">2015年7月16日</h4>
+                        <p>融和贷岳西支教，关爱留守儿童</p>
+                        <div class="ajjxq">
+                        <a href="http://ronghedai.com/disanzhan/index.html" target="_blank"><img src="{$tpldir}/zhuanti/charity/images/xq.png" alt=""></a>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="clear">
+                	<dd style="background:#35b4d5; width:247px;">
+                    	<h4>2015年9月2日</h4>
+                        <p>融和贷赴舒城县河棚城镇新</p>
+                        <p>开小学送温暖，呵护留守儿童</p>
+                        <div class="ajjxq">
+                        <a href="http://ronghedai.com/diwuzhan/index.html" target="_blank"><img src="{$tpldir}/zhuanti/charity/images/xq.png" alt=""></a>
+                        </div>
+                    </dd>
+                    <dt><img src="{$tpldir}/zhuanti/charity/images/gy4.jpg" alt=""></dt>
+                </dl>
+                </div>
+            </div>
+
+        </div>
+    </div>
+	
+    <div class="charityside2">
+    	<div class="charityside2_c">
+        	<h5></h5>
+            <h4 id="charityside2_ch4"></h4>
+            <div class="charitba"><a href="http://www.ahbagy.org/" target="_blank" title="进入安徽博爱公益基金会官网">进入安徽博爱公益基金会官网</a></div>
+            <div class="charitypic">
+            	<div class="charitypic_c">
+                	<div class="charpcont">
+                    	<p>安徽博爱公益基金会成立于2014年7月，是省民政厅批准成立的一家非公募性、非盈利性的社会组织，主要打造一个传播公益文化和为志愿者服务的平台。</p>
+                        <p>基金会的宗旨：奉献爱心，捐建公益项目，传播公益精神理念，在全社会形成平等、友爱、和谐的社会公益文化，让更多的人参与到志愿服务中，帮助需要帮助的人。</p>
+                        <p>基金会的公益文化理念核心：爱我、爱家、爱祖国。</p>
+                        <p>2014年以来，博爱基金会先后发起了“追梦计划”、“博爱春晖计划”、“博爱青蓝计划”、“危房援建”和“百爱家园”等公益项目，在社会上引起广泛的关注。基金会希望通过一系列公益项目，以他们的实际行动呼吁社会各界参与到公益事业中来，凝聚力量，帮助更多需要帮助的人。让每一个渴望温暖的心灵得到最温柔的呵护，让爱的种子洒满世界的每一个角落。</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div style="background:#fff; height:60px; width:1200px; margin:90px auto 0 auto;"></div>
+    </div>
+	
+    <div class="charityside3">
+    	<div class="charityside3_c">
+        	<h4 id="charityside3h4"></h4>
+            <div class="charitba"><a href="http://ronghedai.com/cs/index.html" target="_blank" title="进入融和公益情">进入融和公益情</a></div>
+            <p>关注社会、服务社会、热心公益是当今社会主义精神文明建设的一个亮点，是构建和谐社会的需要。融和贷作为国内P2P行业首家从事慈善公益的投融资平台，在解决中小企业融资难问题的同时，特意开辟出慈善公益绿色通道，一直致力于为改善贫困、助力国家公益事业，造福社会贡献自己最大的力量。        </p>	
+            <p> 融和贷把金融和慈善有机的结合起来，希冀可以让“大爱无疆，上善若水”的理念深入人心，让更多的人参与公益事业，共同弘扬人间大爱，传递社会正能量。目前，融和贷已成功申请并创立爱心网站（www.ronghedai.love），为公益事业的绵延悠长作长期规划部署。</p>
+            <div class="charityside3_c2">
+            	<div class="charitysidele"><a href="http://ronghedai.com/diliuzhan/index.html" target="_blank"></a></div>
+                <div class="charitysideri"><a href="http://ronghedai.com/disizhan/index.html" target="_blank"></a></div>
+            </div>
+            <div class="charityside3go"></div>
+        </div>
+    </div>
+    
+    
+    <div class="charityside4">
+    	<div class="charityside4_c">
+        	<h4 id="charityside4h4"></h4>
+            <h4 id="charityside4h41"></h4>
+            <div class="charityside4_c2">
+            	<p>
+                	  融和贷与安徽博爱公益基金会的战略合作，开辟了慈善公益与P2P网贷平台合作的新途径，让爱心公益变得更加简单有效，覆盖范围更广。
+长期以来，公益基金慈善事业面临着资金不足的问题，而P2P平台有效的传播渠道，资金来源的广泛性以及运营的透明性，可以让更多支持公益事业的大众方便的完成他们的爱心之举。
+                </p>
+                <p>此次战略合作，将公益基金和P2P结合起来，通过充分利用互联网金融平台与基金会的双向优势，成功打造互联网公益事业新模式，致力于让公益事业发扬光大，无限延伸！</p>
+            </div>
+         </div>   
+    </div>
+    
+    <div class="charityside5">
+    	<div class="charityside5_c"></div>
+    </div>
+    
+</div>
+
+<div class="charityfoot">
+	<p>合肥安易贷投资管理有限公司</p>
+    <a href="http://ronghedai.com/?user&q=reg" target="_blank">加入融和贷</a>
+    
+</div>

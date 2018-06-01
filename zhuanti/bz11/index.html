@@ -1,0 +1,81 @@
+{include file="header.html"}
+<link href="{$tpldir}/zhuanti/bz/css/style.css?v=201656" rel="stylesheet" />
+<div class="guarantee_con1"></div>
+
+<div class="guarantee_con2 clearc">
+    <ul class="gua_head">
+        <li class="heada headon"></li>
+        <li class="headb"></li>
+        <li class="headc"></li>
+    </ul>
+    <div class="pos_liu"></div>
+    <ul class="gua_body">
+        <li class="bodyon">
+            <div class="safe_cont">
+                <div class="safe_side1"  id="safe_side4">
+                    <h4>两次实地考察</h4>
+                    <p>融和贷合作机构及风控团队两次实地考察，保证资料审核、背景调查、还款能力，确保项目真实合法，保证项目风险可控。</p>
+                </div>
+                <div class="safe_side1" id="safe_side5">
+                    <h4>多层信息审核</h4>
+                    <p>融和贷要求担保机构提供项目调查、评审报告，对借款项目复核筛选，对潜在风险征信调查，对借款人实行黑名单制度，保证项目真实可信。</p>
+                </div>
+                <div class="safe_side1" id="safe_side6">
+                    <h4>风险准备金</h4>
+                    <p>融和贷为保障投资人财产安全，设置风险准备金，平台所有投资者均享受本息先行垫付的风险准备金制度，安全理财高枕无忧。</p>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="safe_cont">
+                <div class="safe_side1" id="safe_side7">
+                    <h4>机构回购制度</h4>
+                    <p>融和贷所有合作机构承诺，除不可抗力因素，当债权发生问题时，回购债权，以保障投资人的资金安全，同时该机构承担此债权所有连带责任。</p>
+                </div>
+                <div class="safe_side1" id="safe_side8">
+                    <h4>汇付+恒丰存管</h4>
+                    <p>融和贷于2015年率先与银行签署资金存管协议，平台已经启动“融和贷+汇付天下+恒丰银行”资金存管模式，切实保障投资人资金安全。</p>
+                </div>
+                <div class="safe_side1" id="safe_side9">
+                    <h4>全程法务支持 </h4>
+                    <p>融和贷所有项目业务，由安徽众城高昕律师事务所全程跟踪服务，事务所2001年6月设立，是安徽省目前规模最大的律师专业机构之一，多次被评为省级文明律师事务所。</p>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="safe_cont">
+                <div class="safe_side1">
+                    <h4>专业运营团队</h4>
+                    <p>由线下金融体系机构中历经磨炼、风险控制意识强、实战经验丰富的业界精英组成，每项资料实地调研，每笔项目实物抵押，每次估值十分精准，每个节点责任到人，所有数据多次验证。</p>
+                </div>
+                <div class="safe_side1" id="safe_side2">
+                    <h4>独创DPS风控</h4>
+                    <p>独创DPS(data position seconds)风控系统，六大模块，十三项详细评估，从源头上确保项目质量，从根源上杜绝问题项目。</p>
+                </div>
+                <div class="safe_side1" id="safe_side3">
+                    <h4>强大集团背景</h4>
+                    <p>融和贷为瑞商集团子公司安易贷旗下品牌，瑞商集团旗下有多家全资子公司，确保所有理财客户资金安全。</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+{literal}
+<script>
+    $(function(){
+       $('.gua_head li').click(function(){
+           var ind=$(this).index();
+           $(this).addClass('headon').siblings().removeClass('headon');
+           $('.gua_body li').eq(ind).addClass('bodyon').siblings().removeClass('bodyon');
+       });
+    });
+</script>
+
+
+
+{/literal}
+{include file="footer.html"}
+
+

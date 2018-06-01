@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><?=$keyword?>-融和贷</title>
+    <meta name="keywords" content="<?=$keyword?>" />
+    <meta name="description" content="<?=$description?>" />
+    <link href="/zixun/css/column.css" rel="stylesheet" type="text/css" />
+    <link href="http://www.ronghedai.com/dyweb/dythemes/rhd/css/blue/public.css?v=201656" type="text/css" rel="stylesheet"/>
+    <link href="http://www.ronghedai.com/dyweb/dythemes/rhd/css/blue/index.css?v=2016419" type="text/css" rel="stylesheet"/>
+    <link href="http://www.ronghedai.com/dyweb/dythemes/rhd/css/blue/new.css?v=2016419" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" src="http://www.ronghedai.com/dyweb/dythemes/rhd/js/jquery-1.8.2.min.js?v=2016419"></script>
+
+</head>
+
+<body>
+<div id="header">
+    <div class="head">
+        <div class="topbar main_w">
+            <div class="topbar_left fl">
+                <span style="font-size: 14px; line-height: 30px;">全国统一客服热线：<span style="font-size: 18px; line-height: 30px;">400-182-8687</span></span>			</div>
+            <div class="topbar_right fr">
+                <ul class="clear" id="cls_tom">
+                    <li style="+position: relative;">
+                        <a href="javascript:void(0)"><img style="position: relative; top: 5px;" src="http://www.ronghedai.com/dyweb/dythemes/rhd/images/dy_img/con_rhd_2_03.png" alt="融和财富APP">&nbsp;&nbsp;&nbsp;<em style="font-size: 14px; color: white;">融和财富APP</em>
+                            <div class="fl local-scc3 cne-phone-weis" style="position: absolute; z-index: 99999; +top:30px; +left: 20px;+z-index: 99999;">
+                                <img class="in_tinxu" src="http://www.ronghedai.com/dyweb/dythemes/rhd/images/dy_img/phone-img1.png" width="158" height="170" alt="融和财富APP" style="z-index: 99999; left: -14px; top: 10px;">
+                            </div>
+                        </a>
+                    </li>
+                    <li style="+position: relative;">
+                        <a href="javascript:void(0)"><img style="position: relative; top: 5px;" src="http://www.ronghedai.com/dyweb/dythemes/rhd/images/dy_img/con_rhd_3_03.png" alt="融和贷订阅号">&nbsp;&nbsp;&nbsp;<em style="font-size: 14px; color: white;">融和贷订阅号</em>
+                            <div class="fl local-scc3 cne-phone-weis" style="position: absolute;z-index: 99999; +top:30px; +left: 20px;+z-index: 99999;">
+                                <img class="in_tinxu" src="http://www.ronghedai.com/dyweb/dythemes/rhd/images/dy_img/weixin-img1.png" width="158" height="170" alt="融和贷订阅号" style="z-index: 99999; left: -5px; top: 10px;">
+                            </div>
+                        </a>
+                    </li>
+                    <li><span><img style="position: relative; top: 5px;" src="http://www.ronghedai.com/dyweb/dythemes/rhd/images/dy_img/con_rhd_1_03.png" alt="访问旧版本">&nbsp;&nbsp;&nbsp;<a style="font-size: 14px; color: white;" href="http://old.ronghedai.com">访问旧版本</a></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="banner">
+    <div class="main_w clear">
+        <div class="mid fl">
+            <img style="margin-top: 13px;" src="http://www.ronghedai.com/dyweb/dythemes/rhd/images/dy_img/rhd_logo.gif" alt="融和贷">
+        </div>
+        <div class="navlist fr">
+            <ul class="clear">
+                <li><a href="/">首页</a></li>
+                <li><a href="/rendition/index.html">产品介绍</a></li>
+                <li><a href="/invest/index.html">我要理财</a></li>
+                <li><a href="/borrow/index.html">我要借款</a></li>
+                <li><a href="/mobile/index.html">融和财富</a></li>
+                <li><a href="/?user">我的账户</a></li>
+                <li>
+                    <div class="lon_resg">
+                        <a href="http://www.ronghedai.com/index.php?user&q=reginvite&u=cmVnX2ludml0ZTEwNzc2NQ==">注册</a>
+                        <a style="background: #FF6325; color: white;" href="http://www.ronghedai.com/?user&amp;q=login">登录</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="monument1">
+    <a href="http://www.ronghedai.com/index.php?user&q=reginvite&u=cmVnX2ludml0ZTEwNzc2NQ==" class="monument1c">立即注册</a>
+</div>
+
+<?php echo $this->getContent(); ?>
+<div class="new_footer">
+    <div class="appearing_side clearf">
+        <div class="appearing_at1">
+            <dl class="clearf">
+                <dd id="foot_ddjiu1">
+                    <p class="strongtb">关于融和贷</p>
+                    <a href="http://www.ronghedai.com/aboutus/index.html#box-1" target="_blank">公司介绍</a>
+                    <a href="http://www.ronghedai.com/aboutus/index.html#box-2" target="_blank">品牌荣耀</a>
+                    <a href="http://www.ronghedai.com/aboutus/index.html#box-3" target="_blank">管理团队</a>
+                    <a href="http://www.ronghedai.com/aboutus/index.html#box-4" target="_blank">运营环境</a>
+                    <a href="http://www.ronghedai.com/aboutus/index.html#box-5" target="_blank">融和大事记</a>
+                </dd>
+                <dd id="foot_ddjiu2">
+                    <p class="strongtb">理财安全</p>
+                    <a href="http://www.ronghedai.com/aboutus/index.html#box-6" target="_blank">平台资质</a>
+                    <a href="http://www.ronghedai.com/aboutus/index.html#box-7" target="_blank">安全保障</a>
+                    <a href="http://www.ronghedai.com/aboutus/index.html#box-8" target="_blank">法律政策</a>
+                </dd>
+                <dd id="foot_ddjiu3">
+                    <p class="strongtb">帮助中心</p>
+                    <a href="http://www.ronghedai.com/guidess/index.html" target="_blank">新手指南</a>
+                    <a href="http://www.ronghedai.com/greater/index.html" target="_blank">汇付引导</a>
+                    <a href="http://www.ronghedai.com/aboutus/index.html#box-9" target="_blank">资费说明</a>
+                    <a href="http://www.ronghedai.com/rendition/index.html" target="_blank">产品介绍</a>
+                    <a href="http://www.ronghedai.com/aboutus/index.html#box-10" target="_blank">联系我们</a>
+                </dd>
+            </dl>
+        </div>
+        <div class="appearing_at2">
+            <ul class="clearf">
+                <li class="acv_tv1">
+                    <img src="http://img.ronghedai.com//dyweb/dythemes/rhd/images/gaiban/appew.gif" width="99" height="99">
+                    <p>融和贷订阅号</p>
+                    <span>微信扫一扫  信息早知道</span>
+                </li>
+                <li class="acv_tv2">
+                    <img src="http://img.ronghedai.com//dyweb/dythemes/rhd/images/gaiban/appnew1.gif" width="99" height="99">
+                    <p>融和财富APP</p>
+                    <span>随身财富  触手可及</span>
+                </li>
+            </ul>
+        </div>
+        <div class="appearing_at3">
+            <div class="appear_that">
+                <p>全国统一客服热线&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;早9:00 - 晚21:00</p>
+                <h4>400-182-8687</h4>
+                <p style="font-size: 14px;">平台投诉建议专线：0551-63717956</p>
+            </div>
+            <div class="appear_that2">
+                <p>版权所有©合肥安易贷投资管理有限公司</p>
+                <p>晥ICP备  14018622号-4</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="appearing_sidec">
+        <div class="appearing_side2">           
+
+            <div class="ont_cuntcction">
+                <a style="margin-left: 0;" target="_blank" class="ons23_ttcs" href="http://webscan.360.cn/index/checkwebsite/url/www.ronghedai.com" rel="external nofollow"></a>
+                <a target="_blank" class="ons24_ttcs" href="https://ss.knet.cn/verifyseal.dll?sn=e15011934010057405zdte000000&amp;ct=df&amp;a=1&amp;pa=0.11803318278348496" rel="external nofollow"></a>
+                <a target="_blank" class="ons25_ttcs" href="https://search.szfw.org/cert/l/CX20150104006258006353" rel="external nofollow"></a>
+                <a target="_blank" class="ons26_ttcs" href="http://www.anquan.org/authenticate/cert/?site=www.ronghedai.com&amp;at=business" rel="external nofollow"></a>
+                <a target="_blank" class="ons27_ttcs" href="http://www.anquan.org/authenticate/cert/?site=www.ronghedai.com&amp;at=enterprise" rel="external nofollow"></a>
+                <a target="_blank" class="ons28_ttcs" href="http://www.beianbeian.com/" rel="external nofollow"></a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function(){
+        $('#monument3c li:last').css('margin-right','0px');
+        $('.monument1').click(function(){
+
+                       window.location.href="http://www.ronghedai.com/index.php?user&q=reginvite&u=cmVnX2ludml0ZTEwNzc2NQ==";
+
+                });
+    })
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+<script>
+
+    var _hmt = _hmt || [];
+
+    (function() {
+
+        var hm = document.createElement("script");
+
+        hm.src = "//hm.baidu.com/hm.js?114bdc026b9ff4de87a6efb268dbea76";
+
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+
+    })();
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+{include file="headers.html"}
+<link href="{$tpldir}/zhuanti/mecum/css/style.css" type="text/css" rel="stylesheet"/>
+<div class="widthb" style="background: #f4f4f4;padding-bottom: 74px;">
+    <div class="lotter_ban">积分攻略</div>
+    <div class="mecumcont1 widthc">
+        融和积分上线啦！投资、签到、玩活动，积分轻松赚到手。在此，您将享受品质好货0元购的超值体验；更有每日免费抽奖，疯狂秒杀等精彩活动，让您的小积分撞见大幸运；会员升级还享兑换折扣，更多特权等着您。小小积分大用处，快速赚分有妙招！
+    </div>
+    <div class="mecumcont2">
+        <div class="mecumcont2s mecumcont2side1 clearff">
+            <div class="mecumconttit">如何获取积分？</div>
+            <dl style="background: #ffb448;">
+                <dt>
+                    <h4>投资赚积分</h4>
+                    <p>投资1月标每10元得1积分</p>
+                    <p>投资3月标每10元得5积分</p>
+                    <p class="ppi1">投资6月标每10元得13积分</p>
+                     <p class="ppi2">投资12月标每10元得30积分</p>
+                </dt>
+                <dd class="widthc"><a href="/invest/index.html">立即投资</a></dd>
+            </dl>
+            <dl style="background: #5fb5f2;">
+                <dt id="short-p">
+                <h4>新手任务</h4>
+                <p>开通上海银行存管奖励30积分</p>
+                <p>绑定银行卡奖励30积分</p>
+                <p>PC端完成首次投资奖励50积分</p>
+                <p>首次使用微信投资奖励50积分</p>
+                <p>首次在商城兑换奖励30积分</p>
+                <p>首次使用APP投资奖励100积分</p>
+                </dt>
+                <dd class="widthc"><a href="/?user&q=reg&type=phone">立即完成</a> </dd>
+            </dl>
+            <dl style="background: #fa6470;">
+                <dt>
+                <h4>签到赚积分</h4>
+                <p>连续签到1天得2积分</p>
+                <p>连续签到2天得4积分</p>
+                <p>连续签到3天得6积分</p>
+                <p>连续签到4天得8积分</p>
+                <p>连续签到5天及以上得10积分</p>
+                </dt>
+                <dd class="widthc"><a href="/mall/index.html">立即签到</a> </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="mecumcont3">
+        <div class="mecumcont2s mecumcont2side2 clearff">
+            <div class="mecumconttit">积分怎么玩？</div>
+            <dl style="background: #2a88e3;" class="dldld1 clearff">
+                <dt style="width: 116px;margin-left: 34px;"></dt>
+                <dd><a href="/mallist/index.html">兑换商品</a></dd>
+            </dl>
+            <dl style="background: #fa6470;" class="dldld2 clearff">
+                <dt></dt>
+                <dd><a href="/actives/lottery/index.html">玩转活动</a></dd>
+            </dl>
+            <dl style="background: #ff8c2c;" class="dldld3 clearff">
+                <dt></dt>
+                <dd><a href="/mallcenter/index.html">会员升级</a></dd>
+            </dl>
+        </div>
+    </div>
+
+</div>
+<div style="height: 80px;"></div>
+{literal}
+<script>
+    $(function(){
+        var date = new Date().getTime()/1000;
+        if(date>1488297600){
+            $('.ppi1').html('投资6月标每10元得11积分');
+            $('.ppi2').html('投资12月标每10元得25积分')
+        }
+    })
+</script>
+{/literal}
+{include file="footer.html"}

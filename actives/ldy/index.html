@@ -1,0 +1,440 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="qc:admins" content="7705207377641175633" />
+    <meta property="wb:webmaster" content="a5dad0e8c9851f3b" />
+    <!-- <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>-->
+    <meta name="keywords" content="{if $_G.site_result.keywords eq ''}{$_G.system.con_keywords}{else}{$_G.site_result.keywords}{/if}" />
+    <meta name="description" content="{if $_G.site_result.description eq ''}{$_G.system.con_description}{else}{$_G.site_result.description}{/if}" />
+    <title>{if $_G.site_result.name!=""}{$_G.site_result.name} - {/if}{$_G.system.con_webname} - {$_G.system.con_webtitle}</title>
+    <link rel="stylesheet" href="{$tpldir}/actives/ldy/css/style.css?v=2017803">
+    <link rel="stylesheet" href="{$tpldir}/actives/ldy/css/user.css">
+    <script type="text/javascript" src="{$tpldir}/actives/ldy/js/jquery-1.8.2.min.js"></script>
+
+    <script type="text/javascript" src="{$tpldir}/actives/ldy/js/diyou.js"></script>
+    <script type="text/javascript" src="{$tpldir}/actives/ldy/js/reg.js"></script>
+    <script type="text/javascript" src="{$tpldir}/actives/ldy/js/users_check.js"></script>
+    <script type="text/javascript" src="{$tpldir}/actives/ldy/js/base.js"></script>
+    <script type="text/javascript" src="{$tpldir}/actives/ldy/js/users_reg.js?v=2013002"></script>
+    <script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/scrollToo.js"></script>
+    <script type="text/javascript" src="http://aw.kejet.net/t?p=mX&c=Bx"></script>
+
+    <script>
+        var user_id = '{$_G.user_id}';
+        var  trust = '0';
+        var  real_name= '0';
+    </script>
+
+</head>
+
+<body>
+
+<div class="luodiye_banner">
+    <!--reg-->
+    <div class="luodiye_reg">
+        <div style="height: 100px;"></div>
+        <div class="luodiye_input_reg">
+            <form name="reg_form" method="post" action="" id="reg_form">
+                <div class="reg_item reg_itemtonum" id="ph_style">
+                    <label for="phone" class="basic_label">手机号码</label>
+                    <input type="text" class="basic_inputs basic_inputs_utnum" value="{$smarty.session.reg_data.phone}" name="phone" id="phone" maxlength="11"><br>
+
+
+                </div>
+                <div class="reg_item reg_itemtonum">
+                    <label for="username" class="basic_label">用户名</label>
+                    <input id="username" name="username" type="text" class="basic_inputs basic_inputs_utnum" value="" />
+                    <br>
+
+                </div>
+                <div class="reg_item reg_itemtonum">
+                    <label for="password" class="basic_label">登录密码</label>
+                    <input id="password" name="password" type="password" class="basic_inputs basic_inputs_utnum" value=""/><br>
+
+
+                </div>
+
+                <div class="reg_item reg_itemtonum">
+                    <label for="confirm_password" class="basic_label">确认密码</label>
+                    <input id="confirm_password" name="confirm_password" type="password" class="basic_inputs basic_inputs_utnum" value=""/><br>
+
+
+                </div>
+
+                <div class="reg_item verify_code reg_itemtonum"  id="verify_code">
+                    <label for="vericode" class="basic_label">验证码</label>
+                    <input style="width: 100px;" id="vericode" name="valicode" type="text" class="basic_inputs basic_inputs_utnum" maxlength="4" value=""/>&nbsp;{valicode }<br>
+
+                </div>
+
+                <div class="reg_item reg_itemtonums" style="font-size: 12px;">
+                    <label class="basic_label">&nbsp;</label>
+                    <input name="service" type="checkbox" checked="checked" id="dy_server"/>&nbsp;&nbsp;我同意&nbsp;&nbsp;<a href="javascript:;" class="user_f_c2" id="privacy">{articles module="articles" function="get_one_page" var="var" id=8 }{$var.name}{/articles}</a>
+                </div>
+
+
+                <div class="reg_item reg_itemtonum">
+                    <p><input type="submit" class="user_reg_sub user_reg_subsss tqiuxie" value="" id="reg_sub"/></p>
+                </div>
+
+
+                <div class="reg_item" style="font-size: 12px; margin-top: 10px;">
+                    <p style="padding: 0 0 0 180px;">已有账号？<a href="/?user&q=login" class="user_f_c2">立即登录</a></p>
+                </div>
+
+        </div>
+    </div>
+    <!--reg end-->
+    {literal}
+    <script type="text/javascript">
+        diyou.use('users_reg', function (dy) { dy.register('reg_form');});
+       diyou.use('users_check',function(dd){dd.get_phone_code('get_phone_code')});
+        diyou.use('users_reg', function (dy) { dy.reg_phone_form('reg_phone_form');dy.get_phone_code('get_phone_code')});
+        $(function(){
+            $('.tu_nong_yous').click(function(){
+                $('.phone_bgColor').css({'display':'none'});
+            });
+        });
+    </script>
+    {/literal}
+
+</div>
+
+
+
+
+<!--phone-->
+<div class="phone_bgColor">
+    <div class="phone_Divs_big">
+        <div style="height: 30px; width: 100%;" class="to_bid_bisbao"><span class="tu_nong_yous"></span></div>
+
+            <div class="reg_phone">
+                <div class="phone_item fn_cle" style="height: 40px; width: 100%;">
+                    <label  class="ph_label">手机号:</label>
+                    <div class="phone_num"><span id="iphone2"></span>
+                        <input type="hidden" name="phone" id="phone1" value="{$smarty.session.reg_data.phone}"/>
+                    </div>
+                </div>
+                <div class="phone_item fn_cle">
+                    <label  class="ph_label">验证码:</label>
+                    <input class="ph_input w140" type="text"  maxlength="10"  name="vali_phone_code" id="vericode1"/>
+                    <span style="color:#f00; font-size: 14px;" id="code_txt"></span>
+                </div>
+                <div class="phone_item fn_cle">
+                    <label  class="ph_label">&nbsp;</label>
+                    <input type="submit"  class="get_phone"  value="验证">
+                </div>
+                <div class="phone_item fn_cle">
+                    <label  class="ph_label">&nbsp;</label>
+                    <span class="phone_txt">如果您在1分钟之内没有收到验证码，请<a href="/luodiye/index.html">返回修改手机号</a>或 <input type="button" class="out" id="get_phone_code" value="重新获取验证码"></span>
+                </div>
+            </div>
+    </div>
+</div>
+</form>
+<!--phone_end-->
+
+
+<div class="gationdit1"></div>
+
+<div class="landingcontent">
+    <div class="landingcon1 clearf">
+        <h4><strong>更安全——</strong>银行存管 资金透明</h4>
+        <dl>
+            <dt>
+                <img src="{$tpldir}/actives/ldy/images/g1.gif?v=9cf13c">
+                <p>银行存管系统</p>
+            </dt>
+            <dd>
+                <p>上海银行存管切实保障</p>
+                <p>投资人资金安全</p>
+            </dd>
+        </dl>
+        <dl>
+            <dt>
+                <img src="{$tpldir}/actives/ldy/images/g2.gif?v=9cf13c">
+            <p>独创DPS系统</p>
+            </dt>
+            <dd>
+                <p>六大模块，十三项详细评估</p>
+                <p>从源头上确保项目质量</p>
+            </dd>
+        </dl>
+        <dl style="margin-left: 140px;width: 274px;">
+            <dt>
+                <img src="{$tpldir}/actives/ldy/images/g3.gif?v=9cf13c">
+            <p>上市+风投+公益</p>
+            </dt>
+            <dd>
+                <p>多方合作，强强联合，甄选</p>
+                <p>优质项目打造合规平台</p>
+            </dd>
+        </dl>
+    </div>
+    <div class="landingcon2">
+        <h4><strong>高收益——</strong>新手入门 乐享现金</h4>
+        <div class="landingcon2c clearf">
+            <dl>
+                <dt></dt>
+
+                <dd>
+                    <div style="height: 88px;"></div>
+                    <p>新手注册既享<span>688</span>现金红包</p>
+                    <p>满<span>100</span>即送<span>10元现金</span></p>
+                    <a href="#phone" style="margin-top: 44px;">立即领现金</a>
+                </dd>
+            </dl>
+            <dl style="float: right;" id="landingcon2cid">
+                <dt> <div class="con_tit">1个月赚够 2年银行活期利息</div></dt>
+
+                <dd>
+                    <div style="height: 80px;"></div>
+                   <div class="landingcon2cs clearf">
+                       <div class="landingcon2csl">
+                           <p style="font-size: 16px;">投资期限</p>
+                           <h5><strong>30</strong>天</h5>
+                           <p style="font-size: 16px;margin-bottom: 0;"><i>1000</i>起投</p>
+                       </div>
+                       <div class="landingcon2csl" style="float: right;" id="landingcon2cslid">
+                           <p style="font-size: 16px;">年化利率</p>
+                           <h5><strong>7.6</strong>%</h5>
+                       </div>
+                   </div>
+                    <a href="#phone">立即投资</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="landingcon3">
+        <h4><strong>产品分类——</strong>期限灵活 品类繁多</h4>
+        <div class="landingcon3c clearf">
+            <dl>
+                <dt>
+                    <h5>房融宝</h5>
+                    <img src="{$tpldir}/actives/ldy/images/g6.gif?v=9cf13c">
+                    <p>年化收益率</p>
+                </dt>
+                <dd>
+                    <h5>9.6%—11.9%</h5>
+                    <p>周期：3-12个月     最小起投100元</p>
+                    <span>安全稳定 项目优质</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                <h5>车融宝</h5>
+                <img src="{$tpldir}/actives/ldy/images/g7.gif?v=9cf13c">
+                <p>年化收益率</p>
+                </dt>
+                <dd>
+                    <h5>9.6%—11.9%</h5>
+                    <p>周期：3-12个月     最小起投100元</p>
+                    <span>安全稳定 项目优质</span>
+                </dd>
+            </dl>
+            <dl style="margin-right: 0;">
+                <dt>
+                <h5>企融宝</h5>
+                <img src="{$tpldir}/actives/ldy/images/g8.gif?v=9cf13c">
+                <p>年化收益率</p>
+                </dt>
+                <dd>
+                    <h5>9.6%—11.9%</h5>
+                    <p>周期：3-12个月     最小起投100元</p>
+                    <span>安全稳定 项目优质</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                <h5>体验专享</h5>
+                <img src="{$tpldir}/actives/ldy/images/g9.gif?v=9cf13c">
+                <p>年化收益率</p>
+                </dt>
+                <dd>
+                    <h5>7.6%</h5>
+                    <p>周期：1个月      最小起投1000元</p>
+                    <span>新手入门 收益及时</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                <h5>增值标</h5>
+                <img src="{$tpldir}/actives/ldy/images/g11.gif">
+                <p>年化收益率</p>
+                </dt>
+                <dd>
+                    <h5>9.9%—12.2%</h5>
+                    <p>周期：3-12个月     最小起投100元</p>
+                    <span>精选项目 加息增值</span>
+                </dd>
+            </dl>
+            <dl style="margin-right: 0">
+                <dt>
+                <h5>定向标</h5>
+                <img src="{$tpldir}/actives/ldy/images/g12.gif">
+                <p>年化收益率</p>
+                </dt>
+                <dd>
+                    <h5>7.9%—12.2%</h5>
+                    <p>周期：1-12个月</p>
+                    <span>高端预约 定投稳收</span>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="landingcon4">
+        <h4><strong>安全保障——</strong>九重保障  安全升级</h4>
+        <div class="ount_cont3c2 clearf">
+            <dl class="clearf" id="housing_v1">
+                <dd>
+                    <img src="//img.ronghedai.com{$tpldir}/zhuanti/rendition/images/li1.gif" alt="">
+                    <p>专业运营团队</p>
+                </dd>
+                <dd>
+                    <img src="//img.ronghedai.com{$tpldir}/zhuanti/rendition/images/li2.gif" alt="">
+                    <p>独创DPS风控</p>
+                </dd>
+                <dd>
+                    <img src="//img.ronghedai.com{$tpldir}/zhuanti/rendition/images/li3.gif" alt="">
+                    <p style="text-align: center">雄厚实力</p>
+                </dd>
+                <dd>
+                    <img src="//img.ronghedai.com{$tpldir}/zhuanti/rendition/images/li4.gif" alt="">
+                    <p>两次实地考察</p>
+                </dd>
+                <dd style="margin-right: 0">
+                    <img src="//img.ronghedai.com{$tpldir}/zhuanti/rendition/images/li5.gif" alt="">
+                    <p>多层信息审核</p>
+                </dd>
+            </dl>
+            <dl class="clearf" id="housing_v3">
+                <dd style="width: 108px;">
+                    <img src="//img.ronghedai.com{$tpldir}/zhuanti/rendition/images/dd2.gif" alt="">
+                    <p>上海银行存管</p>
+                </dd>
+                <dd>
+                    <img src="//img.ronghedai.com{$tpldir}/zhuanti/rendition/images/dd3.gif" alt="">
+                    <p>全程法务支持</p>
+                </dd>
+                <dd>
+                    <img src="//img.ronghedai.com{$tpldir}/zhuanti/rendition/images/dd4.gif" alt="">
+                    <p>机构回购制度</p>
+                </dd>
+                <dd style="margin-right:48px;">
+                    <img src="//img.ronghedai.com{$tpldir}/zhuanti/rendition/images/dd5.gif" alt="">
+                    <p>资产抵押/质</p>
+                    押物变现保障
+                </dd>
+                <dd style="margin-right: 0;width: 145px;">
+                    <img src="//img.ronghedai.com{$tpldir}/zhuanti/rendition/images/dd6.gif" alt="">
+                    <p>债权资产所有人及其</p>
+                    财产共有人连带担保
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<div class="luodine_qsin4 clearf">
+	<div class="luodine_qsin4c clearf">
+    	<div class="luodine_qsin4_c1">
+        	<h4><a href="http://www.ronghedai.com/aboutus/index.html">了解更多>></a>关于融和贷——全国第十五家银行存管平台</h4>
+            <p style="margin-top: 28px;">融和贷隶属安徽省合肥市安易贷投资管理有限公司，于2015年1月13日正式上线运营，注册资本1亿元，实缴资本9000万元人民币。公司实力雄厚，业务覆盖领域广泛，目前已是全国第十五家银行存管平台。</p>
+            <div class="luodine_qsin4con">
+                <p>2013年 — 被授予“安徽十大信用单位”称号。</p>
+                <p>2014年 — 被评为“全国互联网金融服务最具影响力十佳明星企业”。</p>
+                <p>2015年—通过中国电子商务协会“150项严格验证。</p>
+                <p>2016年 — 荣获“合肥民间投融资商会优秀会员单位”荣誉称号</p>
+            </div>
+            <p>平台股东架构：</p>
+            <p>合肥安易贷投资管理有限公司（融和贷）</p>
+            <p>怀化亚亨农林开发有限公司</p>
+            <p>淮北汇邦小额贷款股份有限公司</p>
+            <p>安徽天池基金管理有限公司</p>
+            <p>安徽博爱公益基金会</p>
+            <p>安徽佰驰汽车销售有限公司</p>
+        </div>
+        <div class="luodine_qsin4_c2">
+        	<dl>
+                <dt></dt>
+                <dd>
+                    <p>融和贷订阅号</p>
+                    <p>微信扫一扫 信息早知道</p>
+                </dd>
+            </dl>
+            <dl style="margin-top: 42px;">
+                <dt id="dtend"></dt>
+                <dd>
+                    <p>融和财富APP</p>
+                    <p>随身财富 触手可及</p>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+{literal}
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?114bdc026b9ff4de87a6efb268dbea76";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<!-- WPA Button Begin -->
+<script charset="utf-8" type="text/javascript" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzkzODA2NDk1Ml8zMTI2NDlfNDAwMDEzNTY3OV8"></script>
+<!-- WPA Button END -->
+
+ <script type="text/javascript">
+     $("#regnow").click(gotoTop);
+     $("#regnows").click(gotoTop);
+     function gotoTop(){
+         $("html, body").animate({
+             "scroll-top":0
+         },"fast");
+         $("#phone").focus();
+
+         //window.top=0;
+         return false;
+     }
+ </script>
+<script>
+    function cc (){
+         _mvq = _mvq || [];
+        _mvq.push(['$setAccount', 'm-181034-0']);
+
+        _mvq.push(['$logConversion']);
+
+            var mvl = document.createElement('script');
+            mvl.type = 'text/javascript'; mvl.async = true;
+            mvl.src = ('https:' == document.location.protocol ? 'https://static-ssl.mediav.com/mvl.js' : 'http://static.mediav.com/mvl.js');
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(mvl, s);
+
+
+
+    }
+
+    function getUrlArgStr(){
+        var url = window.location.search;
+        if (url.indexOf("360=1") != -1) {
+           cc();
+        }
+    }
+    getUrlArgStr()
+</script>
+{/literal}
+
+</body>
+</html>

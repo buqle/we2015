@@ -1,0 +1,100 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clearg{zoom:1;}
+.clearg:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+body {
+    font-family:"微软雅黑";
+    font-size: 18px;background: #e5e5e5;
+}
+
+.tationactcont1{background:url("../images/b1.jpg")  no-repeat center;height: 668px;}
+.tationactcont2,.tationactcont1,.tationactcont3{width: 100%;overflow: hidden;}
+.tationactcont2{background: #fff9e0;padding: 64px 0 74px 0;}
+     .tation_tit{width: 586px;margin: 0 auto;border-left: 8px solid #f95a45;border-right: 8px solid #f95a45;border-top: 5px solid #f95a45;border-bottom: 5px solid #f95a45;height: 60px;background: #fff9e0;}
+     .tation_tit h4{text-align: center;font-size: 36px;color: #fff;font-weight: bold;width: 558px;margin: 5px auto 0 auto;background: #f95a45;height: 50px;line-height: 50px;}
+    .tationactcont2 h5,.tationactcont3 h5{text-align: center;font-weight: bold;height: 78px;line-height: 88px;color: #000;font-size: 24px;}
+    .tationactcont2s{width: 1126px;margin: 0 auto;}
+        .tationactcont2s .tation_l{float: left;width: 508px;background:url("../images/bg1.png")  no-repeat;height: 449px;}
+        .tationactcont2s .tation_l p{font-size: 24px;color: #000;text-align: center;line-height: 36px;}
+            .tationactcont2s .tation_l p i{color: #df2935;font-weight: bold;text-align: center;line-height: 36px;}
+
+     .tation_r{width: 592px;float: right;background: #df2935;padding: 14px 0;margin-top: 40px;}
+      .tation_r,.tation_rcont{border-radius: 3px;}
+        .tation_rcont{width: 564px;margin: 0 auto;background:#ff9600;padding-bottom: 42px;}
+            .tation_rcontbg{background:url("../images/bg2.png")  no-repeat center;height: 270px;}
+            .tation_rcont h4{color: #fff;text-align: center;font-size: 30px;font-weight: bold;height: 68px;line-height: 68px;}
+            .tation_rcontbg .tittab_jl,.zj_przcon .tittab_jl{height: 56px;line-height: 66px;color:#fe6572;font-size: 18px;}
+            #marqueebox,.tittab_jl{width: 444px;margin: 0 auto;}
+            .tation_rcontbg p span,.zj_przcon p span{display: inline-block;width: 24%;text-align: center;}
+            #marqueebox p,#marqueebox2 p,.zj_przcons p{border-top: 1px solid #c7c7c4;height: 38px;line-height: 38px;}
+            #marqueebox p .iiov{font-size: 24px;color: #666;font-weight: bold;}
+            #marqueebox p span,#marqueebox2 p span,.zj_przcons p span{font-size: 16px;color: #666;}
+             .logo_sb{background:url("../images/bg3.png")  no-repeat center;height: 77px;text-align: center;font-size: 30px;color: #d42200;line-height: 66px;cursor: pointer;}
+
+.tationactcont3{padding: 90px 0;}
+    .tationactcont3 h5{height: 152px;line-height: 142px;}
+    .tationactcont3s{width: 1182px;margin: 0 auto;}
+    .tationactcont3s dl{float: left;position: relative;height: 244px;width: 379px;margin-right: 22px;}
+    .tationactcont3s dl dt{position: absolute;left: -1px;width: 89px;height: 86px;}
+    .tationactcont3s .dlone dt{background:url("../images/bt1.png")  no-repeat;}
+    .tationactcont3s .two dt{background:url("../images/bt2.png")  no-repeat;}
+    .tationactcont3s .three dt{background:url("../images/bt3.png")  no-repeat;}
+    .tationactcont3s dl .dd_titcon{text-align: center;background: #fff;border-top-left-radius: 5px;border-top-right-radius: 5px;height: 168px;}
+    .tationactcont3s dl .dd_titcon p{height: 86px;line-height: 96px;font-size: 22px;color: #000;}
+    .tationactcont3s dl .dd_titcon h4{font-size: 54px;font-weight: bold;color: #ff4c4c;height: 46px;line-height: 46px;}
+    .tationactcont3s dl .dd_titcon h4 i{font-size: 22px;font-weight: normal;}
+    .tationactcont3s dl .dd_titcon2{background:url("../images/bg4.png")  no-repeat;width: 100%;position: absolute;bottom: 0;height: 76px;}
+    .tationactcont3s dl .dd_titcon2 p{color: #fff;font-size: 15px;padding-left:68px;line-height: 24px;}
+    .tationactcont3s .two .dd_titcon2 p{font-size: 14px;}
+
+.login_myjlcont1,.sidecontb{background: #df2935;width: 944px;border-radius: 3px;padding: 12px 0;}
+.sidecontb{margin: 82px auto 92px auto;}
+    .sidecontb .tation_rcont,.login_myjlcont1 .tation_rcont{width: 918px;}
+    .sidecontb .tation_rcont .tation_rcontbg{background:url("../images/bg5.png")  no-repeat center;height: 270px;}
+    .sidecontb .tittab_jl,#marqueebox2,.zj_przcon .tittab_jl,.zj_przcons{width: 622px;margin: 0 auto}
+    .sidecontb p span{width: 20%;}
+
+
+   #stankiboxbtn2{float: right;background:url("../images/bg7.png")  no-repeat;width: 398px;height: 77px;cursor: pointer;text-align: center;font-size: 30px;color: #fff;line-height: 66px;}
+    .lucky_bg{position: fixed;top:0;right: 0;left: 0;background: #000;filter:alpha(opacity:60); opacity:0.6;width: 100%;height: 100%;z-index: 9999;display: none;}
+    .login_myjlcont{position: fixed;top:0;right: 0;left: 0;width: 100%;height: 100%;z-index: 10000;display: none;}
+    .login_myjlcont1{position: relative;top: 50%;margin-left: auto;margin-right: auto;margin-top: -225px;width: 944px;height: 450px;}
+    .close_put{position: absolute;right:-48px; top:-26px;cursor: pointer;background: url("../images/close.png") no-repeat;width: 40px;height: 40px;}
+
+    .login_myjlcont1 .tation_rcontbg{background:url("../images/bg6.png")  no-repeat center;height: 326px;}
+
+        .zj_przcon p span{width: 24%;}
+        .zj_przcon .zj_przcons{overflow: auto;height: 195px;}
+        .login_myjlcont1 .zj_przcon2{text-align: right;font-size: 16px;color:#666;width: 622px;margin: 0 auto; }
+        .login_myjlcont1 .zj_przcon2 i{font-size: 18px;color: #df2935;font-weight: bold;}
+
+
+
+    .autumnccon1s4{margin: 46px 0 0 26px;}
+        .autumnccon1s4 p{font-size: 18px;color: #a17e22;line-height:26px;}
+
+.tationactcont3s2{width: 922px;margin: 0 auto;}
+    .tationactcont3s2 .logo_sb{float: left;width: 399px;}
+
+    .room_tation{width: 1200px;margin: 0 auto;color: #000;font-size: 23px;}
+    .room_tation h4,.room_tation p{margin-left: 86px;}
+    .room_tation h4{font-size: 30px;font-weight: bold;}
+    .room_tation p{line-height:40px;}
+
+    .jiujiu_foot{width: 100%;text-align: center;padding:60px 0 70px 0;background: #431a27;margin-top: 80px;}
+.jiujiu_foot p{color: #fff;font-size: 24px;line-height: 40px;}
+.jiujiu_foot .endjiujiu{background:url("../images/ma.gif")  no-repeat center;height: 172px;margin-top:24px;}

@@ -1,0 +1,494 @@
+{include file="users_header.html"}
+<style>
+    /*弹窗*/
+    /**
+     * 基于jQuery的dialog样式
+     */
+    .j-dialog {
+        background-color: white;
+        /*border: 1px solid #ccc;*/
+        border-radius: 6px;
+        font-size: 14px ;
+        font-family: tahoma, helvetica, "microsoft yahei", "宋体",arial;
+        position: absolute;
+        clear: left;
+        overflow: hidden;
+    }
+    /* 阴影 */
+    .j-dialog-shadow {
+        -moz-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2) ;
+        -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        -o-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        -ms-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=3,OffY=3,Color=#16000000,Positive=true);
+    }
+    /* 半透明边框 */
+    .j-translucent-border {
+        -moz-background-clip: padding;
+        -webkit-background-clip: padding;
+        background-clip: padding-box;
+        border: 8px solid rgba(0,0,0,0.2);
+        border-radius: 5px;
+    }
+    .j-dialog-fix{
+        position:fixed;
+    }
+    .j-dialog.j-user-select {
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -o-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+    }
+    .j-dialog .j-dialog-title {
+        line-height: 15px;
+        font-size: 14px;
+        text-indent: 10px;
+        background: #33b3ee;
+        padding: 14px 0;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -o-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+    }
+    .j-dialog .j-draggable {
+        cursor: move;
+    }
+    .j-dialog .j-dialog-txt {
+        font-size: 15px;
+        color: #fff;padding-left:10px;font-family:"Microsoft YaHei";
+    }
+    .j-dialog .j-dialog-close {
+        background: url(/dyweb/dythemes/rhd/js/jDialog/img/dialog-btns.png) no-repeat;
+        float: right;
+        line-height: normal;
+        margin: 0px 16px 0 0;
+        text-decoration: none;
+        width: 25px;
+        position: absolute;
+        right: -5px;
+        top: 6px;height: 28px;
+    }
+    /*.j-dialog .j-dialog-close:hover {
+        background-position: -141px -36px;
+    }*/
+    .j-dialog .j-dialog-close.btn-without-title {
+        right: -14px;
+        top: 6px;
+    }
+    .j-dialog .j-dialog-content {
+        color: #454545;
+        /*text-align: center;*/
+    }
+    .j-dialog .j-dialog-buttons {
+        font-size: 12px;
+        padding:17px 20px 20px 18px;
+        margin: 0;
+        text-align:center!important;
+    }
+    .j-dialog .j-dialog-buttons .first-child{
+        background-position: 0 0;
+        color:#fff;
+    }
+    .j-dialog .j-dialog-buttons .first-child:hover{
+        background-position: 0 -37px;
+    }
+    .j-dialog .j-dialog-btn{
+        margin-left:10px;
+        cursor: pointer;
+        border: 0;
+        padding: 0 10px;
+        height: 34px;
+        font-size: 16px;
+        display: inline-block;
+        color: #666;
+        background:#33b3ee;;
+        _line-height: 34px;border-radius: 5px;
+    }
+    .j-dialog .j-dialog-btn:hover,
+    .j-dialog .j-dialog-btn.x-hover{
+        background: #3391bc;
+    }
+    .j-dialog .j-dialog-btn.x-highlight {
+        color:#fff;
+        background-position:-0 2px;
+    }
+    .j-dialog .j-dialog-btn.x-highlight:hover,
+    .j-dialog .j-dialog-btn.x-highlight.x-hlhover {
+        background-position:0 -28px;
+    }
+
+
+    /*小三角部分*/
+    .j-dialog .j-triangle {
+        display:block;
+        position:relative;
+    }
+    .j-dialog .j-triangle .t-border,
+    .j-dialog .j-triangle .t-inset{
+        left:0px;
+        top:0px;
+        width:0;
+        height:0;
+        font-size:0;
+        overflow:hidden;
+        position:absolute;
+        border-width:12px;
+        /*可在此处更改小三角方向：上-右-下-左（solid的位置）*/
+        border-style:dashed solid dashed dashed;
+    }
+    /*小三角的边框，如果不需要，可将颜色值改变*/
+    .j-dialog .j-triangle .t-border{
+        border-color:transparent #aaa transparent transparent;
+        left:-1px;
+    }
+    .j-dialog .j-triangle .t-inset{
+        border-color: transparent #fff transparent transparent;
+    }
+
+    /*控制方向*/
+    /*下箭头*/
+    .j-dialog .j-triangle.anchor-bottom .t-border,
+    .j-dialog .j-triangle.anchor-bottom .t-inset {
+        border-style:solid dashed dashed dashed;
+    }
+    .j-dialog .j-triangle.anchor-bottom .t-border{
+        border-color:#aaa transparent transparent transparent;
+        left:0px;
+        top:1px;
+    }
+    .j-dialog .j-triangle.anchor-bottom .t-inset{
+        border-color: #fff transparent transparent transparent;
+    }
+
+    /*上箭头*/
+    .j-dialog .j-triangle.anchor-top .t-border,
+    .j-dialog .j-triangle.anchor-top .t-inset {
+        border-style:dashed dashed solid dashed;
+    }
+    .j-dialog .j-triangle.anchor-top .t-border{
+        border-color:transparent transparent #aaa transparent;
+        left:0px;
+        top:-1px;
+    }
+    .j-dialog .j-triangle.anchor-top .t-inset{
+        border-color: transparent transparent #fff transparent;
+    }
+
+    /*右箭头*/
+    .j-dialog .j-triangle.anchor-right .t-border,
+    .j-dialog .j-triangle.anchor-right .t-inset {
+        border-style:dashed dashed dashed solid;
+    }
+    .j-dialog .j-triangle.anchor-right .t-border{
+        border-color:transparent transparent transparent #aaa;
+        left:1px;
+        top:0;
+    }
+    .j-dialog .j-triangle.anchor-right .t-inset{
+        border-color: transparent transparent transparent #fff;
+    }
+
+
+    /* 遮罩层样式 */
+    .j-dialog-mask {
+        background-color: #000;
+        filter: alpha(opacity = 40);
+        opacity: .4;
+        zoom: 1;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width:100%;
+    }
+
+    /* resize */
+    .j-dialog .resizable-es {
+        bottom: 0;
+        cursor: se-resize;
+        height: 10px;
+        position: absolute;
+        right: 0;
+        width: 10px;
+    }
+    .j-dialog .resizable-es div {
+        border-bottom: 3px double #bbb;
+        border-right: 3px double #bbb;
+        height: 6px;
+        width: 6px;
+        line-height:0;
+        position:absolute;
+        left:0;
+        top:0;
+    }
+</style>
+<script type="text/javascript" src="{$tpldir}/js/jDialog.js"></script>
+<script type="text/javascript" src="{$tpldir}/js/jquery.cityselect.js"></script>
+<script type="text/javascript" src="{$tpldir}/js/jquery.validate.js"></script>
+<div style="height: 20px;"></div>
+<div class="i_contenter">
+    <div style="height: 46px"></div>
+   <div class="custodianc1"></div>
+    <div class="custodianc2">
+        <p>个人账户升级为银行存管账户</p>
+        <p>请开通银行存管账户以便您正常理财</p>
+    </div>
+
+    <div class="cust_bankcon font18" id="cust_bankcon2">
+        <form method="get" id="cust-form1">
+            <p>
+                <label>持卡人姓名</label>
+                <input type="text" placeholder="请输入持卡人姓名" name="realname">
+            </p>
+            <p>
+                <label>身份证号</label>
+                <input type="text" placeholder="请输入身份证号" name="card_id ">
+            </p>
+            <p>
+                <label>银行卡号</label>
+                <input type="text" placeholder="请输入银行卡号" name="BankCard">
+            </p>
+            <p>
+                <label>开户银行</label>
+                <select name='BankId'>
+                    <option value="请选择银行">请选择银行</option>
+                    <option value="ABC">中国农业银行</option>
+                    <option value="CCB">中国建设银行</option>
+                    <option value="BOC">中国银行</option>
+                    <option value="CEB">中国光大银行</option>
+                    <option value="CIB">兴业银行</option>
+                    <option value="PINGAN">平安银行</option>
+                    <option value="PSBC">中国邮政</option>
+                    <option value="SPDB">浦发银行</option>
+                    <option value="ICBC">中国工商银行</option>
+                    <option value="CMBC">中国民生银行</option>
+                    <option value="BOCOM">交通银行</option>
+                    <option value="GDB">广发银行</option>
+                    <option value="HFB">恒丰银行</option>
+                    <option value="HXB">华夏银行</option>
+                    <option value="CMB">招商银行</option>
+                </select>
+            </p>
+            <p>
+                <label>开户地区</label>
+            <span id="city" class="inline-block">
+                <select class="prov" name="ProvId"></select>
+                <select class="city" disabled="disabled" name="AreaID"></select>
+                <select class="dist" disabled="disabled" name="dist"></select>
+            </span>
+            </p>
+            <p>
+                <label>银行卡预留手机号</label>
+                <input type="text"  placeholder="请输入手机号"  class="cust-phone1" name="phones">
+            </p>
+            <p><input type="submit" value="下一步" class="button_bank2 text-center dis-inlie button_bank cursor font18"></p>
+        </form>
+    </div>
+
+
+</div>
+
+
+<div class="cust_bankcon2 font18 color-444 ww3">
+    <h4 class="bold font24">温馨提示：</h4>
+    <p>1.为了保障您的资金安全，请如实填写您的个人信息；</p>
+    <p>2.请确保您输入的手机号为银行卡的预留手机号；</p>
+    <p>3.如需帮助，欢迎联系客服 400-013-5679。</p>
+</div>
+
+<!--<div id="qingkuang1" style="display: none;">
+    <div class="cust_bankalert text-center font18 color-444">
+        <p>恭喜您，开户成功</p>
+        您的资金由上海银行全程监管
+        <a href="/?user&user_role=1#trust/recharge" class="button_bank block ww3">充值</a>
+    </div>
+</div>-->
+
+<!--<div id="qingkuang2" style="display: none;">
+    <div class="cust_bankalert text-center font18 color-444">
+        <p>验证码已发送至手机<i></i></p>
+        <input type="text" class="cust-phone2 font16" placeholder="请输入验证码"  style="text-indent: 8px;">
+        <input type="button" value="获取验证码" id="text_butns" class="button_bank inline-block font16 cursor">
+        <input type="button" value="确认开户" id="text_butns2" class="button_bank block font16 cursor ww3">
+        您的资金由上海银行全程监管
+    </div>
+</div>-->
+
+<div id="qingkuang2" style="display: none;">
+    <div class="cust_bankalert text-center font18 color-444">
+        <p>实名认证成功，验证码已发送至手机<i></i></p>
+        <input type="text" class="cust-phone2 font16" placeholder="请输入验证码"  style="text-indent: 8px;">
+        <input type="button" value="获取验证码" id="text_butns" class="button_bank inline-block font16 cursor">
+        <input type="button" value="确认开户" id="text_butns2" class="button_bank block font16 cursor ww3">
+       <h5 class="ww3 text-left font16"> 请在新打开的上海银行页面完成开户操作，正常开户1分钟内可返回结果，非正常开户（中途刷新或退出），系统也会自动进行开户审核，30分钟内返回失败结果。</h5>
+    </div>
+</div>
+
+
+{literal}
+<script>
+    $(function(){
+        $("#city").citySelect({
+            nodata:"none",
+            required:false
+        });
+
+
+        $(obj).validate({
+            errorPlacement: function (error, element) {
+                error.appendTo(element.parent());
+            },
+            errorElement: "em",
+            rules : {
+                prov : {
+                    required : true
+                },
+                city : {
+                    required : true
+                },
+                dist: {
+                    required : true
+                },
+                address: {
+                    required : true
+                },
+                name: {
+                    required : true
+                },
+                phone: {
+                    required : true,
+                    phone: true
+                }
+
+            },
+            messages : {
+                prov : {
+                    required: '所在地区不能为空'
+                },
+                city : {
+                    required: '所在地区不能为空'
+                },
+                dist : {
+                    required: '所在地区不能为空'
+                },
+                address: {
+                    required : '请输入您的地址'
+                },name:{
+                    required : '请输入您的收货姓名'
+                },
+                phone: {
+                    required: "手机号码不能为空",
+                    phone: "手机格式错误"
+                }
+
+            },
+            submitHandler: function (form) {
+                var status=$('#addbox').attr('value');
+                if($('#addbox').is(':checked')){
+                    status=1
+                }else {
+                    status=0
+                }
+                var dis=$('.dist').val();
+                if(dis == null){
+                    dis = '';
+                }
+                var region=""
+                if($('.dizhi-ad2').is(":hidden")){
+                    region=$('.prov').val()+$('.city').val()+dis
+                }else {
+                    region=$('.dizhi-ad2').text();
+                }
+                var del=jDialog.alert('正在提交');
+                $.getJSON(Url,
+                        {
+                            name:$("#shouname").val(),
+                            region:region,
+                            address:$('#shouadd').val(),
+                            phone:$('#shouphone').val(),
+                            status:status,
+                            address_id:$('#addres2').find('#savebtn').attr('nid2'),
+                            present_id:$('#addres').find('#savebtn').attr('nient')
+                        }
+                        ,function (ret) {
+                            del.close()
+                            if (ret.code=='1') {
+                                jDialog.alert('提交成功！');
+                                if(Url=='/?user&m=users/address&type=update_user_address'){
+                                    window.location.href='/?user#account/red2';
+                                }else {
+                                    window.location.reload();
+                                }
+                            }else {
+                                jDialog.alert(ret.msg);
+                            }
+                        }, 'json');
+            }
+        });
+
+
+        var wait=60;
+        function time() {
+            if (wait == 0) {
+                $('.cust_bankalert #text_butns').attr("disabled",false);
+                $('.cust_bankalert #text_butns').val('获取验证码')
+                wait = 60;
+            } else {
+                $('.cust_bankalert #text_butns').attr("disabled",true);
+                $('.cust_bankalert #text_butns').val('重新发送'+wait)
+                wait--;
+                setTimeout(function() {time($('.cust_bankalert #text_butns'))},1000)
+            }
+        }
+        $('.button_bank2').click(function(){
+            time()
+            jDialog.dialog({
+                title : '温馨提示',
+                content : $("#qingkuang2").html(),
+                height:374,
+                width:550,
+                events:{
+                    show:function(){
+                        $('.cust_bankalert #text_butns').click(function(){
+                            time();
+                        });
+                    }
+                }
+
+            });
+            $('.cust_bankalert i').text($('.cust-phone1').val())
+        })
+
+
+
+
+
+
+        //开通成功
+        /*jDialog.dialog({
+            title : '温馨提示',
+            content : $("#qingkuang1").html(),
+            height:300,
+            width:550
+
+        });*/
+    })
+
+
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?114bdc026b9ff4de87a6efb268dbea76";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+{/literal}
+{include file="users_footer.html"}
+
+
+

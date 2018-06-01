@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clearg{zoom:1;}
+.clearg:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+body {
+    font-family:"微软雅黑";
+    font-size: 18px;background:#dd3f3f;
+}
+
+.ww1{width: 100%;}
+.ww2{width: 1200px;}
+.ww3,.ww2{margin: 0 auto;}
+.lefts{float: left}
+.rights{float: right;}
+.text-center{text-align: center;}
+.text-left{text-align: left;}
+.text-right{text-align: right;}
+.font12{font-size: 12px;}
+.font14{font-size: 14px;}
+.font15{font-size: 15px;}
+.font16{font-size: 16px;}
+.font18{font-size: 18px;}
+.font19{font-size: 19px;}
+.font20{font-size: 20px;}
+.font22{font-size: 22px;}
+.font24{font-size: 24px;}
+.block{display: block;}
+.inline-block{display: inline-block;}
+.cursor{cursor: pointer;}
+.bold{font-weight: bold;}
+h5{font-weight: bold;}
+.color-ff{color: #fff;}
+.pos-a{position: relative;}
+.pos-b{position: absolute;}
+
+
+.holding-a{background: url("../images/ban.jpg") no-repeat center;height: 753px;}
+.holding-b{background: url("../images/b1.jpg") no-repeat center;height: 596px;}
+.holding-t{width: 724px;margin-bottom: 78px;padding-top: 126px;}
+    .holding-t i{width: 90px;height: 30px;line-height: 30px;border-bottom: 2px solid #ffd200;}
+    .border{border: 2px solid #ffd200;}
+    .holding-t span{width: 464px;height: 52px;line-height: 52px;font-size: 37px;color: #ffd200;margin-left: 38px;}
+    .holding-c{width: 958px;padding: 50px 42px;color: #d2d2d2;text-indent: 24px;line-height:30px;}
+.holding-d{background: url("../images/b4.jpg") no-repeat top center;height: 1467px;}
+    .holding-d1{background: url("../images/b2.png") no-repeat top center;height: 660px;width: 1062px;padding-top: 70px;}
+    .holding-d2{background: #e4bc11;color: #2b2a2a;width: 1028px;}
+    .holding-d2 p{line-height: 36px;text-indent: 24px;width: 960px;margin: 0 auto 2px auto;font-size: 19px;}
+    .holding-d2{padding: 36px 0;}
+    .holding-d3{background: url("../images/b3.png") no-repeat top center;height: 248px;width: 1062px;padding-top: 48px;margin-top: 100px;}
+    .holding-d3 .holding-d2{padding: 42px 0;}
+    .holding-d3 .holding-d2 p{line-height: 28px;}
+    
+  .holding-e{background: url("../images/b5.jpg")  no-repeat top center;padding-top: 106px;height:848px; }
+    .holding-e .holding-t{padding-top: 0;}
+    
+
+.jiujiu_foot{width: 100%;text-align: center;background: #3c3e40;padding-top: 40px;}
+.jiujiu_foot p{color: #fff;font-size: 24px;line-height: 40px;}
+.jiujiu_foot .endjiujiu{background:url("../images/ma.png")  no-repeat center;height: 172px;margin-top:24px;}

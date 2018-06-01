@@ -1,0 +1,70 @@
+/**
+   *¸¡¶¯
+*/
+
+.fl{ float:left;}
+
+.fr{ float:right;}
+
+.oh{ overflow:hidden;}
+
+.mr{ margin:0px auto;}
+
+.clearfix{ display:block; clear:both;}
+
+.clearfix:after {content: ".";display: block;height: 0;visibility: hidden;}
+
+/*µÖÑº±ê*/
+
+#pawn_content {width:998px;height:410px;border:1px solid #E6E6E6;margin-top:20px;}
+
+.dy_left{ width:447px; float:left;margin-top:20px;}
+
+.dy_deta_left{ float:left;}
+
+.dy_deta_left img{ width:310px; height:220px; padding:4px; border:#ebebeb solid 1px}
+
+.jk_v_tit1{height:54px;border-bottom:solid 1px #E6E6E6;background-color:#F7F7F7; }
+
+.jk_v_tit1 span{ float:left;line-height:54px; padding-left:20px;text-align:center;letter-spacing:2px;background:url(../images/pawn_bg.jpg) no-repeat 14px center; font-size:18px; color:#000; width:130px;}
+
+
+
+.conbox_001 li span{ display:inline-block; width:116px; height:36px; line-height:36px; text-align:center; float:left; margin-top:15px; }
+
+.conbox_001 li span i{ font-size:12px; font-style:normal;}
+
+.conbox_001 li.con,.conbox_001 li.con a{ font-size:18px; color:#333;}
+
+.conbox_001 li.con{ border-bottom:1px solid #ccc; height:70px;}
+
+.conbox_001 li span img{ vertical-align:middle; margin:0px 10px 0 10px;}
+
+.conbox_001 li .pro_tit{ width:190px; text-align:left;}
+
+.conbox_001 li .y_rate{ width:206px;}
+
+.conbox_001 li .bor_m{ width:154px;}
+
+.conbox_001 li .bor_date{ width:153px;}
+
+.conbox_001 li .t_pro{ width:150px; margin-top:8px !important;}
+
+.conbox_001 li .t_status{ width:145px;}
+
+.dy_right li{ float:left; width:210px; color:#666666; margin-bottom:15px; line-height:23px;}
+
+.dy_right li span{ background:url(../images/dy_rightbg.gif) repeat-x center; height:21px !important; width:65px !important; padding:2px 10px !important; border:#dddddd solid 1px !important; border-radius:5px; color:#319dc1; line-height:20px !important;}
+
+.dy_deta_right,.dy_right{ float:left;}
+
+.thind_tab_1{ width:320px !important;}
+
+.lustm_Diop{ width:100px; height:300px; }
+
+.lustm_Diop li{  margin-left:12px;}
+
+.lustm_Diop ul {width:326px;}
+
+.lustm_Diop ul li {float:left;}
+

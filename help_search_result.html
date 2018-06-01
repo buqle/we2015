@@ -1,0 +1,8 @@
+<h3>搜索结果(结果内包含标题或者内容含有关键字)</h3>
+		   <ul>
+           {list module="articles" function="get_list" var="loop" keyword=$smarty.request._name order=id_down limit=10 }
+          {foreach from=$loop.list item=item}
+           <li><a href="/help/a{$item.id}.html" target="_blank">{$item.name}</a></li>
+           {/foreach}
+           {/list}
+		   </ul>

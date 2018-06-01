@@ -1,0 +1,12 @@
+   <div class="art_menu">
+	  <h2>帮助中心</h2>
+	  <ul>
+		{loop module="articles" function="get_type_list" var="var" limit ="all" pid="58" order="order_desc"}
+			
+	     <li>
+		   <a href="/help/{$var.nid}/index.html" {if $smarty.request.nid==$var.nid }class="now"{/if} >{$var.name}</a>
+		 </li>
+
+		{/loop}
+	  </ul>
+	</div>

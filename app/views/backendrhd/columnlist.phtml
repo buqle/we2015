@@ -1,0 +1,47 @@
+<div class="graphs">
+    <div class="xs">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h2>分类列表</h2>
+            </div>
+            <div class="panel-body no-padding" style="display: block;">
+                <table class="table table-striped">
+                    <thead>
+                    <tr class="warning">
+                        <th>编号</th>
+                        <th>分类名称</th>
+                        <th>关键字</th>
+                        <th>查看二级目录</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                        foreach ($page->items as $item) {
+                    ?>
+                    <tr>
+                        <td><?=$item->id?></td>
+                        <td><?=$item->name?></td>
+                        <td><?=$item->keyword?></td>
+                        <td><?php if ($item->parent_id ==0){ ?>
+                                <a href="/zixun/backendrhd/columnlist/<?=$item->id?>/">查看</a>
+                            <?php
+                                }else {
+                                ?>
+                                查看
+                            <?php
+                            }
+                            ?>
+                        </td>
+                        <td><a href="/zixun/backendrhd/editcolumn/<?=$item->id?>" >修改</a>|<a href="/zixun/backendrhd/delcolumn/<?=$item->id?>"  onclick="return confirm('是否确定删除')">删除</a></td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

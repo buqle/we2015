@@ -1,0 +1,174 @@
+﻿{include file="header.html"}
+
+<div class="conbox t50">
+   <div class="borrow_pro">
+	   <div class="bread"><a href="#">我要借款</a>&nbsp;>&nbsp;填写信息</div>
+	   {include file="users_loan_info_menu.html"}
+	   <div class="fill_infor">
+	       {include file="users_loan_info_right.html"}
+		   <div class="infor_cont">
+              <form action="" method="post" id="loan_info">
+			         <div class="infor_cont_box">
+						 <h3>基本信息</h3>
+                         <ul>
+						   <li>
+                           
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>用户名：</label>
+							   <span class="user_infor">{$_G.user_result.username}</span>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>真实姓名：</label>
+							   <span class="user_infor">{$_G.approve_result.realname}</span>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>身份证号：</label>
+							   <span class="user_infor">{$_G.approve_result._card_id}</span>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>手机号码：</label>
+                               
+				                 <span class="user_infor">{if $_G.approve_result.phone_status==1}{$_G.approve_result.phone|truncate_phone}{else}-{/if}</span>
+                                
+							  
+							 </div>
+                             {articles module='rating' function='GetInfoOne' user_id=$_G.user_id var=Ivar}
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>性别：</label>
+							   <select name="sex" id="sex" class="borrow_sel">
+								   <option value="1" {if $_G.approve_result.sex==1} selected="true"{/if}>男</option>
+								   <option value="2" {if $_G.approve_result.sex==2} selected="true"{/if}>女</option>								   
+							   </select>
+                               <span class="msg_box warning"><em></em><i></i><font>请选择性别</font></span>
+							 </div>
+                             
+							 <div class="item">
+							   <label class="basic_label w120" for="birth_day"><span class="warning_c">*</span>出生日期：</label>
+							   <span id="birth_day" class="user_infor"><script>
+                               var card_id="{$_G.approve_result.card_id}";
+                               {literal}
+                               document.write(card_id.substring(6,10)+"年"+card_id.substring(10,12)+"月"+card_id.substring(12,14)+"日");
+                               {/literal}
+                               </script></span>
+							 </div>
+                             
+                             
+                        
+							 <div class="item">
+							   <label class="basic_label w120" for="edu"><span class="warning_c">*</span>最高学历：</label>
+							    {linkages nid="rating_education" name="edu" id="edu" value=$Ivar.edu default="请选择" type="value" class='borrow_sel'}
+                              <span class="msg_box warning"><em></em><i></i><font>请选择学历</font></span>
+							 </div>
+                             {articles module='rating' function='GetJobOne' user_id=$_G.user_id var=Jvar}
+							 <div class="item">                             
+							   <label class="basic_label w120" for="work_time"><span class="warning_c">*</span>工作年限：</label>
+                               {linkages nid="rating_workyear" default="请选择" name="work_year" id="work_year" type="value"  value=$Jvar.work_year class='borrow_sel'}
+		                       <span class="msg_box warning"><em></em><i></i><font>请选择工作年限</font></span>
+							 </div>
+                             {/articles}
+							 <div class="item">
+							   <label class="basic_label w120" for="income"><span class="warning_c">*</span>月收入：</label>
+                               {linkages nid="rating_income" default="请选择" name="income" id="income" type="value"  value=$Ivar.income class='borrow_sel'}
+                               <span class="msg_box warning"><em></em><i></i><font>请选择月收入</font></span>
+							 </div>
+						 </li> 
+						   <li>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>籍贯：</label>
+							   <script src="/?plugins&q=areas&name=jiguan_&type=p,c&class=borrow_sel&area=&value={$Ivar.jiguan_city}"></script>
+					           <span class="msg_box warning"><em></em><i></i><font>请选择籍贯</font></span>
+                              </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>婚姻状况：</label>
+                               {linkages nid="rating_marry" name="marry" default="请选择" value=$Ivar.marry type="value" class='borrow_sel'}
+                               <span class="msg_box warning"><em></em><i></i><font>请选择婚姻状况</font></span>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>有无子女：</label>
+							   {linkages nid="rating_children" name="children" default="请选择" value=$Ivar.children type="value"  class="borrow_sel"}
+					           <span class="msg_box warning"><em></em><i></i><font>请选择子女情况</font></span>
+                             </div>                            
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>户口所在地：</label>                              
+							   <script src="/?plugins&q=areas&name=&type=p,c&class=borrow_sel&area=&value={$Ivar.city}"></script>
+					           <span class="msg_box warning"><em></em><i></i><font>请选择户口所在地</font></span>
+                              </div>
+                              {/articles}
+                              {articles module='rating' function='GetContactOne' user_id=$_G.user_id var=Cvar}
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>居住地址：</label>
+							   <input type="text" class="basic_input" name="live_address" id="live_address" value='{$Cvar.live_address}'/>
+							     <span class="msg_box warning"><em></em><i></i><font>请填写居住地址</font></span>
+                             </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>居住地电话：</label>
+							   <input type="text" class="basic_input tel_num1" id="live_tel1" name="live_tel1" value='{$Cvar.live_tel1}' onkeyup="value=value.replace(/[^0-9Xx]/g,'')"/>
+							   <span>&nbsp;-&nbsp;</span>
+							   <input type="text" class="basic_input tel_num2" id="live_tel2" name="live_tel2" value='{$Cvar.live_tel2}' onkeyup="value=value.replace(/[^0-9Xx]/g,'')"/>
+							     <span class="msg_box warning"><em></em><i></i><font>请填写居住地电话 </font></span>
+                             </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>居住地邮编：</label>
+							   <input type="text" class="basic_input" name="live_code" id="live_code" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" maxlength="6" value='{$Cvar.live_code}'/>
+                               <span class="msg_box warning"><em></em><i></i><font>请填写居住地邮编</font></span>
+							 </div>
+						 </li>
+						 <li class="bor_none">
+							 <div class="item">
+							   <h4>直系亲属</h4>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>姓名：</label>
+							   <input type="text" class="basic_input" name="linkman2" id="linkman2" value='{$Cvar.linkman2}'/>
+                               <span class="msg_box warning"><em></em><i></i><font>请填写姓名</font></span>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>关系：</label>
+                               {linkages nid="rating_relation" name="relationship2" type="value" value=$Cvar.relationship2 class="borrow_sel"}
+							     <span class="msg_box warning"><em></em><i></i><font>请选择关系</font></span>
+                             </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>手机：</label>
+							   <input type="text" class="basic_input" name="phone2" id="phone2" value='{$Cvar.phone2}' onkeyup="value=value.replace(/[^0-9Xx]/g,'')" maxlength="11"/>
+                               <span class="msg_box warning"><em></em><i></i><font>请填写手机号</font></span>
+							 </div>
+							 <div class="item">
+							   <h4>其他联系人</h4>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>姓名：</label>
+							   <input type="text" class="basic_input" name="linkman3" id="linkman3" value='{$Cvar.linkman3}'/>
+                               <span class="msg_box warning"><em></em><i></i><font>请填写姓名</font></span>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>关系：</label>
+							  {linkages nid="rating_relation" name="relationship3" type="value" value=$Cvar.relationship3 class="borrow_sel"}
+							     <span class="msg_box warning"><em></em><i></i><font>请选择关系</font></span>
+                             </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>手机：</label>
+							   <input type="text" class="basic_input" name="phone3" id="phone3" value='{$Cvar.phone3}' onkeyup="value=value.replace(/[^0-9Xx]/g,'')" maxlength="11"/>
+                               <span class="msg_box warning"><em></em><i></i><font>请填写手机号</font></span>
+							 </div>
+                             {/articles}
+						 </li>
+					     </ul>
+					 </div>	 
+					 <div class="item txt_cent">
+					   <input type="submit"   value="提交&nbsp;下一步" class="bor_pro_sub"/>
+					   <input type="button" id="submit"   value="上一步" class="bor_pro_sub"/>
+					 </div>
+		   </form>			  
+		   </div>
+		   <div class="cle"></div>
+	   </div>  
+   </div>
+</div>
+
+
+{literal}
+<script type="text/javascript">
+diyou.use('borrow',function(dy){dy.loan_info('loan_info')})
+</script>
+{/literal}
+{include file="footer.html"}

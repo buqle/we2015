@@ -1,0 +1,133 @@
+{if $smarty.request.type=='list'}
+<table class="user_tabifo">
+	<thead>
+	<tr>
+		<th width="15%">时间</th>
+		<th width="20%">类型</th>
+		<th width="11%">存入</th>
+		<th width="11%">支出</th>
+		<th width="11%">冻结</th>
+		<th title="可用余额=账户总额-冻结金额-待收总额" width="12%">余额</th>
+		<th width="20%">备注</th>
+	</tr>
+	</thead>
+	<tbody>
+	{list module="account" function="get_log_list" var=loop user_id=$_G.user_id epage=10 page=$smarty.request.page+1 account_type=$smarty.request.account_type  dotime1=$smarty.request.dotime1  dotime2=$smarty.request.dotime2 }
+	{foreach from=$loop.list item=item}
+	<tr>
+		<td>{$item.addtime|date_format:"Y/m/d H:i:s"}</td>
+		<td>{if $item.type!=""}{$item.type|linkages:"account_type"}{else}-{$item.type}{/if}</td>
+		<td>{if $item.balance_new>0 }￥{$item.balance_new|default:'0.00'}{elseif $item.await_new>0}￥{$item.await_new|default:'0.00'}{/if}</td>
+		<td>{if $item.expend_new>0}￥{$item.expend_new}{/if}
+			{if $item.balance_new==0 && $item.expend_new==0 && $item.frost_new==0 && $item.await_new==0}￥0{/if}
+		</td>
+		<td>{if $item.frost_new>0}￥{$item.frost_new}{/if}</td>
+		<td>￥{$item.balance|string_format:'%0.2f'}</td>
+		<td>{$item.remark}</td>
+	</tr>
+	{/foreach}
+	</tbody>
+	<tfoot>
+	<tr>
+		<td colspan="7" style="border-bottom: none;">
+			{if $loop.total>0}
+			<div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>{else}
+			<p>暂无此记录</p>
+			{/if}
+		</td>
+	</tr>
+	</tfoot>
+</table>
+{/list}
+
+{else}
+<div class="business_cont">
+	<div class="new_informations clearbo">
+		<ul class="clearbo">
+			<li>
+				<p class="informations_day">
+
+					<strong class="alldayinfo">0</strong>天
+
+				</p>
+				<div class="informations_bg">
+					<p class="info-padding">从您加入融和贷，</p>
+					<p>我们已陪伴您<span class="alldayinfo"></span>天</p>
+				</div>
+			</li>
+			<li>
+				<p class="informations_day"><strong class="self_alltned"></strong>元</p>
+				<div class="informations_bg">
+					<p class="info-padding">您共在融和贷</p>
+					<p>投资<span class="self_alltned"></span>元</p>
+				</div>
+			</li>
+			<li style="margin-right: 0;">
+				<p class="informations_day">
+					<strong class="self_all_interest"></strong>
+					元
+				</p>
+				<div class="informations_bg">
+					<p class="info-padding">融和贷共为您带来</p>
+					<p><span class="self_all_interest">0</span>元收益</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<div class="business_content1 clearbo">
+		<h4>交易记录</h4>
+		<form action="" method="post" id="sou_form">
+			{linkages name="account_type" nid="account_type" default='全部' value={$smarty.request.account_type} class=u_sel type="value" }
+			<label><img src="{$tpldir}/images/vipcenter/rl.png" alt="" width="20px" height="20px;">
+				<input type="text" class="u_input w120 date_picker" placeholder="起始日期" value="" id="dotime1" style="vertical-align: middle;"/></label>
+			<label><img src="{$tpldir}/images/vipcenter/rl.png" alt=""  width="20px" height="20px;">
+				<input type="text" class="u_input w120 date_picker" placeholder="截止日期" value="" id="dotime2" style="vertical-align: middle;"/></label>
+			<input type="submit" id="search" value="搜索" class="input_btn"/>
+		</form>
+	</div>
+	<div class="business_content2">
+		<div id="content_box" style="height: 100%;" class="user_tabifo1"></div>
+	</div>
+
+
+	<div style="height: 65px;"></div>
+
+</div>
+
+<div style="height: 65px;"></div>
+<script type="text/javascript">
+	var _account_type = '{$smarty.request.data_type}';
+	{literal}
+	diyou.use('users_account',function(dy){dy.account_log(_account_type)})
+	$(function(){
+		function gettest(){
+			$.http.get('/?user&m=active/active365', {}, function(r){
+				if (r.code == '0'){
+					//$('.alldayinfo').text(r.data.allday);
+					if(r.data.allday==""){
+						$('.alldayinfo').text(0);
+					}else {
+						$('.alldayinfo').text(r.data.allday);
+					}
+
+					if(r.data.self_alltned==""){
+						$('.self_alltned').text(0);
+					}else {
+						$('.self_alltned').text(r.data.self_alltned);
+					}
+
+					if(r.data.self_all_interest==""){
+						$('.self_all_interest').text(0);
+					}else {
+						$('.self_all_interest').text(r.data.self_all_interest);
+					}
+				}
+			}, 'json')
+		};
+		gettest();
+	});
+
+</script>
+{/literal}
+{/if}

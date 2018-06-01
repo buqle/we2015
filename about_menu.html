@@ -1,0 +1,10 @@
+    <div class="art_menu">
+	  <h2>关于我们</h2>
+	  <ul>
+	  {loop module="admin" function="get_site_list" var="var" limit="all" pid=155 }
+	     <li>
+		   <a href="/{$var.nid}/index.html" {if $_G.site_result.nid==$var.nid}class="now"{/if}>{$var.name}</a>
+		 </li>
+	  {/loop}
+	  </ul>
+	</div>

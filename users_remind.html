@@ -1,0 +1,54 @@
+{include file="users_main_header.html"}
+
+<div class="conbox t20 fn_cle user_cont">
+{include file="users_menu.html"}
+	<div class="fn_rig user_rig">
+	<form action="" method="" id="remind_form" name="remind_form" >
+	   <div class="user_box">
+		   <div class="remind_set">
+		   {articles module="remind" function="get_user_one" user_id=$_G.user_id var="item"}
+		    <p><span>关闭新标短信提醒</span><input type="checkbox" name="phone_new_notice" value="1" {if $item.phone==1} checked="true" {/if}>（如果不想被手机短信打扰请勾选） </p>
+			{/articles}
+			<p>请勾选设置来收取您所需要的消息提醒。 为了您的交易安全，部分重要信息不能取消接收。 </p>
+		   </div>
+	   </div>
+	   <div class="set_form">
+	    <table cellspacing="0" border="0" style="width:100%" class="tabyel">		  
+		<tbody>
+		 {articles module="remind" function="get_remind_list" user_id=$_G.user_id var="rvar"}	  
+			 {foreach from= $rvar._list item="item"}
+				 <tr class="tab_head">
+					<td colspan="3">{$item.title}</td>
+				 </tr>
+					{foreach from=$item.list item="var"}
+				<tr>
+					<td>{$var.title}</td>
+					<td>
+						<input type="checkbox" {if $var.message==1 || $var.message==3}checked="checked"{/if} name="message_{$var.nid}" id="message_{$var.nid}" value="{$var.message}" {if $var.message==1 || $var.message==2} disabled="disabled"{/if}>
+						<label for=message_{$var.nid}>站内信提醒</label>
+					</td>
+					<td>
+						<input type="checkbox" {if $var.email==1 || $var.email==3}checked="checked"{/if} name="email_{$var.nid}" id="email_{$var.nid}" value="{$var.email}" {if $var.email==1 || $var.email==2} disabled="disabled"{/if}>
+						<label for=email_{$var.nid}>邮件提醒 </label>
+					</td>	
+				</tr>
+			  {/foreach}			
+		  {/foreach }
+	  {/articles}
+										
+								
+											
+	</tbody>
+	</table>
+  </div>
+		<input type="hidden" name="action_type" value="set_remind" />
+	   <div class="u_submit"><input type="submit" value="确认提交" class="u_sub"></div>
+	   </form>
+	</div>
+</div>
+{literal}
+<script>
+diyou.use('users',function(dy){dy.remind_set('remind_form');});
+</script>
+{/literal}
+{include file="footer.html"}

@@ -1,0 +1,153 @@
+﻿{if $smarty.request.type=="list"}
+
+ <table class="apply_limit_tab">
+			     <thead>
+					 <tr class="odd">
+					    <th>申请时间</th>
+					    <th>申请类型</th>
+					    <th>申请金额（元）</th>
+					    <th>通过金额（元）</th>
+					    <th>备注说明</th>
+					    <th>状态</th>
+					    <th>审核时间</th>
+					    <th>审核备注</th>
+					 </tr>
+				 </thead>
+                
+				 <tbody id="amount_list">
+                 {list module="borrow" function="get_amount_apply_list" var=loop user_id=$_G.user_id epage=10 page=$smarty.request.page+1}
+                 {foreach from=$loop.list item=item}
+				     <tr>
+					    <td>{$item.addtime|date_format:"Y/m/d H:i"|default:"-"}</td>
+					    <td>{if $item.amount_type=="credit"}信用借款额度{elseif $item.amount_type=="vouch"}担保借款额度{elseif $item.amount_type=="pawn"}抵押额度{elseif $item.amount_type=="vest"}流转额度{/if}</td>
+						{if $item.oprate == 'reduce'}
+						<td>-{$item.amount_account}</td>
+					    <td>-{$item.account}</td>
+						{elseif $item.oprate == 'add'}
+						<td>{$item.amount_account}</td>
+					    <td>{$item.account}</td>
+						{/if}					    <td>{$item.remark}</td>
+					    <td>{if $item.status==0}待审核{elseif $item.status==1}审核通过{else}审核不通过{/if}</td>
+					    <td>{$item.verify_time|date_format:"Y/m/d H:i"|default:"-"}</td>
+					    <td>{$item.verify_remark|default:'-'}</td>
+					 </tr>      
+				{/foreach}
+				 </tbody>
+                 <tfoot>
+                 <tr>
+                  <td colspan="7">
+                         {if $loop.total>0}
+                         <div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+                         {/if}
+                         </td>
+                  </tr>
+                  </tfoot>
+                  {/list}
+			   </table>
+{else}
+
+{include file="users_main_header.html"}
+
+<div class="conbox t20 fn_cle user_cont">
+{include file="users_menu.html"}
+
+<div class="fn_rig user_rig">
+	   <div class="user_box">
+	     <div class="fund_manage">
+	       <h2 class="fn_cle">
+				     <span class="fn_left">申请额度</span>
+				     <span class="fn_rig">
+					   <a href="/?user&m=borrow/loan/amount_log&user_role={$smarty.request.user_role}">额度记录</a>
+					 </span>
+			</h2>
+		   <div class="apply_limit t20">
+		     <div class="apply_limit_note">
+			    <dl>
+				   {articles module="borrow" function="get_amount_user" var="amount_var"  user_id=$_G.user_id}
+                  {if $amount_var.credit_status==1}				   
+				   <dd>
+				     <span class="all">信用额度：<em>{$amount_var.credit}</em>元</span>
+					 <div class="useful">可用信用额度：<em>{$amount_var.credit_use}</em>元</div>
+				   </dd>
+				   {/if}
+				   {if $amount_var.vouch_status==1}
+				   <dd>
+				     <span class="all">担保额度：<em>{$amount_var.vouch}</em>元</span>
+					 <div class="useful">可用担保额度：<em>{$amount_var.vouch_use}</em>元</div>
+				   </dd>
+				   {/if}
+				   {if $amount_var.pawn_status==1}
+				   <dd>
+				     <span class="all">抵押额度：<em>{$amount_var.pawn}</em>元</span>
+					 <div class="useful">可用抵押额度：<em>{$amount_var.pawn_use}</em>元</div>
+				   </dd>
+				   {/if}
+				   {if $amount_var.vest_status==1}
+				   <dd>
+				     <span class="all">流转额度：<em>{$amount_var.vest}</em>元</span>
+					 <div class="useful">可用流转额度：<em>{$amount_var.vest_use}</em>元</div>
+				   </dd>
+				   {/if}
+				   <dd>
+				     <span class="all">净值额度：<em>{$amount_var.worth}</em>元</span>
+					 <div class="useful">可用净值额度：<em>{$amount_var.worth}</em>元</div>
+				   </dd>				  
+				</dl> 
+                 {/articles}          
+			 </div>
+			 <div class="">
+			   <form action="" method="post"  id="mamountapply">
+			     <div class="item">
+                    <label class="u_label"><span class="user_warning_c">*</span>申请类型：</label>
+                    {loop function="get_amount_type_list" module="borrow" var="amount_type"}
+                     <input type="radio" class="u_radio" name="amount_type" value="{$amount_type.nid}" {if $amount_type.nid=="credit"} checked="true" {/if} />
+                     <label class="u_radio_label">{$amount_type.name}</label>
+                     {/loop}
+						
+					
+				 </div>
+			     <div class="item fn_cle">
+						<label class="u_label"><span class="user_warning_c">*</span>申请额度：</label>
+						<div class="money_txt fn_left"><input type="text" class="u_input" name="amount_account" id="amount_account" onkeyup="value=value.replace(/[^0-9Xx|.]/g,'')"/>
+                        <span class="money_type">元</span>
+                        <span class="user_warning_c"></span>
+						</div>
+				 </div>
+			     <div class="item">
+						<label class="u_label">借款用途：</label>
+						{linkages nid="borrow_use" name="borrow_use" type="value" class="u_sel" default="请选择"}
+                        <span class="user_warning_c"></span>
+				 </div>
+				 <div class="item">
+						<label class="u_label">详细说明：</label>
+						<textarea class="u_textarea" name="remark"></textarea>
+                        <span class="user_warning_c"></span>
+				 </div>
+                 <div class="item">
+						<label class="u_label">其他地方借款说明：</label>
+						<textarea class="u_textarea" name="content"></textarea>
+                        <span class="user_warning_c"></span>
+				 </div>
+				 <div class="item">
+						<label class="u_label">&nbsp;</label>
+						<input type="submit" class="u_sub" value="确认提交" />
+				 </div>
+			   </form>
+			 </div>
+			 <div class="apply_limit_list" id="amount_list">
+                
+			  
+			 </div>
+           </div>
+		   </div>
+	   </div>
+	</div>
+    </div>
+ {literal}
+<script type="text/javascript">
+diyou.use('users_amount',function(dy){dy.user_borrow_amount_apply('mamountapply')})
+</script>
+{/literal}
+{include file="users_footer.html"}
+
+{/if}

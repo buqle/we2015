@@ -1,0 +1,124 @@
+html {
+  color: #333;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+html * {
+  outline: 0;
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Microsoft YaHei',Arial,"Helvetica Neue",Helvetica,sans-serif;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+}
+
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+fieldset,
+img {
+  border: 0;
+}
+
+i {
+  font-style: normal;
+}
+
+body {
+  margin: 0 auto;
+}
+
+.ww1 {
+  width: 10rem;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.t-left {
+  text-align: left;
+}
+
+.dis-inlie {
+  display: inline-block;
+}
+
+.dis-block {
+  display: block;
+}
+
+.header-a {
+  background: #1e7de7;
+  color: #fff;
+  padding-top: 0.805556rem;
+}
+
+.header-a .pcon1 {
+  margin: 0.416667rem 0 0.166667rem 0;
+}
+
+.header-a img {
+  width: 2.541667rem;
+  height: 2.541667rem;
+}
+
+.header-a p {
+  font-size: 0.333333rem;
+}

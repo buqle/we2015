@@ -1,0 +1,107 @@
+<!--充值 0223 - Q -->
+{articles module="webcount"  function="get_users_account" var="var1" user_id=$_G.user_id}
+<div class="top_up" >
+	<p class="p1"><em class="active">充值</em><i>|</i><em class="em1" id="em0">充值记录</em></p>
+	<div class="top_1" >
+		<div class="tt">
+			<p class="chz">
+                    <span>
+                        当前可用余额：<i style="padding: 0">{$var1.balance|default:"0.00"}</i>元
+                    </span>
+				<em>
+					<label id="je">充值金额：<input type="text" id="money"  onkeyup="value=value.replace(/[^0-9Xx|.]/g,'')" name="money"><i>元</i><span class="user_warning_c" id="money_error"></span></label>
+
+				</em>
+			</p>
+			<p class="a1">
+				<a href="javascript:void(0)" id="trust_recharge">立即充值</a>
+			</p>
+		</div>
+		<div class="js">
+			<h2>温馨提示：</h2>
+			1.投资人充值过程全程免费，不收取任何额外费用。<br>
+			2.严禁信用卡套现，虚假交易等行为，一经发现将予以处罚，包括但不限于：限制收款、冻结账户、<br>永久停止服务等。<br>
+			3.充值期间请勿关闭浏览器，待充值成功后可返回相关页面，充值如有疑问，请联系平台客服咨询。<br>客服热线：<i>400-013-5679。</i><br>
+			4.充值需开通银行卡网上支付功能，支付限额请按照各银行支付说明，如有疑问请联系开户行客服。<br>
+			5.如您对于银行存管账户的使用及其他方面存在疑问，请咨询第三方客服。
+        </div>
+		<div style="height: 65px;"></div>
+	</div>
+</div>
+<div class="mask"></div>
+{/articles}
+{literal}
+<script type="text/javascript">
+    $('#trust_recharge').die('click').live('click',function(){
+        if(trust!=1){
+            window.location.href="/?user&q=reg&type=phone";
+            return;
+        }
+        if( $("#money").val()==""){
+            $("#money_error").text("请输入金额");
+            $("#money").focus();
+            return ;
+        }
+        ;var w = window.open();
+        $.http.post('/?user&m=trust/recharge/new',{'money':$("#money").val()},function(data){
+            if(data.ret!=0){
+                jDialog.alert(data.msg);
+                w.close();
+            }else{
+                var nid = data.nid;
+                jDialog.confirm('',{
+                            text:'完成充值',
+                            type:'highlight',
+                            handler : function (button, dialog) {
+                                $('#money').val('');
+                                $.http.post('/?user&m=trust/recharge/chkrecharge', {nid:nid},function (response) {
+                                },'json');
+                                dialog.close();
+                            }
+                        }
+                        ,{
+                            text:'充值失败',
+                            type:'highlight',
+                            handler : function(button, dialog) {
+                                window.location.href = '/helpall/index.html#test38';
+                                dialog.close();
+                            }
+                        },{
+                            title:'在线充值'
+                        }
+                );
+                w.document.write(data.data);
+
+            }
+        },'json',function(){
+            w.close();
+            jDialog.alert('请求错误，请重试或联系在线客服！');
+        });
+        return false;
+    });
+    $(function(){
+        $("#money").blur(function(){
+            if( $("#money").val()==""){
+                $("#money_error").text("请输入金额");
+
+            }else{
+                $("#money_error").text("");
+            }
+        });
+        $("#money").keydown(function(){
+            $("#money_error").text("");
+        });
+        $("#em0").click(function(){
+            // 通过options参数，控制dialog
+            var dialog = jDialog.ajax('/?user&m=account/recharge/recharge_log',{
+                title: '充值记录',
+                width:1064,
+                height:620
+            });
+        });
+
+    });
+    //diyou.use('trust',function(dy){dy.recharge('trust_recharge')})
+
+</script>
+{/literal}

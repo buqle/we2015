@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=0.5,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta charset="utf-8">
+    <title>平台新老版本账户同步引导</title>
+    <meta name="description" content="融和贷APP<融和财富>从“安全，收益，资金流动性，便捷，用户体验”为用户考虑。产品操作方便快捷，符合用户的操作习惯，让用户随时随地快速安全的投资理财。" />
+    <link rel="stylesheet" href="{$tpldir}/zhuanti/territory/css/jquery.fullPage.css">
+    <link rel="stylesheet" href="{$tpldir}/zhuanti/territory/css/style.css">
+    <script src="{$tpldir}/zhuanti/territory/js/jquery-1.8.3.min.js"></script>
+    <script src="{$tpldir}/zhuanti/territory/js/jquery.fullPage.min.js"></script>
+    <script>
+        $(function(){
+            if($.browser.msie && $.browser.version < 10){
+                $('body').addClass('ltie10');
+            }
+            $('#dowebok').fullpage({
+                anchors: ['page1', 'page2', 'page3', 'page4'],
+                menu: '#menu',
+                afterSlideLoad:function(anchorLink, index,slideIndex, direction){
+                    //改变导航栏
+                    $('#curr_mu').attr('src', '{$tpldir}/zhuanti/greater/images/v_'+slideIndex+'.gif')
+                }
+
+            });
+        });
+    </script>
+</head>
+<body>
+<ul id="menu">
+    <li data-menuanchor="page1" class="active"><a href="#page1"></a></li>
+    <li data-menuanchor="page2"><a href="#page2"></a></li>
+    <li data-menuanchor="page3"><a href="#page3"></a></li>
+    <li data-menuanchor="page4"><a href="#page4"></a></li>
+</ul>
+<div class="back_homet"><a href="/">返回首页</a> </div>
+<div id="dowebok">
+    <div class="section" id="ssc1">
+        <div class="synchrony1">
+            <img src="{$tpldir}/zhuanti/territory/images/b1.jpg" alt="">
+        </div>
+        <div class="terrot_c">
+            <p>全国首家国资+风投+公益性互联网金融平台融和贷于2016年3月20日融和贷已正式启用联合资金存管模式。</p>
+            <p>经历三个多月的统筹、整改、优化、升级，融和贷率先引领业内潮流，为全国互联网金融投资者营造了最具规范、最佳保障的投资环境，为投资平台示范最具效率、最大程度上的政策改革。</p>
+            <p>至此，我们已进入互联网金融的新纪元！开启安全、透明、便捷、稳定的全新模式！    </p>
+        </div>
+        <div class="pos_bootom"></div>
+        <div class="foot_terr">
+            <div class="teeship">
+                <a href="/greater/index.html">了解更多</a>
+                <a href="javascript:void(0)" style="float: right;" class="logo_sb">立即开通</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="ssc2">
+        <div class="synchrony1">
+            <img src="{$tpldir}/zhuanti/territory/images/b2.jpg" alt="">
+        </div>
+        <div class="pos_bootom" style="background: #818490;"></div>
+        <div class="foot_terr">
+            <div class="teeship">
+                <a href="/greater/index.html">了解更多</a>
+                <a href="javascript:void(0)" style="float: right;" class="logo_sb">立即开通</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="ssc3">
+        <div class="synchrony1">
+            <img src="{$tpldir}/zhuanti/territory/images/b3.jpg" alt="">
+        </div>
+        <h4>“银行+支付公司”联合存管</h4>
+        <div class="pos_bootom" style="background: #050d2c;"></div>
+        <div class="foot_terr">
+            <div class="teeship">
+                <a href="/greater/index.html">了解更多</a>
+                <a href="javascript:void(0)" style="float: right;" class="logo_sb">立即开通</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="ssc4">
+        <div class="synchrony1">
+            <img src="{$tpldir}/zhuanti/territory/images/b4.gif" alt="">
+        </div>
+        <div class="pos_bootom" style="background: #0c0c1c;"></div>
+        <div class="foot_terr">
+            <div class="teeship">
+                <a href="/greater/index.html">了解更多</a>
+                <a href="javascript:void(0)"  class="logo_sb" style="float: right;">立即开通</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    var user_id = '{$_G.user_id}';
+    var  trust = '{$_G.trust_user.approve_result.reg_trust}';//是否注册托管
+    {literal}
+    $(".logo_sb").each(function(){
+        $(this).click(function(){
+            if(trust!=1){
+                window.location.href="/?user&q=reg&type=phone";
+                return;
+            }else {
+                window.location.href="/?user";
+            }
+        });
+    });
+</script>
+{/literal}
+</body>
+</html>
+
+
+
+
+
+
+
+

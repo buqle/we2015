@@ -1,0 +1,85 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+ul, li {
+
+    list-style: none outside none;
+
+}
+.clearc{zoom:1;}
+
+.clearc:after {
+    content: "";
+    display: block;
+    clear: both;}
+
+img {
+
+    border: 0 none;
+
+}
+
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+
+body {
+
+    font-family:"微软雅黑";
+
+    font-size: 16px;background: #f3f3f3;
+
+}
+
+.guarantee_con1{position: relative; background: url(../images/b1.jpg) center no-repeat;width: 100%;overflow:hidden;height: 738px;border-bottom: 16px #f3783c solid;}
+.guarantee_con1c{position: absolute;background: #000;filter:alpha(opacity:60); opacity:0.6;height: 210px;bottom: 0;width: 100%;}
+     .gua_head{width: 764px;margin: 0 auto;position: absolute;bottom: 6px;left: 50%;margin-left: -382px;}
+    .gua_head li{cursor: pointer;margin-right: 94px;color: #fff;float: left;text-align: center;perspective:1000;transform-style:preserve-3d; }
+    .flip{position:relative;transition:0.8s;transform-style:preserve-3d;}
+    .gua_head li,.front,.back{width: 191px;height: 191px;}
+    .front,.back{position:absolute;top: 0px;left: 0px;backface-visibility:hidden;background: url(../images/obv.png) center no-repeat;}
+    .front{z-index:2;}
+    .back{transform:rotateY(-180deg);}
+    .container:hover .flip{transform:rotateY(180deg);}
+    .gua_head li h4{font-size: 37px;padding-top: 36px;height: 44px;}
+    .gua_head li p{font-size: 28px;font-weight: bold;}
+
+.guarantee_con2{margin-top: 24px;width: 100%;overflow: hidden;padding-bottom: 120px;}
+    .guarantee_con2 .gua_body{}
+    .guarantee_con2 .gua_body li{display: none;}
+    .guarantee_con2 .gua_body li.bodyon{display: block;}
+    .guarantee_con2 .rigorous_t{text-align: center;}
+        .guarantee_con2 .rigorous_t h4{color: #fff;font-weight: bold;background: url(../images/t1.gif) center no-repeat;height: 82px;line-height: 64px;font-size: 37px;}
+        .guarantee_con2 .rigorous_t h5{background: url(../images/t2.gif) center no-repeat;height: 39px;font-size: 36px;color: #f3783c;line-height: 34px;margin-top: 20px;}
+        .rigorous_conc{margin: 50px auto 0 auto;border: 1px dashed #959595;border-top:none; width: 1198px;}
+        .guarantee_con2 .rigorous_con{border-top: 1px dashed #959595;zoom:1;padding: 18px 0}
+        .guarantee_con2 .rigorous_cons{background: url(../images/1.jpg) no-repeat;height: 299px;width: 1088px;margin-left: 68px;margin-right: 44px;}
+        .guarantee_con2 .rigorous_cons dl{float: right;width: 704px;border-left: #ff692e solid 10px;height: 116px;margin-top: 80px;}
+        .guarantee_con2 .rigorous_cons dl dt,.rigorous_cons2 dl dt{font-size: 28px;color: #ff692e;font-weight: bold;height: 46px;margin-left: 24px;line-height: 30px;}
+        .guarantee_con2 .rigorous_cons dl dd,.rigorous_cons2 dl dd{font-size: 22px;color: #4a4949;margin-left: 24px;line-height: 38px;}
+        .rigorous_cons2{background: url(../images/2.jpg) no-repeat right;height: 299px;width: 1064px;margin: 0 auto;padding: 18px 0 ;}
+        .rigorous_cons2 dl{width: 672px;float: left;margin-top: 64px;}
+        .rigorous_cons2 dl dt{height: 50px;}
+        .rigorous_cons2 dl dd{}
+
+        #rigorous_cons3{background: url(../images/3.jpg) no-repeat left;}
+        #rigorous_cons4{background: url(../images/4.jpg) no-repeat left;height: 300px;}
+        #rigorous_cons5{background: url(../images/6.jpg) no-repeat left;}
+        #rigorous_cons6{background: url(../images/7.jpg) no-repeat left;}
+        #rigorous_cons7{background: url(../images/9.jpg) no-repeat left;}
+        .guarantee_con2  #rigorous_cons4 dl dt,.guarantee_con2  #rigorous_cons5 dl dt,.guarantee_con2  #rigorous_cons6 dl dt{height: 26px;line-height: 0;}
+        .guarantee_con2  #rigorous_cons4 dl dd,.guarantee_con2  #rigorous_cons5 dl dd,.guarantee_con2  #rigorous_cons6 dl dd{line-height: 32px;}
+        #rigorous_cons2id{background: url(../images/5s.png) no-repeat right;height: 304px;}
+        #rigorous_cons3id{background: url(../images/8.jpg) no-repeat right;height: 299px;}
+        .gua_body h2{width: 100%;background: #f3783c;height: 16px;margin: 34px 0 24px 0;}
+
+
+
+

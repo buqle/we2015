@@ -1,0 +1,73 @@
+<div class="roam_tender" style="*+width:480px;">
+     <form action="/?user&m=trust/tender/new" method="post" id="tender_new_form">
+     <input type="hidden" name="borrow_nid" id="borrow_nid" value="{$smarty.request.borrow_nid}" />
+	    {articles module="borrow"  function="get_view_one" var="var" borrow_nid=$smarty.request.borrow_nid hits="auto"}
+        <div class="dy_item notice fn_cle">
+         <input type='hidden' name='borrow_account_wait' id='borrow_account_wait' value="{$var.borrow_account_wait}" />
+         <input type='hidden' name='user_balance' id='user_balance' value="{$_G.account_result.balance}" />
+			<span class="fn_left">当前可投金额：{$var.borrow_account_wait}</span>
+			<span class="fn_rig">账户余额：<em class="f_c1">{$_G.account_result.balance}元</em><a href="javascript:void(0)" class="a_link" id="tender_all">全部投入</a>
+			</span>
+		</div>
+        
+		<div class="dy_item_cont t20">
+			<div class="dy_item tender_nums fn_cle" id="add_Nums">
+				<span class="fn_left tender_nums_tit" style="font-size: 18px; line-height: 36px;">投资金额：</span>
+				<div class="money_txt fn_left">
+					<input type="text" name="account" id='tender_money' value="{$smarty.request.account}" class="basic_input">
+					<span class="money_type">元</span><br />
+				<span class="warning_c" id="pssword_error"></span>
+				</div>
+			</div>
+			<div class="dy_item exp_return">
+				<div class="exp_income"><span>预期收益：</span><span><em id="income_all">￥0.00</em></span></div>
+				<div class="exp_account">
+						<span>借款期限：{$var.borrow_period_name}</span>
+                    
+					<span>含利息：￥<em id="interest">0.00</em>/含奖励： ￥<em id="award">0.00</em></span>
+					<div class="tender_detail t10" >
+					   <p><a href="javascript:void(0)" class="a_link" id="tender_income">展开收款明细</a></p>
+					   <div class="window_by_income_show t10" id="tender_detail">
+					   <ul>
+					   </ul>
+					   </div>
+					</div>
+				</div>
+			</div>
+             {if $var.borrow_password!=""}
+			     <div class="dy_item trade_pwd">
+    				<span class="basic_label" style="width: 115px; color: #000; margin-right: 0;">投资密码：</span>
+                    <input type="hidden" value="yes" id="password_status_id" />
+                    <input type="password" class="basic_input" name="borrow_password" id="borrow_password" />
+    				
+    			</div>
+                <div class="dy_item trade_pwd">
+                <label class="basic_label w80"></label>
+                <span class="warning_c" id="pssword_error">此密码请跟借款人索要。</span>
+                </div>
+    		 {else}
+    			<input type="hidden" value="no" id="password_status_id" />  
+    		 {/if} 
+			<div class="dy_item trade_pwd">
+				<label class="basic_label w80">支付密码：</label>
+                <div class="dy_set_pwd fn_left">
+                {if $_G.user_result.paypassword==""}
+        			<a href="javascript:void(0);" class="set_pwd set_pwd_link">请先设置支付密码</a>        		
+        		 {/if} 
+                 <input type="password"  class="basic_input" name="paypassword" id="paypassword">  
+				 <span class="warning_c">*密码不能为空</span>
+                </div>
+				<span class="warning_c" id="pssword_error"></span>
+			</div>
+			<div class="dy_item sub_btn_cont">
+				<input type="submit" value="马上投标" id="tender_new_submit" class="nor_tender_sub"/>
+			</div>
+		</div>
+	 </form>
+  </div>
+  {/articles}
+
+<script type="text/javascript">
+{literal}
+diyou.use('tender',function(t){t.tender_new();t.get_income()});
+</script>{/literal}

@@ -1,0 +1,44 @@
+{if $smarty.request.type=='list'}
+    {list module="articles" function="get_list" var="loop" status=1  type_nid=$smarty.request.nid epage=5 page=$smarty.request.page+1 order='order_desc'}
+        <ul class="art_list">
+            {foreach from=$loop.list item=var}
+    	     <li>
+    		   <div class="title">
+    			   <h3>
+    			    <a href="/help/{$smarty.request.nid|filterinput}/a{$var.id}.html">{$var.name}</a>
+    			    <a href="/help/{$smarty.request.nid|filterinput}/a{$var.id}.html" class="show_detai show_detai_all">详情></a>
+    			   </h3>
+    			   <p><span>来源：{$_G.system.con_webname}</span><span>{$var.publish}</span></p>
+    		   </div>
+    		   <div class="content">
+    		     <p>{$var.contents|strip_tags|truncate:300}.........</p>
+    		   </div>
+    		 </li>
+		    {/foreach}
+        </ul>
+        {if $loop.total>0}
+             <div class="pagination" id="pages" data-page='{$smarty.request.page|filterinput}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+        {/if}
+    {/list}
+{else}
+
+
+{include file="header.html"}
+
+<div class="conbox article">
+{include file="help_menu.html"}
+	<div class="art_detail" id="content_list">
+	 
+	</div>
+	<div class="cle"></div>
+</div>
+
+{include file="footer.html"}
+<script type="text/javascript">
+var nid='{$smarty.request.nid|filterinput}';
+{literal}
+diyou.use('center',function(dy){dy.helplist(nid)});
+</script>
+{/literal}
+
+{/if}

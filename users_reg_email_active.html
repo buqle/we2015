@@ -1,0 +1,42 @@
+{include file="users_header.html"}
+<!--<div class="header_cont conbox fn_cle">-->
+		<!--<h1 class="fn_left"><a href="/"><img src="{$tpldir}/images/logo.png" alt="帝友系统" /></a></h1>-->
+		<!--<div class="member">邮箱激活</div>-->
+	<!--</div>-->
+<!--</div>-->
+<div class="reg_bg">
+<div class="conbox reg_step_style">
+<div class="reg_step_bg reg_step_third"></div>
+<div class="reg_step_txt">
+	<ul class="fn_cle">
+    	<li style="margin-left:160px;" class="current">填写账户信息</li>
+        <li style="margin-left:80px;" class="current">邮箱信息认证</li>
+        <li style="margin-left:75px;" class="current">注册成功</li>
+    </ul>
+</div>
+    <div class="reg_email txt_cent">
+	  {if $_G.email_active.code=='100'}
+	   <h2>邮箱验证已经成功</h2>
+	   {else if $_G.email_active.code=='00' }
+	   <h2 class="email_fail">{$_G.email_active.msg}</h2>
+	   <p class="f_s12">您的邮箱<a href="{$_U.emailurl}" class="user_f_c2">({$_G.user_result.email})</a>由于时间拖太久请点击<a id="send_email_active1" href="#">重新发送</a></p>
+	   <input type="hidden" name="email_active1" id="email_active1" value="{$_G.user_result.email}" />
+	   {else}
+		<h2 class="email_fail">{$_G.email_active.msg}</h2>
+	   {/if}
+	   <div class="approve">
+	      <h3>为了保护您的账户和资金安全，投资前请认证!</h3>
+		  <div class="approve_links">
+          {if $_G.approve_result.phone_status neq 1}
+          <a href="/?user&m=approve/safe" class="phone_approve">手机认证</a>
+          {/if}
+          {if $_G.approve_result.realname_status neq 1}
+          <a href="/?user&m=approve/safe" class="email_approve">实名认证</a>
+          {/if}
+          </div>
+		  <p class="f_s12"><a href="/?user" class="user_f_c2">暂不认证，随便逛逛</a></p>
+	   </div>
+	</div>
+</div>
+</div>
+{include file="users_footer.html"}

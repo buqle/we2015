@@ -1,0 +1,333 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", sans-serif;;
+    line-height: 1.5;
+    font-size:0.6rem;
+    color: #000;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+    background:#F8BE32;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+}
+
+button {
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+}
+
+a {
+    -webkit-touch-callout: none;
+    text-decoration: none;
+}
+
+:focus {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+em, i {
+    font-style: normal;
+}
+.goldreco{ width: 16rem; margin: 0 auto;}
+.tin{ width: 16rem; height: 11rem;}
+.allimg{ width: 100%; height:100%;}
+
+.section1{position:relative;width:100%;height:7rem;padding:1rem 0rem;}
+
+/*******表格*********/
+.section2{position:relative;margin-top:5rem;}
+.a1{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 20.5rem;
+    top: -5rem;
+}
+.a2{
+    position: absolute;
+    width: 12.5rem;
+    height: 1.5rem;
+    top: -2.5rem;
+    left: 50%;
+    margin-left: -7rem;
+}
+
+.jlbz{width:13.8rem;margin:0rem auto;color:#6B410E;font-size: 0.5rem;}
+#te table,.te_mys{ width: 100%; text-align: center;position:relative;}
+.tatTr{ height: 2rem; line-height: 2rem;overflow:hidden;}
+.tatTd{margin:0 auto;overflow:hidden;}
+.tatTrs{ height: 2rem; line-height: 2rem;overflow:hidden;}
+#te table tr td{ border: 1px solid #6B410E;overflow:hidden;}
+.tatTd1{
+    border-bottom: 1px solid #B99F65;
+    transform: rotate(17deg);
+    -webkit-transform: rotate(24deg);
+    -moz--transform: rotate(17deg);
+    -ms-transform: rotate(17deg);
+    -o-transform: rotate(17deg);
+    position: absolute;
+    top: -0.55rem;
+    width: 7rem;
+    left: 0rem;
+    overflow: hidden;
+}
+
+.tatTd2{
+    position: absolute;
+    border-bottom: 1px solid #B99F65;
+    width: 10.8rem;
+    transform: rotate(36deg);
+    -webkit-transform: rotate(46deg);
+    -moz--transform: rotate(36deg);
+    -ms-transform: rotate(36deg);
+    -o-transform: rotate(36deg);
+    top: 1rem;
+    left: -2.05rem;
+}
+
+
+.tatTd3{
+    position: absolute;
+    top: 2.45rem;
+    left:0.1rem;
+}
+
+/********表格结束**********/
+
+
+/****section3**************/
+.section3{
+    position:relative;
+    text-align:center;
+    padding-top:2rem;
+}
+.a6{
+    position: absolute;
+    width: 6rem;
+    left:50%;
+    margin-left:-3rem;
+    top: -0.35rem;
+}
+.a3{
+    width: 15rem;
+    margin: 0 auto;
+    background: #FAF3D0;
+    border: 2px solid #CF5219;
+    border-radius: 0.25rem;
+    text-align:center;
+    position:relative;
+}
+.a4{
+    width:14rem;
+    margin:0 auto;
+    padding-top:1rem;
+
+}
+.triangle-left{
+    margin-top: 0.3rem;
+    width: 0;
+    height: 0;
+    border-top: 0.4rem solid transparent;
+    border-bottom: 0.4rem solid transparent;
+    border-left: 0.4rem solid #E55530;
+}
+.triangle-left1{ margin-top: 0.25rem; width:0; height:0;border-top:0.5rem solid transparent;border-bottom: 0.5rem solid transparent;border-left: 0.5rem solid #E55530;}
+.avu1{padding: 0 0rem 0 0.25rem; height: 1.5rem;}
+.avu0,.avu2{ float: left; height: 1.5rem;}
+.avu0{ width: 0.5rem;}
+.avu2{ color: #E55530; font-weight: bold; font-size: 0.7rem; line-height: 1.5rem; padding-left: 0.2rem;}
+
+.a7{
+    width: 13rem;
+    margin: 0 auto;
+    height: 2rem;
+    padding:1rem 0rem;
+}
+.a8{
+   width:12rem;
+    height:10rem;
+}
+.a9{
+    height:17rem;
+}
+.a10{
+    width: 13rem;
+    margin: 0 auto;
+    height: 3rem;
+    padding:1rem 0rem;
+}
+
+/*******section4*******/
+.section4{position:relative;text-align:center;padding-top: 1rem;}
+.b1{width:14rem;margin:0 auto;color:#6B410E;overflow:hidden;background: #FAF3D0;text-align:center;}
+.b1 span{display:block;float:left;overflow:hidden;line-height:1.2rem;}
+.b33{width:100%;height:1.5rem;}
+.b3{width:25%;overflow:hidden;}
+.b4{width:25%;overflow:hidden;}
+.b2{width:100%;height:1.2rem;background:#FCF2B9;margin-top: -0.2rem;font-size:0.6rem;}
+.b5{width:100%;height:6rem;overflow:hidden;}
+.b6{
+    width:100%;
+    height:6rem;
+    position:relative;
+    animation: myfirst 6s;
+    -moz-animation: myfirst 6s;
+    -webkit-animation: myfirst 6s;
+    -o-animation: myfirst 6s;
+    animation-iteration-count:1000;
+}
+.b6 p{height:1.2rem;}
+.b66{
+    width:100%;
+    height:6rem;
+    position:relative;
+    line-height:6rem;
+    font-size:0.7rem;
+    color:#6B410E;
+}
+
+b.b66-1{
+    border-bottom:2px solid #6B410E;
+    font-size:0.75rem;
+}
+@keyframes myfirst{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+@-moz-keyframes myfirst{
+    0% { top: -0rem;}
+    25% { top: -1rem;}
+    50% { top: -2rem;}
+    75% { top: -3rem;}
+    100% { top: -3.75rem;}
+}
+@-webkit-keyframes myfirst{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+@-o-keyframes myfirst{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+.b8{
+    width:13rem;
+    margin:0 auto;
+    padding-top:1rem;
+    color:#000;
+    text-align:left;
+    padding-bottom:2rem;
+    font-size:0.6rem;
+}
+.b8 p{
+    line-height:1rem;
+}
+.bj{
+    background:#FCF2B9;
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,222 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/one8/css/style.css?v=2017888" rel="stylesheet" type="text/css" />
+
+
+
+<div class="source_mon">
+
+</div>
+
+<div class="tanabata-a pos-a">
+    <div class="ap pos-b"></div>
+    <div class="ww4 tanabata-a_ata-a1">
+        <h4 class="text-center color-ff">活动期间，用户单笔投资3月及以上项目，除年化收益外，<i>每满10000元还可获得相应的现金奖励</i>。</h4>
+        <dl class="clearg text-center">
+            <dd class="lefts">
+                <div class="dddiv1 font18">
+                    12月标
+                    <h6><i class="bold">230</i>元</h6>
+                    单笔逢万奖励
+                </div>
+                <div class="dddiv2 cursor font24">
+                    投资即享
+                </div>
+            </dd>
+            <dd class="lefts">
+                <div class="dddiv1 font18">
+                    6月标
+                    <h6><i class="bold">100</i>元</h6>
+                    单笔逢万奖励
+                </div>
+                <div class="dddiv2 cursor font24">
+                    投资即享
+                </div>
+            </dd>
+            <dd class="lefts" style="margin-right: 0;">
+                <div class="dddiv1 font18">
+                    3月标
+                    <h6><i class="bold">45</i>元</h6>
+                    单笔逢万奖励
+                </div>
+                <div class="dddiv2 cursor font24">
+                    投资即享
+                </div>
+            </dd>
+        </dl>
+    </div>
+
+    <h4 class="h4tit ww4 text-center font24">举个例子：活动期间，小明单笔投资12月标118000元，可获得现金奖励为：11×230= 2530元。</h4>
+    <div class="tanabata-a_ata-abox ww3">
+        <div class="ata-aboxs">
+            <h5 class="text-center color-ff">实时投资记录</h5>
+            <div class="ata-abox_c ww3">
+                <p class="ata-abox_ct font24"><span style="width: 19%">用户名</span><span>投资金额</span><span>投资期限</span><span>奖励金额</span><span>投资时间</span></p>
+                <div style="height: 224px;overflow: hidden;" class="renav2 font20">
+                    <ul id="marqueebox"  class="marqueeboxx">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="dddiv2 text-center font24 cursor bold source_moncbtn">我的记录</div>
+</div>
+
+<div class="rule ww1 color-ff">
+    <h5 class="font30">活动规则</h5>
+    <p>1、活动期间内，用户单笔投资（除1月标外）每满10000元均会获得相应奖励。例如小明单笔投资12月标118000元，</p>
+    <p style="text-indent: 36px;">可获得现金奖励为：11×230= 2530元；</p>
+    <p>2、本活动奖金借款项目满标复审成功且满标时间在活动期间内，奖金资格有效；</p>
+    <p>3、活动奖金将在活动结束后，3个工作日内直充至存管账户，可投资、可提现。</p>
+</div>
+
+
+
+
+<div class="alertbox-A" id="alertbox-4"></div>
+<div class="alertbox-B"id="alertbox-5">
+    <div class="tanabata-a_ata-abox ww3 alertbox-C" id="tanabata-a_ata-abox">
+        <div class="close-a cursor"></div>
+        <div class="ata-aboxs">
+            <h5 class="text-center color-ff">我的投资记录</h5>
+            <div class="ata-abox_c ww3">
+                <p class="ata-abox_ct font24"><span style="width: 24%!important;">投资标期</span><span>投资金额</span><span>获得奖励</span><span>投资时间</span></p>
+                <div style="height:179px;overflow: hidden;" class="renav3 font20">
+                    <ul id="marqueebox2" class="marqueeboxx">
+
+                    </ul>
+                </div>
+                <div class="cont-user clearg font24">
+                    <div class="cont-user1 lefts text-right">总投资额为：<i>0</i>元</div>
+                    <div class="cont-user2 rights">目前获得总奖励为：<i>0</i>元</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="jiujiu_foot">
+    <p>免责申明</p>
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意刷奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <div class="endjiujiu"></div>
+</div>
+
+{literal}
+<script>
+    $(function(){
+
+        $('.tanabata-a_ata-a1 .dddiv2').each(function(){
+            $(this).click(function(){
+                if (user_id>0) {
+                    window.location.href="/invest/index.html";
+                } else {
+                    diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                    return false;
+                }
+            });
+        });
+
+
+
+        $.http.get('/?user&q=get_share_ajax&alias=one8&methodname=get_newly', {}, function(ret){
+            if (ret.code == 0){
+                var len = ret.data.length;
+                var html=''
+                for(var i=0; i<len; i++){
+                    html += '<p><span style="width: 19%">'+ret.data[i].username+'</span><span>'+ret.data[i].money+'元</span><span>'+ret.data[i].month+'个月</span><span>'+ret.data[i].reward+'</span><span>'+getdays(ret.data[i].addtime)+'</span></p>';
+                }
+                $('#marqueebox').html(html);
+
+            }else {
+                alert(ret.msg)
+            }
+        }, 'json')
+
+        $('.source_moncbtn').click(function(){
+            if(user_id>0){
+                $('#alertbox-4,#alertbox-5').show();
+                $('.close-a').click(function(){
+                    $('#alertbox-4,#alertbox-5').hide();
+                });
+                $.http.get('/?user&q=get_share_ajax&alias=one8&methodname=get_self_record', {}, function(ret){
+                    if (ret.code == 0){
+                        var len = ret.data.length;
+                        var html=''
+                        for(var i=0; i<len; i++){
+                            html += '<p><span style="width: 24%!important;">'+ret.data[i].month+'月标</span><span>'+ret.data[i].money+'元</span><span>'+ret.data[i].reward+'</span><span>'+getdays(ret.data[i].addtime)+'</span></p>';
+                        }
+                        $('#marqueebox2').html(html);
+                        $('.cont-user1 i').text(ret.total);
+                        $('.cont-user2 i').text(ret.level);
+                    }else {
+                        alert(ret.msg)
+                    }
+                }, 'json')
+            }else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        })
+
+
+    });
+
+
+    function getdays(time) {
+        var date = new Date();
+        date.setTime(time * 1000);
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth() + 1 < 10 ? (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        D = date.getDate()+'   ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = (date.getSeconds() + 1 < 10 ? '0' + (date.getSeconds() + 1) : date.getSeconds() + 1);
+        time =Y+ M + D;
+        return time;
+    }
+
+    $(function(){
+
+        var $this = $(".renav2");
+
+        var scrollTimer;
+
+        $this.hover(function(){
+
+            clearInterval(scrollTimer);
+
+        },function(){
+
+            scrollTimer = setInterval(function(){
+
+                scrollNews($(".renav2"));
+                scrollNews($(".renav3"));
+
+            }, 2000 );
+
+        }).trigger("mouseout");
+
+    });
+
+    function scrollNews(obj){
+
+        var $self = obj.find("ul:first");
+
+        var lineHeight = $self.find("p:first").height();
+
+        $self.animate({ "margin-top" : -lineHeight +"px" },800 , function(){
+
+            $self.css({"margin-top":"0px"}).find("p:first").appendTo($self);
+
+        })
+
+    }
+</script>
+{/literal}

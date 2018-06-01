@@ -1,0 +1,64 @@
+{articles module="borrow"  function="get_roam_one" borrow_nid=$smarty.request.borrow_nid var="roam_var"}
+  <div class="roam_tender" style="*+width:480px;">
+     <form action="/?user&m=trust/tender_roam/new" method="post" id="tender_new_form">
+	 {articles module="borrow"  function="get_view_one" var="var" borrow_nid=$smarty.request.borrow_nid hits="auto"}
+	    <div class="dy_item notice fn_cle">		
+            <input type='hidden' id='account_min' value="{$roam_var.account_min}" />
+            <input type='hidden' id='portion_wait' value="{$roam_var.portion_wait}" />
+            <input type='hidden' id='user_balance' value="{$_G.account_result.balance}" />
+			<span class="fn_left">当前可投分数：{$roam_var.portion_wait}份({$roam_var.account_min}元/份)</span>
+			<span class="fn_rig">账户余额：<em class="f_c1">{$_G.account_result.balance}元</em><a href="javascript:void(0)" class="a_link" id="tender_all_">全部投入</a>
+			</span>
+		</div>
+		<div class="dy_item_cont t20">
+			<div class="dy_item tender_nums" id="add_Nums">
+				<span class="tender_nums_tit">投资份数：</span>
+				<span class="increase" id="_decrease">-</span>
+				<input type="text" value="{$smarty.request.num}" class="nums" id="_roam_account" data-nid="{$var.borrow_nid}" name="roam_account">
+				<span class="decrease" id="_increase" data-nid="{$roam_var.portion_wait}">+</span>
+			</div>
+			<div class="dy_item exp_return">
+				<div class="exp_income"><span>预期收益：</span><span><em id="income_all">￥0.00</em></span></div>
+				<div class="exp_account">
+					<span>借款期限：{$roam_var.borrow_period}个月</span>
+					<span>含利息：￥<em id="interest">0.00</em>/含奖励： ￥<em id="award">0.00</em></span>
+					<div class="tender_detail t10" >
+					   <p><a href="javascript:void(0)" class="a_link" id="tender_income">展开收款明细</a></p>
+					   <div class="window_by_income_show t10" id="_tender_detail">
+					   <ul>
+					   </ul>
+					   </div>
+					</div>
+				</div>
+			</div>
+			 <div class="item fn_cle">
+				<label class="basic_label w80 fn_left">交易密码：</label>
+                <div class="dy_set_pwd fn_left">
+                {if $_G.user_result.paypassword==""}
+        			<a href="javascript:void(0);" class="set_pwd set_pwd_link">请先设置支付密码</a>
+        		
+        		 {/if} 
+                 <input type="password"  class="basic_input" name="paypassword" id="paypassword">  
+				<span class="warning_c">*密码不能为空</span>
+                </div>
+			</div>
+			<div class="dy_item sub_btn_cont">
+				<input type="hidden"  name="borrow_userid" value="{$var.user_id}">  
+			    <input type="hidden"  name="borrow_style" value="{$var.borrow_style}">  
+			    <input type="hidden"  name="borrow_use" value="{$var.borrow_use}">  
+			    <input type="hidden"  name="endtime_house" value="{$var._borrow_end_time}">
+				<input type="submit" value="立即认购" class="roam_tender_sub"/>
+			</div>
+            <input type="hidden" name="borrow_nid" value="{$roam_var.borrow_nid}"/>
+            <input type="hidden" name="account_min" value="{$roam_var.account_min}"/>
+		</div>
+	 </form>
+  </div>
+  {/articles}
+{/articles}
+<script type="text/javascript">
+var borrow_nid = {$smarty.request.borrow_nid};
+{literal}
+diyou.use('tender',function(t){t.add_nums('_increase','_decrease','_roam_account','account_min','_tender_all');t.tender_new();});
+</script>
+{/literal}

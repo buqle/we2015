@@ -1,0 +1,486 @@
+<script type="text/javascript" src="{$tpldir}/js/jquery.fancybox.js"></script>
+{articles module="borrow"  function="get_view_one" var="var" borrow_nid=$smarty.request.article_id hits="auto" datacache="none" datacachename='broww_article' datacachenametimes="60*30" bindkey=$smarty.request.article_id}
+<script>
+    var borrow_nid = '{$smarty.request.article_id}';
+    var borrow_self = {if $_G.user_id==$var.user_id}1{else}0{/if};
+        var paypwd_status = {if $_G.user_result.paypassword!=''}1{else}0{/if};
+            var borrow_type = '{$var.borrow_type}';
+            var tpldir = '{$tpldir}';
+</script>
+{if $var.borrow_type=="roam"}
+
+{include file="borrow_roam_content.html"}
+{else}
+<div class="conbox mt20">
+    <div class="tender_detai">
+        <div class="tender_detai_tit">
+            <h2><img src="{$tpldir}/images/loantype/{$var.invest_type}.gif" /> {$var.name}
+                {if $var.award_status!=0}{if $var.award_status==1}<i class="tender_reword">{$var.award_account|default:'0.00'}元</i>{else}<span class="the_num" style="float:none;display:inline-block"><em class="award">{$var.award_scale}%</em></span>{/if}{/if}
+                {if $var.borrow_password!=""}<img src="{$tpldir}/images/lock.gif" />{/if}</h2>
+            <span>借款编号：{$var.borrow_nid}</span>
+        </div>
+
+        <div class="tender_detai_cont">
+            <div class="tender_detai_lf">
+                <ul>
+                    <li>
+                        <span class="basic_label">借款金额</span>
+                        <span class="basic_value"><em class="yellow">{$var.account|default:'0.00'}</em></span>
+                        <span class="basic_label">年利率</span>
+                        <span class="basic_value"><em>{$var.borrow_apr}</em>%</span>
+                    </li>
+                    <li>
+                        <span class="basic_label">{if $var.borrow_type != 'roam'}借款期限{else}还款期限{/if}</span>
+                        <span class="basic_value"><em>{$var.borrow_period_name}</em></span>
+                        <span class="basic_label">还款方式</span>
+                        <span class="basic_value">{$var.style_title}</span>
+                    </li>
+                    <li>
+                        {if $var.borrow_status_nid=="loan"}
+                        <span class="basic_label">剩余时间</span>
+                        <span class="basic_value"><i class="time"></i><span class="borrow_end_time" id="borrow_end_time_{$var.borrow_nid}" data='{$var._borrow_end_time}'></span></span>
+                        {else}
+                        <span class="basic_label">借款标状态：</span>
+                        <span class="basic_value">{if $var.borrow_status_nid=='loan'}{else}{$var.borrow_status_nid|linkages:'borrow_status_nid'}{/if}</span>
+                        {/if}
+                        <span class="basic_label">投标进度</span>
+			    <span class="basic_value">
+                    <em class="bar">
+                        <i class="bar_width" style="width:{$var.borrow_account_scale}%"></i>
+                    </em>
+                      <em class="arrow">
+                          {$var.borrow_account_scale}%
+                          <b class="pop1-a"><u class="c1"></u><u class="c2"></u></b>
+                      </em>
+			    </span>
+
+                    </li>
+                    <li>
+                        <span class="basic_label">奖励</span>
+                        <span class="basic_value">{if $var.award_status!=0}{if $var.award_status==1}<em>{$var.award_account|default:'0.00'}</em>元{else}<em>{$var.award_scale}</em>%{/if}{else}无{/if}</span>
+                        <span class="basic_label">{if $var.borrow_type=="second" || $var.borrow_type=="day"}到期还本息{elseif $var.borrow_style=="season"}季还款本金{else}月还款利息{/if}</span>
+                        <span class="basic_value"><em>{if $var.borrow_type=="second" || $var.borrow_type=="day"}{$var.repay_month_account|default:'0.00'}{elseif $var.borrow_style=="season"}{$var.repay_season_account|default:'0.00'}{else}{$var.repay_month_account|default:'0.00'}{/if}</em>元</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="tender_detai_rig">
+                <div class="item">可投金额<span class="avail_money" data-money="{$var.borrow_account_wait}" id="availMoney">{$var.borrow_account_wait}</span>元</div>
+                <div class="item">
+                    {if $_G.user_id!=""}
+                    账户余额<span class="account_balance">{$_G.account_result.balance}<em></em></span>元
+                    <a href="/?user&m=account/recharge/new" target="_blank" class="recharge f_c2">去充值</a>
+                    {else}账户余额<a href="javascript:void(0);" class="bule" id="tender_login" target="_blank">登录</a> 后可见{/if}</div>
+                <form action="" name="" method="post" id="tender_form">
+                    <div class="item">
+                        {if $_G.account_result.balance<=0}
+                        <input type="text" disabled="true" value="亲，您余额不足。请先充值" name="money" class="money" id="money"/>
+                        {else}
+                        <input type="text"  {if $var.borrow_status_nid=='loan'} placeholder="请输入投资金额" {else}value="{$var.borrow_status_nid|linkages:'borrow_status_nid'}" disabled="true"{/if} name="money" class="money" id="money"/> <span class="money_type">元</span>
+                        {/if}
+                    </div>
+                    <div class="item">
+                        <span class="basic_label" id="MaxMin" data-min="{$var.tender_account_min}" data-max="{$var.tender_account_max}">最低投标金额：{$var.tender_account_min}元  最高投标金额：{if $var.tender_account_max==0}不限{else}{$var.tender_account_max}元{/if}</span>
+                    </div>
+                    <div class="item">{if $var.borrow_status_nid=='loan'}<input type="submit" class="tender_sub" value="投&nbsp;&nbsp;&nbsp;&nbsp;标" id="tender_submit" />{else}<input type="button" disabled='true' class="tender_sub_dis" value="{$var.borrow_status_nid|linkages:'borrow_status_nid'}" />{/if}</div>
+                </form>
+               
+            </div>
+            <div class="cle"></div>
+        </div>
+    </div>
+</div>
+
+
+<!--风控节点-->
+<div style="height: 40px;"></div>
+
+{articles module='borrow' function='get_cominfo_one' borrow_nid=$smarty.request.article_id var=cominfo}
+<div class="content_b1">
+    <div class="content_a2">
+        <span class="content_a3 fl">风控节点</span>
+        <span class="content_b2 fl">本借款项目由<em style="color:#46A3F0;">众城高昕律师事务所</em>进行全程跟踪</span>
+        <span class="fl content_b3">
+            <a class="example-image-links" href="{$tpldir}/images/gaiban/lvshi_imag.jpg" data-lightbox="example-sets">
+                <input class="button_messignp lushi_weisn content_b4" type="button" value="律师委托函">
+            </a>
+        </span>
+    </div>
+    <div class="content_b5">
+        <ul class="content_b6">
+            <li class="content_c1 " id="fkjd1"></li>
+            <li class="content_c1 " id="fkjd2"></li>
+            <li class="content_c1 " id="fkjd3"></li>
+            <li class="content_c1 " id="fkjd4"></li>
+            <li class="content_c1 " id="fkjd5"></li>
+            <li class="content_c1 " id="fkjd6"></li>
+            <li class="content_c1 so02" id="fkjd7"></li>
+            <li class="content_c1 " id="fkjd8"></li>
+            <li class="content_ccc " id="fkjd9"></li>
+        </ul>
+        <ul class="content_c4">
+            <li class="content_c2 " id="fkjdtext1">
+                <p class="content_c3" >借款申请</p>
+                <p id="fkjdtime1">{$cominfo.info_time}</p>
+            </li>
+            <li class="content_c2" id="fkjdtext2">
+                <p class="content_c3" >项目初审</p>
+                <p id="fkjdtime2">{$cominfo.project1_time}</p>
+            </li>
+            <li class="content_c2" id="fkjdtext3">
+                <p class="content_c3" >实地考察</p>
+                <p id="fkjdtime3">{$cominfo.real_time}</p>
+            </li>
+            <li class="content_c2" id="fkjdtext4">
+                <p class="content_c3" >DPS风控</p>
+                <p id="fkjdtime4">{$cominfo.dsp_time}</p>
+            </li>
+            <li class="content_c2" id="fkjdtext5">
+                <p class="content_c3" >担保人</p>
+                <p id="fkjdtime5">{$cominfo.security_time}</p>
+            </li>
+            <li class="content_c2" id="fkjdtext6">
+                <p class="content_c3" >手续办理</p>
+                <p id="fkjdtime6"> {$cominfo.mortgage_time}</p>
+            </li>
+            <li class="content_c2" id="fkjdtext7">
+                <p class="content_c3">招标中</p>
+                {if $var.count_down == 1 && $var.tender_time > 10}
+                <p id="fkjdtime7"> {$var.tender_time|date_format:'Y-m-d'}</p>
+                {else}
+                {loop module="borrow" var=_var1  function="get_verify_list" limit="all" borrow_nid=$smarty.request.article_id}
+                {if $_var1.status == 1}
+                <p id="fkjdtime7"> {$_var1.addtime|date_format:'Y-m-d'}</p>
+                {/if}
+                {/loop}
+                {/if}
+
+
+            </li>
+            <li class="content_c2" id="fkjdtext8">
+                <p class="content_c3">标满复审</p>
+                <p id="fkjdtime8">
+                    {if $var.borrow_success_time > 0}
+                    {$var.borrow_success_time|date_format:'Y-m-d'}
+                    {/if}
+                </p>
+
+            </li>
+            <li class="content_ddd" id="fkjdtext9">
+                <p class="content_c3">还款计时</p>
+                <p id="fkjdtime9">
+                    {loop module="borrow" var=_var1  function="get_verify_list" limit="all" borrow_nid=$smarty.request.article_id}
+                    {if $_var1.status == 3}
+                    {$_var1.addtime|date_format:'Y-m-d'}
+                    {/if}
+                    {/loop}
+                </p>
+            </li>
+        </ul>
+    </div>
+</div>
+{/articles}
+{literal}
+<script type="text/javascript">
+    $(function(){
+        for(var i=1;i<8;i++){
+            var fkjdtime = document.getElementById("fkjdtime"+i).innerText;
+            if (fkjdtime !=''){
+                document.getElementById("fkjd"+i).style.background = "url("+tpldir+"/images/gaiban/jiantou0202_03.jpg) 10px 28px no-repeat";
+                document.getElementById("fkjdtext"+i).style.color = "#46A3F0";
+            }
+        }
+        //招标中
+        var zhaobiao = document.getElementById('fkjdtime8').innerText;
+        if (zhaobiao == '') {
+            document.getElementById("fkjd7").style.background = "url("+tpldir+"/images/gaiban/jiantou03_06.jpg) 10px 28px no-repeat";
+            document.getElementById("fkjdtext7").style.color = "red";
+            document.getElementById('fkjdtime8').innerText = '时间待定';
+            document.getElementById('fkjdtime9').innerText = '时间待定';
+        } else {
+            var zhaobiao1 = document.getElementById('fkjdtime9').innerText;
+            if (zhaobiao1 == ''){
+                document.getElementById("fkjd8").style.background = "url("+tpldir+"/images/gaiban/jiantou03_06.jpg) 10px 28px no-repeat";
+                document.getElementById("fkjdtext8").style.color = "red";
+                document.getElementById('fkjdtime8').innerText = '招标结束';
+            } else {
+                document.getElementById("fkjd8").style.background = "url("+tpldir+"/images/gaiban/jiantou0202_03.jpg) 10px 28px no-repeat";
+                document.getElementById("fkjdtext8").style.color = "#46A3F0";
+                document.getElementById("fkjd9").style.background = "url("+tpldir+"/images/gaiban/mx_02_tos_03.jpg) 10px 28px no-repeat";
+                document.getElementById("fkjdtext9").style.color = "red";
+                //document.getElementById('fkjdtime8').innerText = '招标结束';
+            }
+
+        }
+
+
+    });
+
+</script>
+{/literal}
+
+
+
+<div class="conbox mt40">
+<div class="tender_main">
+<div class="tender_main_tit" id="tender_main_tit">
+    <dl>
+        <dd class="hover"><a href="javascript:void(0)">基本信息</a></dd>
+        <dd><a href="javascript:void(0)">投资记录</a></dd>
+
+        <dd><a href="javascript:void(0)">风险控制</a></dd>
+
+        <dd><a href="javascript:void(0)">审核记录</a></dd>
+
+    </dl>
+</div>
+<!--承兑汇票-->
+<div class="tender_main_cont">
+<div class="basic_infor j_tender_cont">
+
+    <p class="ong_acceptance">银行承兑汇票</p>
+    <p class="on1e_acceptance" style="text-indent: 2em;">指在承兑银行开立存款账户的存款人出票，向开户银行申请并经银行审查同意承兑的，保证在指定日期无条件支付确定的金额给收款人或持票人 </p>
+    <p class="on1e_acceptance on1e_acceptance12">的票据</p><p style="height: 27px;"></p>
+    <p class="acceptance_mes"><span>汇票基本信息</span><span style="margin-left: 546px;">假票克隆票核查</span></p>
+    <p style="height: 33px;"></p>
+    <div style="height: 500px; overflow: hidden">
+        <div class="to_big_acceptance fl">
+            <div class="acceptance_todiv">
+                <div class="left_acceptance"></div>
+                <div class="right_acceptance"></div>
+                <div class="acceptance_todiv_main" id="yinpiao_div">
+                    
+                </div>
+            </div>
+            <p style="height: 10px;"></p>
+            <div class="on_accine_comngtn">
+                <div class="on_accine_comngtn1">
+                    <div class="on_accine_comngtn2 fl">
+                        承兑银票
+                    </div>
+                    <div class="on_accine_comngtn3 fl">
+                        {$cominfo.note_name}
+                    </div>
+                </div>
+                <div class="on_accine_comngtn1">
+                    <div class="on_accine_comngtn2 fl">
+                        承兑机构
+                    </div>
+                    <div class="on_accine_comngtn3 fl">
+                        {$cominfo.organization}
+                    </div>
+                </div>
+                <div class="on_accine_comngtn1">
+                    <div class="on_accine_comngtn2 fl">
+                        出票日期
+                    </div>
+                    <div class="on_accine_comngtn3 fl">
+                        {$cominfo.note_time}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fr nayitian_dmls">
+            <p class="on_nayitian_dmls">纸张为汇票专用纸</p>
+            <p class="on_nayitian_dmls">票面无挖补痕迹</p>
+            <p class="on_nayitian_dmls">渗透性油墨隐显正常</p>
+            <p class="on_nayitian_dmls">全埋式安全线清晰</p>
+            <p class="on_nayitian_dmls">荧光纤维清晰</p>
+            <p class="on_nayitian_dmls">红色荧光水线清晰</p>
+            <p class="on_nayitian_dmls">荧光团花图案清晰</p>
+            <p style="border-bottom: 1px solid #e6e6e6" class="on_nayitian_dmls">HUIPIAO微缩文字清晰</p>
+        </div>
+    </div>
+    <p class="acceptance_mes"><span style="width: 215px;">选择银行承兑保的5大理由</span><span style="margin-left: 477px; width: 215px;">独特模式铸就最安全等级</span></p>
+    <p style="height: 20px;"></p>
+    <div class="big_abonshtion" style="height: 470px;">
+        <div class="big_abonshtion1 fl">
+            <p style="height: 50px;"></p>
+            <div class="on_marging_chh">
+                <div class="fl fltomyquansa1">
+                    <p style="height: 90px;"></p>
+                    <p style="font-size: 18px; color: #444; font-weight: bold">稳收益</p>
+                    <p>收益7%业内最具竞争力</p>
+                </div>
+                <div class="fl fltomyquansa2">
+                    <p style="height: 90px;"></p>
+                    <p style="font-size: 18px; color: #444; font-weight: bold">高信用</p>
+                    <p>付款方式为主流商业银行</p>
+                </div>
+                <div class="fl fltomyquansa3">
+                    <p style="height: 90px;"></p>
+                    <p style="font-size: 18px; color: #444; font-weight: bold">短期限</p>
+                    <p>一般最长不超过6个月</p>
+                </div>
+            </div>
+            <div class="ongh_yapguang">
+                <div class="fl fltomyquansa4">
+                    <p style="height: 90px;"></p>
+                    <p style="font-size: 18px; color: #444; font-weight: bold">强保障</p>
+                    <p>银行到期无条件兑付</p>
+                </div>
+                <div class="fl fltomyquansa5">
+                    <p style="height: 90px;"></p>
+                    <p style="font-size: 18px; color: #444; font-weight: bold">最透明</p>
+                    <p>汇票信息专业核查全披露</p>
+                </div>
+            </div>
+        </div>
+        <div class="big_abonshtion2 fl">
+            <img src="{$tpldir}/images/gaiban/touzijiekuan.png">
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(function(){
+            $('.left_acceptance').click(function(){
+                $('.acceptance_todiv1').toggle();
+            });
+            $('.right_acceptance').click(function(){
+                $('.acceptance_todiv1').toggle();
+            });
+        });
+        function createPiaoImg(img, key) {
+             var imgDiv=document.createElement("div");
+             imgDiv.setAttribute('class', 'acceptance_todiv1 cctv_acceptance');
+             if (key == 0) {
+                imgDiv.setAttribute('style', 'display: block;'); 
+             } else {
+                 imgDiv.setAttribute('style', 'display: none;'); 
+             }
+             imgDiv.innerHTML= "<img src=\""+img+"\" />";
+             var p = document.getElementById("yinpiao_div");
+             p.appendChild(imgDiv);
+        }
+    </script>
+
+    <!--标详情-->
+    <div class="content_a1">
+        <div class="content_a2" style="border-top: none; border-right: none; border-left: none;">
+            <span class="content_a3">票据抵押详情</span>
+            <span class="content_a4">融和贷承诺：所有已展示资料均通过平台仔细审核，无虚假信息！</span>
+        </div>
+        <div>
+            <ul class="content_a6">
+                <li><span class="content_a7">票据类型</span><em class="content_a9">&nbsp;:&nbsp;</em><span class="content_a8">{$var.borrow_pawn_type}</span></li>
+                <li><span class="content_a7">出票金额</span><em class="content_a9">&nbsp;:&nbsp;</em><span class="content_a8">{$var.borrow_pawn_value}</span></li>
+                <li><span class="content_a7">出票时间</span><em class="content_a9">&nbsp;:&nbsp;</em><span class="content_a8">{$var.borrow_pawn_time}</span></li>
+                <li><span class="content_a7">抵押额度</span><em class="content_a9">&nbsp;:&nbsp;</em><span class="content_a8">{$var.borrow_pawn_xin}</span></li>
+                <li class="content_a10">
+                    <span class="content_a7">情况描述</span><em class="content_a9">&nbsp;:&nbsp;</em>
+                    <span class="content_a11">{$var.borrow_pawn_description}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="content_a5">
+            <script src="{$tpldir}/js/lightbox.min.js"></script>
+            <div class="mon_more_bingdiv">
+                <ul style="position: relative; overflow: hidden;">
+                    {if $var.upfiles_pic!=""}
+                    {foreach from=$var.upfiles_pic item="_item" key=key}
+                    {if $key > 1}
+                    <li><a class="example-image-link" href="{$_item.fileurl}" title="{$_item.contents}"  data-lightbox="example-set" data-title=""><img class="example-image" src="{$_item.fileurl}" alt="" width="217px" height="154px"/></a></li>
+                    {else}
+                    <script type="text/javascript">
+                        createPiaoImg('{$_item.fileurl}',{$key});
+                    </script>
+                    {/if}
+                    {/foreach}
+                    {/if}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<div class="trad_rec j_tender_cont">
+    <div class="trad_rec_lf">
+        <dl>
+            <dt><span class="txt_lf">投标人</span><span>投标金额</span><span>投标时间</span><span>投标来源</span></dt>
+            {loop module="borrow" function="get_tender_list" limit="all" var="vat" borrow_nid=$smarty.request.article_id order='tender_addtime' datacache="none" datacachename='broww_article_get_tender_list' datacachenametimes="60*30" bindkey=$smarty.request.article_id}
+            <dd>
+                <span class="txt_lf">{$vat.username|truncate:2}**</span>
+                <span>{$vat.account|default:'0.00'}<em>元</em></span>
+                <span> {$vat.addtime|date_format:"Y-m-d H:i"}</span>
+                <span>
+                    {if $vat.sources == '0'}
+                    PC端
+                    {elseif $vat.sources == '1'}
+                    APP端
+                    {else}
+                    微信端
+                    {/if}
+                </span>
+            </dd>
+            {/loop}
+        </dl>
+    </div>
+    <div class="trad_rec_rig">
+        <div class="trad_rig_item content_c6">
+            <h4>投资总额：</h4>
+            <p style="color: #E07F00;">{$var.borrow_account_yes|default:'0.00'}<span>元</span></p>
+        </div>
+        <div class="trad_rig_item">
+            <h4>加入人次：</h4>
+            <p style="color: #E07F00;">{$var.tender_times}<span>人次</span></p>
+        </div>
+    </div>
+
+    <div class="cle"></div>
+</div>  <!--/j_tender_cont end-->
+<!--/-->
+{include file="borrow_acceptancet_change.html"}
+<!--审核记录-->
+<div class="trad_rec j_tender_cont">
+    <div class="per_infor_sure">融和贷将本着客观、公正的原则，最大程度地核实借入者信息的真实性。如果借入者长期逾期，借入者提供的信息将被公布。</div>
+    <div class="trad_rec_lflo">
+        <dl>
+            <dt><span class="txt_lf">审核项目</span><span class="txt_je">状态</span><span class="txt_time">通过时间</span></dt>
+
+
+
+            {loop module="attestations"  function="get_borrow_list" var="bvar" user_id=$var.user_id  datacache="memcache" datacachename='broww_article_get_borrow_list' datacachenametimes="60*30" bindkey=$var.user_id }
+            <dd><span class="txt_lf" style="text-align:center;">{$bvar.remark}</span><span class="txt_je">
+                           <img alt="通过" src="{$tpldir}/images/gaiban/answer_success.jpg">
+                       </span><span class="txt_time"> {$bvar.verify_time|date_format:"Y-m-d"}</span></dd>
+            {/loop}
+        </dl>
+    </div>
+    <div class="cle"></div>
+</div>
+<!--/j_tender_cont end-->
+
+</div>
+
+
+<!--/ end-->
+</div>
+
+</div>
+
+
+<div style="height: 40px;"></div>
+
+
+
+
+
+
+<script type="text/javascript">
+    var article = '{$var.id}';
+    var borrow_user = '{$var.user_id}';
+    var borrow_nid = '{$var.borrow_nid}';
+    {literal}
+    diyou.use('tender',function(t){t.comment_form('com_form');t.comment_list(article);t.borrow_content(borrow_nid)});
+    diyou.use('borrow',function(b){b.borrow_tabchange();b.fancy_box()});
+</script>
+{/literal}
+{/if}
+{/articles}

@@ -1,0 +1,39 @@
+<div class="righton redeem_list">
+    <p class="redeem_listp">最近查看</p>
+    <div class="redeem_list2"></div>
+</div>
+{literal}
+<script>
+    $(function(){
+        $.getJSON('/?user&m=integral/user/history_item_list',function(ret){
+            if(ret.code==0){
+                var surelen = ret.data.list.length;
+                var sure = '';
+                var sure1='';
+                for (var i =0 ; i < surelen; i++) {
+                    sure +='<dl>';
+                    sure+='<dt>';
+                    sure+='<h6></h6>';
+                    sure+='<p>'+ret.data.list[i].name+'</p>'
+                    sure+='<p>所需积分：<span>'+ret.data.list[i].integral+'</span></p>';
+                    sure+='</dt>';
+                    sure+='<dd>'
+                    sure+='<a  href="/mallist/a' + ret.data.list[i].id + '.html?'+ret.data.list[i].id+'" target="_blank" class="subcont">'
+                    sure+='<img src="'+ret.data.list[i].image+'" alt="">';
+                    sure+='</a>'
+                    sure+='</dd>'
+                    sure+='</dl>';
+                }
+                $('.redeem_list2').html(sure);
+                sure1+='<p style="font-size: 20px;color: #52acf7;text-align: center;">暂无记录</p>'
+                if(surelen==0){
+                    $('.redeem_list2').html(sure1);
+                };
+            }else {
+                jDialog.alert(ret.msg);
+            }
+        },'json');
+
+    })
+</script>
+{/literal}

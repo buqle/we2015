@@ -1,0 +1,61 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td {
+padding: 0;
+margin: 0;
+}
+img{border:none;}
+li{list-style:none;}
+a{ text-decoration:none;}
+
+
+/****清除浮动部分****/
+
+.clearc{zoom:1;}
+
+.clearc:after {
+    content: "";
+    display: block;
+    clear: both;}
+body{     font-family: "Microsoft YaHei","tahoma","arial","sans-serif";}
+
+.logo_ht{ background: url("../images/log_11.png")  no-repeat left;height: 67px;width: 1000px;margin:34px auto 0 auto;}
+	.logo_ht p{float: right;padding-top: 38px;font-size: 18px;}
+
+.contract_side{width:800px;overflow: hidden;margin: 26px auto 0 auto;}
+	.compactyt_tit h5{font-weight: normal;float: right;font-size: 16px;}
+	.compactyt_tit span{    width: 80px;
+		border-bottom: 1px solid #000;
+		display: inline-block;
+		padding: 0 10px;margin-left: 8px;}
+	.contract_c1 h4,.contract_c1 .compactyt{text-align: center;}
+	.contract_c1 h4{font-size: 18px;margin: 30px 0;}
+	.contract_c1 .compactyt{}
+	.compactycon{margin-top: 30px;font-size: 18px;}
+	.compactycon h5,.compactycon p{margin-bottom: 14px;}
+	.compactycon p{font-size: 17px;}
+	.contract_c2,.contract_c3{margin-top: 30px;}
+	.contract_c2 h4,.contract_c2 h4{font-size: 18px;}
+	.contract_c2 p{font-size: 16px;}
+	.contract_c2 table,.contract_c4 table{width: 100%;
+		border-collapse: collapse;margin-top: 14px;margin-bottom: 26px;}
+	.contract_c2 table td,.contract_c4 table td{text-align: center;    border: 1px solid #666;    line-height: 40px;
+		height: 40px;    font-size: 15px;}
+
+	.compactytpp p{line-height: 34px;
+		font-size: 16px;
+		text-indent: 3rem;margin-bottom: 4px;}
+	.contract_c3 h4{margin-bottom: 12px;}
+	.contract_c3{margin-bottom: 36px;}
+	.contract_c3 p{font-size: 16px;line-height: 28px;}
+
+	.condensedconm{margin-left: 60px;}
+	.contract_c4 .left_ycn{text-align: left;text-indent: 20px;}
+	.contract_c5 p{line-height: 30px;margin-bottom: 6px;    text-indent: 30px;}
+	#change_left2{float:left;width:300px;margin-left: 55px;}
+	#change_left1{float: left;width: 300px;}
+	.change_left{position: relative;margin-top: 30px;}
+	.change_left img{margin-left: 30px;}
+		.change_left .pos_center{position: absolute;top: 30px;}
+		.change_left .pos_center p{margin-bottom: 38px;font-size: 16px;}
+		.poictnone{border-bottom: none !important;}
+		.poictopp{border-top: 1px dashed #ccc!important;}

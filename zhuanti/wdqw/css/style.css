@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clearc{zoom:1;}
+
+.clearc:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+body {
+    font-family:"微软雅黑";
+    font-size: 18px;background: #fff;
+}
+.wdqw_img{background: url("../images/ban.jpg") center no-repeat;width: 100%;height: 714px;}
+.img-box{width: 980px;margin: 0 auto;}
+.img-box img{vertical-align: bottom}
+
+.wdqw-cont{width: 1200px;margin: 0 auto;padding: 30px 0 170px 0;background: #fff;}
+    .wdqw-cont .tit-wd{background: url("../images/tit.png") no-repeat center;height: 83px;}
+    .wdqw-cont .dlbox{border: 1px solid #b4b4b4;background: #f3dfcd;margin-top: 56px;}
+    .wdqw-cont .dlbox dd,.wdqw-cont .dlbox dt{float: left;}
+    .wdqw-cont .dlbox dt{width: 250px;margin-right: 52px;}
+    .wdqw-cont .dlbox dd{width: 832px;padding: 50px 0 40px 0;}
+    .wdqw-cont .dlbox dd h4{color:#0085c9;font-size: 24px;margin-bottom: 24px;}
+    .wdqw-cont .dlbox dd h4 span{font-size: 30px;margin-right: 14px;}
+    .wdqw-cont .dlbox dd  p{font-size: 18px;color: #444;text-indent: 38px;line-height: 30px;}
+
+

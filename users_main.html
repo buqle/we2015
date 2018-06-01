@@ -1,0 +1,16 @@
+{include file="users_main_header.html"}
+
+<div  style="background: #fff; width: 100%; overflow: hidden; min-width: 1150px;">
+    {if $smarty.session.user_role==2 || ($smarty.session.user_role==''&&$_G.user_result.user_role==2)}
+    {include file="users_main_borrow.html"}
+    {else}
+    <div class="allMoney-tay-Moreys">
+        {include file="users_menu.html"}
+        <!--0222修改-邱-->
+        <div id="allMoney-tay">
+        </div>
+    </div>
+
+    {/if}
+    {include file="users_footer.html"}
+</div>

@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="baidu-site-verification" content="13Rly5kIwF" />
+	<meta property="qc:admins" content="7705207377641175633" />
+	<meta property="wb:webmaster" content="a5dad0e8c9851f3b" />
+	<meta name="keywords" content="{if $_G.site_result.keywords eq ''}{$_G.system.con_keywords}{else}{$_G.site_result.keywords}{/if}" />
+	<meta name="description" content="{if $_G.site_result.description eq ''}{$_G.system.con_description}{else}{$_G.site_result.description}{/if}" />
+	<title>{if $_G.site_result.name!=""}{$_G.site_result.name} - {/if}{$_G.system.con_webname} - {$_G.system.con_webtitle}</title>
+	<link href="{$tpldir}/css/blue/iconfont.css?v=2016419" type="text/css" rel="stylesheet"/>
+	<link href="{$tpldir}/css/blue/public.css?v=2016927" type="text/css" rel="stylesheet"/>
+	<link href="{$tpldir}/css/blue/style.css?v=201695" type="text/css" rel="stylesheet"/>
+	<link href="{$tpldir}/css/blue/index.css?v=201695" type="text/css" rel="stylesheet"/>
+	<link href="{$tpldir}/css/blue/user.css?v=2017803" type="text/css" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="{$tpldir}/css/blue/mall.css?v=2016419"/>
+	<link rel="stylesheet" type="text/css" href="{$tpldir}/css/blue/tiyan.css?v=2016419"/>
+	<link rel="stylesheet" type="text/css" href="{$tpldir}/css/blue/common.css?v=2016419">
+	<link rel="stylesheet" type="text/css" href="{$tpldir}/css/blue/global.css?v=2016419">
+	<link rel="stylesheet" type="text/css" href="{$tpldir}/css/blue/large1.css?v=2016429">
+	<link rel="stylesheet" type="text/css" href="{$tpldir}/css/blue/newnew.css?v=2016927">
+	<script type="text/javascript" src="{$tpldir}/js/jquery-1.8.2.min.js?v=2016419"></script>
+	<script type="text/javascript" src="{$tpldir}/js/superslide.js?v=2016419"></script>
+	<script type="text/javascript" src="{$tpldir}/js/diyou.js?v=2016419"></script>
+	<script type="text/javascript" src="{$tpldir}/js/base.js?v=2016419"></script>
+	<script type="text/javascript" src="{$tpldir}/js/header.js?v=2017807"></script>
+<!--	<script>
+		var user_id = '{$_G.user_id}';
+		{if $_G.user_id!=""}
+		var email_status = {$_G.approve_result.email_status};//邮箱是否认证
+		var phone_status = {$_G.approve_result.phone_status};//手机是否认证
+		var realname_status = {$_G.approve_result.realname_status};//是否实名认证
+		var trust = '{$_G.approve_result.trust}';//是否注册托管
+		{/if}
+		var web_domain = "{$_G.web_domain}";
+		var js_web_name="{if $_G.site_result.name!=""}{$_G.site_result.name} - {/if}{$_G.system.con_webname} - {$_G.system.con_webtitle}";
+
+	</script>-->
+	<!--[if IE 6]>
+	<script src="{$tpldir}/js/iepng.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		EvPNG.fix('div, ul, li , a , em , img, input,h1');
+	</script>
+	<![endif]-->
+</head>
+<body>
+<div id="header">
+	<div class="head">
+		<div class="topbar main_w">
+			<div class="topbar_left fl">
+				{if $_G.system.con_kefu_phone !=''}<span style="font-size: 14px; line-height: 30px;float: left;width: 224px;">全国统一客服热线：<span>{$_G.system.con_kefu_phone}</span></span>{/if}
+				<div class="fl_contnew clearbs">
+					<dl class="contnew_l1">
+						<dt>手机理财</dt>
+						<dd></dd>
+					</dl>
+					<dl class="contnew_l2">
+						<dt>微信理财</dt>
+						<dd></dd>
+					</dl>
+				</div>
+
+			</div>
+			<div class="topbar_right fr clearbs">
+				<div class="new_barleftt">
+					<a href="/aboutus/index.html" style="border: none;padding-right: 0;padding-top: 8px;">关于我们</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="banner">
+	<div class="main_w clear">
+		<div class="mid fl">
+			<img style="margin-top: 11px;" src="//img.ronghedai.com{$tpldir}/images/newimg/newlogo1s.png?v=2017804" alt="融和贷" />
+		</div>
+		<div class="navlist fr" style="background:none">
+			<ul class="clear" style="background:none">
+				{foreach from=$_G.site_list key=key item=item}
+				<li><a href="{if $item.nid=='index'}/{else}{$item.url}{/if}">{$item.name}</a></li>
+				{/foreach}
+			</ul>
+		</div>
+	</div>
+</div>
+

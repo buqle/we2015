@@ -1,0 +1,42 @@
+
+        <div class="dialog_con">
+            <div class="sq_step sq_step1 fn_cle">
+                <li><span class="now">1.邮箱认证</span></li>
+              <!--  <li><span class="done">2.实名认证</span></li>-->
+                <li><span class="done">2.手机认证</span></li>
+                <li><span class="done">3.{$_U.trust_users.trust_name}</span></li>
+                <li><span class="done">4.完成</span></li>
+            </div>
+            <div class="sq_cont_box">
+                <form action="" method="post" id="email_form">
+                    <div class="fn_cle">
+                        <div class="fn_left email_bg">
+                            <img src="{$tpldir}/images/sq_email_bg.jpg" alt="" />
+                        </div>
+                        <div class="fn_left email_box">
+                            <div class="item">
+                                <label class="sq_label w80">邮箱：</label>
+                                <input type="text" name="email" id="email" value="{$_G.user_result.email}" class="sq_input" />
+                                <span id="email_warn" style="color:red"></span>
+                            </div>
+                            <div class="item">
+                                <label class="sq_label w80">&nbsp;</label>
+                                <span class="sq_span w280">登录您的邮箱查收，并点击邮件中的链接，完成激活。激活成功后 您就可以畅快使用站内所有功能。</span>
+                            </div>
+                            <div class="item">
+                                <label class="sq_label w80">&nbsp;</label>
+                                <input type="submit" class="sq_btn" value="下一步">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="notice">
+                    <h4>请注意以下事项</h4>
+                    <p>1、如果30分钟内没有收到激活邮件，查看您的垃圾邮箱，依然不能收到请重新发送。</p>
+                    <p>2、如果您在验证过程中，出现任何问题，请致电  {$_G.system.con_kefu_phone}，或咨询客服QQ {$_G.system.con_kefu_qq}</p>
+                </div>
+            </div>
+            
+        </div>
+        {literal}<script>diyou.use('trust', function(dy) {dy.email('email_form', 'email_warn')})</script>{/literal}
+

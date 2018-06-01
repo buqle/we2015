@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clear1{zoom:1;}
+
+.clear1:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+body {
+    font-family: "Microsoft YaHei","tahoma","arial","sans-serif";
+    font-size: 18px;
+}
+a{text-decoration: none;cursor: pointer;}
+
+.section {
+    position: relative;
+    overflow: hidden;
+}
+.synchrony1{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.synchrony1 img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.pos_bootom{width: 100%;height: 120px;position: absolute;bottom: 0;background: #000;
+    filter: alpha(opacity:40);
+    opacity: 0.4;left: 0;}
+    .terrot_c{position:absolute;width: 862px;left: 50%;margin-left: -431px;bottom: 20%;}
+     .terrot_c p{font-size: 20px;color:#fff;text-indent: 40px;line-height: 32px;margin-bottom: 10px;}
+     .terrot_c2{width: 100%;overflow: hidden;margin-top: 124px;line-height: 114px;}
+     .teeship{width: 500px;margin: 0 auto;}
+        .teeship a{background:#ff921c;border-radius:5px;width:160px;height: 44px;display:block;float:left;filter: alpha(opacity:100); opacity: 100;text-align: center;color: #fff;font-size: 24px;line-height: 44px;}
+
+#ssc2{background:#dce0ea;}
+
+   .territory2_cs{background: url("../images/2c.gif") no-repeat 0 50%;height: 695px;width: 1057px;position: absolute;left: 50%;top: 5%;margin-left: -528px;}
+     #posbg2{background: #818490;}
+
+    #ssc3{background: #09163f;}
+    #ssc3 h4{color:#fff;font-size: 35px;text-align: center;width: 100%;position: absolute;top: 15%;}
+    .territory3_cs{background: url("../images/3c_07.gif") no-repeat 0 50%;height: 536px;position: absolute;top: 15%;width: 1197px;margin-left: -598px;left: 50%;}
+    #posbg3{background:#050d2c;}
+
+.territory4{background: #151424;}
+    .territory4 .territory4_c{padding-top: 146px;}
+    .territory4_cs{width: 904px;margin: 0 auto;padding-bottom: 100px;}
+    .territory4_cs .left_over{float: left;width: 406px;}
+    .territory4_cs .right_over{float: right;width: 410px;}
+    .territory4_cs dl{}
+    .territory4_cs dl dt{width: 80px; float: left;}
+    .territory4_cs dl dd{width: 316px;float: right;}
+    .territory4_cs dl dd p{font-size: 24px;color:#fff;}
+    #posbg4{background: #0c0c1c;}
+.territory4_c h4{border-bottom: 1px solid #fff;width: 984px;margin: 0 auto 50px auto;padding-bottom: 34px;}
+
+#menu ,.back_homet{position: fixed; right:5%; top:20%; list-style-type: none; z-index: 70;}
+.back_homet{
+    top:37%;text-align: center;right: 3%;}
+.back_homet a{color: #666;font-size: 16px;background: url(../images/back.png) no-repeat left;padding-left: 26px;}
+#menu li { width: 21px; height: 21px; margin: 10px 0 0; vertical-align: middle;}
+#menu .active { background: url(../images/dot.png) 0 -27px no-repeat;}
+#menu li a { float: right; width: 21px; height: 21px; color: #8F9DA4; text-decoration: none; text-align: right; background: url(../images/dot.png) 5px 5px no-repeat;}
+
+.foot_terr{position: absolute;bottom:3%;width: 100%;}

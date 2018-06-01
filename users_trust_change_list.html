@@ -1,0 +1,83 @@
+
+<div class="transfer_forms" style="border: none;padding-bottom: 50px;">
+    <div style="height: 30px;"></div>
+
+    <table class="transfer_formsc" style="border: 1px solid #DDD;">
+        <tbody>
+        <tr>
+            <th width="15%">购买时间-到期时间</th>
+            <th width="10%">项目</th>
+            <th width="15%">待还/已购/总期数</th>
+            <th width="15%">待收本金</th>
+            <th width="15%">待收利息</th>
+            <th width="10%">转让价格</th>
+            <th width="10%">状态</th>
+            <th width="10%">操作</th>
+        </tr>
+        </tbody>
+              {list module='borrow' function='change_get_list' page=$smarty.request.page+1 status_nid=$smarty.request.status_nid var="item"  user_id=$_G.user_id var="loop" }
+               {foreach from=$loop.list item="item"}
+			  <tr>
+			    <td><em>{$item.buy_time|date_format:"Y/m/d"}-{$item.repay_last_time|date_format:"Y/m/d"}</em></td>
+			    <td><a href="/invest/a{$item.borrow_nid}.html" target="_blank" title="{$item.borrow_name}">{$item.borrow_name|truncate:5}</a><i class="icon"  title="{$item.borrow_type_name},期限{$item.borrow_period_name},利率{$item.borrow_apr}%"></i></td>
+			    <td>{$item.wait_times|default:0}/{$item.borrow_period}</td>
+			    <td>￥{$item.recover_account_capital_wait}</td>
+			    <td>￥{$item.recover_account_interest_wait}</td>
+			    <td>￥{$item.change_account}</td>
+			    <td>{$item.status_name}</td>
+			    <td>{if $item.status==1}<a href="javascript:void(0);" class="change_protocol"  data-id='{$item.tender_id}' data-borrow-nid='{$item.borrow_nid}'>查看协议</a>
+                {elseif $item.status==2}<a href="javascript:void(0);" class="change_cancel"  data-id='{$item.tender_id}' data-borrow-nid='{$item.borrow_nid}'>撤销</a>
+                {elseif $item.status==4}转让网站待审核
+                {elseif $item.status==5}<a href="javascript:void(0);" class="change_borrow" data-id='{$item.tender_id}' data-borrow-nid='{$item.borrow_nid}' >转让</a>
+                    {else}
+                    {if ($smarty.now - $item.tendertime) > 24*3600*30}
+                    <a href="javascript:void(0);" class="change_borrow" data-id='{$item.tender_id}' data-borrow-nid='{$item.borrow_nid}' >转让</a>
+                    {else}
+                    不可转让
+                    {/if}
+                    {/if}
+                </td>
+              </tr>
+			  {/foreach}
+             
+			</tbody>
+                <tfoot>
+    {if $loop.total >0}
+                  <tr>
+                    <td colspan="3">
+                      <span class="total">汇总统计</span>
+                    </td>
+                    <td><b>￥{$loop.capital_total}</b></td>
+                    <td><b>￥{$loop.interest_total}</b></td>
+                    <td><b>￥{$loop.change_total}</b></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                  <td colspan="8">
+                  <div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+                  </td>
+                  </tr>
+                {else}
+                  <tr>
+                  <td colspan="8">
+                 没有相关的记录 </td>
+                  </tr>
+                 {/if}
+                {/list}
+                  <tr>
+                  <td colspan="8" class="pd10">
+					 <p class="line_h_35 user_warning_c txt_lf">温馨提示：</p>
+					 <p class="line_h_35 txt_lf">正在转让的债权若有还款，则转让中的数据会自动撤销，进入到可以转让和已撤销的债权列表中</p>
+                 </td>
+                  </tr>
+                </tfoot>
+    </table>
+
+
+
+{literal}
+<script type="text/javascript">
+    diyou.use('users_change',function(dy){dy.change_list()});
+</script>
+{/literal}

@@ -1,0 +1,17 @@
+﻿{include file="users_main_header.html"}
+
+<div class="conbox t20 fn_cle user_cont">
+{include file="users_menu.html"}
+
+
+
+</div>
+<script type="text/javascript">
+var _action ='{$smarty.request.action}';
+
+{literal}
+diyou.use('dialogs',function(dia){dia.dialog('资金托管认证注册','/?user&m=trust/approve&type=check&action='+_action,'','/?user&m=trust/account')});
+
+</script>
+{/literal}
+{include file="users_footer.html"}

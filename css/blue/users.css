@@ -1,0 +1,482 @@
+﻿@charset "utf-8";
+/**************
+ users.css Document
+ Author:james;
+ Edited Time:2013-11-28;
+ Updated By:james;
+ Updated Time:2013-11-28;
+ Website:http://www.diyou.cn
+***************/
+
+/***** users public_css module start *****/
+.user_warning_c{color:#ff0000}
+.user_f_c1{color:#ff5243}
+.icon{display:inline-block;background:url(images/users_icon.png) no-repeat}
+.item{margin:15px 0px}
+label.u_label{display: inline-block;float: left;margin-right: 15px;text-align: right;width: 200px;font: 14px/24px "Microsoft YaHei";vertical-align: middle;}
+.u_radio {vertical-align: middle;}
+label.u_radio_label{vertical-align: middle;margin-right: 10px;font:14px/24px "Microsoft YaHei"}
+label.u_chebox_label{vertical-align: middle;margin-right: 10px;font:14px/24px "Microsoft YaHei"}
+.u_input{width: 230px;padding: 5px;height: 24px;font-size: 14px;font-family:"Microsoft YaHei";-moz-border-radius: 3px;-webkit-border-radius: 2px;border-radius: 2px;border: 1px solid #e0e0e0;color:#999999}
+.u_chebox{display:inline-block;vertical-align:middle}
+.u_textarea{width:450px;height:70px;padding:5px;border:1px solid #e2e2e2;}
+.u_span{display: inline-block;font: 14px/24px "Microsoft YaHei";vertical-align: middle;}
+.u_span img{vertical-align: middle;}
+.u_sel{border: #CDCDCD solid 1px;font-size: 13px;padding:4px 3px;border-radius: 3px;}
+.u_sub{display: inline-block;overflow:visible;color: #fff;font: 18px/24px "Microsoft YaHei";padding: 6px 20px;margin: 10px 10px 0px 0px;border-radius: 3px;background: #0697DA;cursor: pointer;}
+.u_sub:hover{background: #0073b6;}
+.u_btn{display: inline-block;*display:inline;zoom:1;overflow:visible;color: #fff;font: 15px/22px "Microsoft YaHei";padding: 3px 15px;border-radius: 3px;background: #0697DA;cursor: pointer;}
+.u_btn:hover{background: #0073b6;}
+.u_src{display: inline-block;overflow:visible;color: #fff;font: 18px/24px "Microsoft YaHei";padding: 3px 20px;margin:0px 10px;border-radius: 3px;background: #ea6b24;cursor: pointer;}
+.u_src:hover{background: #e4651e;}
+.recharge{display: inline-block;color: #fff;font: 16px/24px "Microsoft YaHei";padding: 3px 20px;
+    margin:0px 10px;border-radius: 3px;background: #ea6b24;cursor:pointer}
+.recharge:hover{background: #e4651e;color:#fff}
+.withdraw{display: inline-block;color: #fff;font: 16px/24px "Microsoft YaHei";padding: 3px 20px;
+    margin:0px 10px;border-radius: 3px;background: #0697DA;cursor:pointer}
+.withdraw:hover{background: #0073b6;color:#fff}
+.get_verify{display: inline-block;width:90px;height:30px;text-align:center;color: #fff;font: 12px/30px "simsun";background: #d26c68;margin-left:5px;cursor:pointer}
+.get_verify:hover{background:#c75550;color:#fff}
+
+
+
+.get_verty_btn{font:12px/24px "simsun";display:inline-block;padding:5px 8px;vertical-align:middle;color:#fff;background:#d26c68;cursor:pointer}
+.get_verty_btn_dis{background:#c4ccd1;}
+.tab_cont{ margin-top:20px;}
+.money_txt{position:relative}
+.money_txt span.money_type{position:absolute;top:0px;left:243px}
+span.money_type{font-size:14px;font-family:"Microsoft YaHei";margin-left:-20px}
+.money_style{font-size:14px;font-family:"Microsoft YaHei";margin-left:-20px}
+.file_box{position:relative}
+.file_box .u_input{width:165px}
+.file_box .u_file{position:absolute;left:0px;top:0px;display:inline-block;width: 245px;
+    height:36px;filter:alpha(opacity=0);opacity: 0;cursor:pointer}
+.file_box .u_img{width:60px;height:30px;display:inline-block;cursor:pointer;vertical-align:middle}
+.verify_code input{width:80px}
+.verify_code img{vertical-align:middle}
+.u_pw_strength{width: 213px;margin: 5px 0px 0px 145px;height: 18px;background-color: #FFD099;position: relative;overflow: hidden;}
+.u_pw_strength .pw_bar{width: 0;height: 18px;overflow: hidden;background-color: #FF0000;transition: all .4s linear;-webkit-transition: all .4s linear;-moz-transition: all .4s linear;-o-transition: width .4s linear;}
+.u_pw_strength .pw_letter{position: absolute;left: 0px;top: 0px;}
+.u_pw_strength .pw_letter span{display: inline;float: left;height: 18px;width: 70px;font-size: 12px;
+    text-align: center;line-height: 18px;color: #FFF;border-right: 1px solid #FFF;}
+a.a_link{color:#0697DA;margin:0px 5px}
+a.a_link:hover{text-decoration:underline}
+.u_notice{margin: 30px 0px 30px 30px;}
+.u_notice i{width: 20px;height: 20px;background-position: -111px -80px;vertical-align: middle;}
+.u_notice span{line-height: 30px;vertical-align: middle;}
+/***** users public_css module end  *****/
+
+
+/*****  users public table modules start *****/
+.user_tab1{width:100%;border-collapse: collapse;}
+.user_tab1 thead{background:#f1f1f1}
+.user_tab1 td{text-align:center;font:12px/22px "Microsoft YaHei";padding:10px 1px;color:#3d3d3d;border:1px solid #e2e2e2}
+.user_tab1 tr.tab1_tit td{background:#f6f6f6;font-family:"Microsoft YaHei"}
+.user_tab1 td a{color:#ea5504;margin:0px 5px;font-weight:bold}
+.user_tab1 td a:hover{text-decoration:underline;}
+
+.user_tab2{width:100%;border-collapse: collapse;border:1px solid #e2e2e2;}
+.user_tab2 tr td{border-top:1px solid #e2e2e2;text-align:center;font:12px/40px "simsun";color:#3d3d3d;}
+.user_tab2 tr td em{color:#999999}
+.user_tab2 tr td i{width: 20px;height: 20px;background-position: -32px -80px;}
+.user_tab2 tr td a{color:#0697DA}
+.user_tab2 tr td a:hover{text-decoration:underline}
+.user_tab2 thead tr td{border-top:5px solid #d46b68;line-height:60px}
+.user_tab2 thead tr td h4{font:18px/60px "Microsoft YaHei";color:#4d4d4d;padding:0px 20px}
+.user_tab2 thead tr td h4 a{font:18px/60px "Microsoft YaHei";color:#4d4d4d;padding:0px 20px}
+.user_tab2 thead tr td h4 a.hover{color:#0697DA}
+.user_tab2 thead tr td .search{font:14px/30px "Microsoft YaHei";padding:15px 0px;margin:0px 20px}
+.user_tab2 thead tr td .search .u_input{width:120px;}
+.user_tab2 thead tr td .u_sel{margin-right:10px;}
+.user_tab2 tr.tab2_tit td{background:#f1f1f1;font-family:"Microsoft YaHei"}
+.user_tab2 tfoot tr td{line-height:80px;font-family:"Microsoft YaHei"}
+.user_tab2 tfoot tr td span.total{font-size:18px}
+.user_tab2 tfoot tr td b{font-size:14px}
+
+.user_tab3{width:100%;border-collapse: collapse;border:1px solid #e2e2e2;}
+.user_tab3 thead{background:#f1f1f1}
+.user_tab3 td,.user_tab3 th{text-align:center;font:12px/20px "Microsoft YaHei";padding:10px 1px;color:#3d3d3d;border-top:1px solid #e2e2e2}
+.user_tab3 tr.tab3_tit td{background:#f6f6f6;font-family:"Microsoft YaHei"}
+.user_tab3 td a{color:#0073b6;margin:0px 5px;}
+.user_tab3 tfoot td a{color:#0073b6;margin-left:0px;margin-right:8px}
+.user_tab3 td a:hover{text-decoration:underline;}
+
+.user_tab4{width:100%;border-collapse: collapse;border:1px solid #e2e2e2;}
+.user_tab4 thead{background:#f1f1f1}
+.user_tab4 td,.user_tab4 th{text-align:center;font:12px/20px "Microsoft YaHei";padding:10px 1px;color:#3d3d3d;border-top:1px solid #e2e2e2}
+.user_tab4 tr.tab4_tit td{background:#f6f6f6;font-family:"Microsoft YaHei"}
+.user_tab4 td a{color:#0073b6;margin:0px 5px;}
+.user_tab4 td a:hover{text-decoration:underline;}
+
+.user_tab5{width:100%;border-collapse: collapse;border:1px solid #e2e2e2;}
+.user_tab5 thead{background:#f1f1f1}
+.user_tab5 td,.user_tab5 th{text-align:center;font:12px/20px "Microsoft YaHei";padding:10px 1px;color:#3d3d3d;border-top:1px solid #e2e2e2}
+.user_tab5 th{text-align:left;font:14px/22px "Microsoft YaHei"}
+.user_tab5 th span{margin:0px 10px}
+.user_tab5 tr.tab5_tit td{background:#f6f6f6;font-family:"Microsoft YaHei"}
+.user_tab5 td a{color:#0073b6;margin:0px 5px;}
+.user_tab5 td a:hover{text-decoration:underline;}
+.user_tab5 td a.u_tab5_btn,.user_tab5 th a.u_tab5_btn{color:#fff;display: inline-block;*display:inline;zoom:1;overflow:visible;color: #fff;font: 12px/20px "Microsoft YaHei";padding: 2px 15px;border-radius: 3px;background: #0697DA;}
+
+.user_tab6{width:100%;border-collapse: collapse;}
+.user_tab6 thead{background:#f1f1f1}
+.user_tab6 td,.user_tab6 th{text-align:center;font:12px/20px "Microsoft YaHei";padding:10px 10px;color:#3d3d3d;}
+.user_tab6 th span{margin:0px 10px}
+.user_tab6 tr.tab6_tit td{background:#f6f6f6;font-family:"Microsoft YaHei"}
+.user_tab6 td a{color:#0073b6;margin:0px 5px;}
+.user_tab6 td a:hover{text-decoration:underline;}
+.user_tab6 td a.u_tab6_btn,.user_tab6 th a.u_tab6_btn{color:#fff;display: inline-block;*display:inline;zoom:1;overflow:visible;color: #fff;font: 12px/20px "Microsoft YaHei";padding: 2px 15px;border-radius: 3px;background: #0697DA;}
+/*****  users public table modules end   *****/
+
+
+/***** users_banner modules start *****/
+.u_banner{background:url(images/u_banner.jpg) no-repeat center;position:relative;height:100px;padding-top:45px; min-width: 1150px;}
+.u_banner .u_banner_lf{display: inline;float: left;margin-left:10px;width: 86px;}
+.u_banner .u_banner_lf a{-webkit-border-radius: 50%;-webkit-background-clip: padding-box;-moz-border-radius: 50%;-moz-background-clip: padding;border-radius: 50%;
+    background-clip: padding-box;width: 80px;height: 80px;overflow: hidden;border: 2px solid #e1e1e1;display: block;}
+.u_banner .u_banner_main{display: inline;float: left;width: 884px;position:relative}
+.u_banner .u_banner_main .hello{ padding-top: 20px; padding-left: 20px;padding-bottom: 10px;}
+.u_banner .u_banner_main .hello a{color:#fff}
+.u_banner .u_banner_main .hello a:hover{text-decoration:underline}
+.u_banner .u_banner_main .hello .username{font:16px/16px "Microsoft YaHei";color:#fff}
+.u_banner .u_banner_main .hello .app_vip i{width:30px;height:15px;vertical-align:middle;margin-right:10px}
+.u_banner .u_banner_main .hello .app_vip i.yes{background-position:0px 0px;}
+.u_banner .u_banner_main .hello .app_vip i.no{background-position:-32px 0px;}
+.u_banner .u_banner_main .change{position:absolute;top:10px;right:0px}
+.u_banner .u_banner_main .change a{display:block;width:130px;height:30px;font:14px/30px "Microsoft YaHei";background:#4abae1;color:#fff;border-radius:5px;padding-left:20px}
+.u_banner .u_banner_main .change i{width:20px;height:20px;position:absolute;right:5px;top:5px;background-position:0px -81px}
+.u_banner .u_banner_main .u_banner_main_detai{padding-top: 10px;padding-left: 20px;position: relative;}
+.u_banner .u_banner_main .u_banner_main_detai .approve .icon{width:30px;height:30px;}
+.u_banner_main .u_banner_main_detai .approve a.person .icon{background-position:2px -16px}
+.u_banner_main .u_banner_main_detai .approve a.email .icon{background-position:-33px -16px}
+.u_banner_main .u_banner_main_detai .approve a.phone .icon{background-position:-68px -16px}
+.u_banner_main .u_banner_main_detai .approve a.pay_pwd .icon{background-position:-102px -16px}
+.u_banner_main .u_banner_main_detai .approve a.person .yes{background-position:2px -46px}
+.u_banner_main .u_banner_main_detai .approve a.email .yes{background-position:-33px -45px}
+.u_banner_main .u_banner_main_detai .approve a.phone .yes{background-position:-68px -45px}
+.u_banner_main .u_banner_main_detai .approve a.pay_pwd .yes{background-position:-102px -45px}
+.u_banner_main .u_banner_main_detai .separator{margin:0px 25px;color:#ccc;font-size:16px}
+.u_banner_main .u_banner_main_detai .credit,.u_banner_main .u_banner_main_detai .log_infor{font:14px/24px "Microsoft YaHei";color:white;}
+.u_banner_main .u_banner_main_detai .credit img{vertical-align:middle}
+.u_banner_main .u_banner_main_detai .credit a{color:#fff;}
+.u_banner_main .u_banner_main_detai .credit a:hover{text-decoration:underline}
+.u_banner_main .u_banner_main_detai .log_infor span{margin-right:20px}
+/***** users_banner modules end   *****/
+
+/***** users content modules start   *****/
+#user_002{background:url("../../images/gaiban/iocUser.png") no-repeat 28px 0; }
+#user_003{background:url("../../images/gaiban/iocUser.png") no-repeat 28px -45px; }
+#user_004{background:url("../../images/gaiban/iocUser.png") no-repeat 28px -90px; }
+#user_005{background:url("../../images/gaiban/iocUser.png") no-repeat 28px -135px; }
+#user_006{background:url("../../images/gaiban/iocUser.png") no-repeat 28px -180px; }
+.user_cont .user_left{ width:184px;overflow: hidden; margin-bottom: 20px; padding-top: 16px; }
+.user_cont .user_left li a.user_lf_link{display:block;font:16px/45px "Microsoft YaHei";cursor:pointer; font-weight: bold; text-align: center;
+color: #000; }
+.user_cont .user_left li a.hover{ color: #66666; }
+.user_cont .user_left li dd a{display: block;padding-left: 60px;height: 36px;font:14px/36px "Microsoft YaHei";color: #909090;cursor: pointer;}
+.user_cont .user_left li dd a.now{color:#d46b68; font-size: 16px; font-weight: bold;}
+.user_cont .user_rig{ width:950px; margin: 0 20px 30px 0; padding-top: 16px; }
+.user_cont .user_rig .box_summary{border:1px solid #e2e2e2}
+.user_cont .user_rig .box_summary .summ_lf{padding:15px;width:415px;font:14px/30px "Microsoft YaHei";border-right:1px solid #e2e2e2;height:142px}
+.user_cont .user_rig .box_summary h3{font:18px/50px "Microsoft YaHei"}
+.user_cont .user_rig .box_summary .summ_lf span.usable{font-size:22px;margin:0px 5px}
+.user_cont .user_rig .box_summary .summ_lf span.usable em{font-size:28px}
+.user_cont .user_rig .box_summary .summ_lf span.unusable{font-size:18px;margin:0px 5px}
+.user_cont .user_rig .box_summary .summ_lf span.unusable em{font-size:22px}
+.user_cont .user_rig .box_summary .summ_btn a{display: inline-block;color: #fff;font: 16px/24px "Microsoft YaHei";text-align: center;padding: 3px 20px;border-radius: 3px;background: #D46B68;margin-right:10px}
+.user_cont .user_rig .box_summary .summ_btn a:hover{background:#0073b6}
+.user_cont .user_rig .box_summary .summ_btn a.recharge{background:#ea6b24}
+.user_cont .user_rig .box_summary .summ_btn a.recharge:hover{background:#e4651e}
+.user_cont .user_rig .box_summary .summ_rig{width:494px}
+.user_cont .user_rig .box_summary .summ_rig li{padding:0px 20px;height:56px}
+.user_cont .user_rig .box_summary .summ_rig li h3{position:relative;zoom:1}
+.user_cont .user_rig .box_summary .summ_rig a{display:block;position:absolute;right:0px;top:0px;font-size:12px;font-family:"simsun";color:#0697DA}
+.user_cont .user_rig .box_summary .summ_rig a:hover{text-decoration:underline}
+.user_cont .user_rig .box_summary .summ_rig li.total{border-bottom:1px solid #e2e2e2}
+.user_cont .user_rig .box_summary .summ_rig li.total i{width:20px;height:20px;background-position:-32px -80px}
+.user_cont .user_rig .box_summary .summ_rig li p{font:20px/24px "Microsoft YaHei";color:#a9a9a9}
+.user_cont .user_rig .box_summary .summ_rig li p em{font-size:24px}
+.user_cont .user_rig .user_box{border:1px solid #e2e2e2;}
+.user_cont .user_rig .user_box h2{font:24px/30px "Microsoft YaHei";padding:10px 20px 10px 20px;border-bottom:1px solid #e2e2e2;border-top:5px solid #d46b68}
+.user_cont .user_rig .user_box ul li{border-top:1px solid #e2e2e2;}
+.user_cont .user_rig .user_box ul li .transfer,.user_cont .user_rig .user_box ul li .buy{width:343px!important}
+.user_cont .user_rig .user_box ul li h3{font:14px/45px "Microsoft YaHei";color:#0697DA;background:#fbf8f4;padding-left:20px}
+.user_cont .user_rig .user_box ul li h3 a{font-family:"simsun";font-size:12px;color:#0697DA;margin-right:20px;}
+.user_cont .user_rig .user_box ul li h3 a:hover{text-decoration:underline}
+.user_cont .user_rig .user_box ul li .borrow_total{padding:20px;border-top:5px solid #d46b68;border-right:1px solid #e2e2e2;width:275px;}
+.user_cont .user_rig .user_box ul li .inter_paid{padding:20px;border-top:5px solid #569abd;width:275px;border-right:1px solid #e2e2e2;}
+.user_cont .user_rig .user_box ul li .inter_nopaid{padding:20px;border-top:5px solid #78b188;width:275px;}
+.user_cont .user_rig .user_box ul li .top img{vertical-align:middle}
+.user_cont .user_rig .user_box ul li .top span{font:20px/30px "Microsoft YaHei";vertical-align:middle}
+.user_cont .user_rig .user_box ul li .top span em{font-size:24px}
+.user_cont .user_rig .user_box ul li .top span font{font-size:12px;color:#999999}
+.user_cont .user_rig .user_box ul li .bot{margin-top:10px;height:20px}
+.user_cont .user_rig .user_box ul li .bot i{width:20px;height:20px;background-position:-32px -80px}
+.user_cont .user_rig .user_box ul li .bot span{color:#999999}
+.user_cont .user_rig .user_box ul li .bot span.reward em{background:#d46b68;color:#fff;display:inline-block;width:16px;height:16px;font:12px/16px "simsun";text-align:center;margin-right:5px;vertical-align:top}
+.user_cont .user_rig .user_box ul li .bot span.reward font{display:inline-block;color:#666666;font:16px/16px "Microsoft YaHei"}
+.user_cont .user_rig .user_box dl.u_record_list{padding:0px 20px 20px 20px}
+.user_cont .user_rig .user_box dl.u_record_list span{display:inline-block;width:74px;text-align:center;font:12px/20px "Microsoft YaHei";vertical-align:top;padding:5px 0px}
+.user_cont .user_rig .user_box dl.u_inve_list span{width:100px;}
+.user_cont .user_rig .user_box dl.u_record_list span.remark{width:245px;}
+.user_cont .user_rig .user_box .return_day{color:#d46b68}
+.user_cont .user_rig .user_box dl.u_record_list a{color:#0697DA}
+.user_cont .user_rig .user_box dl.u_record_list a:hover{text-decoration:underline}
+.user_cont .user_rig .user_box dl.u_record_list2 span{width:85px}
+/***** users content modules end   *****/
+
+
+/***** users vip apply modules start   *****/
+.vip_apply .cont{padding:50px 0px 100px 0px}
+.vip_apply .u_label{width:200px}
+.vip_apply .u_span{width:400px}
+.vip_apply .u_span a{margin-left:10px}
+.vip_apply em{margin-left:10px}
+/***** users vip apply modules end     *****/
+
+
+/***** users apply limit modules start   *****/
+
+.apply_limit .apply_limit_note{border:1px solid #e2e2e2;margin:20px;padding:20px 20px;font:14px/26px "Microsoft YaHei"}
+.apply_limit .apply_limit_note dl dd{position:relative;font:14px/26px "Microsoft YaHei";color:#333333;display:inline-block;*display:inline;zoom:1;width:330px;height:70px;margin:0px 5px 5px 0px}
+.apply_limit .apply_limit_note dl dd span.all em{color:#f9930a;font-size:26px}
+.apply_limit .apply_limit_note dl dd .useful{position:absolute;border:1px solid #cfcfcf;padding:2px 5px;left:72px;top:35px}
+.apply_limit .apply_limit_note dl dd .useful span{position:absolute;color:#cfcfcf;display:inline-block;left:30px;top:-10px;width:11px;height:10px;overflow:hidden;background:#fff}
+.apply_limit .apply_limit_note dl dd .useful em{color:#fd7202}
+.apply_limit .apply_limit_list{margin-top:80px}
+.apply_limit table.apply_limit_tab{width:100%;border-collapse:collapse}
+.apply_limit table.apply_limit_tab td,.apply_limit table.apply_limit_tab th{text-align:center;padding: 5px;line-height: 20px;border-bottom:1px solid #e2e2e2}
+.apply_limit table.apply_limit_tab tr.odd{background:#f6f6f6;border-top:1px solid #e2e2e2;border-bottom:1px solid #e2e2e2}
+/***** users apply limit modules end     *****/
+
+
+
+
+/***** 提醒设置 start *****/
+.user_cont .user_rig .user_box .remind_set{padding:20px;font:14px/22px "Microsoft YaHei"}
+.user_cont .user_rig .user_box .remind_set p span{ color:#FF0000}
+.user_cont .user_rig .set_form{ margin-top:10px}
+.user_cont .user_rig .set_form table.tabyel{border-collapse:collapse;width:100%}
+.user_cont .user_rig .set_form table td{border:1px solid #E2E2E2;line-height: 32px;text-align: center; font-family:"Microsoft YaHei"}
+.user_cont .user_rig .set_form table tr.tab_head{ height:35px;line-height:35px;background:#f1f1f1}
+.user_cont .user_rig .set_form table tr.tab_head td{ font-size:14px; color:#333333; }
+.user_cont .user_rig .u_submit{ margin-top:10px; text-align:center}
+/***** 提醒设置 end     *****/
+
+.user_cont .user_rig .user_box .u_attest{ padding:30px}
+.user_cont .user_rig .user_box .u_attest table{border-collapse:collapse;}
+.user_cont .user_rig .user_box .u_attest table tr{ border-bottom:#f1f1f1 solid 1px; line-height:35px; height:35px}
+.user_cont .user_rig .user_box .u_attest table td{font-family:"Microsoft YaHei"; font-size:14px}
+.user_cont .user_rig .user_box .u_attest table td i.icon{display:inline-block;width:20px;height:20px}
+.user_cont .user_rig .user_box .u_attest table td i.no{background-position:0px -161px}
+.user_cont .user_rig .user_box .u_attest table td i.ing{background-position:-22px -161px}
+.user_cont .user_rig .user_box .u_attest table td i.yes{background-position:-43px -161px}
+.user_cont .user_rig .user_box .u_attest table td a{ color:#0697da}
+
+/***** auto tender modules start  *****/
+.auto_tender h3{padding-left:40px;font:20px/24px "Microsoft YaHei"}
+.auto_tender .notice{padding:20px 0px 20px 0px}
+.auto_tender .notice h3{font-size:16px}
+.auto_tender .notice dl{padding-left:40px;font:14px/24px "Microsoft YaHei"}
+/***** auto tender modules end    *****/
+
+/***** total point modules start  *****/
+.total_point .notice{padding:30px 0px 20px 20px;font:16px/24px "Microsoft YaHei"}
+/***** total point modules end    *****/
+
+/***** basic information modules start *****/
+.user_box .u_tit_btn{display: inline-block;padding: 0 15px;font-size: 16px;line-height: 30px;height: 30px;min-width: 50px;border-radius: 15px;color: #fff;background-color: #8ab46e;}
+.user_box .u_tit_btn:hover{background-color: #6E8B00;}
+.user_box .basic_infor .edit_infor{display: inline-block;padding: 0 15px;font-size: 16px;line-height: 30px;height: 30px;min-width: 50px;border-radius: 15px;color: #fff;background-color: #8ab46e;}
+.user_box .basic_infor .edit_infor:hover{background-color: #6E8B00;}
+.user_box .basic_infor dl.basic_inf_menu{margin:30px auto;text-align:center}
+.user_box .basic_infor dl.basic_inf_menu dd{display:inline-block;*display:inline;*zoom:1;background:#efefef;width: 150px;height: 40px;font: 18px/40px "Microsoft YaHei";margin-right: 10px;text-align: center;cursor: pointer;}
+.user_box .basic_infor dl.basic_inf_menu dd.hover{background:#0697DA;}
+.user_box .basic_infor dl.basic_inf_menu dd.hover a{color:#fff}
+.user_box .basic_infor .basic_inf_cont{padding-bottom:50px;width:610px;margin:0px auto}
+.user_box .basic_infor .basic_inf_cont .item span.fn_rig{margin-right:100px;font-family:"Microsoft YaHei"}
+.user_box .basic_infor .basic_inf_cont .item span.fn_rig img{margin-right:5px;vertical-align:middle}
+.user_box .basic_infor .basic_inf_cont .item span.fn_rig em{vertical-align:middle}
+/***** basic information modules end   *****/
+
+/***** extend manage modules start *****/
+.user_box .extend .extend_src{padding:10px}
+.user_box .extend .notice{margin:20px;padding:10px 15px;border:1px solid #e2e2e2}
+.user_box .extend .notice h4{font:bold 14px/24px "Microsoft YaHei"}
+.user_box .extend .notice dl{font:12px/20px "Microsoft YaHei"}
+.user_box .extend .my_extend{margin:20px;}
+.user_box .extend .my_extend .my_extend_tit{padding:10px 0px;font:16px/40px "Microsoft YaHei"}
+.user_box .extend .my_extend .my_extend_tit em{font-size:24px;color:#ff8f08;margin:0px 3px}
+.user_box .extend .my_extend .user_tab1 thead td{padding:20px}
+.user_box .extend .my_extend .user_tab1 thead span{font-size:16px}
+.user_box .extend .my_extend .how_extend h5{font:16px/26px "Microsoft YaHei"}
+.user_box .extend .my_extend .how_extend p.copy{padding-left:135px}
+.user_box .extend .my_extend .how_extend p.copy .u_sub{padding:6px 30px}
+.user_box .extend .my_extend .how_extend span{font-family:"Microsoft YaHei";color:#ff0000}
+.user_box .extend .my_extend .how_extend img{margin:30px 0px}
+/***** extend manage modules end   *****/
+
+
+/*****  repay details modules start  *****/
+.user_box .repay_detai .repay_src{padding:10px }
+.user_box .repay_detai h2 span a.a_link{font:14px/35px "Microsoft YaHei"}
+.user_box .repay_detai .repay_detai_tit{padding:20px;font:16px/26px "Microsoft YaHei";background:#f6f6f6;border-top:1px solid #e2e2e2;color:#333333}
+/*****  repay details modules end    *****/
+
+/***** account management modules start *****/
+.account_manage .per_infor{padding:40px 0px 40px 50px}
+.account_manage .per_infor a.avatar{display:inline-block;width:75px;height:75px;margin-right:20px;position:relative}
+.account_manage .per_infor a.avatar .trans_bg{display:block;width:75px;height:75px;position:absolute;left:0px;top:0px;background:#000;opacity:0.6;filter:alpha(opacity=60);color:#fff;text-align:center;line-height:75px}
+.account_manage .per_infor .avatar img{width:75px;height:75px}
+.account_manage .per_infor .per_name span{color:#333333;}
+.account_manage .per_infor .per_name .account_name{padding:10px 0px;}
+.account_manage .per_infor .per_name .securelevel em{vertical-align:middle}
+.account_manage .per_infor .per_name .securelevel i{margin-right: 4px;font-size: 0;width: 79px;height: 10px;vertical-align:middle}
+.account_manage .per_infor .per_name .securelevel i.low{background-position: 0px -104px;}
+.account_manage .per_infor .per_name .securelevel i.middle{background-position: 0px -115px;}
+.account_manage .per_infor .per_name .securelevel i.high{background-position: 0px -126px;}
+.account_manage .per_infor .per_name .securelevel i.highest{background-position: 0px -138px;}
+.account_manage .safety_infor{padding:20px;}
+.account_manage .safety_infor ul li{border:1px solid #e2e2e2;margin-bottom:30px}
+.account_manage .safety_infor ul li dl{font-size:0;letter-spacing:-4px}
+.account_manage .safety_infor ul li dd{width:205px;height:130px;padding:25px 10px 10px 15px;display:inline-block;*display:inline;zoom:1;vertical-align:top;border-right:1px solid #e2e2e2;letter-spacing:0px}
+.account_manage .safety_infor ul li dd.last{border:none;width:224px}
+.account_manage .safety_infor ul li dd .safety_infor_dec p{color:#b3b3b3}
+.account_manage .safety_infor ul li dd h4{font-size:14px;margin-bottom:10px}
+.account_manage .safety_infor ul li p {color: #666666; font-size: 12px;line-height: 22px;}
+.account_manage .safety_infor ul li dd i.icon{width:20px;height:20px;vertical-align:middle}
+.account_manage .safety_infor ul li dd i.yes{background-position:-62px -80px}
+.account_manage .safety_infor ul li dd i.no{background-position:-86px -81px}
+.account_manage .safety_infor ul li dd .safe_set_bg{padding:5px 0px 5px 65px;margin-bottom:20px;background:url(images/set_safe_icon.jpg) no-repeat}
+.account_manage .safety_infor ul li dd .name_app{background-position:-5px -10px}
+.account_manage .safety_infor ul li dd .email_app{background-position:-5px -85px}
+.account_manage .safety_infor ul li dd .phone_app{background-position:-5px -168px}
+.account_manage .safety_infor ul li dd .log_pwd{background-position:-5px -253px}
+.account_manage .safety_infor ul li dd .pay_pwd{background-position:-5px -337px}
+.account_manage .safety_infor ul li dd .other_log img{vertical-align:middle;margin-right:5px}
+.account_manage .safety_infor ul li dd .other_log span{display:inline-block;width:60px}
+/***** account management modules end *****/
+
+/*****  add bank card modules start  *****/
+.add_bank .add_bank_cont{}
+.add_bank .add_bank_cont .remark{margin-left:50px;vertical-align:middle}
+.add_bank .add_bank_cont .notice{padding:30px 0px 50px 120px;width:500px;font:12px/22px "simsun"}
+.add_bank .add_bank_cont .notice h4 i{width:20px;height:20px;background-position:-111px -80px;vertical-align:middle}
+.add_bank .add_bank_cont .notice h4 span{vertical-align:middle}
+.add_bank .add_bank_cont .notice p{color:#999999;padding-left:20px}
+.add_bank .bank_list{padding:40px 10px 50px 10px}
+.add_bank .bank_list dd{width: 224px;height: 130px;text-align: left;border: 1px solid #ccc;
+    border-radius: 5px;float: left;margin: 10px;display: inline;cursor: pointer;overflow: hidden;position: relative;box-shadow:3px 3px 3px #ebebed}
+.add_bank .bank_list dd .bank_card_infor{padding:5px 10px;border-bottom:1px dashed #b6b9be}
+.add_bank .bank_list dd .edit_card{padding:5px 10px;}
+.add_bank .bank_list dd .edit_card i{width: 20px;height: 20px;vertical-align: middle;}
+.add_bank .bank_list dd .edit_card i.yes{background-position: -62px -80px;}
+.add_bank .bank_list dd .edit_card i.no{background-position:-86px -81px}
+.add_bank .bank_list dd .edit_card em{vertical-align:middle;color:#ff0000}
+.add_bank .bank_list dd .edit_card a{font-size:14px}
+.add_bank .bank_list dd p{font:16px/24px "simsun"}
+.add_bank .bank_list .update_b_l { padding: 28px 11px; }
+.add_bank .bank_list .update_b_l a { display: block; width: 202px; height: 72px; background: url(images/update_b_l.png) no-repeat; }
+
+/*****  add bank card modules end    *****/
+
+/*****  system messages modules start  *****/
+.sys_msg .sys_msg_list .user_tab3 thead{background:none}
+.sys_msg .sys_msg_list .user_tab3 thead th{border-top:none;}
+.sys_msg .sys_msg_list .user_tab3 thead th input{*margin-left:27px}
+.sys_msg .sys_msg_list .user_tab3 thead th a{margin-right:10px}
+.sys_msg .sys_msg_list .user_tab3 .sys_msg_detai{font:14px/20px "Microsoft YaHei";text-align:left}
+.sys_msg .sys_msg_list .user_tab3  p.msg_cont{border-top:1px dashed #e2e2e2;margin-top:10px;padding:10px 0px 10px 20px;background:#f0f0f0;display:none;}
+.sys_msg .sys_msg_list .user_tab3 a.f_bold{font-weight:bold;color:#0697DA;margin:0px}
+.sys_msg .sys_msg_list .user_tab3 a.f_normal{font-weight:normal;color:#666666;margin:0px}
+/*****  system messages modules end    *****/
+
+/***** fund management modules start  *****/
+.recharge_bank{width:540px;float:left}
+.recharge_bank label.recharge_label{display:inline-block;margin-right:10px;margin-bottom:10px;cursor:pointer}
+.recharge_bank label.recharge_label img{vertical-align:middle}
+.recharge_bank label.recharge_label input{vertical-align:middle;margin-right:5px}
+.tab_cont .tab_card{ display:none;}
+.fund_manage h2 a{font:14px/30px "Microsoft YaHei"}
+.fund_manage h2 em{font:bold 14px/30px "Microsoft YaHei";color:#999999;margin:0px 10px}
+.src_box{padding: 10px;}
+.fund_list .src_box .search a.a_link{font-family:"Microsoft YaHei";line-height:30px}
+.account_money .cont{padding:20px 10px 20px 30px;}
+.account_money .cont .account_bal{width:210px;font:18px/40px "Microsoft YaHei"}
+.account_money .cont .account_bal b{font-size:28px}
+.account_money .cont .account_bal em{font-size:22px}
+.account_money .cont dl{padding-left:40px;border-left:1px solid #e2e2e2}
+.account_money .cont dl dd{padding:5px}
+.account_money .cont dl dd.first{border-bottom:1px solid #e2e2e2}
+.account_money .cont dl dd li{border:none!important;display:inline-block;*display:inline;zoom:1;width:236px;font:16px/28px "Microsoft YaHei";vertical-align:middle}
+.account_money .cont dl dd li span{font-size:22px}
+.account_money .cont dl dd li span em{font-size:18px}
+.fund_manage .user_withdraw .notice{margin:40px 0px 50px 40px}
+.fund_manage .user_withdraw .notice i{width: 20px;height: 20px;background-position: -111px -80px;vertical-align: middle;}
+.fund_manage .user_withdraw .notice span{line-height:30px;vertical-align: middle;}
+.fund_manage .user_withdraw em.account_m{font-size:24px;font-family:"Microsoft YaHei";color:#fc491e}
+.fund_manage .user_withdraw .recharge{margin:0px}
+.fund_manage .user_withdraw .u_label{width:140px}
+.fund_manage .user_withdraw .recharge_bank .fn_left{width:490px}
+.fund_manage .user_withdraw .recharge_bank .fn_left .bank_more{display:none}
+.fund_manage .user_withdraw .recharge_bank a.choose_other{display:inline-block;color:#0697DA;margin-top:90px}
+.fund_manage .user_withdraw .recharge_bank a.choose_other i{display:block;margin:0 auto;width:10px;height:10px;background-position:0px -150px}
+/***** fund management modules start  *****/
+
+/***** added module start *****/
+.user_info_notice{padding:10px 20px 30px 60px;}
+.user_info_notice p{font-size:14px;font-family:"Microsoft YaHei";line-height:26px;}
+/***** added module start *****/
+
+.my_clip_button{background: none repeat scroll 0 0 #0697da;border-radius: 3px;color: #FFFFFF;cursor: pointer;display: inline-block; font: 18px/24px "Microsoft YaHei";
+    margin: 10px 10px 0 0;overflow: visible; padding: 6px 20px;width:50px;text-align:center; }
+.my_clip_button:hover,.my_clip_button.hover { background:#0073b6; }
+.my_clip_button.active { background:#0073b6; }
+
+.ui_cont{ border:1px solid #e2e2e2; border-top:none; overflow:hidden; padding-bottom:20px;}
+.ui_form_item{ margin-top:20px;}
+.ui_form_item label{display:inline-block;height:35px;text-align:right;vertical-align:top;width:140px;float:left;font:14px/35px 'Microsoft yahei';}
+.ui_form_item  .u_input{width:220px;}
+.ui_form_item  .u_area{width:450px; height:150px; padding:5px;font: 14px/22px 'MIcrosoft yahei'; border: 1px solid #e2e2e2;outline: none;}
+.ui_form_item  .u_sel{width: 110px;}
+.ui_form_item .w230{width: 230px;}
+.ui_form_item .tips{font: 14px/35px 'Microsoft yahei';margin-left: -35px; display:inline-block; width:30px; text-align:center;}
+.red{color: #f00 !important;font-size: 14px;}
+.ui_form_item em.error{background:url(images/right_error.png) no-repeat scroll 0 bottom;padding-left:20px; margin-left:5px; color:#f00; line-height:20px;}
+.ui_form_item em.valid{ background-position:0 top;}
+.ui_btn{ width:190px; height:40px; background:#0697da; color:#fff; font:16px/40px 'Microsoft yahei'; text-align:center; cursor:pointer;border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px;}
+
+
+/*红包领取层*/
+.advbox{width:680px; height:400px; position:fixed;display:none;left:50%;top:0;margin:-200px 0 0 -340px;z-index:999;}
+.advbox .advpic{position:relative;height:400px;overflow:hidden;}
+.advpic_close_p{ height: 30px; width: 30px; position: absolute; top: 0; right: 0; cursor: pointer;}
+.advbox .advpic .closebtn{display:block;width:60px;height:22px;line-height:26px;font-size:12px;color:#fff;text-indent:12px;overflow:hidden;position:absolute;right:110px;top:105px;z-index:99;}
+#noot_bgDiv_qq{ position: fixed; width: 100%; height: 100%; background: #ccc; opacity: 0.8; top: 0; left: 0; filter: alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity: 0.3; }
+.advpic_close_ps,.advpic_close_post{ height: 67px; width: 266px; position: absolute; top: 254px; left: 207px; cursor: pointer;}
+
+
+/*我的奖品-体验卡*/
+.experience{ font-size: 24px; height: 50px; line-height: 50px; color: #666; padding: 0 0 0 15px; border-bottom: 1px solid #DDD;}
+.onehy_experience{ font-size: 18px; font-weight: bold; color: #666; height: 70px; line-height: 70px;}
+.onexperience{ padding: 15px;}
+.onexperience input{ border: 1px solid #ddd; height: 45px; width: 110px; font-size: 18px; line-height: 45px; text-align: center; font-weight: bold;}
+.experience_mynbse{ height: 45px; width:150px; border-radius: 5px; background:#2980B9; font-size: 18px; color: white; line-height: 45px; text-align: center; display: block;}
+.onexperience_c1{ height: 70px; width: 660px;}
+.onexperience_c2{ height: 70px; margin-top: 13px; cursor: pointer;}
+.onexperience_out{ height: 70px; padding: 15px; line-height: 70px; background: url("../../images/gaiban/tiyan_bit.jpg") 15px 40px no-repeat; text-indent: 2em; font-size: 18px; color: #666;}
+.experience_mBisnt{ height: 70px; background: #F3F6FB;}
+.experience_mBisnt span{ height: 70px; display: block; float: left; font-size: 18px; line-height: 70px; color: #666; font-weight: bold; text-align: center;}
+.experience_whiy span{ height: 30px; display: block; float: left; font-size: 16px; text-align: center; color: #666; padding:50px 0 50px 0;}
+
+
+/*** 汇付托管 ***/
+.hf_trust_card{padding:30px 60px;width:360px}
+.hf_trust_card p{margin:5px 0px;font-family:"Microsoft YaHei";font-size:14px;}
+.hf_trust_card span{display:inline-block;width:150px;text-align:right;font-size:14px;}
+.hf_trust_card span.right{text-align:left;font-family:"Arial"}
+.hf_trust_card  p a{display: inline-block;height: 36px;padding: 0px 25px;font: 16px/36px "Microsoft YaHei";
+color: #fff;margin-top: 20px;border-radius: 5px;background:#0697DA}
+.hf_trust_card  a:hover{background:#0073b6}
+.hf_trust_card  a.trust_empower{background:#f9a130;margin-left:20px;}
+.hf_trust_card  a.trust_empower{background:#e99426}

@@ -1,0 +1,25 @@
+{include file="header.html"}
+
+<div class="conbox article">
+{include file="articles_menu.html"}
+	<div class="art_detail">
+	{articles module='borrow' function="get_preview_one" var=var}
+	   <div class="about_us">
+	      <h3>{$var.name}</h3>
+		  <div class="au_item">
+			{$var.contents}
+		   </div>
+	   </div>  
+	</div>
+	<div class="cle"></div>
+	{/articles}
+</div>
+
+{include file="footer.html"}
+{literal}
+<script type="text/javascript">
+diyou.use('index',function(dy){dy.banner_slide('banner_slide','banner_btn');dy.login()})
+</script>
+{/literal}
+
+

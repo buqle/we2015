@@ -1,0 +1,18 @@
+{if $_G.system.con_sinalogin_status==1 || $_G.system.con_qqlogin_status==1}
+<div class="horiz_line">
+			     <p></p>
+				 <span>或</span>
+			</div>
+			<div class="other_login">
+			  <p>使用第三方账号直接登录</p>
+              
+			  <p class="txt_cent">
+                {if $_G.system.con_sinalogin_status==1}
+                <a href="/?user&q=api&type=sina&action=login" class="weibo_log">微博登录</a>
+                {/if}
+                {if $_G.system.con_qqlogin_status==1}
+			     <a href="/?user&q=api&type=qq&action=login" class="qq_log">QQ登录</a>
+                {/if}
+              </p>
+	        </div>
+   {/if}

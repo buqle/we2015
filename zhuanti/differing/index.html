@@ -1,0 +1,89 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=0.5,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="融和贷APP<融和财富>从“安全，收益，资金流动性，便捷，用户体验”为用户考虑。产品操作方便快捷，符合用户的操作习惯，让用户随时随地快速安全的投资理财。" />
+    <link rel="stylesheet" href="{$tpldir}/zhuanti/differing/css/jquery.fullPage.css">
+    <link rel="stylesheet" href="{$tpldir}/zhuanti/differing/css/style.css">
+    <script src="{$tpldir}/zhuanti/differing/js/jquery-1.8.3.min.js"></script>
+    <script src="{$tpldir}/zhuanti/differing/js/jquery.fullPage.min.js"></script>
+    <script>
+        $(function(){
+            if($.browser.msie && $.browser.version < 10){
+                $('body').addClass('ltie10');
+            }
+            $('#dowebok').fullpage({
+                anchors: ['page1', 'page2', 'page3'],
+                menu: '#menu',
+                afterSlideLoad:function(anchorLink, index,slideIndex, direction){
+                    //改变导航栏
+                    $('#curr_mu').attr('src', '{$tpldir}/zhuanti/greater/images/v_'+slideIndex+'.gif')
+                }
+
+            });
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+<ul id="menu">
+    <li data-menuanchor="page1" class="active"><a href="#page1"></a></li>
+    <li data-menuanchor="page2"><a href="#page2"></a></li>
+    <li data-menuanchor="page3"><a href="#page3"></a></li>
+</ul>
+<div class="back_homet"><a href="/">返回首页</a> </div>
+<div id="dowebok">
+    <div class="section" id="ssc1">
+        <div class="synchrony1">
+            <img src="{$tpldir}/zhuanti/differing/images/b1.jpg" alt="">
+        </div>
+
+            <h4>安全 透明 便捷 稳定</h4>
+            <p>——平台新老版本账户同步引导</p>
+            <div class="synchrony1_c2"></div>
+
+    </div>
+
+    <div class="section" id="ssc2">
+        <div class="synchrony1">
+            <img src="{$tpldir}/zhuanti/differing/images/b2.jpg" alt="">
+        </div>
+
+           <div class="logo_cc"></div>
+           <div class="synchrony2_c">
+               <p>2016年3月31日，全国首家国资+风投+公益性互联网金融平台融和贷正式完成与汇付天下、恒丰银行的联合托管上线。至此，我们已进入互联网金融的新纪元！开启安全、透明、便捷、稳定的全新模式！</p>
+               <p>为了让每一位老用户快速了解资金存管，清晰掌控资金流向；轻松实现平台与汇付账户同步，以及已投标的回款管理。我们将在全新改版的融和贷网站中，保留一段时间老版系统页面。</p>
+               <p>如您在使用中，遇到任何的问题与建议，欢迎通过QQ在线客服或全国统一客服热线告诉我们，电话400-123-5679。</p>
+           </div>
+
+    </div>
+
+    <div class="section" id="ssc3">
+        <div class="synchrony1">
+            <img src="{$tpldir}/zhuanti/differing/images/b3.jpg" alt="">
+        </div>
+
+            <p>新老版本用户资金同步流程</p>
+            <div class="synchrony3_c"></div>
+            <div class="synchrony4_c clear1">
+                <a href="/?user">立即同步</a>
+                <a href="" style="float: right;">体验新版</a>
+            </div>
+
+    </div>
+
+
+</div>
+</body>
+</html>
+
+
+
+
+

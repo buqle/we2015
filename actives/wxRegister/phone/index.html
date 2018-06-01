@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+	 <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+	<title>新手专享688现金红包</title>
+	<link rel="stylesheet" href="{$tpldir}/actives/wxRegister/phone/css/style.css">
+</head>
+<body>
+<div style="width: 16rem; margin: 0 auto;" class="bigBox">
+	<section class="section1"><img class="all-img" src="{$tpldir}/actives/wxRegister/phone/images/1.png"></section>
+	<div style="height: 1rem;"></div>
+	<section class="section2" style="text-align:center;">
+		<div class="div-form">
+			<img class="div-form-img" src="{$tpldir}/actives/wxRegister/phone/images/2.png">
+			<div class="form-group  li-row-90" style="position: relative;">
+				<input type="text" class="form-control li-row-90" id="tel" placeholder="请输入您的手机号" maxlength="11">
+			</div>
+			<div class="form-group li-row-90 www" style="position: relative;">
+				<input type="text" class="form-control li-row-90" id="yzm" placeholder="请填写右侧验证码">
+				<img class="li-row-20" id="valimg" src="/weixin/?user&q=valicode" alt="图片验证码" align="middle" style="height:1.25rem; vertical-align: middle; position: absolute; top: 0.2rem; right: 1rem;" title="单击刷新">
+			</div>
+			<div class="form-group  li-row-90 yzm" style="position:relative;">
+				<input type="text" class="form-control li-row-90" id="password" placeholder="请输入短信验证码">
+				<div class="dxyzm li-row-50" onclick="getphoneCode()">获取验证码</div>
+			</div>
+			<div class="form-group  li-row-90 yzm" style="position:relative;">
+				<input type="password" class="form-control li-row-90" id="password1" placeholder="请输入密码">
+			</div>
+			<div class="form-group  li-row-90 zhuce" onclick="zhuce();" style="position: relative;margin-top:0.5rem;">
+				立即注册
+			</div>
+
+			<div style="width:67%;position:relative;text-align:right;"><a href="/weixin/home.html#login" style="font-size:0.5rem;color:#F9C961;">已有账号？请登录</a></div>
+
+		</div>
+	</section>
+
+	<div style="height:1rem;"></div>
+	<section class="section3">
+		<div class="yhcg">
+			<img class="duihao" src="{$tpldir}/actives/wxRegister/phone/images/4.png">
+			<div class="xin-yhcg">
+				<div class="text">
+					<p class="color-b">银行存管</p>
+					<p>全国第十五家正式上线</p>
+					<p>银行存管互金平台</p>
+				</div>
+				<div class="t-img img1">
+					<img class="all-img" src="{$tpldir}/actives/wxRegister/phone/images/aa_02.png">
+				</div>
+			</div>
+
+		</div>
+
+		<div class="yhcg" style="background:#fff;">
+			<img class="duihao" src="{$tpldir}/actives/wxRegister/phone/images/4.png">
+			<div class="xin-yhcg">
+				<div class="t-img img2" style="width:35%;">
+					<img class="all-img" src="{$tpldir}/actives/wxRegister/phone/images/aa_06.png">
+				</div>
+				<div class="text" style="width:65%;margin-top:1.8rem;">
+					<p class="color-b">国资+风投</p>
+					<p>国企担保 高效控险 爱心公益</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="yhcg">
+			<img class="duihao" src="{$tpldir}/actives/wxRegister/phone/images/4.png">
+			<div class="xin-yhcg">
+				<div class="text" style="width:65%;margin-top:1.5rem;">
+					<p class="color-b">多方位安保</p>
+					<p>雄厚实力 专业团队 优质伙伴</p>
+				</div>
+				<div class="t-img img1" style="width:35%;">
+					<img class="all-img" src="{$tpldir}/actives/wxRegister/phone/images/aa_03.png">
+				</div>
+			</div>
+
+		</div>
+
+		<div class="yhcg" style="background:#fff;">
+			<img class="duihao" src="{$tpldir}/actives/wxRegister/phone/images/4.png">
+			<div class="xin-yhcg">
+				<div class="t-img img2" style="width:35%;">
+					<img class="all-img" style="width:3.5rem;height:3.5rem;" src="{$tpldir}/actives/wxRegister/phone/images/aa_04.png">
+				</div>
+				<div class="text" style="width:65%;margin-top:1.8rem;text-align:right;">
+					<p class="color-b">独创DPS风控</p>
+					<p>严格把关 层层筛查 规避风险</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="yhcg" style="height:5rem;">
+			<img class="duihao duihao1" src="{$tpldir}/actives/wxRegister/phone/images/4.png">
+			<div class="yhcg1"></div>
+			<div class="xin-yhcg">
+				<div class="text text5">
+					<p class="color-b">稳定收益</p>
+					<p>8.2%~12.7%</p>
+					<p>中高收益 安全增值</p>
+				</div>
+				<div class="t-img img3">
+					<img class="all-img" src="{$tpldir}/actives/wxRegister/phone/images/3.png">
+				</div>
+			</div>
+
+		</div>
+
+		<div style="height:1.5rem;"></div>
+		<div class="xz">
+			<a href="/weixin/home.html#/login/register">注册领688元现金红包</a>
+		</div>
+		<p class="hhhh">理财有风险，投资需谨慎</p>
+		<div style="height:1rem;"></div>
+	</section>
+
+</div>
+<script id="DS_PRE_JS" type="text/javascript" src="http://cdn.datastory.com.cn/js/pre-ds-min.js?dsTid=04b72749-dcb7-4bea-abe2-d3dd924faac8"></script>
+	<script src="{$tpldir}/actives/register/phone/js/zepto.min.js" type="text/javascript"></script>
+	<script src="{$tpldir}/actives/register/phone/js/autofull.js" type="text/javascript"></script>
+	<script src="{$tpldir}/actives/register/phone/js/index.js?v=20160907" type="text/javascript"></script>
+<script src="/weixin/libs/encypt.js?v=201608192" type="text/javascript"></script>
+</body>
+</html>

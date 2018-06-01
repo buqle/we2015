@@ -1,0 +1,328 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/jiaxi2/css/style.css?v=2017" rel="stylesheet" type="text/css" />
+
+<div class="act11-bata1"></div>
+
+<div class="act11-bata2">
+    <div class="act11-bata3 ww2">
+        <div class="act11-pubt1 bold color-ff text-center">活动内容</div>
+        <p class="font24 color-ff act11-bata4 ww3">
+            活动期间，用户可在每天的10:00、15:00和20:00三个时间段专享“双十一专属标的”，狂欢双十一，
+            投资不缺席，<i>最高加息6.6%！</i>
+        </p>
+        <dl class="act11-bata5 text-center clearg color-ff" now="{$smarty.now}">
+            <dd class="on_0" ntye="1">10：00</dd>
+            <dd style="margin: 0 186px;" class="on_1" ntye="2">15：00</dd>
+            <dd class="on_2" ntye="3">20：00</dd>
+        </dl>
+
+        <!--加息列表-->
+        <div class="act11-bata6 clearg">
+            <dl class="lefts">
+                <dd class="pos-a act11-bata7 ww3">
+                    <div class="act11-bata7t pos-b  font20 color-ff">双十一专属标001</div>
+                    <h6 class="text-center">年化利率</h6>
+                    <h4 class="text-center">9.6%<i class="bold">+2.2%</i></h4>
+                    <div class="act11-bata7c clearg font16">
+                        <div class="act11-bata7c1 lefts">
+                            借款金额：<p><i>570000.00</i>元</p>
+                        </div>
+                        <div class="lefts act11-bata7c2"></div>
+                        <div class="rights act11-bata7c3 text-center">
+                            借款期限：<p><i>3</i>个月</p>
+                        </div>
+                    </div>
+                    <div class="act11-bata8 pos-a ww3">
+                        <span data-width="' + ret.data[i].borrow_account_scale + '" class="pos-b"></span>
+                    </div>
+                </dd>
+                <dd class="act11-bata9 color-ff text-center ww3 font24 cursor">立即投标</dd>
+            </dl>
+
+        </div>
+        <!--加息列表-->
+
+        <div class="act11-bata10 clearg">
+            <div class="act11-pubt1 bold color-ff text-center">抢标记录</div>
+            <div class="act11-bata11">
+                <div></div>
+                <div class="act11-bata12 ww3">
+                    <div class="act11-bata13 ww3">
+                        <div class="act11-bata14 ww3">
+                            <p class="act11-bata14_tit text-center font22">
+                                <span style="width: 22%">用户名</span><span style="width:27%;">投资标的</span><span>投资金额(元)</span><span>投资时间</span>
+                            </p>
+                            <div style="height:272px;overflow: hidden;width: 100%;" class="renav2">
+                                <ul  class="marqueeboxx text-center color-ff font20" id="marqueeboxx1">
+
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="text-center color-ff font20 pepo">目前有<i>0</i>人次抢标成功</p>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <div class="pub_btn act11-bata15 text-center font24 lefts color-ff cursor">立即投标</div>
+            <div class="pub_btn act11-bata16 text-center font24 lefts color-ff cursor">我的记录</div>
+        </div>
+
+        <div class="act11-bata17 font20 color-ff">
+            <div class="act11-pubt1 bold text-center">活动规则</div>
+            <p>1、本活动借款项目满标复审成功且满标时间在活动期间内，活动加息有效；</p>
+            <p>2、活动共分10:00、15:00与20:00三场；</p>
+            <p>3、本活动最终解释权归融和贷所有。</p>
+        </div>
+
+    </div>
+
+
+    <div class="alertbox-A" id="alertbox-1"></div>
+    <div class="alertbox-B"id="alertbox-2">
+        <div class="ww3 alertbox-C" id="tanabata-a_ata-abox1">
+            <div class="close-a cursor"></div>
+            <div class="act11-bata11">
+                <div></div>
+                <div class="act11-bata12 ww3">
+                    <div class="act11-bata13 ww3">
+                        <div class="act11-pubt1 bold color-ff text-center">我的记录</div>
+                        <div class="act11-bata14 ww3">
+                            <p class="act11-bata14_tit text-center font22">
+                                <span>投资标的</span><span>投资金额(元)</span><span>投资时间</span>
+                            </p>
+                            <div style="height:272px;overflow: hidden;width: 100%;" class="renav3">
+                                <ul  class="marqueeboxx text-center color-ff font20" id="marqueeboxx2">
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+<div class="jiujiu_foot">
+    <p>免责申明</p>
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意刷奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <div class="endjiujiu"></div>
+</div>
+
+{literal}
+<script type="text/javascript">
+    window.timer = {
+        _queue : [],
+        _times : [],
+        start:function(time, borrow_nid) {
+            if (this._queue[borrow_nid] != undefined) return false;
+            this._queue[borrow_nid] = 0;
+            var timesID =  setInterval(function(){
+                var getbackSecond = time - timer._queue[borrow_nid];
+                if (getbackSecond >=0) {
+                    var day = Math.floor(getbackSecond / (60 * 60 * 24));
+                    var hour = Math.floor(getbackSecond / (60 * 60)) - (day * 24);
+                    var minute = Math.floor(getbackSecond / 60) - (day * 24 * 60) - (hour * 60);
+                    var second = Math.floor(getbackSecond) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                    timer._queue[borrow_nid]++;
+                    if (day < 10) day = "0" +day;
+                    if (hour < 10) hour = "0" + hour;
+                    if (minute < 10) minute = "0" + minute;
+                    if (second < 10) second = "0" + second;
+                    var cc='';
+                    cc+='<p class="font24 color-ff text-center">倒计时<b>'+ day +'</b>:<b>'+ hour +'</b>:<b>'+ minute +'</b>:<b>'+second+'</b></p>'
+                    $("div[nid="+borrow_nid+"]").html(cc);
+                } else {
+                    clearInterval(timer._times[borrow_nid]);
+                    //
+                }
+            }, 1000);
+            this._times[borrow_nid] = timesID;
+        }
+
+    };
+    $(function () {
+        var nowtime=parseInt($('.act11-bata5').attr('now'));
+        $.each($('.act11-bata5 dd'),function (i,val) {
+            $(this).click(function () {
+                $(this).addClass('on_dd').siblings().removeClass('on_dd')
+                var type=$(this).attr('ntye');
+                getList(type,'.act11-bata6')
+            });
+            if($(this).index()==0){
+                $(this).click();
+            }
+        });
+
+        //listjia
+        function getList(type,callback){
+            var htccc=$("<div class='loading_now' style=' text-indent: 4em; height: 388px; line-height: 300px; width: 100%;'>正在加载中,请耐心等待...</div>");
+            $(callback).html(htccc);
+            $.getJSON('/?user&q=get_share_ajax&alias=jiaxi2&methodname=Get_borrow_List&type='+type+'',function(ret){
+                if(ret.code == 0){
+                    var surelen = ret.data.length;
+                    var sure = '';
+                    for (var i =0 ; i < surelen; i++) {
+                        if(ret.data[i].borrow_status_nid=='full'||ret.data[i].borrow_status_nid=='repay'||ret.data[i].borrow_status_nid=='repay_yes'){
+                            sure += '<dl class="biaocont3kong lefts">';
+                        }else {
+                            sure += '<dl class="lefts">';
+                        }
+                        sure+='<dd class="pos-a act11-bata7 ww3">';
+                        sure+='<div class="act11-bata7t pos-b font20 color-ff">'+ret.data[i].name+'</div>';
+                        sure+='<h6 class="text-center">年化利率</h6>';
+                        if(ret.data[i].borrow_apr>7.6 && ret.data[i].borrow_period==1){
+                            sure += '<h4 class="text-center">7.6%<i class="bold">+</i><i class="bold">'+(ret.data[i].borrow_apr-7.6).toFixed(2)+'</i></h4>';
+                        }else  if(ret.data[i].borrow_apr>9.6 && ret.data[i].borrow_period==3){
+                            sure += '<h4 class="text-center">9.6%<i class="bold">+</i><i class="bold">'+(ret.data[i].borrow_apr-9.6).toFixed(2)+'</i></h4>';
+                        }else  if(ret.data[i].borrow_apr>11.3 && ret.data[i].borrow_period==6){
+                            sure += '<h4 class="text-center">11.3%<i class="bold">+</i><i class="bold">'+(ret.data[i].borrow_apr-11.3).toFixed(2)+'</i></h4>';
+                        }else  if(ret.data[i].borrow_apr>11.9 && ret.data[i].borrow_period==12){
+                            sure += '<h4 class="text-center">11.9%<i class="bold">+</i><i class="bold">'+(ret.data[i].borrow_apr-11.9).toFixed(2)+'</i></h4>';
+                        }
+                        sure+='<div class="act11-bata7c clearg font16">';
+                        sure+='<div class="act11-bata7c1 lefts">借款金额：<p><i>'+ret.data[i].account+'</i>元</p></div>';
+                        sure+='<div class="lefts act11-bata7c2"></div>';
+                        sure+='<div class="rights act11-bata7c3 text-center">借款期限：<p><i>'+ret.data[i].borrow_period_name+'</i>个月</p></div>'
+                        sure+='</div>';
+                        sure+='<div class="act11-bata8 pos-a ww3"><span data-width="'+ ret.data[i].borrow_account_scale+'" class="pos-b"></span></div>';
+                        sure+='</dd>';
+                        if(ret.data[i].count_down ==1 && parseInt(ret.data[i].tender_time) >nowtime) {
+                            sure += '<dd class="act11-bata9 color-ff text-center ww3 font24" time1="'+ret.data[i].tender_time+'" nid="'+ret.data[i].borrow_nid+'" time2="'+ret.data[i].count_down+'">倒计时<b>00</b>:<b>00</b>:<b>00</b>:<b>00</b></dd>'
+                        }else if(ret.data[i].borrow_status_nid == 'loan'){
+                            sure+='<a class="act11-bata9 color-ff text-center ww3 font24 block" href="/invest/a' + ret.data[i].borrow_nid + '.html">立即投资</a>';
+                        }else if(ret.data[i].borrow_status_nid == 'full'){
+                            sure+='<div class="act11-bata9 color-ff text-center ww3 font24">满标待审</div>';
+                        }else if(ret.data[i].borrow_status_nid == 'repay'){
+                            sure+='<div class="act11-bata9 color-ff text-center ww3 font24">还款中</div>';
+                        }else if(ret.data[i].borrow_status_nid == 'repay_yes'){
+                            sure+='<div class="act11-bata9 color-ff text-center ww3 font24">已还完</div>';
+                        }
+                        sure+='</dl>';
+
+                    }
+                    $('.act11-bata6').html(sure);
+                    if(surelen==0){
+                        for (var i=0;i<3;i++){
+                            $('.act11-bata6').append($('<div class="null_list"></div>'));
+                        };
+                        $('.act11-bata6 .null_list:eq(1)').css('margin','0px 30px');
+                    }
+                    $('.act11-bata6 dl:eq(1)').css('margin','0px 30px');
+                    $('.act11-bata8 span').each(function(){
+                        $(this).animate({width:''+$(this).attr('data-width')+'%'},{
+                        },1000);
+
+                    });
+                    $('.act11-bata9').each(function(){
+                        if($(this).attr('time2')==1&&new Number($(this).attr('time1'))>nowtime){
+                            timer.start(new Number($(this).attr('time1'))-nowtime,$(this).attr('nid'))
+                        }
+
+                    })
+
+                }else{
+                    alert(ret.msg);
+                }
+            });
+        };
+
+
+        //tender-btn
+        $('.act11-bata15').click(function () {
+            if (user_id>0) {
+                window.location.href="/invest/index.html";
+            } else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        });
+
+
+        //pub-list
+        $.http.get('/?user&q=get_share_ajax&alias=jiaxi2&methodname=gettoplist', {}, function(ret){
+            if (ret.code == 0){
+                var len = ret.data.length;
+                var html=''
+                for(var i=0; i<len; i++){
+                    html += '<p><span style="width:20%">'+ret.data[i].username+'</span><span style="width: 27%">'+ret.data[i].name+'</span><span>'+ret.data[i].account +'</span><span>'+ret.data[i].addtime+'</span></p>';
+                }
+                $('#marqueeboxx1').html(html);
+                $('.pepo i').text(ret.total)
+
+            }else {
+                alert(ret.msg)
+            }
+        }, 'json')
+
+        //self
+        $('.act11-bata16').click(function () {
+            if(user_id>0){
+                $('#alertbox-1,#alertbox-2').show();
+                $('.close-a').click(function(){
+                    $('#alertbox-1,#alertbox-2').hide();
+                })
+                $.http.get('/?user&q=get_share_ajax&alias=jiaxi2&methodname=getmylist', {}, function(ret){
+                    if (ret.code == 0){
+                        var len = ret.data.length;
+                        var html=''
+                        for(var i=0; i<len; i++){
+                            html += '<p><span>'+ret.data[i].name+'</span><span>'+ret.data[i].account+'</span><span>'+ret.data[i].addtime+'</span></p>';
+                        }
+                        $('#marqueeboxx2').html(html);
+
+                    }else {
+                        alert(ret.msg)
+                    }
+                }, 'json')
+            }else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        })
+
+
+        var $this = $(".renav2");
+
+        var scrollTimer;
+
+        $this.hover(function(){
+
+            clearInterval(scrollTimer);
+
+        },function(){
+
+            scrollTimer = setInterval(function(){
+
+                scrollNews($(".renav2"));
+                scrollNews($(".renav3"));
+
+
+            }, 2000 );
+
+        }).trigger("mouseout");
+        function scrollNews(obj){
+
+            var $self = obj.find("ul:first");
+
+            var lineHeight = $self.find("p:first").height();
+
+            $self.animate({ "margin-top" : -lineHeight +"px" },800 , function(){
+
+                $self.css({"margin-top":"0px"}).find("p:first").appendTo($self);
+
+            })
+
+        }
+
+    })
+</script>
+{/literal}

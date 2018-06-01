@@ -1,0 +1,294 @@
+<a name="text1" id="jxtop"></a>
+{include file="header.html"}
+    <link type="text/css" rel="stylesheet" href="{$tpldir}/zhuanti/bby3/css/style.css">
+    <script type="text/javascript" src="{$tpldir}/zhuanti/bby3/js/jquery.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="{$tpldir}/zhuanti/bby3/js/scrollToo.js"></script>
+<div class="jiexi01">
+    <div class="jiexcon" style="width:980px; margin:0 auto;">
+        <div><img src="{$tpldir}/zhuanti/bby3/images/b1.jpg" alt=""></div>
+        <div><img src="{$tpldir}/zhuanti/bby3/images/b2.jpg" alt=""></div>
+        <div><img src="{$tpldir}/zhuanti/bby3/images/b3.jpg" alt=""></div>
+        <div><img src="{$tpldir}/zhuanti/bby3/images/b4.jpg" alt=""></div>
+        <div><img src="{$tpldir}/zhuanti/bby3/images/b5.jpg" alt=""></div>
+        <div><img src="{$tpldir}/zhuanti/bby3/images/b6.jpg" alt=""></div>
+        <div><img src="{$tpldir}/zhuanti/bby3/images/b7.jpg" alt=""></div>
+        <div><img src="{$tpldir}/zhuanti/bby3/images/b8.jpg" alt=""></div>
+        <div><img src="{$tpldir}/zhuanti/bby3/images/b9.jpg" alt=""></div>
+    </div>
+</div>
+
+<div style="background:#00529c;">
+    	<div class="bing_sieng">
+        	<div>
+        		<div class="img_bbyc1">
+                    <h4></h4>
+                    <div class="bbyc1_side">
+                        <ul id="a1111">
+                            <li><a href="#text1"><img src="{$tpldir}/zhuanti/bby3/images/1.gif" alt=""></a> </li>
+                            <li style="padding-left: 38px;padding-top: 26px;"><a href="#text2"><img src="{$tpldir}/zhuanti/bby3/images/2.gif" alt=""></a> </li>
+                            <li style="padding-left: 78px;padding-top: 28px;"><a href="#text3"><img src="{$tpldir}/zhuanti/bby3/images/3.gif" alt=""></a> </li>
+                            <li style="padding-left: 128px;padding-top: 20px;"><a href="#text4"><img src="{$tpldir}/zhuanti/bby3/images/4.gif" alt=""></a> </li>
+                            <li style="padding-left: 164px;padding-top: 22px;"><a href="#text5"><img src="{$tpldir}/zhuanti/bby3/images/5.gif" alt=""></a> </li>
+                            <li style="padding-left:205px;padding-top: 24px;"><a href="#text6"><img src="{$tpldir}/zhuanti/bby3/images/6.gif" alt=""></a> </li>
+                            <li style="padding-left: 248px;padding-top: 28px;"><a href="#text7"><img src="{$tpldir}/zhuanti/bby3/images/7.gif" alt=""></a> </li>
+                        </ul>
+                    </div>
+                </div>
+
+        <a name="text1" id="text1"></a>
+                <div class="img_bbyc2">
+                    <h4></h4>
+                    <div class="bbyc2_side">
+                        <div style="width: 900px;margin:0 auto;padding-top: 150px;">
+                            <p> 新年的钟声已敲响，开启了互联网金融P2P行业2016崭新的里程。新模式、新理念、新体系在融和贷平台鲜花般绽放，让广大用户聆听这个冬天花朵绽放的声音，感受和煦而又温暖的春风吹拂。</p>
+                            <p style="padding-top: 4px;">始终相信团队就是POWER</p>
+                            <p> 融和贷平台为全国首家国资兼风投背景的公益性互联网金融平台。平台自上线以来，凭借雄厚的国资风投背景、权威的专家顾问团队，经验丰富的精英团队、专业先进的管理、业内独创的DPS风控系统、恒丰银行资金存管模式以及蜜蜂数据等多方保障措施，逐步做大做强，成为网贷行业的佼佼者！</p>
+                            <p style="padding-top: 4px;">始终相信德厚方得载物</p>
+                            <p>融和贷——互联网金融平台的标杆。回首2015我们走过的慈善爱心捐助站，心酸中也有感动，我们为孤寡老人、留守儿童、无父无母的孤儿落泪心酸，也为能为他们做一点奉献而暖心感动！融和贷公益性决定了它的慈善本色，我们一直在做一个有爱心、有责任心的企业，努力践行公益性P2P平台应尽的社会责任与义务。</p>
+                            <p style="padding-top: 4px;">始终相信感恩方得长久</p>
+                            <p>相携相伴，是一种缘分。融和贷卓越成绩的取得，始终离不开广大用户的鼓励、呵护与大力支持，离不开广大用户的相伴相随，你们的信任与厚爱，是我们开拓进取的无穷动力和源泉。有了你们的帮助、支持和鼓励，我们的技术团队、管理团队、服务团队将进一步提升融和贷平台的风险抵御能力，使得平台更加安全可控，在保障投资人和平台的利益方面做到最佳状态，创建更快捷、更高效的金融服务体系。2016相伴有你，愿在新的一年我们融和贷能与广大用户同心携手，共谱华章，再创新高！</p>
+                        </div>
+                    </div>
+                </div>
+
+
+        <a name="text2" id="text2"></a>
+                <div class="img_bbyc3">
+                    <h4></h4>
+                    <div class="bbyc3_side"> </div>
+                    <div class="bbyc3_side1"> </div>
+                </div>
+
+        <a name="text3" id="text3"></a>
+                <div class="img_bbyc4">
+                    <h4></h4>
+                    <div class="bbyc4_side1"></div>
+                    <div class="bbyc4_side2"></div>
+                    <div class="bbyc4_side3"></div>
+                    <div class="bbyc4_side4"></div>
+                    <div class="bbyc4_side5"></div>
+                    <div class="bbyc4_side6"></div>
+                    <div class="bbyc4_side7"><div class="bbyc4_side8"></div></div>
+
+                </div>
+
+        <a name="text4" id="text4"></a>
+                <div class="img_bbyc5">
+                    <h4></h4>
+                    <p>  2015年，融和贷积极策划了丰富多样的线上、线下活动，在给广大用户带去实惠的同时也极大地提升了用户体验，提升了品牌知名度与影响力，活动形式如下：</p>
+                    <div class="bbyc5_side1"></div>
+                    <div class="bbyc5_side2"></div>
+
+                </div>
+
+        <a name="text5" id="text5"></a>
+                <div class="img_bbyc6">
+                    <h4></h4>
+                    <div class="bbyc6_side"></div>
+                    <div class="bbyc6_side1">
+                        <p><span>公益之行第一站：</span>2015年 1月30日，为金色家园养老中心送去生活必需品。</p>
+                        <p><span>公益之行第二站：</span>2015年6月1日，免费搭建欢乐儿童节平台。</p>
+                        <p><span>公益之行第三站：</span>2015年7月16日，岳西支教，关爱留守儿童。</p>
+                        <p><span>公益之行第四站：</span>2015年8月30日，承办纪念抗战胜利70周年文艺汇演。</p>
+                        <p><span>公益之行第五站：</span>2015年9月2日，赴舒城县河棚镇新开小学送温暖，呵护留守儿童。</p>
+                        <p><span>公益之行第六站：</span>2015年9月21日，为肥东县众兴乡敬老院送去爱心物资，关怀孤寡老人。</p>
+                        <p><span>公益之行第七站：</span>2015年12月15日，参加安徽省第二届公益图片展，宣传公益项目。</p>
+                        <p><span>公益之行第八站：</span>2015年12月25日，前往淮南市胡集村与木台村唐台孜，为贫困孩童送去爱心捐款。</p>
+
+                    </div>
+                </div>
+
+                <a name="text6" id="text6"></a>
+                <div class="img_bbyc7">
+                    <h4></h4>
+                    <div class="bbyc7_side"></div>
+                    <div class="bbyc7_side1"></div>
+                </div>
+
+                <a name="text7" id="text7"></a>
+                <div class="img_bbyc8">
+                    <h4></h4>
+                    <p>  融和贷，志存高远，卓尔不群，“资金融通天下，爱心和谐社会”是我们的终极目标，我们的愿景是做中国网络金融阳光化的倡导者和整合者，以社会为本、以互联网为依托、以客户为中心、以诚信为基石，构建起互联网、金融、社会公益事业相融合的完整体系！普惠金融，阳光融和，成就中国第一公益投融资平台！</p>
+                    <div class="bbyc8_side">
+                        <div class="bbyc8_side1">
+                            <p>未来，我们融和贷将与小额贷款公司、融资租赁公司、担保公司、商业保理公司、资产管理公司以及典当公司等众多金融机构展开合作，拓展业务版图，不断创新业务模式，丰富多元化的产品，提供更多优质的项目，迈向更加专业、正规与安全的新纪元。融和贷团队也将以更认真的态度，更饱满的精神，更优质的服务全程陪伴我们的用户，兑现财富增值，实现人生理想。未来我们将把企业发展和公益事业更加紧紧结合在一起，弘扬社会主旋律，勇于担当社会责任，关注弱势群体，扶危济困，传递爱心，传播正能量，2016年通过我们共同的努力能够帮助到更多孤儿、单亲贫困家庭和孤寡老人！</p>
+                            <p>梦在前方，路在脚下。融和贷全体员工有信心有决心，同舟共济，努力拼搏，以更加饱满的热情，以更加昂扬的斗志，创造更加辉煌的2016。</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+        <div id="list" style="top: 298.5px; right:0px;">
+            目录
+            <div id="list-content" style="display: none; opacity: 1;">
+                <ul>
+                    <li><a href="javascript:locationScroll('#text1');">融和新年寄语</a></li>
+                    <li><a href="javascript:locationScroll('#text2');">大事记节选</a></li>
+                    <li><a href="javascript:locationScroll('#text3');">业绩报告</a></li>
+                    <li><a href="javascript:locationScroll('#text4');">开展的各项特色市场活动</a></li>
+                    <li><a href="javascript:locationScroll('#text5');">开展的社会公益项目</a></li>
+                    <li><a href="javascript:locationScroll('#text6');">合作机构</a></li>
+                    <li><a href="javascript:locationScroll('#text7');">2016年融和展望</a></li>
+                    <li><a href="javascript:locationScroll('#text8');">我与融和贷的365天</a></li>
+                    <li><a href="javascript:locationScroll('#jxtop');">返回顶部</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        {literal}
+        <script type="text/javascript">
+            function locationScroll(id){
+                $("html,body").animate({scrollTop: $(id).offset().top}, 400,"swing");
+            }
+        </script>
+
+
+        <script type="text/javascript">
+            $(window).resize(function(){
+                $("#list").css("top",($(window).height()-100)/2);
+                //$("#list").css("right",($("body").width()-960)/2-50);
+            }).trigger("resize");
+            $("#list").hover(function(){
+                $("#list-content").stop().fadeIn(200);
+            },function(){
+                $("#list-content").stop().fadeOut(200);
+            });
+        </script>
+        {/literal}
+
+    		</div>
+        
+        	
+        </div>
+    </div>
+
+<a name="text8" id="text8"></a>
+<div class="end_filbg">
+    <div style="padding-bottom: 260px;"></div>
+    <div class="end_cont1">
+        <div class="end_winner">
+           <div class="end_winner1">
+               <div class='s soxedf'></div>
+               <div class="end_winner1side">
+                   <h4 id="zctime"></h4>
+                   <p>我与融和贷相识</p>
+                   <p>我是第</p>
+                   <h4 id="zcnum"></h4>
+                   <p>个融和贷用户</p>
+               </div>
+           </div>
+
+            <div class="end_winner2 clear">
+                <div class='s' style="float: left;"></div>
+                <div class="end_winner2side">
+                    <h4 id="first_recharge_time"></h4>
+                    <p>我第一次充值了</p>
+                    <h4 id="first_recharge_account"></h4>
+                </div>
+            </div>
+
+            <div class="end_winner3">
+                <div class='s' style="float: left;"></div>
+                <div class="end_winner3side">
+                    <h4 id="first_tendtime"></h4>
+                    <p>我第一次投资了</p>
+                    <h4 id="first_account"></h4>
+                    <p>我目前总交易额</p>
+                    <h4 id="self_alltned"></h4>
+                    <p>目前平台的总交易额是</p>
+                    <h4 id="all_account"></h4>
+                </div>
+            </div>
+
+            <div class="end_winner4">
+                <div class='s' style="float: left;"></div>
+                <div class="end_winner4side">
+                    <h4 id="first_interest_time"></h4>
+                    <p>我第一次收益了</p>
+                    <h4 id="first_interest_yes"></h4>
+                    <p>我目前总收益</p>
+                    <h4 id="self_all_interest"></h4>
+                    <p>目前平台的总收益是</p>
+                    <h4 id="all_account_yes_sum"></h4>
+                </div>
+            </div>
+
+            <div class="end_winner5">
+                <div class='s' style="float: left;"></div>
+                <div class="end_winner5side">
+                    <h4 id="friend_reg"></h4>
+                    <p>推荐的第一个朋友是<span id="friendname"></span></p>
+                    <p>你们还在联系么</p>
+                </div>
+            </div>
+
+            <div class="end_winner6">
+                <div class='s' style="float: left;"></div>
+                <div class="end_winner6side">
+                    <p>我与融和贷成为好朋友已经</p>
+                    <h4 id="allday"></h4>
+                    <p>天</p>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+<div style="background: #00529c;"><div class="imgbbyfoot"></div></div>
+{literal}
+<script>
+    gettest();
+    function gettest(){
+        if (user_id!=''){
+            $.ajax({
+                type: "GET",
+                url: "/?user&m=active/active365",
+                dataType: "json",
+                async: true,
+                success: function (r) {
+                    if (r.code == 0){
+                        $('#zctime').text(r.data.reg_time);
+                        $('#zcnum').text(r.data.num);
+
+
+                        $('#first_recharge_time').text(r.data.first_recharge_time);
+                        $('#first_recharge_account').text(r.data.first_recharge_account);
+
+                        $('#first_recharge_time').text(r.data.first_recharge_time);
+                        $('#first_recharge_account').text(r.data.first_recharge_account);
+
+                        $('#first_tendtime').text(r.data.first_tendtime);
+                        $('#self_alltned').text(r.data.self_alltned);
+                        $('#all_account').text(r.data.all_account);
+                        $('#first_account').text(r.data.first_account);
+
+                        $('#first_interest_time').text(r.data.first_interest_time);
+                        $('#first_interest_yes').text(r.data.first_interest_yes);
+						 $('#self_all_interest').text(r.data.self_all_interest);
+                        $('#all_account_yes_sum').text(r.data.all_account_yes_sum);
+
+                        $('#friendname').text(r.data.friendname);
+                        $('#friend_reg').text(r.data.friend_reg);
+
+                        $('#allday').text(r.data.allday);
+                        $('#first_interest_yes').text(r.data.first_interest_yes);
+
+
+                    }
+                    else
+                        alert("系统忙，请稍后再试！");
+                },
+                error: function () {
+                }
+            });
+        }
+
+    }
+</script>
+{/literal}
+

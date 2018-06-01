@@ -1,0 +1,138 @@
+
+
+<div class="conbox t20 fn_cle user_cont">
+
+{include file="users_menu.html"}
+
+	<div class="fn_rig user_rig">
+	  <div class="box_summary fn_cle">
+	     <div class="summ_lf fn_left">
+			  <h3>账户余额</h3>
+			 <p><span class="usable"><em>{$_G.account_result._balance|default:'0.00'}</em></span>元可用，冻结金额<span class="unusable"><em>{$_G.account_result._frost|default:'0.00'}</em></span>元</p>
+			  <div class="summ_btn t10">
+				<a href="/?user&m=trust/recharge" class="recharge">充值</a><a href="/?user&m=trust/cash">提现</a>
+			  </div>
+		 </div>
+	     <div class="summ_rig fn_rig">
+		      <ul>
+			    <li class="total">
+				   <h3><span >账户总额</span><i class="icon" title="账户总额=可用余额+冻结金额+待收总额"></i>
+				   <em style="margin-left: 50px;">{$_G.account_result._total|default:'0.00'}</em>元
+				   <a href="/?user&m=account/log">查看资金记录</a></h3>
+				</li>
+				<li>
+				   <h3><span >当前待还总额</span><i class="icon" title="待还总额=待还本金+待还利息"></i>
+				   <em style="margin-left: 50px;">{$_G.account_result._repay|default:'0.00'}</em>元
+				   <a href="/?user&m=borrow/count">查看借款明细</a></h3>
+				</li>
+			  </ul>
+		 </div>
+	  </div>
+	  <div class="user_box t20">
+		  <ul>
+		      <li class="bor_none fn_cle">
+			  {articles module="borrow" function="get_user_repay_count" var="repay_var" user_id=$_G.user_id}
+			   <div class="borrow_total fn_left">
+			      <div class="top">
+					  <img src="{$tpldir}/css/blue/images/borrow_total.jpg" />
+					  <span><em>{$repay_var.borrow_success_account|default:'0.00'}</em><font>元</font></span>
+				  </div>
+			      <div class="bot">
+				      <span class="fn_left">借款总额</span>
+				  </div>
+			   </div>
+			   <div class="inter_paid fn_left">
+				   <div class="top">
+					   <img src="{$tpldir}/css/blue/images/paid.jpg" />
+					   <span><em>{$repay_var.repay_yes_interest|default:'0.00'}</em><font>元</font></span>
+				   </div>
+				   <div class="bot">
+				       <span>已还利息</span>
+				   </div>
+			   </div>
+			   <div class="inter_nopaid fn_left">
+			       <div class="top">
+					   <img src="{$tpldir}/css/blue/images/nopaid.jpg" />
+					  <span><em>{$repay_var.repay_wait_interest|default:'0.00'}</em><font>元</font></span>
+				   </div>
+			       <div class="bot">
+				       <span>待还利息</span>
+				   </div>
+			   </div>
+			   {/articles}
+			  </li>
+			  <li>
+				  <h3 class="fn_cle"><span class="fn_left">最近两笔待还</span><a href="/?user&m=borrow/repay/detail" class="fn_rig" title="查看待还明细" >待还明细</a></h3>
+				  <table class="user_tab6">
+				    <thead>
+					    <tr>
+						    <th width="25%">项目</th> 
+						    <th width="12%" class="return_day">还款日</th> 
+						    <th width="12%">还款总额</th> 
+						    <th width="12%">应还本金</th> 
+						    <th width="12%">应还利息</th> 
+						    <th width="9%">逾期天数</th> 
+						    <th width="9%">状态</th> 
+						    <th width="9%">操作</th> 
+						</tr>
+					</thead>
+					<tbody>
+					{list module="borrow" var="loop" function ="get_repay_list"  user_id=$_G.user_id order="repay_time_asc" repay_status="0" limit=2}
+				    {foreach from=$loop.list item="item"}
+					    <tr>
+						    <td><a target="_blank" href="/invest/a{$item.borrow_nid}.html" title="{$item.borrow_name}">{$item.borrow_name|truncate:6}</a></td>
+						    <td class="return_day">{$item.repay_time|date_format:'Y-m-d'}</td>
+						    <td>￥{$item.repay_account|default:'0.00'}</td>
+						    <td>￥{$item.repay_capital|default:'0.00'}</td>
+						    <td>￥{$item.repay_interest|default:'0.00'}</td>
+						    <td>{$item.late_days}天</td>
+						    <td>未还款</td>
+						    <td><a  href="javascript:void(0)" class="repay_now" data-id='{$item.id}' data-borrow-nid='{$item.borrow_nid}'>还款</a></td>
+						</tr> 
+					{/foreach}
+				    {/list}
+					</tbody>
+				  </table>
+			  </li>
+			  <li>
+				  <h3 class="fn_cle"><span class="fn_left">交易记录</span><a href="/?user&m=account/log" class="fn_rig" title="查看交易明细">交易明细</a></h3>
+				  <table class="user_tab6">
+				    <thead>
+					    <tr>
+                            <th width="15">时间</th> 
+						    <th width="15%">类型</th> 
+						    <th width="10%">存入</th> 
+						    <th width="10%">支出</th> 
+						    <th width="10%">冻结</th> 
+						    <th width="10%" title="可用余额=账户总额-冻结金额-待收总额">余额</th> 
+						    <th width="30%">备注</th>							
+						</tr>
+					</thead>
+					<tbody>
+					{list module="account" function="get_log_list" var="loop" user_id=$_G.user_id limit=5 }
+					{foreach from=$loop.list item="item"}
+					    <tr>
+						    <td>{$item.addtime|date_format:"y/m/d H:i"}</td>
+						    <td class="txt_lf">{$item.type|linkages:"account_type"}</td>
+						    <td>{if $item.balance_new>0 }￥{$item.balance_new|default:'0.00'}{elseif $item.await_new>0}￥{$item.await_new|default:'0.00'}{/if}</td>
+						    <td>{if $item.expend_new>0}￥{$item.expend_new|default:'0.00'}{/if}
+                            {if $item.balance_new==0 && $item.expend_new==0 && $item.frost_new==0 && $item.await_new==0}￥0{/if}
+                            </td>
+						    <td>{if $item.frost_new>0}￥{$item.frost_new|default:'0.00'}{/if}</td>
+						    <td>￥{$item.balance}</td>
+						    <td class="txt_lf">{$item.remark}</td>
+						</tr> 
+					{/foreach}
+					{/list}
+					</tbody>
+				  </table>
+			  </li>
+		  </ul>
+	  </div>
+	</div>
+</div>
+  {literal}
+<script type="text/javascript">
+diyou.use('users_borrow',function(u){u.repay_now()});
+</script>
+{/literal}

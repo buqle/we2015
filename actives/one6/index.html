@@ -1,0 +1,216 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/one6/css/style.css?v=2017888" rel="stylesheet" type="text/css" />
+
+<div class="actjuna"></div>
+<h5 class="actjunt1"></h5>
+
+<dl class="actjunb clearg">
+    <dd class="lefts">
+        <h4 class="b1">合新规</h4>
+        <h6>史上最严网贷新规</h6>
+        <p>——2016年8月下发《网络借贷信息中介机构业务活动管理暂行办法》，“银行存管”成了平台合规的必备条件。</p>
+    </dd>
+    <dd class="lefts">
+        <h4 class="b2">更安心</h4>
+        <h6>资金和交易分开</h6>
+        <p>——银行管理投资者的资金，平台管理交易，平台不能直接接触到资金，让您更安心。</p>
+    </dd>
+    <dd class="lefts">
+        <h4 class="b3">阳光型</h4>
+        <h6>银行可披露运营数据</h6>
+        <p>——全程记录和监控用户的交易指令和资金变动走向，真实了解和定期披露平台的真实运营数据。</p>
+    </dd>
+</dl>
+
+<div class="actjunt2"></div>
+
+<div class="actjunc ww3">
+    <div class="actjunc__junc1 font14">
+        <p class="tit1 text-center ww3 font20">活动期间，用户每单笔投资3个月及以上项目，可根据单笔所投项目期限及投资金额获得相应的现金奖励。</p>
+        <dl class="dlcont clearg">
+            <dd class="text-center ddbox1">
+                <h4 class="color-ff">12月标</h4>
+                <div class="ddcont ww3">
+                    单笔逢万
+                    <p class="text-right ww3">奖励</p>
+                    <h5>130元</h5>
+                </div>
+            </dd>
+            <dd class="text-center ddbox1">
+                <h4 class="color-ff">6月标</h4>
+                <div class="ddcont ww3">
+                    单笔逢万
+                    <p class="text-right ww3">奖励</p>
+                    <h5>60元</h5>
+                </div>
+            </dd>
+            <dd class="text-center ddbox1" style="margin-right: 0;">
+                <h4 class="color-ff">3月标</h4>
+                <div class="ddcont ww3">
+                    单笔逢万
+                    <p class="text-right ww3">奖励</p>
+                    <h5>25元</h5>
+                </div>
+            </dd>
+        </dl>
+        <dl class="dlcont clearg" style="margin: 30px 0">
+            <dd class="ddbox2 text-center loginbtn">投资即享</dd>
+            <dd class="ddbox2 text-center loginbtn">投资即享</dd>
+            <dd class="ddbox2 text-center loginbtn" style="margin-right: 0;">投资即享</dd>
+        </dl>
+        <p class="text-center">举个例子：活动期间，小明单笔投资12月项目118000元，可获得现金奖励为：11×130= 1430 元。</p>
+    </div>
+    <div class="actjunc__junc2">
+        <div class="junc2c1 clearg ww3">
+            <div class="lefts">
+                <p class="lh bold text-center">实时投资记录</p>
+                <div class="junc3  font14">
+                    <p class="lhp2 color-ff"><span>用户名</span><span>投资金额(元)</span><span>投标期限</span><span>奖励金额(元)</span><span>投资时间</span></p>
+                    <div style="height:276px;overflow: hidden;" class="renav marqueebox renavbox">
+                        <ul id="marqueebox4">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="rights">
+                <p class="lh bold text-center">我的投资记录</p>
+                <div class="junc3  font14">
+                    <p class="lhp2 color-ff"><span>投资标限</span><span>投资金额(元)</span><span>获得奖励(元)</span><span>投资时间</span></p>
+                    <div class="user-name font14 text-center">
+                        您还没有登录，请登录后进行查看
+                        <div class="loginbtn font22 color-ff cursor">登录</div>
+                    </div>
+                    <div style="height:230px;overflow: hidden;" class="renav2 marqueebox hidebox renavbox">
+                        <ul>
+
+
+                        </ul>
+                    </div>
+                    <div class="hidebox hideboxcont font14 text-right">目前获得总奖励为：<i>0</i>元</div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="actjund ww1">
+    <h5 class="text-center">活动规则</h5>
+    <p>1、活动期间内，用户单笔投资（除1月标外）任意金额均会获得相应奖励；</p>
+    <p>2、本活动根据用户所投项目期限进行逢万现金奖励，每单笔投资金额里不足一万的部分不获得奖励；</p>
+    <p>3、本活动奖金借款项目满标复审成功且满标时间在活动期间内，奖金资格有效；</p>
+    <p>4、活动奖金将在活动结束后，3个工作日内直充至存管账户，可投资、可提现。</p>
+</div>
+
+
+{literal}
+<script>
+    $(function(){
+
+        $('.loginbtn').each(function(){
+            $(this).click(function(){
+                if (user_id>0) {
+                    window.location.href="/invest/index.html";
+                } else {
+                    diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                    return false;
+                }
+            });
+        });
+
+
+        $.http.get('/?user&q=get_share_ajax&alias=one6&methodname=get_newly', {}, function(ret){
+            if (ret.code == 0){
+                var len = ret.data.length;
+                var html=''
+                for(var i=0; i<len; i++){
+                    html += '<p><span>'+ret.data[i].username+'</span><span>'+ret.data[i].money+'</span><span>'+ret.data[i].month+'月标</span><span>'+ret.data[i].reward+'</span><span>'+getdays(ret.data[i].addtime)+'</span></p>';
+                }
+                $('.renav ul').html(html);
+
+            }else {
+                alert(ret.msg)
+            }
+        }, 'json')
+
+        if(user_id>0){
+            $('.hidebox').show();
+            $('.user-name').hide();
+            $.http.get('/?user&q=get_share_ajax&alias=one6&methodname=get_self_record', {}, function(ret){
+                if (ret.code == 0){
+                    var len = ret.data.length;
+                    var html='';
+                    var a=0;
+
+                    for(var i=0; i<len; i++){
+                        html += '<p><span>'+ret.data[i].month+'月标</span><span>'+ret.data[i].money+'</span><span>'+ret.data[i].reward+'</span><span>'+getdays(ret.data[i].addtime)+'</span></p>';
+                        a+=new Number(ret.data[i].reward)
+                    }
+                    $('.renav2 ul').html(html);
+                    $('.hideboxcont i').text(a);
+
+                }else {
+                    alert(ret.msg)
+                }
+            }, 'json')
+        }
+
+
+
+
+    });
+
+
+    function getdays(time) {
+        var date = new Date();
+        date.setTime(time * 1000);
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth() + 1 < 10 ? (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        D = date.getDate()+'   ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = (date.getSeconds() + 1 < 10 ? '0' + (date.getSeconds() + 1) : date.getSeconds() + 1);
+        time =Y+ M + D;
+        return time;
+    }
+
+    $(function(){
+
+        var $this = $(".renav");
+
+        var scrollTimer;
+
+        $this.hover(function(){
+
+            clearInterval(scrollTimer);
+
+        },function(){
+
+            scrollTimer = setInterval(function(){
+
+                scrollNews($(".renav"));
+                scrollNews($(".renav2"));
+
+            }, 2000 );
+
+        }).trigger("mouseout");
+
+    });
+
+    function scrollNews(obj){
+
+        var $self = obj.find("ul:first");
+
+        var lineHeight = $self.find("p:first").height();
+
+        $self.animate({ "margin-top" : -lineHeight +"px" },800 , function(){
+
+            $self.css({"margin-top":"0px"}).find("p:first").appendTo($self);
+
+        })
+
+    }
+</script>
+{/literal}

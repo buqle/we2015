@@ -1,0 +1,157 @@
+	<div class="fn_rig user_rig">
+	   <div class="user_box">
+		   <div class="basic_infor">
+				  <h2 class="fn_cle">
+					  <span class="fn_left">资产信息</span>
+					  <a href="javascript:void(0);" id="edit_finance" class="edit_infor fn_rig">修改信息</a>
+				  </h2>
+				  <div class="cont">
+					 {include file="users_rating_menu.html"}
+                     {articles module="rating" function="GetFinanceOne" user_id=$_G.user_id var="var"}
+					<div class="basic_inf_cont">
+					   <form method="post" action="" id="_finance_from">
+					     <div class="item">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>是否有房:
+							</label>
+							<span class="u_span">{if $var.is_house==0}无{elseif $var.is_house==1}有{/if}</span>
+						 </div>
+					     <div class="item">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>有无房贷:
+							</label>
+							<span class="u_span">{if $var.is_mortgage==0}无{elseif $var.is_mortgage==1}有{/if}</span>
+						 </div>
+                         {if $var.is_mortgage==1}
+						 <div class="item">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>贷款总额:
+							</label>
+							<span class="u_span">{$var.house_account|default:"0.00"}元</span>
+						 </div>
+						 <div class="item">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>每月按揭金额:
+							</label>
+							<span class="u_span">{$var.month_house|default:"0.00"}元</span>
+						 </div>
+                         {/if}
+						 <div class="item">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>是否有车:
+							</label>
+							<span class="u_span">{if $var.is_car==0}无{elseif $var.is_car==1}有{/if}</span>
+						 </div>
+						 <div class="item">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>有无车贷:
+							</label>
+							<span class="u_span">{if $var.is_carloan==0}无{elseif $var.is_carloan==1}有{/if}</span>
+						 </div>
+                         {if $var.is_carloan==1}
+						 <div class="item">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>贷款总额:
+							</label>
+							<span class="u_span">{$var.car_account|default:"0.00"}元</span>
+						 </div>
+						 <div class="item">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>每月按揭金额:
+							</label>
+							<span class="u_span">{$var.month_car|default:"0.00"}元</span>
+						 </div>
+                         {/if}
+						 <div class="item">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>每月信用卡还款金额:
+							</label>
+							<span class="u_span">{$var.month_card|default:"0.00"}元</span>
+						 </div>
+					   </form>
+					   <!-- 点击修改资料后表单显示可以修改的样式 -->
+					   <form method="post" action="" id="finance_from" style="display:none">
+					   	 <div class="item">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>是否有房:
+							</label>
+							<input type="radio" class="u_radio" {if $var.is_house==1}checked="true"{/if} name="is_house" value="1" /><label class="u_radio_label">有</label>
+							<input type="radio" class="u_radio" {if $var.is_house==0}checked="true"{/if} name="is_house" value="0" /><label class="u_radio_label">无</label>
+						 </div>
+						 <div class="item">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>有无房贷:
+							</label>
+							<input type="radio" class="u_radio" name="is_mortgage" {if $var.is_mortgage==1}checked="true"{/if} value="1" /><label class="u_radio_label">有</label>
+							<input type="radio" class="u_radio" name="is_mortgage" {if $var.is_mortgage==0}checked="true"{/if} value="0" /><label class="u_radio_label">无</label>
+						 </div>
+						 <div class="item fn_cle _house_loan">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>贷款总额:
+							</label>
+                            <div class="fn_left money_txt">
+							<input type="text" class="u_input" name="house_account" id="house_account" value="{$var.house_account}"/><span class="money_type">元</span>
+                            </div>
+						 </div>
+						 <div class="item fn_cle _house_loan">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>每月按揭金额:
+							</label>
+                            <div class="fn_left money_txt">
+							<input type="text" class="u_input" name="month_house"  id="month_house" value="{$var.month_house}"/><span class="money_type">元</span>
+                            </div>
+						 </div>
+						 <div class="item">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>是否有车:
+							</label>
+							<input type="radio" class="u_radio" name="is_car" {if $var.is_car==1}checked="true"{/if} value="1" /><label class="u_radio_label">有</label>
+							<input type="radio" class="u_radio" name="is_car" {if $var.is_car==0}checked="true"{/if} value="0" /><label class="u_radio_label">无</label>
+						 </div>
+						 <div class="item">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>有无车贷:
+							</label>
+							<input type="radio" class="u_radio" name="is_carloan" {if $var.is_carloan==1}checked="true"{/if} value="1" /><label class="u_radio_label">有</label>
+							<input type="radio" class="u_radio" name="is_carloan" {if $var.is_carloan==0}checked="true"{/if} value="0" /><label class="u_radio_label">无</label>
+						 </div>
+						 <div class="item fn_cle _car_loan">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>贷款总额:
+							</label>
+                            <div class="fn_left money_txt">
+							<input type="text" class="u_input" name="car_account" id="car_account" value="{$var.car_account}"/><span class="money_type">元</span>
+                             </div>
+						 </div>
+						 <div class="item fn_cle _car_loan">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>每月按揭金额:
+							</label>
+                             <div class="fn_left money_txt">
+							<input type="text" class="u_input" name="month_car" id="month_car" value="{$var.month_car}"/><span class="money_type">元</span>
+                             </div>
+						 </div>
+						 <div class="item fn_cle">
+						    <label class="u_label">
+							  <span class="user_warning_c">*</span>每月信用卡还款金额:
+							</label>
+                             <div class="fn_left money_txt">
+							<input type="text" class="u_input" name="month_card" id="month_card" value="{$var.month_card}"/><span class="money_type">元</span>
+                             </div>
+						 </div>
+						 <div class="item">
+						    <label class="u_label">&nbsp;</label>
+							<input type="submit" class="u_sub" value="保&nbsp;&nbsp;存" />
+						 </div>
+					   </form>
+                       {/articles}
+					</div>
+				  </div>	  
+		   </div>
+	   </div>
+	</div>
+{literal}
+<script type="text/javascript">
+diyou.use('rating',function(dy){dy.rating_finance('edit_finance','finance_from')})
+</script>
+{/literal}

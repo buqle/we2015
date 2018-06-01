@@ -1,0 +1,831 @@
+{include file="header.html"}
+<!--四月活动-->
+<div class="large_cashbg" id="large_cashbgdx" style="display: none"></div>
+<div class="large_cashcont1" id="large_cashcont1dx" style="display: none">
+	<div class="large_cashcont2">
+		<img src="{$tpldir}/actives/tree/images/closee.png" class="closee">
+		<a href="/active/tree/index.html"><img src="{$tpldir}/actives/tree/images/treecon.png"></a>
+	</div>
+
+</div>
+
+<div class="large_cashbg" id="large_cashbgdx2" style="display: none"></div>
+<div class="large_cashcont1" id="large_cashcont1dx2" style="display: none">
+	<div class="large_cashcont2" style="background: none!important;width: 883px;height:527px;margin-top: -262px;">
+		<img src="{$tpldir}/actives/tree/images/closee.png" class="closee" style="position: absolute;right: 0;top: 0;cursor: pointer;">
+		<img src="//img.ronghedai.com{$tpldir}/actives/jiaxi2/images/20.png?v=20171111">
+		<a href="/gonggao/a1117.html" target="_blank" class="pos-b pos-ba1">查看公告</a>
+		<a href="/active/jiaxi2/index.html" target="_blank" class="pos-b pos-ba2">立即投资</a>
+	</div>
+</div>
+
+<div class="gonggaoc" style="display: none">
+	<div class="gongaoc2" now="{$smarty.now}">
+		尊敬的融和贷用户：
+		<p>您好！</p>
+		<p>为响应国家关于网络借贷信息中介机构银行存管政策的相关规定，全面提升平台资金安全保障体系，切实保障广大用户的利益，平台将于7月19日正式上线银行存管系统，上线当日网站或将无法正常投资、提现及其他操作。银行存管系统上线后，上海银行将对融和贷用户的交易资金进行监督和管理，最大限度地保障用户的资金安全。</p>
+		<p>同时，为了感谢广大用户对融和贷平台的长久支持，本平台将于7月20日至7月26日开展加息活动。<i>全场加息3%</i>，融和贷全新征程，潜力无极限！在这里，融和贷邀您携手，共创财富生活！</p>
+		<p>如您还有其他疑问可通过融和贷全国统一服务热线（400-013-5679）与工作人员取得联系，我们将第一时间给您满意的答复。祝您工作顺利，生活愉快！</p>
+		<h4>*  全场加息活动1月标除外</h4>
+		<h5> 融和贷运营中心</h5>
+		<h5>二〇一七年七月十九日</h5>
+	</div>
+</div>
+
+
+<div id="wrap">
+	{if $_G.user_id==""}
+	<div class="loginbox main_w">
+		<div class="showpos"></div>
+		<div class="show">
+			<div class="rate">
+				<div style="color: #000">预期年化收益率</div>
+				<div style="font-size: 32px;color: #fffc2a;font-weight: bold;margin-bottom: 20px;">7.6%-11.9%</div>
+				<img src="//img.ronghedai.com{$tpldir}/images/newimg/cglog.png?v=20178011"/>
+			</div>
+			<div class="newshow_cont">
+				<a class="newshow_cont2" href="/active/voucher/index.html"><span>注册</span>（领688元现金红包）</a>
+				<div class="newshow_cont3">
+					已有账号，<a href="/?user&q=login">立即登录</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	{else}
+	<div class="loginbox main_w">
+		<div class="showpos"></div>
+		<div class="show" id="xihu_hz">
+			<div style="height: 20px;"></div>
+			<p>欢迎你，{$_G.username}</p>
+			<div id="ten_xhhz">
+				<a href="/?user#trust/recharge" style="margin-right: 20px;"><i class="iconfont">&#xe602;</i>账户充值</a>
+				<a href="/?user#users/home"><i class="iconfont">&#xe601;</i>账户总览</a>
+				<div style="height: 50px;"></div>
+				<a href="?user#borrow/invest" style="margin-right: 20px;"><i class="iconfont">&#xe600;</i>投资记录</a>
+				<a href="/?user#borrow/invest/now"><i class="iconfont">&#xe603;</i>回款计划</a>
+			</div>
+			<a href="/?user#users/home" id="my_accounts_rhs">进入我的账户</a>
+		</div>
+	</div>
+	{/if}
+	<div class="banner_slide" id="banner_slide">
+		{list module="scrollpic" function="get_list" type_nid='web_index' limit="all"  var=loop  datacache="memcache" datacachename="index_banner2221211" datacachenametimes="60*10"}
+		<ul>
+			{foreach from=$loop.list item=item}
+			<li><a target="_blank" href="{$item.url}" title="{$item.name}"><img src="//img.ronghedai.com{$item.scroll_pic_url}" /></a></li>
+			{/foreach}
+		</ul>
+		<div class="banner_btn" id="banner_btn">
+		</div>
+		{/list}
+	</div>
+</div>
+
+<!--/-->
+<div style="background: white;margin-bottom: 50px;" id="newconttnew">
+	<div class="new_trusnt">
+		{articles module="borrow" function="get_web_count" var="web_count" datacache="memcache" datacachename="index_web_count" datacachenametimes="60*10"}
+		<ul class="clearbs mr">
+			<li>累计投资人数<span id="lj_people">{$web_count.reg_user_num}</span></li>
+			<li style="width: 33%">累计为投资人赚取（元）<span id="lj_Money_peot">{$web_count.tender_interest_account|string_format:"%.2f"|default:'0.00'}</span></li>
+			<li>年化利率<span>7.6%~11.9%</span></li>
+			<li style="width: 232px;float: right;"><a href="/perations2/index.html" style="font-size: 15px;">2016年度运营报告</a></li>
+		</ul>
+
+	</div>
+
+	<div class="today-issue clearfix">
+		<div class="guide-list clearfix" style="width:1196px;margin: 0 auto">
+			<ul class="cleart">
+				<li>
+					<div class="a-today clearfix">
+						<a href="/yzxm/index.html" target="_blank" class="a-screen">
+							<em><span class="icon icon-kaobei"></span></em>
+							<div class="cont">
+								<p class="screen-title">上市+风投+公益</p>
+								<p>甄选优质项目</p>
+							</div>
+						</a>
+					</div>
+				</li>
+
+				<li>
+					<div class="a-today clearfix">
+						<a href="/active/pository/index.html" target="_blank" class="a-screen">
+							<em><span class="icon icon-cunguan"></span></em>
+							<div class="cont">
+								<p class="screen-title">上海银行存管</p>
+								<p>强强联合实力升级</p>
+							</div>
+						</a>
+					</div>
+				</li>
+
+				<li>
+					<div class="a-today clearfix">
+						<a href="/tdbz/index.html" target="_blank" class="a-screen">
+							<em><span class="icon icon-bianjie"></span></em>
+							<div class="cont">
+								<p class="screen-title">DPS独家风控</p>
+								<p>连续6年无不良兑付</p>
+							</div>
+						</a>
+					</div>
+				</li>
+				<li class="understand">
+					<div class="a-today clearfix">
+						<a href="/bz/index.html" target="_blank" class="a-screen">
+							<div class="a-screen">
+								<em><span class="icon icon-shiping"></span></em>
+								<div class="cont">
+									<p class="screen-title">安全保障再升级</p>
+									<p>九重防护更安全</p>
+								</div>
+							</div>
+						</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+
+</div>
+<script  type= "text/javascript">
+	var num_s = {$web_count.reg_user_num|default:0};
+	var num_m = '{$web_count.tender_interest_account|string_format:"%.2f"|default:"0.00"}';
+
+	$('#lj_people').text(parseFloat(num_s).toLocaleString());
+	$('#lj_Money_peot').text(parseFloat(num_m).toLocaleString());
+</script>
+{/articles}
+
+<!--/体验专区-->
+<!-- 第一部分 start -->
+<!--<p class="adyantage_tyzs">体验专区</p>-->
+
+<div class="tiyan_new clearbs">
+	<div class="tiyan_new_l clearbs">
+		<div class="tit_newlist"><p style="margin-top: 24px;">体</p><p>验</p><p>专</p><p>区</p></div>
+		{list module="newappphone" function="get_borrow_list" var="var1" limit="1" status_nid='invest' query_type='invest'  region=3 datacache="memcache" datacachename="index_new_hand1" datacachenametimes="60*3"}
+		{foreach from=$var1.list item=var key=key}
+		<div class="tiyan_new_lc">
+			<div class="tit_newlist2">
+				<p>
+					<i class="iconfont iconfontcl1" id="iconfontcl1s">
+
+						{if $var.final==1}&#xe607;{elseif $var.final == 2}&#xe604;{elseif $var.final==3}&#xe605; {elseif $var.final==4}&#xe605;{elseif  $var.final==5}&#xe606;{elseif  $var.final==6}&#xe617;{/if}
+					</i>
+					<a  href="/invest/a{$var.borrow_nid}.html" target="_blank">{$var.name|truncate_cn:18}</a>
+				</p>
+			</div>
+			<div class="novicecont clearbs">
+				{if $var.borrow_apr>7.6}
+				<div class="noviceli1 novicelileft"><p><strong>7.6</strong>%<i>+</i><strong>{$var.borrow_apr-7.6}</strong>%</p>年化收益</div>
+				{else}
+				<div class="noviceli1 novicelileft"><p><strong>{$var.borrow_apr}</strong>%</p>年化利率</div>
+				{/if}
+				<div class="noviceli2 novicelileft"><p><strong>{$var.borrow_period}</strong>个月</p>投资期限</div>
+				<div class="noviceli3 novicelileft"><p><strong>{$var.account}</strong>元</p>借款金额</div>
+				<div class="noviceli4 novicelileft">
+					<dl class="barbox">
+						<dt style="height: 15px;"></dt>
+						<dd class="barline">
+							<div data-width="{$var.borrow_account_scale}" style="width:10px;" class="charts"></div>
+						</dd>
+					</dl>
+					进度：{$var.borrow_account_scale}%
+				</div>
+				{if $var.count_down==1 and ($smarty.now < $var.tender_time)}
+				<script type="text/javascript">
+					$(function(){
+						timer.start({$var.tender_time - $smarty.now},'{$var.borrow_nid}')
+					})</script>
+				<div id="topyu_ass_{$var.borrow_nid}" class="noviceli5" >
+					<p>开标倒计时</p>
+					<b>00</b>:<b>00</b>:<b>00</b>:<b>00</b>
+				</div>
+				{/if}
+				<div id="topyu_a" class="noviceli5  t_show{$var.borrow_nid}" {if $var.count_down==1 and ($smarty.now < $var.tender_time)}style="display:none;"{/if}>
+				<a style="" {if $var.borrow_status_nid=='loan'} class="mr_t5 dis_fussa"{elseif $var.borrow_status_nid=='full'}{else} class="mr_t5 dis_btntung"{/if} target="_blank" href="/invest/a{$var.borrow_nid}.html">
+				{$var.borrow_status_nid|linkages:"borrow_status_nid"}</a>
+			</div><!-- 这是topyu_a的结束-->
+		</div>
+	</div>
+	{/foreach}
+	{/list}
+</div>
+{list module="scrollpic" function="get_list" type_nid='home_new_ad' limit="1"  var=loop  datacache="memcache" datacachename="home_new_ad222121122" datacachenametimes="60*120"}
+<div class="tiyan_new_r">
+	{foreach from=$loop.list item=item}
+	<a href="{$item.url}" target="_blank"><img src="//img.ronghedai.com{$item.scroll_pic_url}" width="300" height="170" /></a>
+	{/foreach}
+</div>
+{/list}
+</div>
+
+<!--广告位的修改-->
+{literal}
+<script>
+	var date = new Date().getTime()/1000;
+	if(date>1464710400 && date<1472659200){
+		$('#junesmmer').show();
+		$('.in_undmeain').css('background','#fff');
+	}else {
+		$('#junesmmer2').show();
+	}
+</script>
+{/literal}
+
+<!--/最新发布-->
+<div class="new_release kdyqe">
+	<span>最新发布</span>融和贷努力审核项目中 ，预计项目发布时间：<i>10:00、15:00、20:00</i>；其余时间与周末、法定节假日等随机发标。
+</div>
+
+
+<div class="latest_listc clearbs kdyqe" id="latest_listc1">
+	<div class="tit_newlist">
+		<h4>精选专区</h4>
+		<p class="piplist1"><i class="iconfont">&#xe608;</i>低 &nbsp;门&nbsp;槛</p>
+		<p class="piplist2"><i class="iconfont">&#xe609;</i>高 &nbsp;收&nbsp;益</p>
+		<p class="piplist3"><i class="iconfont">&#xe60a;</i>优选机构</p>
+		<p class="piplist4"><i class="iconfont">&#xe60b;</i>安全稳健</p>
+	</div>
+	<div class="tiyan_new_lc">
+		<div class="subject_bar">
+			<span class="sujiect_a" style="display: none;"></span>
+			<span class="sujiect_a"><i class="iconfont iconfontcl2">&#xe607;</i>车融宝</span>
+			<span class="sujiect_b"><i class="iconfont iconfontcl2">&#xe604;</i>房融宝</span>
+			<span class="sujiect_c"><i class="iconfont iconfontcl2">&#xe605;</i>企融宝</span>
+			<a href="/invest/index.html">更多> </a>
+		</div>
+
+
+		<div class="subject_content2">
+
+
+		</div>
+	</div>
+
+
+</div>
+
+
+<div class="latest_listc clearbs kdyqe" id="latest_listc2">
+	<div class="tit_newlist">
+		<h4>特色专区</h4>
+		<p class="piplist1"><i class="iconfont">&#xe60c;</i>优质推荐 </p>
+		<p class="piplist2"><i class="iconfont">&#xe60d;</i>高端精选</p>
+		<p class="piplist3"><i class="iconfont">&#xe60e;</i>灵活配置</p>
+		<p class="piplist4"><i class="iconfont">&#xe60f;</i>模式创新</p>
+	</div>
+	<div class="tiyan_new_lc">
+		<div class="subject_bar">
+			<span class="sujiect_a" final="5"><i class="iconfont iconfontcl2">&#xe606;</i>增值标</span>
+			<span class="sujiect_b"  final="6"><i class="iconfont iconfontcl2">&#xe617;</i>定向标</span>
+			<a href="/invest/index.html">更多> </a>
+		</div>
+
+		<div class="subject_content2">
+
+
+		</div>
+	</div>
+
+
+</div>
+
+
+
+
+<!--进度条-->
+{literal}
+<script type="text/javascript">
+	window.timer = {
+		_queue : [],
+		_times : [],
+		start:function(time, borrow_nid) {
+
+			if (this._queue[borrow_nid] != undefined) return false;
+			this._queue[borrow_nid] = 0;
+
+			var timesID =  setInterval(function(){
+				var getbackSecond = time - timer._queue[borrow_nid];
+				if (getbackSecond >=0) {
+					var day = Math.floor(getbackSecond / (60 * 60 * 24));
+					var hour = Math.floor(getbackSecond / (60 * 60)) - (day * 24);
+					var minute = Math.floor(getbackSecond / 60) - (day * 24 * 60) - (hour * 60);
+					var second = Math.floor(getbackSecond) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+					timer._queue[borrow_nid]++;
+					if (day < 10) day = "0" +day;
+					if (hour < 10) hour = "0" + hour;
+					if (minute < 10) minute = "0" + minute;
+					if (second < 10) second = "0" + second;
+					$('#topyu_ass_' + borrow_nid).html('<p>开标倒计时</p><b>'+ day +'</b>:<b>'+ hour +'</b>:<b>'+ minute +'</b>:<b>'+second+'</b>');
+				} else {
+					clearInterval(timer._times[borrow_nid]);
+					$('#topyu_ass_'+borrow_nid).hide();
+					$('.t_show'+borrow_nid).show();
+				}
+			}, 1000);
+			this._times[borrow_nid] = timesID;
+		}
+
+	};
+	$(function(){
+		var hashArray1=['','/invest/index.html#1','/invest/index.html#2','/invest/index.html#4'];
+		var hashArray2=['/invest/index.html#5','/invest/index.html#6']
+		function hashFun(cont,href,inde){
+			$(cont).find('a').attr('href',href[inde]);
+		}
+
+		$('#latest_listc1 .subject_bar span').click(function(){
+			if($(this).hasClass('sujiects')){
+				return false;
+			};
+			$(this).addClass('sujiects').siblings().removeClass('sujiects');
+			$(this).find('.iconfontcl2').addClass('iconfontcl2s');
+			var inde=$(this).index();
+			getPost('4','1',inde,'#latest_listc1 .subject_content2');
+			hashFun('#latest_listc1 .subject_bar',hashArray1,inde);
+
+		});
+		$('#latest_listc2 .subject_bar span').click(function(){
+			if($(this).hasClass('sujiects')){
+				return false;
+			};
+			var inde=$(this).index();
+			$(this).addClass('sujiects').siblings().removeClass('sujiects');
+			$(this).find('.iconfontcl2').addClass('iconfontcl2s');
+			var final=$(this).attr('final');
+			getPost('4','2',final,'#latest_listc2 .subject_content2');
+			hashFun('#latest_listc2 .subject_bar',hashArray2,inde);
+
+		})
+
+		//精选专区
+		//var ccs=$('#latest_listc1 .subject_content2');
+		getPost('4','1','','#latest_listc1 .subject_content2');
+		setTimeout(function(){
+			getPost('4','2','','#latest_listc2 .subject_content2')
+		},1000);
+		function getPost(limit,region, final,callback ){
+			var htccc=$("<div class='loading_now' style='text-indent: 4em;'>正在加载中,请耐心等待...</div>");
+			$(callback).html(htccc);
+			$.getJSON('/?user&q=public&type=get_borrow_list&limit='+limit+'&region='+region+'&final='+final+'',function(ret){
+				//callback && callback(ret);
+				if(ret.code == 0){
+					var surelen = ret.data.list.length;
+					var sure = '';
+					var sure1='';
+					//var htmlT = callback;
+					var cc=['','&#xe607;','&#xe604;','&#xe605;','','&#xe606;','&#xe617;'];
+					for (var i =0 ; i < surelen; i++) {
+						sure += '<div class="subject_cont">';
+						sure += '<div class="subject_conts clearbs novicecont">';
+						sure += '<h4><i class="iconfont iconfontcl1  iconfontcl3">' + cc[ret.data.list[i].final] + '</i><a href="/invest/a' + ret.data.list[i].borrow_nid + '.html" target="_blank">' + ret.data.list[i].name + '</a></h4>';
+						if(ret.data.list[i].final==5  && ret.data.list[i].tender_time<=1473750000){
+							if(ret.data.list[i].borrow_apr>11.3 && ret.data.list[i].borrow_period==3){
+								sure += '<div class="noviceli1 novicelileft"><p><strong>11.3</strong>%<i>+</i><strong>'+(ret.data.list[i].borrow_apr-11.3).toFixed(1)+'</strong>%</p>年化收益</div>';
+							}else  if(ret.data.list[i].borrow_apr>12.8 && ret.data.list[i].borrow_period==6){
+								sure += '<div class="noviceli1 novicelileft"><p><strong>12.8</strong>%<i>+</i><strong>'+(ret.data.list[i].borrow_apr-12.8).toFixed(1)+'</strong>%</p>年化收益</div>';
+							}else  if(ret.data.list[i].borrow_apr>14.1 && ret.data.list[i].borrow_period==12){
+								sure += '<div class="noviceli1 novicelileft"><p><strong>14.1</strong>%<i>+</i><strong>'+(ret.data.list[i].borrow_apr-14.1).toFixed(1)+'</strong>%</p>年化收益</div>';
+							} else {
+								sure += '<div class="noviceli1 novicelileft"><p><strong>'+(ret.data.list[i].borrow_apr)+'</strong>%</p>年化收益</div>';
+							}
+						}else if(ret.data.list[i].final==5 && ret.data.list[i].tender_time>1473750000){
+							if(ret.data.list[i].borrow_apr>10.9 && ret.data.list[i].borrow_period==3){
+								sure += '<div class="noviceli1 novicelileft"><p><strong>10.9</strong>%<i>+</i><strong>'+(ret.data.list[i].borrow_apr-10.9).toFixed(1)+'</strong>%</p>年化收益</div>';
+							}else  if(ret.data.list[i].borrow_apr>11.9 && ret.data.list[i].borrow_period==6){
+								sure += '<div class="noviceli1 novicelileft"><p><strong>11.9</strong>%<i>+</i><strong>'+(ret.data.list[i].borrow_apr-11.9).toFixed(1)+'</strong>%</p>年化收益</div>';
+							}else  if(ret.data.list[i].borrow_apr>12.7 && ret.data.list[i].borrow_period==12){
+								sure += '<div class="noviceli1 novicelileft"><p><strong>12.7</strong>%<i>+</i><strong>'+(ret.data.list[i].borrow_apr-12.7).toFixed(1)+'</strong>%</p>年化收益</div>';
+							} else {
+								sure += '<div class="noviceli1 novicelileft"><p><strong>'+(ret.data.list[i].borrow_apr)+'</strong>%</p>年化收益</div>';
+							}
+						}else if(ret.data.list[i].tender_time>1473750000 && ret.data.list[i].tender_time<1506787200){
+							if(ret.data.list[i].borrow_apr>10.9 && ret.data.list[i].borrow_period==3){
+								sure += '<div class="noviceli1 novicelileft"><p><strong>10.9</strong>%<i>+</i><strong>'+(ret.data.list[i].borrow_apr-10.9).toFixed(2)+'</strong>%</p>年化收益</div>';
+							}else  if(ret.data.list[i].borrow_apr>11.9 && ret.data.list[i].borrow_period==6){
+								sure += '<div class="noviceli1 novicelileft"><p><strong>11.9</strong>%<i>+</i><strong>'+(ret.data.list[i].borrow_apr-11.9).toFixed(2)+'</strong>%</p>年化收益</div>';
+							}else  if(ret.data.list[i].borrow_apr>12.7 && ret.data.list[i].borrow_period==12){
+								sure += '<div class="noviceli1 novicelileft"><p><strong>12.7</strong>%<i>+</i><strong>'+(ret.data.list[i].borrow_apr-12.7).toFixed(2)+'</strong>%</p>年化收益</div>';
+							} else {
+								sure += '<div class="noviceli1 novicelileft"><p><strong>'+(ret.data.list[i].borrow_apr)+'</strong>%</p>年化收益</div>';
+							}
+
+						}else if(ret.data.list[i].tender_time>1506787200){
+                            if(ret.data.list[i].borrow_apr>9.6 && ret.data.list[i].borrow_period==3){
+                                sure += '<div class="noviceli1 novicelileft"><p><strong>9.6</strong>%<i>+</i><strong>'+(ret.data.list[i].borrow_apr-9.6).toFixed(2)+'</strong>%</p>年化收益</div>';
+                            }else  if(ret.data.list[i].borrow_apr>11.3 && ret.data.list[i].borrow_period==6){
+                                sure += '<div class="noviceli1 novicelileft"><p><strong>11.3</strong>%<i>+</i><strong>'+(ret.data.list[i].borrow_apr-11.3).toFixed(2)+'</strong>%</p>年化收益</div>';
+                            }else  if(ret.data.list[i].borrow_apr>11.9 && ret.data.list[i].borrow_period==12){
+                                sure += '<div class="noviceli1 novicelileft"><p><strong>11.9</strong>%<i>+</i><strong>'+(ret.data.list[i].borrow_apr-11.9).toFixed(2)+'</strong>%</p>年化收益</div>';
+                            } else {
+                                sure += '<div class="noviceli1 novicelileft"><p><strong>'+(ret.data.list[i].borrow_apr)+'</strong>%</p>年化收益</div>';
+                            }
+
+                        }else {
+							sure += '<div class="noviceli1 novicelileft"><p><strong>' + ret.data.list[i].borrow_apr + '</strong>%</p>年化收益</div>';
+						}
+						sure += '<div class="noviceli2 novicelileft"><p><strong>' + ret.data.list[i].borrow_period + '</strong>个月</p>投资期限</div>';
+						sure += '<div class="noviceli3 novicelileft"><p><strong>' + ret.data.list[i].account + '</strong>元</p>借款金额</div>';
+						sure += '<div class="noviceli4 novicelileft">';
+						sure += '<dl class="barbox">';
+						sure += '<dt style="height: 15px;"></dt>';
+						sure += '<dd class="barline">';
+						sure += '<div data-width="' + ret.data.list[i].borrow_account_scale + '" class="charts"></div>';
+						sure += '</dd>';
+						sure += '</dl>';
+						sure += '进度：' + ret.data.list[i].borrow_account_scale + '%';
+						sure += '</div>';
+						var show = 'block';
+						if (ret.data.list[i].count_down ==1 && ret.data.list[i].tender_time > {/literal}{$smarty.now}{literal})
+						{
+							sure += '<div id="topyu_ass_' + ret.data.list[i].borrow_nid + '" class="noviceli5" style="">';
+							sure += '<p>开标倒计时</p>';
+							sure += '<b>00</b>:<b>00</b>:<b>00</b>:<b>00</b>';
+							sure += '</div>';
+							show = 'none';
+							timer.start(ret.data.list[i].tender_time - {/literal}{$smarty.now}{literal},ret.data.list[i].borrow_nid)
+
+						}
+						sure += '<div id="topyu_a" class="noviceli5  t_show' + ret.data.list[i].borrow_nid + '" style="display: ' + show + '">';
+						if (ret.data.list[i].borrow_status_nid == 'loan') {
+							sure += '<a style="" class="mr_t5 dis_fussa" target="_blank" href="/invest/a' + ret.data
+											.list[i].borrow_nid + '.html">';
+							sure += '马上投标</a>';
+						} else if (ret.data.list[i].borrow_status_nid == 'full') {
+							sure += '<a style="" class="mr_t5 dis_btntung2" target="_blank" href="/invest/a' + ret.data
+											.list[i].borrow_nid + '.html">';
+							sure += '满标待审</a>';
+						} else if (ret.data.list[i].borrow_status_nid == 'repay') {
+							sure += '<a style="" class="mr_t5 dis_btntung" target="_blank" href="/invest/a' + ret.data.list[i].borrow_nid + '.html">';
+							sure += '还款中</a>';
+						} else if (ret.data.list[i].borrow_status_nid == 'repay_yes') {
+							sure += '<a style="" class="mr_t5 dis_btntung" target="_blank" href="/invest/a' + ret.data
+											.list[i].borrow_nid + '.html">';
+							sure += '已还完</a>';
+						}
+						sure += '</div>';
+						sure +='</div> ';
+						sure +='</div>';
+					}
+
+					$(callback).html(sure);
+					sure1+='<p style="font-size: 20px;color: #52acf7;border-top: 1px solid #dcdcdc;padding-left: 62px;padding-top: 80px;">此类型暂无产品，敬请期待！</p>'
+					if(surelen==0){
+						$(callback).html(sure1);
+					}
+					$('.charts').each(function(){
+						$(this).animate({width:''+$(this).attr('data-width')+'%'},{
+						},1000);
+
+					});
+				}else{
+					//alert(ret.msg);
+				}
+			});
+		}
+
+
+
+	});
+
+</script>
+{/literal}
+
+<!--/平台优势-->
+
+<div id="advantage" style="margin-top: 26px;">
+	<div class="adt_list">
+		<ul class="clear">
+			<li style="margin-right: 56px;">
+				<div class="ico1 in_cunsn"><a href="/guidess/index.html" target="_blank"></a></div>
+				<div class="flopipc">
+					<h2>新手指南</h2>
+					<p>1分钟教你学会赚钱</p>
+				</div>
+			</li>
+			<li style="margin-right: 44px;">
+				<div class="ico2"><a href="/aboutus/index.html" target="_blank"></a></div>
+				<div class="flopipc">
+					<h2>关于我们</h2>
+					<p>厚德诚信和谐共赢</p>
+				</div>
+			</li>
+			<li style="margin-right: 50px;">
+				<div class="ico3"><a href="/helpcenter/index.html" target="_blank"></a></div>
+				<div class="flopipc">
+					<h2>帮助中心</h2>
+					<p>用心服务每一位客户</p>
+				</div>
+			</li>
+			<li>
+				<div class="ico4"><a href="/charity/index.html" target="_blank"></a></div>
+				<div class="flopipc">
+					<h2>爱心公益</h2>
+					<p>携手博爱公益基金会</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!--融和动态-->
+
+<div class="my-info-tomes807 ww2">
+	<h6 class="text-center font22 clearg">新闻中心<a class="font16" style="color: #898989;float: right;" target="_blank" href="/gonggao/index.html">更多></a></h6>
+	<dl class="my-infocont1 clearbs">
+
+			<dd>
+				{list module="articles" function="get_list" var="loop" status=1  site_nid="gonggao" epage=1 page=$smarty.request.page+1 order="order_asc" datacache="memcache" datacachename="index_gonggao_list" datacachenametimes="60*30"}
+				{foreach from=$loop.list item=var key=key}
+				<a target="_blank" href="/gonggao/a{$var.id}.html">
+					<img src="{$var.fileurl}">
+				</a>
+				<a target="_blank" href="/gonggao/a{$var.id}.html" class="block" style="margin: 20px 0 28px 0;"><h4 class="font16">{$var.name|cut_html:22}</h4></a>
+				<a target="_blank" href="/gonggao/a{$var.id}.html">
+					<p class="font14 arrpcont1">{$var.contents|cut_html:39}</p>
+				</a>
+				<a target="_blank" href="/gonggao/index.html" class="text-right text-righta font16 ntit0">融和公告</a>
+				<span class="text-right font14">{$var.addtime|date_format:"Y-m-d"}</span>
+				{/foreach}
+				{/list}
+			</dd>
+			<dd>
+				{list module="articles" function="get_list" var="loop" status=1  site_nid="cjwt" epage=1 page=$smarty.request.page+1 order="order_asc" datacache="memcache" datacachename="index_cjwt_lists" datacachenametimes="60*30"}
+				{foreach from=$loop.list item=var key=key}
+				<a target="_blank" href="/cjwt/a{$var.id}.html">
+					<img src="{$var.fileurl}">
+				</a>
+				<a target="_blank" href="/cjwt/a{$var.id}.html" class="block" style="margin: 20px 0 28px 0;"><h4 class="font16">{$var.name|cut_html:22}</h4></a>
+				<a target="_blank" href="/cjwt/a{$var.id}.html">
+					<p class="font14 arrpcont1">{$var.contents|cut_html:39}</p>
+				</a>
+				<a target="_blank" href="/cjwt/index.html" class="text-right text-righta font16 ntit1">理财问答</a>
+				<span class="text-right font14">{$var.addtime|date_format:"Y-m-d"}</span>
+				{/foreach}
+				{/list}
+			</dd>
+		<dd>
+			{list module="articles" function="get_list" var="loop" status=1  site_nid="rhdt" epage=1 page=$smarty.request.page+1 order="order_asc" datacache="memcache" datacachename="index_rhdt1_list" datacachenametimes="60*30"}
+			{foreach from=$loop.list item=var key=key}
+			<a target="_blank" href="/rhdt/a{$var.id}.html">
+				<img src="{$var.fileurl}">
+			</a>
+			<a target="_blank" href="/rhdt/a{$var.id}.html" class="block" style="margin: 20px 0 28px 0;"><h4 class="font16">{$var.name|cut_html:22}</h4></a>
+			<a target="_blank" href="/rhdt/a{$var.id}.html">
+				<p class="font14 arrpcont1">{$var.contents|cut_html:39}</p>
+			</a>
+			<a target="_blank" href="/rhdt/index.html" class="text-right text-righta font16 ntit2">融和动态</a>
+			<span class="text-right font14">{$var.addtime|date_format:"Y-m-d"}</span>
+			{/foreach}
+			{/list}
+		</dd>
+		<dd style="margin-right: 0;">
+			{list module="articles" function="get_list" var="loop" status=1  site_nid="media" epage=1 page=$smarty.request.page+1 order="order_asc" datacache="memcache" datacachename="index_media_lists111" datacachenametimes="60*30"}
+			{foreach from=$loop.list item=var key=key}
+			<a target="_blank" href="/media/a{$var.id}.html">
+				<img src="{$var.fileurl}">
+			</a>
+			<a target="_blank" href="/media/a{$var.id}.html" class="block" style="margin: 20px 0 28px 0;"><h4 class="font16">{$var.name|cut_html:22}</h4></a>
+			<a target="_blank" href="/media/a{$var.id}.html">
+				<p class="font14 arrpcont1">{$var.contents|cut_html:39}</p>
+			</a>
+			<a target="_blank" href="/media/index.html" class="text-right text-righta font16 ntit3">理财早刊</a>
+			<span class="text-right font14">{$var.addtime|date_format:"Y-m-d"}</span>
+			{/foreach}
+			{/list}
+		</dd>
+	</dl>
+</div>
+
+<!--媒体报道-->
+<div class="news-q-misn">
+	<p class="news-m-wins text-center font22" style="display: block;color: #595757">媒体报道</p>
+	<div>
+		<div class="picdaocon">
+			<div class="scroll clearbs">
+				<div class="scroll_left" id="LeftArr"></div>
+				<div class="pic clearbs" id="scrollPic">
+					<ul>
+						<li><a href="http://news.ijntv.cn/qyzx/2017-08-17/2737.html" target="_blank" title=""><img src="//img.ronghedai.com{$tpldir}/images/dy_img/im920-1.jpg" width="170" height="59" alt="" /></a></li>
+						<li><a href="http://news.hiapk.com/contribute/s594cbf07876e.html" target="_blank" title=""><img src="//img.ronghedai.com{$tpldir}/images/dy_img/im920-2.jpg" width="170" height="59" alt="" /></a></li>
+						<li><a href="http://finance.dbw.cn/system/2017/09/13/057779092.shtml" target="_blank" title=""><img src="//img.ronghedai.com{$tpldir}/images/dy_img/im920-3.jpg" width="170" height="59" alt="" /></a></li>
+						<li><a href="http://news.huaxi100.com/qiye/20170720/11529.html" target="_blank" title=""><img src="//img.ronghedai.com{$tpldir}/images/dy_img/im920-4.jpg" width="170" height="59" alt="" /></a></li>
+						<li><a href="http://news.qx162.com/qyzx/2017/0906/8912.html" target="_blank" title=""><img src="//img.ronghedai.com{$tpldir}/images/dy_img/im920-5.jpg" width="170" height="59" alt="" /></a></li>
+						<li><a href="http://www.xjqnpx.com.cn/news/financ/84403.html" target="_blank" title=""><img src="//img.ronghedai.com{$tpldir}/images/dy_img/im920-6.jpg" width="170" height="59" alt="" /></a></li>
+						<li><a href="http://www.803.com.cn/qyzx/jysf/20170912/5962.html" target="_blank" title=""><img src="//img.ronghedai.com{$tpldir}/images/dy_img/im920-7.jpg" width="170" height="59" alt="" /></a></li>
+						<li><a href="http://money.china.com/stock/jjzc/201709/05/368920.html" target="_blank" title=""><img src="//img.ronghedai.com{$tpldir}/images/dy_img/im-my2n.png" width="170" height="59" alt="" /></a></li>
+						<li><a href="http://www.senn.com.cn/sx/2017/08/24/209031.html
+" target="_blank" title=""><img src="//img.ronghedai.com{$tpldir}/images/dy_img/im-my14.jpg" width="170" height="59" alt="" /></a></li><li><a href="http://www.hyqss.cn/2017/june/763D2644.html
+" target="_blank" title=""><img src="//img.ronghedai.com{$tpldir}/images/dy_img/im-my16.jpg" width="170" height="59" alt="" /></a></li>
+                        
+					</ul>
+				</div>
+				<div class="scroll_right" id="RightArr"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="{$tpldir}/js/new-meiti.js?v=2016419"></script>
+<script type="text/javascript" src="{$tpldir}/js/ScrollPic.js?v=2016419"></script>
+
+
+<!--理财节-->
+<!--<a href="/actives/finance/index.html"><div class="lc_conty"></div></a>
+<a href="/actives/finance/index.html"><div class="lc_conty2"></div></a>
+<a href="/actives/finance/index.html"><div class="lc_conty3"></div></a>-->
+{literal}
+<script>
+	$(function(){
+
+
+
+		var div=$('.lc_conty')
+		var div1=$('.lc_conty2')
+		div.animate({top:'50%'},1000)
+				.animate({right:'296px'},1500)
+				.fadeOut();
+
+		setTimeout(function(){
+			div1.show()
+			//div1.animate({right:'0',top:'40%'},2500);
+			div1.animate({right:'0'});
+		},2500);
+		//新闻版块
+		var hrefc1=['/gonggao/index.html','/cjwt/index.html']
+		$('#on-texs-files1 i').mouseover(function(){
+			var ind=$(this).index();
+			$(this).addClass('new_tomta').siblings().removeClass('new_tomta');
+			$('#on-texs-files1 a').attr('href',hrefc1[ind]);
+			$('#my_if_c1 .sink-pus').eq(ind).addClass('pusclss').siblings().removeClass('pusclss');
+		})
+
+		var hrefc2=['/rhdt/index.html','/rhgy/index.html']
+		$('#on-texs-files2 i').mouseover(function(){
+			var ind=$(this).index();
+			$(this).addClass('new_tomta').siblings().removeClass('new_tomta');
+			$('#on-texs-files2 a').attr('href',hrefc2[ind]);
+			$('#my_if_c2 .sink-pus').eq(ind).addClass('pusclss').siblings().removeClass('pusclss');
+		});
+		var hrefc3=['/zone/index.html','/media/index.html']
+		$('#on-texs-files3 i').mouseover(function(){
+			var ind=$(this).index();
+			$(this).addClass('new_tomta').siblings().removeClass('new_tomta');
+			$('#on-texs-files3 a').attr('href',hrefc3[ind]);
+			$('#my_if_c3 .sink-pus').eq(ind).addClass('pusclss').siblings().removeClass('pusclss');
+		})
+
+	});
+
+
+</script>
+
+
+
+{/literal}
+
+
+
+
+
+
+
+{literal}
+<script type="text/javascript">
+	<!--开标倒计时-->
+
+	function getDiff(diff,keys,borrow_nid)
+	{
+		var df = (diff - this['runTimeNum'+keys]);
+		if (df >= 0) {
+			var getbackSecond = df;
+			day = Math.floor(getbackSecond / (60 * 60 * 24));
+			hour = Math.floor(getbackSecond / (60 * 60)) - (day * 24);
+			minute = Math.floor(getbackSecond / 60) - (day * 24 * 60) - (hour * 60);
+			second = Math.floor(getbackSecond) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+			$(".day_"+keys).html(day);
+			$('.hour_'+keys).html(hour);
+			$('.min_'+keys).html(minute);
+			$('.sec_'+keys).html(second);
+			this['runTimeNum'+keys]++;
+		}else if(df <= 0 ){
+			clearInterval(this['timerhcd'+keys]);
+			$('.t_down'+borrow_nid).hide();
+			$('.t_show'+borrow_nid).show();
+		}
+		if(second < 10){
+			$('.sec_'+keys).html('0'+second);
+		}
+		if(minute < 10){
+			$('.min_'+keys).html('0'+minute);
+		}
+		if(hour < 10){
+			$('.hour_'+keys).html('0'+hour);
+		}
+		if(day < 10){
+			$(".day_"+keys).html('0'+day);
+		}
+	}
+
+
+
+
+	new Tab('.J_tab',{auto:true});
+	new Slide('#slideBox',{index: 1 ,effect:'slide', firstDelay:8});
+	diyou.use('index', function (dy) { dy.banner_slide('banner_slide', 'banner_btn'); dy.login('log_form');dy.show_nums();});
+	diyou.use('tender', function (t) { t.pro_show() });
+	function scrollPic() {
+		var scrollPic = new ScrollPic();
+		scrollPic.scrollContId   = "scrollPic";
+		scrollPic.arrLeftId      = "LeftArr";
+		scrollPic.arrRightId     = "RightArr";
+		scrollPic.frameWidth     = 1142;
+		scrollPic.pageWidth      = 190;
+		scrollPic.speed          = 10;
+		scrollPic.space          = 10;
+		scrollPic.autoPlay       = true;
+		scrollPic.autoPlayTime   = 3;
+		scrollPic.initialize();
+	}
+	scrollPic();
+	var _hmt = _hmt || [];
+	(function() {
+		var hm = document.createElement("script");
+		hm.src = "//hm.baidu.com/hm.js?114bdc026b9ff4de87a6efb268dbea76";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+{/literal}
+
+{literal}
+<style>
+	.large_cashcont2 .pos-b{position: absolute}
+	.large_cashcont2 .pos-ba1{top:378px;right: 88px;font-size: 18px;color: #fff;border-bottom: 1px solid #fff; }
+	.large_cashcont2 .pos-ba2{bottom: 40px;left: 282px;width: 330px;height:108px;display: block; text-align: center;line-height:108px;font-size: 32px;color: #fff;}
+	.large_cashcont2 .pos-ba2:hover{color: #ffff00;}
+</style>
+<!--<script type="text/javascript">
+    $(function(){
+        $('#large_cashcont1dx .closee').click(function(){
+            $('#large_cashbgdx').remove();
+            $('#large_cashcont1dx').remove();
+        })
+        $('#large_cashcont1dx2 .closee').click(function(){
+            $('#large_cashbgdx2').remove();
+            $('#large_cashcont1dx2').remove();
+        })
+        var hayden = getCookie('name');
+        if(hayden == 'hayden'){
+            $('#large_cashbgdx').remove();
+            $('#large_cashcont1dx').remove();
+        }
+
+        var hayden2 = getCookie('name');
+        if(hayden2 == 'hayden2'){
+            $('#large_cashbgdx2').remove();
+            $('#large_cashcont1dx2').remove();
+        }
+
+        var username=document.cookie.split(";")[0].split("=")[1];
+        function setCookie(name,value){
+            document.cookie = name + "="+ escape (value)
+        }
+        function getCookie(name){
+            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+            if(arr=document.cookie.match(reg))
+                return unescape(arr[2]);
+            else
+                return null;
+        }
+        var date =$('.gongaoc2').attr('now');
+
+        if(date > 1490976000 && date < 1493568000){
+            $('#large_cashbgdx').show();
+            $('#large_cashcont1dx').show();
+            setCookie("name","hayden");
+        }else {
+            $('#large_cashbgdx').remove();
+            $('#large_cashcont1dx').remove();
+        }
+        if(date > 1510502400 && date < 1511107200){
+             $('#large_cashbgdx2').show();
+             $('#large_cashcont1dx2').show();
+             setCookie("name","hayden2");
+        }else {
+            $('#large_cashbgdx2').remove();
+            $('#large_cashcont1dx2').remove();
+        }
+    })
+</script>-->
+
+
+<script>!function(G,k){function D(){var c=A.getBoundingClientRect().width;c/B>540&&(c=540*B);var a=c/10;A.style.fontSize=a+"px",H.rem=G.rem=a}var J,w=G.document,A=w.documentElement,z=w.querySelector('meta[name="viewport"]'),C=w.querySelector('meta[name="flexible"]'),B=0,q=0,H=k.flexible||(k.flexible={});if(z){console.warn("将根据已有的meta标签来设置缩放比例");var y=z.getAttribute("content").match(/initial\-scale=([\d\.]+)/);y&&(q=parseFloat(y[1]),B=parseInt(1/q))}else{if(C){var I=C.getAttribute("content");if(I){var j=I.match(/initial\-dpr=([\d\.]+)/),F=I.match(/maximum\-dpr=([\d\.]+)/);j&&(B=parseFloat(j[1]),q=parseFloat((1/B).toFixed(2))),F&&(B=parseFloat(F[1]),q=parseFloat((1/B).toFixed(2)))}}}if(!B&&!q){var g=(G.navigator.appVersion.match(/android/gi),G.navigator.appVersion.match(/iphone/gi)),E=G.devicePixelRatio;B=g?E>=3&&(!B||B>=3)?3:E>=2&&(!B||B>=2)?2:1:1,q=1/B}if(A.setAttribute("data-dpr",B),!z){if(z=w.createElement("meta"),z.setAttribute("name","viewport"),z.setAttribute("content","initial-scale="+q+", maximum-scale="+q+", minimum-scale="+q+", user-scalable=no"),A.firstElementChild){A.firstElementChild.appendChild(z)}else{var b=w.createElement("div");b.appendChild(z),w.write(b.innerHTML)}}G.addEventListener("resize",function(){clearTimeout(J),J=setTimeout(D,300)},!1),G.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(J),J=setTimeout(D,300))},!1),"complete"===w.readyState?w.body.style.fontSize=12*B+"px":w.addEventListener("DOMContentLoaded",function(){w.body.style.fontSize=12*B+"px"},!1),D(),H.dpr=G.dpr=B,H.refreshRem=D,H.rem2px=function(c){var a=parseFloat(c)*this.rem;return"string"==typeof c&&c.match(/rem$/)&&(a+="px"),a},H.px2rem=function(c){var a=parseFloat(c)/this.rem;return"string"==typeof c&&c.match(/px$/)&&(a+="rem"),a}}(window,window.lib||(window.lib={}));</script>
+
+
+{/literal}
+
+{include file="footer.html"}

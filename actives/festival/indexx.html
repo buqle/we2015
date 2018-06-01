@@ -1,0 +1,536 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/festival/css/style.css?v=2016111" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{$tpldir}/actives/festival/css/jQueryRotate.js"></script>
+<script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/scrollToo.js"></script>
+<script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/jquery.dialog.js"></script>
+<script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/jquery.drag.js"></script>
+<script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/jquery.mask.js"></script>
+
+
+<div class="festivalact-a ww1">
+    <div class="festivalact-a_festivalact-acont1 ww3">
+        <a href="" class="actaco1"></a>
+        <a href="" class="actaco2"></a>
+        <a href=""  class="actaco3"></a>
+        <a href=""  class="actaco4"></a>
+    </div>
+</div>
+
+<!--抽奖-->
+<div class="festivalact-b ww3 pos-a">
+    <div class="festivalact-b_actbcont1">
+        <h5></h5>
+        <p class="text-center coonp">活动时间：5月1日—5月15日</p>
+        <h4 class="text-center">活动期间，投资金额≥10000元的用户每天均享有一次抽奖机会。</h4>
+        <div class="festivalact-b_cont2 pos-a">
+            <div id="start_btn" class="cursor"><h6  id="start_btn2">剩余60次</h6></div>
+        </div>
+    </div>
+    <div class="festivalact-b__cont3 pos-b">
+        <div class="festivalact-b__cont4">
+            <h4 class="bold color-ff font20 ww3 text-center">实时中奖名单</h4>
+            <div style="height: 144px;overflow: hidden;" class="renav">
+                <ul id="marqueebox" class="text-center color-ff font20">
+                    <p class="clearg"><span>138***1123</span><span>R9S手机一部</span></p>
+                    <p class="clearg"><span>138***1123</span><span>R9S手机一部</span></p>
+                    <p class="clearg"><span>138***1123</span><span>R9S手机一部</span></p>
+                    <p class="clearg"><span>138***1123</span><span>R9S手机一部</span></p>
+                    <p class="clearg"><span>138</span><span>R9S手机一部</span></p>
+                </ul>
+            </div>
+        </div>
+        <div class="festivalact-b__cont5 ww3">
+            <p>1、本活动仅限于在活动期间内投资≥10000元的用户参与；</p>
+            <p>2、实物奖励规则：用户所得实物奖励，需在“我的账户—活动管理—收货地址”中点击填写收货地址等信息，融和贷工作人员将在活动结束后三个工作日内统一安排发货；</p>
+            <p>3、加息券使用规则：用户所得加息券，可在“我的账户—活动管理—我的加息券”中查看并使用，用户投资时平台系统默认选择相应条件加息力度最大的可用券。</p>
+        </div>
+        <div class="button-login ww3 text-center cursor">立即投资</div>
+    </div>
+</div>
+
+<!--母亲节-->
+<div class="festivalact-c ww1">
+    <div class="ww2">
+
+        <div class="festivalact-c_cont6 ww3">
+            <div class="festivalact-c_cont6_cont7">
+                <h4 class="text-center">活动时间：5月1日—5月15</h4>
+                <p class="font18">千里试问平安否?且把思念遥相寄。绵绵爱意与关怀，浓浓情意与祝福。母亲，是这个世界上最伟大的存在，母爱无价，孝心无期。在这个满怀感恩、普天同庆的日子里，融和贷为爱加持，邀送鲜花。活动期间，用户单笔投资任意标的（1月标除外）每满10000元均可获得一朵爱的鲜花，鲜花越多，用户获得的爱心奖励则越高。</p>
+            </div>
+        </div>
+
+        <div class="festivalact-c_cont8 ww3">
+            <div class="pos-a" style="top: -14px;">
+                <div class="festivalact-c_cont8_cont8t text-center">
+                    单笔投资任意标的（1月标除外）每满10000元可得一朵鲜花
+                </div>
+                <div class="festivalact-c_cont8_cont9 clearg">
+                    <dl class="text-center">
+                        <img src="{$tpldir}/actives/festival/images/ban6.png">
+                        <dt>3月标</dt>
+                        <dd class="button-login ww3 text-center color-ff cursor">立即投资</dd>
+                    </dl>
+                    <dl class="text-center">
+                        <img src="{$tpldir}/actives/festival/images/ban7.png">
+                        <dt>6月标</dt>
+                        <dd class="button-login ww3 text-center color-ff cursor">立即投资</dd>
+                    </dl>
+                    <dl class="text-center" style="margin-right: 0;">
+                        <img src="{$tpldir}/actives/festival/images/ban8.png">
+                        <dt>12月标</dt>
+                        <dd class="button-login ww3 text-center color-ff cursor">立即投资</dd>
+                    </dl>
+                </div>
+            </div>
+            <!--登录-->
+            <div class="festivalact-c_cont10" id="festivalact-c_cont10" style="display: none">
+                <div class="festivalact-c_cont10_left lefts font24 clearg">
+                    <span class="lefts">尊敬的XXX，</span>
+                    您目前拥有：<i>0</i>朵百合花   <i>0</i>朵玫瑰花   <i>0</i>朵康乃馨
+                </div>
+                <div class="festivalact-c_cont10_right cursor text-center color-ff">我的记录</div>
+            </div>
+            <!--没登录-->
+            <div class="festivalact-c_cont10" id="festivalact-c_cont10-2">
+                <div class="festivalact-c_cont10_left lefts font24 clearg">
+                    <span class="lefts">尊敬的用户，</span>
+                    您目前拥有：<i>0</i>朵百合花   <i>0</i>朵玫瑰花   <i>0</i>朵康乃馨
+                </div>
+                <div class="festivalact-c_cont10_right cursor text-center color-ff">我的记录</div>
+            </div>
+
+            <div class="festivalact-c_cont11t color-ff font24">
+                鲜花奖励区
+            </div>
+            <div class="festivalact-c_cont11 clearg text-center font25">
+                <div class="left1 lefts">
+                    <h3>鲜花</h3>
+                    <h5 class="actaco5">&nbsp;百合花</h5>
+                    <h5 class="actaco6">&nbsp;&nbsp;玫瑰花</h5>
+                    <h5 class="actaco7">&nbsp;&nbsp;康乃馨</h5>
+                </div>
+                <div class="left2 lefts">
+                    <h3>奖励</h3>
+                    <h5>25元/朵</h5>
+                    <h5>60元/朵</h5>
+                    <h5>130元/朵</h5>
+                </div>
+                <div class="right1 rights">
+                    <h3>获奖标准</h3>
+                    <h5><p>单笔投资3月标满10000元</p>例：小明投资3月标50000元，获得五朵百合花，奖励金额 125 元。</h5>
+                    <h5><p>单笔投资6月标满10000元</p>例：小明投资6月标100000元，获得十朵玫瑰花，奖励金额 600 元。</h5>
+                    <h5><p>单笔投资12月标满10000元</p>例：小明投资12月标200000元，获得二十朵康乃馨，奖励金额 2600 元。</h5>
+                </div>
+            </div>
+
+            <div class="festivalact-c_cont12 clearg text-center font18">
+                <div class="festivalact-c_cont12_leftc lefts">
+                    <h4>实时投资记录</h4>
+                    <p class="festivalact-c_cont12_leftc_tit">
+                        <span>用户名</span>
+                        <span>投资金额(元)</span>
+                        <span>鲜花种类</span>
+                        <span>鲜花数量</span>
+                        <span>获得奖励(元)</span>
+                    </p>
+                    <div style="height: 210px;overflow: hidden;" class="renav2">
+                        <ul id="marqueebox2">
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="festivalact-c_cont12_rightc rights text-left">
+                    <h4>活动规则</h4>
+                    <p>1.活动期间，用户单笔投资任意标的（1月标除外）满10000元均可获得一朵爱的鲜花，鲜花越多，用户获得的爱心奖励则越高；</p>
+                    <p>2.本活动现金奖励需借款项目满标复审成功且满标时间在活动期间内，奖励资格有效；</p>
+                    <p>3.现金奖励将在活动结束后，3个工作日内直充用户汇付账户，可投资、可提现。</p>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+
+
+<!--赛龙舟-->
+<div class="festivalact-d ww1">
+    <div class="festivalact-d_tit"></div>
+    <dl class="festivalact-d_cont13 ww3 clearg">
+        <dd class="actaco8 cursor"></dd>
+        <dd class="actaco9 cursor" style="margin: 0 104px;"></dd>
+        <dd class="actaco10 block cursor"></dd>
+    </dl>
+
+    <dl class="festivalact-d_cont14">
+        <dd class="actaco13"></dd>
+        <dd  class="actaco12"></dd>
+        <dd  class="actaco11 block"></dd>
+    </dl>
+
+    <div class="festivalact-d_cont15 clearg ww3">
+        <div class="leftcont lefts text-center">
+            <h5 class="font20">实时投资记录</h5>
+            <p class="titcont">
+                <span>用户名</span><span>投资金额(元)</span><span>获得奖励(元)</span><span>投资时间</span>
+            </p>
+            <div style="height:230px;overflow: hidden;" class="renav3">
+                <ul id="marqueebox3">
+                    <p>
+                        <span>用户名</span><span>投资金额(元)</span><span>获得奖励(元)</span><span>投资时间</span>
+                    </p>
+                    <p>
+                        <span>用户名</span><span>投资金额(元)</span><span>获得奖励(元)</span><span>投资时间</span>
+                    </p>
+                    <p>
+                        <span>用户名</span><span>投资金额(元)</span><span>获得奖励(元)</span><span>投资时间</span>
+                    </p>
+                    <p>
+                        <span>用户名</span><span>投资金额(元)</span><span>获得奖励(元)</span><span>投资时间</span>
+                    </p>
+                    <p>
+                        <span>用户名</span><span>投资金额(元)</span><span>获得奖励(元)</span><span>投资时间</span>
+                    </p>
+                    <p>
+                        <span>用户名</span><span>投资金额(元)</span><span>获得奖励(元)</span><span>投资时间</span>
+                    </p>
+                </ul>
+            </div>
+        </div>
+        <div class="rightcont rights">
+            <h4>活动规则</h4>
+            <p>1.活动期间，用户累计投资（1月标除外）达到龙舟中规定的投资金额即可获得相应的现金奖励，累计投资越多奖励金额越高；</p>
+            <p>2.本活动奖金借款项目满标复审成功且满标时间在活动期间内，奖金资格有效；</p>
+            <p>3.本活动所得奖励，将在活动结束后，3个工作日内直充用户汇付账户，可投资、可提现。</p>
+        </div>
+    </div>
+
+    <div class="festivalact-d_cont16 color-ff text-center ww3 clearg">
+        <div class="button-login lefts  cursor">立即投资</div>
+        <div class="button-jilu rights  cursor">我的记录</div>
+    </div>
+
+</div>
+
+<div class="festivalact-e ww1">
+    <div class="festivalact-e_cont17 ww3">
+        <div class="biaocont1"></div>
+        <div class="biaocont2 color-ff font20">
+            活动期间，平台每天精选三个特定加息标的，投资获利，利上加利！
+            <span class="inline-block">活动时间：5月18日—5月20日</span>
+        </div>
+        <div class="biaocont3 clearg">
+            <dl>
+                <dt class="text-center">理财节精选标002</dt>
+                <div class="clearg">
+                    <dd class="dd1 lefts font16 text-center">
+                        <strong style="font-weight: normal" class="block">15.00<i>%</i></strong>
+                        <p>年化利率</p>
+                    </dd>
+                    <dd class="dd2 lefts font16 text-center">
+                        <strong class="block" style="font-weight: normal">12<i class="font16">个月</i></strong>
+                        <p>期限</p>
+                    </dd>
+                </div>
+                <dd class="dd3 pos-a"><p></p></dd>
+                <dd class="dd4 font16">总额：500000.00/剩余：269853.00</dd>
+                <dd class="button-login font20 text-center color-ff cursor ww3">立即投资</dd>
+            </dl>
+        </div>
+
+    </div>
+    <div class="festivalact-e_cont18 pos-a ww3">
+        <div class="festivalact-e_cont18_t pos-b"></div>
+        <div class="festivalact-e_cont18_con ww3">
+            <h4 class="text-center color-ff">实时投标记录</h4>
+            <div class="festivalact-e_cont18_con_con2 text-center ww3">
+                <p class="con2tit clearg font18"><span>用户名</span><span>所投标的</span><span>所投金额(元)</span><span>可获奖励(元)</span><span>投标时间</span></p>
+                <div style="height:230px;overflow: hidden;" class="renav4 font16">
+                    <ul id="marqueebox4">
+                        <p><span>用户名</span><span>所投标的</span><span>所投金额(元)</span><span>可获奖励(元)</span><span>投标时间</span></p>
+
+                    </ul>
+                </div>
+            </div>
+            <p class="text-center color-ff conpip">目前已有<i>0</i>人次抢投成功</p>
+        </div>
+    </div>
+    <div class="festivalact-e_jilu ww3 text-center color-ff cursor">我的记录</div>
+</div>
+
+<!--母亲节-我的记录-->
+<!--<div class="alertbox-A" id="alertbox-1"></div>
+<div class="alertbox-B"id="alertbox-2">
+    <div class="alertbox-C" id="alertbox-3">
+        <div class="close-a cursor">X</div>
+        <h4 class="text-center color-ff">我的记录</h4>
+        <div class="alertbox-Ctit ww3"></div>
+        <div class="alertbox-Cont ww3 text-center">
+            <p class="alertbox-Contits clearg">
+                <span>鲜花种类</span><span>鲜花数量</span><span>投资金额(元)</span><span>获得奖励(元)</span><span>获得时间</span>
+            </p>
+            <div class="renav5" style="height: 168px;overflow: hidden;">
+                <ul id="marqueebox5">
+                    <p>
+                        <span>百合花</span>
+                        <span>百合花</span>
+                        <span>百合花</span>
+                        <span>百合花</span><span>百合花</span>
+
+                    </p>
+
+                </ul>
+            </div>
+        </div>
+        <div class="alertbox-Content ww3">
+            <p class="alertbox-Contents font18 ww3">
+                <span class="lefts">累计投资总额：<i class="inline-block accic1 text-center">0</i>(元)</span>
+                <span class="rights">累计获得奖励：<i class="inline-block accic2 text-center">0</i>(元)</span>
+            </p>
+        </div>
+    </div>
+</div>-->
+
+<!--端午节-我的记录-->
+<!--<div class="alertbox-A" id="alertbox-4"></div>
+<div class="alertbox-B"id="alertbox-5">
+    <div class="alertbox-C" id="alertbox-6">
+        <div class="close-a cursor">X</div>
+        <h4 class="text-center color-ff">我的记录</h4>
+        <div class="alertbox-Ctit ww3"></div>
+        <div class="alertbox-Cont ww3 text-center">
+            <p class="alertbox-Contits clearg font18">
+                <span>月标种类</span>
+                <span>投资笔数(笔)</span>
+                <span>投资金额(元)</span>
+                <span>获得奖励(元)</span>
+            </p>
+            <div id="marqueebox6" class="font16">
+                <p>
+                    <span>3月标</span>
+                    <span class="con_sp1">0</span>
+                    <span class="con_sp2">0</span>
+                    <span class="con_sp3">0</span>
+                </p>
+                <p>
+                    <span>6月标</span>
+                    <span class="con_sp4">0</span>
+                    <span class="con_sp5">0</span>
+                    <span class="con_sp6">0</span>
+                </p>
+                <p>
+                    <span>12月标</span>
+                    <span class="con_sp7">0</span>
+                    <span class="con_sp8">0</span>
+                    <span class="con_sp9">0</span>
+                </p>
+            </div>
+        </div>
+        <div class="alertbox-Content ww3">
+            <p class="alertbox-Contents font18 ww3">
+                <span class="lefts">累计投资总额：<i class="inline-block  accic3 text-center">0</i>(元)</span>
+                <span class="rights">累计获得奖励：<i class="inline-block accic4 text-center">0</i>(元)</span>
+            </p>
+        </div>
+    </div>
+</div>-->
+
+
+<!--抢标-我的记录-->
+<div class="alertbox-A" id="alertbox-7"></div>
+<div class="alertbox-B"id="alertbox-8">
+    <div class="alertbox-C" id="alertbox-9">
+        <div class="close-a cursor">X</div>
+        <h4 class="text-center color-ff">我的记录</h4>
+        <div class="alertbox-Ctit ww3"></div>
+        <div class="alertbox-Cont ww3 text-center">
+            <p class="alertbox-Contits clearg font18" style="color:#192346;">
+                <span>投资标的</span>
+                <span>投资笔数(笔)</span>
+                <span>投资金额(元)</span>
+                <span>获得奖励(元)</span>
+            </p>
+            <div class="renav6" style="height: 168px;overflow: hidden">
+                <ul id="marqueebox6" class="font16">
+                    <p>
+                        <span>3月标</span>
+                        <span class="con_sp1">0</span>
+                        <span class="con_sp2">0</span>
+                        <span class="con_sp3">0</span>
+                    </p>
+                    <p>
+                        <span>3月标</span>
+                        <span class="con_sp1">0</span>
+                        <span class="con_sp2">0</span>
+                        <span class="con_sp3">0</span>
+                    </p>
+                    <p>
+                        <span>3月标</span>
+                        <span class="con_sp1">0</span>
+                        <span class="con_sp2">0</span>
+                        <span class="con_sp3">0</span>
+                    </p>
+                    <p>
+                        <span>6月标</span>
+                        <span class="con_sp4">0</span>
+                        <span class="con_sp5">0</span>
+                        <span class="con_sp6">0</span>
+                    </p>
+                    <p>
+                        <span>12月标</span>
+                        <span class="con_sp7">0</span>
+                        <span class="con_sp8">0</span>
+                        <span class="con_sp9">0</span>
+                    </p>
+                </ul>
+            </div>
+        </div>
+        <div class="alertbox-Content ww3">
+            <p class="alertbox-Contents font18 ww3">
+                <span class="lefts">累计投资总额：<i class="inline-block accic5 text-center">0</i>(元)</span>
+                <span class="rights">累计获得奖励：<i class="inline-block accic6 text-center">0</i>(元)</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<div id="gravitation" class="pos-b text-center">
+    <a href="" class="taion1">乐抽奖 幸运赚不停</a>
+    <a href="" class="taion2">母亲节 孝心益无价</a>
+    <a href="" class="taion3">迎端午 赛舟抢龙头</a>
+    <a href="" class="taion4">5•18  TOP发发发</a>
+</div>
+
+<div class="jiujiu_foot">
+    <p>免责申明</p>
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意刷奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <div class="endjiujiu"></div>
+</div>
+
+
+
+{literal}
+<script>
+    $(function(){
+
+        //xuanfu
+        var oFixed = $("#gravitation")
+        $(window).on('scroll',function(){
+            var sTop = $(window).scrollTop()
+            if(sTop>160){
+                oFixed.css({
+                    'position':'fixed',
+                    'top':0
+                })
+            }else{
+                oFixed.css({
+                    'position':'absolute',
+                    'top':160
+                })
+            }
+        })
+        $("#gravitation").scrollTo(700)
+
+
+        $('.festivalact-d_cont13 dd').click(function(){
+            $(this).addClass('block').siblings().removeClass('block');
+            $('.festivalact-d_cont14 dd').eq($(this).index()).addClass('block').siblings().removeClass('block');
+        });
+
+
+
+        //mother
+        $.http.get('/?user&q=get_share_ajax&alias=mother&methodname=get_newly', {}, function(ret){
+            if (ret.code == 0){
+                var len = ret.data.length;
+                var html=''
+                for(var i=0; i<len; i++){
+                    html += '<p><span>'+ret.data[i].username+'</span><span>'+ret.data[i].money+'</span><span>'+ret.data[i].reward+'</span><span>'+ret.data[i].addtime+'</span></p>';
+
+                }
+                $('.infoList').html(html);
+
+            }else {
+
+            }
+        }, 'json')
+
+
+    });
+
+
+
+    })
+    var rotateFunc = function(awards,angle,text){
+        $('#start_btn').stopRotate();
+        $("#start_btn").rotate({
+            angle:0,
+            duration: 5000,
+            animateTo: angle+1440,
+            callback:function(){
+                alert('11')
+
+            }
+        });
+    };
+
+    $("#start_btn").rotate({
+        bind:
+        {
+            click: function(){
+                getprize();
+
+            }
+        }
+    });
+
+    function getprize(){
+        //rotateFunc(1,-24);
+        rotateFunc(2,24);
+
+    }
+
+    $(function(){
+
+        var $this = $(".renav");
+
+        var scrollTimer;
+
+        $this.hover(function(){
+
+            clearInterval(scrollTimer);
+
+        },function(){
+
+            scrollTimer = setInterval(function(){
+
+                scrollNews($(".renav"));
+                scrollNews($(".renav2"));
+                scrollNews($(".renav3"));
+                scrollNews($(".renav4")); scrollNews($(".renav5"));scrollNews($(".renav6"));
+
+            }, 2000 );
+
+        }).trigger("mouseout");
+
+    });
+
+    function scrollNews(obj){
+
+        var $self = obj.find("ul:first");
+
+        var lineHeight = $self.find("p:first").height();
+
+        $self.animate({ "margin-top" : -lineHeight +"px" },800 , function(){
+
+            $self.css({"margin-top":"0px"}).find("p:first").appendTo($self);
+
+        })
+
+    }
+</script>
+{/literal}

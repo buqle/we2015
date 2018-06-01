@@ -1,0 +1,19 @@
+
+
+{if $_U.query_class=='bank' && $smarty.request.type=='ok'}
+<div class="recharge_box">
+    <p>请您在新打开的新页面（汇付天下），未完成绑定前请不要关闭该窗口！</p>
+    <div class="recharge_edit">
+        <a href="/?user&m=trust/bank/list">已完成绑定</a>
+        <a href="/help/index.html">绑定遇到问题</a>
+    </div>
+</div>
+{else}
+{if $_U.query_class=='account'}
+{include file="users_trust_account.html"}
+{elseif $_U.query_class=='cash'}
+{include file="users_trust_cash.html"}
+{elseif $_U.query_class=='bank'}
+{include file="users_trust_bank.html"}
+{/if}
+{/if}

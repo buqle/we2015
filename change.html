@@ -1,0 +1,91 @@
+{include file="header.html"}
+<div class="conbox mt30 cur_pos">
+     您当前的位置是：首页 > <a href="/change/index.html" title="">债权转让</a>
+</div>
+<input type="hidden" name="borrow_style" value="change" />
+<div class="conbox mt10">
+    <div class="touzi_con">
+		<div class="touzi_left">
+		<div class="ui_filter">
+		  <dl>
+			  <dd>
+					<ul>
+					   <li><b>金额：</b></li>
+					   <li class="ui_filter_tag active"  id="account_status_li">
+						 <input type="radio" name="account_status" value="" checked=""/>
+						   <span>不限</span>
+					   </li>
+					   {foreach from=$_G.linkages.account_status key="key" item="item"}
+					   <li class="ui_filter_tag ">
+						 <input type="radio" name="account_status" value="{$key}" />
+						   <span>{$item}</span>
+					   </li>
+					   {/foreach}
+					</ul>                
+			  </dd>
+			  <dd>
+					<ul>
+					   <li><b>利率：</b></li>
+					   <li class="ui_filter_tag active"  id="borrow_interestrate_li">
+						 <input type="radio" name="borrow_interestrate" value="" checked="" />
+						   <span>不限</span>
+					   </li>
+					   {foreach from=$_G.linkages.borrow_interestrate item="item" key="key"}
+					  <li class="ui_filter_tag ">
+						 <input type="radio" name="borrow_interestrate" value="{$key}" />
+						   <span>{$item}</span>
+					   </li>
+					   {/foreach}
+					</ul>                
+			  </dd>
+			     
+		  </dl>
+		</div>
+		</div>
+		<div class="touzi_right mt10">
+           <h3>新手指引</h3>
+           <div class="con_list">
+           {list module="articles" function="get_list" var="loop" status=1  type_nid='xszn' epage=5 page=$smarty.request.page+1 order='order_asc' limit=3}
+           {foreach from=$loop.list item=var}
+           <a href="/help/xszn/a{$var.id}.html">{$var.name|truncate:10}</a>
+           {/foreach}
+           {/list}
+           
+           
+       </div>
+       </div>
+	</div>
+</div>
+
+<div class="to_invest conbox mt60">
+	   <div class="main_box">
+		     <div class="main_box_tit fn_cle">
+				<h2>债权转让</h2>
+				<ul class="sort">
+					<li data-order='account'>
+						<i class="lv"></i>
+						<span> 转让价格</span>
+						<span class="jt_down on"></span>
+						<span class="jt_up"></span>
+					</li>
+					<li  data-order='apr'>
+						<i class="jiage"></i>
+						<span>年利率</span>
+						<span class="jt_down"></span>
+						<span class="jt_up"></span>
+					</li>
+				</ul>
+			</div>
+			<div class="main_box_cont">
+                <div class="loading_now">正在努力加载中，请耐心等待......</div>
+            </div>
+    </div>
+</div>
+<!--默认到债权-->
+{literal}
+<script type="text/javascript">
+diyou.use('tender',function(t){t.tender_list()})
+diyou.use('users',function(u){u.check_block()})
+</script>
+{/literal}
+{include file="footer.html"}

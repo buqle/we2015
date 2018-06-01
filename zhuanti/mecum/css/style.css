@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+
+.clearf{zoom:1;}
+
+.clearf:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+em a{text-decoration: none; font-style: normal;  text-decoration: none;}
+em h1{text-decoration: none; font-style: normal;  text-decoration: none;}
+em p{text-decoration: none; font-style: normal;  text-decoration: none;}
+body {
+
+    font-size: 18px;
+    font-family: "Microsoft Yahei";background: #fff;
+
+}
+
+.lotter_ban{background:url("../images/bg1.png") no-repeat center bottom;border-top: 8px solid #ff8c2c;height: 35px;line-height: 28px;text-align: center;font-size: 28px;color: #fff;margin-bottom: 40px;}
+.mecumcont1{width: 980px;font-size: 22px;color: #4c4c4c;line-height: 36px;padding-bottom: 36px;}
+.mecumcont2,.mecumcont1{border-bottom: 1px dashed #9c9c9c;}
+.mecumcont2{padding-bottom: 46px;margin: 42px 0;}
+    .mecumcont2s{margin-left: 22px;}
+    .mecumconttit{border-left: 3px solid #ff8c2c;padding-left: 12px;color: #4c4c4c;height: 28px;line-height: 28px;font-size: 24px;margin-bottom: 12px;}
+    .mecumcont2s dl{float: left;margin-left: 64px;width: 300px;}
+    .mecumcont2side1 dl{text-align: center;color: #fff;font-size: 16px;padding-bottom: 36px;}
+    .mecumcont2side1 dl dt{height: 274px;}
+    .mecumcont2side1 dl dt h4{line-height: 80px;font-size: 22px;}
+    .mecumcont2side1 dl dt p{line-height: 34px;}
+    .mecumcont2side1 dl #short-p p{line-height: 28px;}
+    .mecumcont2side1 dl dd{border: 1px solid #fff;}
+    .mecumcont2s dl dd a{color: #fff;}
+    .mecumcont2s dl dd{border-radius: 4px;width: 148px;height: 40px;text-align: center;line-height: 40px;font-size: 18px;}
+    .mecumcont2side2 dt{width: 150px;float: left;background:url(../images/img.png) no-repeat;height: 88px;}
+    .mecumcont2side2 dl{padding: 16px 0;}
+    .mecumcont2side1 .dldld1 dt{background-position: 34px 0;}
+    .mecumcont2side2 .dldld2 dt{background-position: 34px -88px;}
+    .mecumcont2side2 .dldld3 dt{background-position: 34px -176px;height: 83px;}
+    .mecumcont2side2 dl dd a{color:#4c4c4c;}
+    .mecumcont2side2 dl dd{background: #fff;width: 124px;float: left;margin-top: 22px;}
+
+

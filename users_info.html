@@ -1,0 +1,6 @@
+{$smarty.request.callback|filterinput}
+{if $_G.user_id!=''}
+{literal}({'status':'1','username':'{/literal}{$_G.user_result.username}{literal}','msg':'{/literal}{$_G.message_result.message_no|default:0}{literal}'}){/literal}
+{else}
+{literal}({'status':'0','username':'','msg':'0'}){/literal}
+{/if}

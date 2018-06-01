@@ -1,0 +1,469 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", sans-serif;;
+    line-height: 1.5;
+    font-size: 16px;
+    color: #000;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+    background:#F8BD36;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+}
+
+button {
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+}
+
+a {
+    -webkit-touch-callout: none;
+    text-decoration: none;
+}
+
+:focus {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+em, i {
+    font-style: normal;
+}
+.all-img{ width: 100%; height: 100%;}
+.section1{ width:100%;  height:9rem;position:relative;}
+/*********返回按钮**********/
+.fanhuiaaa{
+    position: absolute;
+    color: #fff;
+    font-size: 0.7rem;
+    height: 2rem;
+    line-height: 2rem;
+}
+.fanhuiaaa span{
+    float:left;font-size:1.2rem;
+}
+
+/*.section2{width:100%;height:12rem;position:relative;margin-top:1rem;}*/
+/*.a1{position:absolute;width:3rem;height:1.5rem;left:50%;margin-left:-1.5rem;top:6.55rem;}*/
+/*.a2{position:absolute;width:12rem;left:50%;margin-left:-6rem;top:2rem;font-size:0.5rem;color:#fff;text-align:center;}*/
+/*.a3{color:#fff;font-size:0.6rem;width:100%;text-align:center;}*/
+
+
+/******section2********/
+
+.section2{
+    padding-top: 0.5rem;
+    width: 100%;
+    height: 14.5rem;
+    position:relative;
+}
+.s2_wrap{
+    padding: 0.6rem;
+    width: 13rem;
+    height: 12rem;
+    background: url('../images/bb_03.png') no-repeat;
+    background-size: 100% 100%;
+    margin:3rem auto 3rem auto;
+}
+.row{
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-flex;
+    display: -webkit-box;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 0.1rem auto 0.3rem auto;
+    width: 100%;
+    -webkit-box-align: center;
+}
+.row:last-child{
+    margin-bottom: 0;
+}
+.col{
+    margin-right: 0.1rem;
+    width: 4.2rem;
+    height: 3.55rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    font-size:0.6rem;
+
+}
+.col_active{
+    background: url('../images/zhuan_1.png') no-repeat;
+    background-size: 100% 100%;
+    /*background:rgba(255,0,0,0.6);*/
+}
+.col:last-child{
+    margin-right: 0;
+}
+.write{
+    color: #FFFFFF;
+}
+.yellow{
+    color: #E4583E;
+}
+.row strong{
+    font-size: 0.8rem;
+}
+.row span{
+    font-size: 0.7rem;
+}
+.p-first-child{
+    padding-top:1rem;
+    margin-top:0.3rem;
+}
+.p-first-child1{padding-top:2rem;}
+.ljcj{
+    font-size: 0.7rem;
+    line-height: 1.2;
+}
+.red{
+    color: #F4362A;
+}
+.c5{
+    position: absolute;
+    width: 15.25rem;
+    left: 50%;
+    margin-left: -7.65rem;
+    height: 2rem;
+}
+.c6{
+    position: absolute;
+    width: 14.2rem;
+    left: 50%;
+    margin-left: -7.1rem;
+    top: 2.5rem;
+    height: 1.5rem;
+}
+.c7{
+    display: block;
+    position: absolute;
+    width: 14rem;
+    left: 50%;
+    margin-left: -7rem;
+    text-align:center;
+    color:#fff;
+    top:2.5rem;
+    font-size:0.6rem;
+}
+
+.c1{
+    width: 3.5rem;
+    height: 2rem;
+    margin-top:0.5rem;
+    margin-bottom:0.5rem;
+    margin-left:0.5rem;
+}
+
+.c88888{
+    width: 4rem;
+    height: 2.5rem;
+    margin-top: 0.6rem;
+}
+.p-first-child1-1{
+    margin-top:-1.5rem;
+}
+.p-first-child1-2{
+    margin-top:-2rem;
+}
+
+
+/*************/
+
+.section3{position:relative;text-align:center;}
+.a4{width:12.5rem;margin:5rem auto 0rem auto;overflow:hidden;color:#63490D;background:#fff;}
+.a44{margin-top:4rem;}
+.a5{width:100%;height:1.2rem;border-bottom:1px solid #C4BC81;position:relative;font-size:0.6rem;}
+.a4 span,.a8 p span{display:block;float:left;overflow:hidden;line-height:1.2rem;}
+.a6{width:30%;height:1.2rem;}
+.a7{width:40%;}
+.a8{
+    width:100%;
+    height: 6rem;
+    overflow:hidden;
+    font-size:0.6rem;
+    }
+.a81{
+    height:6rem;
+    position: relative;
+    animation: myfirst 6s;
+    -moz-animation: myfirst 6s;
+    -webkit-animation: myfirst 6s;
+    -o-animation: myfirst 6s;
+    animation-iteration-count:1000;
+}
+.a88{
+    position: relative;
+    width:12rem;
+    margin:0 auto;
+    text-align:left;
+    color:#63490D;
+    height:auto;
+}
+.a88 p{
+    font-size:0.6rem;
+}
+@keyframes myfirst
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+@-webkit-keyframes myfirst /* Safari 和 Chrome */
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+.a9{position: absolute;
+    left: 50%;
+    width: 15rem;
+    margin-left: -7.5rem;
+    top: -2rem;
+    height: 10.5rem;}
+.a99{
+    position: absolute;
+    left: 50%;
+    width: 15rem;
+    margin-left: -7.5rem;
+    top: 0rem;
+    height:15rem;
+}
+.a10{
+    position: absolute;
+    width: 15rem;
+    left: 50%;
+    top: -2rem;
+    margin-left: -7.5rem;
+}
+
+
+/********弹窗*********/
+.tanchuang{
+    width:100%;
+    height:100%;
+    position: fixed;
+    top: 0;left: 0;
+    background:#000;
+    opacity:0.6;
+    z-index:3;
+}
+
+.box{
+    width: 10rem;
+    height: 11rem;
+    margin-left: -5rem;
+    margin-top: -5.5rem;
+    position:fixed;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#F66E51), to(#FFFFFF));
+    top:50%;
+    left:50%;
+    z-index:4;
+    text-align:center;
+    border-radius: 0.5rem;
+}
+.c55{
+    position: absolute;
+    width: 9.5rem;
+    height: 4.25rem;
+    left: 50%;
+    margin-left: -4.75rem;
+    top: 4rem;
+}
+.c66666{
+    width:5rem;
+    height:4.5rem;
+    background:#fff;
+    border:1px solid #000;
+    margin:0 auto;
+}
+.c66{
+    width:5rem;
+    height:4.5rem;
+    display:table-cell;
+    vertical-align: middle;
+    text-align:center;
+}
+.c66 img{
+    max-width:4.5rem;
+    max-height:4rem;
+}
+.c8{
+    width: 9.5rem;
+    height: 2rem;
+    padding: 1rem 0rem 0.5rem 0rem;
+    display: table;
+    margin: 0 auto;
+}
+.c3-1{
+    position: absolute;
+    width: 4rem;
+    padding: 0.2rem 0rem;
+    color: #fff;
+    background: #F67151;
+    bottom: 0.5rem;
+    border-radius: 0.5rem;
+    left: 50%;
+    margin-left: -2rem;
+}
+.c33-1{
+    width:5rem;
+    margin-left:-2.5rem;
+}
+.c4-1{
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: bold;
+    max-width: 9.5rem;
+    max-height: 2rem;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.c2{
+    width:8rem;
+    height:8rem;
+    position:fixed;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#F66E51), to(#FFFFFF));
+    top:50%;
+    left:50%;
+    z-index:4;
+    margin-left:-4rem;
+    margin-top:-4rem;
+    text-align:center;
+    border-radius: 0.5rem;
+}
+.c4-22{
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: bold;
+    max-width: 9.5rem;
+    max-height: 2rem;
+    text-align:center;
+    padding-top:1rem;
+}
+.c5-1{
+    position: absolute;
+    width: 3rem;
+    height: 2.8rem;
+    left: 50%;
+    margin-left: -1.5rem;
+    bottom: 3rem;
+}
+
+

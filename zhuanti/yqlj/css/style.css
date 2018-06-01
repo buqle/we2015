@@ -1,0 +1,29 @@
+@charset "gb2312";
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clear {
+    clear: both;
+}
+img {
+    border: 0 none;
+}
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+body {
+    font-family:"Î¢ÈíÑÅºÚ", "Arial Narrow";
+    font-size: 18px;
+
+}
+.fl{ float:left;}
+.linkse {width:1000px;border:1px solid #ccc;background:#fff;margin:40px auto 25px auto;display:block;min-height:420px;}
+.linkse h2 {font-size:16px;margin:20px 30px 10px;border-bottom:1px solid #ccc;padding:0 0 10px 20px;color:#0071a5;}
+.linkse ul {margin:0 40px;display:block;}
+.linkse li {line-height:45px;font-size:14px;border-bottom:1px solid #eee;padding-left:10px; float:left; padding-right:20px}
+.linkse li a {color:#a7a7a7}
+
+

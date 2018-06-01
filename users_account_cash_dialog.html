@@ -1,0 +1,20 @@
+{if $smarty.request.type=='real'}
+
+
+<div class="phone_app">
+     <div class="dy_item">您的实名信息尚未认证！</div>
+     <div class="dy_item"><span>为保护您的账户安全，请先完成实名认证。</span></div>
+     <div class="dy_item"><a href="javascript:viod(0);" onclick="javascript:location.href='/?user&m=approve/safe';" class="approve_btn">立即认证</a></div>
+  </div>
+  
+  
+
+{else}
+
+<div class="phone_app">
+     <div class="dy_item">您的手机尚未绑定！</div>
+     <div class="dy_item"><span>为保护您的账户安全，请先完成手机绑定。</span></div>
+     <div class="dy_item"><a href="javascript:viod(0);" onclick="javascript:location.href='/?user&m=approve/safe';" class="approve_btn">立即认证</a></div>
+  </div>
+
+{/if}

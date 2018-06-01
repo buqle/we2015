@@ -1,0 +1,247 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/onetwice/css/style.css" rel="stylesheet" type="text/css" />
+
+<div class="standardcn1">
+    <h4>2016年4月19日—2016年4月30日</h4>
+</div>
+<div style="height: 115px;background: #f7f7f7;"></div>
+<div class="trusteeship1"></div>
+<div style="height: 54px;background: #e6e6e5;"></div>
+
+<div class="trusteeship2">
+   <div class="trustee_c2 cleart">
+        <div class="support_l">
+            <h4>开通存管享特权</h4>
+        </div>
+       <div class="support_r">
+           <p>2016年4月30日前，在平台开通存管账户的用户，</p>
+           <p>均可享受<strong>提现免手续费</strong>的限时特权！</p>
+           <p>提现次数不设上限！</p>
+           <h5 class="logo_tbn" id="logo_tbn1"></h5>
+       </div>
+
+   </div>
+</div>
+
+<div class="trusteeship3">
+    <div class="trustee_c3 cleart">
+        <div class="trustee_c3s">
+            <h4>投资新标赚翻倍</h4>
+            <p>2016年4月19日-30日，</p>
+            <p style="margin-bottom: 8px;">在平台投资<strong>任意项目</strong>，均可享受</p>
+            <p><strong>首月翻倍</strong>年化收益的额外惊喜！</p>
+            <h5 class="opened_t2" id="opened_t1"></h5>
+        </div>
+    </div>
+</div>
+
+<div class="trusteeship4">
+    <div class="trustee_c4 cleart">
+        <div class="chassis_bay" id="bay_left">
+            <h4>实时投资奖励记录</h4>
+            <div class="tit_pp">
+                <p><span>用户名</span><span>投资金额</span><span>翻倍收益</span><span>投资时间</span></p>
+            </div>
+            <div id="up_zzjs" style="height:252px;overflow:hidden;">
+                <div id="marqueebox">
+                    <div class="sure-t1">
+
+                    </div>
+                </div>
+            </div>
+            <h5 class="logo_tbn" id="logo_tbn2">立即开通</h5>
+        </div>
+        <div class="chassis_bay" id="bay_right">
+            <h4>我的奖励记录</h4>
+           <div style="background: #f3fbe4;width: 542px;margin: 0 auto;height: 282px;">
+               <div class="tit_pp">
+                   <p><span>投资标的</span><span>标的时长</span><span>投资时间</span><span>投资金额</span><span>翻倍收益</span></p>
+               </div>
+               <div class="entertainment1">
+                   您还没有登录，<span class="logo_sb">登录</span>即可查看！
+               </div>
+               <div class="import">
+                   <div id="marqueebox1" style="height:220px;overflow:auto;">
+
+                   </div>
+                   <div class="allmydayxx cleart">
+                       <span>合计：<i id="allter1"></i>元</span>
+                   </div>
+               </div>
+           </div>
+            <h5 class="opened_t2" id="logo_tbn3">立即投资</h5>
+        </div>
+
+    </div>
+</div>
+
+<div class="trusteeship5">
+    <div class="trustee_c5">
+        <div class="trustee_c5s">
+            <p>一、存管特权：</p>
+            <p>活动期间内，在新版平台开通存管账户的用户，均可享受汇付提现免除手续费的限时（2016年5月1日零点之前）特权！提现次数不设上限 ！</p>
+            <p>二、收益翻倍活动：</p>
+            <p>1.2016年4月19日—30日投资平台任意借款项目，均可享受首月年化翻倍；</p>
+            <p>2.奖励金额在用户所投标的首月年化收益发放当天充入用户存管账户，可投资、可提现；</p>
+            <p>3.本活动可与平台其他活动叠加享受。</p>
+        </div>
+    </div>
+</div>
+
+<div class="jiujiu_foot">
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意涮奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <p>更多精彩活动，请关注融和贷官方微信和手机app。</p>
+    <div class="endjiujiu"></div>
+</div>
+
+
+<script>
+    var user_id = '{$_G.user_id}';
+    var  trust = '{$_G.trust_user.approve_result.reg_trust}';//是否注册托管
+    {literal}
+    $(function(){
+        $(".con-four").hover(function() {
+            $(this).find(".txt-four").stop().animate({"left": 0});
+        }, function() {
+            $(this).find(".txt-four").stop().animate({"left":-399});
+        });
+
+
+        function getday(time) {
+            var date = new Date();
+            date.setTime(time * 1000);
+            Y = date.getFullYear() + '/';
+            M = (date.getMonth() + 1 < 10 ? (date.getMonth() + 1) : date.getMonth() + 1) + '/';
+            D = date.getDate()+'   ';
+            h = date.getHours() + ':';
+            m = date.getMinutes() + ':';
+            s = (date.getSeconds() + 1 < 10 ? '0' + (date.getSeconds() + 1) : date.getSeconds() + 1);
+            time = Y + M + D + h + m + s;
+            return time;
+        }
+
+        if(user_id>0){
+            $('.entertainment1').hide();
+            $('.import').show();
+            $.http.get('/?user&q=get_share_ajax&alias=onetwice&methodname=get_reward', {}, function(ret){
+                if (ret.code == '0'){
+                    $(".lucky_bg").show();
+                    $('.login_myjlcont').show();
+                    var html = '';
+                    var len = ret.data.length;
+                    var a=0;
+                    for(var i=0; i<len; i++){
+                        html += '<p><span style="width: 22%">'+ret.data[i].name+'</span><span style="width: 18%">'+ret.data[i].period+'个月</span><span>2016/'+getdays(ret.data[i].addtime)+'</span><span>'+ret.data[i].account+'</span><span>'+ret.data[i].all_money+'</span></p>';
+                        a +=Number(ret.data[i].all_money)
+
+                    }
+                    var num = new Number(a);
+                        $('#marqueebox1').html(html);
+                        $('#allter1').text(num.toFixed(2));
+
+                    //alert(num.toFixed(1));
+                }
+            }, 'json')
+        }
+
+        $('.logo_sb').click(function(){
+            if (user_id==0) {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+
+        });
+
+        $(".logo_tbn").each(function(){
+            $(this).click(function(){
+                if(trust!=1){
+                    window.location.href="/?user&q=reg&type=phone";
+                    return;
+                }else {
+                    window.location.href="/?user";
+                }
+            });
+        });
+
+        $('.opened_t2').each(function(){
+            $(this).click(function(){
+                if (user_id>0) {
+                    window.location.href="/invest/index.html";
+                } else {
+                    diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                    return false;
+                }
+            });
+        });
+
+    });
+
+     $(function(){
+
+     $.http.get('/?user&q=get_share_ajax&alias=onetwice&methodname=get_record', {}, function(ret){
+     if (ret.code == '0'){
+     var surelen = ret.data.length;
+     var surer = '';
+     for(var i = 0; i < surelen; i++){
+     surer += '<p><span>'+ret.data[i].username+'</span><span>￥'+ret.data[i].account+'</span><span >'+ret.data[i].all_money+'</span><span >'+ret.data[i].addtime+'</span></p>';
+     }
+     $('.sure-t1').html(surer);
+     }
+     }, 'json');
+
+
+     });
+
+
+    function startmarquee(lh,speed,delay,domID) {
+        var p=false;
+        var t;
+        var o=document.getElementById(domID);
+        //o.innerHTML=o.innerHTML;
+        o.style.marginTop=0;
+        o.onmouseover=function(){p=true;}
+        o.onmouseout=function(){p=false;}
+        function start(){
+            t=setInterval(scrolling,speed);
+            if(!p) o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+        }
+        function scrolling(){
+            if(parseInt(o.style.marginTop)%lh!=0){
+                o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+                if(Math.abs(parseInt(o.style.marginTop))>=o.scrollHeight) o.style.marginTop=0;
+            }else{
+                clearInterval(t);
+                setTimeout(start,delay);
+            }
+        }
+        setTimeout(start,delay);
+    }
+
+    startmarquee(40,10,800,'marqueebox');
+
+    function getdays(time) {
+        var date = new Date();
+        date.setTime(time * 1000);
+        Y = date.getFullYear() + '/';
+        M = (date.getMonth() + 1 < 10 ? (date.getMonth() + 1) : date.getMonth() + 1) + '/';
+        D = date.getDate()+'   ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = (date.getSeconds() + 1 < 10 ? '0' + (date.getSeconds() + 1) : date.getSeconds() + 1);
+        time = M + D;
+        return time;
+    }
+
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?114bdc026b9ff4de87a6efb268dbea76";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+{/literal}

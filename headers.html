@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="baidu-site-verification" content="13Rly5kIwF" />
+<meta property="qc:admins" content="7705207377641175633" />
+<meta property="wb:webmaster" content="a5dad0e8c9851f3b" />
+<meta name="keywords" content="{if $_G.site_result.keywords eq ''}{$_G.system.con_keywords}{else}{$_G.site_result.keywords}{/if}" />
+<meta name="description" content="{if $_G.site_result.description eq ''}{$_G.system.con_description}{else}{$_G.site_result.description}{/if}" />
+<title>{if $_G.site_result.name!=""}{$_G.site_result.name} - {/if}{$_G.system.con_webname} - {$_G.system.con_webtitle}</title>
+	<script type="text/javascript" src="{$tpldir}/js/jquery-1.8.2.min.js?v=2016419"></script>
+	<script type="text/javascript" src="{$tpldir}/js/diyou.js?v=2016419"></script>
+	<script type="text/javascript" src="{$tpldir}/js/base.js?v=201000"></script>
+	<script src="{$tpldir}/actives/finance/js/jquery.dialog.js"></script>
+	<script src="{$tpldir}/actives/finance/js/jquery.drag.js"></script>
+	<script src="{$tpldir}/actives/finance/js/jquery.mask.js"></script>
+	<script type="text/javascript" src="{$tpldir}/js/jquery.pagination.js"></script>
+	<link href="{$tpldir}/css/blue/public.css?v=2016524" type="text/css" rel="stylesheet"/>
+	<link href="{$tpldir}/css/blue/user.css?v=2016524" type="text/css" rel="stylesheet"/>
+	<link type="text/css" rel="stylesheet" href="{$tpldir}/css/blue/mall-shop.css?v=2016121">
+	<link rel="stylesheet" type="text/css" href="{$tpldir}/css/blue/maks.css?v=2016429">
+	<link href="{$tpldir}/css/blue/style.css?v=20169061" type="text/css" rel="stylesheet"/>
+
+<script>
+    var user_id = '{$_G.user_id}';
+	var  trust = '{$_G.trust_user.approve_result.reg_trust}';//是否注册托管
+    {if $_G.user_id!=""}
+        var trust_status ={$_G.trust_user.approve_result.reg_trust};//是否注册托管
+        var phone_status  ={$_G.trust_user.approve_result.phone_status};//手机是否认证
+        var realname_status ={$_G.trust_user.approve_result.realname_status} ;//是否实名认证
+        var trust_authize ={$_G.trust_user.approve_result.trust_authize} ;//是否实名认证
+    {/if}
+        var web_domain = "{$_G.web_domain}";
+        var js_web_name="{if $_G.site_result.name!=""}{$_G.site_result.name} - {/if}{$_G.system.con_webname} - {$_G.system.con_webtitle}";
+
+</script>
+<!--[if IE 6]>
+<script src="{$tpldir}/js/iepng.js?v=2016419" type="text/javascript"></script>
+<script type="text/javascript">
+ EvPNG.fix('div, ul, li , a , em , img, input,h1');
+</script>
+<![endif]-->
+</head>
+<body>
+<div id="header">
+	<div class="head">
+		<div class="topbar widthb">
+			<div class="topbar_left lefton">
+				<span style="font-size: 14px; line-height: 30px;float: left;width: 224px;">全国统一客服热线：<span>400-013-5679</span></span>
+				<div class="fl_contnew clearff">
+					<dl class="contnew_l1">
+						<dt>手机理财</dt>
+						<dd style="display: none;"></dd>
+					</dl>
+					<dl class="contnew_l2">
+						<dt>微信理财</dt>
+						<dd style="display: none;"></dd>
+					</dl>
+				</div>
+
+			</div>
+			<div class="topbar_right righton clearff">
+				<div class="new_barleftt">
+					<a href="http://www.ronghedai.com/">融和贷官网 </a>
+					{if $_G.user_id==""}
+					<a href="/?user&q=login">登录 </a>
+					<a href="/?user&q=reg">注册</a>
+					{elseif $_G.user_id!=""}
+					<a  href="/?user#users/home">你好,{$_G.username}!</a>
+					<a  href="/?user&q=logout">退出</a>
+					{/if}
+					<a href="/aboutus/index.html" style="border: none;padding-right: 0;">关于我们</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="widtha">
+	<div class="integral_head widthb clearff">
+		<div class="lefton"></div>
+		<ul class="righton clearff">
+			<li class="liclass"><a href="/mall/index.html">首页</a> </li>
+			<li><a href="/mallist/index.html">积分兑换</a> </li>
+			<li><a href="/malldie/index.html">疯狂秒杀</a> </li>
+			<li><a href="/actives/lottery/index.html">积分抽奖</a> </li>
+			<li><a href="/mallcenter/index.html">我的积分</a> </li>
+			<li><a href="/mecum/index.html">新手指南</a> </li>
+		</ul>
+	</div>
+</div>
+<script>
+	$('.fl_contnew dl').hover(function(){
+		$(this).find('dd').fadeIn(100);
+	},function(){
+		$(this).find('dd').fadeOut(100);
+	});
+</script>

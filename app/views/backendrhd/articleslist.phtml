@@ -1,0 +1,49 @@
+<div class="graphs">
+    <div class="xs">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h2>文章列表</h2>
+            </div>
+            <div class="panel-body no-padding" style="display: block;">
+                <table class="table table-striped">
+                    <thead>
+                    <tr class="warning">
+                        <th>编号</th>
+                        <th>名称</th>
+                        <th>分类</th>
+                        <th>关键字</th>
+                        <th>分布时间</th>
+                        <th>阅读数</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                        foreach ($pages->items as $item) {
+                    ?>
+                    <tr>
+                        <td><?=$item->id?></td>
+                        <td><a href='http://www.ronghedai.com/zixun/show_<?=$item->id?>' target='_bank'><?=$item->name?></a></td>
+                        <td><?=$item->category->name?></td>
+                        <td><?=$item->keyword?></td>
+                        <td><?=$item->getAddTime()?></td>
+                        <td><?=$item->click_total?></td>
+                        <td><a href="/zixun/backendrhd/editarticles/<?=$item->id?>" >修改</a>|<a href="/zixun/backendrhd/delarticles/<?=$item->id?>"  onclick="return confirm('是否确定删除')">删除</a></td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                    <tr >
+                        <td colspan="7" style="text-align: right">
+                            <a href="/zixun/backendrhd/articleslist">首页</a>|
+                            <a href="/zixun/backendrhd/articleslist/<?= $pages->before; ?>">上一页</a> |
+                            <a href="/zixun/backendrhd/articleslist/<?= $pages->next; ?>">下一页</a> |
+                            <a href="/zixun/backendrhd/articleslist/<?= $pages->last; ?>">最后一页</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div style="height: 30px; width: 100%;">
+	{articles module="borrow" function="get_borrow_view"  borrow_nid=$smarty.request.borrow_nid user_id=$_G.user_id var="view_var" }
+	<a class="fl" style="height: 20px; width: 88px; text-align: center; line-height: 20px; color: #0073b6; font-size: 12px;" href="javascript:void(0)"  id="view_protocol" data-id="{$smarty.request.id}"  data-nid='{$smarty.request.borrow_nid}' data-type='{$view_var.borrow_type}'>查看借款协议</a>
+	<a class="fl" style="height: 20px; width: 45px; border-radius: 5px; background: #33B3EE; text-align: center; line-height: 20px; color: white; font-size: 12px; display: block;" href="javascript:void(0)"  id="down_protocol"  data-nid="{$smarty.request.borrow_nid}" data-type="{$view_var.borrow_type}" data-id="{$smarty.request.id}">下载</a>
+	{/articles}
+</div>
+<table class="user_tab5 t20 cin_in">
+	<tbody>
+	<tr class="tab4_tit">
+		<td>还款期数</td>
+		<td>计划还款日</td>
+		<td>应收金额</td>
+		<td>实收本金</td>
+		<td>实收利息</td>
+		<td>逾期天数</td>
+		<td>状态</td>
+	</tr>
+	{loop module="borrow" var="item" function ="get_recover_list"  user_id=$_G.user_id borrow_nid=$smarty.request.borrow_nid id=$smarty.request.id order="recover_period" limit='all'}
+	<tr class="tab5_tit">
+		<td>第{if $item.borrow_type=="day" || $item.borrow_type=="roam"}1{else}{$item.recover_period}{/if}期</td>
+		<td>{$item.recover_time|date_format:"Y-m-d"}</td>
+		<td>￥{$item.recover_account}</td>
+		<td>￥{$item.recover_capital_yes}</td>
+		<td>￥{$item.recover_interest_yes}</td>
+		<td>{$item.late_days|default:"0"}天</td>
+		<td>{if $item.change_status==1}已转让{elseif $item.recover_web==1}网站垫付{elseif $item.recover_status==1}<span class="">已还</span>{else}<span style="color: red;" class="user_f_c1">未还</span>{/if}
+		</td>
+	</tr>
+	{/loop}
+	</tbody>
+</table>
+{literal}
+<script type="text/javascript">
+	diyou.use('users_invest',function(u){u.tender_detail();u.tender_protocol('view_protocol','down_protocol')});
+</script>
+{/literal}

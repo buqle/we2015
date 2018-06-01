@@ -1,0 +1,429 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="qc:admins" content="7705207377641175633" />
+    <meta property="wb:webmaster" content="a5dad0e8c9851f3b" />
+    <!-- <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>-->
+    <meta name="keywords" content="{if $_G.site_result.keywords eq ''}{$_G.system.con_keywords}{else}{$_G.site_result.keywords}{/if}" />
+    <meta name="description" content="{if $_G.site_result.description eq ''}{$_G.system.con_description}{else}{$_G.site_result.description}{/if}" />
+    <title>{if $_G.site_result.name!=""}{$_G.site_result.name} - {/if}{$_G.system.con_webname} - {$_G.system.con_webtitle}</title>
+    <link href="{$tpldir}/css/blue/public.css?v=2016524" type="text/css" rel="stylesheet"/>
+    <link href="{$tpldir}/css/blue/user.css?v=2016524" type="text/css" rel="stylesheet"/>
+    <link href="{$tpldir}/actives/drawreg/css/style.css?v=2017803" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" src="{$tpldir}/js/jquery-1.8.2.min.js?v=2016419"></script>
+
+    <script type="text/javascript" src="{$tpldir}/actives/drawreg/js/diyou.js"></script>
+    <script type="text/javascript" src="{$tpldir}/actives/drawreg/js/reg.js"></script>
+    <script type="text/javascript" src="{$tpldir}/actives/drawreg/js/users_check.js"></script>
+    <script type="text/javascript" src="{$tpldir}/actives/drawreg/js/base.js"></script>
+    <script type="text/javascript" src="{$tpldir}/actives/drawreg/js/users_reg.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{$tpldir}/css/blue/maks.css?v=2016429">
+    <script src="{$tpldir}/actives/finance/js/jquery.dialog.js"></script>
+    <script src="{$tpldir}/actives/finance/js/jquery.drag.js"></script>
+    <script src="{$tpldir}/actives/finance/js/jquery.mask.js"></script>
+
+    <script>
+        var user_id = '{$_G.user_id}';
+        var  trust = '0';
+        var  real_name= '0';
+    </script>
+
+</head>
+
+<body>
+
+<div class="drawcont1"></div>
+
+<div class="lucky_bg"></div>
+<div id="room_con1" style="display: none;">
+    <div class="reg_cont login_myjlcont1" style="height: 570px;margin-top: -285px;">
+        <div class="close_this close_bg" id="close_bg1"></div>
+        <div class="dialog_tit" id="dialog_titid"><h2>新用户注册</h2></div>
+        <form name="reg_form" method="post" action="" id="reg_form">
+            <ul>
+                <li><label>用户名</label><input type="text" id="username" name="username" type="text"  value=""/></li>
+                <li><label>登录密码</label><input id="password" name="password" type="password"  value=""/></li>
+                <li class="pw_strength">
+                    <div class="pw_bar"></div>
+                    <div class="pw_letter">
+                        <span class="tsl" data-phase-id="r_1_8">弱</span>
+                        <span class="tsl" data-phase-id="r_1_9">中</span>
+                        <span class="tsl" data-phase-id="r_1_10">强</span>
+                    </div>
+                </li>
+                <li><label>确认密码</label><input id="confirm_password" name="confirm_password" type="password"  value=""/></li>
+                <li><label>手机号码</label><input type="text"  value="{$smarty.session.reg_data.phone}" name="phone" id="phone" maxlength="11"></li>
+                <li><label>验证码</label><input id="vericode" name="valicode" type="text" maxlength="4" value="" style="width: 160px;"/>&nbsp;{valicode}</li>
+                <li><label>手机验证码</label><input style="width: 160px;"  name="vali_phone_code" type="text" id="vali_phone_code"   maxlength="6" value=""/>
+                    <input class="get_phoco" id="get_phone_code" type="button" value="获取手机验证码">
+                </li>
+
+                <li>
+                    <label></label>	<input name="service" type="radio" checked="checked" id="dy_server"/>&nbsp;&nbsp;我同意&nbsp;<a href="javascript:;" class="user_f_c2" id="privacy1">{articles module="articles"
+                    function="get_one_page" var="var" id=8 }{$var.name}{/articles}</a>
+                </li>
+                <li>
+                    <label></label><input type="submit" class="user_reg_subs" value="完成注册" id="reg_sub"/>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+
+<div class="lucky_bg1"></div>
+<div class="draw_bg">
+    <div class="reg_overcont">
+        <div class="close_this close_bg"></div>
+        <h4>点击确定立即参与抽奖活动！</h4>
+        <div class="close_this btn_sure">确定</div>
+    </div>
+</div>
+
+<div class="lucky_bg2"></div>
+<div class="draw_bg2">
+    <div class="reg_overcont2">
+        <div class="close_this close_bg" id="close_bg"></div>
+       <div class="jp_text1">
+           <div class="jp_text">
+               <h4></h4>
+               <p></p>
+           </div>
+       </div>
+        <div class="jp_text2">
+            <p>亲可以在“个人中心－我的红包”</p>
+            <p>中看到奖励哦！</p>
+        </div>
+        <a href="/?user&user_role=1#account/red" class="jp_btncc">立即查看</a>
+    </div>
+</div>
+
+
+
+<div class="drawcont2">
+    <h4 class="dra_tit1">注册即享幸运翻翻乐</h4>
+    <h5>活动对象仅限本页面注册用户</h5>
+    <div class="drawcont2c">
+        <ul class="drawcont2c1 clearf" id="drawcont2c1">
+            <li class="bg2_blue">
+                <h4>500元</h4>
+                京东E卡
+            </li>
+            <li class="bg3_yellow">
+                <h4>30M</h4>
+                流量
+            </li>
+            <li class="bg2_blue" style="margin-right: 0;">
+                <h4>小米</h4>
+                智能体重秤
+            </li>
+            <li class="bg3_yellow">
+                <h4>5元</h4>
+                话费
+            </li>
+            <li class="bg4_red" id="show_reg">
+                <h4>注册</h4>
+                抽奖
+            </li>
+            <li class="bg3_yellow" style="margin-right: 0;">
+                <h4>50元</h4>
+                话费
+            </li>
+            <li class="bg2_blue">
+                <h4>Kindle</h4>
+                阅读器
+            </li>
+            <li class="bg3_yellow">
+                <h4>200元</h4>
+                话费
+            </li>
+            <li class="bg2_blue" style="margin-right: 0;">
+                <h4>富士</h4>
+                拍立得
+            </li>
+        </ul>
+        <ul class="clearf alldata" style="display: none;">
+            <li  date-index="0">
+                <div class="fanmain"></div>
+                <div class="zhengmain">
+                    <h4>30M</h4>
+                    流量
+                </div>
+            </li>
+            <li date-index="1">
+                <div class="fanmain"></div>
+                <div class="zhengmain">
+                    <h4>5元</h4>
+                    话费
+                </div>
+            </li>
+            <li date-index="2" style="margin-right: 0;">
+                <div class="fanmain"></div>
+                <div class="zhengmain">
+                    <h4>50元</h4>
+                    话费
+                </div>
+            </li>
+            <li date-index="7">
+                <div class="fanmain"></div>
+                <div class="zhengmain">
+                    <h4>富士</h4>
+                    拍立得
+                </div>
+            </li>
+            <li id="on_indexspcon">
+                <h4>立即</h4>
+                抽奖
+            </li>
+            <li date-index="3" style="margin-right: 0">
+                <div class="fanmain"></div>
+                <div class="zhengmain">
+                    <h4>200元</h4>
+                    话费
+                </div>
+            </li>
+
+
+            <li date-index="6">
+                <div class="fanmain"></div>
+                <div class="zhengmain">
+                    <h4>Kindle</h4>
+                    阅读器
+                </div>
+            </li>
+            <li date-index="5">
+                <div class="fanmain"></div>
+                <div class="zhengmain">
+                    <h4>小米</h4>
+                    智能体重秤
+                </div>
+            </li>
+            <li date-index="4" style="margin-right: 0;">
+                <div class="fanmain"></div>
+                <div class="zhengmain">
+                    <h4>500元</h4>
+                    京东E卡
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="drawcont3">
+    <h4 class="dra_tit1">平台优势</h4>
+    <h5>相信融和贷，更相信自己的选择</h5>
+    <ul class="clearf">
+        <li>
+            <img src="{$tpldir}/actives/drawreg/images/d1.gif">
+            <p>上市背景 实力保障</p>
+            <h6>全国第十五家银行存管平台</h6>
+        </li>
+        <li class="width_s">
+            <img src="{$tpldir}/actives/drawreg/images/d2.gif">
+            <p>专业金融团队 业界精英力量</p>
+            <h6>实地考察 精准估值</h6>
+        </li>
+        <li>
+            <img src="{$tpldir}/actives/drawreg/images/d3.gif">
+            <p>投资灵活 100元起投</p>
+            <h6>产品多样 期限灵活</h6>
+        </li>
+        <li class="width_s">
+            <img src="{$tpldir}/actives/drawreg/images/d4.gif">
+            <p>星级服务 诚意用心</p>
+            <h6>给每一位用户舒心投资体验</h6>
+        </li>
+    </ul>
+</div>
+
+<div class="luodine_qsin4 clearf">
+    <div class="luodine_qsin4c clearf">
+        <div class="luodine_qsin4_c1">
+            <h4><a href="http://www.ronghedai.com/aboutus/index.html">了解更多>></a>关于融和贷——全国第十五家银行存管平台</h4>
+            <p style="margin-top: 28px;">融和贷隶属安徽省合肥市安易贷投资管理有限公司，于2015年1月13日正式上线运营，注册资本1亿元，实缴资本9000万元人民币。公司实力雄厚，业务覆盖领域广泛，目前已是全国第十五家银行存管平台。</p>
+            <div class="luodine_qsin4con">
+                <p>2013年 — 被授予“安徽十大信用单位”称号。</p>
+                <p>2014年 — 被评为“全国互联网金融服务最具影响力十佳明星企业”。</p>
+                <p>2015年—通过中国电子商务协会“150项严格验证。</p>
+                <p>2016年 — 荣获“合肥民间投融资商会优秀会员单位”荣誉称号</p>
+            </div>
+            <p>平台股东架构：</p>
+            <p>合肥安易贷投资管理有限公司（融和贷）</p>
+            <p>怀化亚亨农林开发有限公司</p>
+            <p>淮北汇邦小额贷款股份有限公司</p>
+            <p>安徽天池基金管理有限公司</p>
+            <p>安徽博爱公益基金会</p>
+            <p>安徽佰驰汽车销售有限公司</p>
+        </div>
+        <div class="luodine_qsin4_c2">
+            <dl>
+                <dt></dt>
+                <dd>
+                    <p>融和贷订阅号</p>
+                    <p>微信扫一扫 信息早知道</p>
+                </dd>
+            </dl>
+            <dl style="margin-top: 42px;">
+                <dt id="dtend"></dt>
+                <dd>
+                    <p>融和财富APP</p>
+                    <p>随身财富 触手可及</p>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+{literal}
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?114bdc026b9ff4de87a6efb268dbea76";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script>
+    $(function(){
+        $('#privacy1').click(function(){
+            var dialog = jDialog.ajax('/privacy/index.html',{
+                width: 550,
+                height: 420,
+                title:"网站服务协议"
+
+            });
+            return false;
+        });
+        $('#agreement').live('click',function(){
+            $('.j-dialog-mask ').hide();
+            $('.j-dialog-fix ').hide()
+        })
+            $('#show_reg').click(function(){
+              if(user_id==0){
+                  $('#room_con1').show();
+                  $('.lucky_bg').show();
+
+              }
+            });
+        $('#close_bg1').click(function(){
+            $('#room_con1').hide();
+            $('.lucky_bg').hide();
+        })
+
+        if(user_id>0){
+            $('#drawcont2c1').hide();
+            $('.alldata').show();
+        }
+
+        $('#on_indexspcon').click(function(){
+            var prs = ['30M','5元','50元','200元','京东E卡','小米智能','Kindle','富士'];
+            var prs1=['流量','话费','话费','话费','500元','体重秤','阅读器','拍立得']
+
+            $.http.get('/?user&q=get_share_ajax&alias=drawreg&methodname=get_reward1',{},function(ret){
+                if(ret){
+                    var prz = ret.code;
+                    if(prz=='9'){
+                        jDialog.alert('参数错误');
+                    }else if(prz=='8'){
+                        jDialog.alert('活动已结束');
+                    }else if(prz=='10'){
+                        jDialog.alert('抱歉，您不符合抽奖条件');
+                    }else if(prz == '11') {
+                        jDialog.alert('您的抽奖机会已用完');
+                    }else{
+                        acc(prz);
+                        var aad = (prz*100)+4000;
+                        var aa = setTimeout(function(){
+                            $('.alldata li').find('.active').click(function(){
+                                $(this).fadeOut().next().fadeIn(1000);
+                                setTimeout(function(){
+                                    $('.lucky_bg2').show();
+                                    $('.draw_bg2').show();
+                                    $('#close_bg').click(function(){
+                                        $('.lucky_bg2').hide();
+                                        $('.draw_bg2').hide();
+                                    });
+                                },1100)
+                                $('.jp_text h4').text(prs[prz]);
+                                $('.jp_text p').text(prs1[prz]);
+                            });
+                        },aad);
+                        switch (prz){
+                            case 0:
+                                break;
+                            case 1:
+                                aa
+                                break;
+                            case 2:
+                                aa
+                                break;
+                            case 3:
+                                aa
+                                break;
+                            case 4:
+                                aa
+                                break;
+                            case 5:
+                                aa
+                                break;
+                            case 6:
+                                aa
+                                break;
+                            case 7:
+                                aa
+                                break;
+
+                        }
+                    }
+                }
+            },'json')
+
+        });
+
+        function acc(pz){
+            var pz = pz;
+            var liIndex = new Array(),
+                    liAll = $('.alldata li[date-index]'),
+                    currIndex = 1;
+            liAll.each(function () {
+                liIndex[parseInt($(this).attr('date-index'))] = $(this);
+            });
+            var liLen = liIndex.length;
+
+            var aa = 0;
+            var times = setInterval(function () {
+                liAll.each(function () {
+                    $(this).children('.fanmain').removeClass('active');
+                });
+                liIndex[currIndex].children('.fanmain').addClass('active');
+               // console.log(currIndex+'aa');
+                currIndex++;
+                if(aa == 4 && currIndex == pz+1){
+                    clearInterval(times);
+                }
+                if (currIndex >=liLen ){
+                    currIndex = 0;
+                    aa ++;
+
+                }
+            },90)
+        }
+
+
+    });
+    diyou.use('users_reg', function (dy) {
+        dy.register('reg_form');
+    });
+    diyou.use('users_reg', function (dy) { dy.reg_phone_form('reg_phone_form');dy.get_phone_code('get_phone_code')});
+</script>
+{/literal}
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/one11/css/style.css?v=201710" rel="stylesheet" type="text/css" />
+
+<div class="act10-bata1"></div>
+
+<div class="act10box ww1">
+    <div class="act10-bata2 ww2">
+        <div class="act10-bata2_bata1c color-ff">为回馈广大新老客户对本平台特色专区长期以来的支持，特重磅推出一年只有一次的“特色专区活动月”活动。凡在活动期间累投金额达到规定额度，即可获得神秘优厚大奖，机不可失，时不再来，赶快行动吧！</div>
+        <div class="act10-bata2_bata2c">
+            <div class="act10-bata2_bata3c color-ff text-center clearg">
+                <h4 style="margin-right: 234px;" class="onadd">12月标专享</h4><h4>6月标专享</h4>
+            </div>
+            <dl class="act10-bata2_bata4c">
+                <dd class="ondd cursor"><img src=//img.ronghedai.com/{$tpldir}/actives/one11/images/7.png?v=20172"> </dd>
+                <dd class="cursor"><img src="//img.ronghedai.com/{$tpldir}/actives/one11/images/8.png?v=201722"></dd>
+            </dl>
+            <div class="act10-bata2_bata5c cursor text-center color-ff ww3">立即投资</div>
+            <div class="act10-bata2_bata6c font18 color-ff">
+                <h4 class="font24">活动规则：</h4>
+                <p>1、本活动只限特色专区6月、12月增值标，在活动期间累计投资达到相应金额即可获得相应奖励，此活动可与平台其他活动同时参与；</p>
+                <p>2、实物奖励规则：用户所得实物奖励，需在“我的账户—活动管理—收货地址”中点击填写收货地址等信息，融和贷工作人员将在活动结束</p>
+                <p>后七个工作日内统一安排发货（兑换奖品的配送与售后由京东负责）；</p>
+                <p>3、活动期间若用户存在欺诈或违规操作，活动奖励不予发放；</p>
+                <p>4、在法律允许的范围内，本活动的最终解释权归融和贷所有。</p>
+            </div>
+        </div>
+        <div class="act10-bata2_bata7c clearg">
+            <div class="act10-bata2_bata7c_box lefts" id="act10-bata2_bata8c">
+                <div class="act10-bata2_bata7c_boxt text-center">实时投资获奖记录</div>
+                <div class="pub_box">
+                    <p class="titp"><span>用户名 </span><span> 投资金额</span><span>投资标期</span><span>投资时间</span></p>
+                    <div style="height:290px;overflow: hidden;" class="renav2">
+                        <ul id="marqueebox" class="marqueeboxx text-center clearg">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="act10-bata2_bata7c_box rights" id="act10-bata2_bata8c2">
+                <div class="act10-bata2_bata7c_boxt text-center">我的投资获奖记录</div>
+                <div class="pub_box">
+                    <p class="titp"><span>标的类型</span><span>投资标期</span><span>累投金额 </span><span>获得奖品</span></p>
+                    <div class="userone">
+                        <div class="useronec cursor color-ff text-center ww3">登录查看</div>
+                    </div>
+                    <div class="usertwo" style="display: none;">
+                        <p>
+                            <span class="lh-span">增值标</span><span class="lh-span">12月标</span><span class="lh-span  span-c1">0</span><span class="lh-span  span-c2">--</span>
+                        </p>
+                        <p style="border-bottom: none;">
+                            <span class="lh-span">增值标</span><span class="lh-span">6月标</span><span class="lh-span  span-c3">0</span><span class="lh-span  span-c4">--</span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<div class="jiujiu_foot">
+    <p>免责申明</p>
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意刷奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <div class="endjiujiu"></div>
+</div>
+
+
+
+
+
+{literal}
+<script type="text/javascript">
+
+    $(function(){
+        //login
+        $('.act10-bata2_bata5c').click(function () {
+            if (user_id>0) {
+                window.location.href="/invest/index.html";
+            } else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        });
+
+
+        //self
+        $('.useronec').click(function () {
+            if(user_id>0){
+                $('.userone').hide();
+                $('.usertwo').show();
+            } else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        })
+        if(user_id>0){
+            $('.userone').hide();
+            $('.usertwo').show();
+            $.http.get('/?user&q=get_share_ajax&alias=one11&methodname=get_self_reward', {}, function(ret){
+                if (ret.code == 0){
+                    $('.span-c1').text(ret.data[12].tender);
+                    if(ret.data[12].goods==''){
+                        $('.span-c2').text('--');
+                    }else if(ret.data[12].goods.length>14){
+                        $('.span-c2').text(ret.data[12].goods).removeClass('lh-span').addClass('lh-span2')
+                    }else {
+                        $('.span-c2').text(ret.data[12].goods)
+                    };
+                    $('.span-c3').text(ret.data[6].tender);
+                    if(ret.data[6].goods==''){
+                        $('.span-c4').text('--');
+                    }else if(ret.data[6].goods.length>14){
+                        $('.span-c4').text(ret.data[6].goods).removeClass('lh-span').addClass('lh-span2')
+                    }else {
+                        $('.span-c4').text(ret.data[6].goods)
+                    };
+                }else {
+                    alert(ret.msg)
+                }
+            }, 'json')
+        }
+
+
+        //publist
+        $.http.get('/?user&q=get_share_ajax&alias=one11&methodname=get_newly', {}, function(ret){
+            if (ret.code == 0){
+                var len = ret.data.length;
+                var html=''
+                for(var i=0; i<len; i++){
+                    html += '<p><span class="lh-span">'+ret.data[i].username+'</span><span class="lh-span">'+ret.data[i].tender+'</span><span class="lh-span">'+ret.data[i].month+'月标</span><span class="lh-span">'+ret.data[i].addtime+'</span></p>';
+                }
+                $('#marqueebox').html(html);
+            }else {
+                alert(ret.msg)
+            }
+        }, 'json')
+
+
+
+
+        $('.act10-bata2_bata3c h4').click(function(){
+            $(this).addClass('onadd').siblings().removeClass('onadd');
+            $('.act10-bata2_bata4c dd').eq($(this).index()).addClass('ondd').siblings().removeClass('ondd');
+        })
+
+        var $this = $(".renav2");
+
+        var scrollTimer;
+
+        $this.hover(function(){
+
+            clearInterval(scrollTimer);
+
+        },function(){
+
+            scrollTimer = setInterval(function(){
+
+                scrollNews($(".renav2"));
+
+
+            }, 2000 );
+
+        }).trigger("mouseout");
+        function scrollNews(obj){
+
+            var $self = obj.find("ul:first");
+
+            var lineHeight = $self.find("p:first").height();
+
+            $self.animate({ "margin-top" : -lineHeight +"px" },800 , function(){
+
+                $self.css({"margin-top":"0px"}).find("p:first").appendTo($self);
+
+            })
+
+        }
+
+    });
+
+
+</script>
+{/literal}

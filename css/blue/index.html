@@ -1,0 +1,957 @@
+{include file="header.html"}
+<div class="banner">
+    {if $_G.user_id==""}
+    <div class="conbox login_box">
+        <div class="login_cont_bg"></div>
+        <div class="login_cont">
+            <!--<div class="log_tit fn_cle">
+                <h3 class="fn_left">会员注册</h3>
+                <a href="/?user&q=login" class="fn_rig">立即登录&nbsp;&nbsp;</a>
+            </div>-->
+            <div class="login_infor">
+                <div class="log_error hid" id="login_warning">
+                    <em class="iconfont icon-cuowu"></em>
+                    <span class="error_text"></span>
+                </div>
+                <div class="ui_log_item mr_b15 fn_cle cen_icobox_reg">
+                    <div style="height:60px;"></div>
+                    <p style="font-size: 30px;"><em style="font-size: 30px;color: #fff100;">国资系</em>最优质</p>
+                    <p><em style="font-size: 30px;">网上理财平台</em></p>
+                </div>
+                <div style="height:30px;"></div>
+                <div class="ui_log_item_new">
+                    <a href="/?user&q=reg" target="_blank" style="margin-right:10px;text-align: center;" id="login_btn" >注册会员</a>
+                    <a href="/?user&q=login">立即登录</a>
+                </div>
+                <!--<a href="/?user&q=getpwd" class="fn_rig" style="color:#fff100;">忘记密码？&nbsp;&nbsp;</a>-->
+            </div>
+        </div>
+    </div>
+    {else}
+    <div class="conbox login_box">
+        <div class="login_cont_bg"></div>
+        <div class="login_cont">
+            <div style="height: 25px;"></div>
+            <div class="login_infor">
+                <div class="log_error hid" id="login_warning">
+                    <em class="iconfont icon-cuowu"></em>
+                    <span class="error_text"></span>
+                </div>
+                <div class="ui_log_new1 ui_log_new"><p>欢迎您，<span>{$_G.user_result.username}</span></p></div>
+                <div class="ui_log_new2 clearbo">
+                    <a href="/?user&m=account/recharge" class="recharge_login">账户充值</a>
+                    <a href="/?user" class="useraccout_login">账户总览</a>
+                    <a href="/?user&m=borrow/auto" class="borrowauto_login">自动投标</a>
+                    <a href="/?user&m=borrow/invest/now" class="investnow_login">回款计划</a>
+                </div>
+                <div class="ui_log_new3"><a href="/?user" class="useraccout_login1">进入我的账户</a></div>
+
+            </div>
+        </div>
+    </div>
+    {/if}
+    <div class="banner_slide" id="banner_slide">
+        {list module="scrollpic" function="get_list" type_nid='web_index' limit="all"  var=loop  datacache="memcache" datacachename="index_banner1" datacachenametimes="60*10"}
+        <ul>
+            {foreach from=$loop.list item=item}
+            <li><a target="_blank" href="{$item.url}" title="{$item.name}"><img src=" {$item.scroll_pic_url}" /></a></li>
+            {/foreach}
+        </ul>
+        <div class="banner_btn" id="banner_btn">
+        </div>
+        {/list}
+    </div>
+</div>
+
+
+<!--平台公告-->
+<div style="height: 10px;"></div>
+<div class="wo-liudes">
+    <div id="up_zzjs" style="width:880px; float: left;">
+        <div id="marqueebox">
+            {list module="articles" function="get_list" var="loop" status=1  site_nid="preview" epage=1 order="order_asc" datacache="memcache" datacachename="index_new_borrow" datacachenametimes="60*60" }
+            {foreach from=$loop.list item=var key=key}
+            <p class="onuyt_kkse" id="up_li">
+                <a class="fl" style="line-height: 34px;" href="/preview/a{$var.id}.html">{$var.name}</a>
+                <a class="fl" style="margin-left: 40px; line-height: 34px;" href="/preview/a{$var.id}.html">{$var.addtime|date_format:"Y年m月d日"}</a>
+            </p>
+            {/foreach}
+            {/list}
+        </div>
+    </div>
+    <a href="/preview/index.html" class="my-more-gengduo">查看更多</a>
+</div>
+<div style="height: 10px;"></div>
+<!--滚动调用-->
+<!--{literal}
+    <script language="javascript">
+        function startmarquee(lh,speed,delay) {
+            var p=false;
+            var t;
+            var o=document.getElementById("marqueebox");
+            o.innerHTML=o.innerHTML;
+            o.style.marginTop=0;
+            o.onmouseover=function(){p=true;}
+            o.onmouseout=function(){p=false;}
+            function start(){
+                t=setInterval(scrolling,speed);
+                if(!p) o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+            }
+            function scrolling(){
+                if(parseInt(o.style.marginTop)%lh!=0){
+                    o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+                    if(Math.abs(parseInt(o.style.marginTop))>=o.scrollHeight/2) o.style.marginTop=0;
+                }else{
+                    clearInterval(t);
+                    setTimeout(start,delay);
+                }
+            }
+            setTimeout(start,delay);
+        }
+        startmarquee(34,34,2000);
+    </script>
+{/literal}-->
+
+<!--第一部分-->
+<div class="wo-diyiwei">
+    <div class="wo-mybisn-toing">
+        <ul>
+            <li class="wo-ic-1">
+                <div class="wo-iccs1 cant-wos">
+                    <a href="/yzxm/index.html" target="_blank"><img src=" {$tpldir}/css/blue/images/my_img1.png"></a>
+                </div>
+
+                <div class="cc-mytos" style="display: none; top: 80px;">
+                    <a href="/yzxm/index.html" target="_blank"><img src=" {$tpldir}/css/blue/images/my_img1.png"></a>
+                </div>
+                <div style="height: 130px;"></div>
+                <p style="font-size: 18px; color: #120605; text-align: center; height: 30px; line-height: 30px; font-weight: bold;">甄选优质项目标</p>
+                <p style="font-size: 14px; color: #666666; text-align: center; line-height: 20px; height: 20px;">为你财富保驾护航</p>
+            </li>
+            <li class="wo-ic-2">
+                <div class="wo-iccs2 cant-wos">
+                    <a target="_blank" href="/tdbz/index.html"><img src=" {$tpldir}/css/blue/images/my_img2.png"></a>
+                </div>
+
+                <div class="cc-mytos" style="display: none; top: 80px;">
+                    <a target="_blank" href="/tdbz/index.html"><img src=" {$tpldir}/css/blue/images/my_img2.png"></a>
+                </div>
+                <div style="height: 130px;"></div>
+                <p style="font-size: 18px; color: #120605; text-align: center; height: 30px; line-height: 30px; font-weight: bold;">DPS独家风控体系</p>
+                <p style="font-size: 14px; color: #666666; text-align: center; line-height: 20px; height: 20px;">连续5年无不良兑付</p>
+            </li>
+            <li class="wo-ic-3">
+                <div class="wo-iccs3 cant-wos">
+                    <a target="_blank" href="/bz/index.html"><img src=" {$tpldir}/css/blue/images/my_img3.png"></a>
+                </div>
+
+                <div class="cc-mytos" style="display: none; top: 57px;">
+                    <a target="_blank" href="/bz/index.html"><img src=" {$tpldir}/css/blue/images/my_img3.png"></a>
+                </div>
+                <div style="height: 130px;"></div>
+                <p style="font-size: 18px; color: #120605; text-align: center; height: 30px; line-height: 30px; font-weight: bold;">专业团队安全保障</p>
+                <p style="font-size: 14px; color: #666666; text-align: center; line-height: 20px; height: 20px;">本息保障计划</p>
+            </li>
+            <li class="wo-ic-4">
+                <div class="wo-iccs4 cant-wos">
+                    <a target="_blank" href="/cs/index.html"><img src=" {$tpldir}/css/blue/images/my_img4.png"></a>
+                </div>
+
+                <div class="cc-mytos" style="display: none; top: 80px;">
+                    <a target="_blank" href="/charity/index.html"><img src=" {$tpldir}/css/blue/images/my_img4.png"></a>
+                </div>
+
+                <div style="height: 130px;"></div>
+                <p style="font-size: 18px; color: #120605; text-align: center; height: 30px; line-height: 30px; font-weight: bold;">爱心公益传递温暖</p>
+                <p style="font-size: 14px; color: #666666; text-align: center; line-height: 20px; height: 20px;">安徽博爱公益基金会</p>
+            </li>
+        </ul>
+    </div>
+    {articles module="borrow" function="get_web_countnew" var="web_count" datacache="memcache" datacachename="index_web_count" datacachenametimes="60*10"}
+    <div class="my-wo-imis">
+        <ul>
+            <li>
+                <p style="height: 15px;"></p>
+                <p class="my-is-meso">累计成交额（元）</p>
+                <p class="my-mees-uoo">
+                    <em class="timer count-title" id="count-number1"  data-to="{$web_count.borrow_success_account_all+71776175|string_format:"%.2f"|default:'0.00'}" data-speed="2000"></em>.00
+                </p>
+            </li>
+            <li>
+                <p style="height: 15px;"></p>
+                <p class="my-is-meso">已还本金（元）</p>
+                <p class="my-mees-uoo">
+                    <em class="timer count-title" id="count-number"  data-to="{$web_count.allcapital|string_format:"%.2f"|default:'0.00'}" data-speed="2000"></em>.00
+                </p>
+            </li>
+            <li>
+                <p style="height: 15px;"></p>
+                <p class="my-is-meso">平台注册人数</p>
+                <p class="my-mees-uoo">
+                    <em class="timer count-title" id="count-number2"  data-to="{$web_count.site_user_num|string_format:"%.2f"|default:'0.00'}" data-speed="2000"></em>
+                </p>
+            </li>
+        </ul>
+    </div>
+    {/articles}
+</div>
+<div style="height: 20px;"></div>
+{literal}
+<script type="text/javascript">
+    $(function(){
+        $('.cant-wos').mouseover(function(){
+            $(this).animate({top:"30px"},80).hide();
+            $(this).next().css('display','block').animate({top:'50px'});
+            $(this).animate({top:"50px"},1).css('display','block');
+        });
+        $('.cc-mytos').mouseleave(function(){
+            $(this).animate({top:'80px'}).css('display','none');
+        });
+    })
+</script>
+{/literal}
+<!--第一部分end-->
+
+<!--推荐专区-->
+<div class="my-centantsm">
+    <div class="my-centantsm-left fl">
+        <p class="one-jdxws" style="font-size: 20px; color: white; font-weight: bold; height: 54px; line-height: 50px;">推荐专区</p>
+        <div class="my-centantsm-leftcmy centantsmvc">
+            <p style="font-size: 14px;">专享超高收益 ，争做网赚达人 </p>
+            <p style="height: 10px;"></p>
+            <p style="font-size: 16px;">预期收益：<span style="font-size: 16px; font-weight: bold;">10%-18%</span></p>
+            <p style="height: 5px;"></p>
+            <p style="font-size: 16px;">投资期限：<span style="font-size: 16px; font-weight: bold;">1个月-36个月</span></p>
+            <p style="height: 12px;"></p>
+            <p style="font-size: 14px;">安全保障：</p>
+            <p style="height: 5px;"></p>
+            <p style="font-size: 14px;">100%安全保障计划</p>
+            <div class="avbgnone-left1"><img src=" {$tpldir}/css/blue/images/nobimg11_03.png"></div>
+        </div>
+    </div>
+    <div class="fl my-centantsm-right">
+        <ul>
+            <li class="my-centantsm-look">
+                <span style="margin-left: 0px;">项目名称</span>
+                <span>年化利率</span>
+                <span>投资期限</span>
+                <span>起投金额</span>
+                <span>进度</span>
+                <span style="width: 107px; margin-left:30px;">操作</span>
+            </li>
+            {list module="borrow" function="get_list" var="var1" limit="3" status_nid="invest" status_nid='invest' query_type='invest' view_type=1 datacache="memcache" datacachename="index_new_hand1" datacachenametimes="60*3"}
+            {foreach from=$var1.list item=var key=key}
+            <li class="my-centantsm-think">
+                <span class="my-firs-fk1" style="margin-left: 0px;overflow: hidden ">{$var.name|truncate_cn:18}</span>
+                <span class="my-firs-fk2" style="color:#000;">年化利率 <em style="font-size: 20px; color: #d03d43;">{$var.borrow_apr}</em>%</span>
+                <span class="my-firs-fk2">投资期限  <em>{$var.borrow_period}</em>{if 1450399736 < $var.tender_time && $var.borrow_type == 'day'} 天 {else} 个月 {/if} </span>
+                <span class="my-firs-fk2">起投金额  <em style="color:#120605">￥{$var.tender_account_min}</em></span>
+                <span style="position: relative;">
+                    <div style="height: 30px;"></div>
+                    <table>
+                        <dl class="barbox">
+                            <dd class="barline">
+                                <div w="{$var.borrow_account_scale}" style="width:10px;" class="charts"></div>
+                            </dd>
+                        </dl>
+                    </table>
+                    <em style="position: absolute; left: 120px; top: 3px; *left:130px;">{$var.borrow_account_scale}%</em>
+                </span>
+                {if $var.count_down==1 and ($smarty.now < $var.tender_time)}
+                <!--时间-->
+                <script type="text/javascript">
+                    var runTimeNum{$var.id}=0;
+                    var timerhcd{$var.id} = setInterval("getDiff({$var.tender_time - $smarty.now},{$var.id},'{$var.borrow_nid}')",1000);
+                </script>
+                <div class="fl one-xxit" id="t_down{$var.borrow_nid}">
+                    <p style="position: relative; top: 15px; color: red;font-size:14px; font-weight:bold; left:11px;">
+                        开标倒计时：
+                    <p style="position: relative; top: 12px; color: red;font-size:12px;">
+                        <b class="fen" id="day_{$var.id}">00</b>：
+                        <b class="fen" id="hour_{$var.id}">00</b>：
+                        <b class="fen" id="min_{$var.id}">00</b>：
+                        <b class="fen" id="sec_{$var.id}">00</b>
+                    </p>
+                    </p>
+                </div>
+                {/if}
+                <div id="t_show{$var.borrow_nid}" class="heigntttns t_status ver_top fl" {if $var.count_down==1 and ($smarty.now < $var.tender_time)}style="display:none;"{/if}>
+                <a style="font-size: 18px; position: relative; top: 20px;" {if $var.borrow_status_nid=='loan'} class="mr_t5 dis_fussa"{elseif $var.borrow_status_nid=='full'}{else} class="mr_t5 dis_btntung"{/if} target="_blank" href="/invest/a{$var.borrow_nid}.html">
+                {$var.borrow_status_nid|linkages:"borrow_status_nid"}</a>
+    </div>
+    </li>
+    {/foreach}
+    {/list}
+    </ul>
+    <div class="my-tiimes-ou">
+        <a class="my-studiusne" href="/invest/index.html">更多项目>></a>
+    </div>
+</div>
+</div>
+<div style="height: 20px;"></div>
+
+
+
+
+<!--快捷专区-->
+<div class="my-centantsm">
+    <div class="my-centantsm-left fl my-centantsm-left1">
+        <p class="one-jdxws1" style="font-size: 20px; color: white; font-weight: bold; height: 50px; line-height: 50px;">快捷专区</p>
+        <div class="my-centantsm-leftcmy1 centantsmvc">
+            <p style="font-size: 14px;">精选优质项目，安全快捷投资 </p>
+            <p style="height: 10px;"></p>
+            <p style="font-size: 16px;">预期收益：<span style="font-size: 16px; font-weight: bold;">10%-18%</span></p>
+            <p style="height: 5px;"></p>
+            <p style="font-size: 16px;">投资期限：<span style="font-size: 16px; font-weight: bold;">1个月-36个月</span></p>
+            <p style="height: 12px;"></p>
+            <p style="font-size: 14px;">安全保障：</p>
+            <p style="height: 5px;"></p>
+            <p style="font-size: 14px;">100%安全保障计划</p>
+            <div class="avbgnone-left2"><img src=" {$tpldir}/css/blue/images/nobimg22_03.png"></div>
+        </div>
+    </div>
+    <div class="fl my-centantsm-right">
+        <ul>
+            <li class="my-centantsm-look">
+                <span style="margin-left: 0px;">项目名称</span>
+                <span>年化利率</span>
+                <span>投资期限</span>
+                <span>起投金额</span>
+                <span>进度</span>
+                <span style="width: 107px; margin-left:30px;">操作</span>
+            </li>
+            {list module="borrow" function="get_list" var="var1" limit="3" status_nid="invest" status_nid='invest' query_type='invest' view_type=2 datacache="memcache" datacachename="index_new_hand2" datacachenametimes="60*3"}
+            {foreach from=$var1.list item=var key=key}
+            <li class="my-centantsm-think">
+                <span class="my-firs-fk1" style="margin-left: 0px;">{$var.name|truncate_cn:18}</span>
+                <span class="my-firs-fk2" style="color:#000;">年化利率 <em style="font-size: 20px; color: #d03d43;">{$var.borrow_apr}</em>%</span>
+                <span class="my-firs-fk2">投资期限  <em>{$var.borrow_period}</em> 个月</span>
+                <span class="my-firs-fk2">起投金额  <em style="color:#120605">￥{$var.tender_account_min}</em></span>
+                <span style="position: relative;">
+                    <div style="height: 30px;"></div>
+                    <table>
+                        <dl class="barbox">
+                            <dd class="barline">
+                                <div w="{$var.borrow_account_scale}" style="width:10px;" class="charts"></div>
+                            </dd>
+                        </dl>
+                    </table>
+                    <em style="position: absolute; left: 120px; top: 3px; *left:130px;">{$var.borrow_account_scale}%</em>
+                </span>
+                {if $var.count_down==1 and ($smarty.now < $var.tender_time)}
+                <!--时间-->
+                <script type="text/javascript">
+                    var runTimeNum{$var.id}=0;
+                    var timerhcd{$var.id} = setInterval("getDiff({$var.tender_time - $smarty.now},{$var.id},'{$var.borrow_nid}')",1000);
+                </script>
+                <div class="fl one-xxit" id="t_down{$var.borrow_nid}">
+                    <p style="position: relative; top: 15px; color: red;font-size:14px; font-weight:bold; left:11px;">
+                        开标倒计时：
+                    <p style="position: relative; top: 12px; color: red;font-size:12px;">
+                        <b class="fen" id="day_{$var.id}">00</b>：
+                        <b class="fen" id="hour_{$var.id}">00</b>：
+                        <b class="fen" id="min_{$var.id}">00</b>：
+                        <b class="fen" id="sec_{$var.id}">00</b>
+                    </p>
+                    </p>
+                </div>
+                {/if}
+                <div id="t_show{$var.borrow_nid}" class="heigntttns t_status ver_top fl" {if $var.count_down==1 and ($smarty.now < $var.tender_time)}style="display:none;"{/if}>
+                <a style="font-size: 18px; position: relative; top: 20px;" {if $var.borrow_status_nid=='loan'} class="mr_t5 dis_fussa"{elseif $var.borrow_status_nid=='full'}{else} class="mr_t5 dis_btntung"{/if} target="_blank" href="/invest/a{$var.borrow_nid}.html">
+                {$var.borrow_status_nid|linkages:"borrow_status_nid"}</a>
+    </div>
+    </li>
+    {/foreach}
+    {/list}
+
+    </ul>
+    <div class="my-tiimes-ou">
+        <a class="my-studiusne" href="/invest/index.html">更多项目>></a>
+    </div>
+</div>
+</div>
+<div style="height: 20px;"></div>
+
+
+
+<!--安享专区-->
+<div class="my-centantsm">
+    <div class="my-centantsm-left fl my-centantsm-left2">
+        <p class="one-jdxws2" style="font-size: 20px; color: white; font-weight: bold; height: 50px; line-height: 50px;">安享专区</p>
+        <div class="my-centantsm-leftcmy2 centantsmvc">
+            <p style="font-size: 14px;">精心为你的财富升值而设计</p>
+            <p style="height: 10px;"></p>
+            <p style="font-size: 16px;">预期收益：<span style="font-size: 16px; font-weight: bold;">10%-18%</span></p>
+            <p style="height: 5px;"></p>
+            <p style="font-size: 16px;">投资期限：<span style="font-size: 16px; font-weight: bold;">1个月-36个月</span></p>
+            <p style="height: 12px;"></p>
+            <p style="font-size: 14px;">安全保障：确保项目真实优质</p>
+            <p style="height: 5px;"></p>
+            <p style="font-size: 14px;">100%安全保障计划</p>
+            <div class="avbgnone-left3"><img src=" {$tpldir}/css/blue/images/nobimg33_03.png"></div>
+        </div>
+    </div>
+    <div class="fl my-centantsm-right">
+        <ul>
+            <li class="my-centantsm-look">
+                <span style="margin-left: 0px;">项目名称</span>
+                <span>年化利率</span>
+                <span>投资期限</span>
+                <span>起投金额</span>
+                <span>进度</span>
+                <span style="width: 107px; margin-left:30px;">操作</span>
+            </li>
+            {list module="borrow" function="get_list" var="var1" limit="3" status_nid="invest" status_nid='invest' query_type='invest' view_type=3 datacache="memcache" datacachename="index_new_hand3" datacachenametimes="60*3"}
+            {foreach from=$var1.list item=var key=key}
+            <li class="my-centantsm-think">
+                <span class="my-firs-fk1" style="margin-left: 0px;">{$var.name|truncate_cn:18}</span>
+                <span class="my-firs-fk2" style="color: #000;">年化利率 <em style="font-size: 20px; color: #d03d43;">{$var.borrow_apr}</em>%</span>
+                <span class="my-firs-fk2">投资期限  <em>{$var.borrow_period}</em> 个月</span>
+                <span class="my-firs-fk2">起投金额  <em style="color:#120605">￥{$var.tender_account_min}</em></span>
+                <span style="position: relative;">
+                    <div style="height: 30px;"></div>
+                    <table>
+                        <dl class="barbox">
+                            <dd class="barline">
+                                <div w="{$var.borrow_account_scale}" style="width:10px;" class="charts"></div>
+                            </dd>
+                        </dl>
+                    </table>
+                    <em style="position: absolute; left: 120px; top: 3px; *left:130px;">{$var.borrow_account_scale}%</em>
+                </span>
+                {if $var.count_down==1 and ($smarty.now < $var.tender_time)}
+                <!--时间-->
+                <script type="text/javascript">
+                    var runTimeNum{$var.id}=0;
+                    var timerhcd{$var.id} = setInterval("getDiff({$var.tender_time - $smarty.now},{$var.id},'{$var.borrow_nid}')",1000);
+                </script>
+                <div class="fl one-xxit" id="t_down{$var.borrow_nid}">
+                    <p style="position: relative; top: 15px; color: red;font-size:14px; font-weight:bold; left:11px;">
+                        开标倒计时：
+                    <p style="position: relative; top: 12px; color: red;font-size:12px;">
+                        <b class="fen" id="day_{$var.id}">00</b>：
+                        <b class="fen" id="hour_{$var.id}">00</b>：
+                        <b class="fen" id="min_{$var.id}">00</b>：
+                        <b class="fen" id="sec_{$var.id}">00</b>
+                    </p>
+                    </p>
+                </div>
+                {/if}
+                <div id="t_show{$var.borrow_nid}" class="heigntttns t_status ver_top fl" {if $var.count_down==1 and ($smarty.now < $var.tender_time)}style="display:none;"{/if}>
+                <a style="font-size: 18px; position: relative; top: 20px;" {if $var.borrow_status_nid=='loan'} class="mr_t5 dis_fussa"{elseif $var.borrow_status_nid=='full'}{else} class="mr_t5 dis_btntung"{/if} target="_blank" href="/invest/a{$var.borrow_nid}.html">
+                {$var.borrow_status_nid|linkages:"borrow_status_nid"}</a>
+    </div>
+    </li>
+    {/foreach}
+    {/list}
+    <!--高端标-->
+   <!-- {loop module="highend" function="get_list" var="var" limit="1" status="1" order='id_down' datacache="memcache" datacachename="index_highend" datacachenametimes="60*10"}
+    <li class="my-centantsm-think">
+        <span class="my-firs-fk1" style="margin-left: 0px;">{$var.borrow_name|truncate_cn:18}</span>
+        <span class="my-firs-fk2" style="color: #000;">年化利率 <em style="font-size: 20px; color: #d03d43;">{$var.borrow_apr}</em>%</span>
+        <span class="my-firs-fk2">投资期限  <em>{$var.borrow_period}</em> 个月</span>
+        <span class="my-firs-fk2">起投金额  <em style="color:#120605">￥{$var.tender_account_min}万</em></span>
+                        <span style="position: relative;">
+                            <div style="height: 30px;"></div>
+                            <table>
+                                <dl class="barbox">
+                                    <dd class="barline">
+                                        <div w="{$var.borrow_account_scale}" style="width:10px;" class="charts"></div>
+                                    </dd>
+                                </dl>
+                            </table>
+                            <em id="mon_sun" style="position: absolute; left: 120px; top: 3px; *left:130px;">{$var.borrow_account_scale}%</em>
+                        </span>
+                        <span style="height: 34px; width: 107px; background: #E07F00; position: relative; top: 15px; left: 31px; line-height: 34px; border-radius: 5px;" class="my-firs-fk2">
+                            <a id="sone_sing" style="font-size: 18px; color: white;" target="_blank" href="/vipinvest/a{$var.borrow_nid}.html">立即预约</a>
+                        </span>
+    </li>
+    {/loop}
+    {literal}
+    <script type="text/javascript">
+        $(function(){
+            var num = parseInt($('#mon_sun').text());
+            if(num == '100'){
+                $('#sone_sing').text('预约完成');
+            }
+        })
+    </script>
+    {/literal}
+-->
+    </ul>
+    <div class="my-tiimes-ou">
+        <a class="my-studiusne" href="/invest/index.html">更多项目>></a>
+    </div>
+</div>
+</div>
+<div style="height: 20px;"></div>
+<!--债权转让-->
+
+<!--债权转让-->
+<div class="my-centantsm" style="height: 411px; overflow: hidden;">
+    <div class="my-centantsm-left fl my-centantsm-left3" style="height: 410px;">
+        <p class="one-jdxws3" style="font-size: 20px; color: white; font-weight: bold; height: 50px; line-height: 50px;">债权转让</p>
+        <div class="my-centantsm-leftcmy3 centantsmvc">
+            <p style="font-size: 14px; padding-top:20px;">专享超高收益 ，争做网赚达人 </p>
+            <p style="height:14px;"></p>
+            <p><span style="font-size: 16px;">债权转让性价比高</span></p>
+            <p style="height: 18px;"></p>
+            <p style="font-size: 18px; font-weight: bold">周期短</p>
+            <p style="height: 25px;"></p>
+            <p style="font-size: 18px; font-weight: bold">收益更高</p>
+            <div class="avbgnone-left4"><img src=" {$tpldir}/css/blue/images/nobimg44_03.png"></div>
+        </div>
+
+    </div>
+    <div class="fl my-centantsm-right">
+        <ul>
+            {list module='borrow' function='change_get_list' epage=3  limit='3' status_nid='now_yes' var="loop" datacache="memcache" datacachename="index_change" datacachenametimes="60*10" }
+            {foreach from=$loop.list item="item"}
+            <li class="my-centantsm-look" style="border-bottom: none;">
+                <span style="font-size: 18px; text-align: left; padding-left: 33px; width: 80%"><a style="color: #666666;" href="/change/a{$item.tender_id}.html" title="{$item.borrow_name}">{$item.borrow_name|truncate_cn:7}<a style="color: #3598db;font-size: 14px;">【债权项目】</a></a></span>
+            </li>
+            <li class="my-centantsm-think">
+                <p style="height: 35px;" class="ine-cceinv-myse">
+                    <em style=" padding-left: 35px; width: 135px;">债权交易价格</em>
+                    <em style="text-align: center;">债权剩余天数</em>
+                    <em style="text-align: center;">认购后年化收益率</em>
+                    <em style="text-align: center;">原债权总价</em>
+                    {if $item.change_status==1}
+                    <em style="width: 107px; height: 34px; background: #D03D43; color: white; text-align: center; line-height: 34px; cursor: pointer; border-radius: 5px;">
+                        <a class="default btn" href="javascript:void(0)" target="_blank" style="font-size: 18px; color: white;">转让成功</a>
+                    </em>
+                    {else}
+                    <em data-id="{$item.tender_id}" data-borrow-nid="{$item.borrow_nid}"  style="width: 107px; height: 34px; background: #D03D43; color: white; text-align: center; line-height: 34px; cursor: pointer; border-radius: 5px;">
+                        <a class="debt_buy default btn yes" href="/change/a{$item.tender_id}.html" target="_blank" data-id="{$item.tender_id}" data-borrow-nid="{$item.borrow_nid}" style="color: white; font-size: 18px;">购买债权</a>
+                    </em>
+                    {/if}
+                </p>
+                <p style="height: 35px;" class="ine-cceinv-myse">
+                    <em style=" padding-left: 35px; width: 135px; color: #3598db; font-size: 20px;">￥{$item.change_account}</em>
+                    <em style="text-align: center; font-size: 20px;">{$item.last_days}天</em>
+                    <em style="text-align: center; font-size: 20px;"><a style="color: #d03d43;">{$item.borrow_newapr}%</a></em>
+                    <em style="text-align: center; font-size: 20px;">￥{$item.recover_account_capital_wait + $item.recover_account_interest_wait}</em>
+                    <em style="width: 134px; font-size: 12px;">剩余时间：{$item.repay_last_time|date_format:"Y-m-d"}</em>
+                </p>
+            </li>
+            {/foreach}
+            {/list}
+        </ul>
+        <div class="my-tiimes-ou">
+            <a class="my-studiusne" href="/change/index.html">更多项目>></a>
+        </div>
+    </div>
+</div>
+
+{literal}
+<script type="text/javascript">
+    //diyou.use('tender',function(t){t.pages();});
+    //diyou.use('users_change',function(c){c.change_buy();});
+</script>
+{/literal}
+<div style="height: 20px;"></div>
+
+
+
+
+
+
+<!--进度条-->
+{literal}
+<script type="text/javascript">
+    function animate(){
+        $(".charts").each(function(i,item){
+            var a=parseInt($(item).attr("w"));
+            $(item).animate({
+                width: a+"%"
+            },1000);
+        });
+    }
+    animate();
+</script>
+{/literal}
+
+<!--动态与资讯-->
+<div class="my-info-tomess">
+    <div class="my-info-tomess-left">
+        <div id="slideBox">
+            <div class="J_slide">
+                <div class="J_slide_clip">
+                    <ul class="J_slide_list">
+                        <li class="J_slide_item">
+                            <a target="_blank" href="/gonggao/a610.html">
+                                <img src=" {$tpldir}/css/blue/images/img-cs5.jpg" height="336" width="585">
+                                <p class="mee-ican">融和贷与您浪漫同行，感受"泰"不一样的神奇之旅</p>
+                            </a>
+                        </li>
+                        <li class="J_slide_item">
+                            <a target="_blank" href="/gonggao/a604.html">
+                                <img src=" {$tpldir}/css/blue/images/img-cs41.jpg" height="336" width="585">
+                                <p class="mee-ican">融和贷全体员工和客户满怀豪情迎盛会</p>
+                            </a>
+                        </li>
+                        <li class="J_slide_item">
+                            <a target="_blank" href="/dongtai/a368.html">
+                                <img src=" {$tpldir}/css/blue/images/img-cs3.jpg" height="336" width="585">
+                                <p class="mee-ican">融和贷CEO受邀出席第十届杰出华商大会华商500强论坛开幕式</p>
+                            </a>
+                        </li>
+                        <li class="J_slide_item">
+                            <a target="_blank" href="/gonggao/a558.html">
+                                <img src=" {$tpldir}/css/blue/images/img-cs1.jpg" height="336" width="585">
+                                <p class="mee-ican">融和贷受邀参加安徽省第二届公益组织</p>
+                            </a>
+                        </li>
+                        <li class="J_slide_item">
+                            <a target="_blank" href="/gonggao/a634.html">
+                                <img src=" {$tpldir}/css/blue/images/img-cs2.jpg" height="336" width="585">
+                                <p class="mee-ican">融和贷周年庆——众志成城创佳绩，同心协力促共赢</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div style="height: 9px;"></div>
+                <ul class="J_slide_trigger">
+                    <li class=""><a href="javascript:"><img src=" {$tpldir}/css/blue/images/cs-img5.jpg"></a></li>
+                    <li class=""><a href="javascript:"><img src=" {$tpldir}/css/blue/images/cs-img41.jpg"></a></li>
+                    <li class=""><a href="javascript:"><img src=" {$tpldir}/css/blue/images/cs-img3.jpg"></a></li>
+                    <li class=""><a href="javascript:"><img src=" {$tpldir}/css/blue/images/cs-img1.jpg"></a></li>
+                    <li class=""><a href="javascript:"><img src=" {$tpldir}/css/blue/images/cs-img2.jpg"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="my-info-tomess-right">
+        <div class="fl my-info-text-left">
+            <p class="on-texs-files"><span style="font-size: 18px; color: #f39c11;">融和动态</span><span style="color: #d03d43; font-size: 14px; float: right; margin-right: 20px;"><a  style="color:#777777;" target="_blank" href="/gonggao/index.html">更多 ＞  </a></span></p>
+            <div class="sink-pus sink-pus1">
+                {list module="articles" function="get_list" var="loop" status=1  site_nid="gonggao" epage=3 page=$smarty.request.page+1 order="order_asc" datacache="memcache" datacachename="index_vote_list" datacachenametimes="60*30"}
+                {foreach from=$loop.list item=var key=key}
+                <p class="on-allps-m"><a href="/gonggao/a{$var.id}.html" target="_blank" class="fl tex-imgs-toy1">{$var.name|cut_html:25}</a><a href="/gonggao/a{$var.id}.html" target="_blank" class="fr tex-imgs-toy2">{$var.addtime|date_format:"Y-m-d"}</a></p>
+                {/foreach}
+                {/list}
+            </div>
+
+
+            <p class="on-texs-files"><span style="font-size: 18px; color: #f39c11; ">财经早刊</span><span style="color: #d03d43; font-size: 14px; float: right; margin-right: 20px;"><a  style="color:#777777" target="_blank" href="/media/index.html">更多 ＞  </a></span></p>
+            <div class="sink-pus sink-pus1">
+                {list module="articles" function="get_list" var="loop" status=1  site_nid="media" epage=3 page=$smarty.request.page+1 order="order_asc" datacache="memcache" datacachename="index_news_lists" datacachenametimes="60*30"}
+                {foreach from=$loop.list item=var key=key}
+                <p class="on-allps-m"><a href="/media/a{$var.id}.html" target="_blank" class="fl tex-imgs-toy1" title="{$var.name|truncate:100}">{$var.name|cut_html:25}</a><a href="/media/a{$var.id}.html" target="_blank" class="fr tex-imgs-toy2">{$var.addtime|date_format:"Y-m-d"}</a></p>
+                {/foreach}
+                {/list}
+            </div>
+
+
+            <p class="on-texs-files"><span style="font-size: 18px; color: #f39c11;">理财问答</span><span style="color: #d03d43; font-size: 14px; float: right; margin-right: 20px;"><a style="color:#777777 " target="_blank" href="/cjwt/index.html">更多 ＞  </a></span></p>
+            <div class="sink-pus">
+                {list module="articles" function="get_list" var="loop" status=1  site_nid="cjwt" epage=3 page=$smarty.request.page+1 order="order_asc" datacache="memcache" datacachename="index_cjwt_lists" datacachenametimes="60*30"}
+                {foreach from=$loop.list item=var key=key}
+                <p class="on-allps-m"><a href="/cjwt/a{$var.id}.html" target="_blank" class="fl tex-imgs-toy1" title="{$var.name|cut_html:100}">{$var.name|cut_html:25}</a><a href="/cjwt/a{$var.id}.html" target="_blank" class="fr tex-imgs-toy2">{$var.addtime|date_format:"Y-m-d"}</a></p>
+                {/foreach}
+                {/list}
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript" src=" {$tpldir}/js/new-meiti.js"></script>
+{literal}
+<script type="text/javascript">
+    new Tab('.J_tab',{auto:true});
+    new Slide('#slideBox',{index: 1 ,effect:'slide', firstDelay:8});
+</script>
+{/literal}
+<div style="height: 20px;"></div>
+
+<!--媒体报道-->
+<div class="news-q-misn">
+    <p class="news-m-wins">媒体报道</p>
+    <div>
+        <div style="margin:0 auto;width:1199px;">
+            <div class="scroll">
+                <div class="scroll_left" id="LeftArr"></div>
+                <div class="pic" id="scrollPic">
+                    <ul>
+                        <li><a href="http://mt.sohu.com/20150815/n418935087.shtml" target="_blank" title=""><img src=" {$tpldir}/css/blue/images/im-my1.jpg" width="170" height="59" alt="" /></a></li>
+                        <li><a href="http://ah.ifeng.com/news/wangluo/detail_2016_02/01/4761766_0.shtml
+" target="_blank" title=""><img src=" {$tpldir}/css/blue/images/im-my2.jpg" width="170" height="59" alt="" /></a></li>
+                        <li><a href="http://www.gs.xinhuanet.com/news/2015-10/15/c_1116831134.htm" target="_blank" title=""><img src=" {$tpldir}/css/blue/images/im-my3.jpg" width="170" height="59" alt="" /></a></li>
+                        <li><a href="http://nb.people.com.cn/n/2015/0824/c200877-26102253.html" target="_blank" title=""><img src=" {$tpldir}/css/blue/images/im-my4.jpg" width="170" height="59" alt="" /></a></li>
+                        <li><a href="http://ah.sina.com.cn/fashion/info/2016-02-29/164639474.html" target="_blank" title=""><img src=" {$tpldir}/css/blue/images/im-my5.jpg" width="170" height="59" alt="" /></a></li>
+                        <li><a href="http://www.1caixin.com.cn/article-318771.html" target="_blank" title=""><img src=" {$tpldir}/css/blue/images/im-my6.jpg" width="170" height="59" alt="" /></a></li>
+                        <li><a href="http://money.163.com/16/0121/11/BDRNMQKS00253B0H.html" target="_blank" title=""><img src=" {$tpldir}/css/blue/images/im-my7.jpg" width="170" height="59" alt="" /></a></li>
+                        <li><a href="http://finance.huanqiu.com/zl/2015-10/7707263.html" target="_blank" title=""><img src=" {$tpldir}/css/blue/images/im-my8.jpg" width="170" height="59" alt="" /></a></li>
+                        <li><a href="http://culture.gmw.cn/2016-02/01/content_18748016.htm" target="_blank" title=""><img src=" {$tpldir}/css/blue/images/im-my9.jpg" width="170" height="59" alt="" /></a></li>
+                        <li><a href="http://biz.xinmin.cn/2015/08/10/28346500.html" target="_blank" title=""><img src=" {$tpldir}/css/blue/images/im-my10.jpg" width="170" height="59" alt="" /></a></li>
+                        <li><a href="http://house.chinadaily.com.cn/2015-08/19/content_21645620.htm" target="_blank" title=""><img src=" {$tpldir}/css/blue/images/im-my11.jpg" width="170" height="59" alt="" /></a></li>
+                        <li><a href="http://money.news18a.com/news/20151120/1/storys_10209.html" target="_blank" title=""><img src=" {$tpldir}/css/blue/images/im-my12.jpg" width="170" height="59" alt="" /></a></li>
+                    </ul>
+                </div>
+                <div class="scroll_right" id="RightArr"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 20px;"></div>
+
+{literal}
+<script type="text/javascript">
+    function scrollPic() {
+        var scrollPic = new ScrollPic();
+        scrollPic.scrollContId   = "scrollPic";
+        scrollPic.arrLeftId      = "LeftArr";
+        scrollPic.arrRightId     = "RightArr";
+        scrollPic.frameWidth     = 1142;
+        scrollPic.pageWidth      = 190;
+        scrollPic.speed          = 10;
+        scrollPic.space          = 10;
+        scrollPic.autoPlay       = true;
+        scrollPic.autoPlayTime   = 3;
+        scrollPic.initialize();
+    }
+    scrollPic();
+</script>
+{/literal}
+
+<!--开标倒计时-->
+{literal}
+<script type="text/javascript">
+    function getDiff(diff,keys,borrow_nid)
+    {
+        var df = (diff - this['runTimeNum'+keys]);
+        if (df >= 0) {
+            var getbackSecond = df;
+            day = Math.floor(getbackSecond / (60 * 60 * 24));
+            hour = Math.floor(getbackSecond / (60 * 60)) - (day * 24);
+            minute = Math.floor(getbackSecond / 60) - (day * 24 * 60) - (hour * 60);
+            second = Math.floor(getbackSecond) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            $("#day_"+keys).html(day);
+            $('#hour_'+keys).html(hour);
+            $('#min_'+keys).html(minute);
+            $('#sec_'+keys).html(second);
+            this['runTimeNum'+keys]++;
+        }else if(df <= 0 ){
+            clearInterval(this['timerhcd'+keys]);
+            $('#t_down'+borrow_nid).hide();
+            $('#t_show'+borrow_nid).show();
+        }
+        if(second < 10){
+            $('#sec_'+keys).html('0'+second);
+        }
+        if(minute < 10){
+            $('#min_'+keys).html('0'+minute);
+        }
+        if(hour < 10){
+            $('#hour_'+keys).html('0'+hour);
+        }
+        if(day < 10){
+            $("#day_"+keys).html('0'+day);
+        }
+    }
+</script>
+{/literal}
+
+
+<!--数字动态显示增加-->
+{literal}
+<script type="text/javascript">
+
+    $.fn.countTo = function (options) {
+        options = options || {};
+        return $(this).each(function () {
+            var settings = $.extend({}, $.fn.countTo.defaults, {
+                from:            $(this).data('from'),
+                to:              $(this).data('to'),
+                speed:           $(this).data('speed'),
+                refreshInterval: $(this).data('refresh-interval'),
+                decimals:        $(this).data('decimals')
+            }, options);
+            var loops = Math.ceil(settings.speed / settings.refreshInterval),
+                    increment = (settings.to - settings.from) / loops;
+            var self = this,
+                    $self = $(this),
+                    loopCount = 0,
+                    value = settings.from,
+                    data = $self.data('countTo') || {};
+            $self.data('countTo', data);
+
+            if (data.interval) {
+                clearInterval(data.interval);
+            }
+            data.interval = setInterval(updateTimer, settings.refreshInterval);
+            render(value);
+            function updateTimer() {
+                value += increment;
+                loopCount++;
+                render(value);
+                if (typeof(settings.onUpdate) == 'function') {
+                    settings.onUpdate.call(self, value);
+                }
+                if (loopCount >= loops) {
+                    $self.removeData('countTo');
+                    clearInterval(data.interval);
+                    value = settings.to;
+                    if (typeof(settings.onComplete) == 'function') {
+                        settings.onComplete.call(self, value);
+                    }
+                }
+            }
+            function render(value) {
+                var formattedValue = settings.formatter.call(self, value, settings);
+                $self.html(formattedValue);
+            }
+        });
+    };
+
+    $.fn.countTo.defaults = {
+        from: 0,
+        to: 0,
+        speed: 1000,
+        refreshInterval: 100,
+        decimals: 0,
+        formatter: formatter,
+        onUpdate: null,
+        onComplete: null
+    };
+
+    function formatter(value, settings) {
+        return value.toFixed(settings.decimals);
+    }
+
+
+    $('#count-number').data('countToOptions', {
+        formatter: function (value, options) {
+            return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+        }
+    });
+    $('#count-number1').data('countToOptions', {
+        formatter: function (value, options) {
+            return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+        }
+    });
+    $('#count-number2').data('countToOptions', {
+        formatter: function (value, options) {
+            return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+        }
+    });
+
+    $('.timer').each(count);
+
+    function count(options) {
+        var $this = $(this);
+        options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+        $this.countTo(options);
+    }
+</script>
+{/literal}
+<!--数字动态显示增加结束-->
+{literal}
+<script>
+    $(function(){
+        $("#jsBannerSoll").imgsoll();
+        $("#jsProudct").textSlider({line:1,type:1,speed:800,timer:2000});
+    })
+</script>
+<script type="text/javascript">
+    (function($){
+        $.fn.imgsoll=function(settings){
+            var $this=$(this),index=1,len=$this.find("li").length,picTimer;
+            $this.append($.fn.imgsoll.bnt(len))
+            var $span=$this.find(".bntHtml span");
+            $span.hover(function(){
+                index  = $span.index(this);
+                showImg(index,$span,$this);
+            })
+            $this.hover(function() {
+                clearInterval(picTimer);
+            },function() {
+                picTimer = setInterval(function() {
+                    showImg(index,$span,$this);
+                    index++;
+                    if(index == len) {index = 0;}
+                },4000);
+            }).trigger("mouseleave");
+        }
+        $.fn.imgsoll.bnt=function(len)
+        {
+            var html="";
+            for(var i=1; i<=len; i++ )
+            {
+                if(i==1)
+                    html=html+"<span class='curr'>"+i+"</span>";
+                else
+                    html=html+"<span>"+i+"</span>";
+            }
+            return "<div class='layout'><div class='bntHtml'>"+html+"</div></div>";
+        }
+        function showImg(n,$span,$this)
+        {
+            $this.find("li").eq(n).stop(true,true).fadeIn(1000).siblings().fadeOut(1000);
+            $span.eq(n).addClass("curr").siblings().removeClass("curr");
+        }
+    })(jQuery);
+    (function($){
+        $.fn.textSlider = function(settings){
+            settings = jQuery.extend({
+                speed : "normal",
+                line : 2,
+                type:1,
+                timer : 1000
+            }, settings);
+            return this.each(function() {
+                $.fn.textSlider.scllor( $( this ), settings );
+            });
+        };
+        $.fn.textSlider.scllor = function($this, settings){
+            //alert($this.html());
+            var ul = $( "ul:eq(0)", $this );
+            var timerID;
+            var li = ul.children();
+            var _btnUp=$(".up:eq(0)", $this)
+            var _btnDown=$(".down:eq(0)", $this)
+            var liHight=$(li[0]).height();
+            var upHeight=0-settings.line*liHight;
+            var scrollUp=function(){
+                _btnUp.unbind("click",scrollUp);
+                ul.animate({marginTop:upHeight},settings.speed,function(){
+                    for(i=0;i<settings.line;i++){
+                        ul.find("li:first").appendTo(ul);
+                    }
+                    ul.css({marginTop:0});
+                    _btnUp.bind("click",scrollUp);
+                });
+            };
+            var scrollDown=function(){
+                _btnDown.unbind("click",scrollDown);
+                ul.css({marginTop:upHeight});
+                for(i=0;i<settings.line;i++){
+                    ul.find("li:last").prependTo(ul);
+                }
+                ul.animate({marginTop:0},settings.speed,function(){
+                    _btnDown.bind("click",scrollDown);
+                });
+            };
+            var autoPlay=function(){
+                timerID = window.setInterval(scrollUp,settings.timer);
+            };
+            var autoStop = function(){
+                window.clearInterval(timerID);
+            };
+            ul.hover(autoStop,autoPlay).mouseout();
+            _btnUp.css("cursor","pointer").click( scrollUp );
+            _btnUp.hover(autoStop,autoPlay);
+            _btnDown.css("cursor","pointer").click( scrollDown );
+            _btnDown.hover(autoStop,autoPlay)
+        };
+    })(jQuery);
+</script>
+{/literal}
+{literal}
+<script type="text/javascript">
+    diyou.use('index', function (dy) { dy.banner_slide('banner_slide', 'banner_btn'); dy.login('log_form');dy.show_nums();});
+    diyou.use('tender', function (t) { t.pro_show() });
+</script>
+{/literal}
+
+{include file="footer.html"}

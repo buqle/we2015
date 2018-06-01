@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clearg{zoom:1;}
+.clearg:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+i{font-style: normal}
+h1, h2, h3, h4, h5, h6, fieldset, p, ol, ul, li, form, map, button, input, dl, dt, dd, q, table, thead, tbody, tfoot, tr, td, img, div{ margin:0; padding:0; }
+body {
+    font-family:"Microsoft YaHei";
+    font-size: 18px;
+}
+.bodyyy{}
+.ww1{width: 100%;}
+.ww2{width: 1200px;}
+.ww3, .ww2{margin: 0 auto;}
+.lefts{float: left}
+.rights{float: right;}
+.text-center{text-align: center;}
+.text-left{text-align: left;}
+.text-right{text-align: right;}
+.font12{font-size: 12px;}
+.font14{font-size: 14px;}
+.font15{font-size: 15px;}
+.font16{font-size: 16px;}
+.font18{font-size: 18px;}
+.font17{font-size: 17px;}
+.font19{font-size: 19px;}
+.font20{font-size: 20px;}
+.font22{font-size: 22px;}
+.font24{font-size: 24px;}
+.font25{font-size: 25px;}
+.font23{font-size: 23px;}
+.block{display: block;}
+.inline-block{display: inline-block;}
+.cursor{cursor: pointer;}
+.bold{font-weight: bold;}
+h4, h6{font-weight: normal}
+h5{font-weight: bold;}
+.color-ff{color: #fff;}
+.pos-a{position: relative;}
+.pos-b{position: absolute;}
+.ww4{width:1080px;margin:0 auto;}
+.leshi-bata1{background: url("../images/1.jpg") no-repeat top center;width:100%;height:1119px;}
+.leshi-bata2{
+    background: url("../images/3.png") repeat-y center;padding-top:54px;
+
+}
+.leshi-bata2 .leshi-bata3{
+    background: url("../images/2.png") no-repeat bottom center;padding-bottom:60px;
+
+
+}
+.leshi-bata2 .leshi-bata3 h5{font-size:36px;color:#fdf6b0;}
+.leshi-bata2 .leshi-bata3 .leshi-bata4{
+    margin:50px auto 100px auto;width:954px;padding:8px;background:#f8c98e;border-radius:10px;
+
+}
+.leshi-bata2 .leshi-bata3 .leshi-bata4 .posb-t{color:#db224f;background: url("../images/4.png") no-repeat center;width:565px;height:63px;line-height:63px;left:50%;margin-left:-282px;top:-21px;}
+.leshi-bata2 .leshi-bata3 .leshi-bata4 .leshi-bata5{border:8px solid #fed200;width:936px;border-radius: 6px;background:#fed200;}
+.leshi-bata2 .leshi-bata3 .leshi-bata4 .leshi-bata6{
+    border-radius: 4px;background:#fff;padding:68px 0px 40px 84px;
+}
+.leshi-bata2 .leshi-bata3 .leshi-bata4 .leshi-bata6 dd{margin-right:46px;width:232px;color:#000;}
+.leshi-bata2 .leshi-bata3 .leshi-bata4 .leshi-bata6 dd p{margin-top:20px;}
+.leshi-bata2 .leshi-bata3 .leshi-bata4 .leshi-bata6 .leshi-bata7, .leshi-bata2 .leshi-bata3 .leshi-bata4 .leshi-bata6 .leshi-bata7 a{border-radius:10px;}
+.leshi-bata2 .leshi-bata3 .leshi-bata4 .leshi-bata6 .leshi-bata7{width:210px;background:#e7bf01;height:58px;margin:48px auto 8px auto;}
+.leshi-bata2 .leshi-bata3 .leshi-bata4 .leshi-bata6 .leshi-bata7 a{background:#fed200;height:54px;line-height:54px;color:#e00e00}
+.leshi-bata2 .leshi-bata3 #leshi-bata4id{
+    background:#5d638b;margin-bottom:0;
+
+}
+.leshi-bata2 .leshi-bata3 #leshi-bata4id .leshi-bata5{background:#2266ab;border:8px solid #2266ab;}
+.leshi-bata2 .leshi-bata3 #leshi-bata4id .posb-t{color:#db224f;background: url("../images/8.png") no-repeat center;color:#fff;}
+.leshi-bata2 .leshi-bata3 #leshi-bata4id .leshi-bata6{
+    padding:96px 0px 60px 104px;margin-bottom:0;
+}
+.leshi-bata2 .leshi-bata3 #leshi-bata4id .leshi-bata6 dd{margin-right:130px;width:156px;}
+.leshi-bata2 .leshi-bata3 #leshi-bata4id .leshi-bata6 p{margin-top:0;}
+.leshi-bata2 .leshi-bata3 #leshi-bata4id .leshi-bata6 .img-box{height:122px;}
+.leshi-bata2 .leshi-bata3 #leshi-bata4id .leshi-bata6 .img-box1{height:100px;padding-top:20px;}
+.leshi-bata2 .leshi-bata3 #leshi-bata4id .leshi-bata6 .img-box2{height:112px;padding-top:6px;}
+.leshi-bata2 .leshi-bata3 #leshi-bata4id .leshi-bata6 .img-box3{height:118px;}
+.leshi-bata2 .leshi-bata3 #leshi-bata4id .leshi-bata6 .img-box3, .leshi-bata2 .leshi-bata3 #leshi-bata4id .leshi-bata6 .img-box2{margin-top:80px;}
+.leshi-bata2 .leshi-bata8{
+    background:#be062c;padding:70px 0 60px 0;
+
+
+}
+.leshi-bata2 .leshi-bata8 .leshi-bata9{
+    border-radius: 8px;
+    width:966px;border:2px dashed #fff;padding:72px 0 70px 0;
+}
+.leshi-bata2 .leshi-bata8 .leshi-bata9 h4{top:-18px;    width: 138px;
+    left: 50%;
+    margin-left: -68px;
+    background-color: #be062c;}
+.leshi-bata2 .leshi-bata8 .leshi-bata9 dd{
+    width:228px;margin-right:12px;
+}
+.leshi-bata2 .leshi-bata8 .leshi-bata9 dd .bata-dd1{height:90px;padding-top:4px;}
+.leshi-bata2 .leshi-bata8 .leshi-bata9 dd .bata-dd{height:94px;}
+.leshi-bata2 .leshi-bata8 .leshi-bata10{
+    width:970px;margin-top:46px;
+}
+.leshi-bata2 .leshi-bata8 .leshi-bata10 .leshi-bata12, .leshi-bata2 .leshi-bata8 .leshi-bata10 .leshi-bata11{line-height:32px;}
+.leshi-bata2 .leshi-bata8 .leshi-bata10 .leshi-bata11 i{color:#fed200;}
+.leshi-bata2 .leshi-bata8 .leshi-bata10 .leshi-bata12{color:#540000;}
+.leshi-bata2 .leshi-bata8 .leshi-bata10 .leshi-bata13{
+    margin-top:40px;border-radius: 6px;background:#9d0121;padding:0 64px 34px 64px;
+}
+.leshi-bata2 .leshi-bata8 .leshi-bata10 .leshi-bata13 h6{height:114px;line-height:114px;}
+.leshi-bata2 .leshi-bata8 .leshi-bata10 .leshi-bata13 .leshi-bata14{background: url("../images/19.png") no-repeat left;padding-left:250px;height:223px;line-height:34px;margin:10px 0 18px 3px;}
+.act11-bata11 p{text-indent: 38px;line-height:40px;}
+
+.jiujiu_foot{width: 100%;text-align: center;padding:60px 0 70px 0;background: #555555;}
+.jiujiu_foot p{color: #fff;font-size: 24px;line-height: 40px;}
+.jiujiu_foot .endjiujiu{background:url("../images/ma.png")  no-repeat center;height: 172px;margin-top:24px;}

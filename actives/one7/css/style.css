@@ -1,0 +1,228 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clearg{zoom:1;}
+.clearg:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+i{font-style: normal}
+h1, h2, h3, h4, h5, h6, fieldset, p, ol, ul, li, form, map, button, input, dl, dt, dd, q, table, thead, tbody, tfoot, tr, td, img, div{ margin:0; padding:0; }
+body {
+    font-family:"微软雅黑";
+    font-size: 18px;background: #840004;
+}
+.bodyyy{}
+.ww1{width: 100%;}
+.ww2{width: 1200px;}
+.ww3, .ww2{margin: 0 auto;}
+.lefts{float: left}
+.rights{float: right;}
+.text-center{text-align: center;}
+.text-left{text-align: left;}
+.text-right{text-align: right;}
+.font12{font-size: 12px;}
+.font14{font-size: 14px;}
+.font15{font-size: 15px;}
+.font16{font-size: 16px;}
+.font18{font-size: 18px;}
+.font19{font-size: 19px;}
+.font20{font-size: 20px;}
+.font22{font-size: 22px;}
+.font24{font-size: 24px;}
+.font25{font-size: 25px;}
+.block{display: block;}
+.inline-block{display: inline-block;}
+.cursor{cursor: pointer;}
+.bold{font-weight: bold;}
+h4{font-weight: normal}
+h5{font-weight: bold;}
+.color-ff{color: #fff;}
+.pos-a{position: relative;}
+.pos-b{position: absolute;}
+
+.source_mon{width: 100%;height: 577px;background: url("../images/ban.png") no-repeat top center;}
+.source_mona{
+    width: 100%;
+    background: #670003;
+    padding: 34px 0 26px 0;
+}
+.source_mona_source_mona1{
+    width: 874px;
+}
+.source_mona_source_mona1 dt{
+    width: 278px;
+    height: 76px;
+    border-right: 3px solid #840004;
+    color: #fff;
+}
+.source_mona_source_mona1 dt h4{
+    font-size: 32px;
+    height: 44px;
+    line-height: 34px;
+    width: 118px;
+}
+.source_mona_source_mona1 dt h4 i{
+    font-size: 43px;
+}
+.source_mona_source_mona1 dt h4, .source_mona_source_mona1 dt p{
+    margin: 0 auto;
+}
+.source_mona_source_mona1 dt p{
+    color: #670003;
+    background: #fff;
+    width: 116px;
+    height: 34px;
+    line-height: 34px;
+}
+.source_mona_source_mona1 dt.ondt{
+    color: #f0e827;
+}
+.source_mona_source_mona1 dt.ondt p{
+    background: #f0e827;
+}
+
+
+.source_monb{
+    width: 100%;
+    background: #b60005;
+    padding: 62px 0 92px 0;
+}
+
+
+.source_monb_source_monb1{
+    width: 1146px;
+    margin-left: 53px;
+}
+
+
+.source_monb_source_monb1 .actaco1{
+    background: url("../images/1.png") no-repeat center;
+    height: 474px;
+    margin-top: 38px;
+    display: none;
+}
+
+
+.source_monb_source_monb1 .actaco2{
+    background: url("../images/2.png") no-repeat center;
+    height: 474px;
+    margin-top: 38px;
+    display: none;
+}
+
+
+.source_monb_source_monb1 .actaco3{
+    background: url("../images/3.png") no-repeat center;
+    height: 474px;
+    margin-top: 38px;
+    display: none;
+}
+
+
+.source_monb_source_monb1 h4.onimg{
+    display: block;
+}
+.loginbtn{box-shadow:0 6px 1px #9c0000;width: 416px;height: 80px;line-height: 80px;background: #e9c000;color: #c80000;font-size: 36px;}
+.source_monc .loginbtn{box-shadow: 0 6px 1px #6D2426;}
+.source_monc{
+    padding: 90px 0 60px 0;
+}
+
+.source_monc .loginbtn{
+    margin-top: 40px;
+}
+
+.source_moncbg{
+    background: url("../images/4.png") no-repeat center;width: 1062px;height: 433px;padding-top: 40px;
+
+}
+
+.source_moncbg .bg_main{
+    width: 968px;
+    background: #fffbd5;
+}
+
+.source_moncbg .bg_main h5{
+    background: #c80000;
+    font-size: 31px;
+}
+
+.source_moncbg .bg_main .bg_tit, .source_moncbg .bg_main h5{
+    height: 70px;
+    line-height: 70px;
+}
+
+.source_moncbg .bg_main .bg_tit, .source_moncbg .bg_main .renav{
+    width: 878px;
+    margin: 0 auto;
+}
+
+.source_moncbg .bg_main .renav p span, .source_moncbg .bg_main .bg_tit span{
+    float: left;
+    width: 24%;
+    font-size: 24px;
+    color: #000;
+}
+
+.source_moncbg .bg_main .renav p{
+    height: 60px;
+    line-height: 60px;
+    border-top: 1px solid #8d8d8d;
+}
+
+
+.source_mond{padding-bottom: 46px;}
+.source_mond p, .source_mond h5{margin-left: 58px;}
+.source_mond p{line-height: 42px;}
+.source_mond h5{font-size: 30px;}
+/*弹窗通用*/
+.alertbox-A, .alertbox-B {
+    position:fixed;
+    top:0;
+    right:0;
+    left:0;
+    width:100%;
+    height:100%;display: none;
+
+}
+.alertbox-A {
+    z-index:2;
+    background:#000;
+    filter:alpha(opacity:50);
+    opacity:.5
+}
+.alertbox-B {
+    z-index:3
+}
+.alertbox-C {
+    position:relative;
+    top:50%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:-216px;
+
+}
+.close-a {
+    position:absolute;
+    right:0px;
+    top:0px;
+    cursor:pointer;
+    width:36px;
+    height:36px;
+    background:url(../images/close.png)
+}
+
+
+.jiujiu_foot{width: 100%;text-align: center;padding:60px 0 70px 0;background: #191919;}
+.jiujiu_foot p{color: #fff;font-size: 24px;line-height: 40px;}
+.jiujiu_foot .endjiujiu{background:url("../images/ma.png")  no-repeat center;height: 172px;margin-top:24px;}

@@ -1,0 +1,46 @@
+{include file="users_header.html"}
+<!--<div class="header_cont conbox fn_cle">-->
+		<!--<h1 class="fn_left"><a href="/"><img src="{$_G.system.con_logo}" alt="帝友系统" /></a></h1>-->
+		<!--<div class="member">邮箱激活</div>-->
+	<!--</div>-->
+<!--</div>-->
+<div class="reg_bg">
+<div class="conbox reg_step_style">
+<div class="reg_step_bg reg_step_second"></div>
+<div class="reg_step_txt">
+	<ul class="fn_cle">
+    	<li style="margin-left:160px;" class="current">填写账户信息</li>
+        <li style="margin-left:80px;" class="current">邮箱信息认证</li>
+        <li style="margin-left:75px;">注册成功</li>
+    </ul>
+</div>
+    <div class="reg_email txt_cent">
+    {if $_G.approve_result.email_status==1}
+	   <h2>邮箱验证已经成功</h2>
+	   <div class="approve">
+	      <h3>为了保护您的账户和资金安全，投资前请认证!</h3>
+		  <div class="approve_links"><a href="/?user&m=approve/safe" class="phone_approve">手机认证</a><a href="/?user&m=approve/safe" class="email_approve">实名认证</a></div>
+		  <p class="f_s12"><a href="/?user" class="user_f_c2">暂不认证，随便逛逛</a></p>
+	   </div>
+        {else}
+	   <h2><span>注册成功，请立即激活账户</span></h2>
+	   <p style="width:350px; margin:0 auto;">验证邮件已发送到您的邮箱：{$_G.user_result.email|truncate_email}请点击邮件中的确认链接完成验证</p>
+	   <input type="hidden" name="email_active" id="email_active" value="{$_G.user_result.email|truncate_email}" />
+	   <div class="login_email" id="email_send_warning"><a href="{$_U.emailurl}" class="user_bg_c1">登录邮箱激活</a></div>
+	   <div class="verify_txt">
+	      <h3>没有收到验证邮件？</h3>
+		  <p>1. 电子邮件偶尔会有延时状况，请耐心等待</p>
+          <p>2. 尝试到垃圾邮件里找找看</p>
+          <p>3. 如果仍然没有邮件：<a id="send_email_active" href="javascript:void(0);" class="user_f_c2">重新发送验证邮件</a></p>
+	   </div>
+       {/if}
+	</div>
+</div>
+ </div> 
+	
+{literal}
+<script type="text/javascript">
+      diyou.use('users_safe',function(dy){dy.email_send()});
+</script>
+{/literal}
+{include file="users_footer.html"}

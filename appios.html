@@ -1,0 +1,7 @@
+﻿{articles module='app' function='get_newest_one' var='var' type_id=1}
+    {if $var.update_url neq null}
+    <script>
+    location.href='{$var.update_url}';
+    </script>
+    {/if}
+{/articles}

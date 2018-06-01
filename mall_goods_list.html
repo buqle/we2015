@@ -1,0 +1,31 @@
+
+{list module="mall" function="get_goods_list"  var="loop" epage=12 type_id=$smarty.request.type_id  type_nid=$smarty.request.nid golds1=$smarty.request.golds1 golds2=$smarty.request.golds2 name=$smarty.request.name mygolds=$smarty.request.mygolds golds_rank=$smarty.request.golds_rank page=$smarty.request.page+1 }
+<div class="mall_products">
+	<ul>
+	{foreach from=$loop.list item="var" key=key}
+	<li>
+	 <div class="products_img "><img src="{$var.fileurl}" /></div>
+	 
+	 <div class="products_title ">
+	 <h3><a href="/mall/a{$var.id}.html"  title="{$var.name}">{$var.name}</a></h3>
+	 
+	 <p>兑换积分 <em>{$var.credits}</em></p> 
+     <a href="/mall/a{$var.id}.html" class="buy_btn">立即兑换</a>
+	 </div>
+	</li>
+	{/foreach}
+	</ul>
+ <div class="cle"></div>
+</div>
+{if $loop.total>0}
+<div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+{else}
+<div class="jk_list_more"><a href="javascript:;">没有符合条件的商品</a></div>
+{/if}
+ 
+ {/list}
+{literal}
+<script language="text/javascript">
+diyou.use('mall',function(m){m.pages()});
+</script>
+{/literal}

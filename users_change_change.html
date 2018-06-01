@@ -1,0 +1,62 @@
+<div class="form_box">
+    <form action="/?user&m=borrow/change/change" method="post" id="change_new_form">
+        <input type="hidden" name="borrow_nid" value="{$smarty.request.borrow_nid}" />
+        <input type="hidden" name="tender_id" value="{$smarty.request.tender_id}" />
+        <div class="item">
+            <label class="uf_label" style="margin-left: -57px;">转让投资借款：</label>
+            <span>{$_U.change_result.borrow_name}</span>
+        </div>
+        <div class="item" >
+            <label class="uf_label">最高转让价格：</label>
+            <span>{$_U.change_result.account}元</span>
+        </div>
+        <div class="item" >
+            <label class="uf_label"  style="margin-left: -38px;">手续费&nbsp:</label>
+            <span id="account-sxf">{$_U.change_result.change_fee}元</span>
+        </div>
+
+        <div class="item">
+            <label class="uf_label" style="margin-left: 11px;"><span class="user_warning_c">*</span>转让金额：</label><input style="width: 85px;" type="text" name="account" id="account" class="u_input" onkeyup="value=value.replace(/[^0-9.]/g,'')">元
+        </div>
+        <div style="height: 5px;"></div>
+        <div class="item">
+            <!-- <label class="uf_label"><span class="user_warning_c">*</span>交易密码：</label>
+             {if $_G.user_result.paypassword==""}
+             <a href="/?user&m=users/paypwd" style="color:#0000FF" target="_blank" >请先设置交易密码</a>
+             {else}
+             <input type="password"  class="u_input" name="paypassword" id="paypassword">
+             {/if}-->
+        </div>
+
+        {if $_G.approve_result.phone_safe eq "1" && $_G.system.con_app_module eq "1"}
+        <div class="item">
+            <label class="uf_label"><span class="user_warning_c">*</span>手机宝令：</label>
+            <input type="text"  name="safe_code" id="safe_code" class="u_input"/>
+        </div>
+        {/if}
+        <div class="item">
+            <label class="uf_label" style="margin-left: -4px;">&nbsp;</label>
+            <input style="height: 24px; width: 60px;" type="submit" class="u_sub" value="立即转让"> 	<span style="margin-left:20px; font-size:12px; color:red" id="change_error"></span>
+        </div>
+
+    </form>
+</div>
+<div class="notice">
+    <h3 style="color:red; text-align: left; font-size: 14px;">温馨提示</h3>
+    <p style="font-size: 12px; text-align: left;">
+        因债权受让人现金充值到平台，再到第三方支付机构到账审核，需要一个工作日的时间，<br />故出让人在债权转让成功后，需等第三方支付机构审核处理入账后方能体现，敬请理解！
+    </p>
+</div>
+{literal}
+<script type="text/javascript">
+    $(function(){
+        $('#account').blur(function(){
+            $('#account-sxf').text((($(this).val())*0.005).toFixed(2));
+        });
+    })
+
+
+
+    diyou.use('users_change',function(dy){dy.change_new('change_new_form')})
+</script>
+{/literal}

@@ -1,0 +1,169 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", sans-serif;;
+    line-height: 1.5;
+    font-size: 16px;
+    background-color: #F2F2F2;
+    color: #000;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+}
+
+button {
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+}
+
+a {
+    -webkit-touch-callout: none;
+    text-decoration: none;
+}
+
+:focus {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+em, i {
+    font-style: normal;
+}
+#box{
+    width: 16rem;
+    margin: 0 auto;
+}
+#box-img img{
+    width: 100%;
+}
+.box-p{
+    font-size: 0.6rem;
+    color: #4A6991;
+    text-align: center;    margin-top: 0.4rem;
+
+}
+#box-tImage,#box-tImage1{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+}
+#box-tImage img,#box-tImage1 img{
+    width: 100%;
+}
+#box-cnetgs{
+    background: #EAE2E2;
+    font-size: 0.8rem;
+    color: #646464;
+    margin-top: 0.5rem;
+}
+.qinzhi{
+    font-size: 1rem;
+    color: white;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    padding-left: 0.25rem;
+}
+.te_ijs p{ font-size: 0.6rem;}
+.cske img{
+    width: 100%;
+}
+#te{
+    width: 14rem;
+    margin: 0 auto;
+}
+#te h4{color: #646464;font-size:0.9rem;font-weight: bold;}
+#te table,.te_mys{ width: 100%; text-align: center; font-size: 0.5rem;}
+.tatTr{ height: 1.5rem; line-height: 1.5rem;}
+.tatTrs{ height: 1rem; line-height: 1rem;}
+#te table tr td{ border: 1px solid #666;}
+.my_t{ width: 12rem; margin: 0 auto; background: white;}
+.my_cs{ width: 11rem; margin: 0 auto; }
+.te_mys tr{ height: 1.5rem; line-height: 1.5rem; font-size: 0.5rem; width: 100%;}
+.ten_cuns{ height: 2rem;}
+.ten_cuns a{ height: 1.2rem; width: 3.5rem; display: block; float: left; font-size: 0.6rem; text-align: center; line-height: 1.2rem; border: 1px solid white; color: white;}
+.t_uons{ width: 14rem; margin: 0 auto;}
+.t_uons p{ font-size: 0.6rem; color: white; line-height: 1rem;}

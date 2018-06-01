@@ -1,0 +1,71 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clearg{zoom:1;}
+.clearg:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+body {
+    font-family:"微软雅黑";
+    font-size: 18px;background: #fff;
+}
+
+.ww1{width: 100%;}
+.ww2{width: 1200px;}
+.ww3,.ww2{margin: 0 auto;}
+.lefts{float: left}
+.rights{float: right;}
+.text-center{text-align: center;}
+.text-left{text-align: left;}
+.text-right{text-align: right;}
+.font12{font-size: 12px;}
+.font14{font-size: 14px;}
+.font15{font-size: 15px;}
+.font16{font-size: 16px;}
+.font18{font-size: 18px;}
+.font19{font-size: 19px;}
+.font20{font-size: 20px;}
+.font22{font-size: 22px;}
+.font24{font-size: 24px;}
+.block{display: block;}
+.inline-block{display: inline-block;}
+.cursor{cursor: pointer;}
+.bold{font-weight: bold;}
+h5{font-weight: bold;}
+.color-ff{color: #fff;}
+
+.cele-con{background:url("../images/ban.jpg")  no-repeat center;height:1080px;}
+    .cele-con-a{width: 980px;}
+    .cele-con-a img{vertical-align: bottom;}
+
+.cele-a{position: relative;height: 1082px;}
+.cele-b{background: url("../images/bg1.png") no-repeat center;width: 833px;height:172px;padding-top: 80px;}
+.cele-pos{padding-top: 176px;}
+.cele-c{padding-top: 94px;}
+.cele-c p{line-height:40px;}
+.cele-b p{line-height:38px;padding-left: 216px;}
+.cele-d h4,.cele-a strong{font-size: 36px;}
+.cele-a strong{color: #c7000b;}
+.cele-c{background: url("../images/bg2.png") no-repeat center;width: 835px;height:176px;margin: 56px auto 0 auto; }
+    .cele-c strong{font-size: 30px;}
+.cele-d,.cele-a{color: #000;}
+    .cele-d p{width: 1106px;line-height: 46px;text-indent:44px;}
+    .cele-d h4{margin-bottom: 40px;}
+    .cele-d{position: relative;height: 1080px;}
+.cele-e,.cele-d img,.cele-pos,.cele-a img{position: absolute;width: 100%;}
+.cele-e{padding-top: 244px;}
+
+.jiujiu_foot{width: 100%;text-align: center;background:#a90b03;padding: 70px 0;}
+.jiujiu_foot p{color: #fff;font-size: 24px;line-height: 40px;}
+.jiujiu_foot .endjiujiu{background:url("../images/ma.png")  no-repeat center;height: 172px;margin-top:24px;}

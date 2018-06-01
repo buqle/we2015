@@ -1,0 +1,25 @@
+<div class="form_box upload_avatar">
+ <form action="/?user&m=users/avatar" method="post" id="avatar_form" enctype="multipart/form-data">
+ <input type="hidden" name="user_id" value="{$_G.user_id}" />
+	<div class="item fn_cle">
+	  <div class="fn_left file_box">
+		  <input type="text" class="u_input" id="textfield_ID1">
+		  <input type="button" class="u_btn" value="浏览">
+		  <input type="file" id="avatar" name="avatar" class="u_file" onchange="document.getElementById('textfield_ID1').value=this.value"/>
+	  </div>
+	</div>
+	<div class="item">
+	  <span class="user_warning_c">您可上传JPG、GIF或PNG格式，上传图片最大512K</span>
+	</div>
+	<div class="item">
+	  <input type="submit" id="upload_btn_avatar" class="u_sub" value="上传">
+	  <input type="button"  class="u_sub cancle" value="取消">
+      <span class="user_warning_c" id="warn"></span>
+	</div>
+ </form>
+ </div>
+{literal}
+<script type="text/javascript">
+diyou.use('users',function(dy){dy.avatar('avatar_form')})
+</script>
+{/literal}

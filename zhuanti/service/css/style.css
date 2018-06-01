@@ -1,0 +1,63 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+ul, li {
+
+    list-style: none outside none;
+
+}
+.clearc{zoom:1;}
+
+.clearc:after {
+    content: "";
+    display: block;
+    clear: both;}
+
+img {
+
+    border: 0 none;
+
+}
+
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+
+body {
+
+    font-family:"微软雅黑";
+
+    font-size: 16px;background: #edeeea;
+
+}
+
+.guarantee_con1{ background: url(../images/ban.jpg) center no-repeat;width: 100%;overflow:hidden;height: 906px;}
+
+.laborwidth{width: 100%;overflow: hidden;}
+
+.laborcon1{background:#e7eef6;padding: 44px 0;border-bottom: 1px solid #d7dbe0;}
+    .laborcon1 .laborcon1s{width: 1080px;margin: 0 auto 30px auto;}
+
+.laborcon2{background: #ffc155;padding: 62px 0 94px 0;}
+    .laborcon2 .laborcon2s{width: 856px;margin: 0 auto;background: url(../images/ban4.gif) no-repeat right top;}
+    .laborcon2 ul,.laborcon2  h4{width: 1156px;margin: 0 auto;}
+    .laborcon2 ul li{float: left;margin-bottom: 32px;}
+    .laborcon2  h4{font-size: 30px;font-weight: bold;color: #fff;text-align: center;border-bottom: 2px solid #fff;padding-bottom: 2px;margin-top: 30px;}
+
+
+
+.laborcon3{padding: 52px 0 100px 0;background: #fff;}
+    .laborcon3 .labocotit{border-bottom: 1px solid #d7dbe0;padding-bottom: 40px;}
+    .laborcon3 .labocotit h4{text-align: center;font-weight: bold;width: 306px;margin: 0 auto;height: 66px;line-height: 66px;border-radius: 8px;border: 1px solid #ffcd77;font-size: 41px;color: #515151;}
+    .laborcon3s{background: #e7eef6;padding: 70px 0;border-bottom: 1px solid #d7dbe0;}
+    .laborcon3s ul{width: 1184px;margin: 0 auto;}
+        .laborcon3s ul li{float: left;}
+        .laborcon3sc{width:695px;margin-left: 54px;background: url(../images/b8.gif) no-repeat right top;height: 135px;}
+        .laborcon3sc h4{background: url(../images/b7.gif) no-repeat left;height: 61px;line-height: 60px;padding-left: 84px;font-size: 30px;color: #464646;}

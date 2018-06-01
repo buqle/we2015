@@ -1,0 +1,53 @@
+<div class="graphs">
+    <div class="xs">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h2>跳转URL列表</h2>
+            </div>
+            <div class="panel-body no-padding" style="display: block;">
+                <table class="table table-striped">
+                    <thead>
+                    <tr class="warning">
+                        <th>编号</th>
+                        <th>短识别号</th>
+                        <th>文章URL地址</th>
+                        <th>文章URL title</th>
+                        <th>广告地址</th>
+                        <th>广告图片</th>
+                        <th>点击数</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                        foreach ($pages->items as $item) {
+                    ?>
+                    <tr>
+                        <td><?=$item->id?></td>
+                        <td>http://www.ronghedai.com/wxad/public/index/<?=$item->short_id?></td>
+                        <td><a href="<?=$item->original_url?>" target="_blank"> <?=$item->original_url?></a></td>
+                        <td><?=$item->url_title?></td>
+                        <td><a href="<?=$item->jump_url?>" target="_blank"> <?=$item->jump_url?></a></td>
+                        <td><img src="../<?=$item->pic_address?>" height="50" width="50"> </td>
+                        <td><?=$item->total_click?> </td>
+                        <td><a href="/zixun/backendrhd/delurls&id=<?=$item->id?>"  onclick="return confirm('是否确定删除')">删除</a> | 
+                        <a href="/zixun/backendrhd/editurls&id=<?=$item->id?>">修改</a></td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                    <tr >
+                        <td colspan="7" style="text-align: right">
+                            <a href="/zixun/backendrhd/urlslist">首页</a>|
+                            <a href="/zixun/backendrhd/urlslist/<?= $pages->before; ?>">上一页</a> |
+                            <a href="/zixun/backendrhd/urlslist/<?= $pages->next; ?>">下一页</a> |
+                            <a href="/zixun/backendrhd/urlslist/<?= $pages->last; ?>">最后一页</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

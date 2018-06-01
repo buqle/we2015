@@ -1,0 +1,80 @@
+{include file="header.html"}
+<div class="all_bg">
+	<div class="mall_cont">
+  <div class="conbox fn_cle mall_white t30">
+
+	  {include file="mall_menu.html"}
+	  
+	  
+      <div class="dy_summary fn_rig">
+	  {articles module="mall" function="get_goods_one" var="var" id=$smarty.request.article_id }
+	  	  <div class="dy_detail">
+	   <div class="dy_gallery fn_left">
+			<div class="bd">
+				<div class="tempWrap" style="overflow:hidden; position:relative; width:467px">
+					<ul style="width: 1868px; left: 0px; position: relative; overflow: hidden; padding: 0px; margin: 0px;">
+						{foreach from=$var.upfiles_pic key=myId item=i}
+						<li style="float: left; width: 467px;"><a target="_blank" href="javascript:;"><img src="{$i.fileurl}"></a></li>
+						{/foreach}
+					</ul>
+				</div>
+			</div>
+			<div class="mall-bottom">
+				<div class="menr">
+					<a class="next"></a>
+					<a class="prev"></a>
+				</div>
+				
+				<div class="hd">
+					
+					
+					<ul class="fn_cle">
+						{foreach from=$var.upfiles_pic key=myId item=i}
+						<li {if $myId==0}class="on"{/if}><img src="{$i.fileurl}"></li>
+						{/foreach}
+					</ul>
+					
+				</div>
+			</div>
+	     <!-- <div class="dy_pic"><img src="{$var.upfiles_pic.0.fileurl}"></div>
+ 		 <div class="dy_thumb">
+ 		 <ul class="dy_pic_op fn_cle">
+        		 <li><img src="{$var.upfiles_pic.0.fileurl}"></li>
+				<li><img src="{$var.upfiles_pic.1.fileurl}"></li>
+				<li><img src="{$var.upfiles_pic.2.fileurl}"></li>
+		</ul>
+</div> 
+ -->
+	   </div>
+	   <div class="dy_property fn_rig">
+
+	    <div class="dy_title">{$var.name}<p> 礼品号：{$var.nid} </p></div><input type="hidden" name="goods_id" id="goods_id" value="{$var.id}">
+		<div class="dy_integral">我的积分 <span id="my_money" data-money="{$_G.credit_result.credit_available|default:0}">{$_G.credit_result.credit_available|default:0}</span><p class="like_bg">兑换积分 <span id="pay_money" data-golds="{$var.credits}">{$var.credits}</span></p></div>
+		<div class="dy_stock t20"><input name="exchange_num" id="exchange_num"  title="请输入兑换数量" type="text" value="1" class="dy_text"> 件 <em> 库存{$var.stock}件</em></div>
+		<div class="dy_btn_buy t20">
+		<input type="button" id="exchange_now" {if $_G.credit_result.credit_available<$var.credits || $var.stock == 0}disabled=true class="ex_btn"{else}class="basic_btn"{/if} value="立即兑换" /></div>
+	   </div>
+       <div class="cle"></div>
+	  </div>
+	  <div class="main_wrap">
+	   <div class="main_wrap_tit"><span>商品介绍</span><font> Product</font></div>
+	  <div class="main_wrap_box">
+	  {$var.detail}
+      </div>
+	  </div>
+	  {/articles}
+	  	  </div>
+		  
+	
+	  <div class="cle"></div>
+	</div>
+  </div>
+ </div>
+  {literal}
+<script type="text/javascript">
+diyou.use('mall',function(t){t.exchange();t.goods_tab()})
+</script>
+{/literal}  
+ {include file="footer.html"}
+
+

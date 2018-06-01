@@ -1,0 +1,218 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", sans-serif;;
+    line-height: 1.5;
+    font-size: 16px;
+    color: #000;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+    background:#F8F5E1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+}
+
+button {
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+}
+
+a {
+    -webkit-touch-callout: none;
+    text-decoration: none;
+}
+
+:focus {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+em, i {
+    font-style: normal;
+}
+.all-img{ width: 100%; height: 100%;}
+.section1{ height: 6.55rem;}
+.lucp-imgs{ width: 14rem; margin: 0 auto; height: 1.45rem;}
+.lucp-imgtz{height:1.2rem;}
+.liip_s{ width: 14rem; margin: 0 auto;background: white;}
+.aten{ font-size: 0.6rem;padding: 0.5rem 1rem 0.5rem 1rem; line-height: 0.9rem;}
+.aten span{ color: #ff3c50;}
+.tin_su{ height: 2rem; width: 8rem; margin: 0 auto;}
+.heads{ height: 1.5rem;border-bottom:1px solid #F84015;}
+.heads span{ height: 1.5rem; width: 25%; display: block; text-align: center; line-height: 1.5rem; font-size: 0.6rem; float: left; overflow: hidden; color:#F84015;}
+.jlheads span{width:20%;font-size:0.6rem;}
+#litop p span{width: 20%;font-size: 0.5rem;}
+.lun-slilld p,.allpage p{ height: 1.2rem;}
+.lun-slilld p span{height: 1.2rem; width: 25%; display: block; text-align: center; line-height: 1.2rem; font-size: 0.6rem; float: left; overflow: hidden; color: #555;}
+.allpage p span{height: 1.2rem; width: 33.33%; display: block; text-align: center; line-height: 1.2rem; font-size: 0.6rem; float: left; overflow: hidden; color: #555;}
+.lun-slilld{ height: 6rem; position: relative;animation: myfirst 6s;-moz-animation: myfirst 6s;-webkit-animation: myfirst 6s;-o-animation: myfirst 6s;animation-iteration-count:1000;}
+.allpage{ height: 6rem; width: 13rem; position: relative;}
+.footse{ font-size: 0.6rem; color: #555; height: 1.5rem; line-height: 1.5rem; text-align: center; }
+.footse span{ color: #fe4b23;}
+.section3{ height: 1.5rem; width: 11rem; margin: 0 auto;}
+.section3 div{ height: 1.5rem; width: 6rem; background: #F84015; font-size: 0.7rem; font-weight: bold; line-height: 1.5rem; text-align: center; border-radius: 0.2rem; color: white; box-shadow: 0.05rem 0.05rem 0 0 #555;}
+.a-cp{ font-weight: bold; font-size: 0.8rem; color: #3E3E3E; height: 1rem; line-height: 1rem; text-align:left;}
+.mon_on{ width: 12.8rem; margin: 0 auto; border: dashed 0.1rem #45c9bb; padding: 1rem 0.5rem 1rem 0.5rem;}
+.mon_on p{ font-size: 0.6rem; color: #2a2a2a; line-height: 1rem;}
+@keyframes myfirst
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+@-webkit-keyframes myfirst /* Safari 和 Chrome */
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+.old-user{color:#85847D;font-size:0.8rem;margin:0 auto;height:1.5rem;width:12rem;}
+.old-inline{width:3rem;height:0.08rem;margin:0.5rem 0;background:#85847D;opacity:0.5;float:left;}
+.old-text{font-size:0.7rem;width:6rem;float:left;text-align:center;}
+
+.old-users{color:#F84015;}
+.old-inlines{background:#F84015;}
+.mon_ons{ text-align:left;width: 12.8rem; margin: 0 auto; border: dashed 0.1rem #7C552E; padding: 1rem 0.5rem 1rem 0.5rem;background:white;}
+.mon_ons p{ font-size: 0.62rem;color: #7B5E3F;line-height:0.8rem;}
+.mon_ons_p{border:dashed 0.1rem #F84015;text-align:left;}
+.mon_ons_p p{font-size:0.6rem;text-indent:0.8rem;}
+.jiaxi{height:2.5rem;}
+.jiaxi img{width:8rem;height:1.8rem;margin:0 auto;}
+.jiaxi-text p{font-size:0.6rem;color:#85847D;line-height:1.2rem;}
+.jiaxi-text p span{color:red;}
+
+.red-inline{width:13rem;height:0.02rem;background:#F84015;}
+.heji{height:1.5rem;border-top:1px solid #F84015;color:#F84015;text-align:center;}
+.heji span{height: 1.5rem;line-height: 1.5rem; font-size: 0.6rem;overflow: hidden; color:#F84015;}
+.denglu{text-align:center;color:red;overflow: hidden;line-height:6rem;}
+.dp{display: none;}
+.xianshi{display:block;}
+.denglu span{font-weight:bold;border-bottom:2px solid red;font-size:0.8rem;}
+/*overflow: hidden; display: none;*/
+.section4{background:#E3E2DE;text-align:center;}
+.section4 img{height:2rem;width:11rem;margin:1rem auto;}
+.jlbz{background:#F4F4F2;width:15rem;margin:0 auto;}
+.jlbz  img{width:15rem;height:1.25rem;margin:0;}
+#te{
+    width: 13.5rem;
+    margin: 0 auto;
+    color:#F77657;
+}
+#te table,.te_mys{ width: 100%; text-align: center; font-size: 0.4rem;}
+.tatTr{ height: 2rem; line-height: 2rem;}
+.tatTd{color:white;width:97%;height:1.8rem;background:#F77657;margin:0 auto;}
+.tatTrs{ height: 2rem; line-height: 2rem;}
+#te table tr td{ border: 1px solid #F77657;}
+.bj{background:#E3E2DE;padding:1rem 0;}
+.huodong p{font-size:0.6rem;}

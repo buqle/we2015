@@ -1,0 +1,105 @@
+<link href="{$tpldir}/css/blue/users.css" type="text/css" rel="stylesheet"/>
+<div class="form_box">
+     <form action="" method="post" id="u_safe_real" method="post" enctype="multipart/form-data" >
+        {if $_G.approve_result.realname_status==1}
+            <div class="item">
+    		  <label class="uf_label"><span class="user_warning_c">*</span>真实姓名：</label>
+    		  <span class="u_span">{$_G.approve_result.realname}</span>
+    		</div>
+    		<div class="item">
+    		  <label class="uf_label"><span class="user_warning_c">*</span>性别：</label>
+              {if $_G.approve_result.sex==1}
+              <span class="u_span">男</span>
+              {elseif $_G.approve_result.sex==2}
+              <span class="u_span">女</span>
+              {/if}
+    		</div>
+    		<div class="item">
+    		  <label class="uf_label"><span class="user_warning_c">*</span>身份证号：</label>
+    		  <span class="u_span">{$_G.approve_result._card_id}</span>
+              
+    		</div>
+        {else}
+       
+		<div class="item">
+		  <div class="u_notice"><i class="icon"></i><span class="u_span">          
+          注意：请认真填写以下的内容,一旦通过实名认证以下信息将不能修改
+          </span></div>
+		</div>
+		<div class="item">
+		  <label class="uf_label"><span class="user_warning_c">*</span>真实姓名：</label>
+		  <input type="text" name="realname" id="realname" class="u_input" value="{$_G.approve_result.realname}">
+		</div>
+		<div class="item">
+		  <label class="uf_label"><span class="user_warning_c">*</span>性别：</label>
+		  <input id="male" type="radio" class="u_radio" name="sex" {if $_G.approve_result.sex==1 || $_G.approve_result.sex==""} checked="true" {/if} value="1"/>
+		  <label for="male" class="u_radio_label" >男</label>
+		  <input id="female" type="radio" class="u_radio" name="sex" {if $_G.approve_result.sex==2} checked="true"{/if} value="2"/>
+		  <label for="female" class="u_radio_label">女</label>
+		</div>
+		<div class="item">
+		  <label class="uf_label"><span class="user_warning_c">*</span>身份证号：</label>
+		  <input type="text" name="card_id" value="{$_G.approve_result.card_id}" id="card_id" class="u_input">
+          
+		</div>
+		<div class="item fn_cle">
+		  <label class="uf_label"><span class="user_warning_c">*</span>身份证正面：</label>
+		  <div class="fn_left file_box">
+			  <input type="text" class="u_input" id="textfield_ID1">
+			  <input type="button" class="u_btn" value="浏览">
+			  <input type="file" class="u_file" name="card_pic1" id="card_pic1" onchange="document.getElementById('textfield_ID1').value=this.value"/>
+              {if $_G.approve_result.card_pic1!=''}
+              <a target="_blank" href="{$_G.approve_result.card_pic1_url}"><img src="{$_G.approve_result.card_pic1_url}" class="u_img"/></a>
+              {/if}
+		  </div>
+		</div>
+		<div class="item fn_cle">
+		  <label class="uf_label"><span class="user_warning_c">*</span>身份证反面：</label>
+		  <div class="fn_left file_box">
+			  <input type="text" class="u_input" id="textfield_ID2">
+			  <input type="button" class="u_btn" value="浏览">
+			  <input type="file" class="u_file" name="card_pic2" id="card_pic2" onchange="document.getElementById('textfield_ID2').value=this.value"/>
+              {if $_G.approve_result.card_pic2!=''}
+              <a target="_blank" href="{$_G.approve_result.card_pic2_url}"><img src="{$_G.approve_result.card_pic2_url}" class="u_img"/></a>
+              {/if}
+		  </div>
+		</div>
+		<div class="item">
+		  <label class="uf_label">&nbsp;</label>
+		  <span class="user_warning_c">上传最大的图片为512KB，上传的格式为jpg.gif.png</span>
+		</div>
+        {if $_G.approve_result.realname_status neq 1}         
+		<div class="item">
+		  <label class="uf_label">&nbsp;</label>
+		  <input type="submit" class="u_sub" value="确认提交">
+          <span class="user_warning_c" id="safe_real"></span>
+		</div>
+        {/if}
+        {if $_G.approve_result.realname_status==0 && $_G.approve_result.realname_status!=""}  
+        <div class="item">
+		  <label class="uf_label">&nbsp;</label>
+          <span class="user_warning_c">
+          
+          已提交，请等待工作人员审核。
+          </span>
+		</div>
+        {/if}
+        {if $_G.approve_result.realname_status==2}
+          <div class="item">
+		  <label class="uf_label">&nbsp;</label>
+          <span class="user_warning_c">
+          认证审核不通过，请重新提交！【原因：{$_G.approve_result.verify_remark}】
+         
+          </span>
+		</div>
+        {/if}
+        
+        {/if}
+	 </form>
+</div>
+
+{literal}
+<script type="text/javascript">
+diyou.use('users',function(dy){dy.safe_real('u_safe_real')})
+</script>
+{/literal}

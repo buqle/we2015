@@ -1,0 +1,263 @@
+<div style="height: 20px;"></div>
+<div style="width: 1199px; margin: 0 auto; overflow: hidden;">
+	<div class="invest_list" style="width: 100%; overflow: hidden;">
+		<ul style=" overflow: hidden;">
+			{list module="borrow" function="get_list" var="loop" account_status=$smarty.request.account_status  spread_month=$smarty.request.spread_month   keywords=$smarty.request.keywords   epage="6" order=$smarty.request.order  invest_type=$smarty.request.invest_type borrow_interestrate=$smarty.request.borrow_interestrate   status_nid='invest' query_type='invest' page=$smarty.request.page+1 }
+			{foreach from=$loop.list item="var" key=key }
+			{if $var.borrow_type=="roam"}
+			<li>
+				<h3 class="invest_tit">
+					<img  src="{$tpldir}/images/loantype/{$var.invest_type}.gif" />
+					<a style="color: #46A3F0;" href="/invest/a{$var.borrow_nid}.html" title="{$var.name}">{$var.name|truncate:22}</a>
+					{if $var.award_status!=0}
+					{if $var.award_status==1}
+					<em class="award">￥{$var.award_account}</em>
+					{else}
+					<em class="award">{$var.award_scale*100/100}%</em>
+					{/if}
+					{/if}
+				</h3>
+				<div class="mt10">
+					<div class="in_left">
+						<table class="invest_tab" border="0">
+							<tr>
+								<td class="first">流转总额：<strong class="f_c1">{$var.account|truncate_zero}元</strong></td>
+								<td class="middle">年化利率：{if $var.borrow_apr > 100}{$var.borrow_apr / 100}0{else}{$var.borrow_apr}{/if}%</td>
+								<td>借款期限：{$var.borrow_period_name}</td>
+							</tr>
+							<tr>
+								<td class="first">
+									最小流转：{$var.account_min|truncate_zero}元
+								</td>
+								<td>
+									还剩：{$var.roam.portion_wait}份
+								</td>
+								<td  class="middle fn_cle">
+									<span class="">借款进度：</span>
+									<em class=" progress">
+												<span class="pro_bar">
+													<i class="pro_bar_bg" style="width:{$var.borrow_account_scale}%">
+														<span class="pro_nums">{$var.borrow_account_scale}%</span>
+													</i>
+												</span>
+									</em>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="in_right">
+						<a href="/invest/a{$var.borrow_nid}.html" {if $var.borrow_status_nid=='roam_now'}class="default btn yes buy_now"{else}class="default btn review"{/if}>{$var.borrow_status_nid|linkages:"borrow_status_nid"}</a>
+					</div>
+				</div>
+			</li>
+			{else}
+			<li style="height: 150px; overflow: hidden;">
+				<h3 class="invest_tit">
+					<a class="borrow-mystudime"  href="/invest/a{$var.borrow_nid}.html" title="{$var.name}">{$var.name|truncate:22}</a>
+				</h3>
+				<div style="position: relative;">
+					<div class="in_left">
+						<table class="invest_tab" border="0">
+							<tr class="fl invest_tab_17">
+								{if $var.tender_time >1469980800}
+								<td class="middle" style="padding: 0 0 0 30px;">年化收益：<em style="color: #ff4c05; font-size: 16px;">{if $var.borrow_apr > 100}{$var.borrow_apr / 100}0{else}{$var.borrow_apr}{/if}%</em></td>
+								{else}
+								<td class="middle" style="padding: 0 0 0 30px;">
+									{if $var.borrow_period==3 }
+										{if $var.borrow_apr > 11.3}
+										年化收益：<em style="color: #ff4c05; font-size: 16px;">11.3%+{$var.borrow_apr-11.3}%</em>
+										{else}
+									年化收益：<em style="color: #ff4c05; font-size: 16px;">{if $var.borrow_apr > 100}{$var.borrow_apr / 100}0{else}{$var.borrow_apr}{/if}%</em>
+										{/if}
+									{elseif  $var.borrow_period==6 }
+									{if $var.borrow_apr > 12.8}
+									年化收益：<em style="color: #ff4c05; font-size: 16px;">12.8%+{$var.borrow_apr-12.8}%</em>
+									{else}
+									年化收益：<em style="color: #ff4c05; font-size: 16px;">{if $var.borrow_apr > 100}{$var.borrow_apr / 100}0{else}{$var.borrow_apr}{/if}%</em>
+									{/if}
+
+									{elseif  $var.borrow_period==12 }
+									{if $var.borrow_apr > 14.1}
+									年化收益：<em style="color: #ff4c05; font-size: 16px;">14.1%+{$var.borrow_apr-14.1}%</em>
+									{else}
+									年化收益：<em style="color: #ff4c05; font-size: 16px;">{if $var.borrow_apr > 100}{$var.borrow_apr / 100}0{else}{$var.borrow_apr}{/if}%</em>
+									{/if}
+									{else}年化收益：<em style="color: #ff4c05; font-size: 16px;">{if $var.borrow_apr > 100}{$var.borrow_apr / 100}0{else}{$var.borrow_apr}{/if}%</em>
+									{/if}
+
+								</td>
+
+
+								{/if}
+								<td class="first" style="padding-left: 114px;">收益方式： <span>{$var.style_title}</span></td>
+								<td style="padding-left: 114px;">
+									<dl class="barbox">
+										<dd class="barline">
+											<div w="{$var.borrow_account_scale}" style="width:0px;" class="charts"></div>
+										</dd>
+									</dl>
+								</td>
+							</tr>
+							<tr class="fl">
+								<td  class="middle tender_ac1">
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="in_left">
+						<table class="invest_tab" border="0">
+							<tr>
+								<td style="padding: 0 0 0 30px;">投资期限：<em style="color: #ff4c05; font-size: 16px;">{$var.borrow_period_name}</em></td>
+								<td class="first" style="padding-left: 114px;">投资金额： <span>{$var.account|truncate_zero}.00</span></td>
+								<td class="first" style="padding-left: 114px;">可投金额： <span>{$var.borrow_account_wait}</span></td>
+							</tr>
+						</table>
+					</div>
+
+
+					<!--进度条-->
+					{literal}
+					<script type="text/javascript">
+						function animate(){
+							$(".charts").each(function(i,item){
+								var a=parseInt($(item).attr("w"));
+								$(item).animate({
+									width: a+"%"
+								},1000);
+							});
+						}
+						animate();
+					</script>
+					{/literal}
+
+
+					<!--倒计时-->
+					{literal}
+					<script type="text/javascript">
+						function getDiff(diff,keys,borrow_nid)
+						{
+							var df = (diff - this['runTimeNum'+keys]);
+							//console.log('循环了：' + df);
+							//定时结束
+							if (df >= 0) {
+								//转换时间
+								var getbackSecond = df;
+								day = Math.floor(getbackSecond / (60 * 60 * 24));
+								hour = Math.floor(getbackSecond / (60 * 60)) - (day * 24);
+								minute = Math.floor(getbackSecond / 60) - (day * 24 * 60) - (hour * 60);
+								second = Math.floor(getbackSecond) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+
+								$("#day_"+keys).html(day);
+								$('#hour_'+keys).html(hour);
+								$('#min_'+keys).html(minute);
+								$('#sec_'+keys).html(second);
+								this['runTimeNum'+keys]++;
+							}else if(df <= 0 ){
+								clearInterval(this['timerhcd'+keys]);
+								$('#t_down'+borrow_nid).hide();
+								$('#t_show'+borrow_nid).show();
+							}
+							if(second < 10){
+								$('#sec_'+keys).html('0'+second);
+							}
+							if(minute < 10){
+								$('#min_'+keys).html('0'+minute);
+							}
+							if(hour < 10){
+								$('#hour_'+keys).html('0'+hour);
+							}
+							if(day < 10){
+								$("#day_"+keys).html('0'+day);
+							}
+						}
+					</script>
+					{/literal}
+
+					<div class="in_right cone-sincss">
+						<div class="fl on-sincss-mys">
+							<p style="height: 15px;"></p>
+							<p style="color: #120605;">筹资总额</p>
+							<p style="color: #ff4c05; font-size: 16px;">{$var.account|truncate_zero-$var.borrow_account_wait}.00</p>
+						</div>
+
+						{if $var.count_down==1 and ($smarty.now < $var.tender_time)}
+						<strong id="t_down{$var.borrow_nid} fl" class="my-time-ousnes">
+							<!--时间-->
+							<script type="text/javascript">
+								var runTimeNum{$var.id}=0;
+								var timerhcd{$var.id} = setInterval("getDiff({$var.tender_time - $smarty.now},{$var.id},'{$var.borrow_nid}')",1000);
+							</script>
+							<p style="position: relative; color: red;">
+								开标倒计时：
+							<p style="position: relative; color: red;">
+								<b class="fen" id="day_{$var.id}">00</b>：
+								<b class="fen" id="hour_{$var.id}">00</b>：
+								<b class="fen" id="min_{$var.id}">00</b>：
+								<b class="fen" id="sec_{$var.id}">00</b>
+							</p>
+							</p>
+							<!--<p class="ons-muyeet">开标倒计时：<p><b class="fen" id="day_{$key}">00</b>：<b class="fen" id="hour_{$key}">00</b>：<b class="fen" id="min_{$key}">00</b>：<b class="fen" id="sec_{$key}">00</b></p></p>-->
+						</strong>
+						{else}
+						<span class="t_status ver_top meon-mybits"{if $var.count_down==1 and ($smarty.now < $var.tender_time)}style="display:none;"{/if}>
+						<a style="font-size: 18px;" {if $var.borrow_status_nid=='loan'} class="mr_t5 dis_fussa"{elseif $var.borrow_status_nid=='full'}{else} class="mr_t5 dis_btntung"{/if} target="_blank" href="/invest/a{$var.borrow_nid}.html">
+						{$var.borrow_status_nid|linkages:"borrow_status_nid"}
+						</a>
+						</span>
+						{/if}
+
+
+
+					</div>
+				</div>
+			</li>
+
+			{/if}
+			{/foreach}
+		</ul>
+	</div>
+</div>
+
+{if $loop.total>0}
+<div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+{else}
+<div class="no_tender" >很抱歉，没有您选择的可投资借款</div>
+{/if}
+{/list}
+{literal}
+<script type="text/javascript">diyou.use('tender',function(t){t.pages();t.pro_show()});</script>
+<script tyte="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		function loadImg(obj, data) {
+			var i = 0;
+			setInterval(function () {
+				i++;
+				if (i > data) {
+					i = data
+				}
+				var imgLeft = -(i * 44 + (i * 10)) + 'px';
+				obj.css("backgroundPosition", imgLeft + '\t' + '0px');
+				obj.children().html(i);
+			}, 15)
+		}
+		function main(){
+			$.each($('.ui-progressbar-mid'), function(index, item){
+				var topHeight = $(this).offset().top;
+				var relHeight = $(this).outerHeight();
+				var scrollHeight = $(window).scrollTop();
+				var winHeight = $(window).height();
+				var aa=parseInt($(this).children().text());
+				if ((topHeight > scrollHeight) && (topHeight < (scrollHeight + winHeight)) && !$(this).hasClass('boxed')) {
+					loadImg($(this), aa);
+					$(this).addClass('boxed');
+				}
+			});
+		}
+		main();
+		$(window).scroll(function(){
+			main();
+		});
+	});
+</script>
+{/literal}

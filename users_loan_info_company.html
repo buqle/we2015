@@ -1,0 +1,99 @@
+﻿{include file="header.html"}
+
+<div class="conbox t50">
+   <div class="borrow_pro">
+	   <div class="bread"><a href="#">我要借款</a>&nbsp;>&nbsp;填写信息</div>
+	   {include file="users_loan_info_menu.html"}
+	   <div class="fill_infor">
+	       {include file="users_loan_info_right.html"}
+		   <div class="infor_cont">
+              <form action="" method="post" id="loan_info_company">
+			         <div class="infor_cont_box">
+						 <h3>公司信息</h3>
+                         <ul>
+                         {articles module="rating" function="GetJobOne" user_id=$_G.user_id var="var"}
+						   <li>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>职业状态：</label>
+                               {linkages nid="rating_job_style" default="请选择" class="borrow_sel" name="work_style" type="value"  value=$var.work_style }
+                               <span class="msg_box warning"><em></em><i></i><font>请选择职业状态</font></span>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>公司名称：</label>
+							   <input type="text" class="basic_input" id="name" name="name" value="{$var.name}">
+                               <span class="msg_box warning"><em></em><i></i><font>请填写公司名称</font></span>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>公司所在地：</label>
+                               <script src="/?plugins&q=areas&name=work_&type=p,c&class=borrow_sel&area=&value={$var.work_city}"></script>
+							   <span class="msg_box warning"><em></em><i></i><font>请选择公司所在地</font></span>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>公司地址：</label>
+							   <input type="text" class="basic_input" name="address" id="address" value="{$var.address}">
+                               <span class="msg_box warning"><em></em><i></i><font>请填写公司地址</font></span>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>公司类别：</label>
+							   {linkages nid="rating_company_type" default="请选择" name="company_type" type="value"  value=$var.company_type class="borrow_sel"}
+							     <span class="msg_box warning"><em></em><i></i><font>请选择公司类别</font></span>
+                             </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>公司行业：</label>
+							   {linkages nid="rating_company_industry" default="请选择" name="company_industry" type="value"  value=$var.company_industry class="borrow_sel"}
+                               <span class="msg_box warning"><em></em><i></i><font>请选择公司行业</font></span>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>公司规模：</label>
+							   {linkages nid="rating_company_size" default="请选择" name="company_size" type="value"  value=$var.company_size class="borrow_sel"}
+							     <span class="msg_box warning"><em></em><i></i><font>请选择公司规模</font></span>
+                             </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>公司经营年限：</label>
+							   {linkages nid="rating_workyear" default="请选择" name="company_work_year" type="value"  value=$var.company_work_year class="borrow_sel"}
+							     <span class="msg_box warning"><em></em><i></i><font>请选择公司年限</font></span>
+                             </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>月收入：</label>
+							   {linkages nid="rating_income" default="请选择" name="income" type="value"  value=$var.income class="borrow_sel"}
+							 <span class="msg_box warning"><em></em><i></i><font>请选择月收入</font></span>
+                             </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>职位：</label>
+							   {linkages nid="rating_position" default="请选择" name="company_position" type="value"  value=$var.company_position class="borrow_sel"}
+							     <span class="msg_box warning"><em></em><i></i><font>请选择职位</font></span>
+                             </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>公司电话：</label>
+							   <input type="text" class="basic_input" name="tel" id="tel" value="{$var.tel}" >
+                               <span class="msg_box warning"><em></em><i></i><font>请填写公司电话</font></span>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>工作邮箱：</label>
+							   <input type="text" class="basic_input" name="work_email" id="work_email" value="{$var.work_email}">
+                               <span class="msg_box warning"><em></em><i></i><font>请填写工作邮箱</font></span>
+							 </div>
+						 </li> 
+						  
+						 
+					     </ul>
+                         {/articles}
+					 </div>	 
+					 <div class="item txt_cent">
+					   <input type="submit" value="提交&nbsp;下一步" class="bor_pro_sub"/>
+					   <input type="button" id="return" value="返回" class="bor_pro_sub"/>
+					 </div>
+		   </form>			  
+		   </div>
+		   <div class="cle"></div>
+	   </div>  
+   </div>
+</div>
+
+
+{literal}
+<script type="text/javascript">
+diyou.use('borrow',function(dy){dy.loan_info_company('loan_info_company')})
+</script>
+{/literal}
+{include file="footer.html"}

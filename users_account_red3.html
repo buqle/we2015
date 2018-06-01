@@ -1,0 +1,78 @@
+<div class="april_cash">
+    <div class="april_tit clearbt">
+        <ul class="clearbt top_up">
+            <li class="onredzt" status="0"><p class="p1"><em>未使用</em><i>|</i></p></li>
+            <li status="1"><p class="p1"><em>已使用</em><i>|</i></p></li>
+            <li status="3"><p class="p1"><em>已失效</em><i>|</i></p></li>
+        </ul>
+    </div>
+
+    <div class="april_con clearbt">
+        <ul class="clearbt">
+            <li class="onend inin_uus">
+                <div class="april_side2s clearbt">
+
+                </div>
+                <div class="april_side1">
+                    <h5 style="font-weight: bold;font-size: 18px;color: #ff0000;">加息券使用说明：</h5>
+                    <p>1、用户所有融和贷平台加息券均在本页面记录及查看；</p>
+                    <p>2、未使用、已使用、已过期的加息券，都可在页面对应分栏中查看；</p>
+                    <p>3、对应加息券来源、有效期（从领取日开始计算） 、加息额度、状态均可在加息券上查看；</p>
+                    <p  class="wu-cont4"  now="{$smarty.now}"  style="height: auto">4、用户单笔投资限用一张加息券，系统默认使用该笔投资可以获得的最大奖励加息券；</p>
+                    <p>5、符合条件的投资，所获得的加息奖励，将在满标复审后，三个工作日内直充用户存管账户，可投资，可提现；</p>
+                    <p>6、本活动最终解释权归融和贷所有，如有疑问，请致电在线客服：400-013-5679。</p>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</div>
+{literal}
+<script>
+    $(function(){
+        if($('.wu-cont4').attr('now')>1493568000){
+            $('.wu-cont4').html('4、用户单笔投资限用一张代金券及加息券（两者可同时使用，若用户账户不具备同时使用条件，系统则自动选用适合的奖励券），系统默认使用当笔投资可得最大奖励金额的代金券及加息券，如遇账户中多组代金券及加息券同时使用后用户奖励金额相同，系统将随机使用一组；')
+        }
+        $('.april_tit ul li').each(function(){
+            $(this).click(function(){
+                $(this).addClass('onredzt').siblings().removeClass('onredzt');
+                var status =$(this).attr('status');
+                getuser(status );
+            });
+            if($(this).index()==0){
+                $(this).click();
+            }
+        });
+
+        function getuser(status){
+            $.getJSON('/?user&q=get_share_ajax&alias=interest&methodname=get_voucher&data='+status+'',function(ret){
+                if(ret.code == 1){
+                    var surelen = ret.data.length;
+                    var sure = '';
+                    for (var i =0 ; i < surelen; i++) {
+                        if(status==0){
+                            sure+='<dl>';
+                        }else if(status==1){
+                            sure+='<dl class="data2">';
+                        }else {
+                            sure+='<dl class="data3">';
+                        }
+                        sure+='<dt><strong>'+ret.data[i].rate+'%</strong>加息券</dt>';
+                        sure+='<dd>';
+                        sure+='<p style="font-size: 14px;">投资≥'+ret.data[i].amount+'元，限'+ret.data[i].limit_month+'月标及以上使用</p>';
+                        sure+='<p>过期时间为'+ret.data[i].timeout+'</p>';
+                        sure+='</dd>';
+                        sure+='</dl>';
+                    }
+                    $('.april_side2s').html(sure);
+                    $('.april_side2s dl:odd').css('float','right');
+                }else{
+                    jDialog.alert(ret.msg);
+                }
+            });
+        };
+    });
+
+
+</script>
+{/literal}

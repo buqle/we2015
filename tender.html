@@ -1,0 +1,80 @@
+﻿{include file="header.html"}
+<input type="hidden" name="borrow_style" value="borrow" />
+<div class="cimg-mysin">
+	<div class="conbox">
+		<div class="touzi_con">
+			<div class="touzi_left">
+				<div class="ui_filter">
+					<dl>
+						<dd>
+							<ul data='borrow_type' id="borrow_invests">
+								<li><b>产品类型：</b></li>
+								<li class="ui_filter_tag active" id="borrow_type_li">
+									<input class="file_tag" type="radio" name="borrow_type" value="" checked=""/>
+									<span>全部</span>
+								</li>
+								{foreach from=$_G.linkages.borrow_all_type key="key" item="item"}
+								<li class="ui_filter_tag ">
+									<input class="ficle_active" type="radio" name="invest_type" value="{1000-$key}" />
+									<span>{$item}</span>
+								</li>
+								{/foreach}
+							</ul>
+						</dd>
+						<dd class="term">
+							<ul>
+								<li><b>投资期限：</b></li>
+								<li class="ui_filter_tag active"  id="spread_month_li">
+									<input type="radio" name="spread_month" value="" checked=""/>
+									<span>全部</span>
+								</li>
+								{foreach from=$_G.linkages.spread_month item="item" key="key"}
+								<li class="ui_filter_tag ">
+									<input type="radio" name="spread_month" value="{$key}" />
+									<span>{$item}</span>
+								</li>
+								{/foreach}
+							</ul>
+						</dd>
+						<dd class="term">
+							<ul>
+								<li><b>年化利率：</b></li>
+								<li class="ui_filter_tag active"  id="spread_month_li">
+									<input type="radio" name="spread_month" value="" checked=""/>
+									<span>全部</span>
+								</li>
+								{foreach from=$_G.linkages.borrow_interestrate item="item" key="key"}
+								<li class="ui_filter_tag ">
+									<input type="radio" name="borrow_interestrate" value="{$key}" />
+									<span>{$item}</span>
+								</li>
+								{/foreach}
+							</ul>
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<div class="touzi_right">
+				
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+
+<div class="to_invest conbox">
+	<div class="main_box">
+		<div class="main_box_cont">
+			<div class="loading_now">正在努力加载中，请耐心等待......</div>
+		</div>
+	</div>
+</div>
+
+{literal}
+<script type="text/javascript">
+	diyou.use('tender',function(t){t.tender_list()})
+</script>
+{/literal}
+{include file="footer.html"}

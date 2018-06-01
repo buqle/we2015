@@ -1,0 +1,212 @@
+﻿	{include file='header.html'}
+		<link href="{$tpldir}/actives/dzp/css/style.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="{$tpldir}/actives/dzp/js/jquery.SuperSlide.js"></script>
+		<script type="text/javascript" src="{$tpldir}/actives/dzp/js/jquery.easing.min.js"></script>
+		<script type="text/javascript" src="{$tpldir}/actives/dzp/js/jQueryRotate.js"></script>
+		<div class="act_dzp">
+			
+			<div class="act_dzp_banner">
+				<div class="main_w">
+					<p>活动时间：2015年11月19至2015年12月15日</p>
+				</div>
+			</div>
+			<div class="act_dzp_top">
+				<div class="top_content clear">
+					<div class="topleft fl">
+						<div id="start">
+							<img id="start_btn" src="{$tpldir}/actives/dzp/images/start.png" />
+						</div>
+					</div>
+					<div class="topright fl">
+						<div style='overflow: hidden; height:380px; position:relative; top:80px;'>
+							<div class="dzp_list" id="up_zzjs">
+									<div class="bd">
+										<ul class="mesdzp_names" style="height:445px;" id="marqueebox">
+											
+										</ul>
+								</div>
+							</div>
+						
+						</div>
+						</div>
+						
+						<div class="dzp_btn">
+							<a class="act_dzp_btn" href="javascript:void(0)"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="act_dzp_cont">
+				<div class="main_w">
+					<div class="prizes">
+						<ul class="get_dapList">
+							
+						</ul>
+					</div>
+					<div class="rules">
+						<ul>
+							<li>1、活动期间注册的新用户皆奖励一次活动转盘机会。</li>
+							<li>2、新用户首次投资满100元，奖励一次活动转盘机会。</li>
+							<li>3、万国资本用户每累计投资2000元，可多获得一次活动转盘机会，<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每累计投资超过1万，加送一次机会。</li>
+							<li>4、中奖率高达100%。</li>
+						</ul>
+					</div>
+					<div class="method">
+						<ul>
+							<li>1、抽中的实物的用户，请您及时联系万国资本客服人员登记收货人信息，<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以便安排发放奖品。</li>
+							<li>2、活动现金奖励，将在中奖后的3个工作日内发放，实物奖励将在活动<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结束后一周内发放。</li>
+							<li>3、活动最终解释权归万国资本所有。</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="act_dzp_bottom">
+				<div class="main_w">
+					<div class="img"><img src="{$tpldir}/actives/dzp/images/erweima.png" /></div>
+					<div class="text">
+						参与本活动所产生的个人所得税由用户自行承担，万国资本保留活动所有解释权。<br />
+对于恶意涮奖，万国资本有权取消其参与及中奖资格。并保留追究法律责任的权利。<br />
+   更多精彩活动，请关注万国资本方微信二维码。<br />
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	<div class="qingkuang1">
+		<h4>恭喜您获得4%加息券奖励！</h4>
+		<div class="qingkuang1c">
+			<h4><strong>4%</strong>加息券</h4>
+			<p>仅限3月标及以上使用</p>
+			<p>过期时间为2016-12-31 24:00:00</p>
+		</div>
+		<a href="/">立即使用</a>
+	</div>
+
+        {literal}
+		<script type="text/javascript">
+			function startmarquee(lh,speed,delay) {
+			var p=false;
+			var t;
+			var o=document.getElementById("marqueebox");
+			o.innerHTML+=o.innerHTML;
+			o.style.marginTop=0;
+			o.onmouseover=function(){p=true;}
+			o.onmouseout=function(){p=false;}
+			function start(){
+			t=setInterval(scrolling,speed);
+			if(!p) o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+			}
+			function scrolling(){
+			if(parseInt(o.style.marginTop)%lh!=0){
+			o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+			if(Math.abs(parseInt(o.style.marginTop))>=o.scrollHeight/2) o.style.marginTop=0;
+			}else{
+			clearInterval(t);
+			setTimeout(start,delay);
+			}
+			}
+			setTimeout(start,delay);
+			}
+			startmarquee(42,42,1500);
+		</script>
+		<script type="text/javascript">
+		
+
+			
+			<!--dzp_list-->
+			
+			
+			$(function(){
+					var rotateFunc = function(awards,angle,text){  //awards:奖项，angle:奖项对应的角度
+						$('#start_btn').stopRotate();
+						$("#start_btn").rotate({
+							angle:0, 
+							duration: 5000, 
+							animateTo: angle+1440, //angle是图片上各奖项对应的角度，1440是我要让指针旋转4圈。所以最后的结束的角度就是这样子^^
+							callback:function(){
+								//diyou.use('dialogs',function(dia){dia.message('温馨提示',text)});
+								alert(text);
+								$("#start_btn").removeClass('aa')
+
+							}
+						}); 
+					};
+					
+					$("#start_btn").rotate({ 
+					   bind: 
+						 { 
+							click: function(){
+								getprize();
+							}
+						 } 
+					});
+					
+				function getprize(){
+					if($("#start_btn").hasClass('aa')){
+						return false;
+					}
+					$("#start_btn").addClass('aa')
+					rotateFunc(4,72,'恭喜你获得3元');
+					return false
+				/*$.getJSON('/?user&q=public&type=get_reward',{},function(response){
+					if(response.code == 0){
+						if(response.num == '0'){
+
+							return;
+						}else if(response.num == '1'){
+							rotateFunc(1,237,'恭喜你获得'+response.msg);
+							return;
+						}else if(response.num == '2'){
+							rotateFunc(2,182,'恭喜你获得'+response.msg);
+							return;
+						}else if(response.num == '3'){
+							rotateFunc(3,125,'恭喜你获得'+response.msg);
+							return;
+						}else if(response.num == '4'){
+							rotateFunc(4,72,'恭喜你获得'+response.msg);
+							return;
+						}else if(response.num == '5'){
+							rotateFunc(5,25,'恭喜你获得'+response.msg);
+							return;
+						}else if(response.num == '6'){
+							rotateFunc(6,340,'恭喜你获得'+response.msg);
+							return;
+						}
+					}else{
+						rotateFunc(0,0,'您的抽奖次数已经用完！');
+						return;
+					}
+				})*/
+			}
+				function getdzp_list(){
+				$.getJSON('/?user&q=public&type=dzp_list',function(response){
+					var get_leng = response.msg;
+					var html = '';
+					for(var i = 0; i < get_leng.length; i++){
+						html += '<li id="up_li">'+get_leng[i].username+'获得'+get_leng[i].remark+'</li>';
+					}
+					$('.mesdzp_names').append(html);
+				})	
+			}
+			
+			getdzp_list();
+				})
+				
+				
+		</script>
+		<script type="text/javascript">
+		$(function(){
+			if(user_id != ''){
+				$('.act_dzp_btn').css('display','none');
+			}else{
+				$('.act_dzp_btn').click(function(){
+				diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+				return false;
+				});
+			}
+		})
+		</script>
+        {/literal}
+	{include file='footer.html'}

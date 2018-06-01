@@ -1,0 +1,433 @@
+{include file="users_header.html"}
+<style>
+    /*弹窗*/
+    /**
+     * 基于jQuery的dialog样式
+     */
+    .j-dialog {
+        background-color: white;
+        /*border: 1px solid #ccc;*/
+        border-radius: 6px;
+        font-size: 14px ;
+        font-family: tahoma, helvetica, "microsoft yahei", "宋体",arial;
+        position: absolute;
+        clear: left;
+        overflow: hidden;
+    }
+    /* 阴影 */
+    .j-dialog-shadow {
+        -moz-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2) ;
+        -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        -o-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        -ms-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=3,OffY=3,Color=#16000000,Positive=true);
+    }
+    /* 半透明边框 */
+    .j-translucent-border {
+        -moz-background-clip: padding;
+        -webkit-background-clip: padding;
+        background-clip: padding-box;
+        border: 8px solid rgba(0,0,0,0.2);
+        border-radius: 5px;
+    }
+    .j-dialog-fix{
+        position:fixed;
+    }
+    .j-dialog.j-user-select {
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -o-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+    }
+    .j-dialog .j-dialog-title {
+        line-height: 15px;
+        font-size: 14px;
+        text-indent: 10px;
+        background: #33b3ee;
+        padding: 14px 0;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -o-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+    }
+    .j-dialog .j-draggable {
+        cursor: move;
+    }
+    .j-dialog .j-dialog-txt {
+        font-size: 15px;
+        color: #fff;padding-left:10px;font-family:"Microsoft YaHei";
+    }
+    .j-dialog .j-dialog-close {
+        background: url(../../js/jDialog/img/dialog-btns.png) no-repeat;
+        float: right;
+        line-height: normal;
+        margin: 0px 16px 0 0;
+        text-decoration: none;
+        width: 25px;
+        position: absolute;
+        right: -5px;
+        top: 6px;height: 28px;
+    }
+    /*.j-dialog .j-dialog-close:hover {
+        background-position: -141px -36px;
+    }*/
+    .j-dialog .j-dialog-close.btn-without-title {
+        right: -14px;
+        top: 6px;
+    }
+    .j-dialog .j-dialog-content {
+        color: #454545;
+        /*text-align: center;*/
+    }
+    .j-dialog .j-dialog-buttons {
+        font-size: 12px;
+        padding:17px 20px 20px 18px;
+        margin: 0;
+        text-align:center!important;
+    }
+    .j-dialog .j-dialog-buttons .first-child{
+        background-position: 0 0;
+        color:#fff;
+    }
+    .j-dialog .j-dialog-buttons .first-child:hover{
+        background-position: 0 -37px;
+    }
+    .j-dialog .j-dialog-btn{
+        margin-left:10px;
+        cursor: pointer;
+        border: 0;
+        padding: 0 10px;
+        height: 34px;
+        font-size: 16px;
+        display: inline-block;
+        color: #666;
+        background:#33b3ee;;
+        _line-height: 34px;border-radius: 5px;
+    }
+    .j-dialog .j-dialog-btn:hover,
+    .j-dialog .j-dialog-btn.x-hover{
+        background: #3391bc;
+    }
+    .j-dialog .j-dialog-btn.x-highlight {
+        color:#fff;
+        background-position:-0 2px;
+    }
+    .j-dialog .j-dialog-btn.x-highlight:hover,
+    .j-dialog .j-dialog-btn.x-highlight.x-hlhover {
+        background-position:0 -28px;
+    }
+
+
+    /*小三角部分*/
+    .j-dialog .j-triangle {
+        display:block;
+        position:relative;
+    }
+    .j-dialog .j-triangle .t-border,
+    .j-dialog .j-triangle .t-inset{
+        left:0px;
+        top:0px;
+        width:0;
+        height:0;
+        font-size:0;
+        overflow:hidden;
+        position:absolute;
+        border-width:12px;
+        /*可在此处更改小三角方向：上-右-下-左（solid的位置）*/
+        border-style:dashed solid dashed dashed;
+    }
+    /*小三角的边框，如果不需要，可将颜色值改变*/
+    .j-dialog .j-triangle .t-border{
+        border-color:transparent #aaa transparent transparent;
+        left:-1px;
+    }
+    .j-dialog .j-triangle .t-inset{
+        border-color: transparent #fff transparent transparent;
+    }
+
+    /*控制方向*/
+    /*下箭头*/
+    .j-dialog .j-triangle.anchor-bottom .t-border,
+    .j-dialog .j-triangle.anchor-bottom .t-inset {
+        border-style:solid dashed dashed dashed;
+    }
+    .j-dialog .j-triangle.anchor-bottom .t-border{
+        border-color:#aaa transparent transparent transparent;
+        left:0px;
+        top:1px;
+    }
+    .j-dialog .j-triangle.anchor-bottom .t-inset{
+        border-color: #fff transparent transparent transparent;
+    }
+
+    /*上箭头*/
+    .j-dialog .j-triangle.anchor-top .t-border,
+    .j-dialog .j-triangle.anchor-top .t-inset {
+        border-style:dashed dashed solid dashed;
+    }
+    .j-dialog .j-triangle.anchor-top .t-border{
+        border-color:transparent transparent #aaa transparent;
+        left:0px;
+        top:-1px;
+    }
+    .j-dialog .j-triangle.anchor-top .t-inset{
+        border-color: transparent transparent #fff transparent;
+    }
+
+    /*右箭头*/
+    .j-dialog .j-triangle.anchor-right .t-border,
+    .j-dialog .j-triangle.anchor-right .t-inset {
+        border-style:dashed dashed dashed solid;
+    }
+    .j-dialog .j-triangle.anchor-right .t-border{
+        border-color:transparent transparent transparent #aaa;
+        left:1px;
+        top:0;
+    }
+    .j-dialog .j-triangle.anchor-right .t-inset{
+        border-color: transparent transparent transparent #fff;
+    }
+
+
+    /* 遮罩层样式 */
+    .j-dialog-mask {
+        background-color: #000;
+        filter: alpha(opacity = 40);
+        opacity: .4;
+        zoom: 1;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width:100%;
+    }
+
+    /* resize */
+    .j-dialog .resizable-es {
+        bottom: 0;
+        cursor: se-resize;
+        height: 10px;
+        position: absolute;
+        right: 0;
+        width: 10px;
+    }
+    .j-dialog .resizable-es div {
+        border-bottom: 3px double #bbb;
+        border-right: 3px double #bbb;
+        height: 6px;
+        width: 6px;
+        line-height:0;
+        position:absolute;
+        left:0;
+        top:0;
+    }
+</style>
+<script type="text/javascript" src="{$tpldir}/js/jDialog.js"></script>
+<div style="height: 20px;"></div>
+<div class="i_contenter">
+    <div style="height: 46px"></div>
+   <div class="custodianc1"></div>
+    <div class="custodianc2">
+        <p>个人账户升级为银行存管账户</p>
+        <p>请开通银行存管账户以便您正常理财</p>
+    </div>
+    <div class="custodianc3">
+        <div class="custodianc3side">
+            <span id="input_span" style="display: none">
+            <input type="text" class="ovbn_text" value="请填写真实姓名" id="reallyname" >
+            <input type="text" class="ovbn_text" value="请填写正确的身份证号码" id="reallcard">
+                </span>
+            <input type="button" value="开通银行存管账户" id="buttoncust">
+        </div>
+    </div>
+
+
+</div>
+
+{literal}
+<script>
+    $(function(){
+
+        $.http.post('/?user&m=trust/reg/getapprove', {} , function (response) {
+            if (response.indexOf('?user') > -1) {
+                $(document).append(response);
+            } else {
+                response = JSON.parse(response);
+                if (response.code == 1 && response.data.realname !='' && response.data.realname != null ) {
+                    $('#input_span').hide();
+                    $('#reallyname').val( response.data.realname);
+                    $('#reallcard').val( response.data.card_id)
+                } else {
+                    $('#input_span').show();
+                }
+            }
+
+        }, 'text');
+
+
+
+
+
+
+
+
+
+
+        $('.trust_bind').click(function(){
+            diyou.use('dialogs', function(dy) {
+                dy.confirm_cancel('是否完成存管账户开通？', '/?user#users/home')
+            })})
+
+        $('#reallyname').focus(function(){
+           var namet=$(this).val();
+            if(namet==this.defaultValue){
+                $(this).val("");
+            }
+        });
+
+        $('#reallyname').blur(function(){
+            var namet=$(this).val();
+            if(namet==''){
+                $(this).val(this.defaultValue);
+            }
+        })
+
+        $('#reallcard').focus(function(){
+            var cardt=$(this).val();
+            if (cardt==this.defaultValue){
+                $(this).val('');
+            }
+        });
+
+        $('#reallcard').blur(function(){
+            var cardt=$(this).val();
+            if(cardt==''){
+                $(this).val(this.defaultValue);
+            }
+        });
+        
+        $('#buttoncust').click(function () {
+            var realNmae=$('#reallyname').val();
+            var cardID=$('#reallcard').val();
+            var reg = /^[\u4E00-\u9FA5]+$/;
+            if (!$('#input_span').is(':hidden') ) {
+                if (realNmae == '' || !reg.test(realNmae) || realNmae == '请填写真实姓名') {
+                    jDialog.alert('请输入您的真实姓名？');
+                    return false;
+                }
+                if (IdCardValidate(cardID) == false) {
+                    jDialog.alert('请输入有效的身份证信息');
+                    return false;
+                }
+            }
+            var w = window.open();
+            $.http.post('/?user&m=trust/reg/bind&type=json', {realname:realNmae,card_id:cardID}, function (response) {
+                if (response.code != '1') {
+                        jDialog.alert(response.msg);
+                    w.close();
+                } else {
+                    w.document.write(response.data);
+                }
+            }, 'json', function () {
+                w.close();
+            });
+        });
+
+
+        var Wi = [ 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1 ];    // 加权因子
+        var ValideCode = [ 1, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2 ];            // 身份证验证位值.10代表X
+        function IdCardValidate(idCard) {
+            idCard = trim(idCard.replace(/ /g, ""));               //去掉字符串头尾空格
+            if (idCard.length == 15) {
+                return isValidityBrithBy15IdCard(idCard);       //进行15位身份证的验证
+            } else if (idCard.length == 18) {
+                var a_idCard = idCard.split("");                // 得到身份证数组
+                if(isValidityBrithBy18IdCard(idCard)&&isTrueValidateCodeBy18IdCard(a_idCard)){   //进行18位身份证的基本验证和第18位的验证
+                    return true;
+                }else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+        /**
+         * 判断身份证号码为18位时最后的验证位是否正确
+         * @param a_idCard 身份证号码数组
+         * @return
+         */
+        function isTrueValidateCodeBy18IdCard(a_idCard) {
+            var sum = 0;                             // 声明加权求和变量
+            if (a_idCard[17].toLowerCase() == 'x') {
+                a_idCard[17] = 10;                    // 将最后位为x的验证码替换为10方便后续操作
+            }
+            for ( var i = 0; i < 17; i++) {
+                sum += Wi[i] * a_idCard[i];            // 加权求和
+            }
+            valCodePosition = sum % 11;                // 得到验证码所位置
+            if (a_idCard[17] == ValideCode[valCodePosition]) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        /**
+         * 验证18位数身份证号码中的生日是否是有效生日
+         * @param idCard 18位书身份证字符串
+         * @return
+         */
+        function isValidityBrithBy18IdCard(idCard18){
+            var year =  idCard18.substring(6,10);
+            var month = idCard18.substring(10,12);
+            var day = idCard18.substring(12,14);
+            var temp_date = new Date(year,parseFloat(month)-1,parseFloat(day));
+            // 这里用getFullYear()获取年份，避免千年虫问题
+            if(temp_date.getFullYear()!=parseFloat(year)
+                    ||temp_date.getMonth()!=parseFloat(month)-1
+                    ||temp_date.getDate()!=parseFloat(day)){
+                return false;
+            }else{
+                return true;
+            }
+        }
+        /**
+         * 验证15位数身份证号码中的生日是否是有效生日
+         * @param idCard15 15位书身份证字符串
+         * @return
+         */
+        function isValidityBrithBy15IdCard(idCard15){
+            var year =  idCard15.substring(6,8);
+            var month = idCard15.substring(8,10);
+            var day = idCard15.substring(10,12);
+            var temp_date = new Date(year,parseFloat(month)-1,parseFloat(day));
+            // 对于老身份证中的你年龄则不需考虑千年虫问题而使用getYear()方法
+            if(temp_date.getYear()!=parseFloat(year)
+                    ||temp_date.getMonth()!=parseFloat(month)-1
+                    ||temp_date.getDate()!=parseFloat(day)){
+                return false;
+            }else{
+                return true;
+            }
+        }
+//去掉字符串头尾空格
+        function trim(str) {
+            return str.replace(/(^\s*)|(\s*$)/g, "");
+        }
+    })
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?114bdc026b9ff4de87a6efb268dbea76";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+{/literal}
+{include file="users_footer.html"}
+
+
+

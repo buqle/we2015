@@ -1,0 +1,193 @@
+﻿{include file="header.html"}
+<script type="text/javascript" src="{$tpldir}/js/jquery.fancybox.js"></script>
+<script src="{$tpldir}/js/lightbox.min.js"></script>
+<script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/scrollToo.js"></script>
+{articles module="borrow"  function="get_view_one" var="var" borrow_nid=$smarty.request.article_id hits="auto" datacache="memcache" datacachename='broww_article_new' datacachenametimes="60*30" bindkey=$smarty.request.article_id}
+<script>
+    var borrow_nid = '{$smarty.request.article_id}';
+    var borrow_self = {if $_G.user_id==$var.user_id}1{else}0{/if};
+    var paypwd_status = {if $_G.user_result.paypassword!=''}1{else}0{/if};
+    var borrow_type = '{$var.borrow_type}';
+    var tpldir = '{$tpldir}';
+    var trust_status ={$_G.trust_user.approve_result.reg_trust};
+</script>
+
+{if $_G.user_id==""}
+<script>
+    jDialog.alert('请先进行登入');
+location.href='/reser/index.html';
+</script>
+{elseif {$_G.trust_user.approve_result.reg_trust}=="0"}
+<script>
+    jDialog.alert('请开通汇付');
+    location.href='/reser/index.html';
+</script>
+{/if}
+
+<div class="conbox" id="tender_detai_lf2">
+    <div class="tender_detai">
+
+        <div class="tender_detai_cont">
+            <div class="tender_detai_lf">
+                <div class="tender_detai_tit">
+                    <h2>
+                        <i class="iconfont">{if $var.final==1}&#xe607;{elseif $var.final == 2}&#xe604;{elseif $var.final==3}&#xe605; {elseif $var.final==4}&#xe605;{elseif  $var.final==5}&#xe606;{elseif  $var.final==6}&#xe617;{/if}</i>
+                        {$var.name}
+                        {if $var.award_status!=0}{if $var.award_status==1}<i class="tender_reword">{$var.award_account|default:'0.00'}元</i>{else}<span class="the_num" style="float:none;display:inline-block"><em class="award">{$var.award_scale}%</em></span>{/if}{/if}
+                        {if $var.borrow_password!=""}<img src="{$tpldir}/images/lock.gif" />{/if}</h2>
+                    <span>借款编号：{$var.borrow_nid}</span>
+                </div>
+                {articles module='borrow' function='get_cominfo_one' borrow_nid=$smarty.request.article_id var=cominfo datacache="memcache" datacachename='broww_article_get_tender_cominfo' datacachenametimes="60*30" bindkey=$smarty.request.article_id}
+                <ul class="new_borrow">
+                    <li style="height: 135px;" id="new_borrowli">
+                        <span class="basic_label" style="padding-left: 4%;width: 28%;text-align: left;">借款金额：<br><em>{$var.account|default:'0.00'}</em></span>
+                        <span class="basic_label">年利率：<br><em>{if $var.tender_time > 1452614399 && $var.tender_time < 1452873599}{$var.borrow_apr/2}%+{$var.borrow_apr/2}%<a style="font-size: 12px; color: red;">奖</a>{else}{$var.borrow_apr}%{/if}</em></span>
+                        <span class="basic_label">借款期限：<br><em>{$var.borrow_period_name}</em></span>
+                    </li>
+                    <li class="clearg captionlecon">
+                        <p class="captionleft"><span>还款方式：</span>{$var.style_title}</p>
+                        <p class="captionright"><span>需还本息：</span>{$var.repay_all}元</p>
+                    </li>
+
+                    {if $var.view_type==3}
+                    <li style="border-bottom: none;" class="captionlecon">
+                        <p class="captionleft"><span>推荐机构：</span>
+                            <a href="/aboutus/index.html#box-11/{$var.open_tender.id}" target="_blank">{$var.open_tender.name}</a>
+
+                        </p>
+                        <p class="captionright">
+                            <a id="subtitleid1" href="//img.ronghedai.com/{$var.open_tender.cooperation}" class="example-image-link" data-lightbox="example-sy" data-title="">合作协议</a>
+                            <a id="subtitleid2"  href="//img.ronghedai.com/{$var.open_tender.repo}"  class="example-image-link" data-lightbox="example-syt" data-title="">回购协议</a>
+                        </p>
+                    </li>
+                    {elseif $var.view_type==2}
+                    <li  class="captionlecon" style="border-bottom: none">
+                        <p class="captionleft"><span>借款人：</span>{$cominfo.company_position }</p>
+                        <p class="captionright"><span>借款用途：</span>{$cominfo.is_car}</p>
+                    </li>
+
+                    {/if}
+                </ul>
+                {/articles}
+            </div>
+            {articles module="webcount"  function="get_users_account" var="var_account" user_id=$_G.user_id}
+            <div class="tender_detai_rig">
+                <div class="reseco_tt">尊敬的<i>{$_G.username}</i>，您好！</div>
+                {if $var_account.balance<{$var.account|default:'0.00'}}
+                <div class="reserva_side1 reserva_side1sc">
+                    <p>该定向标的预约金额为<i>{$var.account|default:'0.00'}</i>元，</p>
+                    <p>您尚需充值<i>{$var.account-$var_account.balance|default:'0.00'}元</i>才可预约此标的。</p>
+                    <a href="/?user#trust/recharge" target="_blank" class="rechargebtn">充&nbsp;&nbsp;&nbsp;值</a>
+                    <h5>*充值完成后，您可以刷新此页面进行预约。</h5>
+                </div>
+                {elseif $var_account.balance>={$var.account|default:'0.00'}}
+                <div class="reserva_side1 reserva_side1sc reserva_side1scw">
+                    <p>您已满足此定向标预约条件，</p>
+                    <p>请点击下方预约按钮进行预约。</p>
+                    <a class="rechargebtn" style="margin-top: 24px;cursor: pointer;" id="rechargebtnids" href="#directionte1ida">预&nbsp;&nbsp;&nbsp;约</a>
+                </div>
+                {/if}
+                <div class='loading_now' style='text-indent: 4em;display: none;line-height: 100px;padding-top: 60px;' >正在加载中,请耐心等待...</div>
+                <div class="reserva_side1" id="reserva_side1id" style="display: none;">
+                    <p>您已成功预约该标的，</p>
+                    <p class="ppt_yuyue">开标时间为<span></span></p>
+                    <p>是否取消预约？</p>
+                    <span class="rechargebtn" style="margin-top: 24px;cursor: pointer;" id="rechargebtnidss">取消预约</span>
+                </div>
+                <div class="reserva_side1" id="reserva_side1id2" style="display: none;">
+                    <p>您已成功解约，</p>
+
+                </div>
+            </div>
+            {/articles}
+
+            <div class="new_logohigh" style="text-align: center">
+                <img src="{$tpldir}/images/newimg/cglo2.png"/>
+            </div>
+
+            <div class="cle"></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="directionte1" id="directionte1ida" now="{$smarty.now}">
+    <h4>请选择您的开标时间：</h4>
+    <div class="directionte1_c">
+        <div class="dire_tit"><span></span><i>19</i><i>20</i>日</div>
+        <div class="dire_ccont1 clearbs"><i times="1">09:00</i><i times="2">15:00</i><i times="3" style="margin-right: 0;">20:00</i></div>
+        <div class="dire_ccont2">
+            <p>您预约的定向标将于<span></span><i></i>日<b></b>时开标，我们将在开标前30分钟短信提醒您即将开标。</p>
+            <input type="button" value="确   定" class="rechargebtn" id="rechargebtnid">
+        </div>
+    </div>
+    <div class="directionte1_cbg"></div>
+</div>
+
+<div class="directionte2">
+    <h4>温馨提示：</h4>
+    <p>1、预约定向标时，您可以选择的开标时间为您当前操作时间的24小时内平台提供的固定时间段；</p>
+    <p>2、平台将以短信的形式在开标前30分钟为您发送开标提醒；</p>
+    <p>3、取消预约，请务必于开标前30分钟以上时间进行取消；</p>
+    <p>4、如您在开标后30分钟内未完成投资，系统将视为自动放弃预约投资。冻结的投资金额将于1-3个工作日解冻，敬请谅解；</p>
+    <p>5、您在预约定向标的过程中，遇到任何问题均可联系在线或专属客服。</p>
+</div>
+
+<div id="directionte3id" style="display: none;">
+    <div class="directionte3">
+        <p>恭喜您预约成功！</p>
+        <p>您预约的定向标为：<i>{$var.name}</i>，</p>
+        <p>预约金额为：<i>{$var.account|default:'0.00'}</i>元，标的时长为：<i>{$var.borrow_period_name}</i></p>
+        <p class="ppt_yuyue">开标时间为：<span></span><i></i>日<b></b>时</p>
+        <p>我们将在开标前30分钟短信提醒您即将开标。</p>
+    </div>
+</div>
+
+<div id="directionte3ids" style="display: none;">
+    <div class="directionte3 directionte3cs">
+        <p>取消预约后冻结资金将在一个工作日后解冻，</p>
+        <p>是否继续取消预约？</p>
+        <div class="btnbtncont clearbs"><span id="foubtn1">是</span><span id="foubtn">否</span></div>
+    </div>
+</div>
+
+<div id="directionte3ids2" style="display: none;">
+    <div class="directionte3 directionte3cs2">
+        <p style="line-height: 170px;">您对{$var.name}的预约<i style="color: #ff8d2d;">已取消</i>！</p>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var article = '{$var.id}';
+    var borrow_user = '{$var.user_id}';
+    var borrow_nid = '{$var.borrow_nid}';
+    {literal}
+    diyou.use('tender',function(t){t.borrow_content(borrow_nid)});
+    diyou.use('borrow',function(b){b.borrow_tabchange();});
+
+</script>
+<style>
+    .directionte1 .directionte1_c .dire_tit i{text-align: center;}
+</style>
+{/literal}
+{literal}
+<script>
+    $.getJSON('/?return&module=borrow&q=get_borrow_info&gettype=borrowinfo&borrow_nid='+borrow_nid,{},function(response){
+        if(response.code == 1){
+            var test_mens = response.data.all_money-response.data.avail_money;
+            var test_mesn1 = test_mens/response.data.all_money*100;
+            var mesbf = test_mesn1 + '%';
+            //alert(mesbf);
+            $('#availMoney').text(response.data.avail_money);
+            $('.bar_width').css('width','mesbf');
+            $('.arrow').text((test_mesn1).toFixed(2)+'%');
+            $('.ieng_mens').text(test_mens);
+        }
+    })
+</script>
+{/literal}
+
+{/articles}
+<script type="text/javascript" src="{$tpldir}/js/reser.js?v=2016109"></script>
+{include file="footer.html"}

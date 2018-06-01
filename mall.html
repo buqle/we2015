@@ -1,0 +1,76 @@
+{include file="header.html"}
+<div class="all_bg">
+	<div class="mall_cont">
+<div class="banner">
+    <div class="banner_slide" id="banner_slide">
+         {list module="scrollpic" function="get_list" type_nid='mall' limit="all" status="1" var=loop datacache="memcache" datacachename="index_banner" datacachenametimes="60*30"}
+	     <ul>
+		{foreach from=$loop.list item=item}
+		   <li><a href="{$item.url}" title="{$item.name}"><img src="{$item.scroll_pic_url}" /></a></li>
+		   <div style="display:none">{$item.url}</div>
+		{/foreach}  
+         </ul>
+		 <div class="banner_btn" id="banner_btn"> 	     
+		 </div>
+     {/list}
+	</div>	
+</div>
+  <div class="conbox fn_cle mall_white t30">
+  
+	{include file="mall_menu.html"}
+	  <div class="mall_fr fr">
+	    
+        <div class="integral_sta">
+		  <div class="inte_fl">您当前剩余积分 <span id="credit_use">{$_G.credit_result.credit_available|default:0}</span>
+          <a href="/?user&m=mall/exchange/log" class="alink">我的兑换记录</a>
+          <a href="/help/jfsc/index.html" class="alink">兑换规则说明</a>
+          </div>
+		  
+		</div>
+		<div class="mall_fr fr">
+		  <div class="money_excerpt">按分值浏览 
+		<a href="javascript:;" class="active">不限<input type="radio" name="golds_rank" value=""/></a>
+		<a href="javascript:;">0-2000<input type="radio" name="golds_rank" value="1"/></a>
+		<a href="javascript:;">2000-3000<input type="radio" name="golds_rank" value="2"/></a>
+		<a href="javascript:;">3000-5000<input type="radio" name="golds_rank" value="3"/></a>
+		<a href="javascript:;">5000-10000<input type="radio" name="golds_rank" value="4"/></a>
+		<a href="javascript:;">10000-20000<input type="radio" name="golds_rank" value="5"/></a>
+		<a href="javascript:;">20000以上<input type="radio" name="golds_rank" value="6"/></a>
+		</div>
+	  </div>
+		<div >
+		
+      <!--  <div class="mall_products">
+	<ul>
+    <li>
+	 <div class="products_img"><a href="#"><img src="{$tpldir}/images/pic.png"></a></div>
+	 <div class="products_title">
+     <h3><a href="/?mall&q=content" title="">梵圣FASN 纯手工绘画 百合花 iphone5手机壳 苹果配件 SH5101-2 黑色 百分百艺术家手工绘画</a></h3>
+     <p>商品积分 <em>9966</em></p> 
+     <a href="#" class="buy_btn">立即兑换</a>
+     </div>
+	</li>
+		</ul>
+ <div class="cle"></div>
+</div>
+-->
+
+          <div id="main_box_cont">
+			数据加载中.....
+		  </div>
+ 
+ 
+
+</div>
+	  </div>
+	</div><div class="cle"></div>
+  </div>
+ </div>
+{literal}
+<script type="text/javascript">
+//diyou.use('mall', function (t) {t.goods_list()});
+diyou.use('mall',function(t){t.goods_list();t.mbanner_slide('mbanner_cont','mbanner_btn')});
+diyou.use('index', function (dy) {dy.banner_slide('banner_slide', 'banner_btn')});
+</script>
+{/literal}  
+{include file="footer.html"}

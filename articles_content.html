@@ -1,0 +1,46 @@
+﻿{include file="header.html"}
+<link rel="stylesheet" href="{$tpldir}/css/blue/article.css">
+ <div class="main_w">
+	<div class="conbox article">
+		<div style="width:20%;float:left;">
+			{include file="articles_menu.html"}
+		</div>
+
+		<link rel="stylesheet" type="text/css" href="{$tpldir}/css/blue/article.css">
+	{articles module="articles" function="get_one" var="var" id=$smarty.request.article_id }
+		<div class="art_detail" style="width:934px;float:right;border: 1px solid #d2d2d2;padding-top: 40px;">
+		   <div class="art_detai_tit">
+
+			  <h3>{$var.name}</h3>
+			  <p><span>来源：{$_G.system.con_webname}</span><span>发布时间：{$var.publish}</span></p>
+
+				<div class="bdsharebuttonbox" style="width: 390px;margin: 0 auto 10px;">
+					<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+					<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+					<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+					<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+					<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+					<a href="#" class="bds_more" data-cmd="more">分享到：</a>
+				</div>
+				{literal}
+				<script>
+					window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{"bdSize":16},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+				</script>
+				{/literal}
+
+
+		   </div>
+		   <div class="art_detai_cont">
+			{$var.contents}
+		   </div>
+		</div>
+		
+    <div class="cle"></div>
+		{/articles}
+	</div>
+</div>
+
+{include file="footer.html"}
+
+
+

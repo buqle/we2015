@@ -1,0 +1,324 @@
+<script type="text/javascript" src="{$tpldir}/js/jquery.cityselects.js"></script>
+<h4 class="tit-cust_bank">上海银行资金存管账户-换绑卡</h4>
+<div class="cust_bankcon1 ww3">
+    <div class="cust_bankcon font18" id="cust_bankcon1" >
+        <form method="get" id="cust-form2"  class="formmin">
+            <p>
+                <label>新绑定银行卡号</label>
+                <input type="text" placeholder="请输入银行卡号" name="OpenAcctId" class="open_name1">
+            </p>
+            <p>
+                <label>开户银行</label>
+                <select name='BankId' id="bankIds">
+                    <option value="">请选择银行</option>
+                    <option value="ABC">中国农业银行</option>
+                    <option value="CCB">中国建设银行</option>
+                    <option value="BOC">中国银行</option>
+                    <option value="CEB">中国光大银行</option>
+                    <option value="CIB">兴业银行</option>
+                    <option value="PINGAN">平安银行</option>
+                    <option value="PSBC">中国邮政</option>
+                    <option value="SPDB">浦发银行</option>
+                    <option value="ICBC">中国工商银行</option>
+                    <option value="CMBC">中国民生银行</option>
+                    <option value="BOCOM">交通银行</option>
+                    <option value="GDB">广发银行</option>
+                    <option value="HFB">恒丰银行</option>
+                    <option value="HXB">华夏银行</option>
+                    <option value="CMB">招商银行</option>
+                </select>
+            </p>
+            <p>
+                <label>开户地区</label>
+            <span id="city" class="inline-block">
+               <select class="prov" name="ProvId"></select>
+                <select class="city" disabled="disabled" name="AreaID"></select>
+            </span>
+            </p>
+            <p>
+                <label>原卡手机验证码</label>
+                <input type="text" class="text-w" placeholder="请输入验证码" name="old_code" id="huoqu_code">
+                <input class="button_bank1 text-center dis-inlie button_bank cursor font18 open_name2" type="button" value="获取验证码" id="huoqu_code1" old_seq="">
+            </p>
+            <p>
+                <label>新卡预留手机号</label>
+                <input type="text"  placeholder="请输入手机号" name="phone" maxlength="11" id="huoqu_code2">
+            </p>
+            <p>
+                <label>短信验证码</label>
+                <input type="text"  placeholder="请输入验证码" name="SmsCode" id="huoqu_code3">
+                <input class="button_bank1 text-center dis-inlie button_bank cursor font18" type="button" value="获取验证码" id="huoqu_code4" smsseq="">
+            </p>
+            <p><input type="submit" value="提交" class="button_bank2 text-center block button_bank cursor font18"></p>
+        </form>
+    </div>
+</div>
+<div class="cust_bankcon2 font18 color-444 ww3">
+    <h4 class="bold font24">温馨提示：</h4>
+    <p>1.为了保障您的资金安全，申请换绑卡时请如实填写您的个人信息；</p>
+    <p>2.请确保您输入的手机号为银行卡的预留手机号；</p>
+    <p>3.如需帮助，欢迎联系客服 400-013-5679。</p>
+</div>
+<div style="height: 60px;"></div>
+
+
+
+{literal}
+<script>
+   $(function(){
+        var attr_cust=$('#main').attr('att-trust');
+       $("#city").citySelect({
+           nodata:"none",
+           required:false
+       });
+
+       //开通成功
+       /*jDialog.dialog({
+           title : '温馨提示',
+           content : $("#qingkuang1").html(),
+           height:300,
+           width:550
+
+       });*/
+
+
+       //银行卡号
+       //去掉字符串头尾空格
+       function trim(str) {
+           return str.replace(/(^\s*)|(\s*$)/g, "");
+       }
+       function luhnCheck(bankno) {
+           bankno = trim(bankno.replace(/ /g, ""));               //去掉字符串头尾空格
+           var lastNum = bankno.substr(bankno.length - 1, 1); //取出最后一位（与luhn进行比较）
+           var first15Num = bankno.substr(0, bankno.length - 1); //前15或18位
+           var newArr = new Array();
+           for (var i = first15Num.length - 1; i > -1; i--) { //前15或18位倒序存进数组
+               newArr.push(first15Num.substr(i, 1));
+           }
+           var arrJiShu = new Array(); //奇数位*2的积 <9
+           var arrJiShu2 = new Array(); //奇数位*2的积 >9
+           var arrOuShu = new Array(); //偶数位数组
+           for (var j = 0; j < newArr.length; j++) {
+               if ((j + 1) % 2 == 1) { //奇数位
+                   if (parseInt(newArr[j]) * 2 < 9) arrJiShu.push(parseInt(newArr[j]) * 2);
+                   else arrJiShu2.push(parseInt(newArr[j]) * 2);
+               } else //偶数位
+                   arrOuShu.push(newArr[j]);
+           }
+
+           var jishu_child1 = new Array(); //奇数位*2 >9 的分割之后的数组个位数
+           var jishu_child2 = new Array(); //奇数位*2 >9 的分割之后的数组十位数
+           for (var h = 0; h < arrJiShu2.length; h++) {
+               jishu_child1.push(parseInt(arrJiShu2[h]) % 10);
+               jishu_child2.push(parseInt(arrJiShu2[h]) / 10);
+           }
+
+           var sumJiShu = 0; //奇数位*2 < 9 的数组之和
+           var sumOuShu = 0; //偶数位数组之和
+           var sumJiShuChild1 = 0; //奇数位*2 >9 的分割之后的数组个位数之和
+           var sumJiShuChild2 = 0; //奇数位*2 >9 的分割之后的数组十位数之和
+           var sumTotal = 0;
+           for (var m = 0; m < arrJiShu.length; m++) {
+               sumJiShu = sumJiShu + parseInt(arrJiShu[m]);
+           }
+
+           for (var n = 0; n < arrOuShu.length; n++) {
+               sumOuShu = sumOuShu + parseInt(arrOuShu[n]);
+           }
+
+           for (var p = 0; p < jishu_child1.length; p++) {
+               sumJiShuChild1 = sumJiShuChild1 + parseInt(jishu_child1[p]);
+               sumJiShuChild2 = sumJiShuChild2 + parseInt(jishu_child2[p]);
+           }
+           //计算总和
+           sumTotal = parseInt(sumJiShu) + parseInt(sumOuShu) + parseInt(sumJiShuChild1) + parseInt(sumJiShuChild2);
+
+           //计算luhn值
+           var k = parseInt(sumTotal) % 10 == 0 ? 10 : parseInt(sumTotal) % 10;
+           var luhn = 10 - k;
+
+           if (lastNum == luhn) {
+               $("#banknoInfo").html("luhn验证通过");
+               return true;
+           } else {
+               $("#banknoInfo").html("银行卡号必须符合luhn校验");
+               return false;
+           }
+       }
+        jQuery.validator.addMethod("bankc", function(value, element) {
+        return this.optional(element) ||luhnCheck(value);
+        }, "请正确输入您的卡号");
+       //
+
+
+       function time(obj,wait) {
+           if (wait == 0) {
+               $(obj).attr("disabled",false);
+               $(obj).val('获取验证码')
+               wait = 60;
+           } else {
+               $(obj).attr("disabled",true);
+               $(obj).val('重新发送'+wait)
+               wait--;
+               setTimeout(function() {time($(obj),wait)},1000)
+           }
+       }
+
+        $('#huoqu_code1').click(function(){
+            //time($(this));return
+            var thiss=$(this)
+            if(trust!=1){
+                window.location.href="/?user&q=reg&type=phone";
+                return false;
+            }else {
+                //请求
+                var alert1=jDialog.alert('正在加载中');
+                $.http.post('/?user&m=trust/send_code',
+                        {
+                            BusiType:'rebind',
+                            SmsTempType:'O'
+
+                        }
+                        ,function (ret) {
+                            alert1.close();
+                            if (ret.code==0) {
+                                jDialog.alert('验证码发送成功');
+                                time(thiss,60);
+                                thiss.attr('old_seq',ret.data)
+                            }else {
+                                jDialog.alert(ret.msg);
+                            }
+                        }, 'json');
+
+            }
+
+
+        });
+
+       $('#huoqu_code4').click(function(){
+           var thiss2=$(this);
+           if(trust!=1){
+               window.location.href="/?user&q=reg&type=phone";
+               return false;
+           }else {
+               var myreg = /^(0|86|17951)?(13[0-9]|15[0-9]|17[0-9]|18[0-9]|14[57])[0-9]{8}$/;
+               var phones_tel = $('#huoqu_code2').val();
+               if($('#huoqu_code2').val()==''){
+                   jDialog.alert('请输入您的手机号');
+                   return false;
+               }else if (myreg.test(phones_tel)){
+                   var alert1=jDialog.alert('正在加载中');
+                   $.http.post('/?user&m=trust/send_code',
+                           {
+                               BusiType:'rebind',
+                               SmsTempType:'N',
+                               phone:$('#huoqu_code2').val(),
+                               OpenAcctId:$('.open_name1').val()
+
+                           }
+                           ,function (ret) {
+                               alert1.close();
+                               if (ret.code==0) {
+                                   jDialog.alert('验证码发送成功');
+                                   time(thiss2,60);
+                                   thiss2.attr('smsseq',ret.data);
+
+                               }else {
+                                   jDialog.alert(ret.msg);
+                               }
+                           }, 'json');
+               }else {
+                   jDialog.alert('请输入正确的手机号');
+                   return false;
+               }
+           }
+
+       });
+
+
+
+       $('#cust-form2').click(function(){
+           if(trust!=1){
+               window.location.href="/?user&q=reg&type=phone";
+               return false;
+           }
+       }).validate({
+           errorPlacement: function (error, element) {
+               error.appendTo(element.parent());
+           },
+           errorElement: "em",
+           rules : {
+               OpenAcctId:{
+                   required : true,
+                   bankc:true
+               },
+               BankId:{
+                   required : true
+               },
+               ProvId:{
+                   required : true
+               },
+               AreaID:{
+                   required : true
+               },
+               old_code:{ required : true},
+               phone:{ required : true,phone:true},
+               SmsCode:{ required : true}
+
+           },
+           messages : {
+               OpenAcctId:{
+                   required : '请输入您的银行卡号',
+
+                   bankc:'请输入您正确的银行卡号'
+               },
+               BankId:{
+                   required :'请选择开户银行'
+               },
+               ProvId:{
+                   required : '请选择开户所在地'
+               },
+               AreaID:{
+                   required : '请选择开户所在地'
+               },
+               old_code:{ required :'请填写短信验证码'},
+               phone:{ required : '请填写手机号码',phone:'手机格式错误'},
+               SmsCode:{ required :'请填写短信验证码'}
+           },
+
+           submitHandler: function (form) {
+               $.http.post('/?user&m=trust/bank/changeBind',
+                       {
+                           OpenAcctId:$('.open_name1').val(),
+                           BankId:$('#bankIds').val(),
+                           ProvId:$('#cust_bankcon1 .prov').val(),
+                           AreaId:$('#cust_bankcon1 .city').val(),
+                           SmsCode:$('#huoqu_code3').val(),
+                           SmsSeq:$('#huoqu_code4').attr('smsseq'),
+                           phone:$('#huoqu_code2').val(),
+                           old_code:$('#huoqu_code').val(),
+                           old_seq:$('#huoqu_code1').attr('old_seq')
+                       }
+                       ,function (ret) {
+                           if (ret.code==0) {
+                               jDialog.alert('换绑卡成功');
+
+                           }else {
+                               jDialog.alert(ret.msg);
+                           }
+                       }, 'json');
+
+
+
+           }
+
+       });
+
+
+
+
+   })
+
+
+</script>
+{/literal}

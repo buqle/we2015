@@ -1,0 +1,36 @@
+
+		<div class="dialog_con">
+			<div class="sq_step sq_step4 fn_cle">
+				<li><span class="done">1.邮箱认证</span></li>
+				<!--<li><span class="done">2.实名认证</span></li>-->
+				<li><span class="done">2.手机认证</span></li>
+				<li><span class="done">3.{$_U.trust_users.trust_name}</span></li>
+				<li><span class="now">4.完成</span></li>
+			</div>
+			<div class="sq_cont_box">
+				<div class="fn_cle">
+					<div class="sq_success">
+						<p class="word"><img src="{$tpldir}/images/success.png" />恭喜您！认证开户成功</p>
+						<div class="count_time"><span id="count_time">5</span>&nbsp;秒后将自动跳转用户中心！</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        {literal}
+        <script>
+        function countDown(secs, surl) {
+            var jumpTo = document.getElementById('count_time');
+            jumpTo.innerHTML = secs;
+            if (--secs > 0) {
+                setTimeout("countDown(" + secs + ",'" + surl + "')", 1000);
+            }
+            else {
+                location.href = surl;
+            }
+        }
+        countDown(5, '/?user');
+        </script>
+        {/literal}
+
+

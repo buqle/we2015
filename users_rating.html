@@ -1,0 +1,17 @@
+<div class="conbox t20 fn_cle user_cont">
+
+
+ {if $_U.query_class=="basic"}
+
+ {include file="users_rating_basic.html"}
+
+ {elseif $_U.query_class=="company"}
+
+ {include file="users_rating_company.html"}
+
+ {elseif $_U.query_class=="finance"}
+
+ {include file="users_rating_finance.html"}
+
+ {/if}
+</div>

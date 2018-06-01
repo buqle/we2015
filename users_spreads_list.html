@@ -1,0 +1,72 @@
+<div class="fn_rig user_rig">
+	   <div class="user_box">
+		   <div class="extend">
+           {articles module="spreads" function="get_count_user" spreads_userid=$_G.user_id}
+			    <h2 class="fn_cle">
+					  <span class="fn_left">推广管理</span>
+					  <a href="/?user&m=spreads/log" class="u_tit_btn fn_rig">推广记录</a>
+				  </h2>
+				  <div class="cont">
+				     <div class="notice">
+					    <h4>推广奖励说明</h4>
+						<dl>
+						   <dd>1、邀请好友或其他朋友注册成功，即可建立推广关系；</dd>
+						   <dd>2、好友或其他朋友投资成功，系统将自动根据投资推广抽成比例给予奖励；</dd>
+						   <!--dd>3、好友或其他朋友借款成功，还款时系统自动根据借款推广抽成比例给予奖励。</dd-->
+						</dl>
+					 </div>
+					 <div class="my_extend">
+                         <div class="fl">
+					         <div class="my_extend_tit">
+                                 <p>邀请人数：<em class="yellow">{$var.user_num|default:0}</em>人，提成总额 <em class="yellow">{$var.account|default:0}</em> 元</p>
+                                 <p> 投资提成<span>{$var.tender.account|default:0}</span>元，借款还款提成<span>{$var.borrow.account|default:0}</em>元。</p>
+						     </div>
+                        </div>
+                        <div class="extend_r">
+                             <p>当前剩余结算总额:<span class="yellow"> {$var.settle_await|default:0} </span>元</p>
+                             <p><a href="javascript:void(0);" title="" id="spread_settle" class="btn">立即结算</a>（满{$_G.system.spread_account}结算一次）</p>
+                             <p>结算中：<span class="yell">{$var.settle_ing|default:0}</span>元 &nbsp;&nbsp; <a href="javascript:void(0);" title="" id="spredlist" class="more">查看结算记录</a></p>
+                         </div>
+                         <div class="cle"></div>
+                      
+						 <table class="user_tab1 t20" id="content_list">
+						   
+						   
+						 </table>
+						 <div class="how_extend t50">
+						   <h5>如何建立推广：</h5>
+                           <div class="item">
+							   <span>1、发送下面的邀请链接给好友或其他朋友（建议不要发送给不熟悉的人士），通过此链接，注册成功即可成为你的推广客户
+							   </span>
+							  <div class="t20">
+								   <label class="u_label w120">邀请链接</label>
+								   <input type="text" class="u_input w350" id="fe_text" value="http://www.wanguoziben.com/index.php?user&q=reginvite&u={$_U.user_inviteid}" />
+								
+								      <div id="d_clip_container" style="position:relative" onclick="init()" >
+                                        <div id="d_clip_button" class="my_clip_button"><b>复 制</b></div>
+                                     </div>
+								   
+							   </div>
+						   </div>
+						   <div class="item">
+							   <span>2、好友注册时在“填写推荐人”时，填写您的用户名，注册成功即可成为您的推广。如下图：
+							   </span>
+							   <img src="{$tpldir}/images/extend.jpg" />
+						   </div>
+						   <div class="item">
+						      <span>3、如好友忘记与您建立推广，则可让好友注册成功后，联系客服人员给予建立推广关系。
+							   </span> </div>
+						 </div>
+					 </div>
+				  </div>	  
+		   </div>
+           {/articles}
+	   </div>
+	</div> {literal}
+        <script>
+            diyou.use('users_spread', function (dy) { dy.spreads_friend(), dy.spreads_list() })
+        </script>
+        <script type="text/javascript" src="http://keleyi.com/keleyi/phtml/liulanqi/index/KeleyiClipboard.js"></script>
+        {/literal}
+        
+        

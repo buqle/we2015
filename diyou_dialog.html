@@ -1,0 +1,11 @@
+{include file="header.html"}
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <script type="text/javascript">
+    var rem = "<div class='dialog_error' style='text-align:left'>{$smarty.request.error_remark}</div>";
+    var _url = "{$smarty.request.error_url}";
+{literal}
+      diyou.use('dialogs',function(dia){dia.dialog("操作提示","",rem,_url)});       
+    </script>
+    {/literal}
+    
+{include file="footer.html"}

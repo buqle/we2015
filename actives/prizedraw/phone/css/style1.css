@@ -1,0 +1,174 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+  margin: 0;
+  padding: 0; }
+
+body {
+  outline: 0;
+  background-color: #f8f8f8;
+  color: #000;
+  font-size: 16px;
+  font-family: '微软雅黑';
+  font-family: "Helvetica Neue","Microsoft Yahei",sans-serif;
+  line-height: 1.5;
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-size: 100%; }
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse; }
+
+caption, th {
+  text-align: left; }
+
+fieldset,
+img {
+  border: 0; }
+
+li {
+  list-style: none; }
+
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  font-family: inherit; }
+
+button {
+  border: 0;
+  background: none;
+  -webkit-appearance: none; }
+
+a {
+  text-decoration: none;
+  -webkit-touch-callout: none; }
+
+:focus {
+  outline: 0;
+  -webkit-tap-highlight-color: transparent; }
+
+em, i {
+  font-style: normal; }
+
+.autocenter{
+  margin: 0 auto;
+}
+/*****section2*****/
+.boxs{
+  width: 16rem;
+  margin: 0 auto;
+}
+.section1{
+  width: 100%;
+  height: 2.8rem;
+}
+.section1 img{
+  width: 100%;
+  height: 100%;
+}
+.section2{
+  width: 100%;
+  background: #fefcd5;
+}
+.section2 img{
+  width: 6rem;
+  height: 2rem;
+  margin-left: 4.7rem;
+  padding: 0.3rem;
+}
+.section3{
+  padding: 0 1rem 1rem 1rem;
+  background: #fefcd5;
+}
+.section3 img{
+  width: 100%;
+  height: 100%;
+}
+.section4{
+  background: #fefcd5;
+  padding: 0 4rem 1.5rem 4rem;
+}
+.section4 a{
+  display: block;
+  height: 1.8rem;
+  width: 8rem;
+  background: #f1492c;
+  font-size: 0.7rem;
+  border-radius: 0.25rem;
+  text-align: center;
+  line-height: 1.8rem;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

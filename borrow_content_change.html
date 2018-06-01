@@ -1,0 +1,56 @@
+{if $var.change_num>0}
+<div class="trad_rec j_tender_cont">
+	<div class="trad_rec_lf">
+		<dl class="zq_infor">
+			<dt><span class="txt_lf">债权买入者</span><span>债权卖出者</span><span>交易金额</span><span>交易时间</span></dt>
+			{loop module='borrow' function='change_get_list' borrow_nid=$var.borrow_nid var="change_var"  status_nid='borrow' limit='all' }
+			<dd><span class="txt_lf">{$change_var.buy_username|truncate:3}***</span><span >{$change_var.change_username|truncate:3}***</span><span>{$change_var.change_account}<em>元</em></span><span>{$change_var.buy_time|date_format:"Y/m/d"}</span></dd>
+			{/loop}
+		</dl>
+	</div>
+	<div class="cle"></div>
+</div>
+{/if}
+<!--投资记录-->
+<div class="trad_rec j_tender_cont">
+	<p><span style="margin-left: 760px;">投资总额：</span><span style="color: #d03d43;" class="ieng_mens">{$var.borrow_account_yes|default:'0.00'}元</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>投资人次：</span><span style="color: #d03d43;" id="getrenshu">{$var.tender_times}人次</span></p>
+	<dl class="repay">
+		<dt>
+			<span>投标人</span><span>投标金额</span><span>投资来源</span><span>投标时间</span>
+		</dt>
+
+		<dt id="pagelist">
+		</dt>
+
+
+	</dl>
+	<div class="pagination" id="pages" data-page='0' data-total='0' data-epage='0'></div>
+</div>
+
+
+{literal}
+<script>
+	$(function(){
+		var isGet = false;
+		var url = '/?return&module=borrow&q=get_borrow_info&gettype=tenderlist&borrow_nid=' + borrow_nid;
+		$(".dien_jilvs").click(function(){
+			if (isGet == false) {
+				diyou.use('pagelist', function (b) {
+					b.pages('#pagelist', url);
+				});
+				isGet = true;
+			}
+		})
+
+	})
+
+	function setPage(page, total, epage) {
+		var pages = $("#pages");
+		pages.attr('data-page',page);
+		pages.attr('data-total',total);
+		$('#getrenshu').text(total+'人次');
+		pages.attr('data-epage',epage);
+
+	}
+</script>
+{/literal}

@@ -1,0 +1,223 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/turntable/css/style.css?v=2016111" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{$tpldir}/actives/turntable/css/jQueryRotate.js"></script>
+
+<script src="{$tpldir}/actives/finance/js/jquery.dialog.js"></script>
+<script src="{$tpldir}/actives/finance/js/jquery.drag.js"></script>
+<script src="{$tpldir}/actives/finance/js/jquery.mask.js"></script>
+<div class="tationactcont1"></div>
+<h4 class="hrng">每位用户均有一次抽奖机会，赢取双十二专属加息券</h4>
+<div class="trun-tabcon ww1 clearg">
+    <div class="left-tab">
+        <div id="start">
+            <img id="start_btn" src="{$tpldir}/actives/turntable/images/zhi.png" />
+        </div>
+    </div>
+    <div class="right-tab">
+        <div class="right-tabc">
+            <div class="right-tabc2">
+                <h4></h4>
+                <div class="zhong-name">
+                    <p class="titleft clearg">
+                        <span style="width: 20%;">用户名</span>
+                        <span style="width: 44%;">获得奖励</span>
+                        <span>获得时间</span>
+                    </p>
+                    <div style="height: 210px;overflow: hidden;">
+                        <div id="marqueebox">
+                            <div style="line-height: 210px;text-align: center;font-size: 20px;">正在加载中</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="trun-tabcon2 ww1">
+    <h4>【活动规则】</h4>
+    <p>1、活动期间内（12月12号—12月14号）每位用户有且仅有一次抽奖机会；</p>
+    <p>2、加息券使用期限截止至2016年12月31号，仅限3月标及以上标的使用，逾期后失效；</p>
+    <p>3、用户所得加息券可至“个人中心—我的加息券”内查看;</p>
+    <p>4、使用加息券投资标的所获得的加息奖励，将在满标复审后，三个工作日内直充用户汇付账户，可投资，可提现；</p>
+    <p>5、本活动中所得加息券可与投资红包叠加使用。</p>
+</div>
+
+<div class="ccy" style="display: none">
+    <div class="qingkuang1">
+        <h4 style="line-height: 140px;">您已参加过本次抽奖活动！</h4>
+        <a href="javascript:void(0)" id="btnqued" style="margin-right: 14px;background: #35a1fb;">确定</a>
+        <a href="/invest/index.html">立即使用</a>
+    </div>
+</div>
+
+<div class="jiujiu_foot">
+    <p>免责申明</p>
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意刷奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <div class="endjiujiu"></div>
+</div>
+
+
+
+{literal}
+<script>
+    $(function(){
+
+        $.http.get('/?user&q=get_share_ajax&alias=interest&methodname=get_reward_list&epage=80', {}, function(ret){
+            if (ret.code ==null){
+                var len = ret.data.length;
+                var html=''
+                for(var i=0; i<len; i++){
+                    html += '<p class="clearg"><span style="width: 20%;">'+ret.data[i].username+'</span><span style="width: 44%;">'+ret.data[i].remark+'</span><span>'+getdays(ret.data[i].addtime)+'</span></p>';
+
+                }
+                $('#marqueebox').html(html);
+                $('#marqueebox p:odd').css('background','#fff')
+            }else {
+
+            }
+        }, 'json')
+
+
+        var rotateFunc = function(awards,angle,text){
+            $('#start_btn').stopRotate();
+            $("#start_btn").rotate({
+                angle:0,
+                duration: 5000,
+                animateTo: angle+1440,
+                callback:function(){
+                    var c2='';
+                    c2+='<div class="qingkuang1">';
+                    c2+='<h4>恭喜您获得'+text+'奖励！</h4>';
+                    c2+='<div class="qingkuang1c">';
+                    c2+='<h5><strong>'+text+'</strong></h5>';
+                    c2+='<p>仅限3月标及以上使用</p>';
+                    c2+='<p>过期时间为2016-12-31 24:00:00</p>';
+                    c2+='</div>';
+                    c2+='<a href="/invest/index.html">立即使用</a>';
+                    c2+='</div>';
+                    var dialogs = jDialog.dialog({
+                        title : '温馨提示',
+                        content : c2,
+                        height:316,
+                        width:568,
+                        events:{
+                            close:function(){
+                                $("#start_btn").removeClass('aa');
+                            }
+                        }
+                    });
+
+                }
+            });
+        };
+
+        $("#start_btn").rotate({
+            bind:
+            {
+                click: function(){
+                    if(user_id>0){
+                        getprize();
+                    }else {
+                        diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                        return false;
+                    }
+
+                }
+            }
+        });
+
+        function getprize(){
+            function getu(){
+                if($("#start_btn").hasClass('aas')){
+                    var dialogs = jDialog.dialog({
+                        title : '温馨提示',
+                        content :$('.ccy').html(),
+                        height:300,
+                        width:568,
+                        events:{
+                            show:function(){
+                                $('.qingkuang1 #btnqued').click(function(){
+                                    dialogs.close()
+                                })
+                            }
+                        }
+                    });
+                    $('.qingkuang1 #btnqued').click(function(){
+                        dialogs.close()
+                    })
+                    return false;
+                }
+            }
+            if($("#start_btn").hasClass('aa')){
+                if($("#start_btn").hasClass('aas')){
+                    getu()
+                    return false;
+                }
+                return false;
+            }
+            $("#start_btn").addClass('aa');
+            jDialog.alert('正在拉取中!!!')
+            $.http.get('/?user&q=get_share_ajax&alias=interest&methodname=open_chest',{},function(ret){
+                jDialog.close();
+                if(ret.code==0){
+                    if(ret.data=='2%加息券'){
+                        rotateFunc(1,-14,ret.data);
+                    }else if(ret.data=='2.5%加息券'){
+                        rotateFunc(2,38,ret.data);
+                    }else if(ret.data=='3%加息券'){
+                        rotateFunc(3,87,ret.data);
+                    }else if(ret.data=='3.5%加息券'){
+                        rotateFunc(4,142,ret.data);
+                    }else if(ret.data=='4%加息券'){
+                        rotateFunc(5,194,ret.data);
+                    }else if(ret.data=='4.5%加息券'){
+                        rotateFunc(6,246,ret.data);
+                    }else if(ret.data=='5%加息券'){
+                        rotateFunc(7,298,ret.data);
+                    }
+                }else {
+                    $("#start_btn").addClass('aas')
+                    getu()
+
+                }
+            },'json')
+
+        }
+
+    })
+
+
+    function startmarquee(lh,speed,delay,domID) {
+        var p=false;
+        var t;
+        var o=document.getElementById(domID);
+        // o.innerHTML=o.innerHTML;
+        o.style.marginTop=0;
+        o.onmouseover=function(){p=true;}
+        o.onmouseout=function(){p=false;}
+        function start(){
+            t=setInterval(scrolling,speed);
+            if(!p) o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+        }
+        function scrolling(){
+            if(parseInt(o.style.marginTop)%lh!=0){
+                o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+                if(Math.abs(parseInt(o.style.marginTop))>=o.scrollHeight) o.style.marginTop=0;
+            }else{
+                clearInterval(t);
+                setTimeout(start,delay);
+            }
+        }
+        setTimeout(start,delay);
+    }
+    startmarquee(42,10,800,'marqueebox');
+    function getdays(time) {
+        var date = new Date(time);
+        day = [date.getFullYear(), date.getMonth()+1, date.getDate()].join('-');
+        return day ;
+    }
+
+</script>
+{/literal}

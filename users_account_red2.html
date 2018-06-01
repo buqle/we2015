@@ -1,0 +1,276 @@
+<script type="text/javascript" src="{$tpldir}/js/jquery.cityselect.js"></script>
+<script type="text/javascript" src="{$tpldir}/js/jquery.validate.js"></script>
+<script src="//img.ronghedai.com/{$tpldir}/actives/finance/js/scrollToo.js"></script>
+<div class="delivery_cont">
+    <div class="delivery_c1 clearbt">
+        <div class="le"><span>收货地址</span>您已经创建<i class="i11x"></i>个收货地址，最多可创建<i>2</i>个</div>
+    </div>
+</div>
+
+<div class="delivery_c2">
+       <form method="get" id="addres">
+           <div class="delivery_rows clearbt">
+               <i class="le">所在地区：</i>
+               <div id="city" class="le">
+                   <select class="prov" name="prov"></select>
+                   <select class="city" disabled="disabled" name="city"></select>
+                   <select class="dist" disabled="disabled" name="dist"></select>
+               </div>
+           </div>
+           <div class="delivery_rows">
+               <p>详细地址:</p>
+               <textarea type="text" name="address" id="shouadd"></textarea>
+           </div>
+           <div class="delivery_rows">
+               <label>收 货 人:</label><input type="text" name="name" id="shouname">
+           </div>
+           <div class="delivery_rows">
+               <label>手机号码:</label><input type="text" maxlength="11" name="phone" id="shouphone">
+           </div>
+           <div class="delivery_rows">
+               <label></label><input type="checkbox" id="addbox" value="0">设置为默认收货地址
+           </div>
+           <div class="delivery_rows">
+               <label></label><input type="submit" value="保存" id="savebtn" nient="" class="savebtn">
+           </div>
+       </form>
+
+       <form method="get" id="addres2" style="display: none">
+        <div class="delivery_rows clearbt">
+            <i class="le">所在地区：</i>
+            <span class="dizhi-ad2"></span><i class="xiubtn2">修改</i>
+            <div id="city2" class="le">
+                <select class="prov" name="prov"></select>
+                <select class="city" disabled="disabled" name="city"></select>
+                <select class="dist" disabled="disabled" name="dist"></select>
+            </div>
+        </div>
+        <div class="delivery_rows">
+            <p>详细地址:</p>
+            <textarea type="text" name="address" id="shouadd"></textarea>
+        </div>
+        <div class="delivery_rows">
+            <label>收 货 人:</label><input type="text" name="name" id="shouname">
+        </div>
+        <div class="delivery_rows">
+            <label>手机号码:</label><input type="text" maxlength="11" name="phone" id="shouphone">
+        </div>
+        <div class="delivery_rows">
+            <label></label><input type="checkbox" id="addbox" value="0">设置为默认收货地址
+        </div>
+        <div class="delivery_rows">
+            <label></label><input type="submit" value="保存" id="savebtn" nid2="" class="savebtn">
+        </div>
+    </form>
+</div>
+
+<div class="delivery_c3">
+    <p class="delivery_c3t clearbt">
+        <span style="width: 116px;">收货人</span>
+        <span style="width: 200px;">所在地区</span>
+        <span style="width: 460px;">详细地址</span>
+        <span style="width: 182px;">电话/手机</span>
+        <span style="width: 220px;">操作</span>
+    </p>
+    <div class="delivery_forom">
+       <p style="text-align: center;font-size: 18px;line-height: 40px;"> 正在加载中...</p>
+    </div>
+</div>
+
+{literal}
+<script>
+
+    $("#city").citySelect({
+        nodata:"none",
+        required:false
+    });
+    $("#city2").citySelect({
+        nodata:"none",
+        required:false
+    });
+    $(function(){
+            var urls = window.location.search;
+        if (urls.indexOf("id=") != -1) {
+            var url2s = urls.split('&');
+            url2s = url2s[1].replace('id=','');
+        }
+
+        $('#addres #savebtn').attr('nient',url2s);
+        if($('#addres #savebtn').attr('nient')!=''){
+            formGet('#addres','/?users&m=users/address&type=add_item_address');
+        }else {
+            formGet('#addres','/?user&m=users/address&type=add_user_address');
+        }
+        formGet('#addres2','/?user&m=users/address&type=update_user_address')
+       function formGet(obj,Url){
+           $(obj).validate({
+               errorPlacement: function (error, element) {
+                   error.appendTo(element.parent());
+               },
+               errorElement: "em",
+               rules : {
+                   prov : {
+                       required : true
+                   },
+                   city : {
+                       required : true
+                   },
+                   dist: {
+                       required : true
+                   },
+                   address: {
+                       required : true
+                   },
+                   name: {
+                       required : true
+                   },
+                   phone: {
+                       required : true,
+                       phone: true
+                   }
+
+               },
+               messages : {
+                   prov : {
+                       required: '所在地区不能为空'
+                   },
+                   city : {
+                       required: '所在地区不能为空'
+                   },
+                   dist : {
+                       required: '所在地区不能为空'
+                   },
+                   address: {
+                       required : '请输入您的地址'
+                   },name:{
+                       required : '请输入您的收货姓名'
+                   },
+                   phone: {
+                       required: "手机号码不能为空",
+                       phone: "手机格式错误"
+                   }
+
+               },
+               submitHandler: function (form) {
+                   var status=$('#addbox').attr('value');
+                   if($('#addbox').is(':checked')){
+                       status=1
+                   }else {
+                       status=0
+                   }
+                   var dis=$('.dist').val();
+                   if(dis == null){
+                       dis = '';
+                   }
+                   var region=""
+                   if($('.dizhi-ad2').is(":hidden")){
+                       region=$('.prov').val()+$('.city').val()+dis
+                   }else {
+                       region=$('.dizhi-ad2').text();
+                   }
+                   var del=jDialog.alert('正在提交');
+                   $.getJSON(Url,
+                           {
+                               name:$("#shouname").val(),
+                               region:region,
+                               address:$('#shouadd').val(),
+                               phone:$('#shouphone').val(),
+                               status:status,
+                               address_id:$('#addres2').find('#savebtn').attr('nid2'),
+                               present_id:$('#addres').find('#savebtn').attr('nient')
+                           }
+                           ,function (ret) {
+                               del.close()
+                               if (ret.code=='1') {
+                                   jDialog.alert('提交成功！');
+                                   if(Url=='/?user&m=users/address&type=update_user_address'){
+                                       window.location.href='/?user#account/red2';
+                                   }else {
+                                       window.location.reload();
+                                   }
+                               }else {
+                                   jDialog.alert(ret.msg);
+                               }
+                           }, 'json');
+               }
+           });
+       }
+
+        $.getJSON('/?users&m=users/address&type=get_user_address',function(ret){
+            if(ret.code == 1){
+                var surelen = ret.data.length;
+                var sure = '';
+                for (var i =0 ; i < surelen; i++) {
+                    sure +='<p class="clearbt pontadd" nid2="'+ret.data[i].address_id+'"><span style="width: 116px;">'+ret.data[i].iname+'</span><span style="width: 200px;">'+ret.data[i].region+'</span><span style="width: 460px;">'+ret.data[i].iaddress+'</span><span style="width: 182px;">'+ret.data[i].iphone+'</span><span style="width: 220px;"><a class="xiugai-b" nid="'+ret.data[i].address_id+'" href="javascript:void(0)">修改</a>|<i class="shanchu-b" nid="'+ret.data[i].address_id+'">删除</i>|<em  stauts="'+ret.data[i].stauts+'" nid="'+ret.data[i].address_id+'" class="abem'+ret.data[i].stauts+'">默认</em></span></p>';
+                }
+                $('.delivery_forom').html(sure);
+                $('.delivery_c1 .i11x').text(surelen)
+                $('.delivery_forom .shanchu-b').each(function(){
+                   $(this).click(function(){
+                       var nid=$(this).attr('nid');
+                       var closeb= jDialog.alert('正在删除');
+                       $.getJSON('/?user&m=users/address&type=del_address&address_id='+nid+'',function(ret){
+                           closeb.close()
+                           if(ret.code==1){
+                               closeb.close();
+                               $("[nid2="+nid+"]").remove()
+                               jDialog.alert('删除成功！');
+                           }else {
+                               jDialog.alert(ret.msg);
+                           }
+                       }, 'json');
+                   })
+                });
+                $('.delivery_forom .xiugai-b').each(function(){
+                    $(this).click(function(){
+                        var nid=$(this).attr('nid');
+                        $('#addres').remove();
+                        $('#addres2').show();
+                        $(this).attr('href','#addres2');
+                        $.getJSON('/?users&m=users/address&type=get_one_address&address_id='+nid+'',function(ret){
+                            if(ret.code==1){
+                                $('#addres2 #shouname').val(ret.data.iname)
+                                $('#addres2 #shouphone').val(ret.data.iphone)
+                                $('#addres2 #shouadd').val(ret.data.iaddress);
+                                $('#addres2 .dizhi-ad2').text(ret.data.region);
+                                $('#addres2 #city2').hide();
+                                //$('#addres2 .city option').val(ret.data.region);
+                                $('#addres2 #savebtn').attr('nid2',ret.data.addresss_id)
+                                if(ret.data.stauts==1){
+                                    $('#addres2 #addbox').attr("checked",true);
+                                }
+
+                            }else {
+                                jDialog.alert(ret.msg);
+                            }
+                        }, 'json');
+                    });
+                });
+                //修改默认地址
+                $('.delivery_forom em').each(function(){
+                    var thiss=$(this)
+                    thiss.click(function(){
+                        var nid=$(this).attr('nid')
+                        $.getJSON('/?user&m=users/address&type=set_default_address&address_id='+nid+'',function(ret){
+                            if(ret.code==1){
+                                jDialog.alert('更改成功！');
+                                window.location.reload();
+                            }else {
+                                jDialog.alert(ret.msg);
+                            }
+                        }, 'json');
+                    })
+                });
+            }else{
+                jDialog.alert(ret.msg);
+            }
+        });
+
+        //改地址
+        $('.xiubtn2').click(function(){
+            $(this).prev().hide()
+            $('#addres2 #city2').show();
+        })
+    })
+</script>
+{/literal}

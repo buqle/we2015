@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+	 <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+	<title>518理财</title>
+	<link rel="stylesheet" href="{$tpldir}/actives/finance/phone/css/style.css">
+</head>
+<body>
+	<div id="mian">
+		<section id="section1"><img src="{$tpldir}/actives/finance/phone/images/a1_01.png"></section>
+
+		<section id="section2">
+			<img src="{$tpldir}/actives/finance/phone/images/a2_02.png">
+			<div class="jixiang" onclick="getReg();">
+				<div class="jixiang_a">
+					<div style="height: 0.25rem;"></div>
+					<p style="color: #fff100;">688红包+5元现金</p>
+					<p>注册即享</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="section3">
+			<div class="zhizhen" tapmode="" onclick="getZZ();">
+				<img style="transform-origin:50% 80%;" src="{$tpldir}/actives/finance/phone/images/zhizhen.png" width="3rem" height="4.5rem" >
+			</div>
+
+			<img class="ton" src="{$tpldir}/actives/finance/phone/images/a3_02.png">
+		</section>
+
+		<section id="section4">
+			<img src="{$tpldir}/actives/finance/phone/images/a4_02.png">
+			<p class="o2">活动时间：5月16日—5月31日</p>
+			<div class="in_c">
+				活动期间，融和财富—理财页面每天随机发放当日精选加息标的，用户可在融和财富菜单栏中的理财页面参与投资，赚取加息奖励哦！
+			</div>
+			<div class="lijc lijicanyu" onclick="lijicanyu();" tapmode="">
+				立即参与
+			</div>
+		</section>
+
+		<section id="section5">
+			<img src="{$tpldir}/actives/finance/phone/images/a5_02.png">
+		</section>
+		<div class="tzjs">
+			<p class="heands" style="background: white; width: 14.21rem; margin: 0 auto; border-left: 0.05rem solid #000; border-right: 0.05rem solid #000;"><span>投资标的</span><span>投资金额</span><span>投资时间</span><span>代收金额</span></p>
+			<div class="ini_su" style="overflow: hidden;">
+				<div class="inin">
+
+				</div>
+			</div>
+			<div class="in_po">
+				<span>合计：<em class="allmoneysnng">0.00</em></span>
+			</div>
+			<div style="height: 0.8rem;"></div>
+			<p class="pp1">*新增待收金额需在对应投资标的满标复审后方可显示，如您投资后，新增待收金额为零，请耐心等待，或致电客服。</p>
+			<p class="pp1">*活动页面所有实物奖励图案仅供参考，具体请以到货实物为准。</p>
+			<p class="pp1">*如要查看排名请登录融和贷官网查看。</p>
+			<div style="height: 0.4rem;"></div>
+			<div class="aun_img">
+				<img style="width: 100%;" src="{$tpldir}/actives/finance/phone/images/a6_02.png">
+			</div>
+			<div style="height: 0.4rem;"></div>
+		</div>
+
+		<section id="section6">
+			<img src="{$tpldir}/actives/finance/phone/images/a8_02.png">
+		</section>
+
+		<section id="section7">
+			<img src="{$tpldir}/actives/finance/phone/images/a9_02.png">
+		</section>
+
+		<section id="section8">
+			<div class="jixiang1">
+				<div class="jixiang_a aaoaun" tapmode="" onclick="getGz();">
+					【活动规则汇总】
+				</div>
+			</div>
+		</section>
+	</div>
+	<script src="{$tpldir}/actives/finance/phone/js/jquery.min.js" type="text/javascript"></script>
+	<script src="{$tpldir}/actives/finance/phone/js/util.js" type="text/javascript"></script>
+	<script src="{$tpldir}/actives/finance/phone/js/jquery.rotate.min.js" type="text/javascript"></script>
+	<script src="{$tpldir}/actives/finance/phone/js/api.js" type="text/javascript"></script>
+	<script src="{$tpldir}/actives/finance/phone/js/common.js" type="text/javascript"></script>
+	<script src="{$tpldir}/actives/finance/phone/js/autofull.js" type="text/javascript"></script>
+	<script src="{$tpldir}/actives/finance/phone/js/index.js?454545454514415454545" type="text/javascript"></script>
+	<script src="{$tpldir}/actives/finance/phone/js/address.js" type="text/javascript"></script>
+
+	<!--<div class="in_c" style="height: 100%; width: 100%; background: rgba(0, 0, 0, 0.58); position: fixed; top: 0; left: 0;">-->
+		<!--<div class="au_mes" style="position: absolute; top: 50%; left: 50%; height: 200px; width: 90%; margin: -100px 0 0 -45%; background: white; border-radius: 10px;">-->
+			<!--<div style="height: 35px; background: #DDD; border-radius: 10px 10px 0 0 ; position: relative;">-->
+				<!--<div class="on_close" style="height: 20px; width: 20px; background: #444; border-radius: 20px; line-height: 20px; text-align: center; position: absolute; top: 6px; right: 5px;">X</div>-->
+			<!--</div>-->
+			<!--<div style="height: 20px;"></div>-->
+			<!--<p style="height: 35px; line-height: 50px; text-align: center; font-size: 16px; color: #000; font-weight: bold;">恭喜你注册成功，现在开通汇付账户，</p>-->
+			<!--<p style="height: 50px; line-height: 50px; text-align: center; font-size: 16px; color: #000; font-weight: bold;">还可获得<span style="color: #FF7417;">5元</span>现金奖励！</p>-->
+			<!--<div style="height: 35px; width: 65%; margin: 0 auto;">-->
+				<!--<a style="display: block; height: 26px; width: 80px; background: #FF7417; line-height: 26px; text-align: center; color: white; font-size: 14px; border-radius: 8px; float: left;">立即开通</a>-->
+				<!--<a style="display: block; height: 26px; width: 80px; background: #FF7417; line-height: 26px; text-align: center; color: white; font-size: 14px; border-radius: 8px; float: right;">邀请好友</a>-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+
+
+
+</body>
+</html>

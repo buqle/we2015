@@ -1,0 +1,110 @@
+<div class="form_box">
+	<form action="" method="post" id="phone_edit"style="">
+		<div class="item">
+			<label class="uf_label"><span class="user_warning_c">*</span>验证码：</label>
+			<input type="text" class="u_input w80" maxlength="6" name="phone_code" id="phone_code">
+			<input type="button" class="get_verty_btn" value="获取验证码" id="get_phone_code"/>
+		</div>
+
+		<div class="item">
+			<label class="uf_label">&nbsp;</label>
+			<input style="margin-left: 0px; height: 30px; width: 100px;" type="submit" class="u_sub " value="解绑">
+			<span class="user_warning_c" id="phone_warn"></span>
+		</div>
+
+	</form>
+
+
+	<form action="" method="post" id="form_change" style="display: none">
+		<div class="item" style="height: 40px; font-size: 14px;" >
+			<label class="uf_label"><span class="user_warning_c">*</span>新绑定的手机号码：</label>
+			<input style="height: 28px; width: 150px;" type="text" class="u_input w80" maxlength="11"  id="newphone">
+			<span class="user_warning_c" name="newphone"></span>
+		</div>
+
+		<div class="item" style="height: 40px; font-size: 14px;">
+			<label style="margin-left: 140px;" class="uf_label"><span class="user_warning_c">*</span>验证码：</label>
+			<input style=" height: 28px; width: 150px;" type="text" class="u_input w80" maxlength="6" name="phone_code" id="change_code">
+			<input style="" type="button" class="get_verty_btn huoqu_yanzm" value="获取验证码" id=""/>
+		</div>
+
+		<div class="item" style="width: 60px; margin: 0 auto;">
+			<label class="uf_label" style="margin-left: 150px;">&nbsp;</label><input style="margin-left: 20px; height: 30px; width: 150px;" type="button" class="u_sub changephone" value="更换手机">
+			<span class="user_warning_c" name="phonecode"></span>
+		</div>
+	</form>
+</div>
+{literal}
+<script type="text/javascript">
+	$("#form_change .changephone").click(function(){
+		var newphone=$('#newphone').val();
+		var code=$('#change_code').val();
+
+		if(newphone.length<11){
+			$("span[name='newphone']").html("手机号码不正确");
+			return ;
+		}else{
+			$("span[name='newphone']").html("");
+		}
+		if(code.length<6){
+			$("span[name='phonecode']").html("验证码错误");
+			return ;
+		}else{
+			$("span[name='phonecode']").html("");
+		}
+		$.ajax({
+			type:'post',
+			url:'/?user&m=approve/phone&action=phone_change',
+			data:{'newphone':newphone,'phone_code':code},
+			dataType:'json',
+			success:function(msg){
+				//var results = eval('('+msg+')');
+				if(msg.code != '0'){
+					$('#form_change .get_verty_btn').attr('value','发送成功');
+				}else {
+					jDialog.close();
+					jDialog.alert('解绑成功！')
+				}},
+			error:function(){
+				diyou.use('dialogs',function(dia){dia.error('对不起发生错误了！','')});
+			}
+		})
+
+
+	});
+
+
+	$("#form_change .get_verty_btn").click(function(){
+		var newphone=$('#newphone').val();
+		if(newphone.length<11){
+			$("span[name='newphone']").html("缺少新手机号");
+			return ;
+		}else{
+			$("span[name='newphone']").html("");
+		}
+		$.ajax({
+			type:'post',
+			url:'/?user&m=approve/phone&action=change_code',
+			data:{'phone':newphone},
+			dataType:'json',
+			success:function(msg){
+				//var results = eval('('+msg+')');
+				if(msg.ret == '0'){
+					jDialog.alert('发送成功');
+				}else {
+					$("span[name='phonecode']").html("验证码错误");
+				}},
+			error:function(){
+				diyou.use('dialogs',function(dia){dia.error('对不起发生错误了！','')});
+			}
+		})
+
+
+	});
+
+
+	diyou.use('users_safe', function (dy) {
+		dy.phone_edit('phone_edit')
+	})
+</script>
+{/literal}

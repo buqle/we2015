@@ -1,0 +1,218 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/one7/css/style.css?v=2017888" rel="stylesheet" type="text/css" />
+
+<div class="source_mon">
+
+</div>
+
+<div class="source_mona">
+    <dl class="clearg source_mona_source_mona1 ww3">
+        <dt class="lefts text-center cursor ondt">
+        <h4><i class="lefts">12</i>月标</h4>
+        <p class="font20">金钱树</p>
+        </dt>
+        <dt class="lefts text-center cursor">
+        <h4 style="width: 94px;"><i class="lefts">6</i>月标</h4>
+        <p class="font20">白银树</p>
+        </dt>
+        <dt class="lefts text-center cursor" style="border: none;">
+        <h4 style="width: 94px;"><i class="lefts">3</i>月标</h4>
+        <p class="font20">古铜树</p>
+        </dt>
+    </dl>
+</div>
+
+
+<div class="source_monb">
+    <div class="ww2">
+        <div class="source_monb_source_monb1 color-ff">
+            <p class="text-center font20" style="margin-bottom: 8px;">活动期间内，用户累计投资（1月标除外）达到规定的投资金额即可获得相应的现金奖励。无惧</p>
+            <p class="text-center font20">夏日当头，自有摇钱树下，安然赚钱消暑！</p>
+            <h4 class="actaco1 onimg"></h4>
+            <h4 class="actaco2"></h4>
+            <h4 class="actaco3"></h4>
+            <div class="loginbtn bold cursor ww3 text-center">立即投资</div>
+        </div>
+    </div>
+</div>
+
+
+<div class="source_monc ww1">
+    <div class="source_moncbg ww3">
+        <div class="bg_main ww3 text-center">
+            <h5 class="color-ff">实时投资记录</h5>
+            <p class="bg_tit"><span>用户名</span><span>累投金额</span><span>可获奖励</span><span>投资时间</span></p>
+            <div style="height: 244px;overflow: hidden;" class="renav2 renav">
+                <ul id="marqueebox">
+                  
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="userbtn loginbtn bold cursor ww3 text-center">我的记录</div>
+</div>
+
+<div class="source_mond ww2 font24 color-ff">
+    <h5 class="color-ff">活动规则</h5>
+    <p>1、活动期间，用户累计投资（1月标除外）达到规定投资金额即可获得相应的现金奖励；</p>
+    <p>2、本活动奖金借款项目满标复审成功且满标时间在活动期间内，奖金资格有效；</p>
+    <p>3、本活动所得奖励，将在活动结束后，3个工作日内直充用户存管账户，可投资、可提现。</p>
+</div>
+
+<div class="alertbox-A" id="alertbox-4"></div>
+<div class="alertbox-B"id="alertbox-5">
+    <div class="alertbox-C source_moncbg ww3">
+        <div class="close-a cursor"></div>
+        <div class="bg_main ww3 text-center">
+            <h5 class="color-ff">我的记录</h5>
+            <p class="bg_tit"><span>月标种类</span><span>投资笔数</span><span>累计投资金额</span><span>可得奖励</span></p>
+            <div style="height: 244px;overflow: hidden;" class="renav">
+                <ul id="marqueebox2">
+                    <p>
+                        <span>3月标</span>
+                        <span><i class="bold sourc_i1">0</i>笔</span>
+                        <span><i class="bold sourc_i2">0</i>元</span>
+                        <span><i class="bold sourc_i3">0</i>元</span>
+                    </p>
+                    <p>
+                        <span>6月标</span>
+                        <span><i class="bold sourc_i4">0</i>笔</span>
+                        <span><i class="bold sourc_i5">0</i>元</span>
+                        <span><i class="bold sourc_i6">0</i>元</span>
+                    </p>
+                    <p>
+                        <span>12月标</span>
+                        <span><i class="bold sourc_i7">0</i>笔</span>
+                        <span><i class="bold sourc_i8">0</i>元</span>
+                        <span><i class="bold sourc_i9">0</i>元</span>
+                    </p>
+                    <p class="text-right font24" style="padding-right: 84px;color: #000">累计获得奖励：<i class="bold sourc_i10" style="margin-right: 8px;">0</i>元
+                    </p>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<div class="jiujiu_foot">
+    <p>免责申明</p>
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意刷奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <div class="endjiujiu"></div>
+</div>
+
+{literal}
+<script>
+    $(function(){
+
+        $('.source_monb .loginbtn').each(function(){
+            $(this).click(function(){
+                if (user_id>0) {
+                    window.location.href="/invest/index.html";
+                } else {
+                    diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                    return false;
+                }
+            });
+        });
+
+        $('.source_mona_source_mona1 dt').click(function(){
+            $(this).addClass('ondt').siblings().removeClass('ondt');
+            $('.source_monb_source_monb1 h4').eq($(this).index()).addClass('onimg').siblings().removeClass('onimg')
+        });
+
+
+        $.http.get('/?user&q=get_share_ajax&alias=one7&methodname=get_newly_reward', {}, function(ret){
+            if (ret.code == 0){
+                var len = ret.data.length;
+                var html=''
+                for(var i=0; i<len; i++){
+                    html += '<p><span>'+ret.data[i].username+'</span><span><i class="bold">'+ret.data[i].tender_all+'</i>元</span><span><i class="bold">'+ret.data[i].reward_all+'</i>元</span><span>'+ret.data[i].addtime+'</span></p>';
+                }
+                $('#marqueebox').html(html);
+
+            }else {
+                alert(ret.msg)
+            }
+        }, 'json')
+
+        $('.source_monc .loginbtn').click(function(){
+            if(user_id>0){
+                $('#alertbox-4,#alertbox-5').show();
+                $('.close-a').click(function(){
+                    $('#alertbox-4,#alertbox-5').hide();
+                });
+                $.http.get('/?user&q=get_share_ajax&alias=one7&methodname=get_self_reward', {}, function(ret){
+                    if (ret.code == 0){
+                       $('.sourc_i1').text(ret.data[3].times);$('.sourc_i2').text(ret.data[3].tender);$('.sourc_i3').text(ret.data[3].reward);
+                        $('.sourc_i4').text(ret.data[6].times);$('.sourc_i5').text(ret.data[6].tender);$('.sourc_i6').text(ret.data[6].reward);
+                        $('.sourc_i7').text(ret.data[12].times);$('.sourc_i8').text(ret.data[12].tender);$('.sourc_i9').text(ret.data[12].reward);
+                        $('.sourc_i10').text(ret.level);
+                    }else {
+                        alert(ret.msg)
+                    }
+                }, 'json')
+            }else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        })
+
+
+    });
+
+
+    function getdays(time) {
+        var date = new Date();
+        date.setTime(time * 1000);
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth() + 1 < 10 ? (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        D = date.getDate()+'   ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = (date.getSeconds() + 1 < 10 ? '0' + (date.getSeconds() + 1) : date.getSeconds() + 1);
+        time =Y+ M + D;
+        return time;
+    }
+
+    $(function(){
+
+        var $this = $(".renav2");
+
+        var scrollTimer;
+
+        $this.hover(function(){
+
+            clearInterval(scrollTimer);
+
+        },function(){
+
+            scrollTimer = setInterval(function(){
+
+                scrollNews($(".renav2"));
+
+            }, 2000 );
+
+        }).trigger("mouseout");
+
+    });
+
+    function scrollNews(obj){
+
+        var $self = obj.find("ul:first");
+
+        var lineHeight = $self.find("p:first").height();
+
+        $self.animate({ "margin-top" : -lineHeight +"px" },800 , function(){
+
+            $self.css({"margin-top":"0px"}).find("p:first").appendTo($self);
+
+        })
+
+    }
+</script>
+{/literal}

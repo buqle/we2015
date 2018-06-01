@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+ul, li {
+
+    list-style: none outside none;
+
+}
+.clearc{zoom:1;}
+
+.clearc:after {
+    content: "";
+    display: block;
+    clear: both;}
+
+img {
+
+    border: 0 none;
+
+}
+
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+
+body {
+
+    font-family:"微软雅黑";
+
+    font-size: 16px;background: #edeeea;
+
+}
+
+.guarantee_con1{ background: url(../images/b1.png) center no-repeat;width: 100%;overflow:hidden;height: 460px;}
+.guarantee_con2{width: 1080px;margin: 0 auto;height: 848px;}
+    .guarantee_con2 .gua_head{float: left;width: 300px; background: url(../images/left.png) no-repeat;height: 848px;position: relative;}
+    .guarantee_con2 .gua_head li{position: absolute;cursor: pointer;}
+    .guarantee_con2 .gua_head .heada{background: url(../images/a.png) no-repeat;width: 148px;height: 144px;top:172px;left: 113px;}
+    .guarantee_con2 .gua_head .heada.headon{background: url(../images/a_on.png) no-repeat;width: 169px;height: 162px;top:165px;left: 98px;}
+    .guarantee_con2 .gua_head .headb{background: url(../images/b.png) no-repeat;
+        top:369px;left: 0;width: 130px;height: 163px;}
+    .guarantee_con2 .gua_head .headb.headon{background: url(../images/b_on.png) no-repeat;width: 144px;height: 180px;top:359px;left: -9px;}
+    .guarantee_con2 .gua_head .headc{background: url(../images/c.png) no-repeat;width: 157px;height: 148px;top: 560px;
+        left: 129px;}
+    .guarantee_con2 .gua_head .headc.headon{background: url(../images/c_on.png) no-repeat;top: 562px;  left: 115px;width: 179px;height: 175px;}
+
+    .pos_liu{background: url(../images/rl.png) no-repeat;width: 112px;height: 66px;float: left;margin-top: 396px;}
+    .guarantee_con2 .gua_body{width: 544px;float: right;margin-top: 84px;}
+    .guarantee_con2 .gua_body li{display: none;}
+    .guarantee_con2 .gua_body li.bodyon{display: block;}
+    .guarantee_con2 .safe_cont{}
+    .guarantee_con2 .safe_cont .safe_side1{margin-bottom: 26px;}
+    .guarantee_con2 .safe_cont .safe_side1 h4{width: 222px;margin-left: 206px;background: url(../images/on1.gif) no-repeat right;height: 68px;line-height: 68px;font-size: 22px;color: #217bd3;font-weight: bold;}
+    .guarantee_con2 .safe_cont .safe_side1 p{font-size: 21px;color: #217bd3;line-height: 32px;margin-top: 24px;}
+    .guarantee_con2 .safe_cont #safe_side2 h4{background: url(../images/on2.gif) no-repeat right;}
+    .guarantee_con2 .safe_cont #safe_side3 h4,#safe_side6 h4{background: url(../images/on3.gif) no-repeat right;}
+    .guarantee_con2 .safe_cont #safe_side4 h4{background: url(../images/on4.gif) no-repeat right;}
+    .guarantee_con2 .safe_cont #safe_side5 h4{background: url(../images/on5.gif) no-repeat right;}
+    .guarantee_con2 .safe_cont #safe_side7 h4{background: url(../images/on7.gif) no-repeat right;}
+    .guarantee_con2 .safe_cont #safe_side8 h4{background: url(../images/on8.gif) no-repeat right;}
+    .guarantee_con2 .safe_cont #safe_side9 h4{background: url(../images/on9.gif) no-repeat right;}
+
+

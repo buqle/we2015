@@ -1,0 +1,250 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clear {
+    clear: both;
+}
+img {
+    border: 0 none; display:block;
+}
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+body {
+    font-family:"Microsoft YaHei";
+    font-size: 18px;
+}
+
+body{overflow: hidden!important;}
+.clear{zoom:1;}
+
+.clear:after {
+    content: "";
+    display: block;
+    clear: both;}
+/* 右侧导航 */
+
+#menu {position: fixed; right: 0; top:20%; list-style-type: none; z-index: 70;}
+#menu li { width: 21px; height: 21px; margin: 10px 0 0; vertical-align: middle;}
+#menu .active { background: url(../images/dot.png) 0 -27px no-repeat;}
+#menu li a { float: right; width: 21px; height: 21px; color: #8F9DA4; text-decoration: none; text-align: right; background: url(../images/dot.png) 5px 5px no-repeat;}
+
+.section { position: relative; overflow: hidden; height: 100%;}
+.section .bg { width: 1199px; height: 100%; margin:0 auto;overflow: hidden;position: relative;}
+.section1{}
+.section .bgc {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.section .bgc img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.header{
+    position: fixed;
+    top:0;z-index: 1000;width: 100%;left: 0;
+}
+.section1 .bgcont1{ padding-top:200px;position: absolute;}
+.section1 .bgcont1 .boxapp{}
+.section1 .bgcont1 .boxapp1{ float:right; padding-top:20px;}
+.section1 .bgcont1 .boxapp1 h4{ color:#ff3636; font-size:36px;} 
+.section1 .bgcont1 .boxapp1 h4 span{ color:#666; font-size:24px;}
+.boxapp1 a{ display:block; float:right; font-size:16px; color:#666;text-decoration: none;}
+.bgcont2 img{ position:absolute; bottom:0;}
+.bgcont2 {margin-left:154px;}
+.boxapp2{  width:504px;position:absolute;top:50%;}
+.boxapp2 .xzbbre  a{ float:left;}
+.boxapp2 .xzapp{ width:182px; float:right;}
+.boxapp2 .xzapp p{ text-align:center; font-size:18px; color:#666; margin-top:16px;}
+.xzbbre{ width:213px;}
+
+.section2{background:#fff;}
+
+.section2con h4{ padding-top:120px;}
+.section2cont{width: 100%;position: absolute;left: 0;bottom: 5%;}
+.imghit{margin-left: 200px;margin-bottom: -1px;}
+.section2cont img{ width:295px;}
+.section2cont1{width: 558px;height: 230px;}
+.section2cont1 .section2tit{background: url("../images/t1.gif") no-repeat center; height: 58px;}
+.section2cont1 .setnewcont1 h4,.setnewcont2 h4,.setnewcont3 h4{color:#005099;font-size: 24px;margin-bottom: 20px;margin-top: 20px;}
+.section2cont1 .setnewcont1 p,.setnewcont3 p{font-size: 22px;color: #444;text-align: center;line-height: 36px;}
+
+.section3{
+    background: #ffffff;}
+.imghit1{margin-left:900px;margin-bottom: -1px;}
+.section3cont1{width: 562px;height: 366px;}
+.section3cont1  .section3tit{background: url("../images/2t.gif") no-repeat center;height: 57px;}
+
+.section4{}
+.section4 .section4conb{ width:514px; float:right; padding-top:224px;}
+.section4cont1{width:700px;height: 274px;}
+.section4cont1 .section4tit{background: url("../images/t4.gif") no-repeat center;height:57px;}
+.setnewcont3 h4,.setnewcont3 p{text-align: center;}
+.setnewcont3 h4{font-size: 20px;}
+.section5{ }
+#top{display: none;}
+
+.foxe{position: fixed;
+    right: 0px;
+    z-index: 70;
+    top: 55%;}
+
+#superContainer {
+    height: 100%;
+    position: relative;
+}
+.section {
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.slide {
+    float: left;
+}
+.slide, .slidesContainer {
+    height: 100%;
+    display: block;
+}
+.slides {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+.section.table, .slide.table {
+    display: table;
+    width: 100%;
+}
+.tableCell {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+}
+.slidesContainer {
+    float: left;
+    position: relative;
+}
+.controlArrow {
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    margin-top: -38px;
+}
+.controlArrow.prev {
+    left: 15px;
+    width: 0;
+    border-width: 38.5px 34px 38.5px 0;
+    border-color: transparent #fff transparent transparent;
+}
+.controlArrow.next {
+    right: 15px;
+    border-width: 38.5px 0 38.5px 34px;
+    border-color: transparent transparent transparent #fff;
+}
+.scrollable {
+    overflow: scroll;
+}
+.easing {
+    -webkit-transition: all 0.7s ease-out;
+    -moz-transition: all 0.7s ease-out;
+    -o-transition: all 0.7s ease-out;
+    transition: all 0.7s ease-out;
+}
+#fullPage-nav {
+    position: fixed;
+    z-index: 100;
+    margin-top: -32px;
+    top: 50%;
+    opacity: 1;
+}
+#fullPage-nav.right {
+    right: 17px;
+}
+#fullPage-nav.left {
+    left: 17px;
+}
+.fullPage-slidesNav {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    opacity: 1;
+}
+.fullPage-slidesNav.bottom {
+    bottom: 17px;
+}
+.fullPage-slidesNav.top {
+    top: 17px;
+}
+#fullPage-nav ul,
+.fullPage-slidesNav ul {
+  margin: 0;
+  padding: 0;
+}
+#fullPage-nav li,
+.fullPage-slidesNav li {
+    display: block;
+    width: 14px;
+    height: 13px;
+    margin: 7px;
+    position:relative;
+}
+.fullPage-slidesNav li {
+    display: inline-block;
+}
+#fullPage-nav li a,
+.fullPage-slidesNav li a {
+    display: block;
+    position: relative;
+    z-index: 1;
+    
+    cursor: pointer;
+    text-decoration: none;
+}
+#fullPage-nav li .active span,
+.fullPage-slidesNav .active span {
+    background: #333;
+}
+#fullPage-nav span,
+.fullPage-slidesNav span {
+    top: 2px;
+    left: 2px;
+    width: 8px;
+    height: 8px;
+    border: 1px solid #000;
+    background: rgba(0, 0, 0, 0);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+}
+.fullPage-tooltip {
+    position: absolute;
+    color: #fff;
+    font-size: 14px;
+    font-family: arial, helvetica, sans-serif;
+    top: -2px;
+}
+.fullPage-tooltip.right {
+    right: 20px;
+}
+.fullPage-tooltip.left {
+    left: 20px;
+}

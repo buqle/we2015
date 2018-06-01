@@ -1,0 +1,256 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/tree/css/style.css?v=2016927" rel="stylesheet" type="text/css" />
+<script src="{$tpldir}/actives/tree/images/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+
+
+<div class="treea">
+    <div class="treea_treeac ww3 font20">
+        <p class="text-center">2017年4月1日—2017年4月30日</p>
+        <p style="font-size: 19px;margin: 30px 0 12px 0;">活动期间,融和贷用户成功完成每一笔投资（1月标除外）,都可以获得相应的创收红利,并可以为您的专属</p>
+        <p style="font-size: 19px;">桃树注入爱心活力！现金奖励大丰收,桃树桃花香十里,从这里开始您的双收之旅吧！</p>
+        <h4 class="bold font24">创收红利=3月标投资金额* 0.3% + 6月标投资金额*0.7% + 12月标投资金额 * 1.5% </h4>
+    </div>
+</div>
+<div class="treeb">
+    <div class="tree-one">
+        <div class="treeb_treebc text-center pos-a ww3">
+            <div class="treebcont  cursor pos-b font20">
+                主人，点我抢创收红利！
+                <h4 class="bold">马上长大>></h4>
+            </div>
+        </div>
+        <ul class="ww3 pos-a clearg">
+            <li class="ts1" style="margin:49px  70px 0 0"></li>
+            <li class="ts2" style="margin-top: 57px;"></li>
+            <li class="ts3" style="margin-top: 9px;"></li>
+            <li class="ts2" style="margin-top: 18px;"></li>
+            <li class="ts1" style="margin: 11px 0  0 122px;"></li>
+        </ul>
+    </div>
+
+    <div class="treeb_treebc text-center pos-a ww3  show-user" id="treebox">
+        <div class="treebcont  cursor pos-b font20">
+            主人，点我抢创收红利！
+            <h4 class="bold">马上长大>></h4>
+        </div>
+    </div>
+    <div class="tree-2 show-user">
+        <ul class="ww3 pos-a clearg">
+            <li class="ts1" style="margin:49px  70px 0 0"></li>
+            <li class="ts2" style="margin-top: 57px;"></li>
+            <li class="ts3" style="margin-top: 9px;"></li>
+            <li class="ts2" style="margin-top: 18px;"></li>
+            <li class="ts1" style="margin: 11px 0  0 122px;"></li>
+        </ul>
+    </div>
+
+
+
+    <div class="treeb_treebox font20 ww3 clearg ww3">
+        <div class="lefts"><h4 class="lefts">尊敬的主人：</h4><i class="lefts unames">{$_G.username}</i>您目前桃树的创收红利为：<strong class="bold numx11">0</strong>元继续加油哦！</div>
+        <span class="font14 color-ff text-center cursor rights">我的记录</span>
+    </div>
+
+
+</div>
+<div class="tree-bg">
+    <div class="treec ww3">
+        <h4 class="treec_treect"></h4>
+        <div class="treec_treecbox clearg text-center ww3">
+            <dl>
+                <dt class="blod">创收红利（元）</dt>
+                <dd>0</dd>
+                <dd>30</dd>
+                <dd>150</dd>
+                <dd>500</dd>
+            </dl>
+            <dl>
+                <dt class="blod">桃树成长等级</dt>
+                <dd>0</dd>
+                <dd>1</dd>
+                <dd>2</dd>
+                <dd>3</dd>
+            </dl>
+            <dl>
+                <dt class="blod">创收红利（元）</dt>
+                <dd>1000</dd>
+                <dd>2500</dd>
+                <dd>4000</dd>
+                <dd>7500</dd>
+            </dl>
+            <dl>
+                <dt class="blod">桃树成长等级</dt>
+                <dd>4</dd>
+                <dd>5</dd>
+                <dd>6</dd>
+                <dd>7</dd>
+            </dl>
+        </div>
+    </div>
+
+
+
+    <div class="treed ww3">
+        <h4 class="treed_treects"></h4>
+        <div class="treed_treecboxs text-center ww3">
+            <h4 class="clearg bold"><span>用户名</span><span>投资金额（元）</span><span>创收红利(元)</span><span>投资时间</span></h4>
+            <div class="txtMarquee-top">
+                <div class="bd">
+                    <ul class="infoList">
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="treee font20 ww3">
+        <div class="treee_treects3"></div>
+        <p>1、活动期间，用户成功完成每一笔投资（1月标除外）均可获得相应的创收红利，</p>
+        <p>投资金额越多标的期限越长，桃树长的越快，用户获得的创收红利则越高；</p>
+        <p>2、本活动奖金借款项目满标复审成功且满标时间在活动期间内，奖金资格有效；</p>
+        <p>3、本活动所得奖励（即用户目前桃树的创收红利），将在活动结束后，3个工作日</p>
+        <p>内直充用户汇付账户，可投资、可提现。</p>
+    </div>
+</div>
+
+
+<!--我的记录-->
+<div class="alertbox-A" id="alertbox-a"></div>
+<div class="alertbox-B"id="alertbox-b">
+    <div class="alertbox-C text-center" id="alertbox-D">
+        <div class="close-a cursor">X</div>
+        <h5 class="color-ff"></h5>
+        <div class="alert-boxc1 ww3 clearg">
+            <h4 class="clearg bold"><span>月标种类</span><span>投资金额（元）</span><span>创收红利(元)</span><span>投资时间</span></h4>
+            <div class="txtMarquee-top2">
+                <p class="clearg"><span>3</span><span class="numx1">0</span><span class="numx2">0</span><span class="numx3"></span></p>
+                <p class="clearg"><span>6</span><span class="numx4">0</span><span class="numx5">0</span><span class="numx6"></span></p>
+                <p class="clearg"><span>12</span><span class="numx7">0</span><span class="numx8">0</span><span class="numx9"></span></p>
+            </div>
+            <h6 class="lefts font24 color-ff bold" style="margin-right: 2px;">累计投资总额： <i class="numx10">0</i>元</h6>
+            <h6 class="lefts font24 color-ff bold">累计创收红利：<i class="numx11">0</i>元</h6>
+        </div>
+    </div>
+</div>
+
+
+<div class="jiujiu_foot">
+    <p>免责申明</p>
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意刷奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <div class="endjiujiu"></div>
+</div>
+
+
+
+
+
+
+{literal}
+<script language="javascript">
+
+    $(function(){
+        function money(){
+            $.http.get('/?user&q=get_share_ajax&alias=tree&methodname=get_self_reward', {}, function(ret){
+                if (ret.code == 0){
+                    $('.numx1').text(ret.data[3].tender);
+                    $('.numx2').text(ret.data[3].reward);
+                    $('.numx3').text(ret.data[3].times);
+                    $('.numx4').text(ret.data[6].tender);
+                    $('.numx5').text(ret.data[6].reward);
+                    $('.numx6').text(ret.data[6].times);
+                    $('.numx7').text(ret.data[12].tender);
+                    $('.numx8').text(ret.data[12].reward);
+                    $('.numx9').text(ret.data[12].times);
+                    var a= 0,b= 0,c=0;
+                    a+=new Number(ret.data[3].tender);
+                    b+=new Number(ret.data[6].tender);
+                    c+=new Number(ret.data[12].tender);
+                    $('.numx10').html(a+b+c)
+                    $('.numx11').text(ret.total);
+
+                }else {
+                    alert(ret.msg)
+                }
+            }, 'json')
+        }
+        if (user_id>0) {
+            $('.treeb_treebox ').show();
+            money();
+            $('.tree-one').addClass('show-user');
+            $('#treebox').removeClass('show-user');
+            var i=0;
+            var arr=['<p>主人，您想看我长大</p><p>后的样子吗？</p><h4 class="bold">马上长大>></h4>'];
+            var flag = false;
+            setInterval(function(){
+                var aa=i%4;
+                $('p').html(arr[aa])
+                console.log(aa)
+                if(flag ==false){
+                    i++
+                }else{
+                    i--;
+                }
+                if(i==2){flag=true;}
+                if(i==0){flag=false;}
+
+            },300)
+
+        }
+
+
+        var box_left = ($('.tree-one .treeb_treebc').height())/100;
+        var set=null;
+        function shake(){
+            $('.tree-one .treebcont ').animate({top:box_left-(3)},500);
+            $('.tree-one .treebcont').animate({top:box_left+(3)},500);
+        };
+        shake();
+        set=setInterval(function(){
+            shake()
+        },1000);
+        $('.treebcont').click(function(){
+            $('.treebcont').stop(true);
+            clearInterval(set);
+            diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+            return false;
+        })
+
+        $('.treeb_treebox span').click(function(){
+            $('.alertbox-B,.alertbox-A').show();
+            money();
+            $('.close-a').click(function(){
+                $('.alertbox-B,.alertbox-A').hide()
+            })
+        })
+
+
+
+
+
+        //gonggong
+        $.http.get('/?user&q=get_share_ajax&alias=tree&methodname=get_newly', {}, function(ret){
+            if (ret.code == 0){
+                var len = ret.data.length;
+                var html=''
+                for(var i=0; i<len; i++){
+                    html += '<p><span>'+ret.data[i].username+'</span><span>'+ret.data[i].money+'</span><span>'+ret.data[i].reward+'</span><span>'+ret.data[i].addtime+'</span></p>';
+
+                }
+                $('.infoList').html(html);
+                jQuery(".txtMarquee-top").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:6,interTime:80});
+
+            }else {
+
+            }
+        }, 'json')
+
+
+    });
+
+
+</script>
+{/literal}

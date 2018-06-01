@@ -1,0 +1,148 @@
+{include file="headers.html"}
+<div class="integral_box" id="warp">
+    <div class="widthb">
+        <div class="integral_boxside"></div>
+        <div class="integral_boxc">
+            {if $_G.user_id!=""}
+            <!--登录-->
+            <div class="integral_boxc1">
+                <p style="line-height: 90px;">您当前共有：</p>
+                <h4><span id="qiandao-interg">0</span>积分</h4>
+                <!--登录未签到-->
+                <!--<p style="line-height: 80px;">今日签到：<span>xxx</span>积分</p>-->
+                <!--已签到-->
+                <p style="line-height: 80px;" class="qiandao-pip">明日签到：<span>0</span>积分</p>
+                <div class="btn_login" id="qiandao" tergrl="">签到</div>
+            </div>
+            <!--登录-->
+            {else}
+            <!-- 未登录-->
+            <div class="integral_boxc1">
+                <h5></h5>
+                <p style="margin: 16px 0 30px 0;">登录即可查看积分</p>
+                <div class="btn_login btn_login1" id="btn_login1">登录</div>
+            </div>
+            <!-- 未登录-->
+            {/if}
+            <div class="integral_boxc2 clearff">
+                <a href="/mecum/index.html" class="righton">如何获取积分？</a>
+                <a class="btn_login1" href="javascript:void(0);" id="qiandao-jlu">签到记录</a>
+            </div>
+        </div>
+        <div class="integral_boxcside">
+            <div class="integral_boxcside1 widthc">
+                <div class="integral_boxcstit">
+                    签到日历
+                </div>
+                <div class="integral_boxcst-rc">
+                    <h4 id="directionte1ida"  now="{$smarty.now}">2016-10-11</h4>
+                    <dl class="dldld-cc clearff widthc">
+                        <span>日</span>
+                        <span>一</span>
+                        <span>二</span>
+                        <span>三</span>
+                        <span>四</span>
+                        <span>五</span>
+                        <span>六</span>
+                    </dl>
+                    <ul class="table_integ widthc clearff">
+
+                    </ul>
+                </div>
+                <div class="integral_boxcst-rc2">
+                    <p>正在拉取中</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="banner_slide" id="banner_slide">
+        {list module="scrollpic" function="get_list" type_nid='mall' limit="all"  var=loop  datacache="memcache" datacachename="index_ban3dd3" datacachenametimes="60*120"}
+
+        <ul>
+            {foreach from=$loop.list item=item}
+            <li><a target="_blank" href="{$item.url}" title="{$item.name}"><img src="{$item.scroll_pic_url}" /></a></li>
+            {/foreach}
+        </ul>
+
+        <div class="banner_btn" id="banner_btn">
+        </div>
+        {/list}
+    </div>
+</div>
+
+<div class="widthb clearff dynami_tit">
+    <div class="lefton dynami_tit1">积分动态：</div>
+    <div id="marqueebox" class="marqueebox lefton clearff">
+
+    </div>
+</div>
+
+<div class="widthb dynamicscon clearff">
+    <div class="lefton">
+        <div class="dynamicscont clearff">
+            <a href="/malldie/index.html" target="_blank" title="更多秒杀" nowtime="{$smarty.now}">更多秒杀 >> </a> <span>疯狂秒杀</span>
+        </div>
+        <div class="dynamicsc_side clearff">
+
+        </div>
+    </div>
+    <div class="righton">
+        <a href="/actives/lottery/index.html" target="_blank"> <img src="{$tpldir}/images/mall/banj.jpg" width="385" height="229"></a>
+    </div>
+</div>
+
+<div class="widthb clearff forces">
+    <div class="lefton lefton1">
+        <img src="{$tpldir}/images/mall/pic4.jpg" width="299" height="390">
+        <a href="/mallist/index.html#5" target="_blank">更多>> </a>
+    </div>
+    <div class="lefton clearff lefton2" id="list_puto4">
+
+    </div>
+</div>
+
+<div class="widthb clearff forces">
+    <div class="lefton lefton1">
+        <img src="{$tpldir}/images/mall/pic1.jpg" width="299" height="390">
+        <a href="/mallist/index.html" target="_blank">更多>> </a>
+    </div>
+    <div class="lefton clearff lefton2" id="list_puto1">
+
+    </div>
+</div>
+
+<div class="widthb clearff forces">
+    <div class="lefton lefton1">
+        <img src="{$tpldir}/images/mall/pic2.jpg" width="299" height="390">
+        <a href="/mallist/index.html" target="_blank">更多>> </a>
+    </div>
+    <div class="lefton clearff lefton2" id="list_puto2">
+
+    </div>
+</div>
+
+<div class="widthb clearff forces">
+    <div class="lefton lefton1">
+        <img src="{$tpldir}/images/mall/pic3.jpg" width="299" height="390">
+        <a href="/mallist/index.html#6" target="_blank">更多>> </a>
+    </div>
+    <div class="lefton clearff lefton2" id="list_puto3">
+
+    </div>
+</div>
+
+
+<div class="widthb" style="text-align: right;color: #666;padding: 16px 0 50px 0;">*所有商品图片仅供参考，以实物为准</div>
+
+
+
+{literal}
+<script>
+    diyou.use('mallall', function(f) {
+       // f.mall_center();
+
+    })
+
+</script>
+{/literal}
+{include file="footer.html"}

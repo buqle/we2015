@@ -1,0 +1,225 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", sans-serif;;
+    line-height: 1.5;
+    font-size: 16px;
+    color: #000;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+    background:url(../images/beijing.png);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+}
+
+button {
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+}
+
+a {
+    -webkit-touch-callout: none;
+    text-decoration: none;
+}
+
+:focus {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+em, i {
+    font-style: normal;
+}
+.all-img{ width: 100%; height: 100%;}
+.section1{ height:6.55rem;}
+
+.wh{width:6rem;heigth:4rem;margin:0 auto;position:relative;z-index:999;}
+.wh img{width:6rem;heigth:4rem;}
+.wuhuan{
+    width:14rem;
+    margin:0 auto;
+    border:1px solid #90BE41;
+    padding:0.2rem;
+    position:relative;
+    top:-1rem;
+}
+.qiqiu{width:100%;height:1rem;}
+.qiqiu img{width:1.5rem;}
+.wuh{height:6rem;border:1px solid #9EC945;}
+.wuh-text{color:#5A8700;margin:0 auto;}
+.wuh-text1{width:90%;heigth:3rem;margin:0 auto;color:#5A8700;text-indent:0.8rem;}
+
+.wuh-text p{font-size:0.6rem;font-weight:bold;text-align:center;}
+.l{float:left;width:70%;font-size:0.4rem;}
+.r{float:left;width:28%;}
+.r img{width:3rem;height:2.5rem;position:relative;top:0.45rem;}
+.lucp-imgs{ width: 14rem; margin: 0 auto; height: 1.45rem;}
+.lucp-imgtz{height:1.2rem;}
+.tuji1{ width: 15rem;margin: 0 auto;background:#D3D3D3;padding:0.25rem 0;}
+.liip_s{ width: 14.2rem; margin: 0 auto;background: white;border:2px solid #5A8700;}
+.aten{ font-size: 0.6rem;padding: 0.5rem 1rem 0.5rem 1rem; line-height: 0.9rem;}
+.aten span{ color: #ff3c50;}
+.tin_su{ height: 2rem; width: 8rem; margin: 0 auto;}
+.heads{ height: 1.5rem;}
+.heads span{ height: 1.5rem; width: 20%; display: block; text-align: center; line-height: 1.5rem; font-size: 0.6rem; float: left; overflow: hidden;color:#ccc;}
+.jlheads span{width:20%;font-size:0.6rem;}
+.sc{background:#90BE41;font-weight:bold;}
+#litop p span{width: 20%;font-size: 0.5rem;}
+.lun-slilld p,.allpage p{ height: 1.2rem;}
+.lun-slilld p span{height: 1.2rem; width: 20%; display: block; text-align: center; line-height: 1.2rem; font-size: 0.6rem; float: left; overflow: hidden; color: #555;}
+.allpage p span{height: 1.2rem; width: 33.33%; display: block; text-align: center; line-height: 1.2rem; font-size: 0.6rem; float: left; overflow: hidden; color: #555;}
+.lun-slilld{ height: 6rem; position: relative;animation: myfirst 6s;-moz-animation: myfirst 6s;-webkit-animation: myfirst 6s;-o-animation: myfirst 6s;animation-iteration-count:1000;}
+.allpage{ height: 6rem; width: 13rem; position: relative;}
+.footse{ font-size: 0.6rem; color: #555; height: 1.5rem; line-height: 1.5rem; text-align: center; }
+.footse span{ color: #fe4b23;}
+.section3{ height: 2rem; width:7rem;padding-top:0.2rem;background:#E8E8E8;margin: 0 auto;border-radius: 0.3rem;}
+.section3 div{ padding:0.1rem;height: 1.5rem; width: 6.2rem; background: #C70F00; font-size: 0.7rem; font-weight: bold; line-height:1.5rem; text-align: center; border-radius: 0.3rem; color: white; box-shadow: 0.05rem 0.05rem 0 0 #555;}
+.a-cp{ font-weight: bold; font-size: 0.8rem; color: #3E3E3E; height: 1rem; line-height: 1rem; text-align:left;}
+.mon_on{ width: 12.8rem; margin: 0 auto; border: dashed 0.1rem #45c9bb; padding: 1rem 0.5rem 1rem 0.5rem;}
+.mon_on p{ font-size: 0.6rem; color: #2a2a2a; line-height: 1rem;}
+@keyframes myfirst
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+@-webkit-keyframes myfirst /* Safari 和 Chrome */
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+.heji{height:1.5rem;text-align:center;}
+.heji span{height: 1.2rem; width: 25%; display: block; text-align: center; line-height: 1.2rem; font-size: 0.6rem; float: left; overflow: hidden; color: #555;}
+.denglu{text-align:center;color:#C70F00;overflow: hidden;height:6rem;line-height:2rem;}
+.dengl{width:6rem;height:4rem;margin: 0.5rem auto;}
+.dp{display: none;}
+.denglu span{font-weight:bold;font-size:0.8rem;padding:0.3rem 1rem;border:1px solid #F3BDBB;border-radius:8px;}
+.section4{text-align:center;}
+.jl-logo{width:8rem;height:1.5rem;margin:0 auto;border-bottom: 1px solid #63ADEE;padding:0.1rem;}
+.jl-content{width:70%;height:1.5rem;margin:0 auto;}
+.imgs{width:1.2rem;height:1.5rem;}
+.jl-text{color:#5A8700;height:1.5rem;line-height:1.5rem;font-size:0.8rem;padding-left:0.1rem;position:relative;top:-0.3rem;}
+#te{
+    width: 13.5rem;
+    margin: 0 auto;
+    color:#8BAA53;
+}
+#te table,.te_mys{ width: 100%; text-align: center; font-size: 0.4rem;}
+.tatTr{ height: 2rem; line-height: 2rem;}
+.tatTd{color:white;width:97%;height:1.8rem;background:#8BAB4C;margin:0 auto;}
+.tatTrs{ height: 2rem; line-height: 2rem;}
+#te table tr td{ border: 1px solid #ADC481;}
+.bj{background:#E8E8E8;padding:1rem 0;}
+.huodong p{font-size:0.6rem;}
+

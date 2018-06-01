@@ -1,0 +1,122 @@
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none outside none;
+}
+.clearg{zoom:1;}
+.clearg:after {
+    content: "";
+    display: block;
+    clear: both;}
+img {
+    border: 0 none;
+}
+i{font-style: normal}
+h1, h2, h3, h4, h5, h6, fieldset, p, ol, ul, li, form, map, button, input, dl, dt, dd, q, table, thead, tbody, tfoot, tr, td, img, div{ margin:0; padding:0; }
+body {
+    font-family:"Microsoft YaHei";
+    font-size: 18px;background: #fff;color:#000;
+}
+.bodyyy{}
+.ww1{width: 100%;}
+.ww2{width: 1200px;}
+.ww3, .ww2{margin: 0 auto;}
+.lefts{float: left}
+.rights{float: right;}
+.text-center{text-align: center;}
+.text-left{text-align: left;}
+.text-right{text-align: right;}
+.font12{font-size: 12px;}
+.font14{font-size: 14px;}
+.font15{font-size: 15px;}
+.font16{font-size: 16px;}
+.font18{font-size: 18px;}
+.font17{font-size: 17px;}
+.font19{font-size: 19px;}
+.font20{font-size: 20px;}
+.font22{font-size: 22px;}
+.font24{font-size: 24px;}
+.font25{font-size: 25px;}
+.font23{font-size: 23px;}
+.block{display: block;}
+.inline-block{display: inline-block;}
+.cursor{cursor: pointer;}
+.bold{font-weight: bold;}
+h4, h6{font-weight: normal}
+h5{font-weight: bold;}
+.color-ff{color: #fff;}
+.pos-a{position: relative;}
+.pos-b{position: absolute;}
+.ww4{width:1080px;margin:0 auto;}
+.act9s-bata1{background: url("../images/1.jpg") no-repeat center;width:100%;height:583px;}
+.act9s-bata2{
+    background: url("../images/13.png") repeat-x;height:543px;padding-top:16px;
+}
+.act9s-bata3{margin-bottom:34px;color:#000; width:1156px;padding-top:76px;}
+.act9s-bata3 h5{font-size:36px;margin-bottom:18px;}
+.act9s-bata3 p{line-height:32px;text-indent: 44px;}
+.act9s-bata3 p i{color:#a66142;}
+.slideBox{ width:962px!important;overflow:hidden; position:relative;  margin: 0 auto;color:#000; }
+.slideBox p i{color:#a66142;}
+.slideBox .bd{ position:relative; height:100%; z-index:0;   }
+.slideBox .bd li{
+    zoom:1; vertical-align:middle;border:1px solid #000;width:750px;margin: 0 auto;height:408px;
+}
+.slideBox .bd li .act9s-bata4{width:660px;
+}
+.slideBox .bd li .act9s-bata4 .act9s-bata5{
+    margin-left:58px;width:498px;margin-top:20px;
+}
+.slideBox .bd li .act9s-bata4 .act9s-bata5 span{font-size:26px;color:#fff;background:#4b3326;width:144px;height:42px;line-height:42px;border-radius: 12px;margin-top: 116px;}
+.slideBox .bd li .act9s-bata4 h4{font-size:32px;height:78px;line-height:78px;}
+.slideBox .prev, .slideBox .next{ position:absolute; left:3%; top:50%; margin-top:-25px; display:block;}
+.slideBox .next{ left:auto; right:3%;  background:url(../images/6.png) no-repeat;width: 25px;height: 49px;}
+.slideBox .prev{ background:url(../images/5.png) no-repeat;width:25px;height:49px;}
+.slideBox .prev:hover, .slideBox .next:hover{ filter:alpha(opacity=100);opacity:1;  }
+.slideBox .prevStop{ display:none;  }
+.slideBox .nextStop{ display:none;  }
+.act9s-pubbox{margin-top:56px;color:#000;display: none;}
+.act9s-bata7{background:#fae8de;padding:90px 0 56px 0;}
+.act9s-bata8{
+    background: url("../images/8.png") repeat-x;height:546px;padding-top:90px;
+}
+.act9s-bata9{
+    background: url("../images/9.png") no-repeat center;height:875px;padding-top:70px;
+
+}
+.act9s-bata9 p{margin-bottom:44px;font-size:32px;}
+.act9s-bata10{
+    background: url("../images/11.png?v=2017") no-repeat center;padding-top:70px;
+    height:414px;
+
+}
+.act9s-bata10 .act9s-bata11{
+    width:1106px;
+}
+.act9s-bata10 .act9s-bata11 .act9s-bata11_pub{
+    width:532px;color:#000;
+}
+.act9s-bata10 .act9s-bata11 .act9s-bata11_pub h4{font-size:32px;margin-bottom:24px;}
+.act9s-bata10 .act9s-bata11 .act9s-bata11_pub .act9s-bata11_pub2{
+    border:1px solid #000;
+}
+.act9s-bata10 .act9s-bata11 .act9s-bata11_pub .act9s-bata11_pub2 p span{width:24%;float:left;}
+.act9s-bata10 .act9s-bata11 .act9s-bata11_pub .act9s-bata11_pub2 p{border-bottom:1px solid #000;}
+.act9s-bata10 .act9s-bata11 .act9s-bata11_pub .act9s-bata11_pub2 .pub_2tit{height:58px;line-height:58px;}
+.act9s-bata10 .act9s-bata11 .act9s-bata11_pub .act9s-bata11_pub2 .marqueeboxx p{height:44px;line-height:44px;}
+.act9s-bata10 .act9s-bata11 .act9s-bata11_pub .act9s-bata11_pub2 .marqueeboxx2 p{height: 56px;overflow: hidden;}
+.act9s-bata10 .act9s-bata11 .act9s-bata11_pub .act9s-bata11_pub2 h6{height:48px;line-height:48px;padding-right:6px;}
+.act9s-bata10 .act9s-bata11 .act9s-bata11_pub .act9s-bata11_pub2 h6 i{margin:0 40px;}
+.act9s-bata10 .act9s-bata11 .act9s-bata11_pub .act9s-bata11_pub2 .nouser{background:#4b3326;border-radius: 10px;width:144px;height:42px;line-height:42px;font-size:26px;}
+.act9s-bata12{
+    background: url("../images/12.png?v=2017") no-repeat center top;height:301px;
+    padding-top:72px;
+}
+.act9s-bata12 h4{font-size:36px;margin-bottom:20px;}
+.act9s-bata12 p{width:1170px;line-height:38px;}
+.jiujiu_foot{width: 100%;text-align: center;padding:60px 0 70px 0;background: #191919;}
+.jiujiu_foot p{color: #fff;font-size: 24px;line-height: 40px;}
+.jiujiu_foot .endjiujiu{background:url("../images/ma.png")  no-repeat center;height: 172px;margin-top:24px;}

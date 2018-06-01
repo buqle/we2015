@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+ul, li {
+
+    list-style: none outside none;
+
+}
+
+.clear{zoom:1;}
+
+.clear:after {
+    content: "";
+    display: block;
+    clear: both;}
+
+img {
+
+    border: 0 none;
+
+}
+
+h1,h2,h3,h4,h5,h6,fieldset,p,ol,ul,li,form,map,button,input,dl,dt,dd,q,table,thead,tbody,tfoot,tr,td,img,div{ margin:0; padding:0; }
+
+body {
+
+    font-family:"微软雅黑";
+background:#ffffff;
+    font-size: 16px;
+}
+.jiexi01{  background:url(../images/j01.jpg) center no-repeat;height: 922px}
+
+
+.charitymain{ width:100%; overflow:hidden; background:#421071; padding-top:88px;}
+	.rhbjside{ width:1000px; margin:0 auto;}
+	.rhbgcon1{}
+	.rhbgcon1 h4{ text-align:center;background:url(../images/t1.gif) center no-repeat; height:44px; margin-bottom:30px;}
+	.rhcont1t{background:url(../images/titbg.gif) center no-repeat; height:58px; width:662px; margin:0 auto;}
+	.rhcont1t h5{ font-size:36px; color:#333; text-align:center; line-height:58px;}
+	.rhcont1c{ background:#8817f3; padding:36px 0 48px 0;}
+	.rhcont1c p{ font-size:18px; color:#fff; line-height:32px;width:932px; margin:0 auto; text-indent:38px;}
+	.charitymain #rhcon2{ margin-top:130px;}
+	.charitymain #rhcon2 h4{background:url(../images/t2.gif) center no-repeat;}
+	.charitymain #rhcon3{ margin-top:130px;}
+	.charitymain #rhcon3 h4{background:url(../images/t3.gif) center no-repeat;}	
+	.charitymain #rhcon4{ margin-top:130px;}
+	.charitymain #rhcon4 h4{background:url(../images/t4.gif) center no-repeat;}
+	.charitymain #rhcon5{ margin-top:130px;}
+	.charitymain #rhcon5 h4{background:url(../images/t5.gif) center no-repeat;}	
+	
+	.charitymain .rhbgcon2{}
+	.charitymain .rhbgcon2 h4{ font-size:35px; background:#fbfe01; width:352px; height:56px; text-align:center; line-height:56px; margin-top:114px;}
+	.charitymain .rhbgcon2 .rhbgcon2c{background:url(../images/bgcon2.gif) center no-repeat; height:220px; margin:82px 0 132px 0;}
+	.charitymain .rhbgcon3{background:url(../images/rhcon3.jpg) center no-repeat; height:489px;}
+
+
+
+

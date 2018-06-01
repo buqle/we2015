@@ -1,0 +1,472 @@
+{include file="header.html"}
+<!-- <link rel="stylesheet" href="{$tpldir}/css/blue/default.css" />
+<script type="text/javascript" src="{$tpldir}/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="{$tpldir}/js/kindeditor-min.js"></script>
+<script type="text/javascript" src="{$tpldir}/js/zh_CN.js"></script>
+<script>
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="contents"]', {
+			resizeType : 1,
+			allowPreviewEmoticons : true,
+			allowImageUpload : false,
+			width : "80%",
+			height : "400px",
+			items : ['lineheight','fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'link']
+		});
+	});
+</script> -->
+{if $_G.system.con_borrow_apply==1}
+<!--<script>
+var user_id = '{$_G.user_id}';
+if(user_id != ''){
+	$.getJSON('/?user&q=reg&type=loan_add&user_id='+user_id,function(result){
+		if(result.code == '98'){
+			alert("邮箱未认证");
+		}
+		if(result.code == '97'){
+			alert("手机未认证");
+		}
+		if(result.code == '96'){
+			alert("实名未认证");
+		}
+		if(result.code !='99'){
+			location.href="/?user&m=approve/safe";
+		}
+	});
+}
+</script>-->
+<!--liurui 借款申请 start-->
+<div class="borrow_bg">
+<div class="conbox">
+	<div class="borrow_title">
+    	<div class="title"><span>在线申请</span>填写后我们将尽快电话联系您</div>
+    </div>
+    <div class="borrow_box">
+    	<div class="form_box">
+    		<form id="my_loan_form" method="post" action="" >
+			<input type='hidden' name='user_id' value='{$_G.user_id}'/>
+		{if $_G.user_id == ''}
+       	 <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
+            <input class="u_input" type="text" name="realname"  id="realname">
+         </div>
+         <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>手&nbsp;&nbsp;&nbsp;机&nbsp;&nbsp;&nbsp;&nbsp;号：</label>
+            <input class="u_input" type="text" name="phone"  id="phone">
+            <span id="phoneError"></span>
+         </div>
+          <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>手机验证码：</label>
+            <input class="u_input" type="text" name="ajax_phone_code"  id="ajax_phone_code">
+            <input class="get_verty_btn" id="send_phonevalid" type="button" value="获取验证码">
+			<span class="user_warning_c" id="cash_warn"></span>
+         </div>
+		 <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>电&nbsp;子&nbsp;邮&nbsp;箱：</label>
+            <input class="u_input" type="text" name="email"  id="email">
+         </div>
+		 {/if}
+		 <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>项&nbsp;目&nbsp;名&nbsp;称：</label>
+            <input class="u_input" type="text" name="titles"  id="titles">
+         </div>
+         <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>所&nbsp;在&nbsp;城&nbsp;市：</label>
+			<script src="/?plugins&q=areas&name=work_&type=p,c&class=u_sel&area=&value="></script>
+        </div>
+        <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>借&nbsp;款&nbsp;金&nbsp;额：</label>
+            <input class="u_input" type="text" name="account"  id="account" />&nbsp;<span class="tips">(元)</span>
+        </div>
+        <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>还&nbsp;款&nbsp;方&nbsp;式：</label>
+
+             {articles module="borrow" function="get_type_one" nid="p2c"  var="var"}
+            <select name="borrow_style" id="borrow_style" style="" class="u_sel">
+			<option value="">--请选择--</option>
+            {foreach from=$var.style_result item=item name="foo"}
+            	<option value="{$item.nid}">{$item.name}</option>
+            {/foreach}
+            </select>
+            {/articles}
+         </div>
+         <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>借&nbsp;款&nbsp;期&nbsp;限：</label>
+            <input class="u_input" type="text" name="borrow_period"  id="borrow_period" />&nbsp;<span class="tips" id="tipsData">(月)</span>
+        </div>
+        <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>年化回报率：</label>
+            <input class="u_input" type="text" name="borrow_apr"  id="borrow_apr" />&nbsp;<span class="tips">%</span>
+			<input type="hidden" id="aprmin" value="{$_U.borrow_type_result.apr_first}" />
+            <input type="hidden" id="aprmax" value="{$_U.borrow_type_result.apr_end}" />
+        </div>
+       
+           <div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>详&nbsp;细&nbsp;描&nbsp;述：</label>
+          	<textarea class="u_area" name="contents"  id="contents"></textarea>
+        </div>
+		<div class="ui_form_item fn_cle">
+            <label><span class="red">*</span>验&nbsp;&nbsp;&nbsp;证&nbsp;&nbsp;&nbsp;码：</label>
+            <input class="u_input w80" type="text" name="valicode"  id="valicode" >
+            {valicode}
+        </div>
+        <div class="ui_form_item fn_cle">
+            <label></label>
+          <input class="ui_btn" type="submit" value="立即提交"><em id="error_info"></em>
+        </div>
+
+       </form>
+       </div>
+       <div class="borrow_list">
+       		<div class="list_box">
+            	<h2>申请条件</h2>
+                <p>1、年龄在20-60周岁之间；<br/>2、具有中国国籍(香港、澳门、台湾暂时除外)；<br/>3、借款人须拥有对该车辆的所有权。</p>
+            </div>
+            <div class="list_box">
+            	<h2>准备材料</h2>
+                <p>1、身份证(非本地户籍需同时提供居住证或暂住证)；<br/>2、机动车登记证、行驶证；</p>
+            </div>
+            
+           <div class="list_box" style="border-bottom:none;">
+            	<h2>办理流程</h2>
+                <div class="process fn_cle">
+                	<dl>
+                    	<dt><img src="{$tpldir}/images/porces_1.jpg" /></dt>
+                        <dd>申请</dd>
+                    </dl>
+                    <dl>
+                    	<dt><img src="{$tpldir}/images/porces_2.jpg" /></dt>
+                        <dd> 物质评估</dd>
+                    </dl>
+                    <dl>
+                    	<dt><img src="{$tpldir}/images/porces_3.jpg" /></dt>
+                        <dd>信用评估</dd>
+                    </dl>
+                    <dl>
+                    	<dt><img src="{$tpldir}/images/porces_4.jpg" /></dt>
+                        <dd>签署合同</dd>
+                        
+                    </dl>
+                    <dl>
+                    	<dt><img src="{$tpldir}/images/porces_5.jpg" /></dt>
+                        <dd>履行合同</dd>
+                     
+                    </dl>
+                    <dl>
+                    	<dt><img src="{$tpldir}/images/porces_6.jpg" /></dt>
+                        <dd>付款</dd>
+                    </dl>
+                </div>
+            </div>
+       </div>
+    </div>
+ </div>
+</div>
+
+<!--liurui 借款申请 end-->
+{else}
+<div class="borrowbody">
+<div class="conbox">
+    <div class="borrow">
+        <div class='borrow_apq1'>
+            <p style='height:70px;'></p>
+            <p class='borrow_apq2'>
+                <span class='borrow_apq3'>实名认证</span>
+                <span class='borrow_apq3'>填写资料</span>
+                <span>申请额度</span>
+                <span class='borrow_apq4'>上传资料</span>
+                <span class='borrow_apq4'>发布借款</span>
+            </p>
+        </div>
+        <div style='height:25px;'></div>
+       <ul>
+            <li class="moouse">
+                <h3 class="day">信用标</h3>
+                <p>通过网站的资信查获得信用额度</p>
+                <dl>
+                    <dd><span><font>·</font>贷款额度：</span><em>10000-200000</em></dd>
+                    <dd><span><font>·</font>贷款利率：</span><em>7%-20%</em></dd>
+                    <dd><span><font>·</font>借款期限：</span><em>1-6个月</em></dd>
+                    <dd><span><font>·</font>还款方式：</span><em class="repay_type">还款方式：先息后本</em></dd>
+                </dl>
+            </li>
+            
+            <li class="moouse">
+                <h3 class="vouch">担保标</h3>
+                <p>通过网站的资信查获得担保额度</p>
+                <dl>
+                    <dd><span><font>·</font>贷款额度：</span><em>10000-200000</em></dd>
+                    <dd><span><font>·</font>贷款利率：</span><em>7%-20%</em></dd>
+                    <dd><span><font>·</font>借款期限：</span><em>1-12个月</em></dd>
+                    <dd><span><font>·</font>还款方式：</span><em class="repay_type">还款方式：先息后本</em></dd>
+                </dl>
+            </li>
+            
+            <li class="moouse">
+                <h3 class="pawn">抵押标</h3>
+                <p>通过网站的资信查获得担保额度</p>
+                <dl>
+                    <dd><span><font>·</font>贷款额度：</span><em>10000-100000000</em></dd>
+                    <dd><span><font>·</font>贷款利率：</span><em>7%-20%</em></dd>
+                    <dd><span><font>·</font>借款期限：</span><em>1-12个月</em></dd>
+                    <dd><span><font>·</font>还款方式：</span><em class="repay_type">还款方式：先息后本</em></dd>
+                </dl>
+            </li>
+
+            <div class="cle"></div>
+        </ul>
+	
+    </div>
+
+</div>
+<div class="borrowcont1">
+    	<h5>请填写借款信息</h5>
+        <div class="borrowcont1_c clearf">
+
+            	<div class="ovcont clearf">
+                	<div class="borrowfor">
+                        <div class="borwwtit">
+                            <p>请选择借标类型<label>*</label></p>
+                            <input type="radio" name="subBox" value="个人标" id="an1"/><span style="width: 54px;" class="aaas">个人标</span>
+                            <input type="radio" name="subBox" value="企业标" id="an1"/><span style="width: 54px;">企业标</span>
+                        </div>
+                	<div class="borwwtit"><p>借款金额（万元）<label>*</label></p><input class="u_input" type="text" name="account"  id="u_input1" placeholder=""/></div>
+                    <div class="borwwtit" id="jkqx">
+                    	<p>借款期限</p>
+                    	<!--<select name='borrow_period' style=" width:220px;background:none;" class="u_sel">	
+            　　        	{loop module="borrow"  function="get_type_list" limit="all" var="type_var" status=1}
+            　　                <option value='{$_item.value}'>{$type_var.period_first}-{$type_var.period_end}{if $type_var.nid=="day"}天{else}个月{/if}</option>
+            　　            {/loop}
+            　　        </select>-->
+            			<select name='borrowm' style=" width:220px;background:none; outline:none;" class="u_sel">	
+            　　        	<option value="1个月">1个月</option>
+            				<option value="2个月">2个月</option>
+                            <option value="3个月">3个月</option>
+                            <option value="4个月">4个月</option>
+                            <option value="5个月">5个月</option>
+                            <option value="6个月">6个月</option>
+                            <option value="7个月">7个月</option>
+                            <option value="8个月">8个月</option>
+                            <option value="9个月">9个月</option>
+                            <option value="10个月">10个月</option>
+                            <option value="11个月">11个月</option>
+                            <option value="12个月">12个月</option>
+            　　        </select>
+                    </div>
+                    <div class="borwwtit"  style="margin-top: 36px;"><p>企业名称</p><input class="u_input" type="text" name="realnames"  id="realnames"></div>
+
+                </div>	
+                
+                <div class="borrowfor">
+                	<div class="borwwtit"><p>姓名<label>*</label></p><input class="u_input" type="text" name="realname"  id="u_input2"></div>
+                	<div class="borwwtit"><p>联系电话<label>*</label></p><input class="u_input" type="text" name="phone"  id="phone"></div>
+                   	<div class="borwwtit">
+                    	<p>性别</p>
+                       <input name="sex" type="radio" value="男"  class="an"  id="an1" checked="checked" /><span>男</span>
+                       <input name="sex" type="radio" value="女"  class="an"  id="an1"/><span>女</span>
+                    </div>
+                    <div class="borwwtit" style="margin-top: 30px;">
+                    	<p>年龄（岁）</p>
+                        <input class="u_input" type="text" name="age" id="age">
+                    </div>
+                    
+                </div>
+                
+                <div class="borrowfor" style="float:right;">
+                	<div class="borwwtit" id="jklx">
+                    <p>借款类型<label>*</label></p>
+                    <select name="borrow_type" id="borrow_type" style=" width:220px;background:none;outline:none;" class="u_sel">
+                     <option value="信用标">信用标</option>
+                      <option value="担保标">担保标</option>
+                      <option value="抵押标">抵押标</option>
+                     <!--{loop module="borrow"  function="get_type_list" limit="all" var="type_var" status=1}
+                     <option value='{$item.nid}' >{$type_var.title}</option>
+                     {/loop} -->
+                    </select>
+                    </div>
+                	 <div class="borwwtit" id="bzsm">
+                    	<p>备注说明<label></label></p>
+                    	<textarea class="u_area" name="contentsed"  id="contentsed" style="height: 60px;"></textarea>
+                    </div>
+                    <div class="borwwtit">
+                        <p>借款人所在地</p>
+                        <select name='borrowm_dd' style=" width:220px;background:none; outline:none;" class="u_sel">
+                            　	<option value="安徽省">安徽省</option>
+                        </select>
+                    </div>
+                    <div class="borwwtit" ><p>验证码</p><input style="margin-right:10px;" class="u_input w80" type="text" name="valicode"  id="valicode" >{valicode}</div>
+                  
+                </div>
+                </div>
+                <div class="bdtjbut"><input class="ui_btn" type="submit" value="立即申请" id="add_borrow"><em id="error_info"></em></div>
+
+        </div>
+    </div>
+
+ <div class="boroow-rule" style="width: 934px;background: #eee;font-size: 18px;line-height: 32px;color: #444;padding: 42px 46px 30px 42px;margin: 30px auto 0 auto;">
+    <h4 style="font-weight: bold;font-size: 24px;">温馨提示：</h4>
+     <p>1、根据《网络借贷信息中介机构业务活动管理暂行办法》相关规定，同一自然人在融和贷平台借款余额上限不超过人民币20万元，同一法人或其他组织在融和贷平台借款余额上限不超过人民币100万元，请注意您填写的借款金额。</p>
+     <p>2、为保障投资用户资金安全及未成年人合法权利，融和贷平台不接受18周岁以下未成年无完全行为能力的公民借款。</p>
+ </div>
+
+
+<div id="broowcont2" class="clear">
+    	<ul class="clear">
+        	<li><img src="{$tpldir}/images/mkdbor1.png" /><p>门槛低</p></li>
+            <li><img src="{$tpldir}/images/mkdbor2.png" /><p>放款快</p></li>
+            <li><img src="{$tpldir}/images/mkdbor3.png" /><p>合法规</p></li>
+            <li style="margin-right:0"><img src="{$tpldir}/images/mkdbor4.png" /><p>利率低</p></li>
+        </ul>
+    </div>
+
+<div style='height:40px;'></div>
+</div>
+
+<div id="qingkuang3" style="display: none;">
+    <div class="qingkcon" style="font-size:22px;color: #5e5c5c;line-height:34px;text-align: left;margin-left: 30px;">
+        <p>1、融和贷平台出借人免收服务费；</p>
+        <p>2、平台借款人收取相应金额服务费，</p>
+        <p>计算公式：借款金额（元）*5‰*借款期限（月）。</p>
+        <a href="/"  class="btnzhuan" style="width: 94px;height:34px;display: block;margin: 16px auto 0 auto;color: #fff;line-height: 34px;font-size: 20px;background: #35a1fb;border-radius: 4px;text-align: center;">确定</a>
+    </div>
+</div>
+
+{/if}
+
+
+<script>
+    var  trust = '{$_G.trust_user.approve_result.reg_trust}';//是否注册托管
+    {literal}
+    $('input[name="subBox"]').click(function(){
+        var addries=$('input[name="subBox"]:checked ').val();
+        if(addries=='个人标'){
+            $("#u_input1").attr('placeholder','个人标借款不能超过20万')
+        }else if(addries=='企业标'){
+            $("#u_input1").attr('placeholder','企业标借款不能超过100万')
+        }
+    })
+    $("#u_input1").keyup(function(){
+        if($('input[name="subBox"]').is(':checked')){
+            var addries=$('input[name="subBox"]:checked ').val();
+        }
+        if(parseInt($("#u_input1").val())>20&&addries=='个人标'){
+            alert('个人标借款不能超过20万');
+            $("#u_input1").val('')
+        }else if(parseInt($("#u_input1").val())>100&&addries=='企业标'){
+            alert('企业标借款不能超过100万');
+            $("#u_input1").val('');
+        }
+    })
+
+
+    $("#add_borrow").click(function(){
+        var url= '/?user&m=borrow/get_borrow_pre';
+
+        if(user_id==0){
+            diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+            return ;
+        }else if (trust!='1') {
+            alert('请先完成实名验证！');
+            return false;
+        }
+        var money=$("#u_input1").val();
+        var name=$("#u_input2").val();
+        var borrow_type=$("#borrow_type").val();
+        var borrowm=$("select[name='borrowm']").val();//期限
+        var phone=$("#phone").val();
+        var contentsed=$("#contentsed").val();
+        var Enterprise=$("#realnames").val();//企业
+        var sex=$("input[name='sex']").val();//
+        var borrowm_dd=$("select[name='borrowm_dd']").val();//所在地
+        var age=$("#age").val();
+        var valicode=$("#valicode").val();
+        contentsed = contentsed.replace(/\s+/g,"");
+        if($('input[name="subBox"]:checked ').val()==undefined){
+            alert('请选择您的借标类型!');
+            return false
+        }
+        if(isNaN(money) || money==""){
+            alert('请正确填写借款金额');
+            return ;
+        }
+        name = name.replace(/\s+/g,"");
+        if(name==""){
+            alert('请填写借款人姓名');
+            return;
+        }
+
+        var telReg = !!phone.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/);
+        if(telReg==false){
+            alert('请正确填写手机号码');
+            return;
+        }
+        Enterprise = Enterprise.replace(/\s+/g,"");
+        if(Enterprise==""){
+            alert('请填写企业名称');
+            return;
+        }
+
+        if(isNaN(age) ||age=="" || age>60 || age<20){
+            alert('抱歉，您的年龄不符合预约借款要求');
+            return ;
+        }
+
+        if(valicode==""){
+            alert('验证码不能为空');
+            return;
+        }
+        if($('input[name="subBox"]').is(':checked')){
+            var addries=$('input[name="subBox"]:checked ').val();
+        }
+
+        if($('input[name="subBox"]').is(':checked')){
+            if(parseInt($("#u_input1").val())>20&&addries=='个人标'){
+                alert('个人标借款不能超过20万');
+                $("#u_input1").val('');
+                return false;
+            }else if(parseInt($("#u_input1").val())>100&&addries=='企业标'){
+                alert('企业标借款不能超过100万');
+                $("#u_input1").val('');
+                return false;
+            }
+            $.ajax({
+                type:"post",
+                url:url,
+                data:{'account':money,'realname':name,'borrow_type':borrow_type,'borrowm':borrowm,'phone':phone,'contentsed':contentsed,
+                    'realnames':Enterprise,'sex':sex,'borrowm_dd':borrowm_dd,'age':age,
+                    'valicode':valicode
+
+                },
+                cache:false,
+                dataType:'json',
+                success:function(data){
+                    if(data.code==2){
+                        diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                        return ;
+                    }
+                    if(data.code==1){
+                        alert(data.msg);
+                        return ;
+                    }
+                    if(data.code==0){
+                        jDialog.dialog({
+                            title : '温馨提示',
+                            content : $("#qingkuang3").html(),
+                            height:260,
+                            width:568
+
+                        });
+                    }
+                }
+            });
+        }else {
+            alert('请选择您的借标类型!');
+            return false;
+        }
+
+    });
+</script>
+
+{/literal}
+{include file="footer.html"}

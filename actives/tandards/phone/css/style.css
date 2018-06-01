@@ -1,0 +1,182 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", sans-serif;;
+    line-height: 1.5;
+    font-size: 16px;
+    color: #000;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+    background: #F9E105;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+}
+
+button {
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+}
+
+a {
+    -webkit-touch-callout: none;
+    text-decoration: none;
+}
+
+:focus {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+em, i {
+    font-style: normal;
+}
+.all-img{ width: 100%; height: 100%;}
+.section1{ height: 6.55rem;}
+.lucp-imgs{ width: 14rem; margin: 0 auto; height: 1.45rem;}
+.lucp-imgtz{height:1.2rem;}
+.liip_s{ width: 13.4rem; margin: 0 auto; border: 0.3rem solid #EFD200; border-top: none; background: white;}
+.aten{ font-size: 0.6rem;padding: 0.5rem 1rem 0.5rem 1rem; line-height: 0.9rem;}
+.aten span{ color: #ff3c50;}
+.tin_su{ height: 2rem; width: 8rem; margin: 0 auto;}
+.heads{ height: 1.5rem;}
+.heads span{ height: 1.5rem; width: 25%; display: block; text-align: center; line-height: 1.5rem; font-size: 0.6rem; float: left; overflow: hidden; color: #555;}
+.jlheads span{width:20%;font-size:0.6rem;}
+#litop p span{width: 20%;font-size: 0.5rem;}
+.lun-slilld p,.allpage p{ height: 1.2rem;}
+.lun-slilld p span{height: 1.2rem; width: 25%; display: block; text-align: center; line-height: 1.2rem; font-size: 0.6rem; float: left; overflow: hidden; color: #555;}
+.allpage p span{height: 1.2rem; width: 33.33%; display: block; text-align: center; line-height: 1.2rem; font-size: 0.6rem; float: left; overflow: hidden; color: #555;}
+.lun-slilld{ height: 6rem; position: relative;animation: myfirst 6s;-moz-animation: myfirst 6s;-webkit-animation: myfirst 6s;-o-animation: myfirst 6s;animation-iteration-count:1000;}
+.allpage{ height: 6rem; width: 13rem; position: relative;}
+.footse{ font-size: 0.6rem; color: #555; height: 1.5rem; line-height: 1.5rem; text-align: center; }
+.footse span{ color: #fe4b23;}
+.section3{ height: 1.5rem; width: 11rem; margin: 0 auto;}
+.section3 div{ height: 1.5rem; width: 6rem; background: #FF3C50; font-size: 0.7rem; font-weight: bold; line-height: 1.5rem; text-align: center; border-radius: 0.2rem; color: white; box-shadow: 0.05rem 0.05rem 0 0 #555;}
+.a-cp{ font-weight: bold; font-size: 0.8rem; color: #45c9bb; height: 1rem; line-height: 1rem; text-align: center;}
+.mon_on{ width: 12.8rem; margin: 0 auto; border: dashed 0.1rem #45c9bb; padding: 1rem 0.5rem 1rem 0.5rem;}
+.mon_on p{ font-size: 0.6rem; color: #2a2a2a; line-height: 1rem;}
+@keyframes myfirst
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+@-webkit-keyframes myfirst /* Safari 和 Chrome */
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+    0%   {top: 0rem;}
+    20%  {top: -1.2rem;}
+    40%  {top: -2.4rem;}
+    60% {top: -3.6rem;}
+    80% {top: -4.8rem;}
+    100% {top: -6rem;}
+}
+
+
+
+

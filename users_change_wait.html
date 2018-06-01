@@ -1,0 +1,58 @@
+<div class="w750 p20">
+	<table width="100%"  cellspacing="0" cellpadding="0" class="user_tab2">
+		<tbody >
+		<tr class="tab2_tit">
+			<td colspan="10">债权明细</td>
+		</tr>
+		<tr class="tab2_tit" >
+			<td>标题</td>
+			<td>应收日期</td>
+			<td>借款者</td>
+			<td>第几期/总期数</td>
+			<td>应收总额</td>
+			<td>已收本金</td>
+			<td>已收利息</td>
+			<td>收款时间</td>
+			<td>逾期天数</td>
+			<td>状态</td>
+		</tr>
+		<tr>
+			<td><a href="/invest/a20131200039.html" target="_blank" title="信用标测试1217">信用标测试121</a></td>
+			<td>2014-06-17</td>
+			<td><a href="/u/91">deayou44</a></td>
+			<td>6/6</td>
+			<td title="应收本金：￥341.67应收利息：￥3.43">￥345.10</td>
+			<td>￥0.00</td>
+			<td>￥0.00</td>
+			<td>-</td>
+			<td>0天</td>
+			<td>未还</td>
+		</tr>
+		{list module="borrow" var="loop" function ="get_recover_list" change_userid=$_G.user_id  borrow_status=3  change_status=1 borrow_nid=$smarty.request.borrow_nid order="repay_time" limit='all'}
+		{foreach from=$loop.list item="item"}
+		<tr {if $key%2==1} class="ynow"{/if}>
+		<td  ><a href="/invest/a{$item.borrow_nid}.html" target="_blank" title="{$item.borrow_name}">{$item.borrow_name|truncate:8}</a></td>
+		<td  >{$item.recover_time|date_format:"Y-m-d"}</td>
+		<td  ><a href="/u/{$item.borrow_userid}">{$item.borrow_username}</a></td>
+		<td  >{if $item.borrow_type=="day" || $item.borrow_type=="roam"}1/1{else}{$item.recover_period}/{$item.borrow_period}{/if}</td>
+		<td title="应收本金：￥{$item.recover_capital  }应收利息：￥{$item.recover_interest  }" >￥{$item.recover_account|string_format:"%.2f"}</td>
+		<td  >￥{$item.recover_capital_yes|string_format:"%.2f"}</td>
+		<td  >￥{$item.recover_interest_yes|string_format:"%.2f"}</td>
+		<td  >{if $item.recover_yestime eq ''}-{else}{$item.recover_yestime|date_format:"Y-m-d"}{/if}</td>
+		<td  >{$item.late_days|default:0}天</td>
+		<td  >{$item.recover_type_name}</td>
+		</tr>
+		{/foreach}
+		{if $loop.total >0}
+		</tbody>
+		<tfoot>
+		<tr>
+			<td colspan="10">
+				<div class="pagination" id="pages" data-page='{$smarty.request.page}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+			</td>
+		</tr>
+		</tfoot>
+		{/if}
+	</table>
+	{/list}
+</div>

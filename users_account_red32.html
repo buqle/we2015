@@ -1,0 +1,98 @@
+<script type="text/javascript" src="{$tpldir}/js/jquery.cityselect.js"></script>
+<script type="text/javascript" src="{$tpldir}/js/jquery.pagination.js"></script>
+<div class="april_cash">
+    <div class="april_tit clearbt">
+        <ul class="clearbt top_up">
+            <li class="onredzt"><p class="p1"><em>未使用</em><i>|</i></p></li>
+            <li><p class="p1"><em>已使用</em><i>|</i></p></li>
+            <li><p class="p1"><em>已失效</em><i>|</i></p></li>
+        </ul>
+    </div>
+
+    <div class="april_con clearbt">
+        <ul class="clearbt">
+            <li class="onend inin_uus">
+                <div class="april_side2s clearbt">
+                    <dl>
+                        <dt><strong>3%</strong>加息券</dt>
+                        <dd>
+                            <p>仅限3月标及以上使用</p>
+                            <p>过期时间为2016-12-31 24:00:00</p>
+                        </dd>
+                    </dl>
+                    <dl class="data2">
+                        <dt><strong>3%</strong>加息券</dt>
+                        <dd>
+                            <p>仅限3月标及以上使用</p>
+                            <p>过期时间为2016-12-31 24:00:00</p>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="april_side1">
+                    <h5 style="font-weight: bold;font-size: 18px;color: #ff0000;">代金券红包使用说明：</h5>
+                    <p>1、用户所有融和贷平台投资代金券均在本页面记录及查看；</p>
+                    <p>2、未使用、已使用、已过期的代金券，都可在页面对应分栏中查看；</p>
+                    <p>3、对应代金券来源、有效期（从领取日开始计算）、使用额度、状态均可在代金券上查看；</p>
+                    <p>4、用户单笔投资限用一张代金券，系统默认使用该笔投资可以获得的最大奖励代金券；</p>
+                    <p>5、符合条件的投资，满标复审后，三个工作日内代金券金额将直充用户汇付账户，可投资，可提现；</p>
+                    <p>6、本活动最终解释权归融和贷所有，如有疑问，请致电在线客服：400-013-5679。</p>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</div>
+{literal}
+<script>
+    $(function(){
+        $('.april_tit ul li').each(function(){
+            $(this).click(function(){
+                $(this).addClass('onredzt').siblings().removeClass('onredzt');
+                var data=$(this).index();
+               // getuser(data)
+            });
+        });
+        $('.april_side2s dl:odd').css('float','right');
+       /* function getuser(data){
+            $.getJSON('/?user&q=get_share_ajax&alias=voucher&methodname=getMyVoucher&data='+data+'',function(ret){
+                if(ret.code == 0){
+                    var surelen = ret.data.list.length;
+                    var sure = '';
+                    sure+='<tr>';
+                    if(type=='/?user&m=integral/user/get_getlog') {
+                        sure += '<th width="260">来源</th>';
+                    }else if(type=='/?user&m=integral/user/get_uselog'){
+                        sure += '<th width="260">使用</th>';
+                    }
+                    sure+='<th width="285">积分</th>';
+                    sure+='<th width="220">时间</th>';
+                    sure+='<th width="385">详情</th>';
+                    sure+='</tr>';
+                    for (var i =0 ; i < surelen; i++) {
+                        sure +='<tr>';
+                        sure+='<td><span>'+ret.data.list[i].source+'</span></td>';
+                        if(type=='/?user&m=integral/user/get_getlog'){
+                            sure+='<td><i>+'+ret.data.list[i].integral+'</i></td>';
+                        }else if(type=='/?user&m=integral/user/get_uselog'){
+                            sure+='<td><i>'+ret.data.list[i].integral+'</i></td>';
+                        }
+                        sure+='<td>'+ret.data.list[i].addtime+'</td>';
+                        sure+='<td>'+ret.data.list[i].remark+'</td>';
+                        sure+='</tr>';
+                    }
+                    $('.clact').html(sure);
+
+                }else{
+                    jDialog.alert(ret.msg);
+                }
+            });
+        };*/
+    });
+
+
+
+
+
+
+</script>
+{/literal}

@@ -1,0 +1,29 @@
+
+ <div class="form_box w500">
+ <form action="" method="post" id="set_paypassword_form" autoComplete="off">
+	<div class="item">
+	  <label class="uf_label"><span class="user_warning_c">*</span>请输入密码：</label>
+	  <span class="u_basic"><input type="password" class="u_input" maxlength="15" name="newpaypwd" id="newpaypwd"></span>
+	</div>
+	<div class="item">
+	  <label class="uf_label"><span class="user_warning_c">*</span>请再次输入密码：</label>
+	  <span class="u_basic"><input type="password" class="u_input" maxlength="15" name="_newpaypwd" id="_newpaypwd"></span>
+	</div>
+    <div class="item">
+	  <label class="uf_label"><span class="user_warning_c">*</span>验证码：</label>
+	  <span class="u_basic"><input type="text" class="u_input " maxlength="6" name="v_code" id="phone_code" style="width: 100px;">
+      {valicode }
+      </span>
+	</div>
+	<div class="item">
+	  <label class="uf_label">&nbsp;</label>
+	  <input type="submit" class="u_sub" value="确认提交"><input type="hidden" id="_id"  value="{$smarty.request.id}"/>
+	</div>
+	<div class="item">
+	  <label class="uf_label">&nbsp;</label>
+	  <span class="user_warning_c" id="password_warn" >* 温馨提示：我们将严格对用户的所有资料进行保密 </span>
+	</div>
+	
+ </form>
+ </div>
+{literal}<script>diyou.use('users_safe',function(u){u.set_paypassword('set_paypassword_form');})</script>{/literal}

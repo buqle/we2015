@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="{$tpldir}/zhuanti/mobile/css/style.css" />
+	<script src="{$tpldir}/zhuanti/mobile/js/jquery-1.8.3.min.js"></script>
+	<script src="http://libs.baidu.com/jqueryui/1.8.22/jquery-ui.min.js "></script>
+	<script src="{$tpldir}/zhuanti/mobile/js/jquery.fullPage.min.js"></script>
+	<script>
+		$(function(){
+			if($.browser.msie && $.browser.version < 10){
+				$('body').addClass('ltie10');
+			}
+			$.fn.fullpage({
+				verticalCentered: false,
+				anchors: ['page1', 'page2', 'page3', 'page4', 'page5'],
+				navigation: true,
+				navigationTooltips: []
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+<div id="setrdd" style="position: fixed;top: 0;width: 100%;left: 0;z-index: 1000;height: 100px;">
+	<div class="header_top2">
+
+	</div>
+</div>
+
+
+<div class="section section1">
+	<div class="bgc"><img src="{$tpldir}/zhuanti/mobile/images/section1.jpg" alt=""></div>
+	<div class="bg clear">
+		<div class="bgcont1 clear">
+			<div class="boxapp" style="margin-left: 76px;"></div>
+		</div>
+		<div class="boxapp2 clear">
+			<div class="xzapp"><img src="{$tpldir}/zhuanti/mobile/images/ewm.gif" alt="" ></div>
+			<div class="xzbbre">
+				<a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1028192744&mt=8" class="download-iphone-link bg-img"><img src="{$tpldir}/zhuanti/mobile/images/pg.gif" alt="" style="padding-bottom: 26px;"></a>
+				<a href="http://downloadpkg.apicloud.com/app/download?path=http://7xmfp9.com1.z0.glb.clouddn.com/a29f0f3363bf22de8fffe878c57dac06.apk" class="download-android-link bg-img"><img src="{$tpldir}/zhuanti/mobile/images/az.gif" alt=""></a>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+
+<div class="section section2">
+	<div class="bgc"><img src="{$tpldir}/zhuanti/mobile/images/22.png" alt=""></div>
+	<div class="bg clear">
+		<div class="section2cont1" style="margin-left: 518px;position: absolute;top: 30%;"></div>
+	</div>
+
+</div>
+
+<div class="section section3">
+	<div class="bgc"><img src="{$tpldir}/zhuanti/mobile/images/3c.gif" alt=""></div>
+	<div class="bg clear">
+		<div class="section3cont1" style="margin-left:90px;position: absolute;top: 30%;"></div>
+	</div>
+</div>
+
+</div>
+
+<div class="section section4 clear">
+	<div class="bgc"><img src="{$tpldir}/zhuanti/mobile/images/4c.png" alt=""></div>
+	<div class="bg clear">
+
+	</div>
+</div>
+
+<div class="section section5">
+	<div class="poscont5">
+		<!--<h4>活动说明</h4>
+        <p>★ 活动时间：11.1-11.30</p>
+        <p>★ 此次活动仅限手机APP客户端用户参与；</p>
+        <p>★ 本次活动不与PC端券妈妈活动同时生效；</p>
+        <p>★ 本次活动的现金奖励直充用户融和财富账户，可投资，可提现；</p>
+        <p>★ 融和贷保留对本次活动的最终解释权，咨询热线：400-013-5679。</p> -->
+		<h5>扫描下面的二维码下载融和贷手机APP，赶紧领取属于您的现金！</h5>
+		<div class="poscont6">
+			<h3>温暖有你、有我</h3>
+			<div class="qrcode-frame-img">
+				<div id="conty">
+					<a href="http://ronghedai.com/phone/index.html"><img class="qrcode-frame" src="{$tpldir}/zhuanti/mobile/images/ewm2.gif" alt=""></a>
+					<p>下载APP客户端</p>
+				</div>
+				<div id="conty1">
+					<img class="qrcode-frame qrcode-frame1" src="{$tpldir}/zhuanti/mobile/images/ewm3.gif" alt="">
+					<p>关注[融和财富]微信</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+</body>
+</html>

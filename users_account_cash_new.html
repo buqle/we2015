@@ -1,0 +1,95 @@
+{articles module="account" function="get_users_bank_one" var=Avar user_id=$_G.user_id}
+{if $Avar.username==""}
+{include file="users_account_bank.html"}
+{else}
+
+<div class="fn_rig user_rig">
+	   <div class="user_box">
+		   <div class="fund_manage">
+				  <h2 class="fn_cle">
+				     <span class="fn_left">提现</span>
+				     <span class="fn_rig">
+					   <a href="/?user&m=account/bank/list">修改银行账号</a><em>|</em><a href="/?user&m=account/cash/cash_log">提现记录</a>
+					 </span>
+				  </h2>
+				  <div class="cont">
+                  
+				     <div class="user_withdraw">
+						 <form action="" method="post" id="cash_new_form">
+							<div class="item">
+							   <label class="u_label">账户余额:</label>
+							   <span class="u_span"><em class="account_m">{$_G.account_result.balance|default:0.00}</em>元</span>
+							</div>
+							<div class="item">
+							   <label class="u_label">开户姓名:</label>
+							   <span class="u_span">{$_G.user_result.realname|truncate:1}**</span>
+							</div>
+							<div class="item">
+							   <label class="u_label">开户银行:</label>
+							   <span class="u_span">
+                               
+                               <img src="{$tpldir}/images/bank_img/bank_{$Avar.bank}.gif">
+                               
+                               尾号{$Avar._account}</span>
+							</div>
+							<div class="item">
+							   <label class="u_label">支行名称:</label>
+							   <span class="u_span">{$Avar.branch}</span>
+							</div>
+							<div class="item fn_cle">
+							   <label class="u_label">提现金额:</label>
+							   <div class="fn_left money_txt">
+								 <input type="text" class="u_input" onkeyup="value=value.replace(/[^0-9Xx|.]/g,'')" name="money" id="money">
+								 <span class="money_type">元</span>
+							   </div>
+							</div>
+							<div class="item">
+							   <label class="u_label">&nbsp;</label>
+							   <span class="u_span">手续费：<em class="user_f_c1" id="fee">￥0.00</em></span></span>
+							</div>
+							
+							<div class="item">
+							   <label class="u_label">实际到账:</label>
+							   <span class="u_span"><em class="user_f_c1" id="account">￥0.00</em></span>
+							</div>
+							<div class="item">
+							   <label class="u_label">支付密码:</label>
+                                {if $_G.user_result.paypassword==""}
+        			<a href="javascript:void(0);" class="set_pwd set_pwd_link">请先设置支付密码</a> 
+                    {else}    
+							   <input type="password" class="u_input" name="paypassword" id="paypassword">
+                                  		
+        		 {/if} 
+							</div>
+							<div class="item">
+								<label class="u_label">手机验证码: </label>
+								<input type="text" class="u_input w80" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" maxlength="6" value="" name="ajax_phone_code" id="ajax_phone_code">
+								<input type="button" class="get_verty_btn" id="send_phonevalid" value="获取验证码"/>
+                                <span class="user_warning_c" id="cash_warn"></span>
+							</div>
+							<div class="item">
+								<label class="u_label">&nbsp; </label>
+								<input type="submit" class="u_sub" value="立即提现" />
+							</div>
+						 </form>
+                        
+					 </div>
+            <div class="user_info_item user_info_notice">
+<p>注：1、请输入您要取出金额,我们将在1至3个工作日(国家节假日除外)之内将钱转入您网站上填写的银行帐号。</p>
+					<p>2、如你急需要把钱转到你的帐号或者24小时之内网站未将钱转入到你的银行帐号,请联系客服中心。</p>
+					<p>3、确保您的银行帐号的姓名和您的网站上的真实姓名一致。</p>
+					<p>4、每笔提现金额至少为100元以上。</p>
+					<p>5、每笔提现金额最高不能超过<span class="user_warning_c">5000000.00</span>元以上。</p>
+					<p>6、重要！！如果您填写的开户行支行不正确，提现交易将无法成功，提现费用不予返还。如果您不确定开户行支行名称，可以打电话到当地所在银行的营业网点询问或者上网查询。</p>
+			</div>
+				  </div>	  
+		   </div>
+	   </div>
+	</div>
+{/if}  
+{/articles}
+{literal}
+<script type="text/javascript">
+diyou.use('users_account',function(dy){dy.cash('cash_new_form')})
+</script>
+{/literal}

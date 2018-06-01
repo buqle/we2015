@@ -1,0 +1,95 @@
+{include file="header.html"}
+
+<div class="conbox t50">
+   <div class="borrow_pro">
+	   <div class="bread"><a href="#">我要借款</a>&nbsp;>&nbsp;填写信息</div>
+	   {include file="users_loan_info_menu.html"}
+	   <div class="fill_infor">
+	       {include file="users_loan_info_right.html"}
+		  <div class="infor_cont">
+              <form action="" method="post" id="loan_finance_info">
+			         <div class="infor_cont_box">
+						 <h3>资产信息</h3>
+                         {articles module="rating" function="GetFinanceOne" user_id=$_G.user_id var="var"}
+                         <ul>
+						   <li>
+						     <div class="item">
+							   <label class="basic_label w120">是否有房：</label>
+							   <input type="radio" class="label_radio" name="is_house" {if $var.is_house==1}checked="true"{/if} value="1"/>
+							   <label class="label_radio">有</label>
+							   <input type="radio" class="label_radio" name="is_house" {if $var.is_house==0}checked="true"{/if} value="0"/>
+							   <label class="label_radio">无</label>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120">有无房贷：</label>
+							   <input type="radio" class="label_radio" name="is_mortgage" {if $var.is_mortgage==1}checked="true"{/if}  value="1"/>
+							   <label class="label_radio">有</label>
+							   <input type="radio" class="label_radio" name="is_mortgage" {if $var.is_mortgage==0}checked="true"{/if} value="0"/>
+							   <label class="label_radio">无</label>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>贷款总额：</label>
+							   <input type="text" class="basic_input" name="house_account" id="house_account" value="{$var.house_account|default:0}">
+							    <span class="money_type">元</span>
+                                 <span class="msg_box warning"><em></em><i></i><font>请填写贷款总额</font></span> 
+                             </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>每月按揭金额：</label>
+							   <input type="text" class="basic_input" name="month_house"  id="month_house" value="{$var.month_house|default:0}">
+							   <span class="money_type">元</span>
+                                <span class="msg_box warning"><em></em><i></i><font>请填写每月按揭金额</font></span> 
+                             </div>
+							 <div class="item">
+							   <label class="basic_label w120">是否有车：</label>
+							   <input type="radio" class="label_radio" name="is_car"  {if $var.is_car==1}checked="true"{/if} value="1"/>
+							   <label class="label_radio">有</label>
+							   <input type="radio" class="label_radio" name="is_car"  {if $var.is_car==0}checked="true"{/if} value="0"/>
+							   <label class="label_radio">无</label>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120">有无车贷：</label>
+							   <input type="radio" class="label_radio" name="is_carloan" {if $var.is_carloan==1}checked="true"{/if} value="1"/>
+							   <label class="label_radio">有</label>
+							   <input type="radio" class="label_radio" name="is_carloan" {if $var.is_carloan==0}checked="true"{/if} value="0"/>
+							   <label class="label_radio">无</label>
+							 </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>贷款总额：</label>
+							   <input type="text" class="basic_input" name="car_account" id="car_account" value="{$var.car_account|default:0}">
+							    <span class="money_type">元</span>
+                                 <span class="msg_box warning"><em></em><i></i><font>请填写贷款总额</font></span>
+                             </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>每月按揭金额：</label>
+							   <input type="text" class="basic_input" name="month_car" id="month_car" value="{$var.month_car|default:0}">
+							    <span class="money_type">元</span>
+                                 <span class="msg_box warning"><em></em><i></i><font>请填写每月按揭金额</font></span>
+                             </div>
+							 <div class="item">
+							   <label class="basic_label w120"><span class="warning_c">*</span>每月信用卡还款金额：</label>
+							   <input type="text" class="basic_input" name="month_card" id="month_card" value="{$var.month_card|default:0}">
+                               <span class="money_type">元</span>
+                               <span class="msg_box warning"><em></em><i></i><font>请填写每月信用卡还款金额</font></span>
+							 </div>
+						 </li> 
+					     </ul>
+                         {/articles}
+					 </div>	 
+					 <div class="item txt_cent">
+					   <input type="submit" value="提交&nbsp;下一步" class="bor_pro_sub"/>
+					   <input type="button" id="return" value="返回" class="bor_pro_sub"/>
+					 </div>
+		   </form>			  
+		   </div>
+		   <div class="cle"></div>
+	   </div>  
+   </div>
+</div>
+
+
+{literal}
+<script type="text/javascript">
+diyou.use('borrow',function(dy){dy.loan_info_finance('loan_finance_info')})
+</script>
+{/literal}
+{include file="footer.html"}

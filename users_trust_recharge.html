@@ -1,0 +1,281 @@
+<!--充值 0223 - Q -->
+{articles module="webcount"  function="get_users_account" var="var1" user_id=$_G.user_id}
+<div class="top_up" >
+	<p class="p1"><em class="active">充值</em><i>|</i><em class="em1" id="em0">充值记录</em></p>
+	<div class="top_1" >
+
+        <div class="cust_recharget clearg font18 color-444"><span class="custadd lefts text-center">认证支付</span><span class="lefts text-center">网银支付</span></div>
+        <div class="cust_rechargec">
+            <div class="cust_rechargec1 block" id="cust_rechargec1">
+                <div class="cust_rechargec2 font18 color-444">
+                    <p>
+                        <label class="inline-block">账户余额</label>
+                        <i style="color: #ff8d2d">{$var1.balance|default:"0.00"}元</i>
+                    </p>
+                   <!-- <p>
+                        <label class="inline-block">开户银行</label>
+                        <input type="text" class="font18 color-444">
+                    </p>-->
+                    <p>
+                        <label class="inline-block">充值金额</label>
+                        <input type="text" placeholder="≥100元" class="money-input" onkeyup="value=value.replace(/[^0-9Xx|.]/g,'')"><span class="money_error"></span>
+                    </p>
+                    <p><input type="button" value="下一步" class="button_bank2 text-center block button_bank cursor font18 next-butt" coden=""></p>
+                </div>
+            </div>
+            <div class="cust_rechargec1">
+                <div class="cust_rechargec3" id="cust_rechargec2">
+                    <div class="cust_rechargec2 font18 color-444">
+                        <p>
+                            <label class="inline-block">账户余额</label>
+                            <i style="color: #ff8d2d">{$var1.balance|default:"0.00"}元</i>
+                        </p>
+                        <p>
+                            <label class="inline-block">充值金额</label>
+                            <input type="text" placeholder="≥100元" class="money-input" onkeyup="value=value.replace(/[^0-9Xx|.]/g,'')"><span class="money_error"></span>
+                        </p>
+                        <p><input type="button" value="下一步" class="button_bank2 text-center block button_bank cursor font18 next-butt"></p>
+                    </div>
+                </div>
+                <ul class="cust_rechargec4 clearg text-center">
+
+                </ul>
+            </div>
+
+        </div>
+
+
+		<div class="js">
+			<h2>温馨提示：</h2>
+            1.使用认证支付方式，资金同卡进出，无需开通网银即可完成支付，安全快捷；<br>
+            2.使用网银支付方式，单笔限额较高，适合大金额充值；<br>
+            3.充值成功24小时后方可取现；<br>
+            4.如需帮助，欢迎联系客服400-013-5679。<br>
+        </div>
+		<div style="height: 65px;"></div>
+	</div>
+</div>
+<div class="mask"></div>
+
+<div class="alertbox-A" id="alertbox-1"></div>
+<div class="alertbox-B" id="alertbox-2">
+    <div class="alertbox-C" id="tanabata-a_ata-abox">
+        <div class="close-a cursor"></div>
+        <h4 class="text-center">各银行快捷充值限额参考</h4>
+        <div class="tanabata-a_ata-abox2"></div>
+        <div class="tanabata-a_ata-abox3 font14">
+            <h5 class="boldf font16" style="font-weight: bold;">温馨提示：</h5>
+            <p>1、表格数据仅供参考，请以银行官网或门店快捷充值限额具体数据为准；</p>
+            <p>2、如需帮助或有其他疑问，欢迎联系融和贷客服400-013-5679。</p>
+            <div class="cursor font16 text-center ww3 color-ff i-knowbtn">我知道了</div>
+        </div>
+    </div>
+</div>
+
+
+{/articles}
+{literal}
+<script type="text/javascript">
+   $(function(){
+
+       $('.cust_recharget span').click(function(){
+           $(this).addClass('custadd').siblings().removeClass('custadd');
+           $('.cust_rechargec .cust_rechargec1').eq($(this).index()).addClass('block').siblings().removeClass('block')
+       });
+
+
+       function moneyGet2(obj1,obj2){
+           if($(obj1).val()!=''&&$(obj1).val()>=100){
+               $(obj2).text('');
+               return false;
+           }else if($(obj1).val()<100){
+               $(obj2).text('单次充值金额需≥100元');
+               return false;
+           }
+       };
+       //认证支付
+       var wait=60;
+       function time() {
+           if (wait == 0) {
+               $('.cust_bankalert #text_butns').attr("disabled",false);
+               $('.cust_bankalert #text_butns').val('获取验证码')
+               wait = 60;
+           } else {
+               $('.cust_bankalert #text_butns').attr("disabled",true);
+               $('.cust_bankalert #text_butns').val('重新发送'+wait)
+               wait--;
+               setTimeout(function() {time($('.cust_bankalert #text_butns'))},1000)
+           }
+       }
+       $('#cust_rechargec1 .next-butt').click(function(){
+           //还要加上是否开通汇付和激活选项
+           if(trust!=1){
+               window.location.href="/?user&q=reg&type=phone";
+               return false;
+           }else if($('#main').attr('att-trust')==0){
+               jDialog.alert('您的账户暂未激活');
+               return false;
+           }
+           function moneyGet(obj1,obj2){
+               if($(obj1).val()==''){
+                   $(obj2).text('请输入充值金额');
+                   return false;
+               }else if($(obj1).val()<100){
+                   $(obj2).text('单次充值金额需≥100元');
+                   return false;
+               }else {
+
+                   var alert1=jDialog.alert('正在加载中');
+                   $.http.post('/?user&m=trust/send_code',
+                           {
+                               BusiType:'recharge'
+
+
+                           }
+                           ,function (ret) {
+                               alert1.close();
+                               if (ret.code=='0') {
+                                   time();
+                                   $('#cust_rechargec1 .next-butt').attr('coden',ret.data).addClass('on_text_butns');
+                                   var dialog = jDialog.ajax('/?user&m=account/recharge/cust_recharge',{
+                                       title: '充值',
+                                       width:550,
+                                       height:350
+                                   });
+
+
+                               }else {
+                                   jDialog.alert(ret.msg);
+                               }
+                           }, 'json');
+               }
+           }
+           moneyGet('#cust_rechargec1 .money-input','#cust_rechargec1 .money_error');
+
+       });
+
+       $('#cust_rechargec1 .money-input').keyup(function(){
+           moneyGet2('#cust_rechargec1 .money-input','#cust_rechargec1 .money_error');
+       });
+       $('#cust_rechargec1 .money-input').focus(function () {
+           if($(this).hasClass('money-aa')){
+               return false;
+           }
+           $(this).addClass('money-aa');
+           $('#alertbox-1,#alertbox-2').show();
+           $('#tanabata-a_ata-abox .close-a,.i-knowbtn').click(function () {
+               $('#alertbox-1,#alertbox-2').hide();
+           })
+       })
+
+
+       //网银支付
+       var cardID=['ABC','CCB','BOC','CEB','CIB','PINGAN','PSBC','SPDB','ICBC','CMBC','BOCOM','GDB','HFB','HXB','CMB']
+
+       for (var i=0;i<15;i++){
+           $('.cust_rechargec4').append($('<li class="lefts cursor" nids=""><div class="subcont_warp"><div class="subcont"><img src="//img.ronghedai.com/dyweb/dythemes/rhd/images/newimg/c_bank'+(i)+'.png?v=2017720"></div></div><i></i></li>'));
+       };
+       $('.cust_rechargec4 li').each(function(){
+           $(this).attr('nids',cardID[$(this).index()]).click(function(){
+               $(this).addClass('onclass').siblings().removeClass('onclass');
+               $('#alertbox-1,#alertbox-2').show();
+               $('#tanabata-a_ata-abox .close-a,.i-knowbtn').click(function () {
+                   $('#alertbox-1,#alertbox-2').hide();
+               })
+           });
+       });
+       $('.cust_rechargec4 li').eq(5).hide();
+       $('.cust_rechargec4 li').eq(12).hide();
+       $('.cust_rechargec4 li').eq(13).hide();
+
+       $('#cust_rechargec2 .next-butt').click(function(){
+           //还要加上是否开通汇付和激活选项
+           if(trust!=1){
+               window.location.href="/?user&q=reg&type=phone";
+               return false;
+           }else if($('#main').attr('att-trust')==0){
+               jDialog.alert('您的账户暂未激活');
+               return false;
+           }
+           function moneyGet(obj1,obj2){
+               if($(obj1).val()==''){
+                   $(obj2).text('请输入充值金额');
+                   return false;
+               }else if($(obj1).val()<100){
+                   $(obj2).text('单次充值金额需≥100元');
+                   return false;
+               }else if($('.cust_rechargec4 li').hasClass('onclass')){
+
+                   var w = window.open();
+                   $.http.post('/?user&m=trust/recharge/new',
+                           {
+                               money:$('#cust_rechargec2 .money-input').val(),
+                               GateBusiId:'B2C',
+                               bank_id :$('.cust_rechargec4 li.onclass').attr('nids')
+                           }
+                           ,function (ret) {
+                               if (ret.code!=0) {
+                                   w.close();
+                                   jDialog.alert(ret.msg);
+                               }else {
+                                   jDialog.confirm('',{
+                                               text:'完成充值',
+                                               type:'highlight',
+                                               handler : function (button, dialog) {
+                                                   $('#money').val('');
+                                                   $.http.post('/?user&m=trust/recharge/chkrecharge', {nid:$('#cust_rechargec2 .money-input').val()},function (response) {
+                                                   },'json');
+                                                   dialog.close();
+                                                   document.location.reload();
+                                               }
+                                           }
+                                           ,{
+                                               text:'充值失败',
+                                               type:'highlight',
+                                               handler : function(button, dialog) {
+                                                   dialog.close();
+                                               }
+                                           },{
+                                               title:'在线充值'
+                                           }
+                                   );
+
+                                   w.document.write(ret.data);
+                               }
+                           }, 'json',function(){
+                               w.close();
+                               jDialog.alert('请求错误，请重试或联系在线客服！');
+                           });
+
+                   //jDialog.alert($('.cust_rechargec4 li.onclass').attr('nids'));
+               }else {
+                   jDialog.alert('请选择您支付的银行');
+               }
+           }
+           moneyGet('#cust_rechargec2 .money-input','#cust_rechargec2 .money_error');
+       });
+
+
+       $('#cust_rechargec2 .money-input').keyup(function(){
+           moneyGet2('#cust_rechargec2 .money-input','#cust_rechargec2 .money_error');
+       });
+
+
+       $("#em0").click(function(){
+           // 通过options参数，控制dialog
+           var dialog = jDialog.ajax('/?user&m=account/recharge/recharge_log',{
+               title: '充值记录',
+               width:1064,
+               height:620
+           });
+       });
+
+
+
+
+   })
+
+
+
+</script>
+{/literal}

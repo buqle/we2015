@@ -1,0 +1,85 @@
+
+{include file="header.html"}
+
+<link rel="stylesheet" href="{$tpldir}/css/blue/article.css">
+ {literal}
+    <script type="text/javascript">
+        //登入注册的判断
+        $(document).ready(function(){
+            if(user_id != ''){
+                $('#useregister_01').click(function(){
+                    window.location.href="/invest/index.html";
+                });
+            }else{
+                $('#useregister_01').click(function(){
+                    window.location.href="/?user&q=login";
+                });
+            }
+        });
+    
+
+    </script>
+    {/literal}
+
+
+ <div class="mon360">   
+        <div class="conbox">
+         <div class="wap_useregister_title"><a id="ctl00_content_NavigationLink1_main" href="/">{$_G.system.con_webname}></a>
+                    &gt; {$_G.site_result.name}</a>
+            </div>
+         
+            <!--/-->
+
+            <div class="art_menu">
+              <div id="useregister_01" style="cursor: pointer;"><a>立即注册</a></div>
+              <ul>
+              {loop module="admin" function="get_site_list" var="var" limit="all" pid=266 }
+                {if $var.nid!='welcome' && $var.nid!='privacy'}
+                 <li>
+                   <a href="/{$var.nid}/index.html" {if $_G.site_result.nid==$var.nid}class="now"{/if}>{$var.name}</a>
+                 </li>
+                {/if}
+              {/loop}
+              </ul>
+               <img src="{$tpldir}/images/articles/helpcente03_15.jpg" alt="">
+            </div>
+            <!--/-->
+            <div class="art_detail" id="content_list">
+                  
+                  {list module="articles" function="get_list" var="loop" status=1  site_nid=$_G.site_result.nid epage=5 page=$smarty.request.page+1 order="order_asc"}
+                <!--me-->
+            
+               <ul class="art_list">
+              {foreach from=$loop.list item=var key=key} 
+
+                
+                 <li>
+                   <div class="title">
+                       <h3>
+                        <a href="javascript:void(0)">&nbsp;{$var.name}</a>
+                      
+                       </h3>
+                      
+                   </div>
+                   <div class="content">
+                     <p>&nbsp;{$var.contents}</p>
+                   </div> 
+                   
+                 </li>
+          {/foreach} 
+               </ul>
+
+
+
+               {if $loop.total>0}
+                     <div class="pagination" id="pages" data-page='{$smarty.request.page|filterinput}' data-total='{$loop.total}' data-epage='{$loop.epage}'></div>
+                {/if}
+               {/list}
+                  
+
+
+            </div>
+            <div class="cle"></div>
+        </div>
+</div>
+{include file="footer.html"}

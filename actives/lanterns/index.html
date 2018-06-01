@@ -1,0 +1,235 @@
+{include file="header.html"}
+<link href="{$tpldir}/actives/lanterns/css/style.css" rel="stylesheet" type="text/css" />
+<div class="sure-text"><img src="{$tpldir}/actives/lanterns/images/ban.jpg"></div>
+
+<div class="yx_content">
+    <div class="yx_content1">
+        <div class="yx_titwy">
+            <div class="yx_titwy1">
+                <p>活动时间：2016-2-21至2015-2-29</p>
+                <p>活动对象：融和贷全体用户</p>
+                <p>活动内容：活动期间内，融和贷用户每成功完成一笔投资，都可以获得相应的现金奖励</p>
+                <p>奖励计算方式：奖励金额 = 投标金额 x 对应加权系数</p>
+            </div>
+        </div>
+        <div class="yx_sidec1">
+            <div class="yx_textt">
+                <div class="yxs_text1">
+                    <h4></h4>
+                    <ul>
+                        <li class="yx_balabal1">
+                            <p>投资3月标奖励金额 = </p>
+                            <h5>投标金额 x 1.25%</h5>
+                        </li>
+                        <li class="yx_balabal2">
+                            <p>投资6月标奖励金额 = </p>
+                            <h5>投标金额 x 3%</h5>
+                        </li>
+                        <li class="yx_balabal3">
+                            <p>投资12月标奖励金额 = </p>
+                            <h5>投标金额 x 5%</h5>
+                        </li>
+                    </ul>
+                </div>
+                <div class="yxs_text2">
+                    <div class="tit_yxs">投资奖励排行榜</div>
+                    <div class="yxs_text2cont">
+                        <div style="height: 75px"></div>
+                        <p style="height: 40px;"><span style="width: 22%">排行</span><span>用户名</span><span> 获得奖励 </span><span>领取时间</span></p>
+                        <div id="up_zzjs" style="height:218px;overflow:hidden;">
+                            <div id="marqueebox">
+                                <div class="sure-t1">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo_sb"></div>
+                </div>
+                <div class="yxs_text3">
+                    <div class="tit_yxs">奖励领取记录</div>
+                    <div class="yxs_text3cont">
+                        <div style="height: 75px"></div>
+                        <p style="height: 40px;"><span>用户名</span><span> 获得奖励 </span><span>领取时间</span></p>
+                        <div id="up_zzjs" style="height:218px;overflow:hidden;">
+                            <div id="marqueebox1">
+                                <div class="sure-t2">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="login_myjl"></div>
+                    <div class="lucky_bg bhd"></div>
+                    <div class="login_myjlcont">
+                        <div class="login_myjlcont1">
+                            <div class="close_myjl"></div>
+                            <div class="yxs_text4cont">
+                                <div style="height: 10px;"></div>
+                                <div class="yxs_text4cont1">
+                                    <div style="height:58px"></div>
+                                    <p style="height: 40px;"><span>投资时间</span><span>投资标的</span><span> 投资金额</span><span>奖励金额</span></p>
+                                    <div id="up_zzjs" style="height:218px;overflow:auto;">
+                                        <div id="marqueebox2">
+                                            <div class="sure-t3">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="allter">合计：<span id="allter1"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <div class="yx_content2">
+        <div style="height: 150px;"></div>
+        <div class="yx_content2c">
+            <h4>活动规则：</h4>
+            <p>1.本活动奖金借款项目满标复审成功且满标时间在活动期间内，奖金资格有效。</p>
+            <p>2.本活动不包含债权转让项目。</p>
+            <p>3.活动兑奖时间为活动结束后，三个工作日内充入其融和贷账户。</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="jiujiu_foot">
+    <p>参与本活动所产生的个人所得税由用户自行承担，融和贷保留活动所有解释权。</p>
+    <p>对于恶意刷奖，融和贷有权取消其参与及中奖资格，并保留追究法律责任的权利。</p>
+    <p>更多精彩活动，请关注融和贷官方微信和手机APP。</p>
+    <div class="endjiujiu"></div>
+</div>
+
+
+
+
+{literal}
+<script language="javascript">
+
+    $(function(){
+
+        $.getJSON('/?user&q=get_share_ajax&alias=lanterns&methodname=get_tops',{},function(ret){
+            if(ret.code == 0){
+                var surelen = ret.data.length;
+                var surer = '';
+                for(var i = 0; i < surelen; i++){
+                    surer += '<p><span style="width: 22%;">'+(i+1)+'</span><span>'+ret.data[i].username+'</span><span>￥'+ret.data[i].reward+'</span><span>'+ret.data[i].addtime+'</span></p>';
+                }
+                $('.sure-t1').html(surer);
+
+            }else{
+                alert(ret.msg);
+            }
+        })
+
+
+
+    });
+
+
+    $(function(){
+
+        $.getJSON('/?user&q=get_share_ajax&alias=lanterns&methodname=get_newly',{},function(ret){
+            if(ret.code == 0){
+                var surelen = ret.data.length;
+                var surer2 = '';
+                for(var i = 0; i < surelen; i++){
+                    surer2 += '<p><span>'+ret.data[i].username+'</span><span>￥'+ret.data[i].reward+'</span><span>'+ret.data[i].addtime+'</span></p>';
+                }
+                $('.sure-t2').html(surer2);
+
+            }else{
+                alert(ret.msg);
+            }
+        })
+
+
+
+    });
+
+
+
+
+    $(".logo_sb").each(function(){
+        $(this).click(function(){
+            if (user_id!='') {
+                window.location.href="/invest/index.html";
+            } else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+        });
+    });
+
+    $(function(){
+        $(".login_myjl").click(function(){
+            if (user_id!='') {
+                $.getJSON('/?user&m=active/get_share_ajax&alias=lanterns&methodname=get_my_reward',{},function(ret){
+                    if(ret.code == 0){
+                        $(".lucky_bg").show();
+                        $('.login_myjlcont').show();
+                        var html = '';
+                        var len = ret.data.length;
+                        var a=0;
+                        for(var i=0; i<len; i++){
+                            html += '<p class="claa-texta" ><span>'+ret.data[i].addtime+'</span><span>'+ret.data[i].tender+'</span><span>'+ret.data[i].account+'</span><span>'+ret.data[i].reward+'</span></p>';
+                            a +=Number(ret.data[i].reward)
+                        }
+                        if($('.claa-texta').length < len){
+                            $('.sure-t3').html(html);
+                            $('#allter1').text(a);
+                        }
+
+                    }
+                })
+            } else {
+                diyou.use('dialogs',function(dia){dia.dialog('用户登录','/?user&q=login&type=ajax')});
+                return false;
+            }
+
+        });
+
+        $(".close_myjl").click(function(){
+            $(".lucky_bg").hide();
+            $('.login_myjlcont').hide();
+        });
+    });
+
+    function startmarquee(lh,speed,delay,domID) {
+        var p=false;
+        var t;
+        var o=document.getElementById(domID);
+        //o.innerHTML=o.innerHTML;
+        o.style.marginTop=0;
+        o.onmouseover=function(){p=true;}
+        o.onmouseout=function(){p=false;}
+        function start(){
+            t=setInterval(scrolling,speed);
+            if(!p) o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+        }
+        function scrolling(){
+            if(parseInt(o.style.marginTop)%lh!=0){
+                o.style.marginTop=parseInt(o.style.marginTop)-1+"px";
+                if(Math.abs(parseInt(o.style.marginTop))>=o.scrollHeight) o.style.marginTop=0;
+            }else{
+                clearInterval(t);
+                setTimeout(start,delay);
+            }
+        }
+        setTimeout(start,delay);
+    }
+
+    startmarquee(65,10,800,'marqueebox');
+    startmarquee(65,10,800,'marqueebox1');
+
+</script>
+{/literal}

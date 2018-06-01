@@ -1,0 +1,136 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", sans-serif;;
+    line-height: 1.5;
+    font-size: 16px;
+    color: #000;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+}
+
+button {
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+}
+
+a {
+    -webkit-touch-callout: none;
+    text-decoration: none;
+}
+
+:focus {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+em, i {
+    font-style: normal;
+}
+.img-all{ width: 100%; height: 100%;}
+.section1{ height: 3.55rem;}
+.section2{ height: 10.8rem;}
+.dis-cents{ font-weight: bold; font-size: 0.7rem; height: 2rem; line-height: 2rem; color: #52281C; background: #FCD2C6; text-align: center;}
+.section3{ height: 1rem;}
+.section4{ background: #FEC1A5; padding: 0.5rem 1rem 2rem 1rem;}
+.can-vois{ width: 7rem; height: 2.5rem; margin: 0 auto;}
+.in-pops{ text-indent: 2em; font-size: 0.7rem; color: #52281c; line-height: 1rem;}
+.section5{ padding: 0 1rem 0 1rem; height: 7.45rem; background: #FEC1A5;}
+.section6{  background: #FEC1A5;}
+.sec-dis6{ border: 0.05rem solid #000; width: 14rem; margin: 0 auto;}
+.autos{ height: 1rem; background: #F80051; border-bottom: 0.05rem solid #000;}
+.autos-tp{height: 1rem;}
+.autos span{ height: 1rem; display: block; float: left; width: 25%; text-align: center; line-height: 1rem; font-size: 0.6rem; font-weight: bold; color: white;}
+.autos-tp span{ height: 1rem; display: block; float: left; width: 24.7%; text-align: center; line-height: 1rem; font-size: 0.5rem; color: white;}
+.span1{ border-right: 0.05rem solid #000;}
+.apbos{ height: 1rem; background: white;  border-top: 0.05rem solid #000;}
+.apbos span{ font-size: 0.8rem ; line-height: 1rem; color: #f80051; width: 25%; display: block; float: left;}
+.section8{ height: 5.8rem;}
+.sen-Mus{ padding: 0 1rem 2rem 1rem; background: #FDFAF3;}
+.sen-Mus p{ font-size: 0.7rem; color: #444; line-height: 1.5rem;}
+.lognse{ height: 1.2rem; width: 4rem; font-size: 0.8rem; border: 0.05rem solid #DDD; text-align: center; line-height: 1.2rem; margin: 0 auto;}

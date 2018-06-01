@@ -1,0 +1,143 @@
+{include file="header.html"}
+<!--me pluse-->
+<script type="text/javascript" src="{$tpldir}/js/jquery-1.8.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{$tpldir}/css/blue/about.css?v=2017927">
+
+<body>
+<div class="wrap">
+    <div class="warp_right">
+        <ul class="map clearfix fonuser_ovsnhe" id="map">
+            <li>
+                <a href="#" class="current currentpage" data-id="73">
+                    公司简介
+                </a>
+            </li>
+
+            <li>
+                <a href="#"   class="currentpage1" data-id="74">
+                    平台资质
+                </a>
+
+            </li>
+
+            <li>
+                <a href="#"   class="currentpage1" data-id="75">
+                    品牌荣耀
+                </a>
+            </li>
+
+            <li>
+                <a href="#"   class="currentpage1" data-id="76">
+                    管理团队
+                </a>
+            </li>
+
+            <li>
+                <a href="#"  class="currentpage1" data-id="86">
+                    合作机构
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="currentpage1" data-id="77">
+                    运营环境
+                </a>
+            </li>
+
+
+            <li>
+                <a href="#"  class="currentpage1" data-id="78">
+                    安全保障
+                </a>
+            </li>
+
+            <li>
+                <a href="#"  class="currentpage1" data-id="79">
+                    资费说明
+                </a>
+            </li>
+            <!--<li>-->
+            <!--<a href="#"   class="" data-id="80">-->
+            <!--公益慈善-->
+            <!--</a>-->
+            <!--</li>-->
+
+            <li>
+                <a href="#"  class="currentpage1" data-id="81">
+                    法律政策
+                </a>
+            </li>
+
+            <li>
+                <a href="#"  class="currentpage1" data-id="85">
+                    融和大事记
+                </a>
+            </li>
+
+            <li style="margin-right: 0;">
+                <a href="#"   class="" data-id="82">
+                    联系我们
+                </a>
+            </li>
+        </ul>
+
+    </div>
+    <!-- <div class="about-page-tonehs"></div>-->
+    <!--map end-->
+    <a name="test2"></a>
+    <div class="box">
+        <div class="loading_now">正在努力加载中，请耐心等待......</div>
+    </div>
+
+
+
+
+
+
+    {literal}
+    <script type="text/javascript">
+        diyou.use('aboutus',function(t){t.init()})
+        $('#century21').live('click',function(){
+            $('.centurycont3').toggle();
+        });
+        $('.showbtn-a').live('click',function(){
+            $('.hidden-box').show();
+            $(this).attr('class','nonene')
+        });
+        $().find()
+        $(function(){
+            var oFixed = $(".warp_right")
+            $(window).on('scroll',function(){
+                var sTop = $(window).scrollTop()
+                if(sTop>0){
+                    oFixed.css({
+                        'position':'fixed',
+                        'top':0
+                    })
+                }else{
+                    oFixed.css({
+                        'position':'absolute',
+                        'top':0
+                    })
+                }
+            });
+        })
+    </script>
+    {/literal}
+
+</div><!--wrap_about end-->
+
+
+
+
+
+
+
+{include file="footer.html"}
+{literal}
+<script type="text/javascript">
+    diyou.use('index',function(dy){dy.banner_slide('banner_slide','banner_btn');dy.login()})
+</script>
+{/literal}
+
+

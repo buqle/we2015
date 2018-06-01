@@ -1,0 +1,162 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", sans-serif;;
+    line-height: 1.5;
+    font-size: 16px;
+    color: #000;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+}
+
+button {
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+}
+
+a {
+    -webkit-touch-callout: none;
+    text-decoration: none;
+}
+
+:focus {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+em, i {
+    font-style: normal;
+}
+.section1{ height: 8rem;}
+.section-img{ width: 100%; height: 100%;}
+.section2{ height: 5.25rem;}
+.section3{ height: 9.4rem;}
+.section4{ height: 4.55rem; position: relative;}
+.section5{ height: 10rem;}
+.section6{ height: 13.65rem; position: relative;}
+.section7{ height: 12.7rem; position: relative;}
+.section8{ height: 9.3rem;}
+.oiun_reg{
+    height: 1.2rem;
+    width: 5.5rem;
+    font-size: 0.6rem;
+    font-weight: bold;
+    display: block;
+    position: absolute;
+    line-height: 1.2rem;
+    text-align: center;
+    background: #890103;
+    box-shadow: 0.15rem 0.15rem 0.15rem  #5C0405;
+    color: #F9D3B1;
+    border-radius: 0.3rem;
+}
+.section9{
+    background: #7A0A1F;
+}
+.section_div{
+    padding: 0.5rem;
+    height: 17rem;
+}
+.left,.right{
+    float: left;
+}
+.left{ width: 11rem;}
+.right{ width: 4rem;}
+.left p{ color: white; font-size: 0.6rem; line-height: 1rem;}
+.section10{ height: 12.65rem; position: relative;}
+.monten{ position: absolute; top: 1.3rem; left: 8rem; height: 0.6rem; width: 3rem; display: block;}
+
+
+
+
+
+
+
+
+
+

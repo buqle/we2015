@@ -1,0 +1,30 @@
+<div class="custodaycon">
+    您已开通融和贷—上海银行资金存管账户
+    <div class="custodaycon1">
+        <div class="custodaycon2">
+            <p><span>户名：</span><i class="icustday1">待同步</i></p>
+            <p><span>身份证号：</span><i class="icustday2">待同步</i></p>
+            <p><span>帐号：</span><i class="icustday3">待同步</i></p>
+            <p><span>开户银行：</span><i>上海银行</i></p>
+            <p><span>开户网点：</span><i>上海银行股份有限公司</i></p>
+            <p><span>开户省市：</span><i>上海</i></p>
+        </div>
+    </div>
+    <p class="font16">该账户已绑定您本人<span class="boldf">名下中国工商银行（尾号<i class="icustday4"></i>）银行卡</span>，用于代扣充值和提现</p>
+    <!--<a href="/?user&m=trust/login" class="block font18" target="_blank">登录银行存管账户</a>-->
+</div>
+{literal}
+<script>
+    $(function(){
+        $.http.post('/?user&m=trust/refrech',{},function(ret){
+            if (ret.ret == 1) {
+                $('.icustday1').text(ret.data.username);
+                $('.icustday3').text(ret.data.trust_userid);
+                $('.icustday2').text(ret.data.card_id);
+                $('.icustday4').text(ret.data.bankcard);
+
+            }
+        },'json');
+    })
+</script>
+{/literal}

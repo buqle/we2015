@@ -1,0 +1,106 @@
+{include file="header.html"}
+<div class="conbox t50">
+   <div class="borrow_pro">
+	   <div class="bread"><a href="#">我要借款</a>&nbsp;>&nbsp;<a href="#">实名认证</a></div>
+	   {include file="users_loan_info_menu.html"}
+       <script>var realname_fee = '{$_G.system.con_realname_fee}'; var balance = '{$_G.account_result.balance}';</script>
+	   <div class="approve_warning">
+	     <h3>请注意以下事项</h3>
+		 <p>1、我们将通过全国公民身份信息中心(NCIIC)系统对您提交的身份进行审核。</p>
+         {if $_G.system.con_realname_fee!=""}
+         <p>2、实名认证费用为{$_G.system.con_realname_fee}元。你现在的可用余额为<span style="color: red;">￥{$_G.account_result.balance}</span>[<a href="/?user&m=account/recharge/new" target="_blank">我要充值</a>]。</p>
+         {/if}
+       </div>
+	   <div class="rel_name_appro">
+	     <form action="" method="post" id="loan_realname" name="loan_realname" enctype="multipart/form-data">
+		
+             {if $_G.approve_result.realname_status!=1}
+             <div class="item">
+				   <label class="basic_label w120" for="realname"><span class="warning_c">*</span>姓名：</label>
+				   <input type="text" name="realname" id="realname" value="{$_G.approve_result.realname}" class="basic_input"/>
+				   <span class="msg_box warning"><em></em><i></i><font>请填写真实姓名</font></span>
+			 </div>
+              <div class="item">
+			   <label class="basic_label w120"><span class="warning_c">*</span>性别：</label>
+			   <select name="sex" id="sex" class="borrow_sel">
+				   <option value="1"  selected="true">男</option>
+				   <option value="2" >女</option>								   
+			   </select>
+               <span class="msg_box warning"><em></em><i></i><font>请选择性别</font></span>
+			 </div>
+			 <div class="item">
+				   <label class="basic_label w120" for="card_id"><span class="warning_c">*</span>身份证号：</label>
+				   <input type="text" name="card_id" id="card_id" value="{$_G.approve_result.card_id}" class="basic_input"/>
+				   <span class="msg_box warning"><em></em><i></i><font>请输入您的身份证号码</font></span>
+			 </div>
+             <div class="item">
+				   <label class="basic_label w120" for="card_pic1"><span class="warning_c">*</span>身份证正面：</label>
+				   <input type="file" name="card_pic1" id="card_pic1" value="{$_G.approve_result.card_pic1}" class="basic_input pointer"/>
+			 </div>
+             <div class="item">
+				   <label class="basic_label w120" for="card_pic2"><span class="warning_c">*</span>身份证反面：</label>
+				   <input type="file" name="card_pic2" id="card_pic2" value="{$_G.approve_result.card_pic2}" class="basic_input pointer"/>
+			 </div>
+			 <div class="item">
+				   <label class="basic_label w120" for="phone"><span class="warning_c">*</span>手机号码：</label>
+				   <input type="text" name="phone" id="phone" value="{$_G.approve_result.phone}" class="basic_input" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" maxlength="11" {if $_G.approve_resut.phone_status==1}{/if}/>
+				   <span class="msg_box warning"><em></em><i></i><font>请输入您常用的手机号码</font></span>
+                   
+			 </div>
+             {if $_G.approve_result.realname_status==-1 || $_G.approve_result.realname_status==2}
+             <div class="item verify_code">
+				   <label class="basic_label w120" for="vericode"><span class="warning_c">*</span>验证码：</label>
+				   <input id="vericode" type="text" name="phonevalid" class="basic_input" maxlength="6" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" />
+                   <input type="button" class="get_verty_btn" id="send_phonevalid" value="获取验证码" />
+				   <span class="msg_box warning"><em></em><i></i><font>请正确填写您收到的手机验证码</font></span>
+			 </div>
+		     <div class="item">
+			       <label class="basic_label w120">&nbsp;</label>
+				   <input type="submit" value="提交&nbsp;下一步"   class="bor_pro_sub"/>
+			 </div>
+             {if $_G.approve_result.realname_status==2}
+             <div class="item">
+			       <label class="basic_label w120">&nbsp;</label>
+				   <span class="error">您的申请未通过，请重新提交验证！（失败原因：[{$_G.approve_result.verify_remark}]）</span>
+			 </div>
+             {/if}
+             {else}
+             <div class="item">
+			       <label class="basic_label w120">&nbsp;</label>
+				   <span class="error">您的申请已提交，请耐心等待审核！</span>
+			 </div>
+             {/if}
+             {elseif $_G.approve_result.realname_status==1}
+             
+                    <div class="item">
+        				   <label class="basic_label w120">姓名：</label>
+        				  <span class="basic_span">{$_G.approve_result.realname}</span>
+        			 </div>
+        			 <div class="item">
+        				   <label class="basic_label w120">身份证号：</label>
+        				  <span class="basic_span">{$_G.approve_result._card_id}</span>
+        			 </div>
+                    
+        			 <div class="item">
+        				   <label class="basic_label w120">手机号码：</label>
+        				   
+				                <span class="basic_span">{$_G.approve_result.phone|truncate_phone}</span>
+                           
+        			 </div>
+                {/if}             
+             
+             <div class="item">
+			       <label class="basic_label">&nbsp;</label>
+			       <span class="warning_c">{if $var.status==0&&$var.user_id!=""&& $var.realname!=""}提交成功，请等待工作人员审核。{elseif $var.status==2}审核不通过，请重新提交！【原因：{$var.verify_remark}】{/if}</span>
+			 </div>
+            
+		 </form>
+	   </div>
+   </div>
+</div>
+{literal}
+<script type="text/javascript">
+diyou.use('borrow',function(dy){dy.loan_realname('loan_realname')})
+</script>
+{/literal}
+{include file="footer.html"}
